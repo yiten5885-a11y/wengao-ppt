@@ -1,0 +1,433 @@
+{
+  "schema": "P2_SANITIZATION_SCAN_V1",
+  "generated_at": "2026-10-24T00:39:55+0800",
+  "root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+  "excluded_dirs": [
+    ".fontconfig",
+    ".git",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".lo-profile",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".svn",
+    ".venv",
+    ".wengao_scene_assets",
+    "__pycache__",
+    "env",
+    "jobs",
+    "material_tasks",
+    "node_modules",
+    "reports",
+    "rollback-20261021-0908",
+    "venv",
+    "versions",
+    "wb_loopback_data",
+    "workbench_previews",
+    "workbench_uploads"
+  ],
+  "excluded_suffixes": [
+    ".log",
+    ".pyc",
+    ".pyo",
+    ".tmp",
+    ".sqlite",
+    ".sqlite3",
+    ".db",
+    ".swp",
+    ".pid",
+    ".lock"
+  ],
+  "excluded_files": [
+    ".DS_Store",
+    "Thumbs.db",
+    "probe.txt",
+    "workbench_server.log",
+    "workbench_server_8823.log"
+  ],
+  "excluded_members_detected": [
+    ".fontconfig",
+    ".pytest_cache",
+    ".venv",
+    "jobs",
+    "material_tasks",
+    "reports",
+    "samples/__pycache__",
+    "scripts/__pycache__",
+    "tests/__pycache__",
+    "vendor/luobo-ppt/.git",
+    "wb_loopback_data",
+    "wengao_ppt/__pycache__",
+    "workbench/__pycache__",
+    "workbench_server.log",
+    "workbench_server_8823.log"
+  ],
+  "excluded_members_total": 15,
+  "stat": {
+    "files_total": 263,
+    "binary_skipped": 28,
+    "truncated": 0,
+    "unreadable": 0
+  },
+  "must_fix": [
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 6,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "\"historical_generation_evidence\": \"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/work/strict-qa/open-source-50-decks/multilingual-inputs/generation-eviden",
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-25-28-language-reclassification.json"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 4,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "P = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "BASE = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3b.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "BASE = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3c.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "ROOT = Path(\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix\")",
+      "path": "scripts/inspect_r3d.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "ROOT = Path(\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix\")",
+      "path": "scripts/inspect_r3e.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PPTX = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3f.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "OUT = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3g.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 4,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PPTX = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3h.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PPTX = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3i.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PDF = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3j.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 7,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PPTX = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3j2.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 5,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "PDF = (\"/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/\"",
+      "path": "scripts/inspect_r3k.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 24,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "MANAGED_PY = \"/Users/huangyingteng/.workbuddy/binaries/python/envs/default\"",
+      "path": "scripts/p2_build_license_matrix.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 89,
+      "match_redacted": "/Users/example",
+      "snippet_redacted": "(\"abs_user_path\", \"/Users/example/Library/Application Support/LocalQwenService\",",
+      "path": "scripts/p2_build_release_copy.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 90,
+      "match_redacted": "/Users/example",
+      "snippet_redacted": "\"文档里的示例路径占位符（/Users/example），非本机真实路径\"),",
+      "path": "scripts/p2_build_release_copy.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 112,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "(\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2\", PLACEHOLDER,",
+      "path": "scripts/p2_build_release_copy.py"
+    },
+    {
+      "rule": "abs_private_tmp",
+      "severity": "must_fix",
+      "desc": "本机临时/Windows 路径",
+      "line": 94,
+      "match_redacted": "/private/var/folders",
+      "snippet_redacted": "'re.sub(r\"(?:/Users/|/Volumes/|/private/var/folders/)[^,);\\\\n]*\"',",
+      "path": "scripts/p2_build_release_copy.py"
+    },
+    {
+      "rule": "api_key_assign",
+      "severity": "must_fix",
+      "desc": "疑似密钥/口令字面量赋值",
+      "line": 85,
+      "match_redacted": "api_key = \"test-o<REDACTED>\"",
+      "snippet_redacted": "(\"api_key_assign\", 'api_key = \"test-only-not-a-real-api-key\"',",
+      "path": "scripts/p2_build_release_copy.py"
+    },
+    {
+      "rule": "abs_private_tmp",
+      "severity": "must_fix",
+      "desc": "本机临时/Windows 路径",
+      "line": 54,
+      "match_redacted": "/private/var/folders",
+      "snippet_redacted": "re.compile(r\"/private/var/folders|[A-Za-z]:\\\\\\\\Users\\\\\\\\\"), \"本机临时/Windows 路径\"),",
+      "path": "scripts/p2_release_sanitizer.py"
+    },
+    {
+      "rule": "file_uri",
+      "severity": "must_fix",
+      "desc": "file:// 本机 URI",
+      "line": 55,
+      "match_redacted": "file:///Users/",
+      "snippet_redacted": "(\"file_uri\", \"must_fix\", re.compile(r\"file:///Users/\"), \"file:// 本机 URI\"),",
+      "path": "scripts/p2_release_sanitizer.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 28,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/outputs/\"",
+      "path": "scripts/run_gate_13p.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 45,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/outputs/\"",
+      "path": "scripts/run_gate_negative_cases.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 22,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/outputs/\"",
+      "path": "scripts/run_negative_regression.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 31,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/outputs/\"",
+      "path": "scripts/run_p0_final_gate.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 45,
+      "match_redacted": "/Users/huangy<REDACTED>",
+      "snippet_redacted": "Path(\"/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/work/strict-qa/open-source-50-decks/multilingual-inputs/input-manifest.json\"),",
+      "path": "tests/test_multilingual_26_acceptance_gate.py"
+    },
+    {
+      "rule": "api_key_assign",
+      "severity": "must_fix",
+      "desc": "疑似密钥/口令字面量赋值",
+      "line": 48,
+      "match_redacted": "api_key = \"test-o<REDACTED>\"",
+      "snippet_redacted": "api_key = \"test-only-not-a-real-api-key\"",
+      "path": "tests/test_scene_images_pexels.py"
+    },
+    {
+      "rule": "api_key_assign",
+      "severity": "must_fix",
+      "desc": "疑似密钥/口令字面量赋值",
+      "line": 102,
+      "match_redacted": "api_key = \"test-o<REDACTED>\"",
+      "snippet_redacted": "api_key = \"test-only-not-a-real-api-key\"",
+      "path": "tests/test_scene_images_pexels.py"
+    },
+    {
+      "rule": "abs_user_path",
+      "severity": "must_fix",
+      "desc": "本机用户绝对路径",
+      "line": 1114,
+      "match_redacted": "/Users/example",
+      "snippet_redacted": "\"(checked: /Users/example/Library/Application Support/LocalQwenService/bin/llama-server)\"))",
+      "path": "tests/test_semantic_scenes.py"
+    },
+    {
+      "rule": "abs_private_tmp",
+      "severity": "must_fix",
+      "desc": "本机临时/Windows 路径",
+      "line": 68,
+      "match_redacted": "/private/var/folders",
+      "snippet_redacted": "text = re.sub(r\"(?:/Users/|/Volumes/|/private/var/folders/)[^,);\\n]*\",",
+      "path": "wengao_ppt/scene_model.py"
+    }
+  ],
+  "manual_review": [
+    {
+      "rule": "home_tilde_note",
+      "severity": "manual_review",
+      "desc": "私人目录简写路径",
+      "line": 70,
+      "match_redacted": "~/Library/",
+      "snippet_redacted": "re.compile(r\"~/Library/|~/Desktop/|~/Documents/\"), \"私人目录简写路径\"),",
+      "path": "scripts/p2_release_sanitizer.py"
+    },
+    {
+      "rule": "home_tilde_note",
+      "severity": "manual_review",
+      "desc": "私人目录简写路径",
+      "line": 70,
+      "match_redacted": "~/Desktop/",
+      "snippet_redacted": "re.compile(r\"~/Library/|~/Desktop/|~/Documents/\"), \"私人目录简写路径\"),",
+      "path": "scripts/p2_release_sanitizer.py"
+    },
+    {
+      "rule": "home_tilde_note",
+      "severity": "manual_review",
+      "desc": "私人目录简写路径",
+      "line": 70,
+      "match_redacted": "~/Documents/",
+      "snippet_redacted": "re.compile(r\"~/Library/|~/Desktop/|~/Documents/\"), \"私人目录简写路径\"),",
+      "path": "scripts/p2_release_sanitizer.py"
+    },
+    {
+      "rule": "home_tilde_note",
+      "severity": "manual_review",
+      "desc": "私人目录简写路径",
+      "line": 48,
+      "match_redacted": "~/Library/",
+      "snippet_redacted": "os.path.expanduser(\"~/Library/Fonts\"),",
+      "path": "scripts/p7_language_chain_audit.py"
+    },
+    {
+      "rule": "email",
+      "severity": "manual_review",
+      "desc": "邮箱地址",
+      "line": 42,
+      "match_redacted": "user@www.pe<REDACTED>",
+      "snippet_redacted": "\"https://user@www.pexels.com/photo/example-127/\",",
+      "path": "tests/test_scene_images_pexels.py"
+    },
+    {
+      "rule": "email",
+      "severity": "manual_review",
+      "desc": "邮箱地址",
+      "line": 141,
+      "match_redacted": "pw@exampl<REDACTED>",
+      "snippet_redacted": "\"https://user:pw@example.com/x.jpg\",",
+      "path": "tests/test_scene_provider_transport.py"
+    },
+    {
+      "rule": "home_tilde_note",
+      "severity": "manual_review",
+      "desc": "私人目录简写路径",
+      "line": 248,
+      "match_redacted": "~/Library/",
+      "snippet_redacted": "os.path.expanduser(\"~/.fonts/**/*CJK*.tt*\"), os.path.expanduser(\"~/Library/Fonts/*CJK*.tt*\")]",
+      "path": "vendor/luobo-ppt/scripts/common.py"
+    },
+    {
+      "rule": "email",
+      "severity": "manual_review",
+      "desc": "邮箱地址",
+      "line": 1023,
+      "match_redacted": "team@wengao<REDACTED>",
+      "snippet_redacted": "\"User-Agent\": \"WengaoPPT/1.0 (https://wengao.local; team@wengao.local) urllib/3.13\",",
+      "path": "wengao_ppt/scene_images.py"
+    },
+    {
+      "rule": "email",
+      "severity": "manual_review",
+      "desc": "邮箱地址",
+      "line": 1069,
+      "match_redacted": "team@wengao<REDACTED>",
+      "snippet_redacted": "\"User-Agent\": \"WengaoPPT/1.0 (https://wengao.local; team@wengao.local) urllib/3.13\",",
+      "path": "wengao_ppt/scene_images.py"
+    }
+  ],
+  "counts": {
+    "must_fix": 30,
+    "manual_review": 9
+  },
+  "release_members_sha256": "91469d639f67d82a704cc4852d7975c7c025dd8613081cb7e2ea5df12da3c8f3"
+}

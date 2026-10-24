@@ -1,0 +1,52 @@
+{
+  "namespace": "RESEARCH",
+  "version": "1.0.0",
+  "description": "联网研究与事实核对错误码规范，遵循公共契约 rs-contracts-v1",
+  "codes": [
+    {
+      "code": "RESEARCH.QUOTE_NOT_IN_SNAPSHOT",
+      "severity": "BLOCKING",
+      "meaning": "引用文本（quote_span）在页面正文快照中未逐字连续匹配，判定事实不可靠并阻断丢弃。"
+    },
+    {
+      "code": "RESEARCH.SOURCE_MISSING",
+      "severity": "BLOCKING",
+      "meaning": "外部事实缺少发布者（publisher）、来源URL或快照哈希，阻断丢弃。"
+    },
+    {
+      "code": "RESEARCH.UNIT_OR_PERIOD_MISMATCH",
+      "severity": "BLOCKING",
+      "meaning": "事实数值、单位或统计周期与引用原文快照不一致，阻断丢弃。"
+    },
+    {
+      "code": "RESEARCH.INCOMPARABLE_DEFINITION",
+      "severity": "WARN",
+      "meaning": "横向或纵向对比项之间单位、口径或定义不可比，降级省略并记录原因，不同图展示。"
+    },
+    {
+      "code": "RESEARCH.NO_RELIABLE_SOURCE",
+      "severity": "WARN",
+      "meaning": "目标指标未检索到符合权威分级标准的有效来源，降级省略该对比视图。"
+    },
+    {
+      "code": "RESEARCH.SEARCH_BACKEND_ERROR",
+      "severity": "WARN",
+      "meaning": "检索后端请求超时、受限或失败，触发降级保护。"
+    },
+    {
+      "code": "RESEARCH.FETCH_FAILED",
+      "severity": "WARN",
+      "meaning": "目标网页无法抓取或无法提取有效正文文本，丢弃该网页。"
+    },
+    {
+      "code": "RESEARCH.FACT_CONFLICT",
+      "severity": "WARN",
+      "meaning": "用户材料事实与网络检索事实存在数值或口径冲突，并列记录待用户裁决，不覆盖用户事实。"
+    },
+    {
+      "code": "RESEARCH.OMISSION_RECORDED",
+      "severity": "INFO",
+      "meaning": "因数据不全或不可比而降级省略该视图，如实记录在 omissions 中。"
+    }
+  ]
+}

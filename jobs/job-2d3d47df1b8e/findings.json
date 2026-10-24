@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-2d3d47df1b8e",
+  "run_id": "20261020T062515_194684Z-07235d4f",
+  "attempt_id": "90ee7031",
+  "generated_at": "2026-10-20T14:31:33.807056+08:00",
+  "stage": "validate",
+  "blocking": 0,
+  "review": 0,
+  "findings": []
+}

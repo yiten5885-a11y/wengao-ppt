@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "checked_at_local": "2026-10-23T12:43:55.322183+08:00",
+  "status": "DETECTOR_RECLASSIFICATION_PASS_NOT_LANGUAGE_NATIVE_REVIEW",
+  "detector_version": "unicode-script-lexical-v3",
+  "historical_generation_evidence": "/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/work/strict-qa/open-source-50-decks/multilingual-inputs/generation-evidence/batch-25-28.json",
+  "historical_generation_evidence_sha256": "31a0081da1e51a249382394853452612c37e8c8009653bbd4a50753e682614e9",
+  "source_documents_modified": false,
+  "cases": [
+    {
+      "case_id": "L25",
+      "planned_language": "bn",
+      "prior_detector": "mul",
+      "prior_status": "MODEL_GENERATED_LANGUAGE_MISMATCH",
+      "detector_v3": {
+        "primary": "bn",
+        "languages": [
+          "bn"
+        ],
+        "scripts": [
+          "Bengali"
+        ],
+        "confidence": "script",
+        "detector": "unicode-script-lexical-v3"
+      },
+      "detector_matches_plan": true,
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L25-bn.md",
+      "source_sha256_before_and_after": "9dcc411ea24ab4ef1e33aff3bffd4f145af27957a29289df9dad837deddc5d04",
+      "source_bytes_unchanged": true,
+      "language_review": "NOT_REVIEWED",
+      "deck_generated": false,
+      "counted_toward_50_decks": false
+    },
+    {
+      "case_id": "L26",
+      "planned_language": "bn",
+      "prior_detector": "mul",
+      "prior_status": "MODEL_GENERATED_LANGUAGE_MISMATCH",
+      "detector_v3": {
+        "primary": "bn",
+        "languages": [
+          "bn"
+        ],
+        "scripts": [
+          "Bengali"
+        ],
+        "confidence": "script",
+        "detector": "unicode-script-lexical-v3"
+      },
+      "detector_matches_plan": true,
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L26-bn.md",
+      "source_sha256_before_and_after": "b6704e4d380b5ca839d4c6a8023a1f4bb83a239a19e288da3ea5a2c22e9683dd",
+      "source_bytes_unchanged": true,
+      "language_review": "NOT_REVIEWED",
+      "deck_generated": false,
+      "counted_toward_50_decks": false
+    },
+    {
+      "case_id": "L27",
+      "planned_language": "bn",
+      "prior_detector": "mul",
+      "prior_status": "MODEL_GENERATED_LANGUAGE_MISMATCH",
+      "detector_v3": {
+        "primary": "bn",
+        "languages": [
+          "bn"
+        ],
+        "scripts": [
+          "Bengali"
+        ],
+        "confidence": "script",
+        "detector": "unicode-script-lexical-v3"
+      },
+      "detector_matches_plan": true,
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L27-bn.md",
+      "source_sha256_before_and_after": "4273b572d2c175dcddd7e10d5c7a7aa04b3326171e80342acbecd34713ee44eb",
+      "source_bytes_unchanged": true,
+      "language_review": "NOT_REVIEWED",
+      "deck_generated": false,
+      "counted_toward_50_decks": false
+    },
+    {
+      "case_id": "L28",
+      "planned_language": "bn",
+      "prior_detector": "mul",
+      "prior_status": "MODEL_GENERATED_LANGUAGE_MISMATCH",
+      "detector_v3": {
+        "primary": "bn",
+        "languages": [
+          "bn"
+        ],
+        "scripts": [
+          "Bengali"
+        ],
+        "confidence": "script",
+        "detector": "unicode-script-lexical-v3"
+      },
+      "detector_matches_plan": true,
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L28-bn.md",
+      "source_sha256_before_and_after": "6a13626130f4e020842c74409cf5d5d0e806e5ba0628e76b93dddb50a61c69af",
+      "source_bytes_unchanged": true,
+      "language_review": "NOT_REVIEWED",
+      "deck_generated": false,
+      "counted_toward_50_decks": false
+    }
+  ],
+  "detector_match_count": 4,
+  "language_reviewed_count": 0,
+  "decks_generated_count": 0,
+  "ppts_counted_toward_50": 0,
+  "images_retrieved_or_inserted": false,
+  "release_ready": false,
+  "scope_note": "This only corrects the recorded advisory detector result after excluding shared punctuation from script counts. It does not establish native-language review, semantic model quality, typography, photo insertion, PPT generation, or release acceptance."
+}

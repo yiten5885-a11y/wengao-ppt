@@ -1,0 +1,1020 @@
+{
+  "schema_version": "1.0.0",
+  "input": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/input_raw/annual_review_synthetic.generated.pptx",
+  "input_sha256": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+  "is_zip": true,
+  "members": [
+    {
+      "name": "[Content_Types].xml",
+      "norm_name": "[Content_Types].xml",
+      "size": 4661,
+      "compress_size": 526,
+      "crc": 3736023907,
+      "sha256": "b1c9bb92141e6b8adf68dbd7575666c56b1ae6888daafd3957ff1ef7040534ac"
+    },
+    {
+      "name": "_rels/.rels",
+      "norm_name": "_rels/.rels",
+      "size": 737,
+      "compress_size": 256,
+      "crc": 3963031025,
+      "sha256": "694cc89ebda975bfb74644f943f86114504d64d5a6b2e420304f58ba494f0e11"
+    },
+    {
+      "name": "docProps/core.xml",
+      "norm_name": "docProps/core.xml",
+      "size": 731,
+      "compress_size": 377,
+      "crc": 3824948363,
+      "sha256": "b25bcc59255004fe78e28f81cba03ebf00eea5f5f95e9f98e71a3c20468d7d3b"
+    },
+    {
+      "name": "docProps/app.xml",
+      "norm_name": "docProps/app.xml",
+      "size": 1133,
+      "compress_size": 495,
+      "crc": 2039402654,
+      "sha256": "77fbd43c41b96be9a40d41a267cd83108a274ee5860675dfb543828472d76867"
+    },
+    {
+      "name": "ppt/presentation.xml",
+      "norm_name": "ppt/presentation.xml",
+      "size": 3539,
+      "compress_size": 619,
+      "crc": 3257966944,
+      "sha256": "ec44797f63d16673afe8aa377b15b6ecf7852ca5355cb69526a2e40c1c4d6d7a"
+    },
+    {
+      "name": "ppt/_rels/presentation.xml.rels",
+      "norm_name": "ppt/_rels/presentation.xml.rels",
+      "size": 2342,
+      "compress_size": 349,
+      "crc": 2516157455,
+      "sha256": "433aa0f2f785d4864cfe18c3c5ed432931da915b3678d6861b3ce3f4c2d6fc1e"
+    },
+    {
+      "name": "ppt/presProps.xml",
+      "norm_name": "ppt/presProps.xml",
+      "size": 649,
+      "compress_size": 324,
+      "crc": 340237404,
+      "sha256": "b42af61236cda9ea4d781f60908296da476489b2828df32fc9625d996808087b"
+    },
+    {
+      "name": "ppt/viewProps.xml",
+      "norm_name": "ppt/viewProps.xml",
+      "size": 898,
+      "compress_size": 411,
+      "crc": 2368090983,
+      "sha256": "f2e3578e8a2a2607ca7f850d99f2cbe5f22806084c8e519bb754388ed7ebdb69"
+    },
+    {
+      "name": "ppt/theme/theme1.xml",
+      "norm_name": "ppt/theme/theme1.xml",
+      "size": 7655,
+      "compress_size": 1569,
+      "crc": 1970080403,
+      "sha256": "4c3412087e8fa20cf5642f42e69f1e733881c28611a2bdd4622654ee313d214e"
+    },
+    {
+      "name": "ppt/tableStyles.xml",
+      "norm_name": "ppt/tableStyles.xml",
+      "size": 182,
+      "compress_size": 165,
+      "crc": 2408447448,
+      "sha256": "0e7ac03251337ecbaf6c8ca13619db1caeda5c90c4e3210d45d6c3f5df4de103"
+    },
+    {
+      "name": "ppt/slideMasters/slideMaster1.xml",
+      "norm_name": "ppt/slideMasters/slideMaster1.xml",
+      "size": 11986,
+      "compress_size": 1774,
+      "crc": 899820966,
+      "sha256": "44cc65956f47c1cf689803dcc7a1d9225c93d3fd90754a9f85e2bdcea27565bc"
+    },
+    {
+      "name": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+      "norm_name": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+      "size": 1990,
+      "compress_size": 269,
+      "crc": 4193372953,
+      "sha256": "52e5efa51d86e5426d78ad9b143b863e71d00c269f6494e759cf0b3adc900116"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout11.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout11.xml",
+      "size": 3245,
+      "compress_size": 960,
+      "crc": 1464895819,
+      "sha256": "355ac266c2671b83b662759afb0ee0ecfb7cdd6ec936019ecef60dbc95c14dac"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout11.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout11.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout1.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout1.xml",
+      "size": 4357,
+      "compress_size": 1066,
+      "crc": 233635072,
+      "sha256": "25c93a2f186df69897585729d52fc610349e29dcf0b5b6080160df6490698709"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout2.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout2.xml",
+      "size": 2966,
+      "compress_size": 877,
+      "crc": 2347259649,
+      "sha256": "5f800acd9e43b9b438c987bd71cf0966b27ad02ce8df14df80708510cbd700be"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout2.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout2.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout3.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout3.xml",
+      "size": 4440,
+      "compress_size": 1123,
+      "crc": 1525506187,
+      "sha256": "e83a85b737e1447051ac7fd9bbaaba4ac1b4210cfc630cdcfcdbc191fdb141d1"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout3.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout3.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout4.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout4.xml",
+      "size": 4712,
+      "compress_size": 1032,
+      "crc": 478333519,
+      "sha256": "1ebe316051a0caaac0e972989a7591e66d1fbb4a0764fe984c31a4ab5b6554bf"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout4.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout4.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout5.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout5.xml",
+      "size": 7222,
+      "compress_size": 1251,
+      "crc": 2412029161,
+      "sha256": "3df8e6f498622ef440f5568a2c967c97f47c74b46b47a976304c7b7c9ab54c74"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout5.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout5.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout6.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout6.xml",
+      "size": 2232,
+      "compress_size": 786,
+      "crc": 4112954413,
+      "sha256": "18e5b26c6f7c30dabe0b294faf38b2d2ef60ae778fbba9c3fe71f6560143a402"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout6.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout6.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout7.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout7.xml",
+      "size": 1895,
+      "compress_size": 742,
+      "crc": 2006915051,
+      "sha256": "e4d86b009a8ca6ca9ecfadc97c68b7123b60544df09a7ea42864a4f5f74ce09c"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout7.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout7.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout8.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout8.xml",
+      "size": 4802,
+      "compress_size": 1202,
+      "crc": 3582642893,
+      "sha256": "950b9d16468d58fe59a8c0aeb17a03b7d18a9f5bbeac438e38a2248462a72cbe"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout8.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout8.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout9.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout9.xml",
+      "size": 4657,
+      "compress_size": 1145,
+      "crc": 2461324122,
+      "sha256": "4e9439878755a7faea188d684939b2fb7d26b7e09086e792789f9137ca353e15"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout9.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout9.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/slideLayouts/slideLayout10.xml",
+      "norm_name": "ppt/slideLayouts/slideLayout10.xml",
+      "size": 3021,
+      "compress_size": 909,
+      "crc": 4164273719,
+      "sha256": "1f8304c9d6c08ff9bd41b639d0c7e866b6515f61e6081c9ccc89ed8d0f8b4194"
+    },
+    {
+      "name": "ppt/slideLayouts/_rels/slideLayout10.xml.rels",
+      "norm_name": "ppt/slideLayouts/_rels/slideLayout10.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2296472960,
+      "sha256": "7c1f290acd6ca3ce664fe95aaf0b129bbb3cbf2b75c8d09905a2821641981027"
+    },
+    {
+      "name": "ppt/printerSettings/printerSettings1.bin",
+      "norm_name": "ppt/printerSettings/printerSettings1.bin",
+      "size": 9395,
+      "compress_size": 825,
+      "crc": 3511280872,
+      "sha256": "d7768f87e07d29634782e448ece1cddd05a52b9499254222b1190bc8f6dc579e"
+    },
+    {
+      "name": "ppt/slides/slide1.xml",
+      "norm_name": "ppt/slides/slide1.xml",
+      "size": 1226,
+      "compress_size": 589,
+      "crc": 3350048899,
+      "sha256": "873eff229b8732e63db90e6d53705f6f9fe62e3c8b2caec0900c7422ccefaac8"
+    },
+    {
+      "name": "ppt/slides/_rels/slide1.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide1.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 3444631606,
+      "sha256": "c197fb7b22e7392c4fd5a7bf18a6d25183215bd9fe446705e9b44734b09a49ea"
+    },
+    {
+      "name": "ppt/slides/slide2.xml",
+      "norm_name": "ppt/slides/slide2.xml",
+      "size": 1118,
+      "compress_size": 530,
+      "crc": 1167987201,
+      "sha256": "8c70087cf4a443f20a27f38614aab42787acf110802fd8cb6ef403a49b056656"
+    },
+    {
+      "name": "ppt/slides/_rels/slide2.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide2.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "ppt/slides/slide3.xml",
+      "norm_name": "ppt/slides/slide3.xml",
+      "size": 1033,
+      "compress_size": 504,
+      "crc": 1462593965,
+      "sha256": "4a4db73bcc1f65560d7a6c3173d1472226afd861b615ed5e4f78a45e49f71741"
+    },
+    {
+      "name": "ppt/slides/_rels/slide3.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide3.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "ppt/slides/slide4.xml",
+      "norm_name": "ppt/slides/slide4.xml",
+      "size": 1282,
+      "compress_size": 663,
+      "crc": 1200645056,
+      "sha256": "60a59366752ff86301d7d3776e6275b81b8c7443762939d91558dae0a6a7c0e6"
+    },
+    {
+      "name": "ppt/slides/_rels/slide4.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide4.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "ppt/slides/slide5.xml",
+      "norm_name": "ppt/slides/slide5.xml",
+      "size": 2735,
+      "compress_size": 852,
+      "crc": 1019025760,
+      "sha256": "442a7ed9d98e667966194871fe34a5d19bb668f03da20c0eb689a5c5237f8a35"
+    },
+    {
+      "name": "ppt/slides/_rels/slide5.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide5.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 4232634177,
+      "sha256": "a84256e1bb9c8c88be51d72399c8c9d58e393453449327ade457882ad2792b34"
+    },
+    {
+      "name": "ppt/slides/slide6.xml",
+      "norm_name": "ppt/slides/slide6.xml",
+      "size": 1266,
+      "compress_size": 615,
+      "crc": 1951176429,
+      "sha256": "4daa980faeb02eb9a8d5f2361120c919b8630da06bb5c9b40747e3e4b91bbe7a"
+    },
+    {
+      "name": "ppt/slides/_rels/slide6.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide6.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "ppt/slides/slide7.xml",
+      "norm_name": "ppt/slides/slide7.xml",
+      "size": 1296,
+      "compress_size": 639,
+      "crc": 1815150969,
+      "sha256": "93a6560abd6fbc667bb432994b298fd7611999caf59d22a50edf2221a60fa752"
+    },
+    {
+      "name": "ppt/slides/_rels/slide7.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide7.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "ppt/slides/slide8.xml",
+      "norm_name": "ppt/slides/slide8.xml",
+      "size": 2685,
+      "compress_size": 932,
+      "crc": 2948194561,
+      "sha256": "105efa863664788a0d1c2c6286154ce133bfd1c0dc9a552eacddc2e35625b492"
+    },
+    {
+      "name": "ppt/slides/_rels/slide8.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide8.xml.rels",
+      "size": 446,
+      "compress_size": 205,
+      "crc": 495358216,
+      "sha256": "7b390f7664a731208c31fe625d62376c1d5af4736838f869ab83a694fe92494e"
+    },
+    {
+      "name": "ppt/charts/chart1.xml",
+      "norm_name": "ppt/charts/chart1.xml",
+      "size": 2244,
+      "compress_size": 892,
+      "crc": 3999145987,
+      "sha256": "d0e06c62a3ab43321432e48667da3c6032c5c067ecf3062222399ce10c67f3d7"
+    },
+    {
+      "name": "ppt/charts/_rels/chart1.xml.rels",
+      "norm_name": "ppt/charts/_rels/chart1.xml.rels",
+      "size": 315,
+      "compress_size": 202,
+      "crc": 1893238074,
+      "sha256": "6993abdd85830edc87f3f5822b391a5346d35239ee70aa049a729cbe07553f8a"
+    },
+    {
+      "name": "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx",
+      "norm_name": "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx",
+      "size": 5421,
+      "compress_size": 4794,
+      "crc": 3105247835,
+      "sha256": "cbd91de6d5928feaa0ec6fc578edf0278fcbb1c0631a455664c3ef811774bc3b"
+    },
+    {
+      "name": "ppt/slides/slide9.xml",
+      "norm_name": "ppt/slides/slide9.xml",
+      "size": 3333,
+      "compress_size": 944,
+      "crc": 4237631189,
+      "sha256": "c080e8082c558028de2d0533b719d33428aa61701f7011ae0e63e7664a701b5e"
+    },
+    {
+      "name": "ppt/slides/_rels/slide9.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide9.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 4232634177,
+      "sha256": "a84256e1bb9c8c88be51d72399c8c9d58e393453449327ade457882ad2792b34"
+    },
+    {
+      "name": "ppt/slides/slide10.xml",
+      "norm_name": "ppt/slides/slide10.xml",
+      "size": 1277,
+      "compress_size": 640,
+      "crc": 3761452325,
+      "sha256": "92290b76eb5aaaf06779a263713ad844ed56d7b02fcb55ade2c055758f2ceb31"
+    },
+    {
+      "name": "ppt/slides/_rels/slide10.xml.rels",
+      "norm_name": "ppt/slides/_rels/slide10.xml.rels",
+      "size": 310,
+      "compress_size": 183,
+      "crc": 2504933662,
+      "sha256": "89c91c7e4c382025a7c9333698b6bbbbb61031f610b2a183bd5a3eb73ef3d6dc"
+    },
+    {
+      "name": "docProps/thumbnail.jpeg",
+      "norm_name": "docProps/thumbnail.jpeg",
+      "size": 4067,
+      "compress_size": 1443,
+      "crc": 2903416922,
+      "sha256": "116f9aa8ea038e39ef47ee99a23592ab569cf77feafecd0a30e222369e931d25"
+    }
+  ],
+  "member_count": 59,
+  "conflicts": [],
+  "decode_errors": [],
+  "warnings": [],
+  "kind_counts": {
+    "slides": 10,
+    "charts": 1,
+    "embeddings": 1
+  },
+  "content_census": {
+    "schema_version": "1.0.0",
+    "input": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/input_raw/annual_review_synthetic.generated.pptx",
+    "input_sha256": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+    "slides": [
+      {
+        "index": 1,
+        "member": "ppt/slides/slide1.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Subtitle 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "member": "ppt/slides/slide2.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "member": "ppt/slides/slide3.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "member": "ppt/slides/slide4.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "member": "ppt/slides/slide5.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "TextBox 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "4",
+            "name": "TextBox 3",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "5",
+            "name": "TextBox 4",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "member": "ppt/slides/slide6.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "member": "ppt/slides/slide7.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "member": "ppt/slides/slide8.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Chart 2",
+            "kind": "graphicFrame",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "4",
+            "name": "Table 3",
+            "kind": "graphicFrame",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "member": "ppt/slides/slide9.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Table 2",
+            "kind": "graphicFrame",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "member": "ppt/slides/slide10.xml",
+        "hidden": false,
+        "objects": [
+          {
+            "id": "2",
+            "name": "Title 1",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          },
+          {
+            "id": "3",
+            "name": "Content Placeholder 2",
+            "kind": "sp",
+            "group_path": "",
+            "is_group": false,
+            "hidden": false
+          }
+        ]
+      }
+    ],
+    "fields": [],
+    "soft_breaks": [],
+    "omml": [],
+    "para_events": {
+      "1|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "一、年度经营概况"
+        }
+      ],
+      "1|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "由原始材料生成 · 年度经营与下年度计划汇报"
+        }
+      ],
+      "1|sp[3]|1": [],
+      "1|sp[3]|2": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%"
+        }
+      ],
+      "1|sp[3]|3": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "其中订阅收入 8.6 亿元，占总收入的 67%"
+        }
+      ],
+      "2|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "一、年度经营概况（续）"
+        }
+      ],
+      "2|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "专业版客户数达到 1240 家，较上年增加 310 家"
+        }
+      ],
+      "2|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "年度新增签约客户 1870 家，客户续约率为 91%"
+        }
+      ],
+      "3|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "一、年度经营概况（续）"
+        }
+      ],
+      "3|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点"
+        }
+      ],
+      "4|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "二、产品能力进展"
+        }
+      ],
+      "4|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "实时数据管道上线，日均处理消息量达到 42 亿条"
+        }
+      ],
+      "4|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟"
+        }
+      ],
+      "4|sp[3]|2": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒"
+        }
+      ],
+      "5|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "三、客户与生态"
+        }
+      ],
+      "5|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "三、客户与生态"
+        }
+      ],
+      "5|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%"
+        }
+      ],
+      "5|sp[4]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "三、客户与生态"
+        }
+      ],
+      "5|sp[4]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个"
+        }
+      ],
+      "5|sp[5]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "三、客户与生态"
+        }
+      ],
+      "5|sp[5]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个"
+        }
+      ],
+      "6|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "四、成本与效率"
+        }
+      ],
+      "6|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "基础设施成本 3.1 亿元，占总收入的 24%"
+        }
+      ],
+      "6|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "单位请求成本从 0.021 元下降到 0.013 元"
+        }
+      ],
+      "6|sp[3]|2": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "研发人员规模为 860 人，人均研发投入为 46 万元"
+        }
+      ],
+      "6|sp[3]|3": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "运维自动化覆盖 78% 的常规巡检任务"
+        }
+      ],
+      "7|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "五、质量与稳定性"
+        }
+      ],
+      "7|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标"
+        }
+      ],
+      "7|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "P1 级故障发生 4 次，平均恢复时间为 26 分钟"
+        }
+      ],
+      "7|sp[3]|2": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "客户工单总量 8600 件，平均首次响应时间为 18 分钟"
+        }
+      ],
+      "7|sp[3]|3": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "安全合规方面通过了 7 项行业认证审查"
+        }
+      ],
+      "8|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "六、问题与改进"
+        }
+      ],
+      "9|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "七、下年度计划"
+        }
+      ],
+      "10|sp[2]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "八、结论"
+        }
+      ],
+      "10|sp[3]|0": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "2024 年是平台能力与规模同步扩张的一年"
+        }
+      ],
+      "10|sp[3]|1": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "收入增速 38% 高于行业平均水平，"
+        }
+      ],
+      "10|sp[3]|2": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "毛利率提升 4.2 个百分点说明交付成本控制有效"
+        }
+      ],
+      "10|sp[3]|3": [
+        {
+          "kind": "text",
+          "event_idx": 0,
+          "text": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、"
+        }
+      ]
+    },
+    "counts": {
+      "fields": 0,
+      "soft_breaks": 0,
+      "omml": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p06-s1",
+  "status": "FALLBACK_T4",
+  "asset": null,
+  "attempts": [
+    {
+      "tier": "T2",
+      "provider": "pexels",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No licensed photo found for specific brand",
+      "elapsed_s": 0.3
+    },
+    {
+      "tier": "T2",
+      "provider": "wikimedia_commons",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No licensed photo found",
+      "elapsed_s": 0.31
+    },
+    {
+      "tier": "T3",
+      "provider": "ai_generated_local",
+      "outcome": "SKIPPED",
+      "detail": "requires_real_photo is True; T3 AI generation disallowed",
+      "elapsed_s": 0.0
+    }
+  ],
+  "reason": "Scene requires real photo (requires_real_photo=True), AI generation disallowed; search returned no valid licensed photo; downgraded to T4."
+}

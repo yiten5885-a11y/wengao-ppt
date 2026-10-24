@@ -1,0 +1,106 @@
+{
+  "fixture": true,
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-fixture-sample-conflict",
+  "created_at": "2026-10-24T05:00:00+08:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "Company A enterprise cloud market share 2024 IDC",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-24T05:00:01+08:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "uf001",
+      "origin": "USER_MATERIAL",
+      "subject": "Company A",
+      "metric": "企业云市场份额",
+      "value": 35.0,
+      "unit": "%",
+      "period": "2024",
+      "definition": "用户材料自述市场份额",
+      "publisher": "用户自述材料",
+      "source_grade": "A",
+      "url": "",
+      "retrieved_at": "2026-10-24T05:00:02+08:00",
+      "quote_span": "在企业云基础设施领域的市场份额达到了35.0%，领先竞争对手。",
+      "snapshot_path": "fixtures/research/snapshots/user_conflict.txt",
+      "snapshot_sha256": "26d8f1be06d4ed3cbdeb77b043c1c2097c2e34fe354d342506fcb55bd108f4f8"
+    },
+    {
+      "fact_id": "wf001",
+      "origin": "WEB_RESEARCH",
+      "subject": "Company A",
+      "metric": "企业云市场份额",
+      "value": 24.2,
+      "unit": "%",
+      "period": "2024",
+      "definition": "IDC 权威统计企业云基础设施市场份额",
+      "publisher": "IDC",
+      "source_grade": "A",
+      "url": "https://www.idc.com/getdoc.jsp?containerId=prUS52345624",
+      "retrieved_at": "2026-10-24T05:00:05+08:00",
+      "quote_span": "In 2024, Company A achieved a market share of 24.2%, ranking third globally in enterprise cloud infrastructure deployments behind the top two industry leaders.",
+      "snapshot_path": "fixtures/research/snapshots/web_conflict.txt",
+      "snapshot_sha256": "bce9c84388eca1164f6b9888462971b54c4b760b8def7926987ad3996c464c9c"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "comparison",
+      "title": "Company A 2024年市场份额（材料自述 vs 权威机构统计）",
+      "metric": "企业云市场份额",
+      "unit": "%",
+      "period": "2024",
+      "series": [
+        {
+          "label": "Company A (材料自述)",
+          "origin": "USER_MATERIAL",
+          "points": [
+            { "x": "2024", "value": 35.0, "fact_ref": "uf001" }
+          ]
+        },
+        {
+          "label": "Company A (IDC统计-待确认)",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            { "x": "2024", "value": 24.2, "fact_ref": "wf001" }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "用户材料自述份额（35.0%）与 IDC 外部统计（24.2%）存在 10.8 个百分点差异，并列呈现标待确认",
+        "fact_refs": ["uf001", "wf001"],
+        "rule": "CONFLICT_COMPARISON_V1",
+        "computed": {
+          "user_value": 35.0,
+          "web_value": 24.2,
+          "diff": 10.8,
+          "abs_diff": 10.8,
+          "unit": "%",
+          "period": "2024"
+        }
+      },
+      "conflicts": [
+        {
+          "conflict_id": "c01",
+          "user_fact": "uf001",
+          "web_fact": "wf001"
+        }
+      ],
+      "footnote": {
+        "text": "数据来源: 用户材料自述 (2024); IDC (2024) [数据存在差异，并列呈现供裁决]",
+        "fact_refs": ["uf001", "wf001"]
+      }
+    }
+  ],
+  "discarded": [],
+  "omissions": [],
+  "report_path": "evidence/research/report.md"
+}

@@ -1,0 +1,343 @@
+[
+ {
+  "fact_id": "F001",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "3.2 亿元",
+  "value": "3.2",
+  "unit_class": "亿元",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "公司实现营业收入 3.2 亿元，同比增长 18%，环比提升 0.5 亿元。"
+  }
+ },
+ {
+  "fact_id": "F002",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "18%",
+  "value": "18",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "公司实现营业收入 3.2 亿元，同比增长 18%，环比提升 0.5 亿元。"
+  }
+ },
+ {
+  "fact_id": "F003",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "0.5 亿元",
+  "value": "0.5",
+  "unit_class": "亿元",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "公司实现营业收入 3.2 亿元，同比增长 18%，环比提升 0.5 亿元。"
+  }
+ },
+ {
+  "fact_id": "F004",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "2.1 亿元",
+  "value": "2.1",
+  "unit_class": "亿元",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "其中核心业务收入 2.1 亿元，占比 65%，是本期增长的主要来源。"
+  }
+ },
+ {
+  "fact_id": "F005",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "65%",
+  "value": "65",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "其中核心业务收入 2.1 亿元，占比 65%，是本期增长的主要来源。"
+  }
+ },
+ {
+  "fact_id": "F006",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "46 家",
+  "value": "46",
+  "unit_class": "家",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "新签订单 46 家客户，覆盖 12 个行业，其中制造业客户 18 家。"
+  }
+ },
+ {
+  "fact_id": "F007",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "12",
+  "value": "12",
+  "unit_class": "unknown",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "新签订单 46 家客户，覆盖 12 个行业，其中制造业客户 18 家。"
+  }
+ },
+ {
+  "fact_id": "F008",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "18 家",
+  "value": "18",
+  "unit_class": "家",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "新签订单 46 家客户，覆盖 12 个行业，其中制造业客户 18 家。"
+  }
+ },
+ {
+  "fact_id": "F009",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "92%",
+  "value": "92",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "存量客户续约率为 92%，较上季度提升 3 个百分点。"
+  }
+ },
+ {
+  "fact_id": "F010",
+  "subject": "2026 年一季度经营复盘",
+  "raw_value_text": "3 个百分点",
+  "value": "3",
+  "unit_class": "个百分点",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 2,
+   "line_end": 2,
+   "heading": "2026 年一季度经营复盘",
+   "locator": "line 2-2 / 2026 年一季度经营复盘",
+   "unit_id": "u1-0",
+   "sentence": "存量客户续约率为 92%，较上季度提升 3 个百分点。"
+  }
+ },
+ {
+  "fact_id": "F011",
+  "subject": "二季度重点工作",
+  "raw_value_text": "8000 万元",
+  "value": "8000",
+  "unit_class": "万元",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 8,
+   "line_end": 8,
+   "heading": "二季度重点工作",
+   "locator": "line 8-8 / 二季度重点工作",
+   "unit_id": "u2-0",
+   "sentence": "研发投入计划 8000 万元，重点投向智能推荐与数据平台。"
+  }
+ },
+ {
+  "fact_id": "F012",
+  "subject": "二季度重点工作",
+  "raw_value_text": "20 家",
+  "value": "20",
+  "unit_class": "家",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 8,
+   "line_end": 8,
+   "heading": "二季度重点工作",
+   "locator": "line 8-8 / 二季度重点工作",
+   "unit_id": "u2-0",
+   "sentence": "计划新增渠道伙伴 20 家，目标带来 1.2 亿元增量收入。"
+  }
+ },
+ {
+  "fact_id": "F013",
+  "subject": "二季度重点工作",
+  "raw_value_text": "1.2 亿元",
+  "value": "1.2",
+  "unit_class": "亿元",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 8,
+   "line_end": 8,
+   "heading": "二季度重点工作",
+   "locator": "line 8-8 / 二季度重点工作",
+   "unit_id": "u2-0",
+   "sentence": "计划新增渠道伙伴 20 家，目标带来 1.2 亿元增量收入。"
+  }
+ },
+ {
+  "fact_id": "F014",
+  "subject": "二季度重点工作",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 8,
+   "line_end": 8,
+   "heading": "二季度重点工作",
+   "locator": "line 8-8 / 二季度重点工作",
+   "unit_id": "u2-0",
+   "sentence": "完成三大能力建设：交付提效、渠道拓展、组织升级。"
+  }
+ },
+ {
+  "fact_id": "F015",
+  "subject": "行业对比",
+  "raw_value_text": "9%",
+  "value": "9",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 13,
+   "line_end": 13,
+   "heading": "行业对比",
+   "locator": "line 13-13 / 行业对比",
+   "unit_id": "u3-0",
+   "sentence": "行业平均增速为 9%，公司高出行业 9 个百分点。"
+  }
+ },
+ {
+  "fact_id": "F016",
+  "subject": "行业对比",
+  "raw_value_text": "9 个百分点",
+  "value": "9",
+  "unit_class": "个百分点",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 13,
+   "line_end": 13,
+   "heading": "行业对比",
+   "locator": "line 13-13 / 行业对比",
+   "unit_id": "u3-0",
+   "sentence": "行业平均增速为 9%，公司高出行业 9 个百分点。"
+  }
+ },
+ {
+  "fact_id": "F017",
+  "subject": "行业对比",
+  "raw_value_text": "12%",
+  "value": "12",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 13,
+   "line_end": 13,
+   "heading": "行业对比",
+   "locator": "line 13-13 / 行业对比",
+   "unit_id": "u3-0",
+   "sentence": "主要竞品同期增速为 12%，公司在客户留存上仍具优势。"
+  }
+ }
+]

@@ -1,0 +1,180 @@
+{
+ "schema": "rs.deck_plan.v1",
+ "deck_id": "dp-3827207748619",
+ "language": "zh",
+ "mode": "generate",
+ "job_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_job",
+ "pages": [
+  {
+   "role": "cover",
+   "variant": "a",
+   "title": "2026 年一季度经营复盘",
+   "blocks": [
+    {
+     "kind": "text",
+     "text": "稳稿 PPT"
+    }
+   ],
+   "units": [],
+   "page_id": "p01",
+   "index": 1
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "2026 年一季度经营复盘",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "公司实现营业收入 3.2 亿元，同比增长 18%，环比提升 0.5 亿元。",
+      "其中核心业务收入 2.1 亿元，占比 65%，是本期增长的主要来源。",
+      "新签订单 46 家客户，覆盖 12 个行业，其中制造业客户 18 家。",
+      "存量客户续约率为 92%，较上季度提升 3 个百分点。"
+     ],
+     "fact_refs": [
+      "F001",
+      "F004",
+      "F006",
+      "F009"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "公司实现营业收入 3.2 亿元，同比增长 18%，环比提升 0.5 亿元。",
+     "fact_ids": [
+      "F001"
+     ]
+    },
+    {
+     "sentence": "其中核心业务收入 2.1 亿元，占比 65%，是本期增长的主要来源。",
+     "fact_ids": [
+      "F004"
+     ]
+    },
+    {
+     "sentence": "新签订单 46 家客户，覆盖 12 个行业，其中制造业客户 18 家。",
+     "fact_ids": [
+      "F006"
+     ]
+    },
+    {
+     "sentence": "存量客户续约率为 92%，较上季度提升 3 个百分点。",
+     "fact_ids": [
+      "F009"
+     ]
+    }
+   ],
+   "page_id": "p02",
+   "index": 2
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "二季度重点工作",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "研发投入计划 8000 万元，重点投向智能推荐与数据平台。",
+      "计划新增渠道伙伴 20 家，目标带来 1.2 亿元增量收入。",
+      "完成三大能力建设：交付提效、渠道拓展、组织升级。"
+     ],
+     "fact_refs": [
+      "F011",
+      "F012",
+      "F014"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "研发投入计划 8000 万元，重点投向智能推荐与数据平台。",
+     "fact_ids": [
+      "F011"
+     ]
+    },
+    {
+     "sentence": "计划新增渠道伙伴 20 家，目标带来 1.2 亿元增量收入。",
+     "fact_ids": [
+      "F012"
+     ]
+    },
+    {
+     "sentence": "完成三大能力建设：交付提效、渠道拓展、组织升级。",
+     "fact_ids": [
+      "F014"
+     ]
+    }
+   ],
+   "page_id": "p03",
+   "index": 3
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "行业对比",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "行业平均增速为 9%，公司高出行业 9 个百分点。",
+      "主要竞品同期增速为 12%，公司在客户留存上仍具优势。"
+     ],
+     "fact_refs": [
+      "F015",
+      "F017"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "行业平均增速为 9%，公司高出行业 9 个百分点。",
+     "fact_ids": [
+      "F015"
+     ]
+    },
+    {
+     "sentence": "主要竞品同期增速为 12%，公司在客户留存上仍具优势。",
+     "fact_ids": [
+      "F017"
+     ]
+    }
+   ],
+   "page_id": "p04",
+   "index": 4
+  },
+  {
+   "role": "closing",
+   "variant": "b",
+   "title": "小结与行动",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "2026 年一季度经营复盘",
+      "二季度重点工作",
+      "行业对比"
+     ]
+    }
+   ],
+   "units": [],
+   "page_id": "p05",
+   "index": 5
+  }
+ ],
+ "warnings": [],
+ "stats": {
+  "facts_total": 17,
+  "facts_numeric": 16,
+  "facts_qualitative": 1,
+  "pages_total": 5,
+  "views_total": 0,
+  "views_rendered": 0,
+  "supplement_section": false
+ }
+}

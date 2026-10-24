@@ -1,0 +1,2215 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-2d3d47df1b8e",
+  "run_id": "20261020T062515_194684Z-07235d4f",
+  "attempt_id": "90ee7031",
+  "contract_version": "contracts/1.0.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "generated_at": "2026-10-20T14:31:33.816828+08:00",
+  "theme": {
+    "theme_id": "wengao-dark",
+    "theme_name": "深色科技",
+    "theme_version": "1.0.0",
+    "theme_registry_version": "1.1.0",
+    "config_digest": "3c7fa8e78c40dcc95e6f6a30f1205406170c9a5f959f70c789d938b9275c2089",
+    "frozen_at_job": true,
+    "legacy_no_digest": false
+  },
+  "candidate_pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/annual_review_synthetic.generated.themed.pptx",
+  "candidate_pptx_sha256": "e44e11df225c433bad14b08d12af25a1441c007db496d9c3499de4b67eb2d79b",
+  "input_sha256": "541c95be60da92a8450ab66c5696e6860419c24c01ac95db4defb8505b8d7be1",
+  "checks": {
+    "content_fidelity.required_text": "EXECUTED",
+    "content_fidelity.occurrence": "EXECUTED",
+    "content_fidelity.sign": "EXECUTED",
+    "native_editability.visible_native": "EXECUTED",
+    "object.actual_geometry": "EXECUTED",
+    "content_fidelity.hidden_state": "EXECUTED",
+    "object.group_structure": "EXECUTED",
+    "parser.census_consistency": "EXECUTED",
+    "render.real_render": "EXECUTED",
+    "render.glyph_quality": "EXECUTED",
+    "theme.contrast": "EXECUTED",
+    "table.native_present": "EXECUTED",
+    "table.relation_binding": "EXECUTED",
+    "chart.native_present": "EXECUTED",
+    "chart.relation_binding": "EXECUTED",
+    "chart.source_consistency": "EXECUTED",
+    "source.fact_coverage": "EXECUTED"
+  },
+  "required_checks": [
+    "chart.native_present",
+    "chart.relation_binding",
+    "chart.source_consistency",
+    "content_fidelity.hidden_state",
+    "content_fidelity.occurrence",
+    "content_fidelity.required_text",
+    "content_fidelity.sign",
+    "native_editability.visible_native",
+    "object.actual_geometry",
+    "object.group_structure",
+    "parser.census_consistency",
+    "render.glyph_quality",
+    "render.real_render",
+    "table.native_present",
+    "table.relation_binding",
+    "theme.contrast",
+    "source.fact_coverage"
+  ],
+  "required_checks_derived_from": {
+    "object.actual_geometry": [
+      "always"
+    ],
+    "content_fidelity.hidden_state": [
+      "always"
+    ],
+    "object.group_structure": [
+      "always"
+    ],
+    "parser.census_consistency": [
+      "always"
+    ],
+    "render.glyph_quality": [
+      "always"
+    ],
+    "theme.contrast": [
+      "always"
+    ],
+    "content_fidelity.required_text": [
+      "profile:P1_TEXT_LIMITED"
+    ],
+    "content_fidelity.occurrence": [
+      "profile:P1_TEXT_LIMITED"
+    ],
+    "content_fidelity.sign": [
+      "profile:P1_TEXT_LIMITED"
+    ],
+    "native_editability.visible_native": [
+      "profile:P1_TEXT_LIMITED"
+    ],
+    "render.real_render": [
+      "profile:P1_TEXT_LIMITED"
+    ],
+    "chart.native_present": [
+      "content:has_charts"
+    ],
+    "chart.relation_binding": [
+      "content:has_charts"
+    ],
+    "chart.source_consistency": [
+      "content:has_charts"
+    ],
+    "table.native_present": [
+      "content:has_tables"
+    ],
+    "table.relation_binding": [
+      "content:has_tables"
+    ]
+  },
+  "content_derived_scope_gaps": [],
+  "missing_from_report": [],
+  "table_summary": {
+    "source_tables": 2,
+    "output_tables": 2,
+    "source_rows": 7,
+    "output_rows": 7
+  },
+  "chart_summary": {
+    "source_charts": 1,
+    "output_charts": 1,
+    "types": [
+      "column"
+    ]
+  },
+  "not_implemented_required_checks": [],
+  "not_evaluable_required_checks": [],
+  "render": {
+    "stage": "render_real",
+    "renderer": "libreoffice",
+    "soffice_path": "/Applications/LibreOffice.app/Contents/MacOS/soffice",
+    "soffice_source": "mac_bundle",
+    "soffice_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "available": true,
+    "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+    "png_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png",
+    "png_count": 12,
+    "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+    "exit_code": 0,
+    "stderr": "",
+    "font_environment": {
+      "policy": "fontenv/2",
+      "ok": true,
+      "mode": "packaged",
+      "package_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "base_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/assets/fontconfig/fonts.conf",
+      "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+      "effective_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+      "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+      "cache_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/cache",
+      "data_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "platform_dirs": [
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Library/Fonts",
+        "/Users/huangyingteng/Library/Fonts",
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+      ],
+      "platform": "darwin",
+      "override": null,
+      "disabled": false,
+      "error": null,
+      "platform_marker_used": true
+    },
+    "fontconfig_file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+    "lo_profile": "/Users/huangyingteng/.cache/wengao-ppt/.lo-profile",
+    "attempts": [
+      {
+        "profile": "/Users/huangyingteng/.cache/wengao-ppt/.lo-profile",
+        "exit_code": 0,
+        "budget": 599.796,
+        "pid": 87917,
+        "timed_out": false,
+        "stdout_tail": "g/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/annual_review_synthetic.generated.themed.pptx as a Impress document -> /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf using filter : impress_pdf_Export\n",
+        "stderr_tail": "",
+        "pdf_exists": true
+      }
+    ],
+    "attempt_count": 1,
+    "final_attempt_faulted": false,
+    "stdout": "g/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/annual_review_synthetic.generated.themed.pptx as a Impress document -> /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf using filter : impress_pdf_Export\n",
+    "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+    "pdf_fonts": [
+      "Arial-BoldMT",
+      "ArialMT",
+      "ArialUnicodeMS",
+      "STSongti-SC-Bold"
+    ],
+    "pdf_fonts_error": null,
+    "environment_fingerprint": {
+      "policy": "fontenv/2",
+      "mode": "packaged",
+      "ok": true,
+      "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+      "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+      "platform": "darwin",
+      "platform_dirs": [
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+        "/Library/Fonts",
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Users/huangyingteng/Library/Fonts"
+      ],
+      "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+      "resolved_fonts": [
+        "Arial-BoldMT",
+        "ArialMT",
+        "ArialUnicodeMS",
+        "STSongti-SC-Bold"
+      ],
+      "digest": "27868d56e9a6dfac523eebd5bd47f33d5900c404730c9a077d1bd67fbc7b601f"
+    },
+    "pdf_pages_for_png": 12,
+    "png_detail": "pdftoppm 未安装；改用 PDFium 对 LibreOffice 产出的真实 PDF 逐页栅格化，渲染器身份与版本已记录。",
+    "png_bindings": [
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-01.png",
+        "page_no": 1,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "550a06055b444f7ba9a5120ed3adf2c9c0729c6ef6e56c69c6851318f61bbab7",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-02.png",
+        "page_no": 2,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "67fa20fdce44f11631bbf3c391a69d95080937259276f9ff8de7b014e347eaf0",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-03.png",
+        "page_no": 3,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "a72ede8fa0e9ba8496b93792205fbd69796affa0542488d257dd57659136c8aa",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-04.png",
+        "page_no": 4,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "717a53e975c26c988dafd010019b8a992a44d80bbbe92ae7df91adf848814814",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-05.png",
+        "page_no": 5,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "e821d159d7d664d54b46b9b8b90a5f09111018ec3a59fa49eb6f7c9e51d0fbf3",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-06.png",
+        "page_no": 6,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "ca2e1e8ca470f91b18d878ba9390faadef4578c47ccea956ba848f9e20147480",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-07.png",
+        "page_no": 7,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "f15b8f95ec0e3d3cc0e768cae4b4046222bafaad0d74c0dcd5e77d9fcefaafcf",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-08.png",
+        "page_no": 8,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "3b007fa43388b22602fe74368f15a3185c42f7031b8f790f265db48054a528d5",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-09.png",
+        "page_no": 9,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "1f635adf90b99df84dc94e541cebf69f07bf60621f0285290819cb54c37267e8",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-10.png",
+        "page_no": 10,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "73dbd367841f6f7221357ea8b7d34a50300ef2e66f92be0eda1a52546bf97acf",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-11.png",
+        "page_no": 11,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "20309be10d90945bc0d654e444b2d1cbf3c7e10c0b24945851ac7638afd76029",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-12.png",
+        "page_no": 12,
+        "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "e17321fbeb7a38a8076debf1e67f4604bfb04d868a568bc5e04f5f8f2b763946",
+        "width": 1467,
+        "height": 825
+      }
+    ],
+    "code": "RENDER.OK",
+    "pdf_page_count": 12,
+    "pdf_page_count_error": null,
+    "pptx_slides": 12,
+    "pptx_hidden_pages": 0,
+    "pptx_slides_exportable": 12,
+    "page_count_rule": "隐藏页不导出；PDF 页数应等于非隐藏页数",
+    "counts_consistent": true,
+    "pdf_text_stats": {
+      "pages": 12,
+      "text_len": 1433,
+      "cjk_chars": 877
+    },
+    "pdf_text_error": null,
+    "cjk_units_in_input": 46,
+    "cjk_units_in_input_all_pages": 46,
+    "cjk_gate_scope": "exportable_pages_only（隐藏页不计入分母）",
+    "cjk_glyphs_in_render": 877,
+    "glyph_quality": {
+      "verdict": "OK",
+      "summary": {
+        "pages": 12,
+        "cjk_pages_checked": 12,
+        "missing_pages": [],
+        "ambiguous_pages": [],
+        "insufficient_pages": []
+      },
+      "engine": "pdfium-textpage+glyph-bitmap",
+      "applicability": "APPLICABLE"
+    },
+    "glyph_expectation": {
+      "available": true,
+      "reason": null,
+      "source": "ExtractedDoc(all_units)",
+      "expected_cjk_units": 46,
+      "expected_pages": {
+        "1": {
+          "cjk_units": 2,
+          "cjk_chars": 25,
+          "render_page": 1,
+          "hidden": false,
+          "samples": [
+            "年度经营概况",
+            "由原始材料生成 · 年度经营与下年度规划"
+          ]
+        },
+        "2": {
+          "cjk_units": 2,
+          "cjk_chars": 54,
+          "render_page": 2,
+          "hidden": false,
+          "samples": [
+            "年度经营概况",
+            "一、年度经营概况\n二、产品能力进展\n三、"
+          ]
+        },
+        "3": {
+          "cjk_units": 5,
+          "cjk_chars": 103,
+          "render_page": 3,
+          "hidden": false,
+          "samples": [
+            "一、年度经营概况",
+            "年云服务平台全年总收入\n2024 年云服",
+            "其中订阅收入 8.6 亿元\n其中订阅收入"
+          ]
+        },
+        "4": {
+          "cjk_units": 2,
+          "cjk_chars": 32,
+          "render_page": 4,
+          "hidden": false,
+          "samples": [
+            "一、年度经营概况（续）",
+            "平台整体毛利率\n平台整体毛利率为 63."
+          ]
+        },
+        "5": {
+          "cjk_units": 12,
+          "cjk_chars": 177,
+          "render_page": 5,
+          "hidden": false,
+          "samples": [
+            "二、产品能力进展",
+            "指标（分钟） 智能运维模块·86%的核 ",
+            "指标（分钟） 智能运维模块·86%的核("
+          ]
+        },
+        "6": {
+          "cjk_units": 2,
+          "cjk_chars": 79,
+          "render_page": 6,
+          "hidden": false,
+          "samples": [
+            "三、客户与生态",
+            "年内新增渠道合作伙伴 58 家，通过渠道"
+          ]
+        },
+        "7": {
+          "cjk_units": 11,
+          "cjk_chars": 95,
+          "render_page": 7,
+          "hidden": false,
+          "samples": [
+            "四、成本与效率",
+            "指标 / 说明",
+            "数值与原文"
+          ]
+        },
+        "8": {
+          "cjk_units": 2,
+          "cjk_chars": 71,
+          "render_page": 8,
+          "hidden": false,
+          "samples": [
+            "五、质量与稳定性",
+            "全年服务可用性为 99.95%，满足 9"
+          ]
+        },
+        "9": {
+          "cjk_units": 2,
+          "cjk_chars": 74,
+          "render_page": 9,
+          "hidden": false,
+          "samples": [
+            "六、问题与改进",
+            "跨区域数据同步存在 3 分钟的延迟，影响"
+          ]
+        },
+        "10": {
+          "cjk_units": 2,
+          "cjk_chars": 75,
+          "render_page": 10,
+          "hidden": false,
+          "samples": [
+            "七、下年度计划",
+            "2025 年计划总收入达到 18 亿元，"
+          ]
+        },
+        "11": {
+          "cjk_units": 2,
+          "cjk_chars": 26,
+          "render_page": 11,
+          "hidden": false,
+          "samples": [
+            "七、下年度计划（续）",
+            "计划研发投入增加至 5.2 亿元，研发人"
+          ]
+        },
+        "12": {
+          "cjk_units": 2,
+          "cjk_chars": 70,
+          "render_page": 12,
+          "hidden": false,
+          "samples": [
+            "八、结论",
+            "2024 年是平台能力与规模同步扩张的一"
+          ]
+        }
+      },
+      "scope": "按应导出页统计；隐藏页与备注不计入，图片内文字不在当前声明范围"
+    }
+  },
+  "glyph_quality": {
+    "verdict": "OK",
+    "engine": "pdfium-textpage+glyph-bitmap",
+    "params": {
+      "flat_ratio_missing": 0.85,
+      "flat_ratio_partial": 0.25,
+      "diversity_min": 0.5,
+      "min_distinct_chars": 4,
+      "min_observed_boxes": 8,
+      "flat_range": 8,
+      "hollow_ring_min": 0.35,
+      "hollow_inner_max": 0.06,
+      "min_px": 4
+    },
+    "summary": {
+      "pages": 12,
+      "cjk_pages_checked": 12,
+      "missing_pages": [],
+      "ambiguous_pages": [],
+      "insufficient_pages": []
+    },
+    "boundary": "只覆盖可提取文本对象；图片内文字与轮廓化文字没有字符框，不在分母内，也不据此判为已验证。",
+    "pages": [
+      {
+        "page": 1,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-01.png",
+          "png_sha256": "550a06055b444f7ba9a5120ed3adf2c9c0729c6ef6e56c69c6851318f61bbab7"
+        },
+        "text_chars": 30,
+        "distinct_cjk": 19,
+        "cjk_boxes": 25,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 25,
+        "observed_distinct": 19,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 25,
+        "diversity": 1.0,
+        "mean_ink": 0.5,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "年",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 2,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-02.png",
+          "png_sha256": "67fa20fdce44f11631bbf3c391a69d95080937259276f9ff8de7b014e347eaf0"
+        },
+        "text_chars": 94,
+        "distinct_cjk": 42,
+        "cjk_boxes": 53,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 53,
+        "observed_distinct": 41,
+        "skipped_small_or_missing_box": 1,
+        "distinct_bitmaps": 51,
+        "diversity": 0.962,
+        "mean_ink": 0.4682,
+        "hollow_boxes": 1,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "年",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "二",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 3,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-03.png",
+          "png_sha256": "a72ede8fa0e9ba8496b93792205fbd69796affa0542488d257dd57659136c8aa"
+        },
+        "text_chars": 188,
+        "distinct_cjk": 46,
+        "cjk_boxes": 103,
+        "flat_boxes": 1,
+        "flat_ratio": 0.01,
+        "observed_boxes": 102,
+        "observed_distinct": 45,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 93,
+        "diversity": 0.912,
+        "mean_ink": 0.4292,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "年",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 4,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-04.png",
+          "png_sha256": "717a53e975c26c988dafd010019b8a992a44d80bbbe92ae7df91adf848814814"
+        },
+        "text_chars": 54,
+        "distinct_cjk": 24,
+        "cjk_boxes": 32,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 32,
+        "observed_distinct": 24,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 32,
+        "diversity": 1.0,
+        "mean_ink": 0.4532,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "一",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 5,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-05.png",
+          "png_sha256": "e821d159d7d664d54b46b9b8b90a5f09111018ec3a59fa49eb6f7c9e51d0fbf3"
+        },
+        "text_chars": 342,
+        "distinct_cjk": 82,
+        "cjk_boxes": 173,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 173,
+        "observed_distinct": 82,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 152,
+        "diversity": 0.879,
+        "mean_ink": 0.5286,
+        "hollow_boxes": 4,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "二",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "二",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 6,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-06.png",
+          "png_sha256": "ca2e1e8ca470f91b18d878ba9390faadef4578c47ccea956ba848f9e20147480"
+        },
+        "text_chars": 129,
+        "distinct_cjk": 58,
+        "cjk_boxes": 79,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 79,
+        "observed_distinct": 58,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 75,
+        "diversity": 0.949,
+        "mean_ink": 0.4537,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "三",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 7,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-07.png",
+          "png_sha256": "f15b8f95ec0e3d3cc0e768cae4b4046222bafaad0d74c0dcd5e77d9fcefaafcf"
+        },
+        "text_chars": 157,
+        "distinct_cjk": 55,
+        "cjk_boxes": 95,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 95,
+        "observed_distinct": 55,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 72,
+        "diversity": 0.758,
+        "mean_ink": 0.4956,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "四",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 8,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-08.png",
+          "png_sha256": "3b007fa43388b22602fe74368f15a3185c42f7031b8f790f265db48054a528d5"
+        },
+        "text_chars": 129,
+        "distinct_cjk": 59,
+        "cjk_boxes": 71,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 71,
+        "observed_distinct": 59,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 70,
+        "diversity": 0.986,
+        "mean_ink": 0.4695,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "五",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 9,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-09.png",
+          "png_sha256": "1f635adf90b99df84dc94e541cebf69f07bf60621f0285290819cb54c37267e8"
+        },
+        "text_chars": 109,
+        "distinct_cjk": 67,
+        "cjk_boxes": 74,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 74,
+        "observed_distinct": 67,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 72,
+        "diversity": 0.973,
+        "mean_ink": 0.4865,
+        "hollow_boxes": 2,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "六",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "口",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 10,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-10.png",
+          "png_sha256": "73dbd367841f6f7221357ea8b7d34a50300ef2e66f92be0eda1a52546bf97acf"
+        },
+        "text_chars": 125,
+        "distinct_cjk": 54,
+        "cjk_boxes": 75,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 75,
+        "observed_distinct": 54,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 69,
+        "diversity": 0.92,
+        "mean_ink": 0.4695,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "七",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 11,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-11.png",
+          "png_sha256": "20309be10d90945bc0d654e444b2d1cbf3c7e10c0b24945851ac7638afd76029"
+        },
+        "text_chars": 45,
+        "distinct_cjk": 21,
+        "cjk_boxes": 26,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 26,
+        "observed_distinct": 21,
+        "skipped_small_or_missing_box": 0,
+        "distinct_bitmaps": 24,
+        "diversity": 0.923,
+        "mean_ink": 0.4339,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "七",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      },
+      {
+        "page": 12,
+        "image_source": {
+          "source": "rendered_png",
+          "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/candidate/render/png/page-12.png",
+          "png_sha256": "e17321fbeb7a38a8076debf1e67f4604bfb04d868a568bc5e04f5f8f2b763946"
+        },
+        "text_chars": 113,
+        "distinct_cjk": 60,
+        "cjk_boxes": 69,
+        "flat_boxes": 0,
+        "flat_ratio": 0.0,
+        "observed_boxes": 69,
+        "observed_distinct": 59,
+        "skipped_small_or_missing_box": 1,
+        "distinct_bitmaps": 69,
+        "diversity": 1.0,
+        "mean_ink": 0.4606,
+        "hollow_boxes": 0,
+        "font_resources": [
+          {
+            "resource": "/F1",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F2",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F3",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F4",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F5",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F6",
+            "base_font": "STSongti-SC-Bold",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F7",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F8",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F9",
+            "base_font": "Arial-BoldMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F10",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F11",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F12",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F13",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F14",
+            "base_font": "ArialUnicodeMS",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          },
+          {
+            "resource": "/F15",
+            "base_font": "ArialMT",
+            "subtype": "/TrueType",
+            "composite": false,
+            "embedded_program": true
+          }
+        ],
+        "dominant_sample": "八",
+        "diversity_distinct_chars": 1.0,
+        "sparse": false,
+        "sampling_gap": false,
+        "hollow_chars": "",
+        "shared_bitmap_chars": "",
+        "status": "OK"
+      }
+    ],
+    "pdf_sha256": "e11e1410d9fab13194732e247348ab682bf220ae5008bc969a0979bf12aafefa"
+  },
+  "font_environment": {
+    "policy": "fontenv/2",
+    "ok": true,
+    "mode": "packaged",
+    "package_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+    "base_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/assets/fontconfig/fonts.conf",
+    "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+    "effective_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+    "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+    "cache_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/cache",
+    "data_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+    "platform_dirs": [
+      "/System/Library/Fonts",
+      "/System/Library/Fonts/Supplemental",
+      "/Library/Fonts",
+      "/Users/huangyingteng/Library/Fonts",
+      "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+    ],
+    "platform": "darwin",
+    "override": null,
+    "disabled": false,
+    "error": null,
+    "platform_marker_used": true
+  },
+  "environment_fingerprint": {
+    "policy": "fontenv/2",
+    "mode": "packaged",
+    "ok": true,
+    "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+    "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+    "platform": "darwin",
+    "platform_dirs": [
+      "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+      "/Library/Fonts",
+      "/System/Library/Fonts",
+      "/System/Library/Fonts/Supplemental",
+      "/Users/huangyingteng/Library/Fonts"
+    ],
+    "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "resolved_fonts": [
+      "Arial-BoldMT",
+      "ArialMT",
+      "ArialUnicodeMS",
+      "STSongti-SC-Bold"
+    ],
+    "digest": "27868d56e9a6dfac523eebd5bd47f33d5900c404730c9a077d1bd67fbc7b601f"
+  },
+  "render_cache_key_sha256": "27cff192d25f2c3936785b04964cf410a4b3afb18370865cdd8cf32f726b19c1",
+  "theme_application": "APPLIED",
+  "preserve_design": false,
+  "theme_contrast": {
+    "checked": 26,
+    "min_ratio": 8.18,
+    "violations": [],
+    "kept_original": [],
+    "preexisting_low": [],
+    "unsafe": [],
+    "unknown_backdrop": [],
+    "compliant": true,
+    "below_threshold": [],
+    "protected_business_colors": [],
+    "contrast_claim": "ASSERTED",
+    "preserve_limits": [],
+    "note": "对比度按**文字实际相邻底色**计算；EXECUTED 只表示检查跑过。compliant=false 表示有对象最终低于它适用的门槛——即使原因是原稿本来如此，也不记为通过。保留原设计只披露原始限制，不声称达标。"
+  },
+  "blocking_findings": 0,
+  "review_findings": 0,
+  "total_findings": 0,
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "release_ready": false,
+  "release_block_reason": "完整发布 profile 的必需检查未全部实现/通过；本阶段只能产出 DEVELOPMENT_CANDIDATE。"
+}

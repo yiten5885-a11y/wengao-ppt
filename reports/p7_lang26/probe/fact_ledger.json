@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-23T15:06:24.172863+00:00",
+  "frozen_before_model_call": true,
+  "count": 14,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "Overview",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 3,
+        "line_end": 5,
+        "heading": "Overview",
+        "locator": "line 3-5 / Overview",
+        "unit_id": "b2_p0",
+        "sentence": "This document outlines a hypothetical morning routine for a fictional character, Alex, to illustrate efficiency in daily hygiene. All data is illustrative."
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "Wake-Up Protocol",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 6,
+        "line_end": 8,
+        "heading": "Wake-Up Protocol",
+        "locator": "line 6-8 / Wake-Up Protocol",
+        "unit_id": "b3_p1",
+        "sentence": "Alex wakes up at 6:30 AM. The alarm is set to a gentle chime. He spends five minutes stretching in bed to reduce stiffness. This initial phase accounts for 10% of the total preparation time."
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "Wake-Up Protocol",
+      "raw_value_text": "30",
+      "value": "30",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 6,
+        "line_end": 8,
+        "heading": "Wake-Up Protocol",
+        "locator": "line 6-8 / Wake-Up Protocol",
+        "unit_id": "b3_p1",
+        "sentence": "Alex wakes up at 6:30 AM. The alarm is set to a gentle chime. He spends five minutes stretching in bed to reduce stiffness. This initial phase accounts for 10% of the total preparation time."
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "Wake-Up Protocol",
+      "raw_value_text": "10%",
+      "value": "10",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 6,
+        "line_end": 8,
+        "heading": "Wake-Up Protocol",
+        "locator": "line 6-8 / Wake-Up Protocol",
+        "unit_id": "b3_p1",
+        "sentence": "Alex wakes up at 6:30 AM. The alarm is set to a gentle chime. He spends five minutes stretching in bed to reduce stiffness. This initial phase accounts for 10% of the total preparation time."
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "Hygiene Steps",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 9,
+        "line_end": 11,
+        "heading": "Hygiene Steps",
+        "locator": "line 9-11 / Hygiene Steps",
+        "unit_id": "b4_p2",
+        "sentence": "The bathroom routine involves brushing teeth for two minutes and washing the face with lukewarm water. Alex uses a fictional brand of toothpaste. The mirror is wiped clean before use. This section tak"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "Grooming Details",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 12,
+        "line_end": 14,
+        "heading": "Grooming Details",
+        "locator": "line 12-14 / Grooming Details",
+        "unit_id": "b5_p3",
+        "sentence": "Hair styling requires three minutes using a comb. Alex applies a small amount of moisturizer. The process is methodical, ensuring no steps are skipped. This contributes to a polished appearance."
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "Time Metrics",
+      "raw_value_text": "5",
+      "value": "5",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 15,
+        "line_end": 21,
+        "heading": "Time Metrics",
+        "locator": "line 15-21 / Time Metrics",
+        "unit_id": "b6_p4",
+        "sentence": "**Illustrative Metric Set:**- Stretching: 5 min- Hygiene: 8 min- Grooming: 3 min- **Total:** 16 min"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "Time Metrics",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 15,
+        "line_end": 21,
+        "heading": "Time Metrics",
+        "locator": "line 15-21 / Time Metrics",
+        "unit_id": "b6_p4",
+        "sentence": "**Illustrative Metric Set:**- Stretching: 5 min- Hygiene: 8 min- Grooming: 3 min- **Total:** 16 min"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "Time Metrics",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 15,
+        "line_end": 21,
+        "heading": "Time Metrics",
+        "locator": "line 15-21 / Time Metrics",
+        "unit_id": "b6_p4",
+        "sentence": "**Illustrative Metric Set:**- Stretching: 5 min- Hygiene: 8 min- Grooming: 3 min- **Total:** 16 min"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "Time Metrics",
+      "raw_value_text": "16",
+      "value": "16",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 15,
+        "line_end": 21,
+        "heading": "Time Metrics",
+        "locator": "line 15-21 / Time Metrics",
+        "unit_id": "b6_p4",
+        "sentence": "**Illustrative Metric Set:**- Stretching: 5 min- Hygiene: 8 min- Grooming: 3 min- **Total:** 16 min"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "Scene Descriptions",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 22,
+        "line_end": 26,
+        "heading": "Scene Descriptions",
+        "locator": "line 22-26 / Scene Descriptions",
+        "unit_id": "b7_p9",
+        "sentence": "1. Alex stands in the bedroom, stretching his arms overhead while sunlight streams through the curtains.2. In the bathroom, Alex brushes his teeth while checking his reflection in the mirror.3. Alex s"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "Scene Descriptions",
+      "raw_value_text": "2.",
+      "value": "2.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 22,
+        "line_end": 26,
+        "heading": "Scene Descriptions",
+        "locator": "line 22-26 / Scene Descriptions",
+        "unit_id": "b7_p9",
+        "sentence": "1. Alex stands in the bedroom, stretching his arms overhead while sunlight streams through the curtains.2. In the bathroom, Alex brushes his teeth while checking his reflection in the mirror.3. Alex s"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "Scene Descriptions",
+      "raw_value_text": "3.",
+      "value": "3.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 22,
+        "line_end": 26,
+        "heading": "Scene Descriptions",
+        "locator": "line 22-26 / Scene Descriptions",
+        "unit_id": "b7_p9",
+        "sentence": "1. Alex stands in the bedroom, stretching his arms overhead while sunlight streams through the curtains.2. In the bathroom, Alex brushes his teeth while checking his reflection in the mirror.3. Alex s"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "Conclusion",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+        "line_start": 27,
+        "line_end": 28,
+        "heading": "Conclusion",
+        "locator": "line 27-28 / Conclusion",
+        "unit_id": "b8_p12",
+        "sentence": "This structured approach ensures a consistent start to the day. The fictional metrics demonstrate how small time allocations can create a seamless routine. This case study serves as a template for per"
+      }
+    }
+  ]
+}

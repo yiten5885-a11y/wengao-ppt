@@ -1,0 +1,7 @@
+{
+  "schema": "prepublication-50-decks-trust-store/v1",
+  "status": "UNPROVISIONED",
+  "freeze_signers": {},
+  "runtime_signers": {},
+  "reviewers": {}
+}

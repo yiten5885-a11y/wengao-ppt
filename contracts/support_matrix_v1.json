@@ -1,0 +1,82 @@
+{
+  "matrix_id": "SUPPORT_MATRIX_V1",
+  "schema_version": "1.0.0",
+  "status": "frozen_candidate_for_P0",
+  "frozen_at": "2026-10-12T00:00:00+08:00",
+  "freeze_policy": "本矩阵在执行前冻结；不得在看到失败结果后缩小范围来提高完成率。范围变更必须产生新的 matrix_id 与新 contract_version。",
+  "upstream_baseline": {
+    "repo": "zhouwei713/luobo-ppt",
+    "commit": "b6dcb0f325b3ea38a7ca3cd3c211bbba7fb436b2",
+    "license": "MIT",
+    "readme_self_reported_version": "2.5.0",
+    "baseline_authority": "commit_hash"
+  },
+  "scope_statement": "从已有中文业务材料生成或整理 10—20 页汇报 PPT；首发支持清单在处理前确定。",
+  "modes": {
+    "beautify_existing": {
+      "allowed_change": ["布局", "约定字体", "配色", "合格装饰"],
+      "must_preserve": ["原文及出现次数", "数据", "对象关联", "页序", "隐藏状态", "约定备注"],
+      "forbidden_actions": ["自动拆页", "正文移入备注", "为排版删改必讲正文", "自动改变原稿画面比例"]
+    },
+    "generate_from_document": {
+      "allowed_change": ["组织顺序", "标题表达", "约定范围内可摘要的解释"],
+      "must_preserve": ["必讲事实", "主体", "时间", "条件", "来源", "单位"],
+      "forbidden_actions": ["无来源补写关键数字", "为塞进固定页数无限缩小字号"]
+    },
+    "local_revision": {
+      "allowed_change": ["用户指定的对象或页面"],
+      "must_preserve": ["其他所有页面与对象", "用户外部手改内容"],
+      "forbidden_actions": ["共享母版/样式/媒体变更而不核对跨页影响", "用旧计划覆盖用户回传修改"]
+    },
+    "external_edit_return": {
+      "rule": "用户在 PowerPoint/WPS 中修改并回传的文件必须形成新的 input_version；旧计划不得覆盖用户修改。"
+    }
+  },
+  "object_matrix": [
+    {"object": "原生文本（标题/正文/列表/编号）", "status": "supported", "checks": ["content_fidelity", "occurrence_count", "native_object", "render_visible"], "notes": "逐字锁定片段按 FIDELITY.REQUIRED_TEXT_MISSING 判定。"},
+    {"object": "幻灯片备注", "status": "supported", "checks": ["notes_fidelity"], "notes": "旧 qa_check 完全不读取备注，必须新建检查。"},
+    {"object": "简单原生形状（矩形/圆形/连接线）", "status": "supported", "checks": ["object_catalog", "render_visible"]},
+    {"object": "程序生成流程与时间线", "status": "supported", "checks": ["object_catalog", "render_visible"]},
+    {"object": "规则原生表格（含表头、无复杂合并嵌套）", "status": "supported", "checks": ["table_cell_binding", "native_object", "render_visible"], "notes": "表格截图 + 空表格诱饵必须判 EDIT.DECOY。"},
+    {"object": "二维柱状图 / 条形图 / 折线图", "status": "supported", "checks": ["chart_binding", "chart_workbook_cache_consistency", "native_object"], "notes": "旧 qa_check 不读取图表数据，必须新建检查。"},
+    {"object": "照片、Logo、截图、二维码", "status": "supported", "checks": ["media_referenced", "page_binding", "visible_state", "crop_policy"]},
+    {"object": "隐藏页与隐藏状态", "status": "supported", "checks": ["hidden_state_preserved"]},
+    {"object": "组结构（简单组合）", "status": "supported", "checks": ["group_path_catalog"]},
+    {"object": "基础原生母版/版式", "status": "planned_verify", "checks": ["master_layout_capability"], "notes": "需实际验证后才可声明支持。"},
+    {"object": "饼图", "status": "gated", "gate": "通过专项验证后开放", "checks": ["chart_binding"]},
+    {"object": "组合图 / 外部链接图表 / 复杂多轴", "status": "unsupported", "behavior": "预检明确提示，禁止静默栅格化"},
+    {"object": "复杂公式 / OMML", "status": "unsupported", "behavior": "预检登记；严格美化须在任何公式转换前建立基线"},
+    {"object": "SmartArt", "status": "unsupported", "behavior": "登记为 unsupported，不得猜测转换"},
+    {"object": "动画", "status": "unsupported", "behavior": "登记但不承诺保留"},
+    {"object": "复杂组合对象 / 未验证合并嵌套表格", "status": "unsupported", "behavior": "提前提示，登记为 unsupported"},
+    {"object": "未知或未识别对象", "status": "parse_error_or_uncataloged", "behavior": "禁止静默跳过；必须编目并阻断或进入复核"}
+  ],
+  "input_matrix": [
+    {"input": "普通 .pptx", "status": "supported", "notes": "读取失败报错"},
+    {"input": "UTF-8 文本 / Markdown", "status": "supported"},
+    {"input": "普通 DOCX 正文及规则表格", "status": "supported", "notes": "复杂嵌入对象按支持矩阵处理"},
+    {"input": "扫描件 PDF / 图片型 PPT", "status": "unsupported", "behavior": "不作为首发卖点"}
+  ],
+  "constraints": {
+    "page_range_primary_acceptance": "10—20 页",
+    "aspect_ratio_first_release": "16:9",
+    "themes": "3 套精修主题",
+    "page_types": "约 12 类基础页型",
+    "auto_repair_rounds_max": 2,
+    "detection_suite_automatic_repair": false
+  },
+  "environment_matrix_status": {
+    "declared": false,
+    "measured_on_this_machine": {
+      "microsoft_powerpoint": "NOT_INSTALLED",
+      "wps_office": "NOT_INSTALLED",
+      "libreoffice": "NOT_INSTALLED",
+      "pdftoppm": "NOT_INSTALLED",
+      "python_docx": "NOT_INSTALLED",
+      "cjk_fonts_found": ["Hiragino Sans GB", "STHeiti Light", "STHeiti Medium", "Songti"],
+      "upstream_default_font_missing": "Microsoft YaHei"
+    },
+    "consequence": "真实渲染与原生编辑兑现（M04/M05/R02）在本机当前状态下无法执行；必须先解决渲染器与字体，否则相关用例只能记 NOT_EVALUABLE，不得记通过。"
+  },
+  "unsupported_object_policy": "复杂公式、SmartArt、动画、外部链接图表和复杂组合对象等先预检并明确限制；未经实现验证不得声称无损保留或全部可编辑。"
+}

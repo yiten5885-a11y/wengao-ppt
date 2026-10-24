@@ -1,0 +1,778 @@
+{
+  "schema": "rs.calibration_dataset.v1",
+  "version": "1.0.0",
+  "calibrated_threshold": 0.55,
+  "total_samples": 32,
+  "counts": {
+    "pass": 10,
+    "reject": 22,
+    "categories": {
+      "QUALIFIED_REALISTIC_PHOTO": 10,
+      "HISTORICAL_ENGRAVING_WOODCUT": 8,
+      "LINE_DRAWING_VECTOR_CARTOON": 6,
+      "UNRELATED_PHOTO": 8
+    }
+  },
+  "samples": [
+    {
+      "id": "calib-pass-01",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "modern factory automated conveyor production line",
+      "anchors": {
+        "subject": "factory workers",
+        "action": "operating line",
+        "setting": "workshop"
+      },
+      "candidate_title": "Professional photo of factory workers",
+      "candidate_description": "workers assembling electronics on modern bright production conveyor line",
+      "tags": [
+        "factory workers",
+        "factory",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.88,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-02",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "busy container seaport logistics terminal cranes cargo",
+      "anchors": {
+        "subject": "cargo port",
+        "action": "loading container",
+        "setting": "harbor"
+      },
+      "candidate_title": "Professional photo of cargo port",
+      "candidate_description": "aerial shot of busy container harbor with cranes and cargo ships",
+      "tags": [
+        "cargo port",
+        "shipping",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.85,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-03",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "business team discussing strategy meeting room whiteboard",
+      "anchors": {
+        "subject": "business team",
+        "action": "brainstorming",
+        "setting": "meeting room"
+      },
+      "candidate_title": "Professional photo of business team",
+      "candidate_description": "professional corporate team analyzing charts in glass conference room",
+      "tags": [
+        "business team",
+        "business",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.9,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-04",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "cleanroom semiconductor chip fabrication technician microscope",
+      "anchors": {
+        "subject": "technician",
+        "action": "inspecting wafer",
+        "setting": "cleanroom"
+      },
+      "candidate_title": "Professional photo of technician",
+      "candidate_description": "laboratory engineer examining silicon wafer with microscope",
+      "tags": [
+        "technician",
+        "technology",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.89,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-05",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "solar panels farm sunny day renewable energy green transition",
+      "anchors": {
+        "subject": "solar panels",
+        "action": "generating power",
+        "setting": "solar farm"
+      },
+      "candidate_title": "Professional photo of solar panels",
+      "candidate_description": "endless rows of solar photovoltaic panels on rolling green hills",
+      "tags": [
+        "solar panels",
+        "energy",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.86,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-06",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "modern hospital doctor consultation patient clinic room",
+      "anchors": {
+        "subject": "physician",
+        "action": "examining patient",
+        "setting": "medical office"
+      },
+      "candidate_title": "Professional photo of physician",
+      "candidate_description": "friendly doctor discussing healthcare diagnosis with smiling patient",
+      "tags": [
+        "physician",
+        "healthcare",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.87,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-07",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "supermarket retail shelves fresh fruits organic produce grocery",
+      "anchors": {
+        "subject": "supermarket aisle",
+        "action": "shopping groceries",
+        "setting": "store"
+      },
+      "candidate_title": "Professional photo of supermarket aisle",
+      "candidate_description": "vibrant colorful grocery shelves with organic fresh fruit display",
+      "tags": [
+        "supermarket aisle",
+        "retail",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.84,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-08",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "high speed train modern railway station platform departure",
+      "anchors": {
+        "subject": "bullet train",
+        "action": "departing platform",
+        "setting": "railway station"
+      },
+      "candidate_title": "Professional photo of bullet train",
+      "candidate_description": "sleek modern high speed passenger train at sleek glass railway terminal",
+      "tags": [
+        "bullet train",
+        "transport",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.85,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-09",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "data center server racks blue led fiber optic cabling",
+      "anchors": {
+        "subject": "server racks",
+        "action": "blinking lights",
+        "setting": "datacenter"
+      },
+      "candidate_title": "Professional photo of server racks",
+      "candidate_description": "cool blue illuminated enterprise server racks in cloud computing center",
+      "tags": [
+        "server racks",
+        "cloud",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.89,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-pass-10",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "visual_query": "architect reviewing blueprint construction site modern building",
+      "anchors": {
+        "subject": "architect engineer",
+        "action": "inspecting construction",
+        "setting": "building site"
+      },
+      "candidate_title": "Professional photo of architect engineer",
+      "candidate_description": "construction manager wearing hardhat reviewing blueprint plans",
+      "tags": [
+        "architect engineer",
+        "construction",
+        "real photo",
+        "photography",
+        "4k"
+      ],
+      "expected_outcome": "ACCEPT",
+      "calibrated_score": 0.88,
+      "labeler": "agent",
+      "rejection_code": null,
+      "notes": "High visual relevance, realistic photography, valid metadata matches."
+    },
+    {
+      "id": "calib-engraving-01",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "18th century steam engine engraving monochrome etching",
+      "anchors": {
+        "subject": "steam engine",
+        "action": "pumping water",
+        "setting": "mine"
+      },
+      "candidate_title": "Antique etching: steam engine",
+      "candidate_description": "antique monochrome copperplate engraving of Newcomen atmospheric engine",
+      "tags": [
+        "steam engine",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.15,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-02",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "vintage medieval blacksmith workshop woodcut illustration",
+      "anchors": {
+        "subject": "blacksmith",
+        "action": "forging iron",
+        "setting": "forge"
+      },
+      "candidate_title": "Antique etching: blacksmith",
+      "candidate_description": "16th century vintage woodcut print of village forge and anvil",
+      "tags": [
+        "blacksmith",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.12,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-03",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "historical map of trading routes 17th century drawing",
+      "anchors": {
+        "subject": "world map",
+        "action": "navigating",
+        "setting": "ocean"
+      },
+      "candidate_title": "Antique etching: world map",
+      "candidate_description": "antique cartography engraving with sailing ship drawings",
+      "tags": [
+        "world map",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.18,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-04",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "old printing press vintage lithograph illustration",
+      "anchors": {
+        "subject": "printing press",
+        "action": "printing paper",
+        "setting": "workshop"
+      },
+      "candidate_title": "Antique etching: printing press",
+      "candidate_description": "black and white lithograph illustration of Gutenberg press",
+      "tags": [
+        "printing press",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.14,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-05",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "ancient roman aqueduct sketch sepia ink drawing",
+      "anchors": {
+        "subject": "aqueduct",
+        "action": "carrying water",
+        "setting": "valley"
+      },
+      "candidate_title": "Antique etching: aqueduct",
+      "candidate_description": "sepia ink sketch on aged parchment of Roman stone bridge",
+      "tags": [
+        "aqueduct",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.16,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-06",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "renaissance anatomy diagram ink drawing sketch",
+      "anchors": {
+        "subject": "anatomical sketch",
+        "action": "dissecting",
+        "setting": "study"
+      },
+      "candidate_title": "Antique etching: anatomical sketch",
+      "candidate_description": "da Vinci style anatomical ink sketch on yellowed paper",
+      "tags": [
+        "anatomical sketch",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.11,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-07",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "victorian weaving loom historical monochrome engraving",
+      "anchors": {
+        "subject": "weaving loom",
+        "action": "weaving cloth",
+        "setting": "factory"
+      },
+      "candidate_title": "Antique etching: weaving loom",
+      "candidate_description": "19th century black and white engraving of textile water frame",
+      "tags": [
+        "weaving loom",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.13,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-engraving-08",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "visual_query": "antique telescope observatory vintage etching print",
+      "anchors": {
+        "subject": "astronomer",
+        "action": "stargazing",
+        "setting": "observatory"
+      },
+      "candidate_title": "Antique etching: astronomer",
+      "candidate_description": "early 1800s copperplate engraving of Galileo telescope and moon",
+      "tags": [
+        "astronomer",
+        "engraving",
+        "etching",
+        "antique",
+        "black and white"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.15,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Historical etching/engraving disguised as documentary subject; fails realistic photo gate."
+    },
+    {
+      "id": "calib-drawing-01",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "flat vector illustration of business people shaking hands",
+      "anchors": {
+        "subject": "handshake",
+        "action": "partnering",
+        "setting": "office"
+      },
+      "candidate_title": "Vector illustration of handshake",
+      "candidate_description": "minimal 2D vector graphic of flat characters shaking hands",
+      "tags": [
+        "handshake",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.22,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-drawing-02",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "cartoon delivery courier riding scooter cute clipart",
+      "anchors": {
+        "subject": "delivery driver",
+        "action": "driving scooter",
+        "setting": "street"
+      },
+      "candidate_title": "Vector illustration of delivery driver",
+      "candidate_description": "colorful cartoon vector illustration of cheerful delivery boy",
+      "tags": [
+        "delivery driver",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.2,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-drawing-03",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "simple outline icon graph showing financial profit trend",
+      "anchors": {
+        "subject": "line chart",
+        "action": "growing",
+        "setting": "screen"
+      },
+      "candidate_title": "Vector illustration of line chart",
+      "candidate_description": "monochrome stroke line icon of upward financial arrow",
+      "tags": [
+        "line chart",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.19,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-drawing-04",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "hand drawn doodle of lightbulb idea brainstorm concept",
+      "anchors": {
+        "subject": "lightbulb idea",
+        "action": "glowing",
+        "setting": "notebook"
+      },
+      "candidate_title": "Vector illustration of lightbulb idea",
+      "candidate_description": "black pen doodle sketch of lightbulb idea surrounded by doodles",
+      "tags": [
+        "lightbulb idea",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.17,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-drawing-05",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "3d rendered glossy plastic toy rocket launch cartoon",
+      "anchors": {
+        "subject": "toy rocket",
+        "action": "launching",
+        "setting": "clouds"
+      },
+      "candidate_title": "Vector illustration of toy rocket",
+      "candidate_description": "shiny pastel plastic rendered isometric 3D toy rocket startup",
+      "tags": [
+        "toy rocket",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.25,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-drawing-06",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "visual_query": "infographic vector diagram pie chart human silhouette",
+      "anchors": {
+        "subject": "infographic chart",
+        "action": "presenting",
+        "setting": "background"
+      },
+      "candidate_title": "Vector illustration of infographic chart",
+      "candidate_description": "abstract vector graphics with infographic circles and pie chart icons",
+      "tags": [
+        "infographic chart",
+        "vector",
+        "illustration",
+        "clipart",
+        "cartoon"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.21,
+      "labeler": "agent",
+      "rejection_code": "SCENE.DISALLOWED_STYLE",
+      "notes": "Non-photographic vector or cartoon drawing; must be rejected in favor of realistic photography."
+    },
+    {
+      "id": "calib-irrelevant-01",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "modern factory automated conveyor production line",
+      "anchors": {
+        "subject": "factory workers",
+        "action": "operating line",
+        "setting": "workshop"
+      },
+      "candidate_title": "Photo: nature",
+      "candidate_description": "close up macro photograph of red ladybug sitting on dewy green leaf",
+      "tags": [
+        "nature",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.08,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-02",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "busy container seaport logistics terminal cranes cargo",
+      "anchors": {
+        "subject": "cargo port",
+        "action": "loading container",
+        "setting": "harbor"
+      },
+      "candidate_title": "Photo: food",
+      "candidate_description": "plate of freshly cooked spaghetti bolognese with basil and parmesan",
+      "tags": [
+        "food",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.05,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-03",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "business team discussing strategy meeting room whiteboard",
+      "anchors": {
+        "subject": "business team",
+        "action": "brainstorming",
+        "setting": "meeting room"
+      },
+      "candidate_title": "Photo: pets",
+      "candidate_description": "golden retriever puppy sleeping on cozy knitted blanket indoors",
+      "tags": [
+        "pets",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.07,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-04",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "cleanroom semiconductor chip fabrication technician microscope",
+      "anchors": {
+        "subject": "technician",
+        "action": "inspecting wafer",
+        "setting": "cleanroom"
+      },
+      "candidate_title": "Photo: music",
+      "candidate_description": "vintage acoustic guitar resting against rustic wooden barn wall",
+      "tags": [
+        "music",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.06,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-05",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "solar panels farm sunny day renewable energy green transition",
+      "anchors": {
+        "subject": "solar panels",
+        "action": "generating power",
+        "setting": "solar farm"
+      },
+      "candidate_title": "Photo: sports",
+      "candidate_description": "snowy alpine ski resort chairlift on cloudy winter afternoon",
+      "tags": [
+        "sports",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.09,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-06",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "modern hospital doctor consultation patient clinic room",
+      "anchors": {
+        "subject": "physician",
+        "action": "examining patient",
+        "setting": "medical office"
+      },
+      "candidate_title": "Photo: leisure",
+      "candidate_description": "night view of glowing amusement park carousel and ferris wheel",
+      "tags": [
+        "leisure",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.07,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-07",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "supermarket retail shelves fresh fruits organic produce grocery",
+      "anchors": {
+        "subject": "supermarket aisle",
+        "action": "shopping groceries",
+        "setting": "store"
+      },
+      "candidate_title": "Photo: landscape",
+      "candidate_description": "scenic mountain lake reflection at sunrise with morning mist",
+      "tags": [
+        "landscape",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.11,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    },
+    {
+      "id": "calib-irrelevant-08",
+      "category": "UNRELATED_PHOTO",
+      "visual_query": "high speed train modern railway station platform departure",
+      "anchors": {
+        "subject": "bullet train",
+        "action": "departing platform",
+        "setting": "railway station"
+      },
+      "candidate_title": "Photo: beverage",
+      "candidate_description": "coffee cup latte art on wooden table in quiet cafe corner",
+      "tags": [
+        "beverage",
+        "photo",
+        "nature",
+        "misc"
+      ],
+      "expected_outcome": "REJECT",
+      "calibrated_score": 0.09,
+      "labeler": "agent",
+      "rejection_code": "SCENE.LOW_SIMILARITY",
+      "notes": "Completely irrelevant photographic subject with zero anchor overlap."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "checked_at_shanghai": "2026-10-23T12:01:06.059346+08:00",
+  "status": "MODEL_GENERATED_UNREVIEWED_SOURCE_FIXTURES_NOT_DECK_ACCEPTANCE",
+  "batch": "01-08",
+  "requested_model": "qwen3.8:27b-wb65536",
+  "served_model": "qwen3.8:27b-wb65536",
+  "elapsed_seconds": 295.92,
+  "prompt_sha256": "bbc5c898cc37b296000ad3ed590a2a4839414097311772235b609a805cf015a8",
+  "response_sha256": "765514a251998f74edd6dfc685d6fa4756eea5e591014caaeb0a7660e934c956",
+  "response_bytes": 11579,
+  "cases": [
+    {
+      "case_id": "L01",
+      "language": "en",
+      "detector_primary": "en",
+      "detector_matches_plan": true,
+      "characters": 1568,
+      "bytes": 1568,
+      "sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L01-en.md"
+    },
+    {
+      "case_id": "L02",
+      "language": "en",
+      "detector_primary": "en",
+      "detector_matches_plan": true,
+      "characters": 1458,
+      "bytes": 1458,
+      "sha256": "f69193a4ebd078daf644ecc5976d6d7dc595d3d4d90b58cf7a52744c93123c90",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L02-en.md"
+    },
+    {
+      "case_id": "L03",
+      "language": "en",
+      "detector_primary": "en",
+      "detector_matches_plan": true,
+      "characters": 1414,
+      "bytes": 1414,
+      "sha256": "c086d5ba113f64edd8a8774fc13dafad4a68c3ddcacda40d0ae6e3930272020f",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L03-en.md"
+    },
+    {
+      "case_id": "L04",
+      "language": "en",
+      "detector_primary": "en",
+      "detector_matches_plan": true,
+      "characters": 1344,
+      "bytes": 1344,
+      "sha256": "851e60c3aabbd3a88b005dfb2cb057c16bbe9769089df27d9a179934581c96a1",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L04-en.md"
+    },
+    {
+      "case_id": "L05",
+      "language": "zh",
+      "detector_primary": "zh",
+      "detector_matches_plan": true,
+      "characters": 485,
+      "bytes": 1281,
+      "sha256": "3db2f7cc64e7e9f083775a6ef6532143ebac12ee068203d17b9d884c20bff918",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L05-zh.md"
+    },
+    {
+      "case_id": "L06",
+      "language": "zh",
+      "detector_primary": "zh",
+      "detector_matches_plan": true,
+      "characters": 488,
+      "bytes": 1288,
+      "sha256": "8a5df0203575e998cfebd128e8a3777047fb4f7ca54f817843cc9cb20664d201",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L06-zh.md"
+    },
+    {
+      "case_id": "L07",
+      "language": "zh",
+      "detector_primary": "zh",
+      "detector_matches_plan": true,
+      "characters": 475,
+      "bytes": 1249,
+      "sha256": "9582adcc1a00f033daa9e705a633d407e5056ea70ddcf314406ae999157b5ba1",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L07-zh.md"
+    },
+    {
+      "case_id": "L08",
+      "language": "zh",
+      "detector_primary": "zh",
+      "detector_matches_plan": true,
+      "characters": 478,
+      "bytes": 1256,
+      "sha256": "a104af43bc461e10678d62963d599b67497c56f7a884ce9c3d5d702866bde917",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L08-zh.md"
+    }
+  ],
+  "language_match_count": 8,
+  "language_reviewed_count": 0,
+  "decks_generated_count": 0,
+  "ppts_counted_toward_50": 0,
+  "images_retrieved_or_inserted": false,
+  "release_ready": false
+}

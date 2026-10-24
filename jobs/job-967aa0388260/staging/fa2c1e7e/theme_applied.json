@@ -1,0 +1,122 @@
+{
+  "theme": "wengao-dark",
+  "theme_id": "wengao-dark",
+  "theme_version": "1.0.0",
+  "theme_registry_version": "1.1.0",
+  "theme_config_digest": "ab429608ad8a009e82050d1c12d91f6477039a7ced0b9d4f185150a092bd8c5f",
+  "theme_application": "APPLIED",
+  "preserve_design": false,
+  "runs_reformatted": 57,
+  "fills_set": 20,
+  "backgrounds_set": 10,
+  "tables_styled": 2,
+  "table_cells_styled": 20,
+  "charts_styled": 1,
+  "notes_styled": 0,
+  "slides": 10,
+  "role_counts": {
+    "title": 10,
+    "subtitle": 1,
+    "heading": 3,
+    "body": 6,
+    "note": 0
+  },
+  "emphasis_preserved": true,
+  "warnings": [],
+  "contrast": {
+    "checked": 20,
+    "violations": [],
+    "kept_original": [],
+    "unknown_backdrop": [],
+    "preexisting_low": [],
+    "unsafe": [],
+    "min_ratio": 8.18
+  },
+  "background_plan": [
+    {
+      "slide": 1,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 2,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 3,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 4,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 5,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 6,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 7,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 8,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 9,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    },
+    {
+      "slide": 10,
+      "mode": "keep_original_backdrop",
+      "panels_considered": [],
+      "recolored": [],
+      "locked_for_business_color": []
+    }
+  ],
+  "protected_business_colors": [],
+  "below_threshold": [],
+  "contrast_claim": "ASSERTED",
+  "chart_ops": [
+    [
+      "font",
+      "chart_bg",
+      "plot_bg",
+      "series0",
+      "grid"
+    ]
+  ],
+  "font_substitution": "深色主题采用 STHeiti（本机已核验可显示中文）替代缺失的 Microsoft YaHei；文字与绘图区均按深底可读性配置。",
+  "theme_identity_frozen_at_job": true,
+  "theme_identity_legacy_no_digest": false
+}

@@ -1,0 +1,329 @@
+{
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-e856c59fc6e9",
+  "created_at": "2026-10-23T21:18:44.205821+00:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "202 行业均值 市场规模",
+      "locale": "zh",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:18:44.206803+00:00"
+    },
+    {
+      "q": "202 market share industry benchmark",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:18:44.206803+00:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "uf001",
+      "origin": "USER_MATERIAL",
+      "subject": "202",
+      "metric": "202",
+      "value": 4.0,
+      "unit": "",
+      "period": "2024年",
+      "definition": "用户材料陈述",
+      "publisher": "用户材料",
+      "source_grade": "A",
+      "url": "",
+      "retrieved_at": "2026-10-23T21:18:44.206717+00:00",
+      "quote_span": "2024年中国新能源汽车产业迎来高质量跨越式发展",
+      "snapshot_path": "evidence/research/snapshots/user_material.txt",
+      "snapshot_sha256": "773c0e96a80aaeffc23cff4b0d7e9de0c83a6d43ee4c415ca2a62fbabdfbf0d4"
+    },
+    {
+      "fact_id": "f001",
+      "origin": "WEB_RESEARCH",
+      "subject": "HTTP",
+      "metric": "HTTP",
+      "value": 202.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "source_grade": "C",
+      "url": "https://apifox.com/apiskills/status-code-202-accepted/",
+      "retrieved_at": "2026-10-23T21:18:56.996201+00:00",
+      "quote_span": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "3311e92b9ac7d55280fc26fe6bfed03ec7fe97190815b0cc050cc2aceb05b9e3"
+    },
+    {
+      "fact_id": "f002",
+      "origin": "WEB_RESEARCH",
+      "subject": "HTTP",
+      "metric": "HTTP",
+      "value": 202.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "source_grade": "C",
+      "url": "https://apifox.com/apiskills/status-code-202-accepted/",
+      "retrieved_at": "2026-10-23T21:18:56.996201+00:00",
+      "quote_span": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "3311e92b9ac7d55280fc26fe6bfed03ec7fe97190815b0cc050cc2aceb05b9e3"
+    },
+    {
+      "fact_id": "f003",
+      "origin": "WEB_RESEARCH",
+      "subject": "HTTP",
+      "metric": "HTTP",
+      "value": 202.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "source_grade": "C",
+      "url": "https://apifox.com/apiskills/status-code-202-accepted/",
+      "retrieved_at": "2026-10-23T21:18:56.996201+00:00",
+      "quote_span": "HTTP 状态码 202 是什么意思？了解此状态代码如何处理异步处理、其用例以及它与 200 和 201 的区别",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "3311e92b9ac7d55280fc26fe6bfed03ec7fe97190815b0cc050cc2aceb05b9e3"
+    },
+    {
+      "fact_id": "f004",
+      "origin": "WEB_RESEARCH",
+      "subject": "HTTP",
+      "metric": "HTTP",
+      "value": 202.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "source_grade": "C",
+      "url": "https://apifox.com/apiskills/status-code-202-accepted/",
+      "retrieved_at": "2026-10-23T21:18:56.996201+00:00",
+      "quote_span": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "3311e92b9ac7d55280fc26fe6bfed03ec7fe97190815b0cc050cc2aceb05b9e3"
+    },
+    {
+      "fact_id": "f005",
+      "origin": "WEB_RESEARCH",
+      "subject": "被用到但却至关重要的",
+      "metric": "被用到但却至关重要的",
+      "value": 202.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "HTTP 状态码 202 的含义、适用场景与最佳实践",
+      "source_grade": "C",
+      "url": "https://apifox.com/apiskills/status-code-202-accepted/",
+      "retrieved_at": "2026-10-23T21:18:56.996201+00:00",
+      "quote_span": "而实现这种体验的关键，在于很少被用到但却至关重要的 HTTP 状态码：202 （Accepted）",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "3311e92b9ac7d55280fc26fe6bfed03ec7fe97190815b0cc050cc2aceb05b9e3"
+    },
+    {
+      "fact_id": "f006",
+      "origin": "WEB_RESEARCH",
+      "subject": "解密HTTP状态码2",
+      "metric": "解密HTTP状态码2",
+      "value": 2.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "source_grade": "C",
+      "url": "https://blog.csdn.net/lsoxvxe/article/details/132150309",
+      "retrieved_at": "2026-10-23T21:19:10.373452+00:00",
+      "quote_span": "解密HTTP状态码202 Accepted：背后的意义与实际应用-CSDN博客",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "14bc769abc0c11da33d5e49b5910abccc6b07335703a6050499fd01ba509d502"
+    },
+    {
+      "fact_id": "f007",
+      "origin": "WEB_RESEARCH",
+      "subject": "解密HTTP状态码2",
+      "metric": "解密HTTP状态码2",
+      "value": 2.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "source_grade": "C",
+      "url": "https://blog.csdn.net/lsoxvxe/article/details/132150309",
+      "retrieved_at": "2026-10-23T21:19:10.373452+00:00",
+      "quote_span": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "14bc769abc0c11da33d5e49b5910abccc6b07335703a6050499fd01ba509d502"
+    },
+    {
+      "fact_id": "f008",
+      "origin": "WEB_RESEARCH",
+      "subject": "墨衍会员",
+      "metric": "墨衍会员",
+      "value": 399.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "source_grade": "C",
+      "url": "https://blog.csdn.net/lsoxvxe/article/details/132150309",
+      "retrieved_at": "2026-10-23T21:19:10.373452+00:00",
+      "quote_span": "墨衍会员 ¥399 起/年，写一次发全网",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "14bc769abc0c11da33d5e49b5910abccc6b07335703a6050499fd01ba509d502"
+    },
+    {
+      "fact_id": "f009",
+      "origin": "WEB_RESEARCH",
+      "subject": "可以传递文件流或者进",
+      "metric": "可以传递文件流或者进",
+      "value": 80.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "source_grade": "C",
+      "url": "https://blog.csdn.net/lsoxvxe/article/details/132150309",
+      "retrieved_at": "2026-10-23T21:19:10.373452+00:00",
+      "quote_span": "HTTP （顺丰）：超文本传输协议（除了传递普通的文本，还可以传递文件流或者进制编码等信息），端口80",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "14bc769abc0c11da33d5e49b5910abccc6b07335703a6050499fd01ba509d502"
+    },
+    {
+      "fact_id": "f010",
+      "origin": "WEB_RESEARCH",
+      "subject": "HTTP",
+      "metric": "HTTP",
+      "value": 443.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "解密HTTP状态码202 Accepted：背后的意义与实际应用",
+      "source_grade": "C",
+      "url": "https://blog.csdn.net/lsoxvxe/article/details/132150309",
+      "retrieved_at": "2026-10-23T21:19:10.373452+00:00",
+      "quote_span": "HTTP S（邮政）：基于SSL（Secure Sockets Layer 安全套接层）加密的 HTTP 传输协议，比 HTTP 更加的安全（涉及支付的网站一般都是基于 HTTP S完成的），端口443",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "14bc769abc0c11da33d5e49b5910abccc6b07335703a6050499fd01ba509d502"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "trend",
+      "title": "HTTP HTTP 历史趋势",
+      "metric": "HTTP",
+      "unit": "",
+      "period": "2024 - 2024",
+      "series": [
+        {
+          "label": "HTTP",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            {
+              "x": "2024",
+              "value": 202.0,
+              "fact_ref": "f001"
+            },
+            {
+              "x": "2024",
+              "value": 202.0,
+              "fact_ref": "f002"
+            },
+            {
+              "x": "2024",
+              "value": 202.0,
+              "fact_ref": "f003"
+            },
+            {
+              "x": "2024",
+              "value": 202.0,
+              "fact_ref": "f004"
+            },
+            {
+              "x": "2024",
+              "value": 443.0,
+              "fact_ref": "f010"
+            }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "inflection",
+        "text": "在 2024 迎来拐点，由前期的停滞/下降转为强劲回升，2024 增长 241.0",
+        "fact_refs": [
+          "f003",
+          "f004",
+          "f010"
+        ],
+        "rule": "TREND_INFLECTION_V1",
+        "computed": {
+          "inflection_point": "2024",
+          "prev_diff": 0.0,
+          "next_diff": 241.0,
+          "reversal_amount": 241.0,
+          "unit": ""
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "数据来源: HTTP 状态码 202 的含义、适用场景与最佳实践 (2024); 解密HTTP状态码202 Accepted：背后的意义与实际应用 (2024)",
+        "fact_refs": [
+          "f001",
+          "f002",
+          "f003",
+          "f004",
+          "f010"
+        ]
+      }
+    },
+    {
+      "view_id": "v02",
+      "kind": "insight",
+      "title": "HTTP HTTP 关键洞察",
+      "metric": "HTTP",
+      "unit": "",
+      "period": "2024",
+      "series": [
+        {
+          "label": "HTTP",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            {
+              "x": "2024",
+              "value": 202.0,
+              "fact_ref": "f001"
+            }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "HTTP 核心指标 HTTP 达到 202.0",
+        "fact_refs": [
+          "f001"
+        ],
+        "rule": "INSIGHT_KEY_METRIC_V1",
+        "computed": {
+          "value": 202.0,
+          "unit": ""
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "数据来源: HTTP 状态码 202 的含义、适用场景与最佳实践 (2024)",
+        "fact_refs": [
+          "f001"
+        ]
+      }
+    }
+  ],
+  "discarded": [],
+  "omissions": [
+    {
+      "want": "横向对比视图：行业竞品/均值基准",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    }
+  ],
+  "report_path": "evidence/research/report.md"
+}

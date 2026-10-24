@@ -1,0 +1,8426 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "pptx": "reports/gate-13p-20261021/v14-readable-13p-dedicated.pptx",
+ "pptx_sha256": "dc135f46772f814ccd1758423d2ccfa704e618972f8beae9cb9517355ce42fa6",
+ "pdf": "reports/gate-p0-final-20261023/dc135f-recheck/render/v14-readable-13p-dedicated.pdf",
+ "pdf_sha256": "3582c11daf04b86cdf818fd6eb1d5612ee40ac06f98fd3e137181963483b9495",
+ "canvas_in": [
+  13.333,
+  7.5
+ ],
+ "pages_checked": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13
+ ],
+ "per_page": {
+  "1": {
+   "shapes": 35,
+   "chars_rendered": 141,
+   "roles": {
+    "Text 6": "body",
+    "Text 7": "title",
+    "Text 9": "body",
+    "Text 10": "body",
+    "Text 11": "body",
+    "Text 12": "source"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 124,
+   "mapped_chars": 124,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "当下热点切入：618降温｜社零转负｜扩内需",
+     "mapped": "当下热点切入：618降温｜社零转负｜扩内需",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "title",
+     "expected": "国家产能越来越强普通人钱包越来越紧",
+     "mapped": "国家产能越来越强普通人钱包越来越紧",
+     "size_pt": 38.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "商品过剩与有效需求不足：为什么“货架很满”，但普通人越来越不敢消费？",
+     "mapped": "商品过剩与有效需求不足：为什么“货架很满”，但普通人越来越不敢消费？",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "宏观：工业、出口、产能、补贴",
+     "mapped": "宏观：工业、出口、产能、补贴",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "微观：工资、债务、购物车、生育",
+     "mapped": "微观：工资、债务、购物车、生育",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "source",
+     "expected": "YitenHuang｜财富认知/家庭防坠落系统",
+     "mapped": "YitenHuang｜财富认知/家庭防坠落系统",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Shape 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 2,
+      "name": "Shape 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 6.6665,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 3,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.6665,
+      "top": 0.0,
+      "width": 6.6665,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 4,
+      "name": "Shape 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.6665,
+      "top": 0.6,
+      "width": 0.0,
+      "height": 6.2,
+      "text_chars": 0,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.58,
+      "width": 8.6,
+      "height": 0.46,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Picture 14",
+      "cls": "PICTURE (13)",
+      "left": 0.72,
+      "top": 5.66,
+      "width": 11.95,
+      "height": 1.22,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Rectangle 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.66,
+      "width": 11.95,
+      "height": 1.22,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.58
+      }
+     },
+     {
+      "z": 8,
+      "name": "Oval 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.405,
+      "top": 1.767,
+      "width": 0.043,
+      "height": 0.043,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 9,
+      "name": "Oval 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.816,
+      "top": 1.099,
+      "width": 0.047,
+      "height": 0.047,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 10,
+      "name": "Oval 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.813,
+      "top": 1.479,
+      "width": 0.031,
+      "height": 0.031,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 11,
+      "name": "Oval 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.455,
+      "top": 1.681,
+      "width": 0.041,
+      "height": 0.041,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 12,
+      "name": "Oval 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.484,
+      "top": 2.022,
+      "width": 0.024,
+      "height": 0.024,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 13,
+      "name": "Oval 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.114,
+      "top": 1.099,
+      "width": 0.046,
+      "height": 0.046,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 14,
+      "name": "Oval 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.911,
+      "top": 0.472,
+      "width": 0.026,
+      "height": 0.026,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 15,
+      "name": "Oval 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.909,
+      "top": 0.397,
+      "width": 0.028,
+      "height": 0.028,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 16,
+      "name": "Oval 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.847,
+      "top": 1.779,
+      "width": 0.018,
+      "height": 0.018,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 17,
+      "name": "Oval 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.657,
+      "top": 2.198,
+      "width": 0.045,
+      "height": 0.045,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 18,
+      "name": "Oval 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.985,
+      "top": 2.118,
+      "width": 0.03,
+      "height": 0.03,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 19,
+      "name": "Oval 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.323,
+      "top": 0.499,
+      "width": 0.046,
+      "height": 0.046,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 20,
+      "name": "Oval 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.275,
+      "top": 1.92,
+      "width": 0.019,
+      "height": 0.019,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 21,
+      "name": "Oval 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.358,
+      "top": 1.559,
+      "width": 0.022,
+      "height": 0.022,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 22,
+      "name": "Oval 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.352,
+      "top": 0.754,
+      "width": 0.021,
+      "height": 0.021,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 23,
+      "name": "Oval 31",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.33,
+      "top": 0.534,
+      "width": 0.036,
+      "height": 0.036,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 24,
+      "name": "Oval 32",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.81,
+      "top": 0.806,
+      "width": 0.033,
+      "height": 0.033,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 25,
+      "name": "Oval 33",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.486,
+      "top": 1.353,
+      "width": 0.031,
+      "height": 0.031,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 26,
+      "name": "Oval 34",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.722,
+      "top": 0.678,
+      "width": 0.047,
+      "height": 0.047,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 27,
+      "name": "Oval 35",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.271,
+      "top": 1.971,
+      "width": 0.026,
+      "height": 0.026,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 0.52,
+      "width": 8.3,
+      "height": 0.61,
+      "text_chars": 21,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.3,
+      "width": 11.89,
+      "height": 1.7647,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 30,
+      "name": "Shape 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.02,
+      "width": 1.3,
+      "height": 0.07,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.1,
+      "width": 11.89,
+      "height": 1.2264,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 32,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.15,
+      "width": 5.6,
+      "height": 0.61,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 33,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.95,
+      "top": 4.15,
+      "width": 5.66,
+      "height": 0.61,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 34,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 14",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7",
+      "box_in": [
+       0.72,
+       5.66,
+       12.67,
+       6.88
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 20,
+      "animMotion": 20,
+      "set": 20
+     },
+     "timing_xml_sha256": "1b13101936db9c3ca1db9e00968f2ac3b85a44b79ea7f2dcc4954cd2f9ab08c8"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    },
+    "inventory_sha256": "a4c7549aa3052ecd2aab04fd3d09b3c6c31a8af9c0dc4480199578c1b94ac5fc"
+   }
+  },
+  "2": {
+   "shapes": 27,
+   "chars_rendered": 342,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "key_number",
+    "Text 5": "body",
+    "Text 6": "source",
+    "Text 8": "key_number",
+    "Text 9": "body",
+    "Text 10": "source",
+    "Text 12": "key_number",
+    "Text 13": "body",
+    "Text 14": "source",
+    "Text 16": "key_number",
+    "Text 17": "body",
+    "Text 18": "source",
+    "Text 20": "quote",
+    "Text 21": "conclusion",
+    "Text 22": "source",
+    "Text 23": "footer",
+    "Text 24": "source"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 275,
+   "mapped_chars": 275,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "从“618不兴奋”切入，而不是从宏观报告切入",
+     "mapped": "从“618不兴奋”切入，而不是从宏观报告切入",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+     "mapped": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "key_number",
+     "expected": "+0.9%",
+     "mapped": "+0.9%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "2026年618电商GMV近乎横盘",
+     "mapped": "2026年618电商GMV近乎横盘",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "source",
+     "expected": "Syntun数据：8636亿vs8556亿",
+     "mapped": "Syntun数据：8636亿vs8556亿",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "key_number",
+     "expected": "-0.6%",
+     "mapped": "-0.6%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "2026年5月社零同比下降",
+     "mapped": "2026年5月社零同比下降",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "source",
+     "expected": "国家统计局：5月社会消费品零售总额",
+     "mapped": "国家统计局：5月社会消费品零售总额",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "key_number",
+     "expected": "+13.8%",
+     "mapped": "+13.8%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "2026年5月出口同比增长",
+     "mapped": "2026年5月出口同比增长",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "source",
+     "expected": "国家统计局：5月货物出口",
+     "mapped": "国家统计局：5月货物出口",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "key_number",
+     "expected": "2500亿",
+     "mapped": "2500亿",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "消费品以旧换新专项资金",
+     "mapped": "消费品以旧换新专项资金",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "source",
+     "expected": "国务院：超长期特别国债安排",
+     "mapped": "国务院：超长期特别国债安排",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "conclusion",
+     "expected": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。",
+     "mapped": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 23",
+     "role": "footer",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "source",
+     "expected": "来源：国家统计局、国务院、Reuters",
+     "mapped": "来源：国家统计局、国务院、Reuters",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 26",
+      "cls": "PICTURE (13)",
+      "left": 10.61,
+      "top": 5.48,
+      "width": 2.0,
+      "height": 1.21,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.61,
+      "top": 5.48,
+      "width": 2.0,
+      "height": 1.21,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.58
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.22,
+      "width": 11.8933,
+      "height": 0.885,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.8933,
+      "height": 0.61,
+      "text_chars": 33,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.76,
+      "width": 5.7967,
+      "height": 1.82,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.93,
+      "top": 1.81,
+      "width": 2.5,
+      "height": 0.885,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.5,
+      "top": 1.85,
+      "width": 3.01,
+      "height": 1.1367,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.84,
+      "top": 3.06,
+      "width": 5.5,
+      "height": 0.4267,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.8167,
+      "top": 1.76,
+      "width": 5.7967,
+      "height": 1.82,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0267,
+      "top": 1.81,
+      "width": 2.5,
+      "height": 0.885,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.7867,
+      "top": 1.85,
+      "width": 2.72,
+      "height": 1.1367,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.9367,
+      "top": 3.06,
+      "width": 5.5,
+      "height": 0.4267,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.64,
+      "width": 5.7967,
+      "height": 1.82,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.93,
+      "top": 3.69,
+      "width": 2.5,
+      "height": 0.885,
+      "text_chars": 6,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.69,
+      "top": 3.73,
+      "width": 2.72,
+      "height": 1.1367,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.84,
+      "top": 4.94,
+      "width": 5.5,
+      "height": 0.4267,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.8167,
+      "top": 3.64,
+      "width": 5.7967,
+      "height": 1.82,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0267,
+      "top": 3.69,
+      "width": 2.5,
+      "height": 1.0683,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.5967,
+      "top": 3.73,
+      "width": 3.01,
+      "height": 1.1367,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.9367,
+      "top": 4.94,
+      "width": 5.5,
+      "height": 0.4267,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.6,
+      "top": 5.48,
+      "width": 9.9,
+      "height": 1.54,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 5.52,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 5.56,
+      "width": 8.87,
+      "height": 1.4058,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.1,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Text 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.95,
+      "top": 6.96,
+      "width": 4.6,
+      "height": 0.4267,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 26",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350",
+      "box_in": [
+       10.61,
+       5.48,
+       12.61,
+       6.69
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "d7fff276fce5cde04d97214b25218b09bbe07fdfd73271db032ac3f317a65072"
+   }
+  },
+  "3": {
+   "shapes": 30,
+   "chars_rendered": 278,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 3": "body",
+    "Text 4": "body",
+    "Text 6": "body",
+    "Text 7": "body",
+    "Text 10": "ordinal",
+    "Text 11": "body",
+    "Text 12": "body",
+    "Text 15": "ordinal",
+    "Text 16": "body",
+    "Text 17": "body",
+    "Text 20": "ordinal",
+    "Text 21": "body",
+    "Text 22": "body",
+    "Text 24": "quote",
+    "Text 25": "conclusion",
+    "Text 26": "source",
+    "Text 27": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 246,
+   "mapped_chars": 246,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "核心矛盾：不是商品不够，而是支付能力不够",
+     "mapped": "核心矛盾：不是商品不够，而是支付能力不够",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "商品过剩和普遍贫困感可以同时存在，因为两者不在同一个分配通道里。",
+     "mapped": "商品过剩和普遍贫困感可以同时存在，因为两者不在同一个分配通道里。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 3",
+     "role": "body",
+     "expected": "表面现象",
+     "mapped": "表面现象",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "商品、产能、平台、库存越来越多",
+     "mapped": "商品、产能、平台、库存越来越多",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "本质问题",
+     "mapped": "本质问题",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "消费者的钱没有同步长出来",
+     "mapped": "消费者的钱没有同步长出来",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "ordinal",
+     "expected": "A",
+     "mapped": "A",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "供给端看见的是“产能”",
+     "mapped": "供给端看见的是“产能”",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "机器、工厂、平台、库存、补贴，越做越大。",
+     "mapped": "机器、工厂、平台、库存、补贴，越做越大。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 15",
+     "role": "ordinal",
+     "expected": "B",
+     "mapped": "B",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "需求端看见的是“工资”",
+     "mapped": "需求端看见的是“工资”",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "房租、教育、医疗、债务、失业风险，先吃掉可支配收入。",
+     "mapped": "房租、教育、医疗、债务、失业风险，先吃掉可支配收入。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "ordinal",
+     "expected": "C",
+     "mapped": "C",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "body",
+     "expected": "个人体感是“穷忙”",
+     "mapped": "个人体感是“穷忙”",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "每天都在生产，每月都在还款，购物车永远等降价。",
+     "mapped": "每天都在生产，每月都在还款，购物车永远等降价。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "conclusion",
+     "expected": "内需不是被广告唤醒的，内需是被工资、保障和预期撑起来的。",
+     "mapped": "内需不是被广告唤醒的，内需是被工资、保障和预期撑起来的。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "footer",
+     "expected": "03",
+     "mapped": "03",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 29",
+      "cls": "PICTURE (13)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.65
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 32,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Text 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.8,
+      "top": 2.12,
+      "width": 1.5,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.45,
+      "top": 2.12,
+      "width": 5.9,
+      "height": 0.61,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Shape 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.55,
+      "top": 2.18,
+      "width": 0.45,
+      "height": 0.45,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.8,
+      "top": 2.68,
+      "width": 1.5,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.45,
+      "top": 2.68,
+      "width": 4.35,
+      "height": 0.61,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Shape 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.79,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.79,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 3.07,
+      "width": 0.55,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 3.05,
+      "width": 4.2,
+      "height": 0.61,
+      "text_chars": 11,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.95,
+      "top": 3.05,
+      "width": 6.65,
+      "height": 1.1367,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.83,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Shape 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.83,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 17,
+      "name": "Text 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 4.02,
+      "width": 0.55,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 4.0,
+      "width": 4.2,
+      "height": 0.61,
+      "text_chars": 11,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.95,
+      "top": 4.0,
+      "width": 6.65,
+      "height": 1.1367,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.87,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.87,
+      "top": 3.66,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "6785A8",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 4.97,
+      "width": 0.55,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 4.95,
+      "width": 4.2,
+      "height": 0.61,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.95,
+      "top": 4.95,
+      "width": 6.65,
+      "height": 1.1367,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.68,
+      "top": 6.02,
+      "width": 11.97,
+      "height": 0.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.2,
+      "top": 6.22,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.1,
+      "width": 11.89,
+      "height": 0.7017,
+      "text_chars": 28,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 29",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7",
+      "box_in": [
+       0.0,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "bf0f984b1f41bb1f2dc5f79c5ab54eef83788bb88bdb35b19c14f8adb38a0008"
+   }
+  },
+  "4": {
+   "shapes": 28,
+   "chars_rendered": 309,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 5": "ordinal",
+    "Text 6": "body",
+    "Text 7": "body",
+    "Text 10": "ordinal",
+    "Text 11": "body",
+    "Text 12": "body",
+    "Text 15": "ordinal",
+    "Text 16": "body",
+    "Text 17": "body",
+    "Text 19": "body",
+    "Text 20": "conclusion",
+    "Text 22": "quote",
+    "Text 23": "body",
+    "Text 24": "source",
+    "Text 25": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 269,
+   "mapped_chars": 269,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "需求侧困境：劳动者被训练成“高产出、低消费”的人",
+     "mapped": "需求侧困境：劳动者被训练成“高产出、低消费”的人",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "普通人不是不想消费，而是消费前先要计算风险。",
+     "mapped": "普通人不是不想消费，而是消费前先要计算风险。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "ordinal",
+     "expected": "01",
+     "mapped": "01",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "收入增长不等于消费能力增长",
+     "mapped": "收入增长不等于消费能力增长",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "账面收入可能增长，但房租、债务、教育、医疗和失业风险会先扣走安全感。",
+     "mapped": "账面收入可能增长，但房租、债务、教育、医疗和失业风险会先扣走安全感。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "ordinal",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "流动性更容易流向资产端",
+     "mapped": "流动性更容易流向资产端",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "资本收益、金融资产、房产、股权回报，往往比工资更能分享增长。",
+     "mapped": "资本收益、金融资产、房产、股权回报，往往比工资更能分享增长。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 15",
+     "role": "ordinal",
+     "expected": "03",
+     "mapped": "03",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "内卷提高产出，却压低消费欲望",
+     "mapped": "内卷提高产出，却压低消费欲望",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "为了收入更高，被迫加班、兼职、降价竞争，结果更焦虑、更谨慎。",
+     "mapped": "为了收入更高，被迫加班、兼职、降价竞争，结果更焦虑、更谨慎。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "body",
+     "expected": "普通人真正的消费公式",
+     "mapped": "普通人真正的消费公式",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "conclusion",
+     "expected": "愿意花的钱=当前收入−固定支出−债务压力−未来风险预留",
+     "mapped": "愿意花的钱=当前收入−固定支出−债务压力−未来风险预留",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 23",
+     "role": "body",
+     "expected": "不是消费欲望死了，是未来的不确定性太贵。",
+     "mapped": "不是消费欲望死了，是未来的不确定性太贵。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "footer",
+     "expected": "04",
+     "mapped": "04",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 27",
+      "cls": "PICTURE (13)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.38
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 1.675,
+      "text_chars": 24,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.9,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.76,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Shape 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.76,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 2.68,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 2.62,
+      "width": 5.0,
+      "height": 0.61,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.75,
+      "top": 2.62,
+      "width": 5.85,
+      "height": 1.1367,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Shape 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.79,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.79,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 3.66,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 3.6,
+      "width": 5.0,
+      "height": 0.61,
+      "text_chars": 11,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.75,
+      "top": 3.6,
+      "width": 5.85,
+      "height": 1.1367,
+      "text_chars": 30,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.82,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Shape 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.82,
+      "top": 1.73,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "6785A8",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 17,
+      "name": "Text 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 4.64,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 4.58,
+      "width": 5.0,
+      "height": 0.61,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.75,
+      "top": 4.58,
+      "width": 5.85,
+      "height": 1.1367,
+      "text_chars": 30,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.58,
+      "top": 6.0,
+      "width": 12.41,
+      "height": 0.82,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Text 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.8,
+      "top": 5.42,
+      "width": 3.6,
+      "height": 0.61,
+      "text_chars": 10,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.4,
+      "top": 6.1,
+      "width": 12.53,
+      "height": 0.7017,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Shape 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.11,
+      "top": 5.91,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.66,
+      "top": 5.55,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Text 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.0,
+      "top": 5.53,
+      "width": 7.5,
+      "height": 0.61,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 27",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65",
+      "box_in": [
+       0.0,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "5054c724ece03e573aaccc993665874e5370477e47f6d0abfb048ed4e49bff0a"
+   }
+  },
+  "5": {
+   "shapes": 30,
+   "chars_rendered": 222,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 5": "body",
+    "Text 8": "body",
+    "Text 9": "body",
+    "Text 12": "body",
+    "Text 13": "body",
+    "Text 16": "body",
+    "Text 17": "body",
+    "Text 19": "body",
+    "Text 22": "body",
+    "Text 23": "conclusion",
+    "Text 26": "body",
+    "Text 27": "body",
+    "Text 28": "source",
+    "Text 29": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 177,
+   "mapped_chars": 177,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "供给侧扭曲：越会生产，越需要有人买单",
+     "mapped": "供给侧扭曲：越会生产，越需要有人买单",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "供给端扩张如果不能转化为劳动收入，最后会变成价格战、库存和利润挤压。",
+     "mapped": "供给端扩张如果不能转化为劳动收入，最后会变成价格战、库存和利润挤压。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "补贴企业",
+     "mapped": "补贴企业",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "扩大产能保企业运行",
+     "mapped": "扩大产能保企业运行",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "供给增加",
+     "mapped": "供给增加",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "库存变多竞争加剧",
+     "mapped": "库存变多竞争加剧",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "价格战",
+     "mapped": "价格战",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "利润变薄裁员降薪",
+     "mapped": "利润变薄裁员降薪",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "需求更弱",
+     "mapped": "需求更弱",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "购物延迟消费降级",
+     "mapped": "购物延迟消费降级",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "body",
+     "expected": "恶性循环",
+     "mapped": "恶性循环",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "一句话判断",
+     "mapped": "一句话判断",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 23",
+     "role": "conclusion",
+     "expected": "补贴能让商品更便宜，但不一定让普通人更敢花。",
+     "mapped": "补贴能让商品更便宜，但不一定让普通人更敢花。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "body",
+     "expected": "传播金句",
+     "mapped": "传播金句",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "body",
+     "expected": "价格战解决的是库存，不是焦虑。",
+     "mapped": "价格战解决的是库存，不是焦虑。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 28",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 29",
+     "role": "footer",
+     "expected": "05",
+     "mapped": "05",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 3,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.9,
+      "width": 2.25,
+      "height": 2.2,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.86,
+      "top": 2.0,
+      "width": 1.97,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.86,
+      "top": 2.75,
+      "width": 1.97,
+      "height": 1.1367,
+      "text_chars": 10,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 6,
+      "name": "Shape 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.99,
+      "top": 2.85,
+      "width": 0.54,
+      "height": 0.42,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "7E7E88",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 7,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.55,
+      "top": 1.9,
+      "width": 2.25,
+      "height": 2.2,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.69,
+      "top": 2.0,
+      "width": 1.97,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.69,
+      "top": 2.75,
+      "width": 1.97,
+      "height": 1.1367,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Shape 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.82,
+      "top": 2.85,
+      "width": 0.54,
+      "height": 0.42,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "7E7E88",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.38,
+      "top": 1.9,
+      "width": 2.25,
+      "height": 2.2,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.52,
+      "top": 2.0,
+      "width": 1.97,
+      "height": 0.61,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.52,
+      "top": 2.75,
+      "width": 1.97,
+      "height": 1.1367,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Shape 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.65,
+      "top": 2.85,
+      "width": 0.54,
+      "height": 0.42,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "7E7E88",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.21,
+      "top": 1.9,
+      "width": 2.25,
+      "height": 2.2,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.35,
+      "top": 2.0,
+      "width": 1.97,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.35,
+      "top": 2.75,
+      "width": 1.97,
+      "height": 1.1367,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 18,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.2,
+      "top": 4.24,
+      "width": 8.7,
+      "height": 0.76,
+      "text_chars": 0,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.89,
+      "top": 4.18,
+      "width": 1.45,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.02,
+      "width": 5.85,
+      "height": 1.76,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.02,
+      "width": 0.06,
+      "height": 1.76,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.94,
+      "top": 5.12,
+      "width": 2.5,
+      "height": 0.61,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.94,
+      "top": 5.55,
+      "width": 5.55,
+      "height": 1.3161,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Shape 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.94,
+      "top": 5.02,
+      "width": 5.85,
+      "height": 1.76,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.94,
+      "top": 5.02,
+      "width": 0.06,
+      "height": 1.76,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.16,
+      "top": 5.12,
+      "width": 2.5,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.16,
+      "top": 5.55,
+      "width": 4.7,
+      "height": 1.3161,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "b7ede317921dd3f176f8d1a55054234d6195d2ea03e804699b5846bf06c1a352"
+   }
+  },
+  "6": {
+   "shapes": 32,
+   "chars_rendered": 216,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 6": "body",
+    "Text 8": "body",
+    "Text 10": "body",
+    "Text 12": "body",
+    "Text 14": "body",
+    "Text 16": "body",
+    "Text 18": "body",
+    "Text 20": "body",
+    "Text 22": "body",
+    "Text 24": "body",
+    "Text 26": "quote",
+    "Text 27": "conclusion",
+    "Text 28": "source",
+    "Text 29": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 179,
+   "mapped_chars": 179,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "结构性缺陷：生产者和消费者其实是同一批普通人",
+     "mapped": "结构性缺陷：生产者和消费者其实是同一批普通人",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "当劳动者的收入份额不足，消费市场就不会自动变强。",
+     "mapped": "当劳动者的收入份额不足，消费市场就不会自动变强。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "白天的他",
+     "mapped": "白天的他",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "是工厂员工",
+     "mapped": "是工厂员工",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "是外卖骑手",
+     "mapped": "是外卖骑手",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "是销售、客服、个体户",
+     "mapped": "是销售、客服、个体户",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "被要求提高效率、压低成本",
+     "mapped": "被要求提高效率、压低成本",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "晚上的他",
+     "mapped": "晚上的他",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "是消费者",
+     "mapped": "是消费者",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "body",
+     "expected": "是房贷/租金承担者",
+     "mapped": "是房贷/租金承担者",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "body",
+     "expected": "是孩子教育和老人医疗的付款人",
+     "mapped": "是孩子教育和老人医疗的付款人",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "被迫延迟购买、压缩欲望",
+     "mapped": "被迫延迟购买、压缩欲望",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "body",
+     "expected": "同一个人",
+     "mapped": "同一个人",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 32.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "conclusion",
+     "expected": "把劳动者压成低成本，就等于把消费者压成低需求。",
+     "mapped": "把劳动者压成低成本，就等于把消费者压成低需求。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 28",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 29",
+     "role": "footer",
+     "expected": "06",
+     "mapped": "06",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 31",
+      "cls": "PICTURE (13)",
+      "left": 5.79,
+      "top": 4.28,
+      "width": 1.75,
+      "height": 1.06,
+      "crop": {
+       "crop_left": 0.463,
+       "crop_right": 0.1984,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 32",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.79,
+      "top": 4.28,
+      "width": 1.75,
+      "height": 1.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.78
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.22,
+      "width": 11.8933,
+      "height": 0.885,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 24,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.83,
+      "width": 5.05,
+      "height": 4.31,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.94,
+      "top": 1.91,
+      "width": 4.63,
+      "height": 0.7017,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Shape 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.0,
+      "top": 2.82,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.27,
+      "top": 2.66,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.0,
+      "top": 3.5358,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.27,
+      "top": 3.3758,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.0,
+      "top": 4.2517,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.27,
+      "top": 4.0917,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 10,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.0,
+      "top": 4.9675,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.27,
+      "top": 4.8075,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.563,
+      "top": 1.83,
+      "width": 5.05,
+      "height": 4.31,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.783,
+      "top": 1.91,
+      "width": 4.63,
+      "height": 0.7017,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.843,
+      "top": 2.82,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.113,
+      "top": 2.66,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Shape 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.843,
+      "top": 3.5358,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.113,
+      "top": 3.3758,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.843,
+      "top": 4.2517,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.113,
+      "top": 4.0917,
+      "width": 4.4,
+      "height": 1.2264,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Shape 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.843,
+      "top": 5.5381,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.113,
+      "top": 5.3781,
+      "width": 4.4,
+      "height": 0.6558,
+      "text_chars": 11,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.667,
+      "top": 2.66,
+      "width": 0.0,
+      "height": 1.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.78,
+      "top": 1.91,
+      "width": 1.77,
+      "height": 0.7017,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Shape 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.2,
+      "width": 11.8933,
+      "height": 0.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 5.94,
+      "width": 0.35,
+      "height": 0.42,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 6.22,
+      "width": 11.36,
+      "height": 0.7475,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 30,
+      "name": "Text 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.1,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 31",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65",
+      "box_in": [
+       5.79,
+       4.28,
+       7.54,
+       5.34
+      ],
+      "crop": {
+       "crop_left": 0.463,
+       "crop_right": 0.1984,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "47c6a010e56d2f2155ab3549980f10e4521e2f1f3f36ac250343bb014b3f4865"
+   }
+  },
+  "7": {
+   "shapes": 39,
+   "chars_rendered": 319,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 5": "ordinal",
+    "Text 6": "body",
+    "Text 7": "body",
+    "Text 10": "ordinal",
+    "Text 11": "body",
+    "Text 12": "body",
+    "Text 15": "ordinal",
+    "Text 16": "body",
+    "Text 17": "body",
+    "Text 19": "conclusion",
+    "Text 20": "source",
+    "Text 21": "footer",
+    "Text 22": "source"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 285,
+   "mapped_chars": 285,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "为什么“刺激消费”经常显得吃力",
+     "mapped": "为什么“刺激消费”经常显得吃力",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "因为很多刺激落在“买东西”这个动作上，而普通人真正缺的是“敢买”的底气。",
+     "mapped": "因为很多刺激落在“买东西”这个动作上，而普通人真正缺的是“敢买”的底气。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "ordinal",
+     "expected": "01",
+     "mapped": "01",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "补贴可以带来短期订单",
+     "mapped": "补贴可以带来短期订单",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "以旧换新、消费券、平台满减，会改变购买时点，但未必改变长期收入预期。",
+     "mapped": "以旧换新、消费券、平台满减，会改变购买时点，但未必改变长期收入预期。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "ordinal",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "企业能活下来，但工资未必上来",
+     "mapped": "企业能活下来，但工资未必上来",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "扶持企业如果没有穿透到劳动报酬、就业质量和社保安全，内需仍会弱。",
+     "mapped": "扶持企业如果没有穿透到劳动报酬、就业质量和社保安全，内需仍会弱。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 15",
+     "role": "ordinal",
+     "expected": "03",
+     "mapped": "03",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "财富配置偏资产，消费自然偏谨慎",
+     "mapped": "财富配置偏资产，消费自然偏谨慎",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "钱流向投资和资产端时，普通人看到的是资产价格与生活成本，而不是更宽松的钱包。",
+     "mapped": "钱流向投资和资产端时，普通人看到的是资产价格与生活成本，而不是更宽松的钱包。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "conclusion",
+     "expected": "判断标准：政策有没有把“产能”变成“工资”、把“订单”变成“稳定预期”。",
+     "mapped": "判断标准：政策有没有把“产能”变成“工资”、把“订单”变成“稳定预期”。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "footer",
+     "expected": "07",
+     "mapped": "07",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "source",
+     "expected": "来源：国务院关于扩内需、增收入与以旧换新安排",
+     "mapped": "来源：国务院关于扩内需、增收入与以旧换新安排",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 24",
+      "cls": "PICTURE (13)",
+      "left": 0.72,
+      "top": 5.82,
+      "width": 11.95,
+      "height": 1.1,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.82,
+      "width": 11.95,
+      "height": 1.1,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.58
+      }
+     },
+     {
+      "z": 3,
+      "name": "Oval 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.014,
+      "top": 6.574,
+      "width": 0.045,
+      "height": 0.045,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 4,
+      "name": "Oval 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.544,
+      "top": 7.182,
+      "width": 0.044,
+      "height": 0.044,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 5,
+      "name": "Oval 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.796,
+      "top": 7.064,
+      "width": 0.032,
+      "height": 0.032,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 6,
+      "name": "Oval 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.548,
+      "top": 7.063,
+      "width": 0.024,
+      "height": 0.024,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 7,
+      "name": "Oval 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.405,
+      "top": 7.129,
+      "width": 0.038,
+      "height": 0.038,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 8,
+      "name": "Oval 31",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.695,
+      "top": 6.538,
+      "width": 0.025,
+      "height": 0.025,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 9,
+      "name": "Oval 32",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.082,
+      "top": 5.823,
+      "width": 0.02,
+      "height": 0.02,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 10,
+      "name": "Oval 33",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.719,
+      "top": 6.06,
+      "width": 0.027,
+      "height": 0.027,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 11,
+      "name": "Oval 34",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.445,
+      "top": 6.451,
+      "width": 0.024,
+      "height": 0.024,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 12,
+      "name": "Oval 35",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.944,
+      "top": 6.394,
+      "width": 0.047,
+      "height": 0.047,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 13,
+      "name": "Oval 36",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.611,
+      "top": 6.458,
+      "width": 0.028,
+      "height": 0.028,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 14,
+      "name": "Oval 37",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.241,
+      "top": 5.977,
+      "width": 0.038,
+      "height": 0.038,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 15,
+      "name": "Oval 38",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.818,
+      "top": 6.719,
+      "width": 0.021,
+      "height": 0.021,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 16,
+      "name": "Oval 39",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.652,
+      "top": 6.215,
+      "width": 0.037,
+      "height": 0.037,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 17,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.15,
+      "width": 11.89,
+      "height": 1.1367,
+      "text_chars": 36,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.76,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.76,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "6785A8",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 2.64,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 2.6,
+      "width": 4.5,
+      "height": 1.1367,
+      "text_chars": 10,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.2,
+      "top": 2.6,
+      "width": 6.7,
+      "height": 1.1367,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Shape 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.83,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.83,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 3.64,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 3.6,
+      "width": 4.5,
+      "height": 1.1367,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.2,
+      "top": 3.6,
+      "width": 6.7,
+      "height": 1.1367,
+      "text_chars": 32,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.9,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 30,
+      "name": "Shape 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.9,
+      "top": 1.76,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 4.64,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 32,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.58,
+      "top": 4.6,
+      "width": 4.5,
+      "height": 1.1367,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 33,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.2,
+      "top": 4.6,
+      "width": 6.7,
+      "height": 1.1367,
+      "text_chars": 38,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 34,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.58,
+      "top": 5.78,
+      "width": 12.41,
+      "height": 1.17,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 35,
+      "name": "Text 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.62,
+      "width": 11.89,
+      "height": 1.3161,
+      "text_chars": 36,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 36,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 37,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 38,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.4,
+      "top": 6.96,
+      "width": 5.3,
+      "height": 0.4267,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 24",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7",
+      "box_in": [
+       0.72,
+       5.82,
+       12.67,
+       6.92
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 14,
+      "animMotion": 14,
+      "set": 14
+     },
+     "timing_xml_sha256": "7351bf56fca1b235f6aa291f7f112459e07d352302fd64c4c8c8cdbab789aea4"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "779ca308021791a10a18e67c6d2d0e19dbd28873e4e03dc6c89ae2bff084a7ba"
+   }
+  },
+  "8": {
+   "shapes": 35,
+   "chars_rendered": 249,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 5": "ordinal",
+    "Text 6": "body",
+    "Text 7": "body",
+    "Text 10": "ordinal",
+    "Text 11": "body",
+    "Text 12": "body",
+    "Text 15": "ordinal",
+    "Text 16": "body",
+    "Text 17": "body",
+    "Text 20": "ordinal",
+    "Text 21": "body",
+    "Text 22": "body",
+    "Text 25": "ordinal",
+    "Text 26": "body",
+    "Text 27": "body",
+    "Text 29": "quote",
+    "Text 30": "conclusion",
+    "Text 31": "source",
+    "Text 32": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 215,
+   "mapped_chars": 215,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "社会影响：宏观增长和民生体感开始脱节",
+     "mapped": "社会影响：宏观增长和民生体感开始脱节",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "这里最适合接你的个人IP：普通人不是看不懂宏观，而是被宏观变化打到现金流。",
+     "mapped": "这里最适合接你的个人IP：普通人不是看不懂宏观，而是被宏观变化打到现金流。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "ordinal",
+     "expected": "01",
+     "mapped": "01",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "不敢花",
+     "mapped": "不敢花",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "消费降级、延迟购买、只买刚需",
+     "mapped": "消费降级、延迟购买、只买刚需",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "ordinal",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "不敢贷",
+     "mapped": "不敢贷",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "房产和大额消费决策更谨慎",
+     "mapped": "房产和大额消费决策更谨慎",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 15",
+     "role": "ordinal",
+     "expected": "03",
+     "mapped": "03",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "不敢换工作",
+     "mapped": "不敢换工作",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "失业风险抬高，现金流安全优先",
+     "mapped": "失业风险抬高，现金流安全优先",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "ordinal",
+     "expected": "04",
+     "mapped": "04",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "body",
+     "expected": "不敢生",
+     "mapped": "不敢生",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "养育成本和未来收入预期不匹配",
+     "mapped": "养育成本和未来收入预期不匹配",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "ordinal",
+     "expected": "05",
+     "mapped": "05",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "body",
+     "expected": "不敢试错",
+     "mapped": "不敢试错",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "body",
+     "expected": "创业、投资、学习都被现金流约束",
+     "mapped": "创业、投资、学习都被现金流约束",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 29",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 30",
+     "role": "conclusion",
+     "expected": "普通人的问题不是“不努力”，而是所有风险都在向他的家庭资产负债表集中。",
+     "mapped": "普通人的问题不是“不努力”，而是所有风险都在向他的家庭资产负债表集中。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 31",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 32",
+     "role": "footer",
+     "expected": "08",
+     "mapped": "08",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 34",
+      "cls": "PICTURE (13)",
+      "left": 10.61,
+      "top": 5.46,
+      "width": 2.0,
+      "height": 1.21,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.1501,
+       "crop_bottom": 0.1835
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 35",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.61,
+      "top": 5.46,
+      "width": 2.0,
+      "height": 1.21,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.72
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.8933,
+      "height": 0.885,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.07,
+      "width": 11.8933,
+      "height": 1.1367,
+      "text_chars": 37,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.1,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Shape 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.1,
+      "width": 0.07,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 2.1458,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.52,
+      "top": 2.1,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.75,
+      "top": 2.1,
+      "width": 8.7333,
+      "height": 0.6558,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Shape 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.7758,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.7758,
+      "width": 0.07,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 2.8217,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.52,
+      "top": 2.7758,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.75,
+      "top": 2.7758,
+      "width": 8.7333,
+      "height": 0.6558,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.4517,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Shape 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.4517,
+      "width": 0.07,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 17,
+      "name": "Text 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 3.4975,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.52,
+      "top": 3.4517,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.75,
+      "top": 3.4217,
+      "width": 8.7333,
+      "height": 0.6558,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.1275,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.1275,
+      "width": 0.07,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 4.1733,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.52,
+      "top": 4.1275,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.75,
+      "top": 4.1275,
+      "width": 8.7333,
+      "height": 0.6558,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.8033,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Shape 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.8033,
+      "width": 0.07,
+      "height": 0.6558,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "B34A3C",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 4.8492,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.52,
+      "top": 4.8033,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.75,
+      "top": 4.8033,
+      "width": 8.7333,
+      "height": 0.6558,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 30,
+      "name": "Shape 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.6,
+      "top": 5.46,
+      "width": 9.9,
+      "height": 1.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 5.52,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 32,
+      "name": "Text 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 5.5,
+      "width": 8.87,
+      "height": 1.4058,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 33,
+      "name": "Text 31",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.1,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 34,
+      "name": "Text 32",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 34",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0",
+      "box_in": [
+       10.61,
+       5.46,
+       12.61,
+       6.67
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.1501,
+       "crop_bottom": 0.1835
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    },
+    "inventory_sha256": "6b4a156b3ea76465794d1638e8cd6c9198fc4ea1161a73e39fa5f56e455d9b55"
+   }
+  },
+  "9": {
+   "shapes": 22,
+   "chars_rendered": 199,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 5": "body",
+    "Text 7": "body",
+    "Text 8": "body",
+    "Text 10": "body",
+    "Text 11": "body",
+    "Text 13": "body",
+    "Text 14": "body",
+    "Text 16": "quote",
+    "Text 17": "conclusion",
+    "Text 18": "source",
+    "Text 19": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 177,
+   "mapped_chars": 177,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "发展转型：真正的高质量，不只是更会生产",
+     "mapped": "发展转型：真正的高质量，不只是更会生产",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+     "mapped": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "去产能",
+     "mapped": "去产能",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "让低效率竞争退出，减少低价内卷",
+     "mapped": "让低效率竞争退出，减少低价内卷",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "提报酬",
+     "mapped": "提报酬",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "提高劳动者在分配中的稳定份额",
+     "mapped": "提高劳动者在分配中的稳定份额",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "稳预期",
+     "mapped": "稳预期",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "降低教育、医疗、养老、失业不确定性",
+     "mapped": "降低教育、医疗、养老、失业不确定性",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "强创新",
+     "mapped": "强创新",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "把效率提升转成工资、服务与新岗位",
+     "mapped": "把效率提升转成工资、服务与新岗位",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "conclusion",
+     "expected": "产能升级只是上半场，支付能力修复才是下半场。",
+     "mapped": "产能升级只是上半场，支付能力修复才是下半场。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "footer",
+     "expected": "09",
+     "mapped": "09",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 21",
+      "cls": "PICTURE (13)",
+      "left": 6.67,
+      "top": 0.0,
+      "width": 6.66,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.2318,
+       "crop_right": 0.2318,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.67,
+      "top": 0.0,
+      "width": 6.66,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.74
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 19,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.15,
+      "top": 1.86,
+      "width": 10.95,
+      "height": 0.85,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.45,
+      "top": 1.96,
+      "width": 1.4,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.95,
+      "top": 1.96,
+      "width": 8.9,
+      "height": 0.6558,
+      "text_chars": 15,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Shape 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.15,
+      "top": 2.76,
+      "width": 10.95,
+      "height": 0.85,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.45,
+      "top": 2.86,
+      "width": 1.4,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.95,
+      "top": 2.86,
+      "width": 8.9,
+      "height": 0.6558,
+      "text_chars": 14,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.15,
+      "top": 3.66,
+      "width": 10.95,
+      "height": 0.85,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.45,
+      "top": 3.76,
+      "width": 1.4,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.95,
+      "top": 3.76,
+      "width": 8.9,
+      "height": 0.6558,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Shape 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.15,
+      "top": 4.56,
+      "width": 10.95,
+      "height": 0.85,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.45,
+      "top": 4.66,
+      "width": 1.4,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 2.95,
+      "top": 4.66,
+      "width": 8.9,
+      "height": 0.6558,
+      "text_chars": 16,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.58,
+      "top": 5.86,
+      "width": 12.23,
+      "height": 0.94,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.8,
+      "top": 6.08,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.3,
+      "top": 6.006,
+      "width": 11.3,
+      "height": 0.7475,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Text 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 21",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65",
+      "box_in": [
+       6.67,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.2318,
+       "crop_right": 0.2318,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "b153a85c9fed34f71fb4282d6e1696d896b692518de5431af666800b77784c5f"
+   }
+  },
+  "10": {
+   "shapes": 30,
+   "chars_rendered": 247,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 6": "body",
+    "Text 8": "body",
+    "Text 10": "body",
+    "Text 12": "body",
+    "Text 14": "body",
+    "Text 16": "body",
+    "Text 18": "body",
+    "Text 20": "body",
+    "Text 22": "body",
+    "Text 24": "quote",
+    "Text 25": "conclusion",
+    "Text 26": "source",
+    "Text 27": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 212,
+   "mapped_chars": 212,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "你的个人IP切口：不写宏观结论，写普通人的防坠落方案",
+     "mapped": "你的个人IP切口：不写宏观结论，写普通人的防坠落方案",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+     "mapped": "这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "宏观内容容易空",
+     "mapped": "宏观内容容易空",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "讲概念：内需、产能、通缩",
+     "mapped": "讲概念：内需、产能、通缩",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "讲政策：刺激、补贴、去产能",
+     "mapped": "讲政策：刺激、补贴、去产能",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "讲宏观：数据很多，行动很少",
+     "mapped": "讲宏观：数据很多，行动很少",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "你的切口要落地",
+     "mapped": "你的切口要落地",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "家庭最低生存支出表",
+     "mapped": "家庭最低生存支出表",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "12个月现金流安全垫",
+     "mapped": "12个月现金流安全垫",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "body",
+     "expected": "债务收入比警戒线",
+     "mapped": "债务收入比警戒线",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "body",
+     "expected": "大额消费冷静期",
+     "mapped": "大额消费冷静期",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "职业与副业收入冗余",
+     "mapped": "职业与副业收入冗余",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "conclusion",
+     "expected": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+     "mapped": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "footer",
+     "expected": "10",
+     "mapped": "10",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 29",
+      "cls": "PICTURE (13)",
+      "left": 10.02,
+      "top": 1.72,
+      "width": 2.55,
+      "height": 4.55,
+      "crop": {
+       "crop_left": 0.463,
+       "crop_right": 0.1984,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.02,
+      "top": 1.72,
+      "width": 2.55,
+      "height": 4.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.78
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 1.675,
+      "text_chars": 27,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.15,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 32,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 2.95,
+      "width": 5.65,
+      "height": 3.35,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 3.1,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 7,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Shape 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 4.03,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.43,
+      "top": 3.9,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 4.47,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.43,
+      "top": 4.34,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 4.91,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.43,
+      "top": 4.78,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.85,
+      "top": 2.95,
+      "width": 5.65,
+      "height": 3.35,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 3.1,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 7,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Shape 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 4.03,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.43,
+      "top": 3.9,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 4.47,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.43,
+      "top": 4.34,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 10,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Shape 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 4.91,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.43,
+      "top": 4.78,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 8,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 5.35,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.43,
+      "top": 5.22,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 7,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Shape 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.25,
+      "top": 5.79,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.43,
+      "top": 5.66,
+      "width": 4.6,
+      "height": 0.61,
+      "text_chars": 9,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.46,
+      "top": 6.34,
+      "width": 12.41,
+      "height": 0.54,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.72,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.4,
+      "top": 6.15,
+      "width": 12.53,
+      "height": 0.7017,
+      "text_chars": 31,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 29",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0",
+      "box_in": [
+       10.02,
+       1.72,
+       12.57,
+       6.27
+      ],
+      "crop": {
+       "crop_left": 0.463,
+       "crop_right": 0.1984,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "d8f580526cca6a99f980865d4e97b6632a3786db6257cf972e7612c64a703efd"
+   }
+  },
+  "11": {
+   "shapes": 34,
+   "chars_rendered": 347,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "ordinal",
+    "Text 5": "body",
+    "Text 7": "ordinal",
+    "Text 8": "body",
+    "Text 10": "ordinal",
+    "Text 11": "body",
+    "Text 13": "ordinal",
+    "Text 14": "body",
+    "Text 16": "ordinal",
+    "Text 17": "body",
+    "Text 19": "ordinal",
+    "Text 20": "body",
+    "Text 22": "ordinal",
+    "Text 23": "body",
+    "Text 25": "ordinal",
+    "Text 26": "body",
+    "Text 28": "quote",
+    "Text 29": "conclusion",
+    "Text 30": "source",
+    "Text 31": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 282,
+   "mapped_chars": 282,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "标题按你的标准：宏观向好vs个人窘迫",
+     "mapped": "标题按你的标准：宏观向好vs个人窘迫",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "统一结构：国家/行业/产能/平台越强，普通人/工资/钱包/购物车越紧。",
+     "mapped": "统一结构：国家/行业/产能/平台越强，普通人/工资/钱包/购物车越紧。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "ordinal",
+     "expected": "01",
+     "mapped": "01",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "国家产能越来越强，普通人钱包越来越紧",
+     "mapped": "国家产能越来越强，普通人钱包越来越紧",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "ordinal",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "中国制造全线升级，打工人的购物车却越来越空",
+     "mapped": "中国制造全线升级，打工人的购物车却越来越空",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "ordinal",
+     "expected": "03",
+     "mapped": "03",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "工厂机器昼夜不停，年轻人却不敢结婚生孩子",
+     "mapped": "工厂机器昼夜不停，年轻人却不敢结婚生孩子",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "ordinal",
+     "expected": "04",
+     "mapped": "04",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "618成交额还在撑场面，普通人的钱包已经投了反对票",
+     "mapped": "618成交额还在撑场面，普通人的钱包已经投了反对票",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "ordinal",
+     "expected": "05",
+     "mapped": "05",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "宏观经济要扩内需，微观家庭先扩现金流",
+     "mapped": "宏观经济要扩内需，微观家庭先扩现金流",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "ordinal",
+     "expected": "06",
+     "mapped": "06",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "body",
+     "expected": "企业库存堆成山，普通人连降价都不敢买",
+     "mapped": "企业库存堆成山，普通人连降价都不敢买",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "ordinal",
+     "expected": "07",
+     "mapped": "07",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 23",
+     "role": "body",
+     "expected": "国家补贴刺激消费，个人先算下个月房租",
+     "mapped": "国家补贴刺激消费，个人先算下个月房租",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "ordinal",
+     "expected": "08",
+     "mapped": "08",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "body",
+     "expected": "产业升级讲未来，普通人的账本讲今天",
+     "mapped": "产业升级讲未来，普通人的账本讲今天",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 28",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 29",
+     "role": "conclusion",
+     "expected": "标题不要只写“问题很严重”，要写“宏观很漂亮，个人很狼狈”。",
+     "mapped": "标题不要只写“问题很严重”，要写“宏观很漂亮，个人很狼狈”。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 30",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 31",
+     "role": "footer",
+     "expected": "11",
+     "mapped": "11",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 33",
+      "cls": "PICTURE (13)",
+      "left": 6.67,
+      "top": 0.0,
+      "width": 6.66,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.2318,
+       "crop_right": 0.2318,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 34",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.67,
+      "top": 0.0,
+      "width": 6.66,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.74
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.91,
+      "top": 1.67,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "8B2E28",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.95,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.47,
+      "top": 1.95,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Shape 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.91,
+      "top": 2.79,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 9,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.92,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.47,
+      "top": 2.92,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 21,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Shape 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.91,
+      "top": 3.91,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 3.89,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Text 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.47,
+      "top": 3.89,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 14,
+      "name": "Shape 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.91,
+      "top": 5.03,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.86,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.47,
+      "top": 4.86,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 25,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.86,
+      "top": 1.67,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.78,
+      "top": 1.95,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.5,
+      "top": 1.95,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Shape 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.86,
+      "top": 2.79,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 21,
+      "name": "Text 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.78,
+      "top": 2.92,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.5,
+      "top": 2.92,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Shape 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.86,
+      "top": 3.91,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.78,
+      "top": 3.89,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Text 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.5,
+      "top": 3.89,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 18,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Shape 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.86,
+      "top": 5.03,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.78,
+      "top": 4.86,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.5,
+      "top": 4.86,
+      "width": 5.05,
+      "height": 1.1367,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Shape 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.36,
+      "top": 5.95,
+      "width": 12.61,
+      "height": 0.91,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 30,
+      "name": "Text 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.55,
+      "top": 6.1,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.5,
+      "top": 6.0,
+      "width": 12.43,
+      "height": 0.7017,
+      "text_chars": 30,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 32,
+      "name": "Text 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 33,
+      "name": "Text 31",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 33",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0",
+      "box_in": [
+       6.67,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.2318,
+       "crop_right": 0.2318,
+       "crop_top": 0.0,
+       "crop_bottom": 0.0
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "810684874755647d817cf9121cce324bdce13e2c3b505812c7522822b6723d77"
+   }
+  },
+  "12": {
+   "shapes": 30,
+   "chars_rendered": 277,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "ordinal",
+    "Text 5": "body",
+    "Text 6": "body",
+    "Text 8": "ordinal",
+    "Text 9": "body",
+    "Text 10": "body",
+    "Text 12": "ordinal",
+    "Text 13": "body",
+    "Text 14": "body",
+    "Text 16": "ordinal",
+    "Text 17": "body",
+    "Text 18": "body",
+    "Text 20": "ordinal",
+    "Text 21": "body",
+    "Text 22": "body",
+    "Text 24": "quote",
+    "Text 25": "conclusion",
+    "Text 26": "source",
+    "Text 27": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 239,
+   "mapped_chars": 239,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "转成公众号/短视频的结构",
+     "mapped": "转成公众号/短视频的结构",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+     "mapped": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "ordinal",
+     "expected": "1",
+     "mapped": "1",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "开场钩子",
+     "mapped": "开场钩子",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "618这么大阵仗，为什么你还是不想买？",
+     "mapped": "618这么大阵仗，为什么你还是不想买？",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "ordinal",
+     "expected": "2",
+     "mapped": "2",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "反常识",
+     "mapped": "反常识",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "商品过剩不是富足，可能是支付能力不足的结果。",
+     "mapped": "商品过剩不是富足，可能是支付能力不足的结果。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "ordinal",
+     "expected": "3",
+     "mapped": "3",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "机制解释",
+     "mapped": "机制解释",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "工资、债务、房租、风险预期如何压缩有效需求。",
+     "mapped": "工资、债务、房租、风险预期如何压缩有效需求。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "ordinal",
+     "expected": "4",
+     "mapped": "4",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "个人落点",
+     "mapped": "个人落点",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "body",
+     "expected": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+     "mapped": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "ordinal",
+     "expected": "5",
+     "mapped": "5",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "body",
+     "expected": "转化引导",
+     "mapped": "转化引导",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+     "mapped": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 20.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "conclusion",
+     "expected": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+     "mapped": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "footer",
+     "expected": "12",
+     "mapped": "12",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 29",
+      "cls": "PICTURE (13)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.65
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.89,
+      "top": 1.96,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 1.88,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 1.88,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.8,
+      "top": 1.88,
+      "width": 8.8,
+      "height": 0.61,
+      "text_chars": 19,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.34,
+      "top": 1.96,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 2.5,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 2.5,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.8,
+      "top": 2.5,
+      "width": 8.8,
+      "height": 0.61,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.79,
+      "top": 1.96,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 3.12,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 3.12,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.8,
+      "top": 3.12,
+      "width": 8.8,
+      "height": 0.61,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.24,
+      "top": 1.96,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 3.74,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 3.74,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.8,
+      "top": 3.74,
+      "width": 8.8,
+      "height": 0.61,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.69,
+      "top": 1.96,
+      "width": 0.08,
+      "height": 0.08,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.9,
+      "top": 4.36,
+      "width": 0.55,
+      "height": 0.435,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 4.36,
+      "width": 2.1,
+      "height": 0.6558,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.8,
+      "top": 4.36,
+      "width": 8.8,
+      "height": 1.1367,
+      "text_chars": 29,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.32,
+      "top": 5.48,
+      "width": 12.69,
+      "height": 1.48,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.55,
+      "top": 5.7,
+      "width": 0.3,
+      "height": 0.5183,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.4,
+      "top": 5.6,
+      "width": 12.53,
+      "height": 1.3161,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 29",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350",
+      "box_in": [
+       0.0,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "8aa4538982571029a6b129391c691c8266882a01c4cbac4f8d0597ca61b4b135"
+   }
+  },
+  "13": {
+   "shapes": 32,
+   "chars_rendered": 297,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 3": "body",
+    "Text 5": "body",
+    "Text 6": "body",
+    "Text 7": "source",
+    "Text 8": "source",
+    "Text 9": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 265,
+   "mapped_chars": 265,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "结论：没有支付能力的繁荣，是悬空的繁荣",
+     "mapped": "结论：没有支付能力的繁荣，是悬空的繁荣",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "最后一句要有收束感：从宏观问题落回普通人的资产负债表。",
+     "mapped": "最后一句要有收束感：从宏观问题落回普通人的资产负债表。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 3",
+     "role": "body",
+     "expected": "真正的内需，不是靠口号喊出来的，是当普通人的工资、保障和未来预期足够稳定时，自然长出来的。",
+     "mapped": "真正的内需，不是靠口号喊出来的，是当普通人的工资、保障和未来预期足够稳定时，自然长出来的。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "适合转化的收口",
+     "mapped": "适合转化的收口",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "如果你也感觉“生产越来越拼，生活越来越紧”，先不要急着找风口。先做一次家庭现金流体检，看看你的家庭能不能扛过下一轮收入波动。",
+     "mapped": "如果你也感觉“生产越来越拼，生活越来越紧”，先不要急着找风口。先做一次家庭现金流体检，看看你的家庭能不能扛过下一轮收入波动。",
+     "size_pt": 28.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "source",
+     "expected": "资料来源：国家统计局《2026年5月国民经济运行》；国务院《2026政府工作报告》相关报道；Reuters关于2026年618消费、工业利润与信贷需求报道。",
+     "mapped": "资料来源：国家统计局《2026年5月国民经济运行》；国务院《2026政府工作报告》相关报道；Reuters关于2026年618消费、工业利润与信贷需求报道。",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "footer",
+     "expected": "13",
+     "mapped": "13",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [],
+   "findings_count": 0,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Oval 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.614,
+      "top": 1.215,
+      "width": 0.047,
+      "height": 0.047,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 2,
+      "name": "Oval 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.38,
+      "top": 1.078,
+      "width": 0.045,
+      "height": 0.045,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 3,
+      "name": "Oval 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.171,
+      "top": 0.71,
+      "width": 0.046,
+      "height": 0.046,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 4,
+      "name": "Oval 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.237,
+      "top": 0.939,
+      "width": 0.038,
+      "height": 0.038,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 5,
+      "name": "Oval 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.0,
+      "top": 1.285,
+      "width": 0.025,
+      "height": 0.025,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 6,
+      "name": "Oval 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.098,
+      "top": 1.508,
+      "width": 0.049,
+      "height": 0.049,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 7,
+      "name": "Oval 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.288,
+      "top": 0.876,
+      "width": 0.024,
+      "height": 0.024,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 8,
+      "name": "Oval 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.637,
+      "top": 1.246,
+      "width": 0.048,
+      "height": 0.048,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 9,
+      "name": "Oval 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.33,
+      "top": 0.794,
+      "width": 0.04,
+      "height": 0.04,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 10,
+      "name": "Oval 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.953,
+      "top": 1.192,
+      "width": 0.046,
+      "height": 0.046,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 11,
+      "name": "Oval 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.516,
+      "top": 1.029,
+      "width": 0.034,
+      "height": 0.034,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 12,
+      "name": "Oval 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.698,
+      "top": 0.969,
+      "width": 0.027,
+      "height": 0.027,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 13,
+      "name": "Oval 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.547,
+      "top": 0.725,
+      "width": 0.027,
+      "height": 0.027,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 14,
+      "name": "Oval 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.864,
+      "top": 0.911,
+      "width": 0.019,
+      "height": 0.019,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 15,
+      "name": "Oval 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.596,
+      "top": 1.491,
+      "width": 0.02,
+      "height": 0.02,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 16,
+      "name": "Oval 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.981,
+      "top": 0.674,
+      "width": 0.048,
+      "height": 0.048,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 17,
+      "name": "Oval 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.32,
+      "top": 0.772,
+      "width": 0.03,
+      "height": 0.03,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 18,
+      "name": "Oval 28",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.889,
+      "top": 0.738,
+      "width": 0.035,
+      "height": 0.035,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 19,
+      "name": "Oval 29",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.191,
+      "top": 0.68,
+      "width": 0.04,
+      "height": 0.04,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 20,
+      "name": "Oval 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.967,
+      "top": 0.906,
+      "width": 0.023,
+      "height": 0.023,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 21,
+      "name": "Oval 31",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.088,
+      "top": 1.144,
+      "width": 0.037,
+      "height": 0.037,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 22,
+      "name": "Oval 32",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 12.381,
+      "top": 1.393,
+      "width": 0.027,
+      "height": 0.027,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "E8C877",
+       "alpha": 0.7
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.2,
+      "width": 11.89,
+      "height": 0.885,
+      "text_chars": 19,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.13,
+      "width": 11.89,
+      "height": 0.61,
+      "text_chars": 27,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Text 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.15,
+      "top": 1.98,
+      "width": 11.89,
+      "height": 1.2264,
+      "text_chars": 46,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Shape 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.55,
+      "top": 3.25,
+      "width": 4.2,
+      "height": 0.07,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.35,
+      "top": 3.4,
+      "width": 10.5,
+      "height": 0.61,
+      "text_chars": 7,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.4,
+      "top": 4.0,
+      "width": 12.73,
+      "height": 1.9306,
+      "text_chars": 63,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.1,
+      "top": 6.0,
+      "width": 11.2,
+      "height": 0.7778,
+      "text_chars": 78,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 30,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 6.96,
+      "width": 6.5,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 31,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 6.96,
+      "width": 0.81,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 22,
+      "animMotion": 22,
+      "set": 22
+     },
+     "timing_xml_sha256": "f344bac84d3217491f7b77252c89810428858a9ca070b685052ce2af1a461f71"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    },
+    "inventory_sha256": "9e018c035e8a7786824a6d428a628c6b0ecaf5be446d92f03c61bfd9304040e4"
+   }
+  }
+ },
+ "identity": {
+  "pptx_sha256": "dc135f46772f814ccd1758423d2ccfa704e618972f8beae9cb9517355ce42fa6",
+  "pdf_sha256": "3582c11daf04b86cdf818fd6eb1d5612ee40ac06f98fd3e137181963483b9495",
+  "baseline_pptx_sha256": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+  "source_fidelity_verified": false,
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "build_identity": {
+   "program_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+   "build_id": "1b6f2fde516e40cedd7ca02ee97bc9d5",
+   "build_id_scope": "程序成员聚合（wengao_ppt.install.build_id：排除数据根/运行期文件；门禁自算，不接受自报）"
+  },
+  "per_page_render_sha256": {
+   "1": "b3f40b822a85569770747828d3c4f32de3c4e0d824a80b31ad436cc648dd4351",
+   "2": "d82cf67dbfc9a724564ab373e2bf6bfe543d1926b9aa73b4da61a3293b9d1067",
+   "3": "d994a3ae9386e3d0c7970ef255cb8cbfa36e0d7cf3454dfba81369e8c41bd7c5",
+   "4": "73a86c93075ef76b135ff5e31dad5b8cbbe025696fbf788d41acbee31d5c744f",
+   "5": "52334adf4cbef9d80cc7487786a8f8f76d96f21a591004cd960d3a609803ff9c",
+   "6": "5b4f99837d12034a4dc9c2fec84330ffef0e4416458f92c704fad29f92c0bddc",
+   "7": "873febfa83b58d9f26c1ba5249a5fe3cb20a77f34366c8eccd6d12508e5c9f46",
+   "8": "2ddd78a2c11b6d2e78a28b3a7b39473c6ac18b4f98c0def95a1a781f0c9fe9d9",
+   "9": "e85f5ddf4b30f47946fbd5109d0570bb57c9d5a8a785b961b42cce78c63dd70f",
+   "10": "ec8f4fcb2f0a5615303d10bec6dd105b6ae429b46acfbf8e8afde30c251638b9",
+   "11": "4b8bad866fb0a5d8ca1e89f520f792a7b1b3821cca21b4007596dfad27734e7a",
+   "12": "c5cbe4d2214cc726fe2937602f13172032bfc8d2f335953855ef9ced8d88d1a5",
+   "13": "283166807d0bdba971391c8656c56862f99903d9763290365e4cc8b614248650"
+  },
+  "per_page_notext_render_sha256": {
+   "1": "82df1f9d46025f7c3cee21336e2002d2d5396b8206db0afd24336bc2436876e7",
+   "2": "d757db3df256c114919356714e7680c8cc6e39cec9b8610db482bcfe8531a127",
+   "3": "6bf6b521ee281e6b2ffd6e80d83f742a08ed907e455130d0c92c576ed87a0844",
+   "4": "3791f8c7337f8d954302b1ee8188f1fdfd7d5fcf3a9abbf27074570c20cfaa20",
+   "5": "2e322511d6bab7edb16f3ac85a5e5c0c084cf59bb9c4f38a1459c1254b818a7f",
+   "6": "bffd8f263be93b4bfd8dc4457d029d3faa1430074a895420866485d74386219f",
+   "7": "24c9aee6705d19a2461f59362a22777705e3b9b2992281f9f28c9a2f37e4f59f",
+   "8": "318592e0d0f3904d97ca2a8020b26c886285ca210407e503315b93fd3c2a45b2",
+   "9": "5549c77decdf2995d89e2bb1504a4948dfe0e84d8ba47ee67daf1471d201ad35",
+   "10": "598e72c71442b0b3384e16f56eae5440fd1eaaf9072eca456571559e9b434de2",
+   "11": "41e9b226fe6883328e9a5454f624f82398d8f7f57b710b13c50f2a060b612b69",
+   "12": "a5b13f333447434752434dd9da36478b9f2c8fedbea0dcc0d4ffd8ed2df2f5fc",
+   "13": "14e9b94d6ff3bb08136f15a5477525930740eefd8daf03d97bd52907b874e008"
+  },
+  "export_parameters": {
+   "renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
+   "gate": "layout_gate.py WG-LAYOUT-20261021.1"
+  }
+ },
+ "hg10": {
+  "render_width_px": 1920,
+  "pages_rendered": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "selected_pages": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "static_only": true,
+  "native_playback_provided": false,
+  "native_playback_checks": null
+ },
+ "findings": [],
+ "unverified": [
+  {
+   "gate": "HG10",
+   "type": "NATIVE_PLAYBACK_EVIDENCE_MISSING",
+   "note": "static_only=False 布尔开关不构成原生实播证据；需 30–60s 连续放映录像 + 关闭后磁盘重开核哈希"
+  },
+  {
+   "gate": "HG10",
+   "reason": "animation_states_and_native_playback_not_run",
+   "note": "静态渲染通过只能记 STATIC_LAYOUT_ONLY；原生实播/重开为最终条件"
+  }
+ ],
+ "gates_hit": [],
+ "counts": {
+  "findings": 0,
+  "unmatched_chars": 0,
+  "missing_chars": 0,
+  "collisions": 0,
+  "occlusions": 0
+ },
+ "verdict": "UNVERIFIED",
+ "static_layout_only": true
+}

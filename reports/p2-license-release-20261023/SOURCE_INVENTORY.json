@@ -1,0 +1,678 @@
+{
+  "generated_at": "2026-10-24T00:39:54+0800",
+  "root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+  "baseline_file_count": 2594,
+  "baseline_tree_sha256": "061d65cce833209d70e87de74049eaea5417e3a13423733e6e320c4d231d4334",
+  "upstream": {
+    "checkout_dir": "vendor/luobo-ppt",
+    "exists": true,
+    "head": "b6dcb0f325b3ea38a7ca3cd3c211bbba7fb436b2",
+    "tree": "ed28a29ddfd5e9666fa0dc9949e2e0658d6786f5",
+    "remote_origin_redacted": "/Users/<REDACTED>/WorkBuddy/2026-10-12-00-54-41/_d01_pkg/wengao-ppt-D01-upstream-fix/luobo-ppt.bundle",
+    "tracked_files": 76,
+    "head_matches_declared": true,
+    "tree_matches_declared": true,
+    "working_tree_clean": true,
+    "last_commit": "2026-10-08T19:50:27+08:00 / zhouwei713",
+    "license_files": [
+      {
+        "path": "vendor/luobo-ppt/LICENSE",
+        "sha256": "39f501dd58369525e03284ef93f0d4ddb1ea297af4ad8f28f144ef0a0e789e74",
+        "bytes": 1078,
+        "first_lines": [
+          "MIT License",
+          "Copyright (c) 2026 zhouluobo (周萝卜)"
+        ]
+      },
+      {
+        "path": "vendor/luobo-ppt/assets/LICENSE-lucide.txt",
+        "sha256": "4225f14fa5babc9cf19c69785836a3db4a8a15f41af3e1e785c6ef78d60bf7cd",
+        "bytes": 968,
+        "first_lines": [
+          "Icons in this folder are rasterized from Lucide (https://lucide.dev), via react-icons.",
+          "ISC License"
+        ]
+      }
+    ]
+  },
+  "venv": [
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "et_xmlfile",
+      "version": "2.0.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "lxml",
+      "version": "6.1.3"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "openpyxl",
+      "version": "3.1.5"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "packaging",
+      "version": "26.3"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pillow",
+      "version": "13.0.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pluggy",
+      "version": "1.7.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pygments",
+      "version": "2.21.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pypdf",
+      "version": "6.21.2"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pypdfium2",
+      "version": "5.14.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pytest",
+      "version": "9.1.1"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "pytest_subtests",
+      "version": "0.15.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "python_docx",
+      "version": "1.2.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "python_pptx",
+      "version": "1.0.2"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "env": "candidate .venv (python3.13)",
+      "distribution": "xlsxwriter",
+      "version": "3.3.0"
+    }
+  ],
+  "installed": [
+    {
+      "distribution": "Pillow",
+      "version": "12.3.0",
+      "license": null,
+      "license_expression": "MIT-CMU",
+      "classifiers": [],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "lxml",
+      "version": "6.1.3",
+      "license": "BSD-3-Clause",
+      "license_expression": null,
+      "classifiers": [],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "openpyxl",
+      "version": "3.1.5",
+      "license": "MIT",
+      "license_expression": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "pypdf",
+      "version": "6.20.0",
+      "license": null,
+      "license_expression": "BSD-3-Clause",
+      "classifiers": [],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "pypdfium2",
+      "version": "5.14.0",
+      "license": "BSD-3-Clause, Apache-2.0, dependency licenses",
+      "license_expression": null,
+      "classifiers": [],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "python-docx",
+      "version": "1.2.0",
+      "license": "MIT",
+      "license_expression": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    },
+    {
+      "distribution": "python-pptx",
+      "version": "1.0.2",
+      "license": "MIT",
+      "license_expression": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "env": "/Users/huangyingteng/.workbuddy/binaries/python/envs/default"
+    }
+  ],
+  "pypi": [
+    {
+      "package": "lxml",
+      "url": "https://pypi.org/pypi/lxml/json",
+      "latest_version": "6.1.3",
+      "license_expression": null,
+      "sha256_of_response": "30dda8543e22202de5603da9e688a856cec2169ea89bce5a38a5f11705029adf",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "openpyxl",
+      "url": "https://pypi.org/pypi/openpyxl/json",
+      "latest_version": "3.1.5",
+      "license_expression": null,
+      "sha256_of_response": "2bbf01d2a1146e878113777019080e8f8d0b14fd07d431a3f743dd54978718c4",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "pillow",
+      "url": "https://pypi.org/pypi/pillow/json",
+      "latest_version": "13.0.0",
+      "license_expression": "MIT-CMU",
+      "sha256_of_response": "56cd02ba0c8d44417b3f5e6b5bff96861810d89a4f14ba2863a91f619f86a842",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "pypdf",
+      "url": "https://pypi.org/pypi/pypdf/json",
+      "latest_version": "6.21.2",
+      "license_expression": "BSD-3-Clause",
+      "sha256_of_response": "1f11364f5b5ac69a2973e5cdbd11aa4ad18feb3179bad27d30b59db98e4fd970",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "pypdfium2",
+      "url": "https://pypi.org/pypi/pypdfium2/json",
+      "latest_version": "5.14.0",
+      "license_expression": null,
+      "sha256_of_response": "e761a338dfa137de8017585ce72085e36d271b5a6c7a5c4159909d63c79dbaca",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "python-docx",
+      "url": "https://pypi.org/pypi/python-docx/json",
+      "latest_version": "1.2.0",
+      "license_expression": null,
+      "sha256_of_response": "95eecaefd9734330d53f53a862847578a0deed24a16df2a261fdd828f7e50597",
+      "note": "from_raw_response"
+    },
+    {
+      "package": "python-pptx",
+      "url": "https://pypi.org/pypi/python-pptx/json",
+      "latest_version": "1.0.2",
+      "license_expression": null,
+      "sha256_of_response": "f1822c66f354c5ec9df481c324c93dc02c303375fafbe08f37685f802d07018d",
+      "note": "from_raw_response"
+    }
+  ],
+  "assets": {
+    "ai_generated_png": [
+      {
+        "path": "assets/visual_img/aisle_supermarket.png",
+        "sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7",
+        "bytes": 1998421,
+        "has_text_chunk": false,
+        "width": 1536,
+        "height": 928
+      },
+      {
+        "path": "assets/visual_img/desk_planning.png",
+        "sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0",
+        "bytes": 1510722,
+        "has_text_chunk": false,
+        "width": 1536,
+        "height": 928
+      },
+      {
+        "path": "assets/visual_img/factory_night.png",
+        "sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65",
+        "bytes": 2219196,
+        "has_text_chunk": false,
+        "width": 1536,
+        "height": 928
+      },
+      {
+        "path": "assets/visual_img/promo_ecom.png",
+        "sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350",
+        "bytes": 2168653,
+        "has_text_chunk": false,
+        "width": 1536,
+        "height": 928
+      },
+      {
+        "path": "assets/visual_img/skyline_city.png",
+        "sha256": "3c64d9f1e4a6c82a206cef3c7ae5c4e9184415e0b2cd821386582b0bd65b5d99",
+        "bytes": 1500716,
+        "has_text_chunk": false,
+        "width": 1536,
+        "height": 928
+      }
+    ],
+    "scene_photos": [
+      {
+        "path": "assets/visual_img/semantic_scenes/consumer-payment-receipt-3570244.jpeg",
+        "sha256": "3ab2b539e4e1a230bf5a0ec909cb130eebe905de71f31eee1fbe781ecad1b52f",
+        "bytes": 1086348
+      },
+      {
+        "path": "assets/visual_img/semantic_scenes/consumer-shopping-4971925.jpeg",
+        "sha256": "baa246ab6ff90f1610ec9c96e5930054f04ee58b0890da2b55989721045b64c0",
+        "bytes": 250206
+      },
+      {
+        "path": "assets/visual_img/semantic_scenes/delivery-courier-6868460.jpeg",
+        "sha256": "4f517c92a344caa9e0068176c87aa5a4f92192af93364d93185fd4a7a82cf164",
+        "bytes": 1177556
+      },
+      {
+        "path": "assets/visual_img/semantic_scenes/factory-workers-32048366.jpeg",
+        "sha256": "4cbc50349c48dff3aa95d4ec333cc946130e989374856d9c921f6cba87e19c2a",
+        "bytes": 377737
+      },
+      {
+        "path": "assets/visual_img/semantic_scenes/production-line-modern-34718930.jpeg",
+        "sha256": "2a075efb88b6866961e0769de2dd704a885488cbad70f4ce88c32690fb312ecf",
+        "bytes": 390663
+      }
+    ],
+    "manifest_claims": [
+      {
+        "file": "consumer-shopping-4971925.jpeg",
+        "scene_id": "consumer.supermarket_shopping",
+        "creator": "Gustavo Fring",
+        "license": "Pexels License",
+        "source_page": "https://www.pexels.com/photo/woman-shopping-in-supermarket-4971925/",
+        "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+        "declared_sha256": "baa246ab6ff90f1610ec9c96e5930054f04ee58b0890da2b55989721045b64c0",
+        "declared_bytes": 250206,
+        "measured_sha256": "baa246ab6ff90f1610ec9c96e5930054f04ee58b0890da2b55989721045b64c0",
+        "measured_bytes": 250206,
+        "sha256_match": true
+      },
+      {
+        "file": "consumer-payment-receipt-3570244.jpeg",
+        "scene_id": "consumer.receipt_settlement",
+        "creator": "Hook Tell",
+        "license": "Pexels License",
+        "source_page": "https://www.pexels.com/photo/photo-of-a-person-printing-a-receipt-3570244/",
+        "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+        "declared_sha256": "3ab2b539e4e1a230bf5a0ec909cb130eebe905de71f31eee1fbe781ecad1b52f",
+        "declared_bytes": 1086348,
+        "measured_sha256": "3ab2b539e4e1a230bf5a0ec909cb130eebe905de71f31eee1fbe781ecad1b52f",
+        "measured_bytes": 1086348,
+        "sha256_match": true
+      },
+      {
+        "file": "factory-workers-32048366.jpeg",
+        "scene_id": "production.factory_workers",
+        "creator": "EqualStock India",
+        "license": "Pexels License",
+        "source_page": "https://www.pexels.com/photo/textile-factory-workers-in-a-production-line-32048366/",
+        "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+        "declared_sha256": "4cbc50349c48dff3aa95d4ec333cc946130e989374856d9c921f6cba87e19c2a",
+        "declared_bytes": 377737,
+        "measured_sha256": "4cbc50349c48dff3aa95d4ec333cc946130e989374856d9c921f6cba87e19c2a",
+        "measured_bytes": 377737,
+        "sha256_match": true
+      },
+      {
+        "file": "production-line-modern-34718930.jpeg",
+        "scene_id": "production.capacity_line",
+        "creator": "Yetkin Ağaç",
+        "license": "Pexels License",
+        "source_page": "https://www.pexels.com/photo/industrial-factory-interior-with-conveyor-34718930/",
+        "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+        "declared_sha256": "2a075efb88b6866961e0769de2dd704a885488cbad70f4ce88c32690fb312ecf",
+        "declared_bytes": 390663,
+        "measured_sha256": "2a075efb88b6866961e0769de2dd704a885488cbad70f4ce88c32690fb312ecf",
+        "measured_bytes": 390663,
+        "sha256_match": true
+      },
+      {
+        "file": "delivery-courier-6868460.jpeg",
+        "scene_id": "delivery.food_courier",
+        "creator": "Pexels contributor per page",
+        "license": "Pexels License",
+        "source_page": "https://www.pexels.com/photo/man-in-red-t-shirt-riding-bicycle-on-road-6868460/",
+        "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+        "declared_sha256": "4f517c92a344caa9e0068176c87aa5a4f92192af93364d93185fd4a7a82cf164",
+        "declared_bytes": 1177556,
+        "measured_sha256": "4f517c92a344caa9e0068176c87aa5a4f92192af93364d93185fd4a7a82cf164",
+        "measured_bytes": 1177556,
+        "sha256_match": true
+      }
+    ],
+    "fontconfig": {
+      "path": "assets/fontconfig/fonts.conf",
+      "sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+      "bytes": 3077
+    },
+    "upstream_binary_assets": [
+      {
+        "path": "vendor/luobo-ppt/docs/images/14-styles.jpg",
+        "sha256": "f846ab336ad06c3b96fe82f9a97b5733bc1c1fe9cee8bb32c266fa441b93a7db",
+        "bytes": 467687,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/article-to-deck.jpg",
+        "sha256": "32d449305e1406dce41b501ecd051c356ad0096fe433cc0d935eeaba9672bc11",
+        "bytes": 217525,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/beautify-before-after.jpg",
+        "sha256": "efa5fc6dd0374a5d8ee8230d285580aa96323f0dff4f7f50722373c9190680fa",
+        "bytes": 81813,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/equations-kept.jpg",
+        "sha256": "8722cf2913dcaf6a727cc95811d369272467d4e96677a1212e5ebd63ed5882fa",
+        "bytes": 76552,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/follow-reference-image.jpg",
+        "sha256": "da8c2d9f5c8facfdab832e04d212d882715df44a539b988703759d1e38996afc",
+        "bytes": 132379,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/lite-preview.png",
+        "sha256": "822b6fd225da8f3eb7180e57899ac05a5bb523b536e0a77e25c45d00581f9670",
+        "bytes": 393688,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/logo.png",
+        "sha256": "d340c043629865daa51a9c757932beff5b1cf827321f5aaed50a5171b8660d42",
+        "bytes": 106375,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/math-deck-before-after.jpg",
+        "sha256": "329c43299e56fddfc60b8e25c488dd1205ffdb08cbf9d9c178869c405199a16f",
+        "bytes": 180304,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/one-deck-three-styles.jpg",
+        "sha256": "f7a61e818c61ef27966e562a681499cf79d448196514e4f42848e016f8d6f434",
+        "bytes": 184505,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/outline-capacity.png",
+        "sha256": "7715b198b0bf3046d623ba9fd6a2324cfd0ed6bc31cf7890cc47617ed590880f",
+        "bytes": 240990,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/qa-fidelity.png",
+        "sha256": "3ac7c4c524b387e1112b826e19e85d5ee7422aac5d232405614be292b7938bf2",
+        "bytes": 137947,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/rich-layouts.jpg",
+        "sha256": "09ae9df734166c379ce948d54008782c11a231aa789f34f5512348c5184f549c",
+        "bytes": 197219,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/screenshot-layouts.jpg",
+        "sha256": "7d30336520eef686f6a7807d00eb57ca7d58dae21f4706d76d1a480adace9b9d",
+        "bytes": 101249,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/docs/images/self-review.png",
+        "sha256": "dc387adb78d9f8f81c2f4dfeb4ec479c7d5f8ab701e88994cad88a820355b8ec",
+        "bytes": 228231,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/assets/icons.png",
+        "sha256": "96606e5c5f2951a4ac7be7f9b2fdb9be352c95671a5dd3fb89a491ee01c5ff52",
+        "bytes": 416176,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      },
+      {
+        "path": "vendor/luobo-ppt/assets/style_gallery.jpg",
+        "sha256": "c907c6f9bdf68b46c34fe55ce816d35967d2297c17531bed7a3fe3432b95900f",
+        "bytes": 567398,
+        "provenance_note": "上游仓库自带，无逐图来源/许可说明（见 BLK-05）"
+      }
+    ]
+  },
+  "own_source": {
+    "modules": [
+      {
+        "path": "wengao_ppt/__init__.py",
+        "sha256": "08b448e6ebf321fc0c3e31e3398db97e975fd15d939f450e3d0cd80fdf119df8",
+        "bytes": 527
+      },
+      {
+        "path": "wengao_ppt/backdrop.py",
+        "sha256": "2f9c245198715c38da33a3ff031a63d7891e9c25797ab25b9ccb826f62839dee",
+        "bytes": 18728
+      },
+      {
+        "path": "wengao_ppt/census.py",
+        "sha256": "0b1edd4b5e1f20231ef4cd4c2073d54bb882c7bc31e0e893866de550ee1370c0",
+        "bytes": 21350
+      },
+      {
+        "path": "wengao_ppt/charts.py",
+        "sha256": "c8d713a4e51ea320898a91a0f921d160eb90700f4a524b3de068d1d820a3226d",
+        "bytes": 28083
+      },
+      {
+        "path": "wengao_ppt/checks.py",
+        "sha256": "910f70331958dec2b76f9ac7021c96461c3764e83c02210728cb7c5b062439c5",
+        "bytes": 50596
+      },
+      {
+        "path": "wengao_ppt/cleanup.py",
+        "sha256": "710e5e55f43558dbf022766eb129317f2e7bb5f67564f004d671684fa0dbedeb",
+        "bytes": 6050
+      },
+      {
+        "path": "wengao_ppt/cli.py",
+        "sha256": "556f8e51fa45f9d99eb4a585dcbef29f1c74f6b916e9e9431f45d7927dc2741b",
+        "bytes": 32128
+      },
+      {
+        "path": "wengao_ppt/core.py",
+        "sha256": "6ba31c79fcbf68cd9683c26a4cd1df7f6c1510b19df0a08ab5f23910ba42de30",
+        "bytes": 4981
+      },
+      {
+        "path": "wengao_ppt/extractors.py",
+        "sha256": "88353ed6ac5f4d09684793eae3e5c4cd589eea7a1a3d9d57d238164574799d89",
+        "bytes": 13158
+      },
+      {
+        "path": "wengao_ppt/fontenv.py",
+        "sha256": "cb8156b2aa5eda4b45847b4f5b79bb969578615cf2a41488837316087123b6e3",
+        "bytes": 8614
+      },
+      {
+        "path": "wengao_ppt/glyphcheck.py",
+        "sha256": "8228f53ec492ca738fa226c028de05ddaff985fc1422450a47196297128479cf",
+        "bytes": 34963
+      },
+      {
+        "path": "wengao_ppt/incident.py",
+        "sha256": "5f74443fbd84d8d02dbc53214ded85cdc8cfc782277cbd3f4b32879aadd3e4bc",
+        "bytes": 7516
+      },
+      {
+        "path": "wengao_ppt/install.py",
+        "sha256": "209c3ed31af5aa7b722e61b3f4ee808ca3e50f4b6122f62963cae92481b19257",
+        "bytes": 43533
+      },
+      {
+        "path": "wengao_ppt/label_extract.py",
+        "sha256": "b2644496ce255dcfa67806a3f648964bdcf2dfafaf55b4a47f95000cb8df79f1",
+        "bytes": 14126
+      },
+      {
+        "path": "wengao_ppt/language_support.py",
+        "sha256": "0b54aaaa1ed27ec1b116a9266625ce656092bd4ed3c03a16ac3b17cfb69466aa",
+        "bytes": 41697
+      },
+      {
+        "path": "wengao_ppt/local_edit.py",
+        "sha256": "d9bc82ecfdd280ceb027128c5ef6f6bdff8cda6c8cbcf762182e663fcbc0d05c",
+        "bytes": 29881
+      },
+      {
+        "path": "wengao_ppt/page_catalog.py",
+        "sha256": "1cdecb92bbd225e984f0dc2ae01826c28b8cd5ef42984b6f3868ed98c554719e",
+        "bytes": 10821
+      },
+      {
+        "path": "wengao_ppt/parsers_xml.py",
+        "sha256": "9f99317d511d846558ec960c12b8d8e3200ea2e1143cf36834a694b1b9881418",
+        "bytes": 13580
+      },
+      {
+        "path": "wengao_ppt/readability.py",
+        "sha256": "42a6c4a424b4e85a1c3325b554758a26ef37d86ef6d2ce7900af6b0dfdbcf647",
+        "bytes": 61979
+      },
+      {
+        "path": "wengao_ppt/refine.py",
+        "sha256": "ad6f2a4a38cc69abf3f3995a496bb0a9b715a9db4598d08fc3345fd746c191ac",
+        "bytes": 40202
+      },
+      {
+        "path": "wengao_ppt/render.py",
+        "sha256": "f1c41a1c64480c5ba9715c9b8fdad59730d87ae50a7f3ca627dab5066888a185",
+        "bytes": 21469
+      },
+      {
+        "path": "wengao_ppt/repair.py",
+        "sha256": "a04c5857004bce9a5a7def28e3b0880255b01e80b4bf4396e1d7e71716de8410",
+        "bytes": 59437
+      },
+      {
+        "path": "wengao_ppt/runner.py",
+        "sha256": "6fe72272c70fc164e4512367b5c366e437f08068a0d202b2a52ac6bde3886440",
+        "bytes": 184499
+      },
+      {
+        "path": "wengao_ppt/scene_images.py",
+        "sha256": "c0516593f19167b693000336f1e5235cb8567d5b297aa3aa47fc5db001926564",
+        "bytes": 100459
+      },
+      {
+        "path": "wengao_ppt/scene_model.py",
+        "sha256": "ab6e35defd414d1634872286e1a005295b9c9593f13933a28d3057aac874eb42",
+        "bytes": 157101
+      },
+      {
+        "path": "wengao_ppt/semantic_scenes.py",
+        "sha256": "af4cdb16357f98530bce58185ee60b2f88daddf24fff12631fee770c5aa4b874",
+        "bytes": 183267
+      },
+      {
+        "path": "wengao_ppt/source_fidelity.py",
+        "sha256": "3bf1eab7bf7f1e8f893cfa6f6cbbccd20227ab1d74c4548a8634abb9f9fe50e6",
+        "bytes": 42337
+      },
+      {
+        "path": "wengao_ppt/tables.py",
+        "sha256": "6634637fdb888c3b67e02cd154320a8d802c334c4a85073cb7b96d041315ba5d",
+        "bytes": 20323
+      },
+      {
+        "path": "wengao_ppt/theme.py",
+        "sha256": "2abe221e25f32901f63e22d31e0994ec51691d7fd2e3f4b3d75b07145927799d",
+        "bytes": 51752
+      },
+      {
+        "path": "wengao_ppt/visual.py",
+        "sha256": "9a33ffc005de68031d35b24d9b888624afa166bb27d4c82417b19353acf1dab9",
+        "bytes": 45239
+      },
+      {
+        "path": "wengao_ppt/visual_fixes.py",
+        "sha256": "a2cb6af43a9afc3ba32138fb428aed9fd2c82b6dcc3715294ce68e9c0c81b6ac",
+        "bytes": 5433
+      },
+      {
+        "path": "wengao_ppt/visual_plan.py",
+        "sha256": "0d780177fdb9906c539df20d6fe98eaa63e084b2419c7762ca72468e352b0100",
+        "bytes": 17906
+      }
+    ],
+    "module_count": 32,
+    "modules_sha256": "4e92c24b8b0afba7c3d7c997c8854a06262199ef26e1b304ef3a92207ab582db",
+    "bundled_font_files_found": [],
+    "bundled_font_count": 0
+  },
+  "requirements": {
+    "sha256": "46f664422610b240310771804cb5da43c22234205aa98c6b5dba3e50168d5516",
+    "requirements": [
+      "Pillow",
+      "lxml",
+      "openpyxl",
+      "pypdf",
+      "pypdfium2",
+      "python-docx",
+      "python-pptx"
+    ],
+    "declared_verified_versions": {
+      "Pillow": "12.3.0",
+      "lxml": "6.1.3",
+      "openpyxl": "3.1.5",
+      "pypdf": "6.20.0",
+      "pypdfium2": "5.14.0",
+      "python-docx": "1.2.0",
+      "python-pptx": "1.0.2"
+    }
+  },
+  "visual_plan_sha256": "0d780177fdb9906c539df20d6fe98eaa63e084b2419c7762ca72468e352b0100"
+}

@@ -1,0 +1,1918 @@
+{
+  "schema": "P2_RELEASE_COPY_BUILD_V1",
+  "generated_at": "2026-10-24T00:39:55+0800",
+  "source": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+  "output": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/release-sanitized-20261023/wengao-ppt",
+  "mode": "apply",
+  "include_unverified_assets": false,
+  "counts": {
+    "copied": 232,
+    "skipped": 31
+  },
+  "copied": [
+    {
+      "path": "LICENSE-STATUS.md",
+      "source_sha256": "d6aa46826cd46f6c9df710b398cf575b97a0a0f2a4cfa60c2316b45964fcc709",
+      "copy_sha256": "d6aa46826cd46f6c9df710b398cf575b97a0a0f2a4cfa60c2316b45964fcc709",
+      "bytes_before": 4969,
+      "bytes_after": 4969
+    },
+    {
+      "path": "README.md",
+      "source_sha256": "bc6bd8409c7329bf3a69e44e7fdc3a02a4d336e5dab5553ef4de05c33acaba7c",
+      "copy_sha256": "bc6bd8409c7329bf3a69e44e7fdc3a02a4d336e5dab5553ef4de05c33acaba7c",
+      "bytes_before": 22740,
+      "bytes_after": 22740
+    },
+    {
+      "path": "README_EN.md",
+      "source_sha256": "1d8c715f7a25655ee4f25f6fa01dc32dfb5d51420b354bdcbb1bb2f13ce6f283",
+      "copy_sha256": "1d8c715f7a25655ee4f25f6fa01dc32dfb5d51420b354bdcbb1bb2f13ce6f283",
+      "bytes_before": 21661,
+      "bytes_after": 21661
+    },
+    {
+      "path": "SKILL.md",
+      "source_sha256": "88c772a931385597c15752e40453d6b51e2678d6f693d4f7c5e40f96e0262ada",
+      "copy_sha256": "88c772a931385597c15752e40453d6b51e2678d6f693d4f7c5e40f96e0262ada",
+      "bytes_before": 10554,
+      "bytes_after": 10554
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "source_sha256": "48377f2c12a960e9e33f58b36fc9ada4b846d8c8bac5a4b3f250b70b2e415381",
+      "copy_sha256": "48377f2c12a960e9e33f58b36fc9ada4b846d8c8bac5a4b3f250b70b2e415381",
+      "bytes_before": 6362,
+      "bytes_after": 6362
+    },
+    {
+      "path": "assets/fontconfig/fonts.conf",
+      "source_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+      "copy_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+      "bytes_before": 3077,
+      "bytes_after": 3077
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/semantic_scene_assets.json",
+      "source_sha256": "a5fc65313ce1a6a0ec91f29b8e703b884f920cc4abc040962edb3e3c5543917e",
+      "copy_sha256": "a5fc65313ce1a6a0ec91f29b8e703b884f920cc4abc040962edb3e3c5543917e",
+      "bytes_before": 3937,
+      "bytes_after": 3937
+    },
+    {
+      "path": "contracts/error_codes_v1.json",
+      "source_sha256": "774940524fb1ac8f9b9da77ec530cf77f6134ea3f13189209d9ff42f8564342c",
+      "copy_sha256": "774940524fb1ac8f9b9da77ec530cf77f6134ea3f13189209d9ff42f8564342c",
+      "bytes_before": 37030,
+      "bytes_after": 37030
+    },
+    {
+      "path": "contracts/language_acceptance_scope_v1.json",
+      "source_sha256": "13f2191fbf060efddfe83fb335de939ec065b515cb31c2e00db8d82ceba220ef",
+      "copy_sha256": "13f2191fbf060efddfe83fb335de939ec065b515cb31c2e00db8d82ceba220ef",
+      "bytes_before": 6022,
+      "bytes_after": 6022
+    },
+    {
+      "path": "contracts/layout_hard_gate_policy.json",
+      "source_sha256": "0009870f902fe7c4035ab5b74c8dd3f3b08b63e33c9fbb786e7de07ea613a809",
+      "copy_sha256": "0009870f902fe7c4035ab5b74c8dd3f3b08b63e33c9fbb786e7de07ea613a809",
+      "bytes_before": 12306,
+      "bytes_after": 12306
+    },
+    {
+      "path": "contracts/prepublication_50_decks_gate_v1.json",
+      "source_sha256": "3059ff772dbd755dd70a99ae6f319b97d7a0277c87cd95893a4263f0ce282312",
+      "copy_sha256": "3059ff772dbd755dd70a99ae6f319b97d7a0277c87cd95893a4263f0ce282312",
+      "bytes_before": 1737,
+      "bytes_after": 1737
+    },
+    {
+      "path": "contracts/prepublication_50_decks_identity_v1.json",
+      "source_sha256": "69874caca3f864f619bec46761bb1299e5b15a3327bcb150c485e1b7c7f5f1e7",
+      "copy_sha256": "69874caca3f864f619bec46761bb1299e5b15a3327bcb150c485e1b7c7f5f1e7",
+      "bytes_before": 5876,
+      "bytes_after": 5876
+    },
+    {
+      "path": "contracts/schemas_v1.json",
+      "source_sha256": "2befceac1ca1110023e29ca061ac928fb733177ba7986519f53cdd86939b7a34",
+      "copy_sha256": "2befceac1ca1110023e29ca061ac928fb733177ba7986519f53cdd86939b7a34",
+      "bytes_before": 4640,
+      "bytes_after": 4640
+    },
+    {
+      "path": "contracts/semantic_scene_gate_policy.json",
+      "source_sha256": "a4b0de39f0562c8294432114d58117506a47fe31ffeb338d7d3354c1adbfd86b",
+      "copy_sha256": "a4b0de39f0562c8294432114d58117506a47fe31ffeb338d7d3354c1adbfd86b",
+      "bytes_before": 14388,
+      "bytes_after": 14388
+    },
+    {
+      "path": "contracts/source_corpus_review_attestation_v1.json",
+      "source_sha256": "cfd5d3c9af9109806d134896507e73ec3df33453d1f6499916878933103ecb75",
+      "copy_sha256": "cfd5d3c9af9109806d134896507e73ec3df33453d1f6499916878933103ecb75",
+      "bytes_before": 2478,
+      "bytes_after": 2478
+    },
+    {
+      "path": "contracts/support_matrix_v1.json",
+      "source_sha256": "bf891fcf92d236d6c13ada2563f1c9d3a0ca789e9127970255ebfe0c58b571a3",
+      "copy_sha256": "bf891fcf92d236d6c13ada2563f1c9d3a0ca789e9127970255ebfe0c58b571a3",
+      "bytes_before": 6030,
+      "bytes_after": 6030
+    },
+    {
+      "path": "contracts/upstream_baseline.json",
+      "source_sha256": "58d8bcd0a2c190df8775862c26a9bb78ce8656ec56f48d8efdb82cd90a65a006",
+      "copy_sha256": "58d8bcd0a2c190df8775862c26a9bb78ce8656ec56f48d8efdb82cd90a65a006",
+      "bytes_before": 10112,
+      "bytes_after": 10112
+    },
+    {
+      "path": "requirements.txt",
+      "source_sha256": "46f664422610b240310771804cb5da43c22234205aa98c6b5dba3e50168d5516",
+      "copy_sha256": "46f664422610b240310771804cb5da43c22234205aa98c6b5dba3e50168d5516",
+      "bytes_before": 1038,
+      "bytes_after": 1038
+    },
+    {
+      "path": "samples/material_replay/annual_review_17p.plan.json",
+      "source_sha256": "9f68e6809144447a636b9031b222765ef3c5cc2df4bc85b32809c6beb59335b6",
+      "copy_sha256": "9f68e6809144447a636b9031b222765ef3c5cc2df4bc85b32809c6beb59335b6",
+      "bytes_before": 18510,
+      "bytes_after": 18510
+    },
+    {
+      "path": "samples/material_replay/annual_review_17p_deduplicated.plan.json",
+      "source_sha256": "b1053544284d62e660dbedf49bff254d218fe306edcf5fe1e24253495bf7a759",
+      "copy_sha256": "b1053544284d62e660dbedf49bff254d218fe306edcf5fe1e24253495bf7a759",
+      "bytes_before": 16576,
+      "bytes_after": 16576
+    },
+    {
+      "path": "samples/material_replay/annual_review_synthetic.md",
+      "source_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+      "copy_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+      "bytes_before": 2882,
+      "bytes_after": 2882
+    },
+    {
+      "path": "samples/material_replay/index.json",
+      "source_sha256": "4ce15ec92335b25f2b3f362753ff105e2d4151a28ed14b11337288d7fd05bef2",
+      "copy_sha256": "4ce15ec92335b25f2b3f362753ff105e2d4151a28ed14b11337288d7fd05bef2",
+      "bytes_before": 955,
+      "bytes_after": 955
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+      "source_sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+      "copy_sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+      "bytes_before": 1568,
+      "bytes_after": 1568
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L02-en.md",
+      "source_sha256": "f69193a4ebd078daf644ecc5976d6d7dc595d3d4d90b58cf7a52744c93123c90",
+      "copy_sha256": "f69193a4ebd078daf644ecc5976d6d7dc595d3d4d90b58cf7a52744c93123c90",
+      "bytes_before": 1458,
+      "bytes_after": 1458
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L03-en.md",
+      "source_sha256": "c086d5ba113f64edd8a8774fc13dafad4a68c3ddcacda40d0ae6e3930272020f",
+      "copy_sha256": "c086d5ba113f64edd8a8774fc13dafad4a68c3ddcacda40d0ae6e3930272020f",
+      "bytes_before": 1414,
+      "bytes_after": 1414
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L04-en.md",
+      "source_sha256": "851e60c3aabbd3a88b005dfb2cb057c16bbe9769089df27d9a179934581c96a1",
+      "copy_sha256": "851e60c3aabbd3a88b005dfb2cb057c16bbe9769089df27d9a179934581c96a1",
+      "bytes_before": 1344,
+      "bytes_after": 1344
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L05-zh.md",
+      "source_sha256": "3db2f7cc64e7e9f083775a6ef6532143ebac12ee068203d17b9d884c20bff918",
+      "copy_sha256": "3db2f7cc64e7e9f083775a6ef6532143ebac12ee068203d17b9d884c20bff918",
+      "bytes_before": 1281,
+      "bytes_after": 1281
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L06-zh.md",
+      "source_sha256": "8a5df0203575e998cfebd128e8a3777047fb4f7ca54f817843cc9cb20664d201",
+      "copy_sha256": "8a5df0203575e998cfebd128e8a3777047fb4f7ca54f817843cc9cb20664d201",
+      "bytes_before": 1288,
+      "bytes_after": 1288
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L07-zh.md",
+      "source_sha256": "9582adcc1a00f033daa9e705a633d407e5056ea70ddcf314406ae999157b5ba1",
+      "copy_sha256": "9582adcc1a00f033daa9e705a633d407e5056ea70ddcf314406ae999157b5ba1",
+      "bytes_before": 1249,
+      "bytes_after": 1249
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L08-zh.md",
+      "source_sha256": "a104af43bc461e10678d62963d599b67497c56f7a884ce9c3d5d702866bde917",
+      "copy_sha256": "a104af43bc461e10678d62963d599b67497c56f7a884ce9c3d5d702866bde917",
+      "bytes_before": 1256,
+      "bytes_after": 1256
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L09-hi.md",
+      "source_sha256": "6fb97b574e89515739afa2a17d3753b65cd261492beb4c05af0351a7ece646cb",
+      "copy_sha256": "6fb97b574e89515739afa2a17d3753b65cd261492beb4c05af0351a7ece646cb",
+      "bytes_before": 2520,
+      "bytes_after": 2520
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L10-hi.md",
+      "source_sha256": "0c87e8a5f5a0c6c42114decde093627ca1a467116956bbbd7e73958326ad0cbd",
+      "copy_sha256": "0c87e8a5f5a0c6c42114decde093627ca1a467116956bbbd7e73958326ad0cbd",
+      "bytes_before": 2277,
+      "bytes_after": 2277
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L11-hi.md",
+      "source_sha256": "01f284555b41ce06d39486a24659555b2e5c5cf502259b190910225de014ce06",
+      "copy_sha256": "01f284555b41ce06d39486a24659555b2e5c5cf502259b190910225de014ce06",
+      "bytes_before": 2283,
+      "bytes_after": 2283
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L12-hi.md",
+      "source_sha256": "3d5910ce831cee8d8b9e0c7a010bca0c412a29d7031324852682dc30d1d8e531",
+      "copy_sha256": "3d5910ce831cee8d8b9e0c7a010bca0c412a29d7031324852682dc30d1d8e531",
+      "bytes_before": 2095,
+      "bytes_after": 2095
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L13-es.md",
+      "source_sha256": "322bb7de0f9ee37cdf126d2472a6ef025f8c2df1e391464e735c7007b57c93d2",
+      "copy_sha256": "322bb7de0f9ee37cdf126d2472a6ef025f8c2df1e391464e735c7007b57c93d2",
+      "bytes_before": 1091,
+      "bytes_after": 1091
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L14-es.md",
+      "source_sha256": "f0ccea3919e77c10f083cf212357b36896dd3afdaa2510c6425149f8528398ed",
+      "copy_sha256": "f0ccea3919e77c10f083cf212357b36896dd3afdaa2510c6425149f8528398ed",
+      "bytes_before": 1077,
+      "bytes_after": 1077
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L15-es.md",
+      "source_sha256": "66d09011f8d26397a3df3d141c4aededc0fe2e5cdaa09bdd7c0e3f57c9ee0ba1",
+      "copy_sha256": "66d09011f8d26397a3df3d141c4aededc0fe2e5cdaa09bdd7c0e3f57c9ee0ba1",
+      "bytes_before": 1141,
+      "bytes_after": 1141
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L16-es.md",
+      "source_sha256": "c7f488485065de8dec5510011aa137d475d4558600d93575af59c6ca5eddb2ee",
+      "copy_sha256": "c7f488485065de8dec5510011aa137d475d4558600d93575af59c6ca5eddb2ee",
+      "bytes_before": 1108,
+      "bytes_after": 1108
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L17-ar.md",
+      "source_sha256": "94327e8f5fa4c72dbd4bfe456a732ed3e046e53675b8f412ac62c56afd40e600",
+      "copy_sha256": "94327e8f5fa4c72dbd4bfe456a732ed3e046e53675b8f412ac62c56afd40e600",
+      "bytes_before": 3066,
+      "bytes_after": 3066
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L18-ar.md",
+      "source_sha256": "6496c20c931235e7dfa04aed509835b1a4dbb238d8aac198a6706f2f56b91f55",
+      "copy_sha256": "6496c20c931235e7dfa04aed509835b1a4dbb238d8aac198a6706f2f56b91f55",
+      "bytes_before": 3018,
+      "bytes_after": 3018
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L19-ar.md",
+      "source_sha256": "f3fa90292dd4ce0d0c20aa07a6ee7b193f23f358462f89ebac604598f1f89c46",
+      "copy_sha256": "f3fa90292dd4ce0d0c20aa07a6ee7b193f23f358462f89ebac604598f1f89c46",
+      "bytes_before": 3092,
+      "bytes_after": 3092
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L20-ar.md",
+      "source_sha256": "75ad4d1324f23c19fdff0a4b0e22abb950c8f1b9134365fd648a85bad7adb0e1",
+      "copy_sha256": "75ad4d1324f23c19fdff0a4b0e22abb950c8f1b9134365fd648a85bad7adb0e1",
+      "bytes_before": 2738,
+      "bytes_after": 2738
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L21-fr.md",
+      "source_sha256": "59c6867eeef07aa2c6cb3ab79c2949bd8c5c5761689604ce8c92c5ad6faaa563",
+      "copy_sha256": "59c6867eeef07aa2c6cb3ab79c2949bd8c5c5761689604ce8c92c5ad6faaa563",
+      "bytes_before": 2285,
+      "bytes_after": 2285
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L22-fr.md",
+      "source_sha256": "03a0636681a49df733e9b5f2093888d635f7f3ed216b257a78455b114f713880",
+      "copy_sha256": "03a0636681a49df733e9b5f2093888d635f7f3ed216b257a78455b114f713880",
+      "bytes_before": 2129,
+      "bytes_after": 2129
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L23-fr.md",
+      "source_sha256": "91a6c78ad757745b655b62e402e7513b9608022e874a78d3a37b8820373f66a5",
+      "copy_sha256": "91a6c78ad757745b655b62e402e7513b9608022e874a78d3a37b8820373f66a5",
+      "bytes_before": 2179,
+      "bytes_after": 2179
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L24-fr.md",
+      "source_sha256": "45a8753e44bc6e98790b6423762489a5592c05cbe76b79fe9a03071614823823",
+      "copy_sha256": "45a8753e44bc6e98790b6423762489a5592c05cbe76b79fe9a03071614823823",
+      "bytes_before": 2165,
+      "bytes_after": 2165
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L25-bn-10page-scene.md",
+      "source_sha256": "7e22891a6a9a510dcb07c59fde0bd264a6923ad7646aa545ba02c515c09e17d4",
+      "copy_sha256": "7e22891a6a9a510dcb07c59fde0bd264a6923ad7646aa545ba02c515c09e17d4",
+      "bytes_before": 3151,
+      "bytes_after": 3151
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L25-bn-long-real-workbench.md",
+      "source_sha256": "4e5446fd0716ad484eb0b45136d0e88be2d5a2e7c95bc6b204289b3dc4baf31c",
+      "copy_sha256": "4e5446fd0716ad484eb0b45136d0e88be2d5a2e7c95bc6b204289b3dc4baf31c",
+      "bytes_before": 23246,
+      "bytes_after": 23246
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L25-bn.md",
+      "source_sha256": "9dcc411ea24ab4ef1e33aff3bffd4f145af27957a29289df9dad837deddc5d04",
+      "copy_sha256": "9dcc411ea24ab4ef1e33aff3bffd4f145af27957a29289df9dad837deddc5d04",
+      "bytes_before": 3352,
+      "bytes_after": 3352
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L26-bn.md",
+      "source_sha256": "b6704e4d380b5ca839d4c6a8023a1f4bb83a239a19e288da3ea5a2c22e9683dd",
+      "copy_sha256": "b6704e4d380b5ca839d4c6a8023a1f4bb83a239a19e288da3ea5a2c22e9683dd",
+      "bytes_before": 2966,
+      "bytes_after": 2966
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L27-bn.md",
+      "source_sha256": "4273b572d2c175dcddd7e10d5c7a7aa04b3326171e80342acbecd34713ee44eb",
+      "copy_sha256": "4273b572d2c175dcddd7e10d5c7a7aa04b3326171e80342acbecd34713ee44eb",
+      "bytes_before": 3011,
+      "bytes_after": 3011
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L28-bn.md",
+      "source_sha256": "6a13626130f4e020842c74409cf5d5d0e806e5ba0628e76b93dddb50a61c69af",
+      "copy_sha256": "6a13626130f4e020842c74409cf5d5d0e806e5ba0628e76b93dddb50a61c69af",
+      "bytes_before": 3039,
+      "bytes_after": 3039
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L29-pt.md",
+      "source_sha256": "52c9fb1ee553e1bf054d91c3135ecd12c6fd973b4ba92c7fd24ed5313ef28ec0",
+      "copy_sha256": "52c9fb1ee553e1bf054d91c3135ecd12c6fd973b4ba92c7fd24ed5313ef28ec0",
+      "bytes_before": 1698,
+      "bytes_after": 1698
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L30-pt.md",
+      "source_sha256": "2dc307de5f29d0e025f6ea438353337864b4a0bb4d003ea1b9192b85d372f3b4",
+      "copy_sha256": "2dc307de5f29d0e025f6ea438353337864b4a0bb4d003ea1b9192b85d372f3b4",
+      "bytes_before": 1652,
+      "bytes_after": 1652
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L31-pt.md",
+      "source_sha256": "d04203a8913db5d8044a0b40e1fe4ebe0cdea54b98f7c899d85127f31cf125f6",
+      "copy_sha256": "d04203a8913db5d8044a0b40e1fe4ebe0cdea54b98f7c899d85127f31cf125f6",
+      "bytes_before": 1599,
+      "bytes_after": 1599
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L32-pt.md",
+      "source_sha256": "b30e0727202c7caaa2db12d1aedaaded39a32a0993177079afe30658789cd8cb",
+      "copy_sha256": "b30e0727202c7caaa2db12d1aedaaded39a32a0993177079afe30658789cd8cb",
+      "bytes_before": 1532,
+      "bytes_after": 1532
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L33-ru.md",
+      "source_sha256": "1cff1b59b39d48dbeff3547f53b5cb800909e4b89e389136ba909fa8740fb012",
+      "copy_sha256": "1cff1b59b39d48dbeff3547f53b5cb800909e4b89e389136ba909fa8740fb012",
+      "bytes_before": 2776,
+      "bytes_after": 2776
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L34-ur.md",
+      "source_sha256": "0b0d493a6e309fa3e79246899bd483f46debe07ae39767a126fe7b0c9a997eb7",
+      "copy_sha256": "0b0d493a6e309fa3e79246899bd483f46debe07ae39767a126fe7b0c9a997eb7",
+      "bytes_before": 2441,
+      "bytes_after": 2441
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L35-id.md",
+      "source_sha256": "16bd0158fad07064202698dc44cea6651b58294fcdedc8e97206fe805870999d",
+      "copy_sha256": "16bd0158fad07064202698dc44cea6651b58294fcdedc8e97206fe805870999d",
+      "bytes_before": 1470,
+      "bytes_after": 1470
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L36-de.md",
+      "source_sha256": "5db4c4c3e3c7e7d26274ed65e9db951fb051f355c68299e994aaf26d33188c3f",
+      "copy_sha256": "5db4c4c3e3c7e7d26274ed65e9db951fb051f355c68299e994aaf26d33188c3f",
+      "bytes_before": 1611,
+      "bytes_after": 1611
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L37-ja.md",
+      "source_sha256": "d5182887f1b9ddc6a3134072d463dd0fea231a91a6d0f8d6c40c3214c0e8988b",
+      "copy_sha256": "d5182887f1b9ddc6a3134072d463dd0fea231a91a6d0f8d6c40c3214c0e8988b",
+      "bytes_before": 1699,
+      "bytes_after": 1699
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L38-te.md",
+      "source_sha256": "0c4b9d2c6a3f1663b54df1563fc956bf5e25779a97f99d585d7af13f1e2c1eff",
+      "copy_sha256": "0c4b9d2c6a3f1663b54df1563fc956bf5e25779a97f99d585d7af13f1e2c1eff",
+      "bytes_before": 3869,
+      "bytes_after": 3869
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L39-tr.md",
+      "source_sha256": "4d518220e9036752f2f9831223a0d61be616fffcb3ed39f9460a5e5a2dd9bccd",
+      "copy_sha256": "4d518220e9036752f2f9831223a0d61be616fffcb3ed39f9460a5e5a2dd9bccd",
+      "bytes_before": 1602,
+      "bytes_after": 1602
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L40-ta.md",
+      "source_sha256": "aa5a71937b54a2ebd8e2c317fe255d8214081f6831dc60e4a0c5c0afb6abc6d3",
+      "copy_sha256": "aa5a71937b54a2ebd8e2c317fe255d8214081f6831dc60e4a0c5c0afb6abc6d3",
+      "bytes_before": 4133,
+      "bytes_after": 4133
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L41-vi.md",
+      "source_sha256": "fdd79861113d3b7ef4a94ececdd6255000c1d85248dcf3fccae47eaca18eace6",
+      "copy_sha256": "fdd79861113d3b7ef4a94ececdd6255000c1d85248dcf3fccae47eaca18eace6",
+      "bytes_before": 1915,
+      "bytes_after": 1915
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L42-ko.md",
+      "source_sha256": "d841c180997ff5f1ee33a467c70e321be1fb49bd24db60dcffbc8e11c201d281",
+      "copy_sha256": "d841c180997ff5f1ee33a467c70e321be1fb49bd24db60dcffbc8e11c201d281",
+      "bytes_before": 1671,
+      "bytes_after": 1671
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L43-fa.md",
+      "source_sha256": "c864a8531fee95c445fe8f87676951870357191187f7af6f114b47a1fb284ed7",
+      "copy_sha256": "c864a8531fee95c445fe8f87676951870357191187f7af6f114b47a1fb284ed7",
+      "bytes_before": 2416,
+      "bytes_after": 2416
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L44-sw.md",
+      "source_sha256": "42d47d3c941e796f5b94c6f74bb74959256375bad66ed0b140aedc1384072860",
+      "copy_sha256": "42d47d3c941e796f5b94c6f74bb74959256375bad66ed0b140aedc1384072860",
+      "bytes_before": 1521,
+      "bytes_after": 1521
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L45-it.md",
+      "source_sha256": "48f5799b3bda91a98a7d75158723e9d4c46489560ef4d97ab957ec23ed2bc485",
+      "copy_sha256": "48f5799b3bda91a98a7d75158723e9d4c46489560ef4d97ab957ec23ed2bc485",
+      "bytes_before": 1632,
+      "bytes_after": 1632
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L46-th.md",
+      "source_sha256": "7adb64d75ab435b899a2b270eef3134eac25c144bff6924a03f173bbccedceee",
+      "copy_sha256": "7adb64d75ab435b899a2b270eef3134eac25c144bff6924a03f173bbccedceee",
+      "bytes_before": 3813,
+      "bytes_after": 3813
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L47-pl.md",
+      "source_sha256": "0b06d6ddbb49d1c1612e32d69f503aeb72b3f5aaa59085285cecb88867837487",
+      "copy_sha256": "0b06d6ddbb49d1c1612e32d69f503aeb72b3f5aaa59085285cecb88867837487",
+      "bytes_before": 1562,
+      "bytes_after": 1562
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L48-uk.md",
+      "source_sha256": "9bd21abc55a0c57f5c27853c0f234beab02ad88d27e9c21178042ed96d32ff9f",
+      "copy_sha256": "9bd21abc55a0c57f5c27853c0f234beab02ad88d27e9c21178042ed96d32ff9f",
+      "bytes_before": 2741,
+      "bytes_after": 2741
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L49-ms.md",
+      "source_sha256": "fa2a82a42454d0f150ffc1fd9caa624960fbbf09391400d516de999da37dfc56",
+      "copy_sha256": "fa2a82a42454d0f150ffc1fd9caa624960fbbf09391400d516de999da37dfc56",
+      "bytes_before": 1519,
+      "bytes_after": 1519
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/L50-nl.md",
+      "source_sha256": "96210c3222bd8480c7712db6e3208c3779d283fb6bd5e8b7e448858b7e47eede",
+      "copy_sha256": "96210c3222bd8480c7712db6e3208c3779d283fb6bd5e8b7e448858b7e47eede",
+      "bytes_before": 1591,
+      "bytes_after": 1591
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-01-08.json",
+      "source_sha256": "d08ab9e41c752e6f8c612acf7c373367b13c610d2bb6404b50f15ea20f769486",
+      "copy_sha256": "d08ab9e41c752e6f8c612acf7c373367b13c610d2bb6404b50f15ea20f769486",
+      "bytes_before": 3510,
+      "bytes_after": 3510
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-09-16.json",
+      "source_sha256": "64f39dc2905743bcbb09c43348fa28c6514d803eab16322b0bb0092fc0189461",
+      "copy_sha256": "64f39dc2905743bcbb09c43348fa28c6514d803eab16322b0bb0092fc0189461",
+      "bytes_before": 3511,
+      "bytes_after": 3511
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-17-24.json",
+      "source_sha256": "ddea51b6760218c9b6abc92e041eaa7853ddc98ea04d99020d990a546d5130a8",
+      "copy_sha256": "ddea51b6760218c9b6abc92e041eaa7853ddc98ea04d99020d990a546d5130a8",
+      "bytes_before": 3518,
+      "bytes_after": 3518
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-21-24-retry.json",
+      "source_sha256": "d052d72e935a1f701bc31d37d2776cd2fd5f5941e0aa0ae8dc3744b3d2e3c655",
+      "copy_sha256": "d052d72e935a1f701bc31d37d2776cd2fd5f5941e0aa0ae8dc3744b3d2e3c655",
+      "bytes_before": 2297,
+      "bytes_after": 2297
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-25-28-language-reclassification.json",
+      "source_sha256": "1f789cfad2004f86b02fbb96f43659354e077c5d5f6f15856cb83caa27eee78a",
+      "copy_sha256": "314048c550449fced016ea1e6e39775589fbd9c20dd6fcfe3722d89618414514",
+      "bytes_before": 4146,
+      "bytes_after": 4116
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-25-28.json",
+      "source_sha256": "31a0081da1e51a249382394853452612c37e8c8009653bbd4a50753e682614e9",
+      "copy_sha256": "31a0081da1e51a249382394853452612c37e8c8009653bbd4a50753e682614e9",
+      "bytes_before": 2334,
+      "bytes_after": 2334
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/failed-attempts/L21-attempt-1-fd467da2eecc.md",
+      "source_sha256": "fd467da2eecc2ad4162985392c7d4cc185356420aa6856f621dc8c0eead5bf18",
+      "copy_sha256": "fd467da2eecc2ad4162985392c7d4cc185356420aa6856f621dc8c0eead5bf18",
+      "bytes_before": 2750,
+      "bytes_after": 2750
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/failed-attempts/L22-attempt-1-78e158761f58.md",
+      "source_sha256": "78e158761f586ef3ceca689cd48e8bc2e5717b0b4f24774c1233222d62d0e8dd",
+      "copy_sha256": "78e158761f586ef3ceca689cd48e8bc2e5717b0b4f24774c1233222d62d0e8dd",
+      "bytes_before": 2580,
+      "bytes_after": 2580
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/failed-attempts/L23-attempt-1-a03323295d5c.md",
+      "source_sha256": "a03323295d5c50496798965c3fda82b45fbca047483971f740351e799aeee1fc",
+      "copy_sha256": "a03323295d5c50496798965c3fda82b45fbca047483971f740351e799aeee1fc",
+      "bytes_before": 2407,
+      "bytes_after": 2407
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/failed-attempts/L24-attempt-1-b416066b37f0.md",
+      "source_sha256": "b416066b37f08e1bcf64be9d924321cc42d60040113d6b9fb254c55efafe7514",
+      "copy_sha256": "b416066b37f08e1bcf64be9d924321cc42d60040113d6b9fb254c55efafe7514",
+      "bytes_before": 2378,
+      "bytes_after": 2378
+    },
+    {
+      "path": "samples/open-source-50-decks/multilingual-inputs/input-manifest.json",
+      "source_sha256": "260c68d947e835684154606fc9c867a4278ee2723e3cfd570afaea8d4a1c7525",
+      "copy_sha256": "260c68d947e835684154606fc9c867a4278ee2723e3cfd570afaea8d4a1c7525",
+      "bytes_before": 63229,
+      "bytes_after": 63229
+    },
+    {
+      "path": "samples/r5_material_to_ppt.py",
+      "source_sha256": "08cc19cb0adcd08bdf052004346bf278daa32cd04a7097a6c7146ccbb699b414",
+      "copy_sha256": "08cc19cb0adcd08bdf052004346bf278daa32cd04a7097a6c7146ccbb699b414",
+      "bytes_before": 126795,
+      "bytes_after": 126795
+    },
+    {
+      "path": "scripts/build_p0_manifest.py",
+      "source_sha256": "e99e72c6727aa1920bb44df40b36f33d5d53d68a847c4e378a2414ef0a83f95e",
+      "copy_sha256": "e99e72c6727aa1920bb44df40b36f33d5d53d68a847c4e378a2414ef0a83f95e",
+      "bytes_before": 10026,
+      "bytes_after": 10026
+    },
+    {
+      "path": "scripts/build_readable_p268.py",
+      "source_sha256": "f88ce11070d049475c48d4b686ca7d53460bb4849df74030630718cf3c580daa",
+      "copy_sha256": "f88ce11070d049475c48d4b686ca7d53460bb4849df74030630718cf3c580daa",
+      "bytes_before": 9558,
+      "bytes_after": 9558
+    },
+    {
+      "path": "scripts/geometry_gate.py",
+      "source_sha256": "1f71329eba65e6eea528a73bdecdada9c2f1cb8260e8e322130e173a0d415955",
+      "copy_sha256": "1f71329eba65e6eea528a73bdecdada9c2f1cb8260e8e322130e173a0d415955",
+      "bytes_before": 7657,
+      "bytes_after": 7657
+    },
+    {
+      "path": "scripts/glyph_gate.py",
+      "source_sha256": "c8f3adf846aea5bb0e3580362b8c321e459ee0592f1fae5996e54dcf78b352ba",
+      "copy_sha256": "c8f3adf846aea5bb0e3580362b8c321e459ee0592f1fae5996e54dcf78b352ba",
+      "bytes_before": 10959,
+      "bytes_after": 10959
+    },
+    {
+      "path": "scripts/inspect_r5.py",
+      "source_sha256": "dc833178b14253c05fe6e06f01fbf9e7224bec82f4d14cd84747a2233ed82b5a",
+      "copy_sha256": "dc833178b14253c05fe6e06f01fbf9e7224bec82f4d14cd84747a2233ed82b5a",
+      "bytes_before": 2552,
+      "bytes_after": 2552
+    },
+    {
+      "path": "scripts/layout_gate.py",
+      "source_sha256": "79357b978730a16787be0fca757619062b6082c5496ff550bda07998b2273b98",
+      "copy_sha256": "79357b978730a16787be0fca757619062b6082c5496ff550bda07998b2273b98",
+      "bytes_before": 145780,
+      "bytes_after": 145780
+    },
+    {
+      "path": "scripts/open_native.sh",
+      "source_sha256": "3020cc6d6b0d2c21d9541e3278b5a480c7dbe9765828f328ccf001e8d5b6d874",
+      "copy_sha256": "3020cc6d6b0d2c21d9541e3278b5a480c7dbe9765828f328ccf001e8d5b6d874",
+      "bytes_before": 2807,
+      "bytes_after": 2807
+    },
+    {
+      "path": "scripts/p7_language_chain_audit.py",
+      "source_sha256": "b3e4ae5ed2b90b6aa307a2982a56722c093380427833c24e9194cbdcb86a647d",
+      "copy_sha256": "b3e4ae5ed2b90b6aa307a2982a56722c093380427833c24e9194cbdcb86a647d",
+      "bytes_before": 18273,
+      "bytes_after": 18273
+    },
+    {
+      "path": "scripts/prepublication_50_decks_gate.py",
+      "source_sha256": "c177193b9918b8cfcf5f6819bb5d9928d9560cf8ea55098b10529f59b3915f83",
+      "copy_sha256": "c177193b9918b8cfcf5f6819bb5d9928d9560cf8ea55098b10529f59b3915f83",
+      "bytes_before": 25513,
+      "bytes_after": 25513
+    },
+    {
+      "path": "scripts/source_corpus_review_gate.py",
+      "source_sha256": "70ac302237d52c898110038062f8d13fd36e825e2357d39e46981ca1487b7abf",
+      "copy_sha256": "70ac302237d52c898110038062f8d13fd36e825e2357d39e46981ca1487b7abf",
+      "bytes_before": 15284,
+      "bytes_after": 15284
+    },
+    {
+      "path": "tests/fixtures/major-language-recognition-samples.json",
+      "source_sha256": "f8ed5b3cd484951ac994b68057fe37ae75ca1794b99c711f805df9db0c5ac4a5",
+      "copy_sha256": "f8ed5b3cd484951ac994b68057fe37ae75ca1794b99c711f805df9db0c5ac4a5",
+      "bytes_before": 3011,
+      "bytes_after": 3011
+    },
+    {
+      "path": "tests/fixtures/semantic-scenes/hard-gate.md",
+      "source_sha256": "8e43efbd287a022f6e3d157ceab1a270485d5127e5bedff25895145219d50d71",
+      "copy_sha256": "8e43efbd287a022f6e3d157ceab1a270485d5127e5bedff25895145219d50d71",
+      "bytes_before": 13073,
+      "bytes_after": 13073
+    },
+    {
+      "path": "tests/fixtures/semantic-scenes/user-36-supplemental-scenes.json",
+      "source_sha256": "e654b07fea5993a564e1d6502de81aa0b33433dd4f1a36fcffe41aba6b4f6571",
+      "copy_sha256": "e654b07fea5993a564e1d6502de81aa0b33433dd4f1a36fcffe41aba6b4f6571",
+      "bytes_before": 10537,
+      "bytes_after": 10537
+    },
+    {
+      "path": "tests/fixtures/semantic-scenes/user-50-scenes.json",
+      "source_sha256": "ab5537bdbce17950ba48da0f11176af98382680243656d655a4f05e166e1b39a",
+      "copy_sha256": "ab5537bdbce17950ba48da0f11176af98382680243656d655a4f05e166e1b39a",
+      "bytes_before": 15544,
+      "bytes_after": 15544
+    },
+    {
+      "path": "tests/test_install_sanitization.py",
+      "source_sha256": "d0faef4ed656c2a4ed55b2dad8c60f7692808311eaa8e0cbd0bb408dd4497c69",
+      "copy_sha256": "d0faef4ed656c2a4ed55b2dad8c60f7692808311eaa8e0cbd0bb408dd4497c69",
+      "bytes_before": 5238,
+      "bytes_after": 5238
+    },
+    {
+      "path": "tests/test_material_flow_states.py",
+      "source_sha256": "d8714b5e209da5be0b0d316eba5feb91570a8585146069e02c3ee51fc4c7c2f5",
+      "copy_sha256": "d8714b5e209da5be0b0d316eba5feb91570a8585146069e02c3ee51fc4c7c2f5",
+      "bytes_before": 14711,
+      "bytes_after": 14711
+    },
+    {
+      "path": "tests/test_model_call_chain_diagnostics.py",
+      "source_sha256": "9309a4344c3dc22ca60dddb3845d61f638c423ff99df1e67d7885ec46cedbe2d",
+      "copy_sha256": "9309a4344c3dc22ca60dddb3845d61f638c423ff99df1e67d7885ec46cedbe2d",
+      "bytes_before": 7397,
+      "bytes_after": 7397
+    },
+    {
+      "path": "tests/test_multilingual_matrix.py",
+      "source_sha256": "707d533532caa2174b79d44f27c67fd3aaab203e59f30216288545ad177cee75",
+      "copy_sha256": "707d533532caa2174b79d44f27c67fd3aaab203e59f30216288545ad177cee75",
+      "bytes_before": 20565,
+      "bytes_after": 20565
+    },
+    {
+      "path": "tests/test_multilingual_scene_acceptance.py",
+      "source_sha256": "341b7af96886f157f92092196217665ca1693decf484439c98d9cfd7f398ce37",
+      "copy_sha256": "341b7af96886f157f92092196217665ca1693decf484439c98d9cfd7f398ce37",
+      "bytes_before": 58677,
+      "bytes_after": 58677
+    },
+    {
+      "path": "tests/test_native_playback_gate.py",
+      "source_sha256": "af79835a1ef2c76fa51a892a2f8ccadb549148c327f5ed0c5f0bd7dc8315d063",
+      "copy_sha256": "af79835a1ef2c76fa51a892a2f8ccadb549148c327f5ed0c5f0bd7dc8315d063",
+      "bytes_before": 9325,
+      "bytes_after": 9325
+    },
+    {
+      "path": "tests/test_open_vocabulary_prompts.py",
+      "source_sha256": "73b3123fdb049b21e4d7d5c8b9c8f7b78e540c9779f1d62da9dc7bd5523b2d7c",
+      "copy_sha256": "73b3123fdb049b21e4d7d5c8b9c8f7b78e540c9779f1d62da9dc7bd5523b2d7c",
+      "bytes_before": 12611,
+      "bytes_after": 12611
+    },
+    {
+      "path": "tests/test_paired_render_runner_gate.py",
+      "source_sha256": "13034e0007cdce37e30f296c57e67349e3cfb784ffe3b67e570befdda5794011",
+      "copy_sha256": "13034e0007cdce37e30f296c57e67349e3cfb784ffe3b67e570befdda5794011",
+      "bytes_before": 8439,
+      "bytes_after": 8439
+    },
+    {
+      "path": "tests/test_prepublication_50_decks_gate_negatives.py",
+      "source_sha256": "99c8ae91f5aa471b881eb84344aabd91c334f072a006a8306ddca95ae07f3e96",
+      "copy_sha256": "99c8ae91f5aa471b881eb84344aabd91c334f072a006a8306ddca95ae07f3e96",
+      "bytes_before": 20341,
+      "bytes_after": 20341
+    },
+    {
+      "path": "tests/test_provider_prompt_adaptation.py",
+      "source_sha256": "46e7aa6a49db030afe25a473873bd21f8e6ee41146973f985f9f54616420e33e",
+      "copy_sha256": "46e7aa6a49db030afe25a473873bd21f8e6ee41146973f985f9f54616420e33e",
+      "bytes_before": 7269,
+      "bytes_after": 7269
+    },
+    {
+      "path": "tests/test_r5_material_planning.py",
+      "source_sha256": "5b43a0563f4450b995a7e1982fd8f4ee058ab3601022c243543360cfb0f031b9",
+      "copy_sha256": "5b43a0563f4450b995a7e1982fd8f4ee058ab3601022c243543360cfb0f031b9",
+      "bytes_before": 10954,
+      "bytes_after": 10954
+    },
+    {
+      "path": "tests/test_scene_coverage_gap_diagnostics.py",
+      "source_sha256": "31ca2de30bba3ae8c52593d413ba2ad879adabec0450b3fd9c24af1ca05f9937",
+      "copy_sha256": "31ca2de30bba3ae8c52593d413ba2ad879adabec0450b3fd9c24af1ca05f9937",
+      "bytes_before": 36908,
+      "bytes_after": 36908
+    },
+    {
+      "path": "tests/test_scene_images_pexels.py",
+      "source_sha256": "7511ae2f89d0905b5dca684a838a083e52e576e1b009eaf1e7f235db392cebf9",
+      "copy_sha256": "7511ae2f89d0905b5dca684a838a083e52e576e1b009eaf1e7f235db392cebf9",
+      "bytes_before": 5593,
+      "bytes_after": 5593
+    },
+    {
+      "path": "tests/test_scene_model_timeout.py",
+      "source_sha256": "4493da25a7aac5d4eae628e43164d3dcc23688a08a3fe4e3695771d91d398893",
+      "copy_sha256": "4493da25a7aac5d4eae628e43164d3dcc23688a08a3fe4e3695771d91d398893",
+      "bytes_before": 6669,
+      "bytes_after": 6669
+    },
+    {
+      "path": "tests/test_scene_provider_network_failures.py",
+      "source_sha256": "51462078bf28dea8a21572ec5e989a73601e9eaa5460d74db4c032c06f3ec71e",
+      "copy_sha256": "51462078bf28dea8a21572ec5e989a73601e9eaa5460d74db4c032c06f3ec71e",
+      "bytes_before": 7872,
+      "bytes_after": 7872
+    },
+    {
+      "path": "tests/test_scene_provider_transport.py",
+      "source_sha256": "d7dcf021cd9a6d711fcf975fc2b1349238a165584423bcffce94d6240b7cba96",
+      "copy_sha256": "d7dcf021cd9a6d711fcf975fc2b1349238a165584423bcffce94d6240b7cba96",
+      "bytes_before": 19363,
+      "bytes_after": 19363
+    },
+    {
+      "path": "tests/test_semantic_scene_global_gate.py",
+      "source_sha256": "2c8ed9d11173982b19484bf5df33ab567582987220f2ce1dcb3a73790e61c9ec",
+      "copy_sha256": "2c8ed9d11173982b19484bf5df33ab567582987220f2ce1dcb3a73790e61c9ec",
+      "bytes_before": 2071,
+      "bytes_after": 2071
+    },
+    {
+      "path": "tests/test_semantic_scenes.py",
+      "source_sha256": "83f3a2fd855f3f96d14529b091742b235d8934e3427561041cdac0c40081b47c",
+      "copy_sha256": "83f3a2fd855f3f96d14529b091742b235d8934e3427561041cdac0c40081b47c",
+      "bytes_before": 150711,
+      "bytes_after": 150711
+    },
+    {
+      "path": "tests/test_source_corpus_review_gate.py",
+      "source_sha256": "f16096dda482b707f9dc7b658c16f23d2e9e73219534d41edb4c3863c84659bb",
+      "copy_sha256": "f16096dda482b707f9dc7b658c16f23d2e9e73219534d41edb4c3863c84659bb",
+      "bytes_before": 5407,
+      "bytes_after": 5407
+    },
+    {
+      "path": "tests/test_workbench_model_endpoint_discovery.py",
+      "source_sha256": "ea9cd34f3884ee74d5a9b8d4c789c8e05db91b1758359b830cdc5484ac49fec5",
+      "copy_sha256": "ea9cd34f3884ee74d5a9b8d4c789c8e05db91b1758359b830cdc5484ac49fec5",
+      "bytes_before": 3413,
+      "bytes_after": 3413
+    },
+    {
+      "path": "tests/test_workbench_scene_snapshot.py",
+      "source_sha256": "0b62e76e07a2cafc39fbe61723574d3bf6095d5450ec0dcd6c7eaa16be0d5c3a",
+      "copy_sha256": "0b62e76e07a2cafc39fbe61723574d3bf6095d5450ec0dcd6c7eaa16be0d5c3a",
+      "bytes_before": 4346,
+      "bytes_after": 4346
+    },
+    {
+      "path": "vendor/luobo-ppt/.gitignore",
+      "source_sha256": "f3e1856ff60e3212904842c80dcc45cabd7c3243f334d32b6e33916fd166d4ab",
+      "copy_sha256": "f3e1856ff60e3212904842c80dcc45cabd7c3243f334d32b6e33916fd166d4ab",
+      "bytes_before": 179,
+      "bytes_after": 179
+    },
+    {
+      "path": "vendor/luobo-ppt/INSTALL.md",
+      "source_sha256": "c466b2c38e750acec925d9138c093a1ef670ef714232ef19a34f1aa3a827f2de",
+      "copy_sha256": "c466b2c38e750acec925d9138c093a1ef670ef714232ef19a34f1aa3a827f2de",
+      "bytes_before": 5956,
+      "bytes_after": 5956
+    },
+    {
+      "path": "vendor/luobo-ppt/LICENSE",
+      "source_sha256": "39f501dd58369525e03284ef93f0d4ddb1ea297af4ad8f28f144ef0a0e789e74",
+      "copy_sha256": "39f501dd58369525e03284ef93f0d4ddb1ea297af4ad8f28f144ef0a0e789e74",
+      "bytes_before": 1078,
+      "bytes_after": 1078
+    },
+    {
+      "path": "vendor/luobo-ppt/README.md",
+      "source_sha256": "90f1abf5200d747f0468e864910fc511697178235c3c032b431adf3b7fbcb6ab",
+      "copy_sha256": "90f1abf5200d747f0468e864910fc511697178235c3c032b431adf3b7fbcb6ab",
+      "bytes_before": 13166,
+      "bytes_after": 13166
+    },
+    {
+      "path": "vendor/luobo-ppt/SKILL.md",
+      "source_sha256": "1e1ece380ad7e2a309196088886959e063b3d5e01a9188eae2a730615e917b84",
+      "copy_sha256": "1e1ece380ad7e2a309196088886959e063b3d5e01a9188eae2a730615e917b84",
+      "bytes_before": 11891,
+      "bytes_after": 11891
+    },
+    {
+      "path": "vendor/luobo-ppt/agents/openai.yaml",
+      "source_sha256": "06189ff28fe12b953966e0f695b7845f9982aac8872af5b8f98fef3f988b6d25",
+      "copy_sha256": "06189ff28fe12b953966e0f695b7845f9982aac8872af5b8f98fef3f988b6d25",
+      "bytes_before": 242,
+      "bytes_after": 242
+    },
+    {
+      "path": "vendor/luobo-ppt/assets/LICENSE-lucide.txt",
+      "source_sha256": "4225f14fa5babc9cf19c69785836a3db4a8a15f41af3e1e785c6ef78d60bf7cd",
+      "copy_sha256": "4225f14fa5babc9cf19c69785836a3db4a8a15f41af3e1e785c6ef78d60bf7cd",
+      "bytes_before": 968,
+      "bytes_after": 968
+    },
+    {
+      "path": "vendor/luobo-ppt/assets/icon_keywords.json",
+      "source_sha256": "24afac34adaeb7a90efa74fac73af8c83e5e364fe4559065d362c8c3ce9c8d83",
+      "copy_sha256": "24afac34adaeb7a90efa74fac73af8c83e5e364fe4559065d362c8c3ce9c8d83",
+      "bytes_before": 6193,
+      "bytes_after": 6193
+    },
+    {
+      "path": "vendor/luobo-ppt/assets/icons.json",
+      "source_sha256": "d69120b35a73890ee1af0367f940bb08a234e0e58bd196d8e0a5641d0fb0a3e7",
+      "copy_sha256": "d69120b35a73890ee1af0367f940bb08a234e0e58bd196d8e0a5641d0fb0a3e7",
+      "bytes_before": 3834,
+      "bytes_after": 3834
+    },
+    {
+      "path": "vendor/luobo-ppt/assets/icons.png",
+      "source_sha256": "96606e5c5f2951a4ac7be7f9b2fdb9be352c95671a5dd3fb89a491ee01c5ff52",
+      "copy_sha256": "96606e5c5f2951a4ac7be7f9b2fdb9be352c95671a5dd3fb89a491ee01c5ff52",
+      "bytes_before": 416176,
+      "bytes_after": 416176
+    },
+    {
+      "path": "vendor/luobo-ppt/assets/style_gallery.jpg",
+      "source_sha256": "c907c6f9bdf68b46c34fe55ce816d35967d2297c17531bed7a3fe3432b95900f",
+      "copy_sha256": "c907c6f9bdf68b46c34fe55ce816d35967d2297c17531bed7a3fe3432b95900f",
+      "bytes_before": 567398,
+      "bytes_after": 567398
+    },
+    {
+      "path": "vendor/luobo-ppt/config.example.json",
+      "source_sha256": "d1d1c57dfcf4f694bb5209c83a4a0c655fd9e8b39c99d0276fe3a610a082472c",
+      "copy_sha256": "d1d1c57dfcf4f694bb5209c83a4a0c655fd9e8b39c99d0276fe3a610a082472c",
+      "bytes_before": 216,
+      "bytes_after": 216
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/14-styles.jpg",
+      "source_sha256": "f846ab336ad06c3b96fe82f9a97b5733bc1c1fe9cee8bb32c266fa441b93a7db",
+      "copy_sha256": "f846ab336ad06c3b96fe82f9a97b5733bc1c1fe9cee8bb32c266fa441b93a7db",
+      "bytes_before": 467687,
+      "bytes_after": 467687
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/article-to-deck.jpg",
+      "source_sha256": "32d449305e1406dce41b501ecd051c356ad0096fe433cc0d935eeaba9672bc11",
+      "copy_sha256": "32d449305e1406dce41b501ecd051c356ad0096fe433cc0d935eeaba9672bc11",
+      "bytes_before": 217525,
+      "bytes_after": 217525
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/beautify-before-after.jpg",
+      "source_sha256": "efa5fc6dd0374a5d8ee8230d285580aa96323f0dff4f7f50722373c9190680fa",
+      "copy_sha256": "efa5fc6dd0374a5d8ee8230d285580aa96323f0dff4f7f50722373c9190680fa",
+      "bytes_before": 81813,
+      "bytes_after": 81813
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/equations-kept.jpg",
+      "source_sha256": "8722cf2913dcaf6a727cc95811d369272467d4e96677a1212e5ebd63ed5882fa",
+      "copy_sha256": "8722cf2913dcaf6a727cc95811d369272467d4e96677a1212e5ebd63ed5882fa",
+      "bytes_before": 76552,
+      "bytes_after": 76552
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/follow-reference-image.jpg",
+      "source_sha256": "da8c2d9f5c8facfdab832e04d212d882715df44a539b988703759d1e38996afc",
+      "copy_sha256": "da8c2d9f5c8facfdab832e04d212d882715df44a539b988703759d1e38996afc",
+      "bytes_before": 132379,
+      "bytes_after": 132379
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/lite-preview.png",
+      "source_sha256": "822b6fd225da8f3eb7180e57899ac05a5bb523b536e0a77e25c45d00581f9670",
+      "copy_sha256": "822b6fd225da8f3eb7180e57899ac05a5bb523b536e0a77e25c45d00581f9670",
+      "bytes_before": 393688,
+      "bytes_after": 393688
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/logo.png",
+      "source_sha256": "d340c043629865daa51a9c757932beff5b1cf827321f5aaed50a5171b8660d42",
+      "copy_sha256": "d340c043629865daa51a9c757932beff5b1cf827321f5aaed50a5171b8660d42",
+      "bytes_before": 106375,
+      "bytes_after": 106375
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/math-deck-before-after.jpg",
+      "source_sha256": "329c43299e56fddfc60b8e25c488dd1205ffdb08cbf9d9c178869c405199a16f",
+      "copy_sha256": "329c43299e56fddfc60b8e25c488dd1205ffdb08cbf9d9c178869c405199a16f",
+      "bytes_before": 180304,
+      "bytes_after": 180304
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/one-deck-three-styles.jpg",
+      "source_sha256": "f7a61e818c61ef27966e562a681499cf79d448196514e4f42848e016f8d6f434",
+      "copy_sha256": "f7a61e818c61ef27966e562a681499cf79d448196514e4f42848e016f8d6f434",
+      "bytes_before": 184505,
+      "bytes_after": 184505
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/outline-capacity.png",
+      "source_sha256": "7715b198b0bf3046d623ba9fd6a2324cfd0ed6bc31cf7890cc47617ed590880f",
+      "copy_sha256": "7715b198b0bf3046d623ba9fd6a2324cfd0ed6bc31cf7890cc47617ed590880f",
+      "bytes_before": 240990,
+      "bytes_after": 240990
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/qa-fidelity.png",
+      "source_sha256": "3ac7c4c524b387e1112b826e19e85d5ee7422aac5d232405614be292b7938bf2",
+      "copy_sha256": "3ac7c4c524b387e1112b826e19e85d5ee7422aac5d232405614be292b7938bf2",
+      "bytes_before": 137947,
+      "bytes_after": 137947
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/rich-layouts.jpg",
+      "source_sha256": "09ae9df734166c379ce948d54008782c11a231aa789f34f5512348c5184f549c",
+      "copy_sha256": "09ae9df734166c379ce948d54008782c11a231aa789f34f5512348c5184f549c",
+      "bytes_before": 197219,
+      "bytes_after": 197219
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/screenshot-layouts.jpg",
+      "source_sha256": "7d30336520eef686f6a7807d00eb57ca7d58dae21f4706d76d1a480adace9b9d",
+      "copy_sha256": "7d30336520eef686f6a7807d00eb57ca7d58dae21f4706d76d1a480adace9b9d",
+      "bytes_before": 101249,
+      "bytes_after": 101249
+    },
+    {
+      "path": "vendor/luobo-ppt/docs/images/self-review.png",
+      "source_sha256": "dc387adb78d9f8f81c2f4dfeb4ec479c7d5f8ab701e88994cad88a820355b8ec",
+      "copy_sha256": "dc387adb78d9f8f81c2f4dfeb4ec479c7d5f8ab701e88994cad88a820355b8ec",
+      "bytes_before": 228231,
+      "bytes_after": 228231
+    },
+    {
+      "path": "vendor/luobo-ppt/install.bat",
+      "source_sha256": "cad9108ea9e623b15b208a0cc9efd418b997060770ab476decdfcbccca0d4a6d",
+      "copy_sha256": "cad9108ea9e623b15b208a0cc9efd418b997060770ab476decdfcbccca0d4a6d",
+      "bytes_before": 112,
+      "bytes_after": 112
+    },
+    {
+      "path": "vendor/luobo-ppt/install.ps1",
+      "source_sha256": "0d2f5fdcc8c0209554bf64b523e7f2446db80d61a0f2d53dd768d154763d4afb",
+      "copy_sha256": "0d2f5fdcc8c0209554bf64b523e7f2446db80d61a0f2d53dd768d154763d4afb",
+      "bytes_before": 6219,
+      "bytes_after": 6219
+    },
+    {
+      "path": "vendor/luobo-ppt/install.sh",
+      "source_sha256": "89d41e7d9e36b4613b2087112339cfddce03ab242e98b7bbc967d577f7eed497",
+      "copy_sha256": "89d41e7d9e36b4613b2087112339cfddce03ab242e98b7bbc967d577f7eed497",
+      "bytes_before": 4628,
+      "bytes_after": 4628
+    },
+    {
+      "path": "vendor/luobo-ppt/references/critique.md",
+      "source_sha256": "52b11b0fea9813e22d27edd18776c23b7b5f55f2e2eadfd3fcb2aa9da387f33a",
+      "copy_sha256": "52b11b0fea9813e22d27edd18776c23b7b5f55f2e2eadfd3fcb2aa9da387f33a",
+      "bytes_before": 3703,
+      "bytes_after": 3703
+    },
+    {
+      "path": "vendor/luobo-ppt/references/deck_schema.md",
+      "source_sha256": "d9ebebb51ab5738532a31eafd307c71621a8bbc7d5b6230daf963182c92b00d0",
+      "copy_sha256": "d9ebebb51ab5738532a31eafd307c71621a8bbc7d5b6230daf963182c92b00d0",
+      "bytes_before": 11105,
+      "bytes_after": 11105
+    },
+    {
+      "path": "vendor/luobo-ppt/references/fonts.md",
+      "source_sha256": "31158b304080e3b328e77a7ad13445373f93489539e76d12fe9ed8452c333be8",
+      "copy_sha256": "31158b304080e3b328e77a7ad13445373f93489539e76d12fe9ed8452c333be8",
+      "bytes_before": 1696,
+      "bytes_after": 1696
+    },
+    {
+      "path": "vendor/luobo-ppt/references/generate.md",
+      "source_sha256": "00701b015885a005321bd90ec1d6bb9522b07cdd8ff90f951b7e7ad730ef7914",
+      "copy_sha256": "00701b015885a005321bd90ec1d6bb9522b07cdd8ff90f951b7e7ad730ef7914",
+      "bytes_before": 9702,
+      "bytes_after": 9702
+    },
+    {
+      "path": "vendor/luobo-ppt/references/icons.md",
+      "source_sha256": "349225eda60ff838de8bff4caae2097124218c32fdc145d3c8279921dd8ab8d0",
+      "copy_sha256": "349225eda60ff838de8bff4caae2097124218c32fdc145d3c8279921dd8ab8d0",
+      "bytes_before": 5655,
+      "bytes_after": 5655
+    },
+    {
+      "path": "vendor/luobo-ppt/references/image_prompts.md",
+      "source_sha256": "a7b2371eb3d49537ad2b470651d2e1c6d083384776fd4e7f3565e0bb4dc957ff",
+      "copy_sha256": "a7b2371eb3d49537ad2b470651d2e1c6d083384776fd4e7f3565e0bb4dc957ff",
+      "bytes_before": 3307,
+      "bytes_after": 3307
+    },
+    {
+      "path": "vendor/luobo-ppt/references/imagegen_config.md",
+      "source_sha256": "c85d63b2ad611fc4c70ad3a2276ef64c0af68411c63e436de34ae4a0b4c1fbc8",
+      "copy_sha256": "c85d63b2ad611fc4c70ad3a2276ef64c0af68411c63e436de34ae4a0b4c1fbc8",
+      "bytes_before": 3079,
+      "bytes_after": 3079
+    },
+    {
+      "path": "vendor/luobo-ppt/references/layouts.md",
+      "source_sha256": "03f71d80d5e830eeae3faa41e63bc33d21597285413b1109fca320bb57492730",
+      "copy_sha256": "03f71d80d5e830eeae3faa41e63bc33d21597285413b1109fca320bb57492730",
+      "bytes_before": 9972,
+      "bytes_after": 9972
+    },
+    {
+      "path": "vendor/luobo-ppt/references/style_extraction.md",
+      "source_sha256": "2aeaea1a892ff141248dc2a54d6c39ee7de81d0788f8576970cbb0080a4e11c3",
+      "copy_sha256": "2aeaea1a892ff141248dc2a54d6c39ee7de81d0788f8576970cbb0080a4e11c3",
+      "bytes_before": 9068,
+      "bytes_after": 9068
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/black-gold.json",
+      "source_sha256": "b45315a1160286c0c266fe3ec1b5dcd3142e7a5e30ca6b4515a68096fe85c4fe",
+      "copy_sha256": "b45315a1160286c0c266fe3ec1b5dcd3142e7a5e30ca6b4515a68096fe85c4fe",
+      "bytes_before": 1683,
+      "bytes_after": 1683
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/business-blue.json",
+      "source_sha256": "c4929e26bcaac6195d5322043410ce2ec3a302091180de26ea29baf4d0a888c9",
+      "copy_sha256": "c4929e26bcaac6195d5322043410ce2ec3a302091180de26ea29baf4d0a888c9",
+      "bytes_before": 1601,
+      "bytes_after": 1601
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/cobalt-type.json",
+      "source_sha256": "01953449876aa80e557cef55ee017944ca35833720d267b58fde5fefbaa2c3c4",
+      "copy_sha256": "01953449876aa80e557cef55ee017944ca35833720d267b58fde5fefbaa2c3c4",
+      "bytes_before": 1763,
+      "bytes_after": 1763
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/dark-tech.json",
+      "source_sha256": "efd5c6e921fa1cdf5d637c56335f6f5b6fb639c5a60e5bbb866bf810181b3669",
+      "copy_sha256": "efd5c6e921fa1cdf5d637c56335f6f5b6fb639c5a60e5bbb866bf810181b3669",
+      "bytes_before": 1639,
+      "bytes_after": 1639
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/geo-blocks.json",
+      "source_sha256": "ce6546f367eb2f937560e5de229c8d4a40a6dd5bb3dfb86130f0c1caf11b71f0",
+      "copy_sha256": "ce6546f367eb2f937560e5de229c8d4a40a6dd5bb3dfb86130f0c1caf11b71f0",
+      "bytes_before": 1805,
+      "bytes_after": 1805
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/index.json",
+      "source_sha256": "db361665c17a9faebe55ba5089467c2ae26e7c11893183020037046bfd4f17b5",
+      "copy_sha256": "db361665c17a9faebe55ba5089467c2ae26e7c11893183020037046bfd4f17b5",
+      "bytes_before": 10378,
+      "bytes_after": 10378
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/ink-lime.json",
+      "source_sha256": "81d6d01853e479c08dcae035190d152effa43062dbe1f5fc3fee6e1e4aa44e04",
+      "copy_sha256": "81d6d01853e479c08dcae035190d152effa43062dbe1f5fc3fee6e1e4aa44e04",
+      "bytes_before": 1726,
+      "bytes_after": 1726
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/ink-magazine.json",
+      "source_sha256": "180b978bb0d28506e512d0c8e3bfe625cb957303ffedc03d2ad4e415d56aec67",
+      "copy_sha256": "180b978bb0d28506e512d0c8e3bfe625cb957303ffedc03d2ad4e415d56aec67",
+      "bytes_before": 1857,
+      "bytes_after": 1857
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/lavender-soft.json",
+      "source_sha256": "37b404c1334d5b965b84d384532fd5093d97583c675c9d1f2ac8a11896aa0bea",
+      "copy_sha256": "37b404c1334d5b965b84d384532fd5093d97583c675c9d1f2ac8a11896aa0bea",
+      "bytes_before": 1608,
+      "bytes_after": 1608
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/mint-fresh.json",
+      "source_sha256": "50ea55b23bd360f0f4c79b328e8d993bc350536b49055cdc5320b4346d3b13e2",
+      "copy_sha256": "50ea55b23bd360f0f4c79b328e8d993bc350536b49055cdc5320b4346d3b13e2",
+      "bytes_before": 1682,
+      "bytes_after": 1682
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/paper-notes.json",
+      "source_sha256": "d7b350eefe93c2781e11eb9ea596e94694835912c71100d404983c16891be4aa",
+      "copy_sha256": "d7b350eefe93c2781e11eb9ea596e94694835912c71100d404983c16891be4aa",
+      "bytes_before": 1673,
+      "bytes_after": 1673
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/pastel-mist.json",
+      "source_sha256": "558e20ac1ae8cfe958733538973de99d976e2b0256988d8e8a01ff122496ed27",
+      "copy_sha256": "558e20ac1ae8cfe958733538973de99d976e2b0256988d8e8a01ff122496ed27",
+      "bytes_before": 1538,
+      "bytes_after": 1538
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/swiss-grid.json",
+      "source_sha256": "dfc1505fde2bc0947aa0f2a414f52d2a49e4b38667de83430293895eea3bcc94",
+      "copy_sha256": "dfc1505fde2bc0947aa0f2a414f52d2a49e4b38667de83430293895eea3bcc94",
+      "bytes_before": 1861,
+      "bytes_after": 1861
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/warm-orange.json",
+      "source_sha256": "e167ba9a910e4e0cd5fec26de36f5b391c0935f6c5517fb7b853706379371491",
+      "copy_sha256": "e167ba9a910e4e0cd5fec26de36f5b391c0935f6c5517fb7b853706379371491",
+      "bytes_before": 1627,
+      "bytes_after": 1627
+    },
+    {
+      "path": "vendor/luobo-ppt/references/styles/wave-launch.json",
+      "source_sha256": "74b9629e21b6009f5a52f9d88004b912bfe89a77517f5fa14b618ee01885ed61",
+      "copy_sha256": "74b9629e21b6009f5a52f9d88004b912bfe89a77517f5fa14b618ee01885ed61",
+      "bytes_before": 1718,
+      "bytes_after": 1718
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/analyze_source.py",
+      "source_sha256": "94ebd706c2f99b217a93c00d883f96377870546195dfd42f7a67fa6690cc89e2",
+      "copy_sha256": "94ebd706c2f99b217a93c00d883f96377870546195dfd42f7a67fa6690cc89e2",
+      "bytes_before": 7751,
+      "bytes_after": 7751
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/build_deck.py",
+      "source_sha256": "9851a10f4c0eabab6dd742ba5cce2812a5590311f2a6bb34678db0d560de2a66",
+      "copy_sha256": "9851a10f4c0eabab6dd742ba5cce2812a5590311f2a6bb34678db0d560de2a66",
+      "bytes_before": 34540,
+      "bytes_after": 34540
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/capacity.py",
+      "source_sha256": "89397814f27cdb79ddc159b77bd13161355b67c71380dff7596864a5db86a09e",
+      "copy_sha256": "89397814f27cdb79ddc159b77bd13161355b67c71380dff7596864a5db86a09e",
+      "bytes_before": 9943,
+      "bytes_after": 9943
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/common.py",
+      "source_sha256": "fb99a09c41453cd568f90f853a5d517ec5c671322a6afbfb413472dfcb20188a",
+      "copy_sha256": "fb99a09c41453cd568f90f853a5d517ec5c671322a6afbfb413472dfcb20188a",
+      "bytes_before": 19165,
+      "bytes_after": 19165
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/compare_sheet.py",
+      "source_sha256": "2ee63ede5e43d5cc8ac83caa8c909bdf338a09432d494ec696c8bbd71e12460a",
+      "copy_sha256": "2ee63ede5e43d5cc8ac83caa8c909bdf338a09432d494ec696c8bbd71e12460a",
+      "bytes_before": 2034,
+      "bytes_after": 2034
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/extract_deck.py",
+      "source_sha256": "b5efabfe8b1251ec3292b4f12fd64963cc79d596f926751d3c71dd081ef5b2f2",
+      "copy_sha256": "b5efabfe8b1251ec3292b4f12fd64963cc79d596f926751d3c71dd081ef5b2f2",
+      "bytes_before": 12418,
+      "bytes_after": 12418
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/extract_style.py",
+      "source_sha256": "46156b4b0e499d5e6b158ad492f1a3b38d0cfee615dc12ea9fc660cefd52f8cb",
+      "copy_sha256": "46156b4b0e499d5e6b158ad492f1a3b38d0cfee615dc12ea9fc660cefd52f8cb",
+      "bytes_before": 5951,
+      "bytes_after": 5951
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/fallback_art.py",
+      "source_sha256": "5f0bec2bec0f0630cbbcd6b15107e20ff1826ebd42bd0b4fa91c8be8a6b85929",
+      "copy_sha256": "5f0bec2bec0f0630cbbcd6b15107e20ff1826ebd42bd0b4fa91c8be8a6b85929",
+      "bytes_before": 30444,
+      "bytes_after": 30444
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/imagegen.py",
+      "source_sha256": "59a3f63bb03cb5c369158f4abd4a548afe5654724bda4a53b5cb25b32cb9615a",
+      "copy_sha256": "59a3f63bb03cb5c369158f4abd4a548afe5654724bda4a53b5cb25b32cb9615a",
+      "bytes_before": 11515,
+      "bytes_after": 11515
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/layout_info.py",
+      "source_sha256": "d6c91c73a67e88514cae9b34ead7c01333db82dc7db56ae0bf700fede7e70e17",
+      "copy_sha256": "d6c91c73a67e88514cae9b34ead7c01333db82dc7db56ae0bf700fede7e70e17",
+      "bytes_before": 7259,
+      "bytes_after": 7259
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/layouts.py",
+      "source_sha256": "9f770e1533eb5511a78cd0298cade88153ef0225b41b0406234d91575bac0df0",
+      "copy_sha256": "9f770e1533eb5511a78cd0298cade88153ef0225b41b0406234d91575bac0df0",
+      "bytes_before": 93533,
+      "bytes_after": 93533
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/make_assets.py",
+      "source_sha256": "7a8f072510d22776ac7b3051d6eb8f20d027beff08f50da3f13bf075d24f2c36",
+      "copy_sha256": "7a8f072510d22776ac7b3051d6eb8f20d027beff08f50da3f13bf075d24f2c36",
+      "bytes_before": 11673,
+      "bytes_after": 11673
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/omml.py",
+      "source_sha256": "4660173361122ca870db6fc06764dd54a2cb907df3b4193b2302368f2487b226",
+      "copy_sha256": "4660173361122ca870db6fc06764dd54a2cb907df3b4193b2302368f2487b226",
+      "bytes_before": 8168,
+      "bytes_after": 8168
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/outline_check.py",
+      "source_sha256": "d27f32bc11d530cb1bb6cc47629c44fc9e9bfb0d12bf52f4a6a620614eb27339",
+      "copy_sha256": "d27f32bc11d530cb1bb6cc47629c44fc9e9bfb0d12bf52f4a6a620614eb27339",
+      "bytes_before": 8660,
+      "bytes_after": 8660
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/pipeline.py",
+      "source_sha256": "261a3d39596a26df9738af31d2b758b5f19002e9b57688084cd71df12398f7dd",
+      "copy_sha256": "261a3d39596a26df9738af31d2b758b5f19002e9b57688084cd71df12398f7dd",
+      "bytes_before": 2982,
+      "bytes_after": 2982
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/plan_deck.py",
+      "source_sha256": "7393213dd61bbd597941a625f991e0fcf45bfbdd03ce99c23c7123949f6cc07e",
+      "copy_sha256": "7393213dd61bbd597941a625f991e0fcf45bfbdd03ce99c23c7123949f6cc07e",
+      "bytes_before": 14571,
+      "bytes_after": 14571
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/qa_check.py",
+      "source_sha256": "ac790c76090aad19e57a23fb1322a67097b9b64833519b1386ad993521a5cd97",
+      "copy_sha256": "ac790c76090aad19e57a23fb1322a67097b9b64833519b1386ad993521a5cd97",
+      "bytes_before": 15078,
+      "bytes_after": 15078
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/render.py",
+      "source_sha256": "163b962b61e27b413741588a6edf609e614608409cd9944041ae04ee10bc2f2b",
+      "copy_sha256": "163b962b61e27b413741588a6edf609e614608409cd9944041ae04ee10bc2f2b",
+      "bytes_before": 5603,
+      "bytes_after": 5603
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/render_lite.py",
+      "source_sha256": "76140360c0ccf559eb7eee6ac574b8b76df774842d6a7de872d9d9adec381130",
+      "copy_sha256": "76140360c0ccf559eb7eee6ac574b8b76df774842d6a7de872d9d9adec381130",
+      "bytes_before": 22423,
+      "bytes_after": 22423
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/review.py",
+      "source_sha256": "053d036f345c376504ed7355bd248f645accf56b5bd4cfc42b6b81146d17c753",
+      "copy_sha256": "053d036f345c376504ed7355bd248f645accf56b5bd4cfc42b6b81146d17c753",
+      "bytes_before": 8177,
+      "bytes_after": 8177
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/setup_check.py",
+      "source_sha256": "35530dfa46134ccd2621dcd072b770610da1800748f3d7916465e5787be44554",
+      "copy_sha256": "35530dfa46134ccd2621dcd072b770610da1800748f3d7916465e5787be44554",
+      "bytes_before": 15327,
+      "bytes_after": 15327
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/style_card.py",
+      "source_sha256": "805958d10ea54afe4dac4e09aabb73ac6c93111f3e74f8030c8f12c2c4dcc48e",
+      "copy_sha256": "805958d10ea54afe4dac4e09aabb73ac6c93111f3e74f8030c8f12c2c4dcc48e",
+      "bytes_before": 4085,
+      "bytes_after": 4085
+    },
+    {
+      "path": "vendor/luobo-ppt/scripts/style_previews.py",
+      "source_sha256": "98fb8eb46684c2122d9666f62b28cb06b4b3d381ca941c270c4121c81d5d5dba",
+      "copy_sha256": "98fb8eb46684c2122d9666f62b28cb06b4b3d381ca941c270c4121c81d5d5dba",
+      "bytes_before": 7907,
+      "bytes_after": 7907
+    },
+    {
+      "path": "wengao_ppt/__init__.py",
+      "source_sha256": "08b448e6ebf321fc0c3e31e3398db97e975fd15d939f450e3d0cd80fdf119df8",
+      "copy_sha256": "08b448e6ebf321fc0c3e31e3398db97e975fd15d939f450e3d0cd80fdf119df8",
+      "bytes_before": 527,
+      "bytes_after": 527
+    },
+    {
+      "path": "wengao_ppt/backdrop.py",
+      "source_sha256": "2f9c245198715c38da33a3ff031a63d7891e9c25797ab25b9ccb826f62839dee",
+      "copy_sha256": "2f9c245198715c38da33a3ff031a63d7891e9c25797ab25b9ccb826f62839dee",
+      "bytes_before": 18728,
+      "bytes_after": 18728
+    },
+    {
+      "path": "wengao_ppt/census.py",
+      "source_sha256": "0b1edd4b5e1f20231ef4cd4c2073d54bb882c7bc31e0e893866de550ee1370c0",
+      "copy_sha256": "0b1edd4b5e1f20231ef4cd4c2073d54bb882c7bc31e0e893866de550ee1370c0",
+      "bytes_before": 21350,
+      "bytes_after": 21350
+    },
+    {
+      "path": "wengao_ppt/charts.py",
+      "source_sha256": "c8d713a4e51ea320898a91a0f921d160eb90700f4a524b3de068d1d820a3226d",
+      "copy_sha256": "c8d713a4e51ea320898a91a0f921d160eb90700f4a524b3de068d1d820a3226d",
+      "bytes_before": 28083,
+      "bytes_after": 28083
+    },
+    {
+      "path": "wengao_ppt/checks.py",
+      "source_sha256": "910f70331958dec2b76f9ac7021c96461c3764e83c02210728cb7c5b062439c5",
+      "copy_sha256": "910f70331958dec2b76f9ac7021c96461c3764e83c02210728cb7c5b062439c5",
+      "bytes_before": 50596,
+      "bytes_after": 50596
+    },
+    {
+      "path": "wengao_ppt/cleanup.py",
+      "source_sha256": "710e5e55f43558dbf022766eb129317f2e7bb5f67564f004d671684fa0dbedeb",
+      "copy_sha256": "710e5e55f43558dbf022766eb129317f2e7bb5f67564f004d671684fa0dbedeb",
+      "bytes_before": 6050,
+      "bytes_after": 6050
+    },
+    {
+      "path": "wengao_ppt/cli.py",
+      "source_sha256": "556f8e51fa45f9d99eb4a585dcbef29f1c74f6b916e9e9431f45d7927dc2741b",
+      "copy_sha256": "556f8e51fa45f9d99eb4a585dcbef29f1c74f6b916e9e9431f45d7927dc2741b",
+      "bytes_before": 32128,
+      "bytes_after": 32128
+    },
+    {
+      "path": "wengao_ppt/core.py",
+      "source_sha256": "6ba31c79fcbf68cd9683c26a4cd1df7f6c1510b19df0a08ab5f23910ba42de30",
+      "copy_sha256": "6ba31c79fcbf68cd9683c26a4cd1df7f6c1510b19df0a08ab5f23910ba42de30",
+      "bytes_before": 4981,
+      "bytes_after": 4981
+    },
+    {
+      "path": "wengao_ppt/extractors.py",
+      "source_sha256": "88353ed6ac5f4d09684793eae3e5c4cd589eea7a1a3d9d57d238164574799d89",
+      "copy_sha256": "88353ed6ac5f4d09684793eae3e5c4cd589eea7a1a3d9d57d238164574799d89",
+      "bytes_before": 13158,
+      "bytes_after": 13158
+    },
+    {
+      "path": "wengao_ppt/fontenv.py",
+      "source_sha256": "cb8156b2aa5eda4b45847b4f5b79bb969578615cf2a41488837316087123b6e3",
+      "copy_sha256": "cb8156b2aa5eda4b45847b4f5b79bb969578615cf2a41488837316087123b6e3",
+      "bytes_before": 8614,
+      "bytes_after": 8614
+    },
+    {
+      "path": "wengao_ppt/glyphcheck.py",
+      "source_sha256": "8228f53ec492ca738fa226c028de05ddaff985fc1422450a47196297128479cf",
+      "copy_sha256": "8228f53ec492ca738fa226c028de05ddaff985fc1422450a47196297128479cf",
+      "bytes_before": 34963,
+      "bytes_after": 34963
+    },
+    {
+      "path": "wengao_ppt/incident.py",
+      "source_sha256": "5f74443fbd84d8d02dbc53214ded85cdc8cfc782277cbd3f4b32879aadd3e4bc",
+      "copy_sha256": "5f74443fbd84d8d02dbc53214ded85cdc8cfc782277cbd3f4b32879aadd3e4bc",
+      "bytes_before": 7516,
+      "bytes_after": 7516
+    },
+    {
+      "path": "wengao_ppt/install.py",
+      "source_sha256": "209c3ed31af5aa7b722e61b3f4ee808ca3e50f4b6122f62963cae92481b19257",
+      "copy_sha256": "209c3ed31af5aa7b722e61b3f4ee808ca3e50f4b6122f62963cae92481b19257",
+      "bytes_before": 43533,
+      "bytes_after": 43533
+    },
+    {
+      "path": "wengao_ppt/label_extract.py",
+      "source_sha256": "b2644496ce255dcfa67806a3f648964bdcf2dfafaf55b4a47f95000cb8df79f1",
+      "copy_sha256": "b2644496ce255dcfa67806a3f648964bdcf2dfafaf55b4a47f95000cb8df79f1",
+      "bytes_before": 14126,
+      "bytes_after": 14126
+    },
+    {
+      "path": "wengao_ppt/language_support.py",
+      "source_sha256": "0b54aaaa1ed27ec1b116a9266625ce656092bd4ed3c03a16ac3b17cfb69466aa",
+      "copy_sha256": "0b54aaaa1ed27ec1b116a9266625ce656092bd4ed3c03a16ac3b17cfb69466aa",
+      "bytes_before": 41697,
+      "bytes_after": 41697
+    },
+    {
+      "path": "wengao_ppt/local_edit.py",
+      "source_sha256": "d9bc82ecfdd280ceb027128c5ef6f6bdff8cda6c8cbcf762182e663fcbc0d05c",
+      "copy_sha256": "d9bc82ecfdd280ceb027128c5ef6f6bdff8cda6c8cbcf762182e663fcbc0d05c",
+      "bytes_before": 29881,
+      "bytes_after": 29881
+    },
+    {
+      "path": "wengao_ppt/page_catalog.py",
+      "source_sha256": "1cdecb92bbd225e984f0dc2ae01826c28b8cd5ef42984b6f3868ed98c554719e",
+      "copy_sha256": "1cdecb92bbd225e984f0dc2ae01826c28b8cd5ef42984b6f3868ed98c554719e",
+      "bytes_before": 10821,
+      "bytes_after": 10821
+    },
+    {
+      "path": "wengao_ppt/parsers_xml.py",
+      "source_sha256": "9f99317d511d846558ec960c12b8d8e3200ea2e1143cf36834a694b1b9881418",
+      "copy_sha256": "9f99317d511d846558ec960c12b8d8e3200ea2e1143cf36834a694b1b9881418",
+      "bytes_before": 13580,
+      "bytes_after": 13580
+    },
+    {
+      "path": "wengao_ppt/readability.py",
+      "source_sha256": "42a6c4a424b4e85a1c3325b554758a26ef37d86ef6d2ce7900af6b0dfdbcf647",
+      "copy_sha256": "42a6c4a424b4e85a1c3325b554758a26ef37d86ef6d2ce7900af6b0dfdbcf647",
+      "bytes_before": 61979,
+      "bytes_after": 61979
+    },
+    {
+      "path": "wengao_ppt/refine.py",
+      "source_sha256": "ad6f2a4a38cc69abf3f3995a496bb0a9b715a9db4598d08fc3345fd746c191ac",
+      "copy_sha256": "ad6f2a4a38cc69abf3f3995a496bb0a9b715a9db4598d08fc3345fd746c191ac",
+      "bytes_before": 40202,
+      "bytes_after": 40202
+    },
+    {
+      "path": "wengao_ppt/render.py",
+      "source_sha256": "f1c41a1c64480c5ba9715c9b8fdad59730d87ae50a7f3ca627dab5066888a185",
+      "copy_sha256": "f1c41a1c64480c5ba9715c9b8fdad59730d87ae50a7f3ca627dab5066888a185",
+      "bytes_before": 21469,
+      "bytes_after": 21469
+    },
+    {
+      "path": "wengao_ppt/repair.py",
+      "source_sha256": "a04c5857004bce9a5a7def28e3b0880255b01e80b4bf4396e1d7e71716de8410",
+      "copy_sha256": "a04c5857004bce9a5a7def28e3b0880255b01e80b4bf4396e1d7e71716de8410",
+      "bytes_before": 59437,
+      "bytes_after": 59437
+    },
+    {
+      "path": "wengao_ppt/runner.py",
+      "source_sha256": "6fe72272c70fc164e4512367b5c366e437f08068a0d202b2a52ac6bde3886440",
+      "copy_sha256": "6fe72272c70fc164e4512367b5c366e437f08068a0d202b2a52ac6bde3886440",
+      "bytes_before": 184499,
+      "bytes_after": 184499
+    },
+    {
+      "path": "wengao_ppt/scene_images.py",
+      "source_sha256": "c0516593f19167b693000336f1e5235cb8567d5b297aa3aa47fc5db001926564",
+      "copy_sha256": "c0516593f19167b693000336f1e5235cb8567d5b297aa3aa47fc5db001926564",
+      "bytes_before": 100459,
+      "bytes_after": 100459
+    },
+    {
+      "path": "wengao_ppt/scene_model.py",
+      "source_sha256": "ab6e35defd414d1634872286e1a005295b9c9593f13933a28d3057aac874eb42",
+      "copy_sha256": "ab6e35defd414d1634872286e1a005295b9c9593f13933a28d3057aac874eb42",
+      "bytes_before": 157101,
+      "bytes_after": 157101
+    },
+    {
+      "path": "wengao_ppt/semantic_scenes.py",
+      "source_sha256": "af4cdb16357f98530bce58185ee60b2f88daddf24fff12631fee770c5aa4b874",
+      "copy_sha256": "af4cdb16357f98530bce58185ee60b2f88daddf24fff12631fee770c5aa4b874",
+      "bytes_before": 183267,
+      "bytes_after": 183267
+    },
+    {
+      "path": "wengao_ppt/source_fidelity.py",
+      "source_sha256": "3bf1eab7bf7f1e8f893cfa6f6cbbccd20227ab1d74c4548a8634abb9f9fe50e6",
+      "copy_sha256": "3bf1eab7bf7f1e8f893cfa6f6cbbccd20227ab1d74c4548a8634abb9f9fe50e6",
+      "bytes_before": 42337,
+      "bytes_after": 42337
+    },
+    {
+      "path": "wengao_ppt/tables.py",
+      "source_sha256": "6634637fdb888c3b67e02cd154320a8d802c334c4a85073cb7b96d041315ba5d",
+      "copy_sha256": "6634637fdb888c3b67e02cd154320a8d802c334c4a85073cb7b96d041315ba5d",
+      "bytes_before": 20323,
+      "bytes_after": 20323
+    },
+    {
+      "path": "wengao_ppt/theme.py",
+      "source_sha256": "2abe221e25f32901f63e22d31e0994ec51691d7fd2e3f4b3d75b07145927799d",
+      "copy_sha256": "2abe221e25f32901f63e22d31e0994ec51691d7fd2e3f4b3d75b07145927799d",
+      "bytes_before": 51752,
+      "bytes_after": 51752
+    },
+    {
+      "path": "wengao_ppt/visual.py",
+      "source_sha256": "9a33ffc005de68031d35b24d9b888624afa166bb27d4c82417b19353acf1dab9",
+      "copy_sha256": "9a33ffc005de68031d35b24d9b888624afa166bb27d4c82417b19353acf1dab9",
+      "bytes_before": 45239,
+      "bytes_after": 45239
+    },
+    {
+      "path": "wengao_ppt/visual_fixes.py",
+      "source_sha256": "a2cb6af43a9afc3ba32138fb428aed9fd2c82b6dcc3715294ce68e9c0c81b6ac",
+      "copy_sha256": "a2cb6af43a9afc3ba32138fb428aed9fd2c82b6dcc3715294ce68e9c0c81b6ac",
+      "bytes_before": 5433,
+      "bytes_after": 5433
+    },
+    {
+      "path": "wengao_ppt/visual_plan.py",
+      "source_sha256": "0d780177fdb9906c539df20d6fe98eaa63e084b2419c7762ca72468e352b0100",
+      "copy_sha256": "0d780177fdb9906c539df20d6fe98eaa63e084b2419c7762ca72468e352b0100",
+      "bytes_before": 17906,
+      "bytes_after": 17906
+    },
+    {
+      "path": "workbench/index.html",
+      "source_sha256": "174feaf1b75035cc9758d7b2482aa74119a95118a2f734481ad225cd061b90af",
+      "copy_sha256": "174feaf1b75035cc9758d7b2482aa74119a95118a2f734481ad225cd061b90af",
+      "bytes_before": 124437,
+      "bytes_after": 124437
+    },
+    {
+      "path": "workbench/make_flow.py",
+      "source_sha256": "15d92bba43b32ab055997346ae868f3fddbb2721e829c6aafe23811ba87603e6",
+      "copy_sha256": "15d92bba43b32ab055997346ae868f3fddbb2721e829c6aafe23811ba87603e6",
+      "bytes_before": 19136,
+      "bytes_after": 19136
+    },
+    {
+      "path": "workbench/server.py",
+      "source_sha256": "450fcc855cec660bea1725ccf9321c784f9775469d198354ba0f54612684d911",
+      "copy_sha256": "450fcc855cec660bea1725ccf9321c784f9775469d198354ba0f54612684d911",
+      "bytes_before": 133948,
+      "bytes_after": 133948
+    }
+  ],
+  "skipped": [
+    {
+      "path": "assets/visual_img/aisle_supermarket.png",
+      "reason": "AI 生成资产：缺少可核验的生成证据与 AI 标识元数据",
+      "source_sha256": "15e43e0cf78e20a2be92df5de8724839101a8499ba1f4e08e4f9a67bb8248ab7"
+    },
+    {
+      "path": "assets/visual_img/desk_planning.png",
+      "reason": "AI 生成资产：缺少可核验的生成证据与 AI 标识元数据",
+      "source_sha256": "87ec7621a77cf4c792750e2edeb73f65edbb9d66047abfb267d558a9625b6ee0"
+    },
+    {
+      "path": "assets/visual_img/factory_night.png",
+      "reason": "AI 生成资产：缺少可核验的生成证据与 AI 标识元数据",
+      "source_sha256": "ccce4620229037aee5b4c9161af6dd6dc8c9f925f811435ee66b12e0c9783c65"
+    },
+    {
+      "path": "assets/visual_img/promo_ecom.png",
+      "reason": "AI 生成资产：缺少可核验的生成证据与 AI 标识元数据",
+      "source_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350"
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/consumer-payment-receipt-3570244.jpeg",
+      "reason": "Pexels 照片：资产清单自述 NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "source_sha256": "3ab2b539e4e1a230bf5a0ec909cb130eebe905de71f31eee1fbe781ecad1b52f"
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/consumer-shopping-4971925.jpeg",
+      "reason": "Pexels 照片：资产清单自述 NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "source_sha256": "baa246ab6ff90f1610ec9c96e5930054f04ee58b0890da2b55989721045b64c0"
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/delivery-courier-6868460.jpeg",
+      "reason": "Pexels 照片：资产清单自述 NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "source_sha256": "4f517c92a344caa9e0068176c87aa5a4f92192af93364d93185fd4a7a82cf164"
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/factory-workers-32048366.jpeg",
+      "reason": "Pexels 照片：资产清单自述 NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "source_sha256": "4cbc50349c48dff3aa95d4ec333cc946130e989374856d9c921f6cba87e19c2a"
+    },
+    {
+      "path": "assets/visual_img/semantic_scenes/production-line-modern-34718930.jpeg",
+      "reason": "Pexels 照片：资产清单自述 NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "source_sha256": "2a075efb88b6866961e0769de2dd704a885488cbad70f4ce88c32690fb312ecf"
+    },
+    {
+      "path": "assets/visual_img/skyline_city.png",
+      "reason": "AI 生成资产：缺少可核验的生成证据与 AI 标识元数据",
+      "source_sha256": "3c64d9f1e4a6c82a206cef3c7ae5c4e9184415e0b2cd821386582b0bd65b5d99"
+    },
+    {
+      "path": "scripts/inspect_baseline_style.py",
+      "reason": "dev-only: 一次性版式检查脚本",
+      "source_sha256": "3aabae70a258a916af5f06c99669c4caca633f148e204eb2ce694a673d57b714"
+    },
+    {
+      "path": "scripts/inspect_r3.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "9daf2d6ea2b7e85cebdac28edafa9ef843fcda957aaa0e51be4f11ee25580876"
+    },
+    {
+      "path": "scripts/inspect_r3b.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "c90e29cc416e814063702417f5d3c43309ab5222e75863a2dcba2be118efc63a"
+    },
+    {
+      "path": "scripts/inspect_r3c.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "6e4c3dc2e0bb5a17b0c2acb40b2bf342dff98e40b711c71d3a99dcfd6ee95a97"
+    },
+    {
+      "path": "scripts/inspect_r3d.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "041a27c5dfeabc5395ca13ef2daeb578a1821564070029d5b45b0668cfa6c874"
+    },
+    {
+      "path": "scripts/inspect_r3e.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "592c5ed2c877abef55afbd632bcacc3686b23a90905141e21f3437d581609260"
+    },
+    {
+      "path": "scripts/inspect_r3f.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "5fda0f61b1422f1851984a8af5ea54e5d3888defc00670e64f6dbac8b1b1fde4"
+    },
+    {
+      "path": "scripts/inspect_r3g.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "30b12f3b52fe924d0abcf6bb37aacb5f2bef25fd6bdc2989ef95c6f1268e39a4"
+    },
+    {
+      "path": "scripts/inspect_r3h.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "3a389473175bb644cc948f920b9b23c7bd3952fc5063fbf05524e00df1cbbedb"
+    },
+    {
+      "path": "scripts/inspect_r3i.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "6164a5b9436affadff8229f6bf63ee0a68077e318125b0a4a45657f0a0de25ce"
+    },
+    {
+      "path": "scripts/inspect_r3j.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "eeb27f4fb6cc3dfddd635c2181c31b0e2b033e5f07cf24c14c362322db94d708"
+    },
+    {
+      "path": "scripts/inspect_r3j2.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "ce6114790f8d50fd1d5e0a9065244717f569bfc85f3a73d202baac051c6131d1"
+    },
+    {
+      "path": "scripts/inspect_r3k.py",
+      "reason": "dev-only: 文件头写死本机候选绝对路径",
+      "source_sha256": "c0d1a0a200806cf27a1e5847782a2bb1c463f64c59c94b3449258ec07daa7e4f"
+    },
+    {
+      "path": "scripts/p2_build_license_matrix.py",
+      "reason": "dev-only: P2 打包审计工具，不属于用户运行载荷",
+      "source_sha256": "5124de5ff2d394c14dbe6efa8dfcfd120829081913e21e7a16657505b0012334"
+    },
+    {
+      "path": "scripts/p2_build_release_copy.py",
+      "reason": "dev-only: P2 打包审计工具，不属于用户运行载荷",
+      "source_sha256": "d6dbd7310990ad0c1bce27dbdf51657a5cb5f838bbcf5573b878a5429f6700b7"
+    },
+    {
+      "path": "scripts/p2_release_sanitizer.py",
+      "reason": "dev-only: P2 打包审计工具，不属于用户运行载荷",
+      "source_sha256": "8464f72aae5094103185ce22cf32bc1ac2482a85cd6e2d9e44731fa75aab6dad"
+    },
+    {
+      "path": "scripts/run_gate_13p.py",
+      "reason": "dev-only: 写死外部监督工作区绝对路径",
+      "source_sha256": "fff25395c777f1c12bc3feac45b9ba9c62245e560f9b9b99e45ac6eebf40f983"
+    },
+    {
+      "path": "scripts/run_gate_negative_cases.py",
+      "reason": "dev-only: 写死外部监督工作区绝对路径",
+      "source_sha256": "a7c415e1e7c86f184e2c7947d859a18d80695c1fa114ace0fb428aa997620ef9"
+    },
+    {
+      "path": "scripts/run_negative_regression.py",
+      "reason": "dev-only: 写死外部监督工作区绝对路径",
+      "source_sha256": "ab8b7c8dc7af3dc05f7d66a851337e8fa6c6157a35efadd4b4b96523d4509eba"
+    },
+    {
+      "path": "scripts/run_p0_final_gate.py",
+      "reason": "dev-only: 一次性门禁脚本，文件内写死本机绝对路径",
+      "source_sha256": "01791cfc27bf1c5f89e2012711fcfc767c2fc6b668d7db9f3f4c78411f9eaf34"
+    },
+    {
+      "path": "tests/test_multilingual_26_acceptance_gate.py",
+      "reason": "含硬编码的本机外部工作区绝对路径；源侧问题已上报该文件所属工作包，本轮不在副本内修改他人文件",
+      "source_sha256": "10e8fcca00b511eb18a2ae2c882edb46896828c090e2d148d1691bb6cb26ae48"
+    }
+  ],
+  "redaction_ledger": [
+    {
+      "line_fragment": "/Users/huangyingteng/Documents/Codex/2026-10-20/n-2",
+      "replaced_with": "<REDACTED_LOCAL_PATH>",
+      "occurrences": 1,
+      "reason": "指向本机外部监督工作区的绝对路径",
+      "path": "samples/open-source-50-decks/multilingual-inputs/generation-evidence/batch-25-28-language-reclassification.json",
+      "source_sha256": "1f789cfad2004f86b02fbb96f43659354e077c5d5f6f15856cb83caa27eee78a",
+      "copy_sha256": "314048c550449fced016ea1e6e39775589fbd9c20dd6fcfe3722d89618414514"
+    }
+  ],
+  "copy_rescan": {
+    "must_fix": [],
+    "manual_review": [
+      {
+        "rule": "home_tilde_note",
+        "severity": "manual_review",
+        "desc": "私人目录简写路径",
+        "line": 48,
+        "match_redacted": "~/Library/",
+        "snippet_redacted": "os.path.expanduser(\"~/Library/Fonts\"),",
+        "path": "scripts/p7_language_chain_audit.py"
+      },
+      {
+        "rule": "email",
+        "severity": "manual_review",
+        "desc": "邮箱地址",
+        "line": 42,
+        "match_redacted": "user@www.pe<REDACTED>",
+        "snippet_redacted": "\"https://user@www.pexels.com/photo/example-127/\",",
+        "path": "tests/test_scene_images_pexels.py"
+      },
+      {
+        "rule": "email",
+        "severity": "manual_review",
+        "desc": "邮箱地址",
+        "line": 141,
+        "match_redacted": "pw@exampl<REDACTED>",
+        "snippet_redacted": "\"https://user:pw@example.com/x.jpg\",",
+        "path": "tests/test_scene_provider_transport.py"
+      },
+      {
+        "rule": "home_tilde_note",
+        "severity": "manual_review",
+        "desc": "私人目录简写路径",
+        "line": 248,
+        "match_redacted": "~/Library/",
+        "snippet_redacted": "os.path.expanduser(\"~/.fonts/**/*CJK*.tt*\"), os.path.expanduser(\"~/Library/Fonts/*CJK*.tt*\")]",
+        "path": "vendor/luobo-ppt/scripts/common.py"
+      },
+      {
+        "rule": "email",
+        "severity": "manual_review",
+        "desc": "邮箱地址",
+        "line": 1023,
+        "match_redacted": "team@wengao<REDACTED>",
+        "snippet_redacted": "\"User-Agent\": \"WengaoPPT/1.0 (https://wengao.local; team@wengao.local) urllib/3.13\",",
+        "path": "wengao_ppt/scene_images.py"
+      },
+      {
+        "rule": "email",
+        "severity": "manual_review",
+        "desc": "邮箱地址",
+        "line": 1069,
+        "match_redacted": "team@wengao<REDACTED>",
+        "snippet_redacted": "\"User-Agent\": \"WengaoPPT/1.0 (https://wengao.local; team@wengao.local) urllib/3.13\",",
+        "path": "wengao_ppt/scene_images.py"
+      }
+    ],
+    "allowlisted": [
+      {
+        "rule": "api_key_assign",
+        "severity": "must_fix",
+        "desc": "疑似密钥/口令字面量赋值",
+        "line": 48,
+        "match_redacted": "api_key = \"test-o<REDACTED>\"",
+        "snippet_redacted": "api_key = \"test-only-not-a-real-api-key\"",
+        "path": "tests/test_scene_images_pexels.py",
+        "allow_reason": "测试占位符字符串，文件自述不是真实密钥；无凭证泄漏风险",
+        "allow_fragment_still_present": true
+      },
+      {
+        "rule": "api_key_assign",
+        "severity": "must_fix",
+        "desc": "疑似密钥/口令字面量赋值",
+        "line": 102,
+        "match_redacted": "api_key = \"test-o<REDACTED>\"",
+        "snippet_redacted": "api_key = \"test-only-not-a-real-api-key\"",
+        "path": "tests/test_scene_images_pexels.py",
+        "allow_reason": "测试占位符字符串，文件自述不是真实密钥；无凭证泄漏风险",
+        "allow_fragment_still_present": true
+      },
+      {
+        "rule": "abs_user_path",
+        "severity": "must_fix",
+        "desc": "本机用户绝对路径",
+        "line": 1114,
+        "match_redacted": "/Users/example",
+        "snippet_redacted": "\"(checked: /Users/example/Library/Application Support/LocalQwenService/bin/llama-server)\"))",
+        "path": "tests/test_semantic_scenes.py",
+        "allow_reason": "文档里的示例路径占位符（/Users/example），非本机真实路径",
+        "allow_fragment_still_present": true
+      },
+      {
+        "rule": "abs_private_tmp",
+        "severity": "must_fix",
+        "desc": "本机临时/Windows 路径",
+        "line": 68,
+        "match_redacted": "/private/var/folders",
+        "snippet_redacted": "text = re.sub(r\"(?:/Users/|/Volumes/|/private/var/folders/)[^,);\\n]*\",",
+        "path": "wengao_ppt/scene_model.py",
+        "allow_reason": "这是把本机路径从报错文本里抹掉的**脱敏正则**，不是路径泄漏",
+        "allow_fragment_still_present": true
+      }
+    ],
+    "counts": {
+      "must_fix": 0,
+      "manual_review": 6,
+      "allowlisted": 4,
+      "files": 233
+    }
+  },
+  "copied_manifest_sha256": "8909e467912a9800de2ba24eb195b82037c0d3cee8531caf9d2fec0d55abfdb9"
+}

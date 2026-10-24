@@ -1,0 +1,245 @@
+{
+ "schema": "rs.w2_recompose_insert_inventory.v1",
+ "source_deck": {
+  "pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/recompose_src.pptx",
+  "pages": 3,
+  "inventories": [
+   {
+    "page": 1,
+    "shape_count": 4,
+    "shapes": [
+     {
+      "shape_id": 2,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 1",
+      "has_text": true,
+      "text_head": "第 1 页标题"
+     },
+     {
+      "shape_id": 3,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 2",
+      "has_text": true,
+      "text_head": "要点 1-1"
+     },
+     {
+      "shape_id": 4,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 3",
+      "has_text": true,
+      "text_head": "要点 1-2"
+     },
+     {
+      "shape_id": 5,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 4",
+      "has_text": true,
+      "text_head": "要点 1-3"
+     }
+    ]
+   },
+   {
+    "page": 2,
+    "shape_count": 4,
+    "shapes": [
+     {
+      "shape_id": 2,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 1",
+      "has_text": true,
+      "text_head": "第 2 页标题"
+     },
+     {
+      "shape_id": 3,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 2",
+      "has_text": true,
+      "text_head": "要点 2-1"
+     },
+     {
+      "shape_id": 4,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 3",
+      "has_text": true,
+      "text_head": "要点 2-2"
+     },
+     {
+      "shape_id": 5,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 4",
+      "has_text": true,
+      "text_head": "要点 2-3"
+     }
+    ]
+   },
+   {
+    "page": 3,
+    "shape_count": 4,
+    "shapes": [
+     {
+      "shape_id": 2,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 1",
+      "has_text": true,
+      "text_head": "第 3 页标题"
+     },
+     {
+      "shape_id": 3,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 2",
+      "has_text": true,
+      "text_head": "要点 3-1"
+     },
+     {
+      "shape_id": 4,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 3",
+      "has_text": true,
+      "text_head": "要点 3-2"
+     },
+     {
+      "shape_id": 5,
+      "type": "TEXT_BOX (17)",
+      "name": "TextBox 4",
+      "has_text": true,
+      "text_head": "要点 3-3"
+     }
+    ]
+   }
+  ]
+ },
+ "recompose_slide": {
+  "page_index": 1,
+  "others_unchanged": true,
+  "warnings": [],
+  "page_xml_sha_before_after": {
+   "0": [
+    "f5512dd630345d1c21169eb54ebf8234b7e28b65ff84d64eeb162060403f4680",
+    "f5512dd630345d1c21169eb54ebf8234b7e28b65ff84d64eeb162060403f4680"
+   ],
+   "1": [
+    "7086684aee8cca32241556d844868e57c8de0049de7f278d8525c96740ffc23c",
+    "79154992da47bbb5c0925aee3063083388a9933fb6f539f6a30b79add17af6dc"
+   ],
+   "2": [
+    "cfdce90a1eee0b2bab07b57c3e4f75aa2ee2e045cddfda0b80081540dc491e45",
+    "cfdce90a1eee0b2bab07b57c3e4f75aa2ee2e045cddfda0b80081540dc491e45"
+   ]
+  },
+  "target_page_before": [
+   {
+    "shape_id": 2,
+    "type": "TEXT_BOX (17)",
+    "name": "TextBox 1"
+   },
+   {
+    "shape_id": 3,
+    "type": "TEXT_BOX (17)",
+    "name": "TextBox 2"
+   },
+   {
+    "shape_id": 4,
+    "type": "TEXT_BOX (17)",
+    "name": "TextBox 3"
+   },
+   {
+    "shape_id": 5,
+    "type": "TEXT_BOX (17)",
+    "name": "TextBox 4"
+   }
+  ],
+  "target_page_after": [
+   {
+    "shape_id": 2,
+    "type": "TEXT_BOX (17)",
+    "name": "w2:title"
+   },
+   {
+    "shape_id": 3,
+    "type": "TEXT_BOX (17)",
+    "name": "w2:body"
+   }
+  ],
+  "others_inventory_rows": [
+   {
+    "page": 1,
+    "identical": true,
+    "shapes_before": 4,
+    "shapes_after": 4
+   },
+   {
+    "page": 3,
+    "identical": true,
+    "shapes_before": 4,
+    "shapes_after": 4
+   }
+  ],
+  "out_pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/recompose_out.pptx"
+ },
+ "insert_slide": {
+  "after_index": 0,
+  "others_unchanged": true,
+  "warnings": [],
+  "page_count_before": 3,
+  "page_count_after": 4,
+  "out_pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/insert_out.pptx",
+  "shifted_pages": [
+   {
+    "before_page": 1,
+    "after_page": 1,
+    "identical": true
+   },
+   {
+    "before_page": 2,
+    "after_page": 3,
+    "identical": true
+   },
+   {
+    "before_page": 3,
+    "after_page": 4,
+    "identical": true
+   }
+  ],
+  "new_page_inventory": {
+   "page": 2,
+   "shape_count": 5,
+   "shapes": [
+    {
+     "shape_id": 2,
+     "type": "TEXT_BOX (17)",
+     "name": "w2:title",
+     "has_text": true,
+     "text_head": "插入的对比页"
+    },
+    {
+     "shape_id": 3,
+     "type": "AUTO_SHAPE (1)",
+     "name": "Rectangle 2",
+     "has_text": false,
+     "text_head": ""
+    },
+    {
+     "shape_id": 4,
+     "type": "AUTO_SHAPE (1)",
+     "name": "Rectangle 3",
+     "has_text": false,
+     "text_head": ""
+    },
+    {
+     "shape_id": 5,
+     "type": "TEXT_BOX (17)",
+     "name": "w2:body",
+     "has_text": true,
+     "text_head": "· 公司增速 18%"
+    },
+    {
+     "shape_id": 6,
+     "type": "TEXT_BOX (17)",
+     "name": "w2:body",
+     "has_text": true,
+     "text_head": "· 行业均值 9%"
+    }
+   ]
+  }
+ }
+}

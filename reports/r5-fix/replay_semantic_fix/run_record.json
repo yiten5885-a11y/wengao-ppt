@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "replay": true,
+  "started_at": "2026-10-20T14:21:35.248499+08:00",
+  "what": "mfix2 冻结证据 × 语义对齐修复 的确定性回放",
+  "material": null,
+  "material_sha256": null,
+  "target_pages": 12,
+  "model_calls": 0,
+  "alignment": {
+    "subjects": 8,
+    "slides_after_alignment": 10,
+    "dropped_skeleton_slides": [
+      {
+        "page": 11,
+        "title": "行动建议",
+        "page_type": "summary_action",
+        "reason": "无对应事实章节，避免产出无内容的空页"
+      },
+      {
+        "page": 12,
+        "title": "致谢",
+        "page_type": "image_caption",
+        "reason": "无对应事实章节，避免产出无内容的空页"
+      }
+    ],
+    "added_skeleton_slides": null
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 22pt/表格 18pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "timeline",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 4,
+        "catalog_mid": 3,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true
+  },
+  "pptx": {
+    "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/replay_semantic_fix/annual_review_synthetic.replay.pptx",
+    "sha256": "fbfbde99aed680c538cba813e75ced32a255f8e5ae5fd0767950bb876bb2d65f",
+    "slides": 13,
+    "slides_match_pagination": true
+  },
+  "verdict": "GENERATED_PENDING_VALIDATION",
+  "finished_at": "2026-10-20T14:21:35.296355+08:00"
+}

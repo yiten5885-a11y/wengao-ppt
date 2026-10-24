@@ -1,0 +1,28 @@
+# 由 runner/build_release_candidate.py 按源码真实 import 生成。
+# 可复现安装（2026-10-20 监督复核补充）：下方"已验证版本"是本候选
+# 全链验收（precheck→run→validate→export + 中文渲染冒烟）实际使用的版本，
+# 干净隔离安装请按此锁定；不同平台以各自实际验证结果为准，不做跨平台声称。
+Pillow
+cryptography
+lxml
+openpyxl
+pypdf
+pypdfium2
+python-docx
+python-pptx
+
+# ---- 已验证版本（macOS，Python 3.13.12，2026-10-20）----
+# Pillow==12.3.0
+# lxml==6.1.3
+# openpyxl==3.1.5
+# pypdf==6.20.0
+# pypdfium2==5.14.0
+# python-docx==1.2.0
+# python-pptx==1.0.2
+#
+# 可复现安装说明：
+#   python3 -m venv .venv && . .venv/bin/activate
+#   pip install -r requirements.txt          # 或按上方"已验证版本"逐项锁定
+#   python -m wengao_ppt.install selftest    # 含中文渲染冒烟（需 LibreOffice）
+# 外部依赖：LibreOffice（渲染/导出）；可选本机 Ollama（材料生成，模型自选）。
+# 不随包分发字体或模型权重。

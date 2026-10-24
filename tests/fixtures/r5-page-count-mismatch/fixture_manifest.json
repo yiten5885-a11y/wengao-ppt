@@ -1,0 +1,24 @@
+{
+  "schema": "r5-page-count-mismatch-fixture/v1",
+  "source_material_task_id": "mt-799fab96",
+  "source_job_id": null,
+  "source_input_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "diagnostic_output_sha256": "8bedf5731494dd9ebcb9dcd33efd5672e1802484fb761e1cc5cf2dee56b00af3",
+  "original_verdict": "PAGE_COUNT_MISMATCH",
+  "target_pages": 12,
+  "planner_pages": 13,
+  "actual_pptx_pages": 14,
+  "source_files": [
+    {
+      "path": "content_plan.json",
+      "size": 10739,
+      "sha256": "d0fbe6c921cd615beb9fd45276a1380a7744f9c9041949518e3b8344c8a5128b"
+    },
+    {
+      "path": "fact_ledger.json",
+      "size": 46453,
+      "sha256": "9330d1a28af1f816332d98e19940c17ee50454d35244e9b4863f82fa1c6e65bf"
+    }
+  ],
+  "product_acceptance": false
+}

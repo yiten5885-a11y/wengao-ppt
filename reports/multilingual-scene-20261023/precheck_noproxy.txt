@@ -1,0 +1,20 @@
+===== precheck =====
+{
+  "job_id": "job-2ba9c9bb22c3",
+  "run_id": "20261023T081852_410232Z-248b4170",
+  "attempt_id": "46294a00",
+  "verdict": "QUEUED",
+  "material_intent": false,
+  "input_kind": ".pptx",
+  "input_sha256": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+  "upstream_verified": "VENDOR_DIR_MISSING",
+  "real_renderer": "MISSING",
+  "support_profile": "P1_TEXT_LIMITED",
+  "required_checks": [
+    "content_fidelity.required_text",
+    "content_fidelity.occurrence",
+    "content_fidelity.sign",
+    "native_editability.visible_native",
+    "render.real_render"
+  ]
+}

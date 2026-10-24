@@ -1,0 +1,1695 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "pptx": "reports/readability-20261021/v13-readable-13p-glyphfit.pptx",
+ "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+ "pdf": "/Users/huangyingteng/Documents/Codex/2026-10-20/n-2/work/strict-qa/negative-regression-observation-20261021-0937/frozen-6133ad5d.pdf",
+ "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+ "canvas_in": [
+  13.333,
+  7.5
+ ],
+ "pages_checked": [
+  9,
+  10
+ ],
+ "per_page": {
+  "9": {
+   "shapes": 22,
+   "chars_rendered": 201,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 5": "body",
+    "Text 7": "body",
+    "Text 8": "body",
+    "Text 10": "body",
+    "Text 11": "body",
+    "Text 13": "body",
+    "Text 14": "body",
+    "Text 16": "quote",
+    "Text 17": "conclusion",
+    "Text 18": "source",
+    "Text 19": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 177,
+   "mapped_chars": 177,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "发展转型：真正的高质量，不只是更会生产",
+     "mapped": "发展转型：真正的高质量，不只是更会生产",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+     "mapped": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "去产能",
+     "mapped": "去产能",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "让低效率竞争退出，减少低价内卷",
+     "mapped": "让低效率竞争退出，减少低价内卷",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 7",
+     "role": "body",
+     "expected": "提报酬",
+     "mapped": "提报酬",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "提高劳动者在分配中的稳定份额",
+     "mapped": "提高劳动者在分配中的稳定份额",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "稳预期",
+     "mapped": "稳预期",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 11",
+     "role": "body",
+     "expected": "降低教育、医疗、养老、失业不确定性",
+     "mapped": "降低教育、医疗、养老、失业不确定性",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "强创新",
+     "mapped": "强创新",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "把效率提升转成工资、服务与新岗位",
+     "mapped": "把效率提升转成工资、服务与新岗位",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 32.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "conclusion",
+     "expected": "产能升级只是上半场，支付能力修复才是下半场。",
+     "mapped": "产能升级只是上半场，支付能力修复才是下半场。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 19",
+     "role": "footer",
+     "expected": "09",
+     "mapped": "09",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [
+    {
+     "gate": "HG02",
+     "type": "CHAR_INVISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "，",
+     "box": [
+      9.582,
+      2.999,
+      9.617,
+      3.079
+     ],
+     "diff_ratio": 0.0,
+     "expected_ink": 0.7912,
+     "stroke_coverage": 0.0
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 4",
+     "ch": "能",
+     "box": [
+      1.234,
+      2.751,
+      1.527,
+      3.051
+     ],
+     "diff_ratio": 0.2485,
+     "expected_ink": 0.5278,
+     "stroke_coverage": 0.4769,
+     "visible_ratio": 0.477
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "让",
+     "box": [
+      6.788,
+      2.76,
+      7.076,
+      3.04
+     ],
+     "diff_ratio": 0.1006,
+     "expected_ink": 0.324,
+     "stroke_coverage": 0.4385,
+     "visible_ratio": 0.439
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "低",
+     "box": [
+      7.112,
+      2.753,
+      7.417,
+      3.057
+     ],
+     "diff_ratio": 0.1602,
+     "expected_ink": 0.439,
+     "stroke_coverage": 0.4836,
+     "visible_ratio": 0.484
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "效",
+     "box": [
+      7.456,
+      2.753,
+      7.752,
+      3.054
+     ],
+     "diff_ratio": 0.1638,
+     "expected_ink": 0.4261,
+     "stroke_coverage": 0.464,
+     "visible_ratio": 0.464
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "率",
+     "box": [
+      7.794,
+      2.753,
+      8.079,
+      3.055
+     ],
+     "diff_ratio": 0.1987,
+     "expected_ink": 0.4611,
+     "stroke_coverage": 0.5079,
+     "visible_ratio": 0.508
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "竞",
+     "box": [
+      8.112,
+      2.753,
+      8.41,
+      3.052
+     ],
+     "diff_ratio": 0.2044,
+     "expected_ink": 0.4765,
+     "stroke_coverage": 0.5243,
+     "visible_ratio": 0.524
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "争",
+     "box": [
+      8.456,
+      2.756,
+      8.746,
+      3.056
+     ],
+     "diff_ratio": 0.1551,
+     "expected_ink": 0.4217,
+     "stroke_coverage": 0.544,
+     "visible_ratio": 0.544
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "退",
+     "box": [
+      8.776,
+      2.76,
+      9.084,
+      3.05
+     ],
+     "diff_ratio": 0.1712,
+     "expected_ink": 0.4874,
+     "stroke_coverage": 0.4906,
+     "visible_ratio": 0.491
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "出",
+     "box": [
+      9.145,
+      2.757,
+      9.387,
+      3.055
+     ],
+     "diff_ratio": 0.1489,
+     "expected_ink": 0.4204,
+     "stroke_coverage": 0.4661,
+     "visible_ratio": 0.466
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "减",
+     "box": [
+      9.779,
+      2.755,
+      10.079,
+      3.059
+     ],
+     "diff_ratio": 0.1906,
+     "expected_ink": 0.5022,
+     "stroke_coverage": 0.4411,
+     "visible_ratio": 0.441
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "少",
+     "box": [
+      10.111,
+      2.761,
+      10.408,
+      3.055
+     ],
+     "diff_ratio": 0.0919,
+     "expected_ink": 0.2778,
+     "stroke_coverage": 0.4794,
+     "visible_ratio": 0.479
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "低",
+     "box": [
+      10.445,
+      2.753,
+      10.75,
+      3.057
+     ],
+     "diff_ratio": 0.1593,
+     "expected_ink": 0.439,
+     "stroke_coverage": 0.4825,
+     "visible_ratio": 0.482
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "价",
+     "box": [
+      10.777,
+      2.75,
+      11.094,
+      3.057
+     ],
+     "diff_ratio": 0.1214,
+     "expected_ink": 0.3415,
+     "stroke_coverage": 0.5304,
+     "visible_ratio": 0.53
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "内",
+     "box": [
+      11.143,
+      2.758,
+      11.388,
+      3.054
+     ],
+     "diff_ratio": 0.1664,
+     "expected_ink": 0.4138,
+     "stroke_coverage": 0.4749,
+     "visible_ratio": 0.475
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_PARTIAL_VISIBLE",
+     "page": 9,
+     "shape": "Text 5",
+     "ch": "卷",
+     "box": [
+      11.449,
+      2.753,
+      11.749,
+      3.041
+     ],
+     "diff_ratio": 0.1571,
+     "expected_ink": 0.4788,
+     "stroke_coverage": 0.4911,
+     "visible_ratio": 0.491
+    },
+    {
+     "gate": "HG03",
+     "type": "GLYPH_COLLISION",
+     "page": 9,
+     "shapes": [
+      "Text 13",
+      "Text 17"
+     ],
+     "overlap_in": [
+      0.265,
+      0.265
+     ],
+     "char_pair": [
+      "新",
+      "产"
+     ],
+     "char_overlap_in": [
+      0.265,
+      0.264
+     ],
+     "glyph_a": [
+      0.572,
+      4.733,
+      1.525,
+      5.038
+     ],
+     "glyph_b": [
+      1.26,
+      4.773,
+      10.152,
+      5.183
+     ]
+    },
+    {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 9,
+     "text_shape": "Text 4",
+     "occluder": "Shape 6",
+     "occluder_fill": "101014",
+     "occluded_chars": "能",
+     "region_in": [
+      1.15,
+      2.88,
+      12.1,
+      3.7
+     ]
+    },
+    {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 9,
+     "text_shape": "Text 5",
+     "occluder": "Shape 6",
+     "occluder_fill": "101014",
+     "occluded_chars": "让低效率竞争退出，减少低价内卷",
+     "region_in": [
+      1.15,
+      2.88,
+      12.1,
+      3.7
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_PADDING",
+     "page": 9,
+     "shape": "Text 8",
+     "card": "Rectangle 22",
+     "padding_in": [
+      0.112,
+      3.411,
+      1.917,
+      3.783
+     ],
+     "required_in": 0.117
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_PADDING",
+     "page": 9,
+     "shape": "Text 14",
+     "card": "Rectangle 22",
+     "padding_in": [
+      0.109,
+      5.259,
+      1.248,
+      1.932
+     ],
+     "required_in": 0.117
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 9,
+     "shape": "Text 18",
+     "role": "source",
+     "glyph": [
+      0.72,
+      7.131,
+      5.321,
+      7.373
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "REGION_GAP",
+     "page": 9,
+     "pair": "body->conclusion",
+     "gap_in": -0.794,
+     "required_in": 0.18
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 9,
+     "shape": "Text 2",
+     "ch": "量",
+     "contrast": 4.22,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      112,
+      112,
+      113
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 9,
+     "shape": "Text 13",
+     "ch": "创",
+     "contrast": 3.87,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      118,
+      118,
+      119
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 9,
+     "shape": "Text 17",
+     "ch": "场",
+     "contrast": 4.22,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      112,
+      112,
+      113
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 9,
+     "shape": "Text 17",
+     "ch": "修",
+     "contrast": 3.66,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      122,
+      122,
+      123
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 9,
+     "shape": "Text 17",
+     "ch": "场",
+     "contrast": 3.87,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      118,
+      118,
+      119
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "EMPTY_CONTAINER",
+     "page": 9,
+     "shape": "Shape 15",
+     "box_in": [
+      1.95,
+      6.45,
+      11.35,
+      7.0
+     ]
+    }
+   ],
+   "findings_count": 29
+  },
+  "10": {
+   "shapes": 30,
+   "chars_rendered": 248,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "body",
+    "Text 6": "body",
+    "Text 8": "body",
+    "Text 10": "body",
+    "Text 12": "body",
+    "Text 14": "body",
+    "Text 16": "body",
+    "Text 18": "body",
+    "Text 20": "body",
+    "Text 22": "body",
+    "Text 24": "quote",
+    "Text 25": "conclusion",
+    "Text 26": "source",
+    "Text 27": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 212,
+   "mapped_chars": 212,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "你的个人IP切口：不写宏观结论，写普通人的防坠落方案",
+     "mapped": "你的个人IP切口：不写宏观结论，写普通人的防坠落",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+     "mapped": "方案这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "body",
+     "expected": "宏观内容容易空",
+     "mapped": "宏观内容容易空",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "讲概念：内需、产能、通缩",
+     "mapped": "讲概念：内需、产能、通缩",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "body",
+     "expected": "讲政策：刺激、补贴、去产能",
+     "mapped": "讲政策：刺激、补贴、去产能",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "讲宏观：数据很多，行动很少",
+     "mapped": "讲宏观：数据很多，行动很少",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "body",
+     "expected": "你的切口要落地",
+     "mapped": "你的切口要落地",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "家庭最低生存支出表",
+     "mapped": "家庭最低生存支出表",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "body",
+     "expected": "12个月现金流安全垫",
+     "mapped": "12个月现金流安全垫",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "body",
+     "expected": "债务收入比警戒线",
+     "mapped": "债务收入比警戒线",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "body",
+     "expected": "大额消费冷静期",
+     "mapped": "大额消费冷静期",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "职业与副业收入冗余",
+     "mapped": "职业与副业收入冗余",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 32.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "conclusion",
+     "expected": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+     "mapped": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "footer",
+     "expected": "10",
+     "mapped": "10",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 10,
+     "shape": "Text 1",
+     "missing": "方案"
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 10,
+     "shape": "Text 2",
+     "unexpected_extra": "方案"
+    },
+    {
+     "gate": "HG03",
+     "type": "GLYPH_COLLISION",
+     "page": 10,
+     "shapes": [
+      "Text 20",
+      "Text 25"
+     ],
+     "overlap_in": [
+      2.271,
+      0.308
+     ],
+     "char_pair": [
+      "大",
+      "，"
+     ],
+     "char_overlap_in": [
+      0.044,
+      0.033
+     ],
+     "glyph_a": [
+      6.794,
+      4.818,
+      9.066,
+      5.126
+     ],
+     "glyph_b": [
+      1.263,
+      4.773,
+      10.807,
+      5.813
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_PADDING",
+     "page": 10,
+     "shape": "Text 24",
+     "card": "Shape 3",
+     "padding_in": [
+      0.019,
+      2.73,
+      5.518,
+      1.416
+     ],
+     "required_in": 0.156
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 10,
+     "shape": "Text 26",
+     "role": "source",
+     "glyph": [
+      0.72,
+      7.131,
+      5.321,
+      7.373
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "REGION_GAP",
+     "page": 10,
+     "pair": "body->conclusion",
+     "gap_in": -1.012,
+     "required_in": 0.18
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 10,
+     "shape": "Text 12",
+     "ch": "口",
+     "contrast": 4.47,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      108,
+      108,
+      109
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "LOCAL_CONTRAST",
+     "page": 10,
+     "shape": "Text 20",
+     "ch": "冷",
+     "contrast": 3.81,
+     "required": 4.5,
+     "text_rgb": [
+      237,
+      237,
+      234
+     ],
+     "bg_rgb": [
+      119,
+      119,
+      120
+     ]
+    },
+    {
+     "gate": "HG09",
+     "type": "EMPTY_CONTAINER",
+     "page": 10,
+     "shape": "Shape 23",
+     "box_in": [
+      1.55,
+      6.45,
+      11.75,
+      7.0
+     ]
+    }
+   ],
+   "findings_count": 9
+  }
+ },
+ "identity": {
+  "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+  "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "per_page_render_sha256": {
+   "9": null,
+   "10": null
+  },
+  "export_parameters": {
+   "renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
+   "gate": "layout_gate.py WG-LAYOUT-20261021.1"
+  }
+ },
+ "hg10": {
+  "render_width_px": 1920,
+  "pages_rendered": [
+   9,
+   10
+  ],
+  "selected_pages": [
+   9,
+   10
+  ],
+  "static_only": true,
+  "native_playback_provided": false
+ },
+ "findings": [
+  {
+   "gate": "HG02",
+   "type": "CHAR_INVISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "，",
+   "box": [
+    9.582,
+    2.999,
+    9.617,
+    3.079
+   ],
+   "diff_ratio": 0.0,
+   "expected_ink": 0.7912,
+   "stroke_coverage": 0.0
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 4",
+   "ch": "能",
+   "box": [
+    1.234,
+    2.751,
+    1.527,
+    3.051
+   ],
+   "diff_ratio": 0.2485,
+   "expected_ink": 0.5278,
+   "stroke_coverage": 0.4769,
+   "visible_ratio": 0.477
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "让",
+   "box": [
+    6.788,
+    2.76,
+    7.076,
+    3.04
+   ],
+   "diff_ratio": 0.1006,
+   "expected_ink": 0.324,
+   "stroke_coverage": 0.4385,
+   "visible_ratio": 0.439
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "低",
+   "box": [
+    7.112,
+    2.753,
+    7.417,
+    3.057
+   ],
+   "diff_ratio": 0.1602,
+   "expected_ink": 0.439,
+   "stroke_coverage": 0.4836,
+   "visible_ratio": 0.484
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "效",
+   "box": [
+    7.456,
+    2.753,
+    7.752,
+    3.054
+   ],
+   "diff_ratio": 0.1638,
+   "expected_ink": 0.4261,
+   "stroke_coverage": 0.464,
+   "visible_ratio": 0.464
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "率",
+   "box": [
+    7.794,
+    2.753,
+    8.079,
+    3.055
+   ],
+   "diff_ratio": 0.1987,
+   "expected_ink": 0.4611,
+   "stroke_coverage": 0.5079,
+   "visible_ratio": 0.508
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "竞",
+   "box": [
+    8.112,
+    2.753,
+    8.41,
+    3.052
+   ],
+   "diff_ratio": 0.2044,
+   "expected_ink": 0.4765,
+   "stroke_coverage": 0.5243,
+   "visible_ratio": 0.524
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "争",
+   "box": [
+    8.456,
+    2.756,
+    8.746,
+    3.056
+   ],
+   "diff_ratio": 0.1551,
+   "expected_ink": 0.4217,
+   "stroke_coverage": 0.544,
+   "visible_ratio": 0.544
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "退",
+   "box": [
+    8.776,
+    2.76,
+    9.084,
+    3.05
+   ],
+   "diff_ratio": 0.1712,
+   "expected_ink": 0.4874,
+   "stroke_coverage": 0.4906,
+   "visible_ratio": 0.491
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "出",
+   "box": [
+    9.145,
+    2.757,
+    9.387,
+    3.055
+   ],
+   "diff_ratio": 0.1489,
+   "expected_ink": 0.4204,
+   "stroke_coverage": 0.4661,
+   "visible_ratio": 0.466
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "减",
+   "box": [
+    9.779,
+    2.755,
+    10.079,
+    3.059
+   ],
+   "diff_ratio": 0.1906,
+   "expected_ink": 0.5022,
+   "stroke_coverage": 0.4411,
+   "visible_ratio": 0.441
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "少",
+   "box": [
+    10.111,
+    2.761,
+    10.408,
+    3.055
+   ],
+   "diff_ratio": 0.0919,
+   "expected_ink": 0.2778,
+   "stroke_coverage": 0.4794,
+   "visible_ratio": 0.479
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "低",
+   "box": [
+    10.445,
+    2.753,
+    10.75,
+    3.057
+   ],
+   "diff_ratio": 0.1593,
+   "expected_ink": 0.439,
+   "stroke_coverage": 0.4825,
+   "visible_ratio": 0.482
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "价",
+   "box": [
+    10.777,
+    2.75,
+    11.094,
+    3.057
+   ],
+   "diff_ratio": 0.1214,
+   "expected_ink": 0.3415,
+   "stroke_coverage": 0.5304,
+   "visible_ratio": 0.53
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "内",
+   "box": [
+    11.143,
+    2.758,
+    11.388,
+    3.054
+   ],
+   "diff_ratio": 0.1664,
+   "expected_ink": 0.4138,
+   "stroke_coverage": 0.4749,
+   "visible_ratio": 0.475
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_PARTIAL_VISIBLE",
+   "page": 9,
+   "shape": "Text 5",
+   "ch": "卷",
+   "box": [
+    11.449,
+    2.753,
+    11.749,
+    3.041
+   ],
+   "diff_ratio": 0.1571,
+   "expected_ink": 0.4788,
+   "stroke_coverage": 0.4911,
+   "visible_ratio": 0.491
+  },
+  {
+   "gate": "HG03",
+   "type": "GLYPH_COLLISION",
+   "page": 9,
+   "shapes": [
+    "Text 13",
+    "Text 17"
+   ],
+   "overlap_in": [
+    0.265,
+    0.265
+   ],
+   "char_pair": [
+    "新",
+    "产"
+   ],
+   "char_overlap_in": [
+    0.265,
+    0.264
+   ],
+   "glyph_a": [
+    0.572,
+    4.733,
+    1.525,
+    5.038
+   ],
+   "glyph_b": [
+    1.26,
+    4.773,
+    10.152,
+    5.183
+   ]
+  },
+  {
+   "gate": "HG04",
+   "type": "LATER_SHAPE_OCCLUSION",
+   "page": 9,
+   "text_shape": "Text 4",
+   "occluder": "Shape 6",
+   "occluder_fill": "101014",
+   "occluded_chars": "能",
+   "region_in": [
+    1.15,
+    2.88,
+    12.1,
+    3.7
+   ]
+  },
+  {
+   "gate": "HG04",
+   "type": "LATER_SHAPE_OCCLUSION",
+   "page": 9,
+   "text_shape": "Text 5",
+   "occluder": "Shape 6",
+   "occluder_fill": "101014",
+   "occluded_chars": "让低效率竞争退出，减少低价内卷",
+   "region_in": [
+    1.15,
+    2.88,
+    12.1,
+    3.7
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_PADDING",
+   "page": 9,
+   "shape": "Text 8",
+   "card": "Rectangle 22",
+   "padding_in": [
+    0.112,
+    3.411,
+    1.917,
+    3.783
+   ],
+   "required_in": 0.117
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_PADDING",
+   "page": 9,
+   "shape": "Text 14",
+   "card": "Rectangle 22",
+   "padding_in": [
+    0.109,
+    5.259,
+    1.248,
+    1.932
+   ],
+   "required_in": 0.117
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 9,
+   "shape": "Text 18",
+   "role": "source",
+   "glyph": [
+    0.72,
+    7.131,
+    5.321,
+    7.373
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "REGION_GAP",
+   "page": 9,
+   "pair": "body->conclusion",
+   "gap_in": -0.794,
+   "required_in": 0.18
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 9,
+   "shape": "Text 2",
+   "ch": "量",
+   "contrast": 4.22,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    112,
+    112,
+    113
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 9,
+   "shape": "Text 13",
+   "ch": "创",
+   "contrast": 3.87,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    118,
+    118,
+    119
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 9,
+   "shape": "Text 17",
+   "ch": "场",
+   "contrast": 4.22,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    112,
+    112,
+    113
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 9,
+   "shape": "Text 17",
+   "ch": "修",
+   "contrast": 3.66,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    122,
+    122,
+    123
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 9,
+   "shape": "Text 17",
+   "ch": "场",
+   "contrast": 3.87,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    118,
+    118,
+    119
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "EMPTY_CONTAINER",
+   "page": 9,
+   "shape": "Shape 15",
+   "box_in": [
+    1.95,
+    6.45,
+    11.35,
+    7.0
+   ]
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 10,
+   "shape": "Text 1",
+   "missing": "方案"
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 10,
+   "shape": "Text 2",
+   "unexpected_extra": "方案"
+  },
+  {
+   "gate": "HG03",
+   "type": "GLYPH_COLLISION",
+   "page": 10,
+   "shapes": [
+    "Text 20",
+    "Text 25"
+   ],
+   "overlap_in": [
+    2.271,
+    0.308
+   ],
+   "char_pair": [
+    "大",
+    "，"
+   ],
+   "char_overlap_in": [
+    0.044,
+    0.033
+   ],
+   "glyph_a": [
+    6.794,
+    4.818,
+    9.066,
+    5.126
+   ],
+   "glyph_b": [
+    1.263,
+    4.773,
+    10.807,
+    5.813
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_PADDING",
+   "page": 10,
+   "shape": "Text 24",
+   "card": "Shape 3",
+   "padding_in": [
+    0.019,
+    2.73,
+    5.518,
+    1.416
+   ],
+   "required_in": 0.156
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 10,
+   "shape": "Text 26",
+   "role": "source",
+   "glyph": [
+    0.72,
+    7.131,
+    5.321,
+    7.373
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "REGION_GAP",
+   "page": 10,
+   "pair": "body->conclusion",
+   "gap_in": -1.012,
+   "required_in": 0.18
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 10,
+   "shape": "Text 12",
+   "ch": "口",
+   "contrast": 4.47,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    108,
+    108,
+    109
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "LOCAL_CONTRAST",
+   "page": 10,
+   "shape": "Text 20",
+   "ch": "冷",
+   "contrast": 3.81,
+   "required": 4.5,
+   "text_rgb": [
+    237,
+    237,
+    234
+   ],
+   "bg_rgb": [
+    119,
+    119,
+    120
+   ]
+  },
+  {
+   "gate": "HG09",
+   "type": "EMPTY_CONTAINER",
+   "page": 10,
+   "shape": "Shape 23",
+   "box_in": [
+    1.55,
+    6.45,
+    11.75,
+    7.0
+   ]
+  }
+ ],
+ "unverified": [
+  {
+   "gate": "HG10",
+   "type": "PARTIAL_PAGE_SCOPE",
+   "selected": [
+    9,
+    10
+   ],
+   "actual_pages": 13,
+   "note": "诊断子集可以有界子结果，但不构成全稿合格判定"
+  },
+  {
+   "gate": "HG10",
+   "type": "NATIVE_PLAYBACK_EVIDENCE_MISSING",
+   "note": "static_only=False 布尔开关不构成原生实播证据；需 30–60s 连续放映录像 + 关闭后磁盘重开核哈希"
+  },
+  {
+   "gate": "HG10",
+   "reason": "animation_states_and_native_playback_not_run",
+   "note": "静态渲染通过只能记 STATIC_LAYOUT_ONLY；原生实播/重开为最终条件"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 9,
+   "text_shape": "Text 10",
+   "later_shape": "Text 16",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    0.35,
+    0.087
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 9,
+   "text_shape": "Text 13",
+   "later_shape": "Text 17",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    0.275,
+    0.305
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 9,
+   "text_shape": "Text 14",
+   "later_shape": "Text 17",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    4.071,
+    0.308
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 10,
+   "text_shape": "Text 10",
+   "later_shape": "Text 24",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    0.35,
+    0.2
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 10,
+   "text_shape": "Text 20",
+   "later_shape": "Text 25",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    2.271,
+    0.308
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  },
+  {
+   "gate": "HG04",
+   "type": "OCCLUSION_ALPHA_UNRESOLVED",
+   "page": 10,
+   "text_shape": "Text 22",
+   "later_shape": "Text 25",
+   "fill": {
+    "kind": "none"
+   },
+   "overlap_in": [
+    2.973,
+    0.307
+   ],
+   "note": "半透明/未知不透明度：透出程度未证"
+  }
+ ],
+ "gates_hit": [
+  "HG02",
+  "HG03",
+  "HG04",
+  "HG05",
+  "HG06",
+  "HG09"
+ ],
+ "counts": {
+  "findings": 38,
+  "unmatched_chars": 0,
+  "missing_chars": 2,
+  "collisions": 2,
+  "occlusions": 2
+ },
+ "verdict": "FAIL",
+ "static_layout_only": true
+}

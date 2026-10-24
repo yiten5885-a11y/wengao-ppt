@@ -1,0 +1,93 @@
+{
+ "schema": "rs.w2_render_image_report.v1",
+ "dpi": 110,
+ "assets": [
+  {
+   "sha256": "20955fee48cf100f3579ac22a218f3e3dd38b63f9ec72b7bd2e844864c227cfc",
+   "provider": "w2_local_synthetic",
+   "license": "测试生成图（脚本现场绘制，无第三方素材）"
+  },
+  {
+   "sha256": "927834471c1d9353bee3bc260d638ca69524f119c64ac8b02a6507dc32f94f63",
+   "provider": "w2_local_synthetic",
+   "license": "测试生成图（脚本现场绘制，无第三方素材）"
+  },
+  {
+   "sha256": "5e879deaeff75373d8f6176d8f3585754a8647c524ed87b854a9c21449cfd25c",
+   "provider": "w2_local_synthetic",
+   "license": "测试生成图（脚本现场绘制，无第三方素材）"
+  }
+ ],
+ "artifacts": [
+  {
+   "pptx": "image_slots.pptx",
+   "pptx_sha256": "106e2c5ea688435edda4704069ea0d57a241a05f81420c36dbd257b85b896ba3",
+   "exit_code": 0,
+   "timed_out": null,
+   "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/image_slots/image_slots.pdf",
+   "pdf_sha256": "e633781d0dc2e13452f12494ae28f30df7c9afcfec289cff541076e9fb5a3d6a",
+   "font_families": [
+    "NotoSans-Bold",
+    "NotoSans-Regular",
+    "NotoSansSC",
+    "NotoSansSCBold"
+   ],
+   "font_error": null,
+   "pages": [
+    6,
+    null
+   ],
+   "cjk_stats": [
+    {
+     "pages": 6,
+     "text_len": 440,
+     "cjk_chars": 230
+    },
+    null
+   ],
+   "png_count": 6,
+   "png_sha256": {
+    "page-01.png": "81b0969612e56d59c34c90d7aa1960e61c8127ed1afd7da216fff06c488a44ca",
+    "page-02.png": "2c248b782635b8d0e82bc3bb091218ec8989f2ce794bf1c5c5a7bb7769788fca",
+    "page-03.png": "b02281228c34cf99bfeb20e26cf396764a1d2c05a722e7c120e5dec01c33bf87",
+    "page-04.png": "4d1efbeb54cbd51bdd039d8eee1ba7d71256d17bbb8dcc6f88da021ec460255a",
+    "page-05.png": "d03eaa6a4420b09a385f76f92a9aacaedef1182aa0b76ea38652e02fe9d78e88",
+    "page-06.png": "a398ff4150c9fd55e3cb505a1fec10806a0d05dc3bd747238f49c6fa226c46b1"
+   },
+   "check": {
+    "pass": true,
+    "page_count": 6,
+    "findings": [
+     {
+      "code": "LAYOUT.IMAGE_SLOT_EMPTY",
+      "severity": "INFO",
+      "page": 4,
+      "detail": "页脚声明未配图（T4 降级），页面确实无图片：留痕一致",
+      "shape_id": 4
+     },
+     {
+      "code": "LAYOUT.IMAGE_SLOT_EMPTY",
+      "severity": "INFO",
+      "page": 5,
+      "detail": "页脚声明未配图（T4 降级），页面确实无图片：留痕一致",
+      "shape_id": 4
+     },
+     {
+      "code": "LAYOUT.IMAGE_SLOT_EMPTY",
+      "severity": "INFO",
+      "page": 6,
+      "detail": "页脚声明未配图（T4 降级），页面确实无图片：留痕一致",
+      "shape_id": 4
+     }
+    ]
+   },
+   "slots": {
+    "resolved_slots": [
+     "img-slot-1",
+     "img-slot-2",
+     "img-slot-3"
+    ]
+   }
+  }
+ ]
+}

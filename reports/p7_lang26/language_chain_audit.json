@@ -1,0 +1,2650 @@
+{
+  "package": "P7-26-language-real-chain-acceptance",
+  "generated_at_utc": "2026-10-23T15:12:30Z",
+  "candidate": "wengao-visual-v13-material-fix",
+  "repo_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+  "scope_contract_sha256": "13f2191fbf060efddfe83fb335de939ec065b515cb31c2e00db8d82ceba220ef",
+  "scope_id": "existing-matrix-26-v1",
+  "scope_language_count": 26,
+  "environment_probes": {
+    "model_gateway": {
+      "checked_at_utc": "2026-10-23T15:12:27Z",
+      "endpoints": [
+        {
+          "base": "http://127.0.0.1:11434",
+          "probe_path": "/api/version",
+          "tcp_connect": "FAIL:ConnectionRefusedError:[Errno 61] Connection refused",
+          "http_error": "URLError:<urlopen error [Errno 61] Connection refused>"
+        },
+        {
+          "base": "http://127.0.0.1:18888",
+          "probe_path": "/health",
+          "tcp_connect": "FAIL:ConnectionRefusedError:[Errno 61] Connection refused",
+          "http_error": "URLError:<urlopen error [Errno 61] Connection refused>"
+        }
+      ],
+      "available": false,
+      "note": "只读探测；未重启或改写任何共享 Ollama / 代理 / CLI"
+    },
+    "renderer": {
+      "checked_at_utc": "2026-10-23T15:12:27Z",
+      "renderer_binary_present": true,
+      "found": [
+        "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+      ],
+      "note": "仅做存在性探测，未执行渲染"
+    },
+    "photo_library": {
+      "checked_at_utc": "2026-10-23T15:12:27Z",
+      "credential_env_keys_found": [],
+      "authorized": false,
+      "status": "NOT_AUTHORIZED_IN_THIS_PACKAGE",
+      "note": "未发现已授权的图库凭据；按条款 2 不得自行发起外部图库请求或付费"
+    }
+  },
+  "blockers": {
+    "L2": "模型网关不可用（详见 model_gateway_probe）",
+    "L3": "依赖 L2 语义规划，模型网关不可用",
+    "L4": "未获得外部图库授权（详见 photo_library_probe）",
+    "L6": "依赖 L2 语义规划，模型网关不可用",
+    "L7": "依赖 L6 产物；且本轮未获得可渲染 PPTX 产物",
+    "L8": "依赖 L7 逐页渲染产物",
+    "L9": "依赖 L8 预览产物"
+  },
+  "summary": {
+    "languages_in_scope": 26,
+    "L1_recognition_pass": "26/26",
+    "L5a_font_resource_coverage_pass": "26/26",
+    "L5b_product_layout_render_pass": "0/26",
+    "real_full_chain_complete": "0/26",
+    "verdict": "NOT_ACCEPTED",
+    "verdict_reason": "模型网关不可用导致 L2/L3/L6-L9 无法真实执行；外部图库未授权导致 L4 无法真实执行；L5 仅完成字体资源覆盖子系统检测，产品排版链路（RTL 方向、复杂文字换行、混排、长文本）无真实产物可验，记 BLOCKED。按任务书条款 3/4，缺证据一律记为未验证/阻断，不使用 fixture 或自报 PASS 顶替。",
+    "scope_note": "L1/L5a 为真实执行的子系统级证据，不构成任何语言的「全链通过」；全链通过要求 L1-L9 全部具备真实证据。"
+  },
+  "matrix": [
+    {
+      "language_code": "ar",
+      "material_cases": [
+        "L17",
+        "L18",
+        "L19",
+        "L20"
+      ],
+      "material_count": 4,
+      "is_rtl": true,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 39,
+        "covered": 39,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L17-ar.md",
+          "L18-ar.md",
+          "L19-ar.md",
+          "L20-ar.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L17",
+          "file": "L17-ar.md",
+          "declared_language": "ar",
+          "input_sha256": "94327e8f5fa4c72dbd4bfe456a732ed3e046e53675b8f412ac62c56afd40e600",
+          "input_bytes": 3066,
+          "manifest_sha256_matches": true,
+          "detected_language": "ar",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L18",
+          "file": "L18-ar.md",
+          "declared_language": "ar",
+          "input_sha256": "6496c20c931235e7dfa04aed509835b1a4dbb238d8aac198a6706f2f56b91f55",
+          "input_bytes": 3018,
+          "manifest_sha256_matches": true,
+          "detected_language": "ar",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L19",
+          "file": "L19-ar.md",
+          "declared_language": "ar",
+          "input_sha256": "f3fa90292dd4ce0d0c20aa07a6ee7b193f23f358462f89ebac604598f1f89c46",
+          "input_bytes": 3092,
+          "manifest_sha256_matches": true,
+          "detected_language": "ar",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L20",
+          "file": "L20-ar.md",
+          "declared_language": "ar",
+          "input_sha256": "75ad4d1324f23c19fdff0a4b0e22abb950c8f1b9134365fd648a85bad7adb0e1",
+          "input_bytes": 2738,
+          "manifest_sha256_matches": true,
+          "detected_language": "ar",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "bn",
+      "material_cases": [
+        "L25",
+        "L26",
+        "L27",
+        "L28"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 50,
+        "covered": 50,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L25-bn.md",
+          "L26-bn.md",
+          "L27-bn.md",
+          "L28-bn.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L25",
+          "file": "L25-bn.md",
+          "declared_language": "bn",
+          "input_sha256": "9dcc411ea24ab4ef1e33aff3bffd4f145af27957a29289df9dad837deddc5d04",
+          "input_bytes": 3352,
+          "manifest_sha256_matches": true,
+          "detected_language": "bn",
+          "detected_scripts": [
+            "Bengali"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L26",
+          "file": "L26-bn.md",
+          "declared_language": "bn",
+          "input_sha256": "b6704e4d380b5ca839d4c6a8023a1f4bb83a239a19e288da3ea5a2c22e9683dd",
+          "input_bytes": 2966,
+          "manifest_sha256_matches": true,
+          "detected_language": "bn",
+          "detected_scripts": [
+            "Bengali"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L27",
+          "file": "L27-bn.md",
+          "declared_language": "bn",
+          "input_sha256": "4273b572d2c175dcddd7e10d5c7a7aa04b3326171e80342acbecd34713ee44eb",
+          "input_bytes": 3011,
+          "manifest_sha256_matches": true,
+          "detected_language": "bn",
+          "detected_scripts": [
+            "Bengali"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L28",
+          "file": "L28-bn.md",
+          "declared_language": "bn",
+          "input_sha256": "6a13626130f4e020842c74409cf5d5d0e806e5ba0628e76b93dddb50a61c69af",
+          "input_bytes": 3039,
+          "manifest_sha256_matches": true,
+          "detected_language": "bn",
+          "detected_scripts": [
+            "Bengali"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "de",
+      "material_cases": [
+        "L36"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 5,
+        "covered": 5,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L36-de.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L36",
+          "file": "L36-de.md",
+          "declared_language": "de",
+          "input_sha256": "5db4c4c3e3c7e7d26274ed65e9db951fb051f355c68299e994aaf26d33188c3f",
+          "input_bytes": 1611,
+          "manifest_sha256_matches": true,
+          "detected_language": "de",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "en",
+      "material_cases": [
+        "L01",
+        "L02",
+        "L03",
+        "L04"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "status": "PASS",
+        "note": "该语言材料为纯拉丁字符",
+        "charset_size": 0,
+        "covered": 0,
+        "coverage_ratio": 1.0,
+        "sample_files": [
+          "L01-en.md",
+          "L02-en.md",
+          "L03-en.md",
+          "L04-en.md"
+        ]
+      },
+      "L1_detail": [
+        {
+          "case_id": "L01",
+          "file": "L01-en.md",
+          "declared_language": "en",
+          "input_sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+          "input_bytes": 1568,
+          "manifest_sha256_matches": true,
+          "detected_language": "en",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L02",
+          "file": "L02-en.md",
+          "declared_language": "en",
+          "input_sha256": "f69193a4ebd078daf644ecc5976d6d7dc595d3d4d90b58cf7a52744c93123c90",
+          "input_bytes": 1458,
+          "manifest_sha256_matches": true,
+          "detected_language": "en",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L03",
+          "file": "L03-en.md",
+          "declared_language": "en",
+          "input_sha256": "c086d5ba113f64edd8a8774fc13dafad4a68c3ddcacda40d0ae6e3930272020f",
+          "input_bytes": 1414,
+          "manifest_sha256_matches": true,
+          "detected_language": "en",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L04",
+          "file": "L04-en.md",
+          "declared_language": "en",
+          "input_sha256": "851e60c3aabbd3a88b005dfb2cb057c16bbe9769089df27d9a179934581c96a1",
+          "input_bytes": 1344,
+          "manifest_sha256_matches": true,
+          "detected_language": "en",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "es",
+      "material_cases": [
+        "L13",
+        "L14",
+        "L15",
+        "L16"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 6,
+        "covered": 6,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L13-es.md",
+          "L14-es.md",
+          "L15-es.md",
+          "L16-es.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L13",
+          "file": "L13-es.md",
+          "declared_language": "es",
+          "input_sha256": "322bb7de0f9ee37cdf126d2472a6ef025f8c2df1e391464e735c7007b57c93d2",
+          "input_bytes": 1091,
+          "manifest_sha256_matches": true,
+          "detected_language": "es",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L14",
+          "file": "L14-es.md",
+          "declared_language": "es",
+          "input_sha256": "f0ccea3919e77c10f083cf212357b36896dd3afdaa2510c6425149f8528398ed",
+          "input_bytes": 1077,
+          "manifest_sha256_matches": true,
+          "detected_language": "es",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L15",
+          "file": "L15-es.md",
+          "declared_language": "es",
+          "input_sha256": "66d09011f8d26397a3df3d141c4aededc0fe2e5cdaa09bdd7c0e3f57c9ee0ba1",
+          "input_bytes": 1141,
+          "manifest_sha256_matches": true,
+          "detected_language": "es",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L16",
+          "file": "L16-es.md",
+          "declared_language": "es",
+          "input_sha256": "c7f488485065de8dec5510011aa137d475d4558600d93575af59c6ca5eddb2ee",
+          "input_bytes": 1108,
+          "manifest_sha256_matches": true,
+          "detected_language": "es",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "fa",
+      "material_cases": [
+        "L43"
+      ],
+      "material_count": 1,
+      "is_rtl": true,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 33,
+        "covered": 33,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L43-fa.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L43",
+          "file": "L43-fa.md",
+          "declared_language": "fa",
+          "input_sha256": "c864a8531fee95c445fe8f87676951870357191187f7af6f114b47a1fb284ed7",
+          "input_bytes": 2416,
+          "manifest_sha256_matches": true,
+          "detected_language": "fa",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "fr",
+      "material_cases": [
+        "L21",
+        "L22",
+        "L23",
+        "L24"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 9,
+        "covered": 9,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L21-fr.md",
+          "L22-fr.md",
+          "L23-fr.md",
+          "L24-fr.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L21",
+          "file": "L21-fr.md",
+          "declared_language": "fr",
+          "input_sha256": "59c6867eeef07aa2c6cb3ab79c2949bd8c5c5761689604ce8c92c5ad6faaa563",
+          "input_bytes": 2285,
+          "manifest_sha256_matches": true,
+          "detected_language": "fr",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L22",
+          "file": "L22-fr.md",
+          "declared_language": "fr",
+          "input_sha256": "03a0636681a49df733e9b5f2093888d635f7f3ed216b257a78455b114f713880",
+          "input_bytes": 2129,
+          "manifest_sha256_matches": true,
+          "detected_language": "fr",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L23",
+          "file": "L23-fr.md",
+          "declared_language": "fr",
+          "input_sha256": "91a6c78ad757745b655b62e402e7513b9608022e874a78d3a37b8820373f66a5",
+          "input_bytes": 2179,
+          "manifest_sha256_matches": true,
+          "detected_language": "fr",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L24",
+          "file": "L24-fr.md",
+          "declared_language": "fr",
+          "input_sha256": "45a8753e44bc6e98790b6423762489a5592c05cbe76b79fe9a03071614823823",
+          "input_bytes": 2165,
+          "manifest_sha256_matches": true,
+          "detected_language": "fr",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "hi",
+      "material_cases": [
+        "L09",
+        "L10",
+        "L11",
+        "L12"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 54,
+        "covered": 54,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L09-hi.md",
+          "L10-hi.md",
+          "L11-hi.md",
+          "L12-hi.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L09",
+          "file": "L09-hi.md",
+          "declared_language": "hi",
+          "input_sha256": "6fb97b574e89515739afa2a17d3753b65cd261492beb4c05af0351a7ece646cb",
+          "input_bytes": 2520,
+          "manifest_sha256_matches": true,
+          "detected_language": "hi",
+          "detected_scripts": [
+            "Devanagari",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L10",
+          "file": "L10-hi.md",
+          "declared_language": "hi",
+          "input_sha256": "0c87e8a5f5a0c6c42114decde093627ca1a467116956bbbd7e73958326ad0cbd",
+          "input_bytes": 2277,
+          "manifest_sha256_matches": true,
+          "detected_language": "hi",
+          "detected_scripts": [
+            "Devanagari",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L11",
+          "file": "L11-hi.md",
+          "declared_language": "hi",
+          "input_sha256": "01f284555b41ce06d39486a24659555b2e5c5cf502259b190910225de014ce06",
+          "input_bytes": 2283,
+          "manifest_sha256_matches": true,
+          "detected_language": "hi",
+          "detected_scripts": [
+            "Devanagari",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L12",
+          "file": "L12-hi.md",
+          "declared_language": "hi",
+          "input_sha256": "3d5910ce831cee8d8b9e0c7a010bca0c412a29d7031324852682dc30d1d8e531",
+          "input_bytes": 2095,
+          "manifest_sha256_matches": true,
+          "detected_language": "hi",
+          "detected_scripts": [
+            "Devanagari",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "id",
+      "material_cases": [
+        "L35"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "status": "PASS",
+        "note": "该语言材料为纯拉丁字符",
+        "charset_size": 0,
+        "covered": 0,
+        "coverage_ratio": 1.0,
+        "sample_files": [
+          "L35-id.md"
+        ]
+      },
+      "L1_detail": [
+        {
+          "case_id": "L35",
+          "file": "L35-id.md",
+          "declared_language": "id",
+          "input_sha256": "16bd0158fad07064202698dc44cea6651b58294fcdedc8e97206fe805870999d",
+          "input_bytes": 1470,
+          "manifest_sha256_matches": true,
+          "detected_language": "id",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "it",
+      "material_cases": [
+        "L45"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 1,
+        "covered": 1,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L45-it.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L45",
+          "file": "L45-it.md",
+          "declared_language": "it",
+          "input_sha256": "48f5799b3bda91a98a7d75158723e9d4c46489560ef4d97ab957ec23ed2bc485",
+          "input_bytes": 1632,
+          "manifest_sha256_matches": true,
+          "detected_language": "it",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ja",
+      "material_cases": [
+        "L37"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": true,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 60,
+        "covered": 60,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L37-ja.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L37",
+          "file": "L37-ja.md",
+          "declared_language": "ja",
+          "input_sha256": "d5182887f1b9ddc6a3134072d463dd0fea231a91a6d0f8d6c40c3214c0e8988b",
+          "input_bytes": 1699,
+          "manifest_sha256_matches": true,
+          "detected_language": "ja",
+          "detected_scripts": [
+            "Han",
+            "Hiragana",
+            "Katakana"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ko",
+      "material_cases": [
+        "L42"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": true,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 60,
+        "covered": 60,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L42-ko.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L42",
+          "file": "L42-ko.md",
+          "declared_language": "ko",
+          "input_sha256": "d841c180997ff5f1ee33a467c70e321be1fb49bd24db60dcffbc8e11c201d281",
+          "input_bytes": 1671,
+          "manifest_sha256_matches": true,
+          "detected_language": "ko",
+          "detected_scripts": [
+            "Hangul",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ms",
+      "material_cases": [
+        "L49"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "status": "PASS",
+        "note": "该语言材料为纯拉丁字符",
+        "charset_size": 0,
+        "covered": 0,
+        "coverage_ratio": 1.0,
+        "sample_files": [
+          "L49-ms.md"
+        ]
+      },
+      "L1_detail": [
+        {
+          "case_id": "L49",
+          "file": "L49-ms.md",
+          "declared_language": "ms",
+          "input_sha256": "fa2a82a42454d0f150ffc1fd9caa624960fbbf09391400d516de999da37dfc56",
+          "input_bytes": 1519,
+          "manifest_sha256_matches": true,
+          "detected_language": "ms",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "nl",
+      "material_cases": [
+        "L50"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 2,
+        "covered": 2,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L50-nl.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L50",
+          "file": "L50-nl.md",
+          "declared_language": "nl",
+          "input_sha256": "96210c3222bd8480c7712db6e3208c3779d283fb6bd5e8b7e448858b7e47eede",
+          "input_bytes": 1591,
+          "manifest_sha256_matches": true,
+          "detected_language": "nl",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "pl",
+      "material_cases": [
+        "L47"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 9,
+        "covered": 9,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L47-pl.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L47",
+          "file": "L47-pl.md",
+          "declared_language": "pl",
+          "input_sha256": "0b06d6ddbb49d1c1612e32d69f503aeb72b3f5aaa59085285cecb88867837487",
+          "input_bytes": 1562,
+          "manifest_sha256_matches": true,
+          "detected_language": "pl",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "pt",
+      "material_cases": [
+        "L29",
+        "L30",
+        "L31",
+        "L32"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 13,
+        "covered": 13,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L29-pt.md",
+          "L30-pt.md",
+          "L31-pt.md",
+          "L32-pt.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L29",
+          "file": "L29-pt.md",
+          "declared_language": "pt",
+          "input_sha256": "52c9fb1ee553e1bf054d91c3135ecd12c6fd973b4ba92c7fd24ed5313ef28ec0",
+          "input_bytes": 1698,
+          "manifest_sha256_matches": true,
+          "detected_language": "pt",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L30",
+          "file": "L30-pt.md",
+          "declared_language": "pt",
+          "input_sha256": "2dc307de5f29d0e025f6ea438353337864b4a0bb4d003ea1b9192b85d372f3b4",
+          "input_bytes": 1652,
+          "manifest_sha256_matches": true,
+          "detected_language": "pt",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L31",
+          "file": "L31-pt.md",
+          "declared_language": "pt",
+          "input_sha256": "d04203a8913db5d8044a0b40e1fe4ebe0cdea54b98f7c899d85127f31cf125f6",
+          "input_bytes": 1599,
+          "manifest_sha256_matches": true,
+          "detected_language": "pt",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L32",
+          "file": "L32-pt.md",
+          "declared_language": "pt",
+          "input_sha256": "b30e0727202c7caaa2db12d1aedaaded39a32a0993177079afe30658789cd8cb",
+          "input_bytes": 1532,
+          "manifest_sha256_matches": true,
+          "detected_language": "pt",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ru",
+      "material_cases": [
+        "L33"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 44,
+        "covered": 44,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L33-ru.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L33",
+          "file": "L33-ru.md",
+          "declared_language": "ru",
+          "input_sha256": "1cff1b59b39d48dbeff3547f53b5cb800909e4b89e389136ba909fa8740fb012",
+          "input_bytes": 2776,
+          "manifest_sha256_matches": true,
+          "detected_language": "ru",
+          "detected_scripts": [
+            "Cyrillic",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "sw",
+      "material_cases": [
+        "L44"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "status": "PASS",
+        "note": "该语言材料为纯拉丁字符",
+        "charset_size": 0,
+        "covered": 0,
+        "coverage_ratio": 1.0,
+        "sample_files": [
+          "L44-sw.md"
+        ]
+      },
+      "L1_detail": [
+        {
+          "case_id": "L44",
+          "file": "L44-sw.md",
+          "declared_language": "sw",
+          "input_sha256": "42d47d3c941e796f5b94c6f74bb74959256375bad66ed0b140aedc1384072860",
+          "input_bytes": 1521,
+          "manifest_sha256_matches": true,
+          "detected_language": "sw",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ta",
+      "material_cases": [
+        "L40"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 38,
+        "covered": 38,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L40-ta.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L40",
+          "file": "L40-ta.md",
+          "declared_language": "ta",
+          "input_sha256": "aa5a71937b54a2ebd8e2c317fe255d8214081f6831dc60e4a0c5c0afb6abc6d3",
+          "input_bytes": 4133,
+          "manifest_sha256_matches": true,
+          "detected_language": "ta",
+          "detected_scripts": [
+            "Tamil"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "te",
+      "material_cases": [
+        "L38"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 44,
+        "covered": 44,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L38-te.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L38",
+          "file": "L38-te.md",
+          "declared_language": "te",
+          "input_sha256": "0c4b9d2c6a3f1663b54df1563fc956bf5e25779a97f99d585d7af13f1e2c1eff",
+          "input_bytes": 3869,
+          "manifest_sha256_matches": true,
+          "detected_language": "te",
+          "detected_scripts": [
+            "Telugu"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "th",
+      "material_cases": [
+        "L46"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 55,
+        "covered": 55,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L46-th.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L46",
+          "file": "L46-th.md",
+          "declared_language": "th",
+          "input_sha256": "7adb64d75ab435b899a2b270eef3134eac25c144bff6924a03f173bbccedceee",
+          "input_bytes": 3813,
+          "manifest_sha256_matches": true,
+          "detected_language": "th",
+          "detected_scripts": [
+            "Latin",
+            "Thai"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "tr",
+      "material_cases": [
+        "L39"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 9,
+        "covered": 9,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L39-tr.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L39",
+          "file": "L39-tr.md",
+          "declared_language": "tr",
+          "input_sha256": "4d518220e9036752f2f9831223a0d61be616fffcb3ed39f9460a5e5a2dd9bccd",
+          "input_bytes": 1602,
+          "manifest_sha256_matches": true,
+          "detected_language": "tr",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "uk",
+      "material_cases": [
+        "L48"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 41,
+        "covered": 41,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L48-uk.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L48",
+          "file": "L48-uk.md",
+          "declared_language": "uk",
+          "input_sha256": "9bd21abc55a0c57f5c27853c0f234beab02ad88d27e9c21178042ed96d32ff9f",
+          "input_bytes": 2741,
+          "manifest_sha256_matches": true,
+          "detected_language": "uk",
+          "detected_scripts": [
+            "Cyrillic",
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "ur",
+      "material_cases": [
+        "L34"
+      ],
+      "material_count": 1,
+      "is_rtl": true,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 35,
+        "covered": 35,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L34-ur.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L34",
+          "file": "L34-ur.md",
+          "declared_language": "ur",
+          "input_sha256": "0b0d493a6e309fa3e79246899bd483f46debe07ae39767a126fe7b0c9a997eb7",
+          "input_bytes": 2441,
+          "manifest_sha256_matches": true,
+          "detected_language": "ur",
+          "detected_scripts": [
+            "Arabic"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": true,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "vi",
+      "material_cases": [
+        "L41"
+      ],
+      "material_count": 1,
+      "is_rtl": false,
+      "is_cjk": false,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 56,
+        "covered": 56,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L41-vi.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L41",
+          "file": "L41-vi.md",
+          "declared_language": "vi",
+          "input_sha256": "fdd79861113d3b7ef4a94ececdd6255000c1d85248dcf3fccae47eaca18eace6",
+          "input_bytes": 1915,
+          "manifest_sha256_matches": true,
+          "detected_language": "vi",
+          "detected_scripts": [
+            "Latin"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "lexical",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": false,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    },
+    {
+      "language_code": "zh",
+      "material_cases": [
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "material_count": 4,
+      "is_rtl": false,
+      "is_cjk": true,
+      "L1_text_recognition": "PASS",
+      "L2_semantic_planning": "BLOCKED",
+      "L3_visual_query_generation": "BLOCKED",
+      "L4_photo_retrieval_insertion": "BLOCKED",
+      "L5_typography_and_layout": "BLOCKED",
+      "L6_generation": "BLOCKED",
+      "L7_per_page_render": "BLOCKED",
+      "L8_workbench_preview": "BLOCKED",
+      "L9_download": "BLOCKED",
+      "L5_detail": {
+        "charset_size": 60,
+        "covered": 60,
+        "uncovered": 0,
+        "coverage_ratio": 1.0,
+        "status": "PASS",
+        "uncovered_sample_chars": [],
+        "sample_files": [
+          "L05-zh.md",
+          "L06-zh.md",
+          "L07-zh.md",
+          "L08-zh.md"
+        ],
+        "fonts_probed": 370
+      },
+      "L1_detail": [
+        {
+          "case_id": "L05",
+          "file": "L05-zh.md",
+          "declared_language": "zh",
+          "input_sha256": "3db2f7cc64e7e9f083775a6ef6532143ebac12ee068203d17b9d884c20bff918",
+          "input_bytes": 1281,
+          "manifest_sha256_matches": true,
+          "detected_language": "zh",
+          "detected_scripts": [
+            "Han"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L06",
+          "file": "L06-zh.md",
+          "declared_language": "zh",
+          "input_sha256": "8a5df0203575e998cfebd128e8a3777047fb4f7ca54f817843cc9cb20664d201",
+          "input_bytes": 1288,
+          "manifest_sha256_matches": true,
+          "detected_language": "zh",
+          "detected_scripts": [
+            "Han"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L07",
+          "file": "L07-zh.md",
+          "declared_language": "zh",
+          "input_sha256": "9582adcc1a00f033daa9e705a633d407e5056ea70ddcf314406ae999157b5ba1",
+          "input_bytes": 1249,
+          "manifest_sha256_matches": true,
+          "detected_language": "zh",
+          "detected_scripts": [
+            "Han"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        },
+        {
+          "case_id": "L08",
+          "file": "L08-zh.md",
+          "declared_language": "zh",
+          "input_sha256": "a104af43bc461e10678d62963d599b67497c56f7a884ce9c3d5d702866bde917",
+          "input_bytes": 1256,
+          "manifest_sha256_matches": true,
+          "detected_language": "zh",
+          "detected_scripts": [
+            "Han"
+          ],
+          "detector_version": "unicode-script-lexical-v4",
+          "detector_confidence": "script",
+          "detector_mixed": false,
+          "detector_uncertain": false,
+          "detector_raw_keys": [
+            "confidence",
+            "detector",
+            "languages",
+            "lexical_evidence",
+            "mixed",
+            "mixed_languages",
+            "primary",
+            "script_shares",
+            "script_unit_shares",
+            "scripts",
+            "uncertain"
+          ],
+          "is_rtl": false,
+          "is_cjk": true,
+          "detection_matches_declared": true,
+          "status": "PASS"
+        }
+      ],
+      "full_chain_complete": false,
+      "L5_note": "L5a 字体资源覆盖已真实检测（见 L5_detail）；L5b 产品排版链路（RTL 方向/复杂文字换行/混排/长文本）需真实生成产物方可验证，本轮无产物，记 BLOCKED"
+    }
+  ]
+}

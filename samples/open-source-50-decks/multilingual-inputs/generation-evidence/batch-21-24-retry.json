@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "checked_at_shanghai": "2026-10-23T12:22:23.781669+08:00",
+  "status": "MODEL_GENERATED_UNREVIEWED_SOURCE_FIXTURES_NOT_DECK_ACCEPTANCE",
+  "batch": "21-24",
+  "requested_model": "qwen3.8:27b-wb65536",
+  "served_model": "qwen3.8:27b-wb65536",
+  "elapsed_seconds": 273.26,
+  "prompt_sha256": "0e83bb858676b29b669a592b5180624d83d30db88c3e9d80c44af1ecaeafa0f0",
+  "response_sha256": "dd865dd150dec08104a34bf68902038172d265d3e552e1b0b296651a743a7e5a",
+  "response_bytes": 9089,
+  "cases": [
+    {
+      "case_id": "L21",
+      "language": "fr",
+      "detector_primary": "fr",
+      "detector_matches_plan": true,
+      "characters": 2223,
+      "bytes": 2285,
+      "sha256": "59c6867eeef07aa2c6cb3ab79c2949bd8c5c5761689604ce8c92c5ad6faaa563",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L21-fr.md",
+      "status": "MODEL_GENERATED_UNREVIEWED"
+    },
+    {
+      "case_id": "L22",
+      "language": "fr",
+      "detector_primary": "fr",
+      "detector_matches_plan": true,
+      "characters": 2064,
+      "bytes": 2129,
+      "sha256": "03a0636681a49df733e9b5f2093888d635f7f3ed216b257a78455b114f713880",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L22-fr.md",
+      "status": "MODEL_GENERATED_UNREVIEWED"
+    },
+    {
+      "case_id": "L23",
+      "language": "fr",
+      "detector_primary": "fr",
+      "detector_matches_plan": true,
+      "characters": 2123,
+      "bytes": 2179,
+      "sha256": "91a6c78ad757745b655b62e402e7513b9608022e874a78d3a37b8820373f66a5",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L23-fr.md",
+      "status": "MODEL_GENERATED_UNREVIEWED"
+    },
+    {
+      "case_id": "L24",
+      "language": "fr",
+      "detector_primary": "fr",
+      "detector_matches_plan": true,
+      "characters": 2103,
+      "bytes": 2165,
+      "sha256": "45a8753e44bc6e98790b6423762489a5592c05cbe76b79fe9a03071614823823",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L24-fr.md",
+      "status": "MODEL_GENERATED_UNREVIEWED"
+    }
+  ],
+  "language_match_count": 4,
+  "language_reviewed_count": 0,
+  "decks_generated_count": 0,
+  "ppts_counted_toward_50": 0,
+  "images_retrieved_or_inserted": false,
+  "release_ready": false
+}

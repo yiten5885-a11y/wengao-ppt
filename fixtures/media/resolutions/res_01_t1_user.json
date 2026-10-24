@@ -1,0 +1,35 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p01-s1",
+  "status": "RESOLVED_T1",
+  "asset": {
+    "path": "fixtures/media/images/t1_user_upload.jpg",
+    "sha256": "fa856239b0b4e2face758f9e7d4bec01eb6bc2db8c2f5dd6a9cabf2e4d69a805",
+    "phash": "0180808080808001ff818181818181ff",
+    "width": 1920,
+    "height": 1080,
+    "format": "JPEG",
+    "provider": "user",
+    "license": "User Owned",
+    "license_url": "",
+    "creator": "User Material Asset",
+    "source_url": "",
+    "attribution_text": "Image provided by user material",
+    "generator": null,
+    "model": null,
+    "prompt_digest": null,
+    "seed": null,
+    "similarity": 0.88,
+    "similarity_model": "local_vision_v1"
+  },
+  "attempts": [
+    {
+      "tier": "T1",
+      "provider": "user",
+      "outcome": "SUCCESS",
+      "detail": "User original material image",
+      "elapsed_s": 0.01
+    }
+  ],
+  "reason": null
+}

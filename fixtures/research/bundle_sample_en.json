@@ -1,0 +1,114 @@
+{
+  "fixture": true,
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-fixture-sample-en",
+  "created_at": "2026-10-24T05:00:00+08:00",
+  "material_language": "en",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "Tesla vehicle deliveries Q3 2024 financial report",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-24T05:00:01+08:00"
+    },
+    {
+      "q": "BYD quarterly passenger vehicle deliveries Q3 2024",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-24T05:00:02+08:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "f_en_01",
+      "origin": "WEB_RESEARCH",
+      "subject": "Tesla",
+      "metric": "Vehicle Deliveries",
+      "value": 462890,
+      "unit": "vehicles",
+      "period": "2024Q3",
+      "definition": "Official Q3 total vehicle deliveries reported by Tesla Investor Relations",
+      "publisher": "Tesla IR",
+      "source_grade": "A",
+      "url": "https://ir.tesla.com/press-release/tesla-vehicle-production-deliveries-and-energy-storage-deployment-q3-2024",
+      "retrieved_at": "2026-10-24T05:00:05+08:00",
+      "quote_span": "Total vehicle deliveries for the quarter were 462890 vehicles, representing a 6.4% year-over-year increase compared to 435059 vehicles in 2023Q3.",
+      "snapshot_path": "fixtures/research/snapshots/f_en_01.txt",
+      "snapshot_sha256": "2a2bc7abeefb0dae06b221c3ab010b20bd9fa1abf3cbda2bc33a1ec03dd4f62b"
+    },
+    {
+      "fact_id": "f_en_02",
+      "origin": "WEB_RESEARCH",
+      "subject": "BYD",
+      "metric": "Vehicle Deliveries",
+      "value": 1129993,
+      "unit": "vehicles",
+      "period": "2024Q3",
+      "definition": "Quarterly passenger new energy vehicle delivery totals",
+      "publisher": "BYD Company Limited",
+      "source_grade": "A",
+      "url": "https://www.bydglobal.com/en/news/2024-10-01/deliveries-q3",
+      "retrieved_at": "2026-10-24T05:00:06+08:00",
+      "quote_span": "In 2024Q3, BYD passenger vehicle deliveries reached 1129993 vehicles, demonstrating rapid expansion in both domestic and international markets.",
+      "snapshot_path": "fixtures/research/snapshots/f_en_02.txt",
+      "snapshot_sha256": "564231bce204dbda35bc9ec189c2c438521cd800196f316691714fe4ff6d75df"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "comparison",
+      "title": "2024Q3 Global EV Deliveries: BYD vs Tesla",
+      "metric": "Vehicle Deliveries",
+      "unit": "vehicles",
+      "period": "2024Q3",
+      "series": [
+        {
+          "label": "BYD",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            { "x": "2024Q3", "value": 1129993, "fact_ref": "f_en_02" }
+          ]
+        },
+        {
+          "label": "Tesla",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            { "x": "2024Q3", "value": 462890, "fact_ref": "f_en_01" }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "In 2024Q3, BYD (1129993 vehicles) exceeded Tesla (462890 vehicles) by 667103 vehicles",
+        "fact_refs": ["f_en_02", "f_en_01"],
+        "rule": "MAX_GAP_RULE_V1",
+        "computed": {
+          "target_label": "BYD",
+          "target_value": 1129993,
+          "benchmark_label": "Tesla",
+          "benchmark_value": 462890,
+          "diff": 667103.0,
+          "abs_diff": 667103.0,
+          "pct_diff": 144.1,
+          "unit": "vehicles",
+          "period": "2024Q3"
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "Data source: BYD Company Limited (2024Q3); Tesla IR (2024Q3)",
+        "fact_refs": ["f_en_02", "f_en_01"]
+      }
+    }
+  ],
+  "discarded": [],
+  "omissions": [
+    {
+      "want": "Historical trend across 8 quarters",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    }
+  ],
+  "report_path": "evidence/research/report.md"
+}

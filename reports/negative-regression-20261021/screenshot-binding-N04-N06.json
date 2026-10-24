@@ -1,0 +1,136 @@
+{
+ "bindings": [
+  {
+   "screenshot": "截屏2026-10-21 08.31.29.png",
+   "screenshot_sha256": "321ee94adcccb2531135f5ec397f9b88d4225e8d5f01770df8dcce7992ca08a7",
+   "bound_page": 9,
+   "similarity": 0.656,
+   "runner_up_page": 3,
+   "runner_up_similarity": 0.6439,
+   "all_page_similarities": {
+    "1": 0.4114,
+    "2": 0.5429,
+    "3": 0.6439,
+    "4": 0.6073,
+    "5": 0.5887,
+    "6": 0.5287,
+    "7": 0.5653,
+    "8": 0.5903,
+    "9": 0.656,
+    "10": 0.586,
+    "11": 0.6057,
+    "12": 0.5682,
+    "13": 0.5356
+   },
+   "title_band_iou": {
+    "1": 0.1517,
+    "2": 0.2087,
+    "3": 0.3623,
+    "4": 0.2803,
+    "5": 0.2713,
+    "6": 0.2663,
+    "7": 0.1841,
+    "8": 0.2778,
+    "9": 0.5153,
+    "10": 0.178,
+    "11": 0.2792,
+    "12": 0.2524,
+    "13": 0.2723
+   },
+   "title_band_best": 9,
+   "title_band_best_iou": 0.5153,
+   "title_band_runner_up": "P3=0.3623"
+  },
+  {
+   "screenshot": "截屏2026-10-21 08.32.20.png",
+   "screenshot_sha256": "56973559fdba292f26440893b1f30a4c5bd2104f55f6fa209d03b55714c67c45",
+   "bound_page": 11,
+   "similarity": 0.5357,
+   "runner_up_page": 8,
+   "runner_up_similarity": 0.5274,
+   "all_page_similarities": {
+    "1": 0.36,
+    "2": 0.4637,
+    "3": 0.5158,
+    "4": 0.5155,
+    "5": 0.4743,
+    "6": 0.4894,
+    "7": 0.5119,
+    "8": 0.5274,
+    "9": 0.4718,
+    "10": 0.498,
+    "11": 0.5357,
+    "12": 0.5055,
+    "13": 0.4549
+   },
+   "title_band_iou": {
+    "1": 0.1828,
+    "2": 0.1619,
+    "3": 0.2198,
+    "4": 0.2361,
+    "5": 0.1996,
+    "6": 0.2029,
+    "7": 0.177,
+    "8": 0.2243,
+    "9": 0.2361,
+    "10": 0.1606,
+    "11": 0.3058,
+    "12": 0.2296,
+    "13": 0.1936
+   },
+   "title_band_best": 11,
+   "title_band_best_iou": 0.3058,
+   "title_band_runner_up": "P4=0.2361"
+  },
+  {
+   "screenshot": "截屏2026-10-21 08.33.16.png",
+   "screenshot_sha256": "dd08a430fdb8b99c38fe7b88baa8703e4dec9166822bfdd1962ee9434d99ffeb",
+   "bound_page": 12,
+   "similarity": 0.7538,
+   "runner_up_page": 4,
+   "runner_up_similarity": 0.6946,
+   "all_page_similarities": {
+    "1": 0.5572,
+    "2": 0.5833,
+    "3": 0.68,
+    "4": 0.6946,
+    "5": 0.6188,
+    "6": 0.5301,
+    "7": 0.6696,
+    "8": 0.5704,
+    "9": 0.6021,
+    "10": 0.6189,
+    "11": 0.6612,
+    "12": 0.7538,
+    "13": 0.6142
+   },
+   "title_band_iou": {
+    "1": 0.1974,
+    "2": 0.1208,
+    "3": 0.1997,
+    "4": 0.2008,
+    "5": 0.1614,
+    "6": 0.152,
+    "7": 0.2018,
+    "8": 0.1639,
+    "9": 0.2048,
+    "10": 0.1219,
+    "11": 0.2008,
+    "12": 0.3344,
+    "13": 0.1715
+   },
+   "title_band_best": 12,
+   "title_band_best_iou": 0.3344,
+   "title_band_runner_up": "P9=0.2048"
+  }
+ ],
+ "method": "text-pixel row+col projection cosine @960x540, red-dominated rows excluded",
+ "render_shas": {
+  "full-P09.png": "c4e248aad12f24273fca4ebfa88fb6b4716018a34a99c8fe11e92489b8e0c5de",
+  "full-P11.png": "8a0988eed7fe3daa8ccaac2644873392cc49315e40707e7232c67fa93eee2f41",
+  "full-P12.png": "959df7d8ead48cfbfa5ae590b69b1905e9c95dca0968f80f812fbc678d9944f4"
+ },
+ "methods": [
+  "title-band(0-16%H) text-mask IoU with ±36px alignment search"
+ ]
+}

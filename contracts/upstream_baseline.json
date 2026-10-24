@@ -1,0 +1,154 @@
+{
+  "contract_id": "UPSTREAM_BASELINE",
+  "schema_version": "1.0.0",
+  "status": "cloned_and_verified",
+  "status_enum": {
+    "document_only": "仅在文档中记录上游基线，项目内没有检出目录，也没有独立核验证据。",
+    "cloned_unverified": "项目内已有检出目录，但尚未取得逐文件 Git blob 核验与 Git 完整性的独立证据。",
+    "cloned_and_verified": "项目内检出目录已由 land_upstream.py 在本机实际核验：固定提交、树哈希、76 个跟踪文件逐项 blob 匹配、Git 完整性、干净工作树，且证据文件在项目内可引用。",
+    "verification_failed": "本机核验未通过；不得据此声称上游已落地。"
+  },
+  "created_at": "2026-10-12T01:22:00+08:00",
+  "creation_reason": "本文件此前不存在。land_upstream.py 要求 project-root 内必须已有对象类型的 contracts/upstream_baseline.json，因此按项目既有契约风格新建，并把运行前的真实状态如实登记，不用未经验证的状态冒充落地。",
+  "preserved_original_record": {
+    "file": "baseline/UPSTREAM_BASELINE.md",
+    "generated_by": "runner/doctor.py（只读探测，每次都重新生成）",
+    "correction_at": "2026-10-12T02:38:00+08:00",
+    "correction": "更正此前关于该文件「保留不删改」的说法：它是 doctor.py 的生成物，本轮再次运行 doctor 时被覆盖，因此「建立本契约文件之前的那一版内容已不在磁盘上」。不能再用它声称保留了原始记录。",
+    "recovery_search_at": "2026-10-12T03:58:00+08:00",
+    "recovery_search": {
+      "result": "未找到原件，缺口保留",
+      "checked": [
+        {
+          "source": "项目 Git 历史",
+          "finding": "项目根目录不是 Git 工作树（fatal: not a git repository），不存在可回溯的提交历史"
+        },
+        {
+          "source": "baseline/history 快照",
+          "finding": "存在 2 份快照（20261011T183749_531732Z、20261011T183808_638315Z），但两份的生成时间分别为 02:36:17 与 02:37:49，均在覆盖之后；内容互相不同，且都不同于当前文件。均为覆盖后版本，不是原件"
+        },
+        {
+          "source": "交付包 wengao-ppt-D01-upstream-fix.zip",
+          "finding": "包内只有 README / land_upstream.py / luobo-ppt.bundle / 证据 JSON / 许可证，不含 UPSTREAM_BASELINE.md"
+        },
+        {
+          "source": "全盘按文件名查找",
+          "finding": "除项目内当前文件与上述 2 份快照外，无其他副本"
+        }
+      ],
+      "conclusion": "覆盖前那一版 UPSTREAM_BASELINE.md 无法恢复。不重建一份冒充原件的旧报告。"
+    },
+    "mitigation": "doctor.py 已改为默认 print 模式（零写入）；写盘必须 --mode save 指定新运行目录；回写 baseline/ 必须显式 --write-baseline 且强制先快照。回归检查：runner/doctor_nowrite_test.py。",
+    "in_repo_facts_still_traceable": [
+      "reports/upstream-checkout/20261011T173249_540035Z-1e06aa3d/evidence.json（首轮上游核验证据，76 文件逐项 blob/sha256）",
+      "reports/upstream-checkout/20261011T174153_592366Z-b79391f1/evidence.json（vendor 落地核验证据）",
+      "reports/D01_upstream_landing.md（首轮落地记录报告）",
+      "baseline/history/*/doctor_report.json（覆盖后各次环境探测 JSON，含许可证哈希与脚本 SHA-256）"
+    ],
+    "fields_recoverable_by_current_measurement": [
+      "固定提交/树/远程：由 vendor/luobo-ppt 现场 git 实测与两份 evidence.json 共同证明",
+      "LICENSE 首行、版权行、sha256：由 baseline/doctor_report.json 与各次快照实测覆盖",
+      "scripts/ 各文件行数与 SHA-256：由 baseline/doctor_report.json 的 scripts_sha256 实测覆盖",
+      "环境（系统、Python、工具、字体、办公软件）：每次 doctor print 模式实测可得"
+    ]
+  },
+  "upstream": {
+    "name": "luobo-ppt",
+    "source_url": "https://github.com/zhouwei713/luobo-ppt.git",
+    "commit": "b6dcb0f325b3ea38a7ca3cd3c211bbba7fb436b2",
+    "tree": "ed28a29ddfd5e9666fa0dc9949e2e0658d6786f5",
+    "tracked_file_count": 76,
+    "license": {
+      "primary": "MIT",
+      "primary_copyright": "Copyright (c) 2026 zhouluobo (周萝卜)",
+      "primary_blob_sha1": "2c5ec60202df1095b58277866c222b809f32ab68",
+      "icon_license": "ISC",
+      "icon_license_file": "assets/LICENSE-lucide.txt",
+      "icon_blob_sha1": "2b7df485db6a07a0493a09a8847c3ec9bdd329e8"
+    },
+    "readme_self_reported_version": "2.5.0",
+    "baseline_authority": "commit_hash"
+  },
+  "landing": {
+    "checkout_dir": "vendor/luobo-ppt",
+    "checkout_dir_convention_source": "任务书 WORKBUDDY_NEXT_D01_P0_P1.md 第 2/5.4 节明确指定 vendor/luobo-ppt 为唯一正式上游目录；本机项目此前使用 upstream/luobo-ppt，按用户指令迁移",
+    "canonical_checkout_dir": "vendor/luobo-ppt",
+    "checkout_path_absolute": "<PROJECT_ROOT>/<REDACTED_LOCAL_PATH>",
+    "historical_checkouts": [
+      {
+        "path": "upstream/luobo-ppt",
+        "status": "superseded_preserved",
+        "reason": "迁移到 vendor/luobo-ppt 前的正式检出；目录与其原始落地证据保留不删，仅不再作为运行目标。",
+        "evidence_path": "reports/upstream-checkout/20261011T173249_540035Z-1e06aa3d/evidence.json"
+      }
+    ],
+    "checkout_exists_before_this_run": false,
+    "tool_action": "clone_bundled_upstream",
+    "tool_action_note": "vendor/luobo-ppt 此前不存在，工具从随包 bundle 离线克隆到临时目录、逐文件核验后无覆盖提升为正式检出；既有 upstream/luobo-ppt 未被触碰。",
+    "independent_verification_completed": true,
+    "verification_run_id": "20261011T174153_592366Z-b79391f1",
+    "verification_execution_context": "workbuddy_project",
+    "verification_execution_context_source": "cli_declaration",
+    "verification_hostname": "huangyingtengdeMac-Mini-615.local",
+    "verification_platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "verification_git": "/usr/bin/git",
+    "tool_path": "<PROJECT_ROOT>/<REDACTED_LOCAL_PATH>",
+    "tool_sha256": "066685d89a0aee6bca659831b05dd22047bb1b3c5ac0dfa6fbc7e4ac7197ecfd",
+    "bundle_sha256": "9a288daf7cf02bf1d5e8147c7c0ffd80e53b78c3944cd6da1467aa80b86137cd",
+    "verified_at": "2026-10-11T17:42:00+00:00",
+    "verified_head": "b6dcb0f325b3ea38a7ca3cd3c211bbba7fb436b2",
+    "verified_tree": "ed28a29ddfd5e9666fa0dc9949e2e0658d6786f5",
+    "verified_origin": "https://github.com/zhouwei713/luobo-ppt.git",
+    "working_tree_clean": true,
+    "ignored_files_absent": true,
+    "tracked_file_count": 76,
+    "git_fsck": "passed (git fsck --full --strict --no-reflogs)",
+    "per_file_blob_match": true,
+    "per_file_check_note": "76 个跟踪文件逐一重算 git blob sha1 并与固定树比对，另记录每个文件的 sha256 与字节数；证据内逐条可查。",
+    "d01_overall_completion_asserted": false,
+    "network_downloads": false,
+    "upstream_scripts_executed": false,
+    "evidence_paths": [
+      {
+        "path": "reports/upstream-checkout/20261011T174153_592366Z-b79391f1/evidence.json",
+        "sha256": "002c6d2d1beb743d12cc85aa483a8fb2dffb1a3145f8ebfc9ca6b7c490e78ffc",
+        "role": "vendor/luobo-ppt 的本机上游检出核验证据（当前唯一正式检出）",
+        "scope": "upstream_checkout_only",
+        "canonical": true
+      },
+      {
+        "path": "reports/upstream-checkout/20261011T173249_540035Z-1e06aa3d/evidence.json",
+        "sha256": "126358510fe9fefdf83cb4693c4ea5a87dd6afc636cd5c9c8d0e51c83292acef",
+        "role": "upstream/luobo-ppt 的历史落地证据（该目录已被 vendor/luobo-ppt 取代，保留作追溯）",
+        "scope": "upstream_checkout_only",
+        "canonical": false
+      }
+    ],
+    "superseded_original_record": {
+      "path": "baseline/UPSTREAM_BASELINE.md",
+      "role": "建立本契约文件之前的只读文档记录，保留不删改。"
+    }
+  },
+  "change_log": [
+    {
+      "at": "2026-10-12T01:22:00+08:00",
+      "change": "新建本契约文件；status=cloned_unverified，如实记录上一轮 P0 只完成了克隆与只读文档探测，未取得逐文件独立核验证据。",
+      "by": "WorkBuddy",
+      "reason": "为 land_upstream.py 提供其要求的前提文件，并区分'已克隆'与'已核验'，避免把克隆直接当成落地完成。"
+    },
+    {
+      "at": "2026-10-12T01:32:50+08:00",
+      "change": "status=cloned_unverified → cloned_and_verified；补入 checkout_path_absolute、tool_action=verify_existing_checkout、verified_head/tree/origin、working_tree_clean=true、git_fsck=passed、per_file_blob_match=true、76 个文件逐项核验、run_id 与执行上下文，以及证据文件路径与其 sha256。其余字段（upstream 固定基线、许可证 blob、preserved_original_record、status_enum）保持不变。",
+      "by": "WorkBuddy",
+      "reason": "land_upstream.py 在 execution_context=workbuddy_project 下于本机真实项目运行成功；工具自身明确声明未修改 baseline、未宣告 D01 整体完成，本回写只整合该工具产出的证据。",
+      "evidence_run_id": "20261011T173249_540035Z-1e06aa3d"
+    },
+    {
+      "at": "2026-10-12T01:45:00+08:00",
+      "change": "正式上游目录由 upstream/luobo-ppt 迁移为 vendor/luobo-ppt：新增 canonical_checkout_dir、checkout_path_absolute 指向 vendor、historical_checkouts 记录被取代的 upstream 目录及其证据、evidence_paths 增加 vendor 的本机核验证据并标 canonical=true、tool_action 改回 clone_bundled_upstream（该目录此前不存在，工具从 bundle 离线克隆后无覆盖提升）。既有 upstream/luobo-ppt 目录与其证据保留未删。",
+      "by": "WorkBuddy",
+      "reason": "任务书 WORKBUDDY_NEXT_D01_P0_P1.md 第 2 节与第 5.4 节明确指定 vendor/luobo-ppt 为唯一正式上游目录；本机项目此前使用 upstream/luobo-ppt。",
+      "evidence_run_id": "20261011T174153_592366Z-b79391f1"
+    }
+  ]
+}

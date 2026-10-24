@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-967aa0388260",
+  "run_id": "20261020T045639_065179Z-ad6f0f09",
+  "attempt_id": "fa2c1e7e",
+  "mode": "beautify",
+  "contract_version": "contracts/1.0.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "input_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix1/annual_review_synthetic.generated.pptx",
+  "input_hash": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+  "edit_scope": {
+    "type": "whole_deck"
+  },
+  "preserve_design": false,
+  "target_environment": {},
+  "theme": "wengao-dark",
+  "theme_name": "深色科技",
+  "theme_version": "1.0.0",
+  "theme_registry_version": "1.1.0",
+  "theme_config_digest": "ab429608ad8a009e82050d1c12d91f6477039a7ced0b9d4f185150a092bd8c5f",
+  "created_at": "2026-10-20T12:56:39.065225+08:00",
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "stages": [
+    {
+      "stage": "precheck",
+      "status": "DONE",
+      "at": "2026-10-20T12:56:39.233842+08:00",
+      "detail": {
+        "input_kind": ".pptx",
+        "input_sha256": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+        "upstream_verified": false,
+        "real_renderer": "available",
+        "support_profile": "P1_TEXT_LIMITED",
+        "required_checks": [
+          "content_fidelity.required_text",
+          "content_fidelity.occurrence",
+          "content_fidelity.sign",
+          "native_editability.visible_native",
+          "render.real_render"
+        ]
+      }
+    },
+    {
+      "stage": "begin_attempt",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.054319+08:00",
+      "detail": {
+        "archived_to": null,
+        "moved": [],
+        "previous_attempt_id": "fa2c1e7e",
+        "note": "新尝试不继承旧 verdict/export/预览；历史版本已归档保留。"
+      }
+    },
+    {
+      "stage": "baseline",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.114280+08:00",
+      "detail": {
+        "schema_version": "1.0.0",
+        "input_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix1/annual_review_synthetic.generated.pptx",
+        "input_sha256": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+        "input_sha256_copy": "0f63e892fab8cdcd6980b8df5832bc06be862b301ba7aa6b67bcaa15cef45815",
+        "captured_at": "2026-10-20T12:59:45.095289+08:00",
+        "mode": "beautify",
+        "note": "在任何上游 normalize、清洗或转换之前保存；原始用户文件未被修改。"
+      }
+    },
+    {
+      "stage": "raw_census",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.193057+08:00",
+      "detail": {
+        "members": 59,
+        "conflicts": 0,
+        "decode_errors": 0,
+        "kind_counts": {
+          "slides": 10,
+          "charts": 1,
+          "embeddings": 1
+        },
+        "fields": 0,
+        "soft_breaks": 0,
+        "omml": 0
+      }
+    },
+    {
+      "stage": "extract",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.471284+08:00",
+      "detail": {
+        "pages": 10,
+        "objects": 23,
+        "units": 42,
+        "charts": 1,
+        "tables": 2
+      }
+    },
+    {
+      "stage": "build",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.565273+08:00",
+      "detail": {
+        "staged": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+        "theme": "wengao-dark",
+        "theme_id": "wengao-dark",
+        "theme_version": "1.0.0",
+        "theme_registry_version": "1.1.0",
+        "theme_config_digest": "ab429608ad8a009e82050d1c12d91f6477039a7ced0b9d4f185150a092bd8c5f",
+        "theme_application": "APPLIED",
+        "preserve_design": false,
+        "runs_reformatted": 57,
+        "fills_set": 20,
+        "backgrounds_set": 10,
+        "tables_styled": 2,
+        "table_cells_styled": 20,
+        "charts_styled": 1,
+        "notes_styled": 0,
+        "slides": 10,
+        "role_counts": {
+          "title": 10,
+          "subtitle": 1,
+          "heading": 3,
+          "body": 6,
+          "note": 0
+        },
+        "emphasis_preserved": true,
+        "warnings": [],
+        "contrast": {
+          "checked": 20,
+          "violations": [],
+          "kept_original": [],
+          "unknown_backdrop": [],
+          "preexisting_low": [],
+          "unsafe": [],
+          "min_ratio": 8.18
+        },
+        "background_plan": [
+          {
+            "slide": 1,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 2,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 3,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 4,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 5,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 6,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 7,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 8,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 9,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 10,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          }
+        ],
+        "protected_business_colors": [],
+        "below_threshold": [],
+        "contrast_claim": "ASSERTED",
+        "chart_ops": [
+          [
+            "font",
+            "chart_bg",
+            "plot_bg",
+            "series0",
+            "grid"
+          ]
+        ],
+        "font_substitution": "深色主题采用 STHeiti（本机已核验可显示中文）替代缺失的 Microsoft YaHei；文字与绘图区均按深底可读性配置。",
+        "theme_identity_frozen_at_job": true,
+        "theme_identity_legacy_no_digest": false
+      }
+    },
+    {
+      "stage": "independent_reread",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.643581+08:00",
+      "detail": {
+        "pages": 10,
+        "units": 42
+      }
+    },
+    {
+      "stage": "submit_accepted",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.679711+08:00",
+      "detail": {
+        "attempt_id": "fa2c1e7e",
+        "artifact_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e",
+        "atomic_swap": true
+      }
+    },
+    {
+      "stage": "run",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:45.736413+08:00",
+      "detail": {
+        "elapsed_seconds": 0.581
+      }
+    },
+    {
+      "stage": "validate",
+      "status": "DONE",
+      "at": "2026-10-20T12:59:55.938130+08:00",
+      "detail": {
+        "blocking": 0,
+        "total": 0
+      }
+    }
+  ],
+  "contracts_identity": {
+    "error_codes_v1.json": "774940524fb1ac8f9b9da77ec530cf77f6134ea3f13189209d9ff42f8564342c",
+    "schemas_v1.json": "2befceac1ca1110023e29ca061ac928fb733177ba7986519f53cdd86939b7a34",
+    "support_matrix_v1.json": "bf891fcf92d236d6c13ada2563f1c9d3a0ca789e9127970255ebfe0c58b571a3"
+  },
+  "material_intent": {
+    "schema_version": "1.0.0",
+    "material": true,
+    "source_material": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+    "source_material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "ledger_sha256": "5cceeed0924728f90c4d253b6334aa4706e0dddc324cbb1d70a9717d01acfc46",
+    "plan_sha256": "af408085a041e4038c61c7fcf985d1fd2f881b71c99aef664257008368258fc3",
+    "frozen_before_model_call": true,
+    "frozen_at": "2026-10-20T12:56:39.053217+08:00",
+    "note": "身份在建任务时冻结；候选不得改写台账或计划。"
+  },
+  "stage": "validate",
+  "last_activity": "2026-10-20T12:59:55.938140+08:00",
+  "current_valid": null,
+  "download_ready": false,
+  "attempt_log": [
+    {
+      "event": "BEGIN_ATTEMPT",
+      "attempt_id": "fa2c1e7e",
+      "previous_attempt_id": "fa2c1e7e",
+      "at": "2026-10-20T12:59:44.837268+08:00",
+      "archived_to": null,
+      "moved": [],
+      "invalidated": [
+        "validation",
+        "findings",
+        "candidate",
+        "export_path",
+        "preview"
+      ]
+    }
+  ],
+  "verdict_at": "2026-10-20T13:00:11.941813+08:00",
+  "validated_at": "2026-10-20T12:59:56.082287+08:00",
+  "validation_verdict": "DEVELOPMENT_CANDIDATE",
+  "blocking_findings": 0,
+  "validation_attempt_id": "fa2c1e7e",
+  "validation_run_id": "20261020T045639_065179Z-ad6f0f09",
+  "export_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261020T045639_065179Z-ad6f0f09--wengao-dark"
+}

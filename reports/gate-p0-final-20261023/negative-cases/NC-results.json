@@ -1,0 +1,314 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+ "layout_gate_sha256": "79357b978730a16787be0fca757619062b6082c5496ff550bda07998b2273b98",
+ "candidate_pptx_sha256": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c",
+ "note": "合成负例夹具只落在 fixtures/；渲染走 LibreOffice 真实路径；断言与目标对象名/token 绑定，不被无关 finding 代过",
+ "cases": [
+  {
+   "id": "NC01a",
+   "desc": "合法页范围/完整覆盖（正控）",
+   "result": "PASS",
+   "evidence": {
+    "note": "1..13 全页：无 PARTIAL/ILLEGAL/EMPTY，覆盖=全部页",
+    "pages_checked": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ]
+   }
+  },
+  {
+   "id": "NC01b",
+   "desc": "部分页范围（1..12）不得构成合格判定",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "UNVERIFIED",
+    "bound": {
+     "gate": "HG10",
+     "type": "PARTIAL_PAGE_SCOPE",
+     "selected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "actual_pages": 13,
+     "note": "诊断子集可以有界子结果，但不构成全稿合格判定"
+    }
+   }
+  },
+  {
+   "id": "NC02",
+   "desc": "页号越界 14 → ILLEGAL_PAGE_SELECTION",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound": {
+     "gate": "HG10",
+     "type": "ILLEGAL_PAGE_SELECTION",
+     "illegal_pages": [
+      14
+     ],
+     "actual_pages": 13,
+     "note": "页号越界即 FAIL，不允许空检查静默 PASS"
+    }
+   }
+  },
+  {
+   "id": "NC03",
+   "desc": "空页选择 → EMPTY_PAGE_SELECTION",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound": {
+     "gate": "HG10",
+     "type": "EMPTY_PAGE_SELECTION",
+     "actual_pages": 13,
+     "note": "空页选择不产生任何检查记录，必须 FAIL"
+    }
+   }
+  },
+  {
+   "id": "NC04",
+   "desc": "缺失第 5 页渲染 → MISSING_*_RENDER 页绑定",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "UNVERIFIED",
+    "missing_full_p5": {
+     "gate": "HG02",
+     "type": "MISSING_FULL_RENDER",
+     "page": 5
+    }
+   }
+  },
+  {
+   "id": "NC05",
+   "desc": "期望哈希错配 → HG11 IDENTITY_MISMATCH",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound": {
+     "gate": "HG11",
+     "type": "IDENTITY_MISMATCH",
+     "expected": "0000000000000000000000000000000000000000000000000000000000000000",
+     "actual": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c"
+    }
+   }
+  },
+  {
+   "id": "NC06-单对象文字遮挡",
+   "desc": "后画不透明容器全覆盖文本",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound_finding": {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 1,
+     "text_shape": "P0目标文本",
+     "occluder": "P0遮挡容器",
+     "occluder_fill": "228822",
+     "occluded_chars": "关键结论一句话验证",
+     "region_in": [
+      0.8,
+      0.8,
+      6.3,
+      2.0
+     ]
+    }
+   }
+  },
+  {
+   "id": "NC07-部分遮挡",
+   "desc": "后画不透明容器半覆盖文本",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound_finding": {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 1,
+     "text_shape": "P0目标文本",
+     "occluder": "P0遮挡容器",
+     "occluder_fill": "228822",
+     "occluded_chars": "证文字",
+     "region_in": [
+      3.6,
+      0.7,
+      6.6,
+      1.9
+     ]
+    },
+    "bound_either": {
+     "gate": "HG02",
+     "type": "CHAR_INVISIBLE",
+     "page": 1,
+     "shape": "P0目标文本",
+     "ch": "文",
+     "box": [
+      3.785,
+      1.104,
+      4.08,
+      1.405
+     ],
+     "diff_ratio": 0.0,
+     "expected_ink": 0.3051,
+     "stroke_coverage": 0.0
+    }
+   }
+  },
+  {
+   "id": "NC08-alpha遮挡",
+   "desc": "alpha=0.92 后画容器（静态判据不可放行）",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound": {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 1,
+     "text_shape": "P0目标文本",
+     "occluder": "P0遮挡容器",
+     "occluder_cls": "Shape",
+     "occluder_fill": {
+      "kind": "solid",
+      "rgb": "111111",
+      "alpha": 0.92
+     },
+     "detect": "OCCLUSION_ALPHA_UNRESOLVED",
+     "occluded_chars": "关键结论一句话验证",
+     "intersect_chars": 9,
+     "visible_chars": 0,
+     "occluded_chars_n": 9,
+     "unproven_chars": 0,
+     "region_in": [
+      0.8,
+      0.8,
+      6.3,
+      2.0
+     ]
+    }
+   }
+  },
+  {
+   "id": "NC08b-alpha透见",
+   "desc": "alpha=0.45 罩体下文字透见 → 必须证据化消解，不得记未证",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "occlusion_resolved": {
+     "page": 1,
+     "text_shape": "P0目标文本",
+     "occluder": "P0遮挡容器",
+     "occluder_cls": "Shape",
+     "detected_as": "OCCLUSION_ALPHA_UNRESOLVED",
+     "intersect_chars": 9,
+     "visible_chars": 9,
+     "occluded_chars_n": 0,
+     "unproven_chars": 0,
+     "min_stroke_coverage": 0.9955,
+     "note": "相交字形逐字可见性证据（HG02 像素差分+笔画覆盖）证明未遮挡；静态判据不可证不等于实际遮挡"
+    }
+   }
+  },
+  {
+   "id": "NC09-图片遮挡",
+   "desc": "后画 Picture 覆盖文本",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound": {
+     "gate": "HG04",
+     "type": "LATER_SHAPE_OCCLUSION",
+     "page": 1,
+     "text_shape": "P0目标文本",
+     "occluder": "P0遮挡图片",
+     "occluder_cls": "Picture",
+     "occluder_fill": {
+      "kind": "inherit"
+     },
+     "detect": "OCCLUSION_CHECK_UNSUPPORTED",
+     "occluded_chars": "关键结论一句话验证",
+     "intersect_chars": 9,
+     "visible_chars": 0,
+     "occluded_chars_n": 9,
+     "unproven_chars": 0,
+     "region_in": [
+      0.8,
+      0.8,
+      6.3,
+      2.0
+     ]
+    }
+   }
+  },
+  {
+   "id": "NC10-继承字号",
+   "desc": "无显式字号（继承）不得静默 PASS",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "UNVERIFIED",
+    "bound": {
+     "gate": "HG07",
+     "type": "RUN_SIZE_UNKNOWN",
+     "page": 1,
+     "shape": "P0目标文本",
+     "role": "title",
+     "note": "存在继承且无法解析的 run 字号：不默认合规"
+    }
+   }
+  },
+  {
+   "id": "NC11a-小数点同基线",
+   "desc": "+0.9% 同基线不得误报 TOKEN_SPLIT（小数点修复正控）",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "no_false_token_split": true
+   }
+  },
+  {
+   "id": "NC11b-token真跨行",
+   "desc": "窄框强制 36个月 真跨行必须命中 TOKEN_SPLIT",
+   "result": "PASS",
+   "evidence": {
+    "verdict": "FAIL",
+    "bound_finding": {
+     "gate": "HG08",
+     "type": "TOKEN_SPLIT",
+     "page": 1,
+     "shape": "P0目标文本",
+     "token": "36个月",
+     "line_baselines": [
+      1.38,
+      1.81
+     ],
+     "line_texts": [
+      "36",
+      "个月"
+     ]
+    }
+   }
+  }
+ ],
+ "all_pass": true
+}

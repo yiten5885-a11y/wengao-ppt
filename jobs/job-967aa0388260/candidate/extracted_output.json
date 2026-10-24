@@ -1,0 +1,1100 @@
+{
+  "input_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+  "input_sha256": "c00301a66477dd83e565b06efd1f5aeae3e714b595dfaee62a8dd2d4aa2a1e39",
+  "input_kind": "pptx",
+  "pages": [
+    {
+      "page_no": 1,
+      "hidden": false,
+      "title": "一、年度经营概况",
+      "units": [
+        {
+          "id": "p1_u0",
+          "text": "一、年度经营概况",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 1,
+            "part": "slide",
+            "object": "slide1/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p1_u1",
+          "text": "由原始材料生成 · 年度经营与下年度计划汇报\n\n2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%\n其中订阅收入 8.6 亿元，占总收入的 67%",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 1,
+            "part": "slide",
+            "object": "slide1/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 2,
+      "hidden": false,
+      "title": "一、年度经营概况（续）",
+      "units": [
+        {
+          "id": "p2_u0",
+          "text": "一、年度经营概况（续）",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 2,
+            "part": "slide",
+            "object": "slide2/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p2_u1",
+          "text": "专业版客户数达到 1240 家，较上年增加 310 家\n年度新增签约客户 1870 家，客户续约率为 91%",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 2,
+            "part": "slide",
+            "object": "slide2/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 3,
+      "hidden": false,
+      "title": "一、年度经营概况（续）",
+      "units": [
+        {
+          "id": "p3_u0",
+          "text": "一、年度经营概况（续）",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 3,
+            "part": "slide",
+            "object": "slide3/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p3_u1",
+          "text": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 3,
+            "part": "slide",
+            "object": "slide3/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 4,
+      "hidden": false,
+      "title": "二、产品能力进展",
+      "units": [
+        {
+          "id": "p4_u0",
+          "text": "二、产品能力进展",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 4,
+            "part": "slide",
+            "object": "slide4/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p4_u1",
+          "text": "实时数据管道上线，日均处理消息量达到 42 亿条\n智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟\n多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 4,
+            "part": "slide",
+            "object": "slide4/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 5,
+      "hidden": false,
+      "title": "三、客户与生态",
+      "units": [
+        {
+          "id": "p5_u0",
+          "text": "三、客户与生态",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 5,
+            "part": "slide",
+            "object": "slide5/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p5_u1",
+          "text": "三、客户与生态\n年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 5,
+            "part": "slide",
+            "object": "slide5/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p5_u2",
+          "text": "三、客户与生态\n开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 5,
+            "part": "slide",
+            "object": "slide5/shape[4]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p5_u3",
+          "text": "三、客户与生态\n企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 5,
+            "part": "slide",
+            "object": "slide5/shape[5]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 6,
+      "hidden": false,
+      "title": "四、成本与效率",
+      "units": [
+        {
+          "id": "p6_u0",
+          "text": "四、成本与效率",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 6,
+            "part": "slide",
+            "object": "slide6/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p6_u1",
+          "text": "基础设施成本 3.1 亿元，占总收入的 24%\n单位请求成本从 0.021 元下降到 0.013 元\n研发人员规模为 860 人，人均研发投入为 46 万元\n运维自动化覆盖 78% 的常规巡检任务",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 6,
+            "part": "slide",
+            "object": "slide6/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 7,
+      "hidden": false,
+      "title": "五、质量与稳定性",
+      "units": [
+        {
+          "id": "p7_u0",
+          "text": "五、质量与稳定性",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 7,
+            "part": "slide",
+            "object": "slide7/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p7_u1",
+          "text": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标\nP1 级故障发生 4 次，平均恢复时间为 26 分钟\n客户工单总量 8600 件，平均首次响应时间为 18 分钟\n安全合规方面通过了 7 项行业认证审查",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 7,
+            "part": "slide",
+            "object": "slide7/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 8,
+      "hidden": false,
+      "title": "六、问题与改进",
+      "units": [
+        {
+          "id": "p8_u0",
+          "text": "六、问题与改进",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "slide",
+            "object": "slide8/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_cht_s0c0",
+          "text": "指标（%） 续约预警覆盖率·当前 74.0",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "chart",
+            "object": "slide8/shape[3]",
+            "series": "指标（%）",
+            "category": "续约预警覆盖率·当前",
+            "value": 74.0
+          },
+          "role": "chart_value",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_cht_s0c1",
+          "text": "指标（%） 续约预警覆盖率·74%·目标 85.0",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "chart",
+            "object": "slide8/shape[3]",
+            "series": "指标（%）",
+            "category": "续约预警覆盖率·74%·目标",
+            "value": 85.0
+          },
+          "role": "chart_value",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r0c0",
+          "text": "序号",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 0,
+            "col": 0,
+            "header": "序号"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r0c1",
+          "text": "未绘入图表的条目（原文）",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 0,
+            "col": 1,
+            "header": "未绘入图表的条目（原文）"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r1c0",
+          "text": "1.六、问题与改进",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 1,
+            "col": 0,
+            "header": "序号"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r1c1",
+          "text": "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 1,
+            "col": 1,
+            "header": "未绘入图表的条目（原文）"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r2c0",
+          "text": "2.六、问题与改进",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 2,
+            "col": 0,
+            "header": "序号"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p8_tbl_r2c1",
+          "text": "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 8,
+            "part": "table",
+            "object": "slide8/shape[4]",
+            "row": 2,
+            "col": 1,
+            "header": "未绘入图表的条目（原文）"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 9,
+      "hidden": false,
+      "title": "七、下年度计划",
+      "units": [
+        {
+          "id": "p9_u0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "slide",
+            "object": "slide9/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r0c0",
+          "text": "指标 / 说明",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 0,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r0c1",
+          "text": "数值与原文",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 0,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r1c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 1,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r1c1",
+          "text": "2025 年计划总收入达到 18 亿元，同比增长 40%",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 1,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r2c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 2,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r2c1",
+          "text": "计划新增区域 2 个可用区",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 2,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r3c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 3,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r3c1",
+          "text": "计划将跨区域同步延迟压缩到 30 秒以内",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 3,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r4c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 4,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r4c1",
+          "text": "计划完成全部 22 个存量接口的迁移下线",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 4,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r5c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 5,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r5c1",
+          "text": "计划将续约预警覆盖率提升到 90%",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 5,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r6c0",
+          "text": "七、下年度计划",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 6,
+            "col": 0,
+            "header": "指标 / 说明"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p9_tbl_r6c1",
+          "text": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 9,
+            "part": "table",
+            "object": "slide9/shape[3]",
+            "row": 6,
+            "col": 1,
+            "header": "数值与原文"
+          },
+          "role": "table_cell",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "page_no": 10,
+      "hidden": false,
+      "title": "八、结论",
+      "units": [
+        {
+          "id": "p10_u0",
+          "text": "八、结论",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 10,
+            "part": "slide",
+            "object": "slide10/shape[2]",
+            "group_path": ""
+          },
+          "role": "title",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        },
+        {
+          "id": "p10_u1",
+          "text": "2024 年是平台能力与规模同步扩张的一年\n收入增速 38% 高于行业平均水平，\n毛利率提升 4.2 个百分点说明交付成本控制有效\n2025 年的重点是把 18 亿元收入目标与基础设施稳定性、",
+          "source_ref": {
+            "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+            "slide": 10,
+            "part": "slide",
+            "object": "slide10/shape[3]",
+            "group_path": ""
+          },
+          "role": "body",
+          "in_image": false,
+          "locked": false,
+          "required": true
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "slide1/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 1,
+      "path": "slide1/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide1/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 1,
+      "path": "slide1/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide2/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 2,
+      "path": "slide2/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide2/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 2,
+      "path": "slide2/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide3/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 3,
+      "path": "slide3/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide3/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 3,
+      "path": "slide3/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide4/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 4,
+      "path": "slide4/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide4/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 4,
+      "path": "slide4/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide5/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 5,
+      "path": "slide5/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide5/shape[3]",
+      "type": "TEXT_BOX (17)",
+      "page": 5,
+      "path": "slide5/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide5/shape[4]",
+      "type": "TEXT_BOX (17)",
+      "page": 5,
+      "path": "slide5/shape[4]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide5/shape[5]",
+      "type": "TEXT_BOX (17)",
+      "page": 5,
+      "path": "slide5/shape[5]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide6/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 6,
+      "path": "slide6/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide6/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 6,
+      "path": "slide6/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide7/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 7,
+      "path": "slide7/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide7/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 7,
+      "path": "slide7/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide8/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 8,
+      "path": "slide8/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide8/shape[3]",
+      "type": "CHART (3)",
+      "page": 8,
+      "path": "slide8/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide8/shape[4]",
+      "type": "TABLE (19)",
+      "page": 8,
+      "path": "slide8/shape[4]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide9/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 9,
+      "path": "slide9/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide9/shape[3]",
+      "type": "TABLE (19)",
+      "page": 9,
+      "path": "slide9/shape[3]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide10/shape[2]",
+      "type": "PLACEHOLDER (14)",
+      "page": 10,
+      "path": "slide10/shape[2]",
+      "group_path": "",
+      "visible": true
+    },
+    {
+      "object_id": "slide10/shape[3]",
+      "type": "PLACEHOLDER (14)",
+      "page": 10,
+      "path": "slide10/shape[3]",
+      "group_path": "",
+      "visible": true
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "p8_tbl_slide8/shape[4]",
+      "page": 8,
+      "shape_id": "slide8/shape[4]",
+      "source_index": -1,
+      "headers": [
+        "序号",
+        "未绘入图表的条目（原文）"
+      ],
+      "rows": [
+        [
+          "1.六、问题与改进",
+          "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景"
+        ],
+        [
+          "2.六、问题与改进",
+          "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口"
+        ]
+      ],
+      "row_labels": [
+        "1.六、问题与改进",
+        "2.六、问题与改进"
+      ],
+      "geometry": {
+        "left": 6309360,
+        "top": 1645920,
+        "width": 3291840,
+        "height": 1097280
+      },
+      "group_path": "",
+      "irregular": false,
+      "irregular_reason": "",
+      "visible": true,
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+        "slide": 8,
+        "part": "table",
+        "object": "slide8/shape[4]",
+        "row_count": 3,
+        "col_count": 2
+      }
+    },
+    {
+      "table_id": "p9_tbl_slide9/shape[3]",
+      "page": 9,
+      "shape_id": "slide9/shape[3]",
+      "source_index": -1,
+      "headers": [
+        "指标 / 说明",
+        "数值与原文"
+      ],
+      "rows": [
+        [
+          "七、下年度计划",
+          "2025 年计划总收入达到 18 亿元，同比增长 40%"
+        ],
+        [
+          "七、下年度计划",
+          "计划新增区域 2 个可用区"
+        ],
+        [
+          "七、下年度计划",
+          "计划将跨区域同步延迟压缩到 30 秒以内"
+        ],
+        [
+          "七、下年度计划",
+          "计划完成全部 22 个存量接口的迁移下线"
+        ],
+        [
+          "七、下年度计划",
+          "计划将续约预警覆盖率提升到 90%"
+        ],
+        [
+          "七、下年度计划",
+          "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人"
+        ]
+      ],
+      "row_labels": [
+        "七、下年度计划",
+        "七、下年度计划",
+        "七、下年度计划",
+        "七、下年度计划",
+        "七、下年度计划",
+        "七、下年度计划"
+      ],
+      "geometry": {
+        "left": 640080,
+        "top": 1645920,
+        "width": 8229600,
+        "height": 2880360
+      },
+      "group_path": "",
+      "irregular": false,
+      "irregular_reason": "",
+      "visible": true,
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+        "slide": 9,
+        "part": "table",
+        "object": "slide9/shape[3]",
+        "row_count": 7,
+        "col_count": 2
+      }
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "slide8/chart[3]",
+      "page": 8,
+      "shape_id": "3",
+      "chart_type": "column",
+      "raw_type": "COLUMN_CLUSTERED (51)",
+      "series": [
+        "指标（%）"
+      ],
+      "categories": [
+        "续约预警覆盖率·当前",
+        "续约预警覆盖率·74%·目标"
+      ],
+      "cache": {
+        "指标（%）": {
+          "续约预警覆盖率·当前": "74.0",
+          "续约预警覆盖率·74%·目标": "85.0"
+        }
+      },
+      "workbook": {
+        "指标（%）": {
+          "续约预警覆盖率·当前": "74",
+          "续约预警覆盖率·74%·目标": "85"
+        }
+      },
+      "workbook_part": "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx",
+      "geometry": {
+        "left": 548640,
+        "top": 1554480,
+        "width": 5669280,
+        "height": 4206240
+      },
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/staging/fa2c1e7e/annual_review_synthetic.generated.themed.pptx",
+        "slide": 8,
+        "part": "ppt/charts/chart1.xml",
+        "object": "slide8/shape[3]",
+        "group_path": "",
+        "chart_ordinal": 0
+      },
+      "warnings": []
+    }
+  ],
+  "facts": [],
+  "heading_index": [],
+  "warnings": []
+}

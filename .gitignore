@@ -1,0 +1,24 @@
+# 密钥（只走环境变量，绝不落盘）
+.env
+*.key
+*.pem
+*api_key*
+# 模型权重与大文件输出
+*.gguf
+*.safetensors
+*.ckpt
+# 运行数据与缓存
+__pycache__/
+*.pyc
+.venv/
+*.log
+*.pid
+wb_loopback_data/
+work/
+workbench_uploads/
+workbench_previews/
+.pytest_cache/
+.pytest_run_tmp/
+.fontconfig/
+.lo-profile/
+.DS_Store

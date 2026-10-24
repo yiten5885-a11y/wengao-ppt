@@ -1,0 +1,14 @@
+[
+  {
+    "q": "Tesla Inc 行业均值 市场规模",
+    "locale": "zh",
+    "backend": "searxng",
+    "sent_at": "2026-10-23T21:19:22.421256+00:00"
+  },
+  {
+    "q": "Tesla Inc market share industry benchmark",
+    "locale": "en",
+    "backend": "searxng",
+    "sent_at": "2026-10-23T21:19:22.421256+00:00"
+  }
+]

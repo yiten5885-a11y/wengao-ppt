@@ -1,0 +1,41 @@
+test_build_identity_detects_missing_frozen_file (tests.test_prepublication_50_decks_gate_negatives.BuildIdentityTests.test_build_identity_detects_missing_frozen_file) ... ok
+test_build_identity_recomputed_from_disk (tests.test_prepublication_50_decks_gate_negatives.BuildIdentityTests.test_build_identity_recomputed_from_disk) ... ok
+test_duplicate_entries_are_detected_by_copy (tests.test_prepublication_50_decks_gate_negatives.BuildIdentityTests.test_duplicate_entries_are_detected_by_copy) ... ok
+test_deck_count_below_50_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_deck_count_below_50_blocks) ... ok
+test_download_failure_hash_mismatch_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_download_failure_hash_mismatch_blocks) ... ok
+test_duplicate_identity_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_duplicate_identity_blocks) ... ok
+test_duplicate_task_id_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_duplicate_task_id_blocks) ... ok
+test_escape_path_rejected (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_escape_path_rejected) ... ok
+test_forged_pass_verdict_only_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_forged_pass_verdict_only_blocks) ... ok
+test_forged_pass_without_artifacts_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_forged_pass_without_artifacts_blocks) ... ok
+test_forged_review_record_hash_mismatch_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_forged_review_record_hash_mismatch_blocks) ... ok
+test_forged_review_record_wrong_binding_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_forged_review_record_wrong_binding_blocks) ... ok
+test_frozen_code_change_invalidates_batch (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_frozen_code_change_invalidates_batch)
+Any byte change in the frozen set invalidates every result of the batch. ... ok
+test_image_license_url_missing_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_image_license_url_missing_blocks) ... ok
+test_image_provider_not_allowed_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_image_provider_not_allowed_blocks) ... ok
+test_missing_download_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_missing_download_blocks) ... ok
+test_missing_freeze_manifest_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_missing_freeze_manifest_blocks) ... ok
+test_missing_preview_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_missing_preview_blocks) ... ok
+test_missing_required_field_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_missing_required_field_blocks) ... ok
+test_missing_review_evidence_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_missing_review_evidence_blocks) ... ok
+test_mock_flag_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_mock_flag_blocks) ... ok
+test_no_scene_image_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_no_scene_image_blocks) ... ok
+test_preview_page_coverage_incomplete_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_preview_page_coverage_incomplete_blocks) ... ok
+test_replay_flag_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_replay_flag_blocks) ... ok
+test_review_page_coverage_incomplete_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_review_page_coverage_incomplete_blocks) ... ok
+test_run_record_not_completed_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_run_record_not_completed_blocks) ... ok
+test_self_reported_image_count_mismatch_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_self_reported_image_count_mismatch_blocks) ... ok
+test_stale_result_build_mismatch_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_stale_result_build_mismatch_blocks) ... ok
+test_stale_timestamp_before_freeze_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_stale_timestamp_before_freeze_blocks) ... ok
+test_synthetic_fixture_flag_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_synthetic_fixture_flag_blocks) ... ok
+test_unrendered_pages_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_unrendered_pages_blocks) ... ok
+test_wrong_pptx_hash_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_wrong_pptx_hash_blocks) ... ok
+test_wrong_source_hash_blocks (tests.test_prepublication_50_decks_gate_negatives.NegativeCases.test_wrong_source_hash_blocks) ... ok
+test_complete_evidence_is_not_blocked (tests.test_prepublication_50_decks_gate_negatives.PositiveControl.test_complete_evidence_is_not_blocked)
+Mechanism control: the gate can pass, so BLOCKED results are meaningful. ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 31.029s
+
+OK

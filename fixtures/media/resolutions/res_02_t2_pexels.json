@@ -1,0 +1,35 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p02-s1",
+  "status": "RESOLVED_T2",
+  "asset": {
+    "path": "fixtures/media/images/t2_pexels_photo.jpg",
+    "sha256": "73dc126fa39052c53ba8a8735c24f8ba5de5a9b385892442a5add53ba7dbca66",
+    "phash": "0180808080808001ff818181818181ff",
+    "width": 1920,
+    "height": 1080,
+    "format": "JPEG",
+    "provider": "pexels",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "creator": "Alex Pexels",
+    "source_url": "https://www.pexels.com/photo/sample-201/",
+    "attribution_text": "Photo by Alex Pexels on Pexels",
+    "generator": null,
+    "model": null,
+    "prompt_digest": null,
+    "seed": null,
+    "similarity": 0.88,
+    "similarity_model": "local_vision_v1"
+  },
+  "attempts": [
+    {
+      "tier": "T2",
+      "provider": "pexels",
+      "outcome": "SUCCESS",
+      "detail": "Matched with high similarity",
+      "elapsed_s": 0.45
+    }
+  ],
+  "reason": null
+}

@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-2ba9c9bb22c3",
+  "run_id": "20261023T081627_522717Z-ca1f4d2a",
+  "attempt_id": "cba6fbbb",
+  "mode": "beautify",
+  "contract_version": "contracts/1.1.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "input_path": "/tmp/wengao-real-20261023/retail_clinic_en.pptx",
+  "input_hash": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+  "edit_scope": {
+    "type": "whole_deck"
+  },
+  "preserve_design": false,
+  "target_environment": {},
+  "theme": "wengao-basic",
+  "theme_name": "稳稿基础主题（旧默认）",
+  "theme_version": "1.0.0",
+  "theme_registry_version": "1.1.0",
+  "theme_config_digest": "fb9878fe31f81525e851f1f10222c530049f5ab9117e671eef7115194fe7aba4",
+  "created_at": "2026-10-23T16:16:27.525490+08:00",
+  "verdict": "FAILED",
+  "stages": [
+    {
+      "stage": "precheck",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:27.835125+08:00",
+      "detail": {
+        "input_kind": ".pptx",
+        "input_sha256": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+        "upstream_verified": "VENDOR_DIR_MISSING",
+        "real_renderer": "MISSING",
+        "support_profile": "P1_TEXT_LIMITED",
+        "required_checks": [
+          "content_fidelity.required_text",
+          "content_fidelity.occurrence",
+          "content_fidelity.sign",
+          "native_editability.visible_native",
+          "render.real_render"
+        ]
+      }
+    },
+    {
+      "stage": "begin_attempt",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:48.265214+08:00",
+      "detail": {
+        "archived_to": null,
+        "moved": [],
+        "previous_attempt_id": "cba6fbbb",
+        "note": "新尝试不继承旧 verdict/export/预览；历史版本已归档保留。"
+      }
+    },
+    {
+      "stage": "baseline",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:48.660281+08:00",
+      "detail": {
+        "schema_version": "1.0.0",
+        "input_path": "/tmp/wengao-real-20261023/retail_clinic_en.pptx",
+        "input_sha256": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+        "input_sha256_copy": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+        "captured_at": "2026-10-23T16:16:48.550529+08:00",
+        "mode": "beautify",
+        "note": "在任何上游 normalize、清洗或转换之前保存；原始用户文件未被修改。"
+      }
+    },
+    {
+      "stage": "raw_census",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:49.004791+08:00",
+      "detail": {
+        "members": 48,
+        "conflicts": 0,
+        "decode_errors": 0,
+        "kind_counts": {
+          "slides": 6
+        },
+        "fields": 0,
+        "soft_breaks": 0,
+        "omml": 0
+      }
+    },
+    {
+      "stage": "extract",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:49.352319+08:00",
+      "detail": {
+        "pages": 6,
+        "objects": 18,
+        "units": 18,
+        "charts": 0,
+        "tables": 0
+      }
+    },
+    {
+      "stage": "build",
+      "status": "DONE",
+      "at": "2026-10-23T16:16:49.746445+08:00",
+      "detail": {
+        "staged": "/tmp/wengao-real-20261023/data/jobs/job-2ba9c9bb22c3/staging/cba6fbbb/retail_clinic_en.themed.pptx",
+        "theme": "wengao-basic",
+        "theme_id": "wengao-basic",
+        "theme_version": "1.0.0",
+        "theme_registry_version": "1.1.0",
+        "theme_config_digest": "fb9878fe31f81525e851f1f10222c530049f5ab9117e671eef7115194fe7aba4",
+        "theme_application": "APPLIED",
+        "preserve_design": false,
+        "runs_reformatted": 18,
+        "fills_set": 0,
+        "backgrounds_set": 6,
+        "tables_styled": 0,
+        "table_cells_styled": 0,
+        "charts_styled": 0,
+        "notes_styled": 0,
+        "slides": 6,
+        "role_counts": {
+          "title": 1,
+          "subtitle": 1,
+          "heading": 5,
+          "body": 11,
+          "note": 0
+        },
+        "emphasis_preserved": true,
+        "warnings": [],
+        "contrast": {
+          "checked": 18,
+          "violations": [],
+          "kept_original": [],
+          "unknown_backdrop": [],
+          "preexisting_low": [],
+          "unsafe": [],
+          "min_ratio": 6.9
+        },
+        "background_plan": [
+          {
+            "slide": 1,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 2,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 3,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 4,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 5,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 6,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          }
+        ],
+        "protected_business_colors": [],
+        "below_threshold": [],
+        "contrast_claim": "ASSERTED",
+        "font_substitution": "上游默认字体 Microsoft YaHei 本机缺失，已显式替换为 Songti；该替换是计划动作，不得静默进行。",
+        "theme_identity_frozen_at_job": true,
+        "theme_identity_legacy_no_digest": false
+      }
+    },
+    {
+      "stage": "semantic_scenes",
+      "status": "RUNNING",
+      "at": "2026-10-23T16:16:50.062954+08:00",
+      "detail": {
+        "rules_version": "2.20.0",
+        "note": "按全稿语义规划具体场景，检索授权图片并安全放置。"
+      }
+    },
+    {
+      "stage": "semantic_scenes",
+      "status": "FAILED",
+      "at": "2026-10-23T16:16:50.369610+08:00",
+      "detail": {
+        "code": "MODEL.HTTP_ERROR",
+        "detail": "upstream connect failed: Connection refused (os error 61)",
+        "model_error": {
+          "code": "MODEL.HTTP_ERROR",
+          "provider": "ollama-local",
+          "status_code": 502,
+          "detail": "upstream connect failed: Connection refused (os error 61)"
+        }
+      }
+    }
+  ],
+  "contracts_identity": {
+    "error_codes_v1.json": "774940524fb1ac8f9b9da77ec530cf77f6134ea3f13189209d9ff42f8564342c",
+    "schemas_v1.json": "2befceac1ca1110023e29ca061ac928fb733177ba7986519f53cdd86939b7a34",
+    "support_matrix_v1.json": "bf891fcf92d236d6c13ada2563f1c9d3a0ca789e9127970255ebfe0c58b571a3",
+    "layout_hard_gate_policy.json": "0009870f902fe7c4035ab5b74c8dd3f3b08b63e33c9fbb786e7de07ea613a809"
+  },
+  "stage": "semantic_scenes",
+  "last_activity": "2026-10-23T16:16:50.369626+08:00",
+  "current_valid": null,
+  "download_ready": false,
+  "attempt_log": [
+    {
+      "event": "BEGIN_ATTEMPT",
+      "attempt_id": "cba6fbbb",
+      "previous_attempt_id": "cba6fbbb",
+      "at": "2026-10-23T16:16:48.148532+08:00",
+      "archived_to": null,
+      "moved": [],
+      "invalidated": [
+        "validation",
+        "findings",
+        "candidate",
+        "export_path",
+        "preview"
+      ]
+    }
+  ],
+  "verdict_at": "2026-10-23T16:16:50.471953+08:00",
+  "fail_reason": "MODEL.HTTP_ERROR",
+  "failure_detail": "upstream connect failed: Connection refused (os error 61)",
+  "run_finished_at": "2026-10-23T16:16:50.471970+08:00",
+  "model_error": {
+    "code": "MODEL.HTTP_ERROR",
+    "provider": "ollama-local",
+    "status_code": 502,
+    "detail": "upstream connect failed: Connection refused (os error 61)"
+  }
+}

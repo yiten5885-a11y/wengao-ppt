@@ -1,0 +1,29 @@
+{
+  "schema": "prepublication-50-decks-gate-audit/v1",
+  "verdict": "BLOCKED",
+  "expected_count": 50,
+  "manifest_entries": 1,
+  "counted_real_decks": 0,
+  "build_sha256": "09009c1935151034c4c9b290a41e826a770cde57dc3bd2fd9f6abe1adec1c8f7",
+  "frozen_at": "2026-10-23T15:50:11.802489+00:00",
+  "base_contract": "contracts/prepublication_50_decks_gate_v1.json (read-only)",
+  "identity_contract": "contracts/prepublication_50_decks_identity_v1.json",
+  "findings": [
+    {
+      "code": "DECK_COUNT_MISMATCH",
+      "expected": 50,
+      "actual": 1
+    },
+    {
+      "code": "DISQUALIFYING_FLAG_NOT_FALSE",
+      "deck_id": "demo-deck-001",
+      "field": "is_synthetic_fixture",
+      "actual": true
+    },
+    {
+      "code": "REAL_DECK_COUNT_BELOW_TARGET",
+      "expected": 50,
+      "verified": 0
+    }
+  ]
+}

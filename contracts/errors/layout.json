@@ -1,0 +1,86 @@
+{
+  "schema": "rs.error_codes.v1",
+  "namespace": "LAYOUT",
+  "owner": "W2",
+  "contract": "rs-contracts-v1",
+  "codes": [
+    {
+      "code": "LAYOUT.OVERFLOW",
+      "severity": "WARN",
+      "meaning": "文本估算高度可能超出其容器（近似测量，渲染复核为准）",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.OVERLAP",
+      "severity": "FAIL",
+      "meaning": "文字/图片对象矩形重叠（底色卡片与其内部文字的包含关系不算）",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.FONT_TOO_SMALL",
+      "severity": "FAIL",
+      "meaning": "有效字号低于硬门禁 body_hard_min（24pt）",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.CONTRAST_TOO_LOW",
+      "severity": "FAIL",
+      "meaning": "文字对底色对比度低于硬门禁（正文 4.5，≥32pt 加粗标题 3.0）",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.MARGIN_VIOLATION",
+      "severity": "FAIL",
+      "meaning": "对象越出安全边距或画布",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.ORPHAN_CONTINUATION",
+      "severity": "FAIL",
+      "meaning": "出现“（续）”续页标记（分页由规划器按台账切分，不允许孤页续标题）",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.IMAGE_SLOT_EMPTY",
+      "severity": "INFO",
+      "meaning": "计划有图片槽位但该页最终无图（T4 降级如实记录，不阻断出稿）",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.IMAGE_NO_ALT",
+      "severity": "WARN",
+      "meaning": "图片缺 alt/署名（descr 为空）——来源署名不可见",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.IMAGE_SLOT_DEGENERATE",
+      "severity": "WARN",
+      "meaning": "图片槽位退化（任一边小于 1 英寸）",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.EMPTY_TEXT",
+      "severity": "WARN",
+      "meaning": "空文本框",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.EMPTY_PAGE",
+      "severity": "FAIL",
+      "meaning": "空页（无任何形状）",
+      "blocking": true
+    },
+    {
+      "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+      "severity": "INFO",
+      "meaning": "规划期无法生成 SceneRequest（semantic_scenes 不可用或未启用配图），槽位 scene=null",
+      "blocking": false
+    },
+    {
+      "code": "LAYOUT.NUMBER_NOT_GROUNDED",
+      "severity": "FAIL",
+      "meaning": "规划/版式发现数字既不在事实台账也不在 ResearchBundle.facts（视为模型补写，阻断整页）",
+      "blocking": true
+    }
+  ]
+}

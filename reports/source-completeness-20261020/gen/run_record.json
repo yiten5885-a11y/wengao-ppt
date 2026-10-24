@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-20T11:24:55.449415+00:00",
+  "material": "samples/material_replay/annual_review_synthetic.md",
+  "material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "pages": 9,
+    "units": 35,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/source-completeness-20261020/gen/fact_ledger.json",
+    "count": 59,
+    "frozen_before_model_call": true
+  },
+  "replay": {
+    "frozen_plan": "reports/r5-fix/wb_annual_review_synthetic_mfix3/content_plan.json",
+    "sha256": "683394069773a6064e7e212d7bc83888a5efcf45aa5428ea6b203c2e0cb46d6a",
+    "model_calls": 0,
+    "already_paginated": true,
+    "note": "回放既有冻结计划；不是新的模型输出，不得当作模型能力证据。"
+  },
+  "source_completion": {
+    "completed_half_sentences": [
+      {
+        "page": 12,
+        "was": "收入增速 38% 高于行业平均水平，",
+        "now": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      },
+      {
+        "page": 12,
+        "was": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、",
+        "now": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    ],
+    "added_qualitative": [
+      {
+        "fact_id": "F018",
+        "page": 5,
+        "subject": "二、产品能力进展",
+        "sentence": "年内完成三大能力建设。"
+      },
+      {
+        "fact_id": "F059",
+        "page": 12,
+        "subject": "八、结论",
+        "sentence": "主要短板在跨区域数据同步延迟与老接口维护成本。"
+      }
+    ],
+    "unplaced": [],
+    "dropped_duplicates": [
+      {
+        "page": 12,
+        "item": "毛利率提升 4.2 个百分点说明交付成本控制有效",
+        "why": "已被同页补全后的完整原句包含"
+      }
+    ],
+    "already_covered": [],
+    "repaginated": true
+  },
+  "plan": {
+    "path": "reports/source-completeness-20261020/gen/content_plan.json",
+    "mode": "replay",
+    "chunk_count": 0,
+    "chunk_calls": 0,
+    "slides": 12,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "replay",
+        "attempt": 1,
+        "source": "reports/r5-fix/wb_annual_review_synthetic_mfix3/content_plan.json",
+        "already_paginated": true
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 22pt/表格 18pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 12,
+    "pages_after": 12,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true
+  },
+  "pptx": {
+    "path": "reports/source-completeness-20261020/gen/annual_review_synthetic.generated.pptx",
+    "sha256": "89639bb2afccaedce2eb170c47efa8e0da027d54f1826566e61cf15422506492",
+    "slides": 12,
+    "slides_match_pagination": true
+  },
+  "page_count_source": "实际 PPTX 幻灯片数（build_pptx 返回的 Presentation 对象）",
+  "chart_relations": [
+    {
+      "page_title": "二、产品能力进展",
+      "chart_part_hint": "slide 5",
+      "series_name": "指标（分钟）",
+      "axis_unit": "分钟",
+      "excluded_units_same_page_table": [
+        "亿",
+        "%",
+        "unknown"
+      ],
+      "points": [
+        {
+          "category": "平均故障定位时间·改善前",
+          "value": 45.0,
+          "unit": "分钟",
+          "fact_id": "F014"
+        },
+        {
+          "category": "平均故障定位时间·改善后",
+          "value": 8.0,
+          "unit": "分钟",
+          "fact_id": "F015"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 8,
+      "density": "high",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 4,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 3,
+      "density": "mid",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 4,
+      "density": "mid",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 3,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 5,
+      "density": "mid",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 1,
+      "density": "low",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "catalog_key": "summary_action",
+      "units": 4,
+      "density": "mid",
+      "layout": "actions_split_two_pages",
+      "fallback_chain": [
+        "summary_plus_actions",
+        "actions_only_with_note",
+        "actions_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-20T11:24:55.561345+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

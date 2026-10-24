@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "contract_id": "PREPUBLICATION_50_DECKS_IDENTITY",
+  "owner_work_package": "WP9",
+  "status": "ACTIVE",
+  "purpose": "把 contracts/prepublication_50_decks_gate_v1.json 的发布门禁落成 fail-closed 可执行身份校验。原契约由 WP9 只读消费（该文件在 P8 基线中被列为不得修改），本文件只新增 WP9 拥有的身份与证据要求。",
+  "base_contract": {
+    "path": "contracts/prepublication_50_decks_gate_v1.json",
+    "gate_id": "PREPUBLICATION_50_REAL_DECKS_GATE",
+    "access": "read-only"
+  },
+  "identity_principle": "任何状态都必须能从磁盘上的实际输入、源码/build、任务运行记录和输出文件重算身份；声明字段只用于索引，不作为证据。",
+  "reject_classes": [
+    "missing_evidence",
+    "wrong_hash",
+    "duplicate_identity",
+    "stale_result",
+    "forged_pass",
+    "no_scene_image",
+    "self_reported_image_count",
+    "missing_preview",
+    "missing_download",
+    "unrendered_page",
+    "synthetic_fixture",
+    "replay",
+    "mock",
+    "forged_review_record",
+    "download_failure"
+  ],
+  "freeze_policy": {
+    "rule": "发布候选根目录内全部代码、资源、契约、依赖声明、示例和测试文件均按固定排除规则进入冻结清单。门禁重新枚举实际文件集合并重算哈希；新增、删除、修改、漏项或多项都会阻断。任一冻结集变化都使本批 50 套结果整体失效并重跑。",
+    "build_sha256_definition": "把冻结清单中每条 '<sha256>  <相对路径>' 按路径排序后拼接，取其 UTF-8 字节的 SHA-256。",
+    "build_root_binding": "freeze.root 必须解析为冻结的候选根目录；代码文件路径相对 freeze.root 解析。输入、PPTX、预览、下载和审校证据路径仍相对 manifest 所在证据目录解析，两者可以分离。",
+    "inventory_policy": {
+      "mode": "fixed_complete_candidate_inventory",
+      "caller_globs_allowed": false,
+      "excluded_runtime_directories": [".git", ".venv", ".pytest_cache", ".mypy_cache", ".ruff_cache", "__pycache__", "node_modules", ".fontconfig", "jobs", "reports", "wb_loopback_data", "material_tasks", "work", "workbench_previews", "workbench_uploads"],
+      "excluded_runtime_files": [".DS_Store", ".env", ".env.*", "*.log", "*.pyc", "*.pyo", "*.tmp", "*.sqlite", "*.sqlite3", "*.db"],
+      "excluded_evidence_prefixes": ["samples/open-source-50-decks/multilingual-inputs/generation-evidence"],
+      "symlinks": "unsupported in included candidate paths; freeze must fail closed"
+    },
+    "freeze_manifest_schema": {
+      "schema": "prepublication-50-decks-freeze/v1",
+      "root": "冻结候选根目录的绝对路径（独立于 manifest 证据目录）",
+      "frozen_at": "ISO-8601 带时区",
+      "file_count": "必须等于 files 对象成员数",
+      "files": "固定完整清单：对象键为相对候选根的路径，值为 64 位十六进制 sha256"
+    },
+    "release_signatures": "冻结清单必须由 pinned trust store 中 active 的发布负责人 Ed25519 密钥签名；门禁不得从 evidence manifest 接受公钥或信任根。"
+  },
+  "deck_entry_required_fields": {
+    "deck_id": "string，全局唯一",
+    "task_id": "string，全局唯一，必须对应磁盘上真实存在的任务运行记录",
+    "source_file": "相对路径，磁盘可读",
+    "source_sha256": "64 位十六进制，必须与磁盘重算一致",
+    "candidate_pptx": "相对路径，磁盘可读",
+    "candidate_pptx_sha256": "64 位十六进制，必须与磁盘重算一致",
+    "language_codes": "字符串数组，取自既有 26 语言矩阵",
+    "actual_scene_images_inserted": "整数 >= 1（声明值；门禁从 PPTX 重算实际插入图片数，声明与实际不符即阻断）",
+    "scene_image_records": "逐张图片记录 slide、shape_name、image_sha256、canonical_scene_id、query、source_url、image_provider、image_license、license_url；对象和图片哈希必须从实际 PPTX 关系重算对应。",
+    "is_synthetic_fixture": "boolean，必须为 false",
+    "is_replay": "boolean，必须为 false",
+    "is_mock": "boolean，必须为 false",
+    "independent_content_fidelity_verdict": "必须为 PASS",
+    "layout_and_placement_safety_verdict": "必须为 PASS",
+    "visual_review_verdict": "必须为 PASS",
+    "candidate_gate_verdict": "必须为 PASS",
+    "timestamp": "ISO-8601 带时区，且不早于冻结时间",
+    "code_identity": {
+      "build_sha256": "必须等于门禁运行时刻重算的 build_sha256"
+    },
+    "runtime_environment": {
+      "os_name": "真实运行系统",
+      "architecture": "真实运行架构，例如 arm64",
+      "python_implementation": "真实解释器实现",
+      "python_version": "真实解释器版本",
+      "dependency_manifest_sha256": "必须等于候选根 requirements.txt 的重算 SHA-256",
+      "renderer_name": "实际逐页渲染器名称",
+      "renderer_version": "实际逐页渲染器版本"
+    },
+    "run_record": {
+      "path": "相对路径",
+      "sha256": "必须与磁盘重算一致",
+      "signature": "由 pinned runtime Ed25519 私钥签名，绑定真实 Workbench task、输入/输出/build SHA、运行环境、模型来源、逐页预览下载和每张实际图片记录"
+    },
+    "provider": {
+      "model_provider": "实际 provider 名称",
+      "model_id": "实际模型标识",
+      "image_provider": "openverse | wikimedia_commons | pexels",
+      "image_license": "CC0 | Public Domain Mark | Public Domain | CC BY 4.0 | Pexels License",
+      "image_source_url": "图片来源页（可为空时须给出 license_url）",
+      "license_url": "许可证规范链接"
+    },
+    "page_scope": {
+      "page_count": "整数 >= 1，必须等于从 PPTX 重算的页数",
+      "rendered_pages": "整型数组，必须覆盖 1..page_count",
+      "reviewed_pages": "整型数组，必须覆盖 1..page_count"
+    },
+    "preview_artifacts": "数组：{page, path, sha256}，必须覆盖 1..page_count 且每个文件存在且哈希一致",
+    "download_artifact": {
+      "path": "相对路径",
+      "sha256": "必须等于 candidate_pptx_sha256",
+      "bytes": "整数，必须等于磁盘实际字节数"
+    },
+    "review_evidence": {
+      "path": "相对路径",
+      "sha256": "必须与磁盘重算一致",
+      "pages": "整型数组，必须覆盖 1..page_count",
+      "signature": "由 trust store 中 active 且具备相应语言与视觉审校资格的审校者私钥签名"
+    }
+  },
+  "fail_closed_rules": [
+    "任一条目缺项、错哈希、证据文件缺失或不可读 → 该条目 BLOCKED，且整体 BLOCKED。",
+    "重复身份（deck_id / task_id / source_sha256 / candidate_pptx_sha256 / review_evidence.sha256 任一重复）→ 整体 BLOCKED。",
+    "build_sha256 与当前冻结不一致，或 timestamp 早于 frozen_at → 判定 stale_result，整体 BLOCKED。",
+    "声明 verdict=PASS 但磁盘证据不足以重算身份 → 判定 forged_pass，整体 BLOCKED。",
+    "从 PPTX 重算的实际插入图片数 < 1，或与声明值不一致 → 整体 BLOCKED。",
+    "预览/下载产物缺失、哈希不一致或页数覆盖不全 → 整体 BLOCKED。",
+    "条目数不等于 50 或有效条目数不等于 50 → 整体 BLOCKED。",
+    "公开发布门禁目标固定为 50，API/CLI 不接受低于 50 的可发布计数覆盖。",
+    "信任根未配置、哈希与 pinned 值不一致、冻结/运行/审校签名缺失或无效 → 计数为 0 并整体 BLOCKED。",
+    "PPTX 必须由 OOXML 解析器解析；每个实际 p:pic 必须解析到能解码的图片关系，且场景图记录与真实对象 SHA 完全匹配。",
+    "每页预览必须是可解码的 PNG；签名运行记录必须绑定全部预览和下载文件 SHA。",
+    "运行环境字段必须由签名 runtime 记录逐字段绑定；依赖清单 SHA 必须从候选 requirements.txt 重算。",
+    "同一 deck 内重复 canonical_scene_id 或重复插入相同图片字节 → 整体 BLOCKED。",
+    "门禁自身遇到未捕获异常也必须返回 BLOCKED，绝不返回 PASS。"
+  ],
+  "known_limitations": [
+    "当前 pinned trust store 是 UNPROVISIONED，生产门禁预期始终 BLOCKED，直到 Workbench runtime 签名器、独立审校者资格与 owner freeze signer 已安全接入并重新冻结。",
+    "门禁信任 runtime signer 对‘真实 Workbench 任务’的签发纪律；runtime 只能在真实任务完成后签发，并应从其任务数据库/任务输出重算绑定字段。",
+    "密码签名能证明记录来自受信 signer 且未被改写，不能替代独立视觉审查；审校者仍须逐页确认语义、质量、授权与场景去重。",
+    "冻结清单只排除本契约明确列出的运行期状态；候选根目录中的其他新增文件会被纳入并使已冻结批次失效。"
+  ],
+  "trust_store": {
+    "path": "contracts/prepublication_50_decks_trust_store_v1.json",
+    "schema": "prepublication-50-decks-trust-store/v1",
+    "pin": "trust_store_sha256 在执行代码中固定；manifest 不得提供 trust store 路径或公钥"
+  },
+  "allowed_image_providers": {
+    "openverse": ["CC0", "Public Domain Mark", "Public Domain", "CC BY 4.0"],
+    "wikimedia_commons": ["CC0", "Public Domain Mark", "Public Domain", "CC BY 4.0"],
+    "pexels": ["Pexels License"]
+  },
+  "executable": "scripts/prepublication_50_decks_gate.py",
+  "negative_case_tests": "tests/test_prepublication_50_decks_gate_negatives.py"
+}

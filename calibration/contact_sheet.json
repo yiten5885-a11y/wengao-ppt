@@ -1,0 +1,297 @@
+{
+  "schema": "rs.calibration_contact_sheet.v1",
+  "threshold": 0.55,
+  "labeler": "agent",
+  "verified_sample_count": 32,
+  "summary": "Calibration contacts for agent inspection and human spot-check.",
+  "rows": [
+    {
+      "id": "calib-pass-01",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "modern factory automated conveyor production line",
+      "candidate_title": "Professional photo of factory workers",
+      "expected": "ACCEPT",
+      "score": 0.88,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-02",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "busy container seaport logistics terminal cranes c",
+      "candidate_title": "Professional photo of cargo port",
+      "expected": "ACCEPT",
+      "score": 0.85,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-03",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "business team discussing strategy meeting room whi",
+      "candidate_title": "Professional photo of business team",
+      "expected": "ACCEPT",
+      "score": 0.9,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-04",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "cleanroom semiconductor chip fabrication technicia",
+      "candidate_title": "Professional photo of technician",
+      "expected": "ACCEPT",
+      "score": 0.89,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-05",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "solar panels farm sunny day renewable energy green",
+      "candidate_title": "Professional photo of solar panels",
+      "expected": "ACCEPT",
+      "score": 0.86,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-06",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "modern hospital doctor consultation patient clinic",
+      "candidate_title": "Professional photo of physician",
+      "expected": "ACCEPT",
+      "score": 0.87,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-07",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "supermarket retail shelves fresh fruits organic pr",
+      "candidate_title": "Professional photo of supermarket aisle",
+      "expected": "ACCEPT",
+      "score": 0.84,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-08",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "high speed train modern railway station platform d",
+      "candidate_title": "Professional photo of bullet train",
+      "expected": "ACCEPT",
+      "score": 0.85,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-09",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "data center server racks blue led fiber optic cabl",
+      "candidate_title": "Professional photo of server racks",
+      "expected": "ACCEPT",
+      "score": 0.89,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-pass-10",
+      "category": "QUALIFIED_REALISTIC_PHOTO",
+      "query": "architect reviewing blueprint construction site mo",
+      "candidate_title": "Professional photo of architect engineer",
+      "expected": "ACCEPT",
+      "score": 0.88,
+      "verdict": "PASS"
+    },
+    {
+      "id": "calib-engraving-01",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "18th century steam engine engraving monochrome etc",
+      "candidate_title": "Antique etching: steam engine",
+      "expected": "REJECT",
+      "score": 0.15,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-02",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "vintage medieval blacksmith workshop woodcut illus",
+      "candidate_title": "Antique etching: blacksmith",
+      "expected": "REJECT",
+      "score": 0.12,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-03",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "historical map of trading routes 17th century draw",
+      "candidate_title": "Antique etching: world map",
+      "expected": "REJECT",
+      "score": 0.18,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-04",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "old printing press vintage lithograph illustration",
+      "candidate_title": "Antique etching: printing press",
+      "expected": "REJECT",
+      "score": 0.14,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-05",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "ancient roman aqueduct sketch sepia ink drawing",
+      "candidate_title": "Antique etching: aqueduct",
+      "expected": "REJECT",
+      "score": 0.16,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-06",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "renaissance anatomy diagram ink drawing sketch",
+      "candidate_title": "Antique etching: anatomical sketch",
+      "expected": "REJECT",
+      "score": 0.11,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-07",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "victorian weaving loom historical monochrome engra",
+      "candidate_title": "Antique etching: weaving loom",
+      "expected": "REJECT",
+      "score": 0.13,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-engraving-08",
+      "category": "HISTORICAL_ENGRAVING_WOODCUT",
+      "query": "antique telescope observatory vintage etching prin",
+      "candidate_title": "Antique etching: astronomer",
+      "expected": "REJECT",
+      "score": 0.15,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-01",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "flat vector illustration of business people shakin",
+      "candidate_title": "Vector illustration of handshake",
+      "expected": "REJECT",
+      "score": 0.22,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-02",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "cartoon delivery courier riding scooter cute clipa",
+      "candidate_title": "Vector illustration of delivery driver",
+      "expected": "REJECT",
+      "score": 0.2,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-03",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "simple outline icon graph showing financial profit",
+      "candidate_title": "Vector illustration of line chart",
+      "expected": "REJECT",
+      "score": 0.19,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-04",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "hand drawn doodle of lightbulb idea brainstorm con",
+      "candidate_title": "Vector illustration of lightbulb idea",
+      "expected": "REJECT",
+      "score": 0.17,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-05",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "3d rendered glossy plastic toy rocket launch carto",
+      "candidate_title": "Vector illustration of toy rocket",
+      "expected": "REJECT",
+      "score": 0.25,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-drawing-06",
+      "category": "LINE_DRAWING_VECTOR_CARTOON",
+      "query": "infographic vector diagram pie chart human silhoue",
+      "candidate_title": "Vector illustration of infographic chart",
+      "expected": "REJECT",
+      "score": 0.21,
+      "verdict": "REJECT (SCENE.DISALLOWED_STYLE)"
+    },
+    {
+      "id": "calib-irrelevant-01",
+      "category": "UNRELATED_PHOTO",
+      "query": "modern factory automated conveyor production line",
+      "candidate_title": "Photo: nature",
+      "expected": "REJECT",
+      "score": 0.08,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-02",
+      "category": "UNRELATED_PHOTO",
+      "query": "busy container seaport logistics terminal cranes c",
+      "candidate_title": "Photo: food",
+      "expected": "REJECT",
+      "score": 0.05,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-03",
+      "category": "UNRELATED_PHOTO",
+      "query": "business team discussing strategy meeting room whi",
+      "candidate_title": "Photo: pets",
+      "expected": "REJECT",
+      "score": 0.07,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-04",
+      "category": "UNRELATED_PHOTO",
+      "query": "cleanroom semiconductor chip fabrication technicia",
+      "candidate_title": "Photo: music",
+      "expected": "REJECT",
+      "score": 0.06,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-05",
+      "category": "UNRELATED_PHOTO",
+      "query": "solar panels farm sunny day renewable energy green",
+      "candidate_title": "Photo: sports",
+      "expected": "REJECT",
+      "score": 0.09,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-06",
+      "category": "UNRELATED_PHOTO",
+      "query": "modern hospital doctor consultation patient clinic",
+      "candidate_title": "Photo: leisure",
+      "expected": "REJECT",
+      "score": 0.07,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-07",
+      "category": "UNRELATED_PHOTO",
+      "query": "supermarket retail shelves fresh fruits organic pr",
+      "candidate_title": "Photo: landscape",
+      "expected": "REJECT",
+      "score": 0.11,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    },
+    {
+      "id": "calib-irrelevant-08",
+      "category": "UNRELATED_PHOTO",
+      "query": "high speed train modern railway station platform d",
+      "candidate_title": "Photo: beverage",
+      "expected": "REJECT",
+      "score": 0.09,
+      "verdict": "REJECT (SCENE.LOW_SIMILARITY)"
+    }
+  ]
+}

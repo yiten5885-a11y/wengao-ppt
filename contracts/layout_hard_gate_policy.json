@@ -1,0 +1,452 @@
+{
+  "schema": "wengao.layout_hard_gate_policy.v1",
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "created_at": "2026-10-21T00:41:26.570979+00:00",
+  "status": "SPECIFICATION_FROZEN_IMPLEMENTATION_NOT_VERIFIED",
+  "product_pass": false,
+  "policy_basis": "user_supplied_rejection_screenshots_and_frozen_independent_review",
+  "source_of_numeric_thresholds": "project_acceptance_requirements_not_external_standard",
+  "aggregate": {
+    "operator": "AND",
+    "across": "every_page_every_required_gate_every_supported_export_path",
+    "allowed_statuses": [
+      "PASS",
+      "FAIL",
+      "UNVERIFIED"
+    ],
+    "blocking_statuses": [
+      "FAIL",
+      "UNVERIFIED"
+    ],
+    "missing_evidence_status": "UNVERIFIED",
+    "missing_metric_must_not_default_to_zero": true,
+    "author_self_report_cannot_override_visible_failure": true
+  },
+  "scope": {
+    "original_pages": 13,
+    "material_pages_min": 10,
+    "material_pages_max": 20,
+    "themes": "all_six",
+    "paths": [
+      "original_import",
+      "theme_refine",
+      "material_new_model",
+      "partial_edit_export",
+      "history_restore_export",
+      "preview_download"
+    ],
+    "server_side_enforcement_required": true,
+    "diagnostic_failed_artifacts_allowed_only_with_failure_label": true
+  },
+  "invariants": [
+    "original_per_page_a_t_sequence",
+    "all_facts_and_data",
+    "speaker_notes",
+    "original_media_bytes",
+    "native_editability",
+    "transitions",
+    "three_particle_timings",
+    "original_page_count",
+    "material_page_contract"
+  ],
+  "gates": [
+    {
+      "id": "HG01",
+      "name": "内容与角色完整",
+      "predicate": "all_required_content_and_roles_accounted",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG02",
+      "name": "逐字覆盖与可见性",
+      "predicate": "all_expected_characters_mapped_and_visible",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG03",
+      "name": "字形碰撞",
+      "predicate": "no_rendered_ink_collision",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG04",
+      "name": "绘制层级遮挡",
+      "predicate": "no_later_object_occludes_text",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG05",
+      "name": "容器与画布边界",
+      "predicate": "all_ink_inside_owner_content_and_canvas",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG06",
+      "name": "标题正文结论页脚分区",
+      "predicate": "no_semantic_region_intrusion",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG07",
+      "name": "角色字号与字体",
+      "predicate": "effective_fonts_and_sizes_satisfy_role",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG08",
+      "name": "语义断行与序号归属",
+      "predicate": "protected_tokens_and_item_binding_preserved",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG09",
+      "name": "图文可读性与旧容器",
+      "predicate": "local_contrast_and_container_ownership_valid",
+      "severity": "BLOCKING",
+      "scope": "page"
+    },
+    {
+      "id": "HG10",
+      "name": "全页渲染与原生实播",
+      "predicate": "exact_artifact_full_render_and_native_review",
+      "severity": "BLOCKING",
+      "scope": "artifact_and_runtime"
+    },
+    {
+      "id": "HG11",
+      "name": "精确身份与产品接入",
+      "predicate": "all_real_export_paths_enforce_same_gate_server_side",
+      "severity": "BLOCKING",
+      "scope": "artifact_and_runtime"
+    },
+    {
+      "id": "HG12",
+      "name": "反向回归与独立验收",
+      "predicate": "negative_cases_detected_and_independent_review_complete",
+      "severity": "BLOCKING",
+      "scope": "artifact_and_runtime"
+    }
+  ],
+  "coverage": {
+    "expected_character_ledger_required": true,
+    "visible_mapping": "character_to_actual_rendered_glyph_many_to_many_traceable",
+    "mapped_nonblank_ratio_required": 1.0,
+    "visible_nonblank_ratio_required": 1.0,
+    "unmatched_characters_max": 0,
+    "missing_characters_max": 0,
+    "duplicate_counted_characters_max": 0,
+    "partial_visibility_characters_max": 0,
+    "post_failure_reclassification_as_decoration_forbidden": true,
+    "pdf_text_extraction_alone_insufficient": true
+  },
+  "geometry": {
+    "units": [
+      "pt",
+      "in",
+      "EMU"
+    ],
+    "float_coordinate_epsilon_pt_max": 0.25,
+    "epsilon_is_not_overlap_allowance": true,
+    "confirmed_ink_collisions_max": 0,
+    "occluded_ink_characters_max": 0,
+    "glyphs_outside_owner_content_max": 0,
+    "glyphs_outside_canvas_max": 0,
+    "text_padding_min_in": 0.1,
+    "text_padding_min_em": 0.35,
+    "text_padding_rule": "max(in_min, em_min * effective_font_size_pt / 72)",
+    "canvas_text_margin_in": {
+      "left": 0.4,
+      "right": 0.4,
+      "top": 0.3,
+      "bottom": 0.15
+    },
+    "region_gap_min_in": {
+      "title_lead": 0.12,
+      "lead_body": 0.16,
+      "body_conclusion": 0.18,
+      "content_footer_zone": 0.12
+    },
+    "footer_zone_from_bottom_in": {
+      "top": 0.5,
+      "bottom": 0.15
+    },
+    "same_level_baseline_delta_in_max": 0.03,
+    "same_level_spacing_relative_delta_max": 0.1,
+    "group_transform_and_rotation_required": true,
+    "z_order_alpha_clip_images_lines_animation_required": true
+  },
+  "font_roles_pt": {
+    "title": [
+      36,
+      40
+    ],
+    "body_preferred": [
+      26,
+      28
+    ],
+    "body_hard_min": 24,
+    "conclusion": [
+      28,
+      32
+    ],
+    "key_number": [
+      44,
+      56
+    ],
+    "table": [
+      20,
+      22
+    ],
+    "chart_auxiliary": [
+      18,
+      20
+    ],
+    "content_ordinal_allowed_ranges": [
+      [
+        18,
+        20
+      ],
+      [
+        20,
+        22
+      ]
+    ],
+    "source_footer": [
+      16,
+      18
+    ],
+    "cover_title": {
+      "min": 36,
+      "may_exceed": 40,
+      "must_dominate_auxiliary_copy": true
+    }
+  },
+  "font_rules": {
+    "measure_effective_after_autofit": true,
+    "body_must_not_shrink_below_floor": true,
+    "actual_resolved_glyph_font_required": true,
+    "missing_glyph_boxes_max": 0,
+    "unverified_fallback_status": "UNVERIFIED",
+    "font_diagnostic_control_is_not_whole_product_pass": true
+  },
+  "wrap_rules": {
+    "seed_protected_tokens": [
+      "电商",
+      "专项资金",
+      "越多",
+      "618",
+      "+0.9%",
+      "2500亿",
+      "36个月",
+      "GMV"
+    ],
+    "extract_and_protect_content_specific_tokens": true,
+    "split_number_unit_or_latin_word_forbidden": true,
+    "orphan_single_character_body_line_forbidden": true,
+    "orphan_quote_punctuation_line_forbidden": true,
+    "ordinals_require_item_id": true,
+    "content_ordinal_in_footer_forbidden": true
+  },
+  "visual": {
+    "normal_text_local_contrast_min": 4.5,
+    "bold_title_32pt_or_larger_local_contrast_min": 3.0,
+    "global_average_contrast_insufficient": true,
+    "unknown_local_background_status": "UNVERIFIED",
+    "unexplained_empty_old_containers_max": 0,
+    "image_proportion_provenance_ai_labels_preserved": true
+  },
+  "evidence": {
+    "render_all_pages": true,
+    "render_min_width_px": 1920,
+    "render_aspect_must_match_canvas": true,
+    "full_size_per_page_review_required": true,
+    "contact_sheet_alone_insufficient": true,
+    "animation_states": [
+      "initial",
+      "text_entering",
+      "particles_crossing",
+      "final_static"
+    ],
+    "native_all_pages_required": true,
+    "native_video_seconds_min": 30,
+    "native_video_seconds_max": 60,
+    "native_close_reopen_hash_check_required": true,
+    "static_only_result_label": "STATIC_LAYOUT_ONLY_NOT_PRODUCT_PASS",
+    "required_identity": [
+      "pptx_sha256",
+      "pdf_sha256",
+      "per_page_render_sha256",
+      "policy_version",
+      "policy_sha256",
+      "program_build_id",
+      "job_id",
+      "export_parameters"
+    ],
+    "any_artifact_byte_change_invalidates_previous_gate": true,
+    "real_product_trace_required": true
+  },
+  "negative_regressions": [
+    {
+      "id": "N01",
+      "artifact": "5a6bcb2d",
+      "pages": [
+        2
+      ],
+      "expect": "FAIL",
+      "must_hit": [
+        "HG03",
+        "HG06"
+      ],
+      "defect": "number_caption_source_collision"
+    },
+    {
+      "id": "N02",
+      "artifact": "6133ad5d",
+      "pages": [
+        9
+      ],
+      "expect": "FAIL",
+      "must_hit": [
+        "HG04"
+      ],
+      "defect": "later_opaque_card_occludes_text"
+    },
+    {
+      "id": "N03",
+      "artifact": "6133ad5d",
+      "pages": [
+        10
+      ],
+      "expect": "FAIL",
+      "must_hit": [
+        "HG03",
+        "HG06"
+      ],
+      "defect": "title_lead_and_body_conclusion_collisions"
+    },
+    {
+      "id": "N04",
+      "user_evidence_page": 9,
+      "expect": "FAIL",
+      "must_hit": [
+        "HG04",
+        "HG06"
+      ],
+      "defect": "card_clips_description_and_conclusion_intrudes",
+      "source_identity_binding_pending": true,
+      "evidence_file": "用户反例/截屏2026-10-21 08.31.29.png",
+      "evidence_sha256": "321ee94adcccb2531135f5ec397f9b88d4225e8d5f01770df8dcce7992ca08a7"
+    },
+    {
+      "id": "N05",
+      "user_evidence_page": 11,
+      "expect": "FAIL",
+      "must_hit": [
+        "HG03",
+        "HG06",
+        "HG08"
+      ],
+      "defect": "body_conclusion_stacking_and_footer_ordinals",
+      "source_identity_binding_pending": true,
+      "evidence_file": "用户反例/截屏2026-10-21 08.32.20.png",
+      "evidence_sha256": "56973559fdba292f26440893b1f30a4c5bd2104f55f6fa209d03b55714c67c45"
+    },
+    {
+      "id": "N06",
+      "user_evidence_page": 12,
+      "expect": "FAIL",
+      "must_hit": [
+        "HG03",
+        "HG05",
+        "HG08"
+      ],
+      "defect": "narrow_column_overflow_conclusion_collision_detached_ordinals",
+      "source_identity_binding_pending": true,
+      "evidence_file": "用户反例/截屏2026-10-21 08.33.16.png",
+      "evidence_sha256": "dd08a430fdb8b99c38fe7b88baa8703e4dec9166822bfdd1962ee9434d99ffeb"
+    },
+    {
+      "id": "N07",
+      "artifact": "6133ad5d",
+      "pages": [
+        8,
+        10
+      ],
+      "expect": "FAIL",
+      "must_hit": [
+        "HG02"
+      ],
+      "defect": "unmatched_04_and_bu_gan_sheng_and_da_e_xiao_fei_leng_jing_qi_ignored",
+      "must_not_be_ignored": [
+        "04",
+        "不敢生",
+        "大额消费冷静期"
+      ]
+    },
+    {
+      "id": "N08",
+      "artifact": "P268_ebf5d5b4_vs_c090aa14",
+      "expect": "FAIL",
+      "must_hit": [
+        "HG11"
+      ],
+      "defect": "final_artifact_gate_hash_mismatch"
+    }
+  ],
+  "forbidden_bypasses": [
+    "increase_collision_tolerance",
+    "lower_body_font",
+    "delete_or_hide_facts",
+    "move_body_to_notes",
+    "reduce_coverage_denominator",
+    "ignore_unmatched",
+    "skip_pages_or_paths",
+    "reuse_stale_gate",
+    "interpret_unknown_as_pass",
+    "use_pdf_text_extraction_as_visibility_proof",
+    "page_number_only_product_hardcoding",
+    "front_end_only_download_guard"
+  ],
+  "current_rejected_artifact": {
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "6068447fbe49641dcafe1eee23df401eacfa522b4b1d110810d74f456537edb3",
+    "verdict": "REJECTED",
+    "new_policy_does_not_change_verdict": true
+  },
+  "implementation_owner": "WorkBuddy",
+  "supervisor_product_source_changes": false,
+  "document_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "required_report_fields": [
+    "policy_version",
+    "policy_sha256",
+    "program_build_id",
+    "job_id",
+    "export_parameters",
+    "pptx_sha256",
+    "pdf_sha256",
+    "expected_page_count",
+    "actual_page_count",
+    "per_page_render_sha256",
+    "all_expected_text_character_ids",
+    "all_rendered_glyph_ids",
+    "character_glyph_mapping",
+    "expected_mapped_visible_counts",
+    "unmatched_missing_duplicate_counts",
+    "roles_effective_fonts_sizes",
+    "owners_regions_bounds",
+    "collisions_occlusions_clips_overflows",
+    "protected_wraps_and_ordinal_item_bindings",
+    "negative_regression_run_results",
+    "real_product_runtime_trace",
+    "independent_review_status"
+  ],
+  "regression_run_status": "NOT_YET_RUN_IN_PRODUCT"
+}

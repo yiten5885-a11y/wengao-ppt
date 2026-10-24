@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0.0",
+  "cache_key_sha256": "fd0d11aaae658bbff3a9e79cc1fcc4b358b3124d447301a0830393a93a72aa82",
+  "candidate_pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/annual_review_synthetic.generated.themed.pptx",
+  "candidate_sha256": "c00301a66477dd83e565b06efd1f5aeae3e714b595dfaee62a8dd2d4aa2a1e39",
+  "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+  "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+  "dpi": 110,
+  "png_bindings": [
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-01.png",
+      "page_no": 1,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "585a1cad603dd9d25600929b64eea6383c855c893d9c94bed8a0aa2575ad05b1",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-02.png",
+      "page_no": 2,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "124ac5ad78bfc8b41eacb2c2e2542325f1f040af5eab5d9a96c38ea2b9109c3d",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-03.png",
+      "page_no": 3,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "e94504a31b32697471d5edce55d90f00691dc8fb3a050c612ded14480bdbce88",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-04.png",
+      "page_no": 4,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "b259e7da63794254398f0b7f4193aee4eb7fe2a42ab90ab1c3a7b851ad5f7cec",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-05.png",
+      "page_no": 5,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "8bcb099d1e3b4ecfa478a1b22fb89f37cc73d11e7a555bbd1fed5df4760406aa",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-06.png",
+      "page_no": 6,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "b841ea87d9834ff552d1644436ea4de09805482c07fc0132a835baf464351bff",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-07.png",
+      "page_no": 7,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "8cc5c623c7079625c30bd929ad0ed819f6a8be329aa215525080a9ea75934e14",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-08.png",
+      "page_no": 8,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "ead5f24d33e78357cd37f448a45d0de0878da620d41fcfb58e97ead002b53a9a",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-09.png",
+      "page_no": 9,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "2ad375a46c994315cd7f5d4b3ed02862d3da24866a1f7b5102b0d8b3b3b4a772",
+      "width": 1467,
+      "height": 825
+    },
+    {
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/png/page-10.png",
+      "page_no": 10,
+      "pdf_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-967aa0388260/candidate/render/annual_review_synthetic.generated.themed.pdf",
+      "pdf_sha256": "a49b9c073afc07a143e5703f38201d0c5b268149dc5542f8c829cab0ae1fc512",
+      "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+      "dpi": 110,
+      "png_sha256": "0540f7fa98b237b550a43bdb743e9c68f82bf0dc645dbfa993b764a4723c77cf",
+      "width": 1467,
+      "height": 825
+    }
+  ],
+  "font_environment": {
+    "policy": "fontenv/2",
+    "ok": true,
+    "mode": "packaged",
+    "package_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+    "base_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/assets/fontconfig/fonts.conf",
+    "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+    "effective_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+    "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+    "cache_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/cache",
+    "data_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+    "platform_dirs": [
+      "/System/Library/Fonts",
+      "/System/Library/Fonts/Supplemental",
+      "/Library/Fonts",
+      "/Users/huangyingteng/Library/Fonts",
+      "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+    ],
+    "platform": "darwin",
+    "override": null,
+    "disabled": false,
+    "error": null,
+    "platform_marker_used": true
+  },
+  "environment_fingerprint": {
+    "policy": "fontenv/2",
+    "mode": "packaged",
+    "ok": true,
+    "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+    "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+    "platform": "darwin",
+    "platform_dirs": [
+      "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+      "/Library/Fonts",
+      "/System/Library/Fonts",
+      "/System/Library/Fonts/Supplemental",
+      "/Users/huangyingteng/Library/Fonts"
+    ],
+    "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "resolved_fonts": [
+      "ArialMT",
+      "ArialUnicodeMS",
+      "STSongti-SC-Bold"
+    ],
+    "digest": "7670c4fd89cd4bfb6a7f9414cb62479180fc42f5675da0361b53bd99899e2fa0"
+  },
+  "pdf_fonts": [
+    "ArialMT",
+    "ArialUnicodeMS",
+    "STSongti-SC-Bold"
+  ],
+  "renderer_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+  "glyph_quality": "OK",
+  "generated_at": "2026-10-20T12:59:55.757170+08:00",
+  "note": "页图与 PDF 的绑定；环境/候选任何一项变化都必须重建本目录。"
+}

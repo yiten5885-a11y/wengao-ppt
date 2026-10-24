@@ -1,0 +1,320 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-2d3d47df1b8e",
+  "run_id": "20261020T062515_194684Z-07235d4f",
+  "attempt_id": "90ee7031",
+  "mode": "beautify",
+  "contract_version": "contracts/1.0.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "input_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix3/annual_review_synthetic.generated.pptx",
+  "input_hash": "541c95be60da92a8450ab66c5696e6860419c24c01ac95db4defb8505b8d7be1",
+  "edit_scope": {
+    "type": "whole_deck"
+  },
+  "preserve_design": false,
+  "target_environment": {},
+  "theme": "wengao-dark",
+  "theme_name": "深色科技",
+  "theme_version": "1.0.0",
+  "theme_registry_version": "1.1.0",
+  "theme_config_digest": "3c7fa8e78c40dcc95e6f6a30f1205406170c9a5f959f70c789d938b9275c2089",
+  "created_at": "2026-10-20T14:25:15.194727+08:00",
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "stages": [
+    {
+      "stage": "precheck",
+      "status": "DONE",
+      "at": "2026-10-20T14:25:15.269854+08:00",
+      "detail": {
+        "input_kind": ".pptx",
+        "input_sha256": "541c95be60da92a8450ab66c5696e6860419c24c01ac95db4defb8505b8d7be1",
+        "upstream_verified": false,
+        "real_renderer": "available",
+        "support_profile": "P1_TEXT_LIMITED",
+        "required_checks": [
+          "content_fidelity.required_text",
+          "content_fidelity.occurrence",
+          "content_fidelity.sign",
+          "native_editability.visible_native",
+          "render.real_render"
+        ]
+      }
+    },
+    {
+      "stage": "begin_attempt",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.422946+08:00",
+      "detail": {
+        "archived_to": null,
+        "moved": [],
+        "previous_attempt_id": "90ee7031",
+        "note": "新尝试不继承旧 verdict/export/预览；历史版本已归档保留。"
+      }
+    },
+    {
+      "stage": "baseline",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.479848+08:00",
+      "detail": {
+        "schema_version": "1.0.0",
+        "input_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix3/annual_review_synthetic.generated.pptx",
+        "input_sha256": "541c95be60da92a8450ab66c5696e6860419c24c01ac95db4defb8505b8d7be1",
+        "input_sha256_copy": "541c95be60da92a8450ab66c5696e6860419c24c01ac95db4defb8505b8d7be1",
+        "captured_at": "2026-10-20T14:26:32.461601+08:00",
+        "mode": "beautify",
+        "note": "在任何上游 normalize、清洗或转换之前保存；原始用户文件未被修改。"
+      }
+    },
+    {
+      "stage": "raw_census",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.550506+08:00",
+      "detail": {
+        "members": 63,
+        "conflicts": 0,
+        "decode_errors": 0,
+        "kind_counts": {
+          "slides": 12,
+          "charts": 1,
+          "embeddings": 1
+        },
+        "fields": 0,
+        "soft_breaks": 0,
+        "omml": 0
+      }
+    },
+    {
+      "stage": "extract",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.763018+08:00",
+      "detail": {
+        "pages": 12,
+        "objects": 29,
+        "units": 46,
+        "charts": 1,
+        "tables": 2
+      }
+    },
+    {
+      "stage": "build",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.828502+08:00",
+      "detail": {
+        "staged": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/staging/90ee7031/annual_review_synthetic.generated.themed.pptx",
+        "theme": "wengao-dark",
+        "theme_id": "wengao-dark",
+        "theme_version": "1.0.0",
+        "theme_registry_version": "1.1.0",
+        "theme_config_digest": "3c7fa8e78c40dcc95e6f6a30f1205406170c9a5f959f70c789d938b9275c2089",
+        "theme_application": "APPLIED",
+        "preserve_design": false,
+        "runs_reformatted": 70,
+        "fills_set": 18,
+        "backgrounds_set": 12,
+        "tables_styled": 2,
+        "table_cells_styled": 18,
+        "charts_styled": 1,
+        "notes_styled": 0,
+        "slides": 12,
+        "role_counts": {
+          "title": 12,
+          "subtitle": 1,
+          "heading": 5,
+          "body": 8,
+          "note": 0
+        },
+        "emphasis_preserved": true,
+        "warnings": [],
+        "contrast": {
+          "checked": 26,
+          "violations": [],
+          "kept_original": [],
+          "unknown_backdrop": [],
+          "preexisting_low": [],
+          "unsafe": [],
+          "min_ratio": 8.18
+        },
+        "background_plan": [
+          {
+            "slide": 1,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 2,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 3,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 4,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 5,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 6,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 7,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 8,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 9,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 10,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 11,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          },
+          {
+            "slide": 12,
+            "mode": "keep_original_backdrop",
+            "panels_considered": [],
+            "recolored": [],
+            "locked_for_business_color": []
+          }
+        ],
+        "protected_business_colors": [],
+        "below_threshold": [],
+        "contrast_claim": "ASSERTED",
+        "chart_ops": [
+          [
+            "font",
+            "chart_bg",
+            "plot_bg",
+            "series0",
+            "grid"
+          ]
+        ],
+        "font_substitution": "深色主题采用 STHeiti（本机已核验可显示中文）替代缺失的 Microsoft YaHei；文字与绘图区均按深底可读性配置。",
+        "theme_identity_frozen_at_job": true,
+        "theme_identity_legacy_no_digest": false
+      }
+    },
+    {
+      "stage": "independent_reread",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.889916+08:00",
+      "detail": {
+        "pages": 12,
+        "units": 46
+      }
+    },
+    {
+      "stage": "submit_accepted",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:32.923499+08:00",
+      "detail": {
+        "attempt_id": "90ee7031",
+        "artifact_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-2d3d47df1b8e/staging/90ee7031",
+        "atomic_swap": true
+      }
+    },
+    {
+      "stage": "run",
+      "status": "DONE",
+      "at": "2026-10-20T14:26:33.025228+08:00",
+      "detail": {
+        "elapsed_seconds": 0.461
+      }
+    },
+    {
+      "stage": "validate",
+      "status": "DONE",
+      "at": "2026-10-20T14:31:33.830880+08:00",
+      "detail": {
+        "blocking": 0,
+        "total": 0
+      }
+    }
+  ],
+  "contracts_identity": {
+    "error_codes_v1.json": "774940524fb1ac8f9b9da77ec530cf77f6134ea3f13189209d9ff42f8564342c",
+    "schemas_v1.json": "2befceac1ca1110023e29ca061ac928fb733177ba7986519f53cdd86939b7a34",
+    "support_matrix_v1.json": "bf891fcf92d236d6c13ada2563f1c9d3a0ca789e9127970255ebfe0c58b571a3"
+  },
+  "material_intent": {
+    "schema_version": "1.0.0",
+    "material": true,
+    "source_material": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+    "source_material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "ledger_sha256": "988ed970c2f1ed5a582bd76f1c327b81741a21817284a9ccbb8b6eda8f65122e",
+    "plan_sha256": "683394069773a6064e7e212d7bc83888a5efcf45aa5428ea6b203c2e0cb46d6a",
+    "frozen_before_model_call": true,
+    "frozen_at": "2026-10-20T14:25:15.185606+08:00",
+    "note": "身份在建任务时冻结；候选不得改写台账或计划。"
+  },
+  "stage": "validate",
+  "last_activity": "2026-10-20T14:31:33.830883+08:00",
+  "current_valid": null,
+  "download_ready": false,
+  "attempt_log": [
+    {
+      "event": "BEGIN_ATTEMPT",
+      "attempt_id": "90ee7031",
+      "previous_attempt_id": "90ee7031",
+      "at": "2026-10-20T14:26:32.402064+08:00",
+      "archived_to": null,
+      "moved": [],
+      "invalidated": [
+        "validation",
+        "findings",
+        "candidate",
+        "export_path",
+        "preview"
+      ]
+    }
+  ],
+  "verdict_at": "2026-10-20T14:31:33.842889+08:00",
+  "validated_at": "2026-10-20T14:31:33.840754+08:00",
+  "validation_verdict": "DEVELOPMENT_CANDIDATE",
+  "blocking_findings": 0,
+  "validation_attempt_id": "90ee7031",
+  "validation_run_id": "20261020T062515_194684Z-07235d4f"
+}

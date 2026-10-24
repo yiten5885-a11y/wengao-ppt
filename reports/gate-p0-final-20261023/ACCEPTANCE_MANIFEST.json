@@ -1,0 +1,405 @@
+{
+ "schema": "WG-P0-ACCEPTANCE-MANIFEST/1",
+ "built_at": "2026-10-23T16:17:04.336032+00:00",
+ "frozen_export": {
+  "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/wb_loopback_data/jobs/job-4d584240ec05/candidate/fc829139_v25-readable-13p-dedicated.themed.pptx",
+  "sha256_recomputed": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c",
+  "expected": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c",
+  "matches_gate_report": true,
+  "before_after_unchanged": true
+ },
+ "input_baseline": {
+  "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/wb_loopback_data/jobs/job-4d584240ec05/input_raw/fc829139_v25-readable-13p-dedicated.pptx",
+  "sha256_recomputed": "0edb7ea298bf20c66f735fa5c8b71613ac7ae653036ad246c6c4420c380b5711",
+  "matches_gate_report": true
+ },
+ "pdf": {
+  "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/final-acceptance/render/fc829139_v25-readable-13p-dedicated.themed.pdf",
+  "sha256_recomputed": "22c3874b4a45fa38b3aa41569474ee2dca9aaf2ffc28c1db5ab4d4802e717ce6",
+  "matches_gate_report": true
+ },
+ "build_source_identity": {
+  "build_id_recomputed_now": "cea9ea4a4dffe399776dfd0063542224",
+  "build_id_at_gate_time": "0ab37fc56870dccc5f3aa708090bca37",
+  "meta_observation": {
+   "port": 8823,
+   "label": "wengao-visual-v13-material-fix",
+   "build_id_observed": "63fca1eb1b012d5df48d0994712de419",
+   "observed_at": "2026-10-23T16:07:04.037783+00:00",
+   "note": "只读观测；8821 未触碰（本周期连接拒绝=未运行）"
+  },
+  "drift_note": "候选树由多工作包并行维护；build_id 三处观测若不同即为真实漂移记录。冻结导出件身份以 pptx_sha256 为准（本 manifest 构建时刻重算并与门禁报告互证，字节级稳定）。"
+ },
+ "renders": {
+  "full_1920px": {
+   "1": "2764c84ac9edbce1dd2cb10ebecaa0ee9b2dec46227c7e9f75820b33004dc74e",
+   "2": "d82cf67dbfc9a724564ab373e2bf6bfe543d1926b9aa73b4da61a3293b9d1067",
+   "3": "73acb1ada0c90fd07f37eca4d561cece59f900d3bbc58a33b86faff2c2e4523a",
+   "4": "b17508c98b7a42df011049a457b421f7357fbbb52d58f04890ec6b7ba504a4a6",
+   "5": "19c786e76627771a03b5afaccc22d4e618c070fa35194570d0f436454776a3e6",
+   "6": "5b4f99837d12034a4dc9c2fec84330ffef0e4416458f92c704fad29f92c0bddc",
+   "7": "405572202018a17f3b8a2703426bcd88c11c00b3f12afe2c0b41b949f4a0aa66",
+   "8": "1aad2f89efbddfd83ee22f74e300c30ff1e3777e5f6fc0497a2e70179ea4d966",
+   "9": "e85f5ddf4b30f47946fbd5109d0570bb57c9d5a8a785b961b42cce78c63dd70f",
+   "10": "8cbc9693d16d2571e1fe0b14f0326793ebcbfa4c3c7263677303cecfc20d790f",
+   "11": "34a9a51ec8cf3a6c27d7bed451313cb988e5a95e0769be996be60a943f572d00",
+   "12": "ae69d9ea3716ba592e677d5cec0124daf036d28032e82196eab0ee25feb21870",
+   "13": "283166807d0bdba971391c8656c56862f99903d9763290365e4cc8b614248650"
+  },
+  "notext_1920px": {
+   "1": "fa483fc2cb569b38bb5d3169840a0355a8e19b1113d535eddcf0e4bb0eb204fc",
+   "2": "d757db3df256c114919356714e7680c8cc6e39cec9b8610db482bcfe8531a127",
+   "3": "e1c74987dde8e0366411e4fb3815908b62efdca76a761d1210e9c09a684e60e1",
+   "4": "30465c23447a2269177d60903d6a9ef0f309d12cc5124a88451d06d02fabf3bf",
+   "5": "2e322511d6bab7edb16f3ac85a5e5c0c084cf59bb9c4f38a1459c1254b818a7f",
+   "6": "bffd8f263be93b4bfd8dc4457d029d3faa1430074a895420866485d74386219f",
+   "7": "68a36f5d6884a131c56b689fd04fd1d1978b0b775508a35f017875c9edec2c08",
+   "8": "7fe2f3338dfd334fff49ccdbd43d829eb675feabb583c3ec0cb2d86f381ed17f",
+   "9": "5549c77decdf2995d89e2bb1504a4948dfe0e84d8ba47ee67daf1471d201ad35",
+   "10": "8d01a198d9128c50f508dbf1cfe5bb613e8f033cd613bd5ecaf321ed9b9ae9e7",
+   "11": "4dfb5836d217232e6c48ebe3299a55233cebb217cd89a372b280e92c8dff42fb",
+   "12": "61d3ce92e477e48456fccb43c7eaad1157a8bef32cd418d28c59d04d0be21286",
+   "13": "14e9b94d6ff3bb08136f15a5477525930740eefd8daf03d97bd52907b874e008"
+  },
+  "matches_gate_report": true
+ },
+ "structure_inventory_recomputed": {
+  "per_page_inventory_sha256": {
+   "1": "30ae02c188e4fbe29e4b7d2862014ef92aab0bd4ef9292951c43b69b1540cc4b",
+   "2": "d7fff276fce5cde04d97214b25218b09bbe07fdfd73271db032ac3f317a65072",
+   "3": "c38fd8f6c24525d22e78b555d32d4de7bfa9cf78d31e22348120dfb462e12c93",
+   "4": "2bbc9c70700d72c2b8191dd262616469b6942c18a2896e7e03c8c44b56e854cc",
+   "5": "89d36247019b07aec41b909d9db825216731be8590afb54a6ce5f718d1f98c8c",
+   "6": "47c6a010e56d2f2155ab3549980f10e4521e2f1f3f36ac250343bb014b3f4865",
+   "7": "9a0efdd050ed03abd5dbc9c1dcdfa51a838f0c01497309d46bb993c18fcb68b1",
+   "8": "6a8d4bfb266c8a580d290a56562be08242ad4d641adfa9426e559a21fadbe664",
+   "9": "b153a85c9fed34f71fb4282d6e1696d896b692518de5431af666800b77784c5f",
+   "10": "28afafa0b5e8a37155e2dc4f8f8204157614922a3b425c8a362ec1d12030bf3d",
+   "11": "8f9334257af487b477453c84034a4a35e20a4c28b2480de4271323c961dbe815",
+   "12": "499f941c3d1d5e78085f17db67ffc2f647482864325b8891ff10441ab8c62e91",
+   "13": "9e018c035e8a7786824a6d428a628c6b0ecaf5be446d92f03c61bfd9304040e4"
+  },
+  "per_page_notes": {
+   "1": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "2": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "3": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "4": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "5": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "6": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "7": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "8": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "9": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "10": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "11": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "12": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   },
+   "13": {
+    "present": true,
+    "chars": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+  },
+  "per_page_media_count": {
+   "1": 1,
+   "2": 1,
+   "3": 1,
+   "4": 1,
+   "5": 0,
+   "6": 1,
+   "7": 1,
+   "8": 1,
+   "9": 1,
+   "10": 1,
+   "11": 1,
+   "12": 1,
+   "13": 0
+  },
+  "per_page_animations_transitions": {
+   "1": {
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 20,
+      "animMotion": 20,
+      "set": 20
+     },
+     "timing_xml_sha256": "1b13101936db9c3ca1db9e00968f2ac3b85a44b79ea7f2dcc4954cd2f9ab08c8"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    }
+   },
+   "2": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "3": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "4": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "5": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "6": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "7": {
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 14,
+      "animMotion": 14,
+      "set": 14
+     },
+     "timing_xml_sha256": "7351bf56fca1b235f6aa291f7f112459e07d352302fd64c4c8c8cdbab789aea4"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "8": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    }
+   },
+   "9": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "10": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "11": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "12": {
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    }
+   },
+   "13": {
+    "animations": {
+     "present": true,
+     "effect_node_counts": {
+      "animEffect": 22,
+      "animMotion": 22,
+      "set": 22
+     },
+     "timing_xml_sha256": "f344bac84d3217491f7b77252c89810428858a9ca070b685052ce2af1a461f71"
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "slow",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1600"
+     },
+     "transition_xml_sha256": "b07953bb8c35ff82e1eb923c4a5429923423d9627a0f6e8cf3c81b18023afd13"
+    }
+   }
+  },
+  "problems": []
+ },
+ "structure_matches_gate_report": true,
+ "image_semantic_audit": {
+  "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/final-acceptance/image-semantic-audit.json",
+  "sha256_recomputed": "4c4fbe321614b9e0a775791d139a4c36648a154b9c0f38ae681502f876de10f0",
+  "all_scene_images_ok": true,
+  "unplanned_count": 0
+ },
+ "native_playback_evidence": {
+  "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/wb_loopback_data/jobs/job-4d584240ec05/layout_gate_evidence/f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c/native_playback.json",
+  "evidence_sha256": "c7944b87db74ef4201eb37feb1f1585ec72020fe7e05e044543819b121899f36",
+  "video_sha256_declared": "59ae7d6e5558cb3e03b9b546967ee91c5837dd6bf4c282247fae2dd22a372448",
+  "machine_validated_by_gate": true
+ },
+ "gate_reports": {
+  "final-acceptance/gate-report.json": "85a9b3e11effdd014330cb6f7ca4055daee46927b90931ad51ea10163be469f2",
+  "final-acceptance/image-semantic-audit.json": "4c4fbe321614b9e0a775791d139a4c36648a154b9c0f38ae681502f876de10f0",
+  "negative-regression-rerun/N01-N08-regression-summary-20261023.json": "5ed48ef6153fa881fcfedd643442467ab8406abfdd14938a2c98e30f914d4ab5",
+  "negative-regression-rerun/N01-N08-summary-20261021-historic.json": "9124a7b7b5f1a1a07ab47432ce6318edec1ab89f36b3a87067cb9a5b442b275e",
+  "negative-cases/NC-results.json": "6f81ee87928571ff7d772f458af5b67dcbacc3b7698415e70af97db2ea988093",
+  "dc135f-recheck/gate-report.json": "35c220533957ca8967b5607f3dc795c7dd71745ccb4cb352c18ae773c5ec5325"
+ },
+ "verdicts": {
+  "final_acceptance": "PASS",
+  "n01_n08_rerun": true,
+  "nc_negative_cases": true,
+  "dc135f_recheck": "UNVERIFIED"
+ }
+}

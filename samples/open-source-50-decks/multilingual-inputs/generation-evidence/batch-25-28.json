@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "checked_at_shanghai": "2026-10-23T12:37:12.458640+08:00",
+  "status": "MODEL_GENERATED_UNREVIEWED_SOURCE_FIXTURES_NOT_DECK_ACCEPTANCE",
+  "batch": "25-28",
+  "requested_model": "qwen3.8:27b-wb65536",
+  "served_model": "qwen3.8:27b-wb65536",
+  "elapsed_seconds": 255.38,
+  "prompt_sha256": "f6b75b435b2cd476a6598d26c764fcd7059bba975fc9ac0b18d6f2786883f6f8",
+  "response_sha256": "0b0506e92f434e48ccb3384168745684bd2361e34640e5e162ba1d2cde7b493f",
+  "response_bytes": 12705,
+  "cases": [
+    {
+      "case_id": "L25",
+      "language": "bn",
+      "detector_primary": "mul",
+      "detector_matches_plan": false,
+      "characters": 1270,
+      "bytes": 3352,
+      "sha256": "9dcc411ea24ab4ef1e33aff3bffd4f145af27957a29289df9dad837deddc5d04",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L25-bn.md",
+      "status": "MODEL_GENERATED_LANGUAGE_MISMATCH"
+    },
+    {
+      "case_id": "L26",
+      "language": "bn",
+      "detector_primary": "mul",
+      "detector_matches_plan": false,
+      "characters": 1132,
+      "bytes": 2966,
+      "sha256": "b6704e4d380b5ca839d4c6a8023a1f4bb83a239a19e288da3ea5a2c22e9683dd",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L26-bn.md",
+      "status": "MODEL_GENERATED_LANGUAGE_MISMATCH"
+    },
+    {
+      "case_id": "L27",
+      "language": "bn",
+      "detector_primary": "mul",
+      "detector_matches_plan": false,
+      "characters": 1149,
+      "bytes": 3011,
+      "sha256": "4273b572d2c175dcddd7e10d5c7a7aa04b3326171e80342acbecd34713ee44eb",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L27-bn.md",
+      "status": "MODEL_GENERATED_LANGUAGE_MISMATCH"
+    },
+    {
+      "case_id": "L28",
+      "language": "bn",
+      "detector_primary": "mul",
+      "detector_matches_plan": false,
+      "characters": 1159,
+      "bytes": 3039,
+      "sha256": "6a13626130f4e020842c74409cf5d5d0e806e5ba0628e76b93dddb50a61c69af",
+      "source_file": "work/strict-qa/open-source-50-decks/multilingual-inputs/L28-bn.md",
+      "status": "MODEL_GENERATED_LANGUAGE_MISMATCH"
+    }
+  ],
+  "language_match_count": 0,
+  "language_reviewed_count": 0,
+  "decks_generated_count": 0,
+  "ppts_counted_toward_50": 0,
+  "images_retrieved_or_inserted": false,
+  "release_ready": false
+}

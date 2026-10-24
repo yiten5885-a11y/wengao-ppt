@@ -1,0 +1,664 @@
+{
+  "schema_version": "1.0.0",
+  "label": "DEVELOPMENT_CANDIDATE",
+  "run_id": "20261020T112550_072763Z-81b34c9a",
+  "attempt_id": "111b06c9",
+  "job_id": "job-f05985fefd6c",
+  "contract_version": "contracts/1.0.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "exported_at": "2026-10-20T19:25:54.209717+08:00",
+  "theme": {
+    "theme_id": "wengao-business",
+    "theme_name": "商务清晰",
+    "theme_version": "1.0.0",
+    "registry_version": "1.1.0",
+    "config_digest": "daac645a4c1d084ce85d792a5cc6e3b6ffd1e4e08281e92a28c5424f0d678b4a",
+    "frozen_at_job": true,
+    "legacy_no_digest": false
+  },
+  "input": {
+    "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/gen/annual_review_synthetic.generated.pptx",
+    "sha256": "89639bb2afccaedce2eb170c47efa8e0da027d54f1826566e61cf15422506492"
+  },
+  "output": {
+    "pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-business/annual_review_synthetic.generated.wengao.pptx",
+    "pptx_sha256": "548471a4f2c277ed5dc56667500b38534e0b9e90c6ac30b4a5106c6960ebcace"
+  },
+  "validation": {
+    "path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/validation.json",
+    "sha256": "818a3bbef080b834d2fb0f323ad13c0bfeaa5e57fdb620b857bb6a54eaed91ef",
+    "verdict": "DEVELOPMENT_CANDIDATE",
+    "release_ready": false
+  },
+  "render": {
+    "stage": "render_real",
+    "renderer": "libreoffice",
+    "soffice_path": "/Applications/LibreOffice.app/Contents/MacOS/soffice",
+    "soffice_source": "mac_bundle",
+    "soffice_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "available": true,
+    "pdf": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+    "png_dir": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png",
+    "png_count": 12,
+    "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+    "exit_code": 0,
+    "stderr": "",
+    "font_environment": {
+      "policy": "fontenv/2",
+      "ok": true,
+      "mode": "packaged",
+      "package_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "base_conf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/assets/fontconfig/fonts.conf",
+      "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+      "effective_conf": "/tmp/wengao_retest_data/.fontconfig/fonts.conf",
+      "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+      "cache_dir": "/tmp/wengao_retest_data/.fontconfig/cache",
+      "data_root": "/tmp/wengao_retest_data",
+      "platform_dirs": [
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Library/Fonts",
+        "/Users/huangyingteng/Library/Fonts",
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+      ],
+      "platform": "darwin",
+      "override": null,
+      "disabled": false,
+      "error": null,
+      "platform_marker_used": true
+    },
+    "fontconfig_file": "/tmp/wengao_retest_data/.fontconfig/fonts.conf",
+    "lo_profile": "/tmp/wengao_retest_data/.lo-profile",
+    "attempts": [
+      {
+        "profile": "/tmp/wengao_retest_data/.lo-profile",
+        "exit_code": 0,
+        "budget": 599.784,
+        "pid": 26886,
+        "timed_out": false,
+        "stdout_tail": "convert /tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/annual_review_synthetic.generated.themed.pptx as a Impress document -> /private/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf using filter : impress_pdf_Export\n",
+        "stderr_tail": "",
+        "pdf_exists": true
+      }
+    ],
+    "attempt_count": 1,
+    "final_attempt_faulted": false,
+    "stdout": "convert /tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/annual_review_synthetic.generated.themed.pptx as a Impress document -> /private/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf using filter : impress_pdf_Export\n",
+    "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+    "pdf_fonts": [
+      "Arial-BoldMT",
+      "ArialMT",
+      "ArialUnicodeMS",
+      "STSongti-SC-Bold",
+      "STSongti-SC-Regular"
+    ],
+    "pdf_fonts_error": null,
+    "environment_fingerprint": {
+      "policy": "fontenv/2",
+      "mode": "packaged",
+      "ok": true,
+      "effective_conf_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+      "base_conf_sha256": "8b786ba2f0417001285980a2ca11e374bdc6330f8e88b4e0a7e693caa572b453",
+      "platform": "darwin",
+      "platform_dirs": [
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+        "/Library/Fonts",
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Users/huangyingteng/Library/Fonts"
+      ],
+      "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+      "resolved_fonts": [
+        "Arial-BoldMT",
+        "ArialMT",
+        "ArialUnicodeMS",
+        "STSongti-SC-Bold",
+        "STSongti-SC-Regular"
+      ],
+      "digest": "205d0010f97f96029d02514244d6eec91237da8f138bfddb7f309f03277288f9"
+    },
+    "pdf_pages_for_png": 12,
+    "png_detail": "pdftoppm 未安装；改用 PDFium 对 LibreOffice 产出的真实 PDF 逐页栅格化，渲染器身份与版本已记录。",
+    "png_bindings": [
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-01.png",
+        "page_no": 1,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "24d9b0ac5f2db6e20576adb04ba1e68024e1f85f6523fbe21976a88f28e958c0",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-02.png",
+        "page_no": 2,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "93fdbb3dd93ad08c66a6db44b1ac41e3a5ca66aa98891d9b3860e8a7aced340a",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-03.png",
+        "page_no": 3,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "0af252afa3b987841e76f6a3bb7e2074130b9971faca15edb7b78adfff819c7b",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-04.png",
+        "page_no": 4,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "ad1e64b7ce4de15dc984ace838d389653b54083481880816cfdd39a231b5423d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-05.png",
+        "page_no": 5,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "17bde4d8cdc9a264122eec687390f8a8d48c1b120b74f5c93acfddb18f2f26d5",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-06.png",
+        "page_no": 6,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "74b25f9b63fec17417c0061548fa4b661f78e30c9586982d2c0755245edc1564",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-07.png",
+        "page_no": 7,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2eff4038529e074495f16a39732c94f5b4bb5b1e81d930cf6385e1733ccc0452",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-08.png",
+        "page_no": 8,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2fbae1a693c0b3fce18815e6ca58f3efc5e9357b0030109d855f9cb876fb0322",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-09.png",
+        "page_no": 9,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "3b6b2b8ba1e939f2866219c3e875db8d9c9abd5e21a466950c3407e0b5f641de",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-10.png",
+        "page_no": 10,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "df949b8502e75a739a0b989c19add4a16e1943a21c4c8c9108b4a8ad1e7ccfa5",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-11.png",
+        "page_no": 11,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "709f408b92fa77182d5c69a9fa444818042b5d3b5a7d924dbaa0a9b626557d7d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-12.png",
+        "page_no": 12,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "889ec1a2614c5a136fb619361bf6d86d4cb1b01b31ea930715469eb805a17c76",
+        "width": 1467,
+        "height": 825
+      }
+    ],
+    "code": "RENDER.OK",
+    "pdf_page_count": 12,
+    "pdf_page_count_error": null,
+    "pptx_slides": 12,
+    "pptx_hidden_pages": 0,
+    "pptx_slides_exportable": 12,
+    "page_count_rule": "隐藏页不导出；PDF 页数应等于非隐藏页数",
+    "counts_consistent": true,
+    "pdf_text_stats": {
+      "pages": 12,
+      "text_len": 1461,
+      "cjk_chars": 936
+    },
+    "pdf_text_error": null,
+    "cjk_units_in_input": 45,
+    "cjk_units_in_input_all_pages": 45,
+    "cjk_gate_scope": "exportable_pages_only（隐藏页不计入分母）",
+    "cjk_glyphs_in_render": 936,
+    "glyph_quality": {
+      "verdict": "OK",
+      "summary": {
+        "pages": 12,
+        "cjk_pages_checked": 12,
+        "missing_pages": [],
+        "ambiguous_pages": [],
+        "insufficient_pages": []
+      },
+      "engine": "pdfium-textpage+glyph-bitmap",
+      "applicability": "APPLICABLE"
+    },
+    "glyph_expectation": {
+      "available": true,
+      "reason": null,
+      "source": "ExtractedDoc(all_units)",
+      "expected_cjk_units": 45,
+      "expected_pages": {
+        "1": {
+          "cjk_units": 2,
+          "cjk_chars": 25,
+          "render_page": 1,
+          "hidden": false,
+          "samples": [
+            "年度经营概况",
+            "由原始材料生成 · 年度经营与下年度规划"
+          ]
+        },
+        "2": {
+          "cjk_units": 3,
+          "cjk_chars": 54,
+          "render_page": 2,
+          "hidden": false,
+          "samples": [
+            "年度经营概况",
+            "一、年度经营概况\n二、产品能力进展\n三、",
+            "五、质量与稳定性\n六、问题与改进\n七、下"
+          ]
+        },
+        "3": {
+          "cjk_units": 5,
+          "cjk_chars": 99,
+          "render_page": 3,
+          "hidden": false,
+          "samples": [
+            "一、年度经营概况",
+            "年云服务平台全年总收入\n2024 年云服",
+            "其中订阅收入 8.6 亿元\n其中订阅收入"
+          ]
+        },
+        "4": {
+          "cjk_units": 2,
+          "cjk_chars": 32,
+          "render_page": 4,
+          "hidden": false,
+          "samples": [
+            "一、年度经营概况（续）",
+            "平台整体毛利率\n平台整体毛利率为 63."
+          ]
+        },
+        "5": {
+          "cjk_units": 10,
+          "cjk_chars": 172,
+          "render_page": 5,
+          "hidden": false,
+          "samples": [
+            "二、产品能力进展",
+            "指标（分钟） 平均故障定位时间·改善前 ",
+            "指标（分钟） 平均故障定位时间·改善后 "
+          ]
+        },
+        "6": {
+          "cjk_units": 2,
+          "cjk_chars": 79,
+          "render_page": 6,
+          "hidden": false,
+          "samples": [
+            "三、客户与生态",
+            "年内新增渠道合作伙伴 58 家，通过渠道"
+          ]
+        },
+        "7": {
+          "cjk_units": 11,
+          "cjk_chars": 123,
+          "render_page": 7,
+          "hidden": false,
+          "samples": [
+            "四、成本与效率",
+            "指标 / 说明",
+            "数值与原文"
+          ]
+        },
+        "8": {
+          "cjk_units": 2,
+          "cjk_chars": 71,
+          "render_page": 8,
+          "hidden": false,
+          "samples": [
+            "五、质量与稳定性",
+            "全年服务可用性为 99.95%，满足 9"
+          ]
+        },
+        "9": {
+          "cjk_units": 2,
+          "cjk_chars": 74,
+          "render_page": 9,
+          "hidden": false,
+          "samples": [
+            "六、问题与改进",
+            "跨区域数据同步存在 3 分钟的延迟，影响"
+          ]
+        },
+        "10": {
+          "cjk_units": 2,
+          "cjk_chars": 75,
+          "render_page": 10,
+          "hidden": false,
+          "samples": [
+            "七、下年度计划",
+            "2025 年计划总收入达到 18 亿元，"
+          ]
+        },
+        "11": {
+          "cjk_units": 2,
+          "cjk_chars": 26,
+          "render_page": 11,
+          "hidden": false,
+          "samples": [
+            "七、下年度计划（续）",
+            "计划研发投入增加至 5.2 亿元，研发人"
+          ]
+        },
+        "12": {
+          "cjk_units": 2,
+          "cjk_chars": 110,
+          "render_page": 12,
+          "hidden": false,
+          "samples": [
+            "八、结论",
+            "2024 年是平台能力与规模同步扩张的一"
+          ]
+        }
+      },
+      "scope": "按应导出页统计；隐藏页与备注不计入，图片内文字不在当前声明范围"
+    }
+  },
+  "render_artifacts": {
+    "pdf": "annual_review_synthetic.generated.wengao.pdf",
+    "png": [
+      "pages/page-01.png",
+      "pages/page-02.png",
+      "pages/page-03.png",
+      "pages/page-04.png",
+      "pages/page-05.png",
+      "pages/page-06.png",
+      "pages/page-07.png",
+      "pages/page-08.png",
+      "pages/page-09.png",
+      "pages/page-10.png",
+      "pages/page-11.png",
+      "pages/page-12.png"
+    ],
+    "pdf_pages": 12,
+    "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+    "pptx_slides": 12,
+    "counts_consistent": true,
+    "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+    "png_bindings": [
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-01.png",
+        "page_no": 1,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "24d9b0ac5f2db6e20576adb04ba1e68024e1f85f6523fbe21976a88f28e958c0",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-02.png",
+        "page_no": 2,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "93fdbb3dd93ad08c66a6db44b1ac41e3a5ca66aa98891d9b3860e8a7aced340a",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-03.png",
+        "page_no": 3,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "0af252afa3b987841e76f6a3bb7e2074130b9971faca15edb7b78adfff819c7b",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-04.png",
+        "page_no": 4,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "ad1e64b7ce4de15dc984ace838d389653b54083481880816cfdd39a231b5423d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-05.png",
+        "page_no": 5,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "17bde4d8cdc9a264122eec687390f8a8d48c1b120b74f5c93acfddb18f2f26d5",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-06.png",
+        "page_no": 6,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "74b25f9b63fec17417c0061548fa4b661f78e30c9586982d2c0755245edc1564",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-07.png",
+        "page_no": 7,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2eff4038529e074495f16a39732c94f5b4bb5b1e81d930cf6385e1733ccc0452",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-08.png",
+        "page_no": 8,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2fbae1a693c0b3fce18815e6ca58f3efc5e9357b0030109d855f9cb876fb0322",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-09.png",
+        "page_no": 9,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "3b6b2b8ba1e939f2866219c3e875db8d9c9abd5e21a466950c3407e0b5f641de",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-10.png",
+        "page_no": 10,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "df949b8502e75a739a0b989c19add4a16e1943a21c4c8c9108b4a8ad1e7ccfa5",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-11.png",
+        "page_no": 11,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "709f408b92fa77182d5c69a9fa444818042b5d3b5a7d924dbaa0a9b626557d7d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/png/page-12.png",
+        "page_no": 12,
+        "pdf_path": "/tmp/wengao_retest_data/jobs/job-f05985fefd6c/candidate/render/annual_review_synthetic.generated.themed.pdf",
+        "pdf_sha256": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "889ec1a2614c5a136fb619361bf6d86d4cb1b01b31ea930715469eb805a17c76",
+        "width": 1467,
+        "height": 825
+      }
+    ]
+  },
+  "export_gate": {
+    "expected_hashes_from": "validation.json（此前有效验收记录；非导出时重算）",
+    "verified": {
+      "pptx": {
+        "rel": "annual_review_synthetic.generated.wengao.pptx",
+        "expected": "548471a4f2c277ed5dc56667500b38534e0b9e90c6ac30b4a5106c6960ebcace"
+      },
+      "pdf": {
+        "rel": "annual_review_synthetic.generated.wengao.pdf",
+        "expected": "1e461619f290580f2395e49f69e4cae3ec01efe0ead73f07113b42af2fed635d"
+      },
+      "png:page-01.png": {
+        "rel": "pages/page-01.png",
+        "page_no": 1,
+        "expected": "24d9b0ac5f2db6e20576adb04ba1e68024e1f85f6523fbe21976a88f28e958c0"
+      },
+      "png:page-02.png": {
+        "rel": "pages/page-02.png",
+        "page_no": 2,
+        "expected": "93fdbb3dd93ad08c66a6db44b1ac41e3a5ca66aa98891d9b3860e8a7aced340a"
+      },
+      "png:page-03.png": {
+        "rel": "pages/page-03.png",
+        "page_no": 3,
+        "expected": "0af252afa3b987841e76f6a3bb7e2074130b9971faca15edb7b78adfff819c7b"
+      },
+      "png:page-04.png": {
+        "rel": "pages/page-04.png",
+        "page_no": 4,
+        "expected": "ad1e64b7ce4de15dc984ace838d389653b54083481880816cfdd39a231b5423d"
+      },
+      "png:page-05.png": {
+        "rel": "pages/page-05.png",
+        "page_no": 5,
+        "expected": "17bde4d8cdc9a264122eec687390f8a8d48c1b120b74f5c93acfddb18f2f26d5"
+      },
+      "png:page-06.png": {
+        "rel": "pages/page-06.png",
+        "page_no": 6,
+        "expected": "74b25f9b63fec17417c0061548fa4b661f78e30c9586982d2c0755245edc1564"
+      },
+      "png:page-07.png": {
+        "rel": "pages/page-07.png",
+        "page_no": 7,
+        "expected": "2eff4038529e074495f16a39732c94f5b4bb5b1e81d930cf6385e1733ccc0452"
+      },
+      "png:page-08.png": {
+        "rel": "pages/page-08.png",
+        "page_no": 8,
+        "expected": "2fbae1a693c0b3fce18815e6ca58f3efc5e9357b0030109d855f9cb876fb0322"
+      },
+      "png:page-09.png": {
+        "rel": "pages/page-09.png",
+        "page_no": 9,
+        "expected": "3b6b2b8ba1e939f2866219c3e875db8d9c9abd5e21a466950c3407e0b5f641de"
+      },
+      "png:page-10.png": {
+        "rel": "pages/page-10.png",
+        "page_no": 10,
+        "expected": "df949b8502e75a739a0b989c19add4a16e1943a21c4c8c9108b4a8ad1e7ccfa5"
+      },
+      "png:page-11.png": {
+        "rel": "pages/page-11.png",
+        "page_no": 11,
+        "expected": "709f408b92fa77182d5c69a9fa444818042b5d3b5a7d924dbaa0a9b626557d7d"
+      },
+      "png:page-12.png": {
+        "rel": "pages/page-12.png",
+        "page_no": 12,
+        "expected": "889ec1a2614c5a136fb619361bf6d86d4cb1b01b31ea930715469eb805a17c76"
+      }
+    },
+    "pre_publish_recheck": "PASSED",
+    "commit_strategy": "staging → atomic swap（bak → rename → cleanup）",
+    "cancelled_at_gate": null,
+    "note": "export 不持 .run.lock；取消可随时登记，由发布前身份复查拦截。"
+  },
+  "delivery_eligibility": {
+    "allowed": true,
+    "code": "OK",
+    "checked_at": "2026-10-20T19:25:54.213280+08:00",
+    "rule": "当前 attempt 验收 + 候选哈希一致 + 判定允许 + 未被事故失效",
+    "incidents_consulted": []
+  },
+  "glyph_quality": "OK",
+  "theme_application": "APPLIED",
+  "release_statement": "开发候选，非完整产品 READY；不含 P2—P5 能力与发布门禁。"
+}

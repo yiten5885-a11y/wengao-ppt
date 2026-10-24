@@ -1,0 +1,31 @@
+{
+  "scope": "offline_source_language_detection_only",
+  "languages": {
+    "zh": "消费者在超市购买食品，并比较价格。",
+    "en": "Consumers shop in supermarkets. The report shows retail sales.",
+    "hi": "उपभोक्ता सुपरमार्केट में भोजन खरीदते हैं और कीमत की तुलना करते हैं।",
+    "es": "Los consumidores compran alimentos en el supermercado y comparan los precios.",
+    "ar": "يشتري المستهلكون الطعام من المتجر ويقارنون الأسعار.",
+    "fr": "Les consommateurs achètent des produits au supermarché et comparent les prix.",
+    "bn": "ক্রেতারা সুপারমার্কেটে খাবার কেনেন এবং দামের তুলনা করেন।",
+    "pt": "Os consumidores compram alimentos no supermercado e comparam os preços.",
+    "ru": "Потребители покупают продукты в супермаркете и сравнивают цены.",
+    "ur": "صارفین سپر مارکیٹ میں خوراک خریدتے ہیں اور قیمتوں کا موازنہ کرتے ہیں۔",
+    "id": "Pengguna dan konsumen membeli makanan di supermarket untuk membandingkan harga.",
+    "de": "Die Verbraucher kaufen Lebensmittel im Supermarkt und vergleichen die Preise.",
+    "ja": "消費者はスーパーマーケットで食品を購入し、価格を比較します。",
+    "te": "వినియోగదారులు సూపర్‌మార్కెట్‌లో ఆహారం కొనుగోలు చేసి ధరలను పోలుస్తారు.",
+    "tr": "Tüketici ve hasta bir klinikte doktor ile konuşur.",
+    "ta": "நுகர்வோர் பல்பொருள் அங்காடியில் உணவு வாங்கி விலைகளை ஒப்பிடுகிறார்கள்.",
+    "vi": "Người bệnh nói với bác sĩ tại phòng khám và so sánh giá.",
+    "ko": "소비자는 슈퍼마켓에서 식품을 구매하고 가격을 비교합니다.",
+    "fa": "پزشک با بیمار در درمانگاه گفتگو می‌کند.",
+    "sw": "Mgonjwa anazungumza na daktari katika kliniki kuhusu chakula.",
+    "it": "Gli utenti acquistano cibo nel supermercato e confrontano i prezzi.",
+    "th": "ผู้บริโภคซื้ออาหารในซูเปอร์มาร์เก็ตและเปรียบเทียบราคา",
+    "pl": "Pacjent rozmawia z lekarzem o leczeniu w przychodni.",
+    "uk": "Споживачі купують продукти у супермаркеті та порівнюють ціни.",
+    "ms": "Pengguna membeli barangan di pasar raya dan menggunakan perkhidmatan tempatan.",
+    "nl": "Het rapport van de supermarkt toont dat de prijzen voor consumenten stijgen, en gebruikers vergelijken aanbiedingen."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p03-s1",
+  "status": "RESOLVED_T2",
+  "asset": {
+    "path": "fixtures/media/images/t2_wikimedia_photo.jpg",
+    "sha256": "2faf9fd157ad3758499fc9c6e9ea7c29e56a20236e20378e402fa6eb7c3b14b8",
+    "phash": "0080808080808000ff818181818181ff",
+    "width": 1600,
+    "height": 1200,
+    "format": "JPEG",
+    "provider": "wikimedia_commons",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Commons Contributor",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sample.jpg",
+    "attribution_text": "Photo by Commons Contributor / Wikimedia Commons / CC-BY-SA-4.0",
+    "generator": null,
+    "model": null,
+    "prompt_digest": null,
+    "seed": null,
+    "similarity": 0.88,
+    "similarity_model": "local_vision_v1"
+  },
+  "attempts": [
+    {
+      "tier": "T2",
+      "provider": "pexels",
+      "outcome": "REJECTED_LOW_SIMILARITY",
+      "detail": "Similarity below threshold",
+      "elapsed_s": 0.41
+    },
+    {
+      "tier": "T2",
+      "provider": "wikimedia_commons",
+      "outcome": "SUCCESS",
+      "detail": "Wikimedia fallback matched",
+      "elapsed_s": 0.38
+    }
+  ],
+  "reason": null
+}

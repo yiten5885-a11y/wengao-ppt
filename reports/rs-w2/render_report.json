@@ -1,0 +1,173 @@
+{
+ "schema": "rs.w2_render_report.v1",
+ "dpi": 110,
+ "artifacts": [
+  {
+   "pptx": "page_types.pptx",
+   "pptx_sha256": "b118c6e7e485fd1c63c9c8dae7bd6c3a9f3ebe612f8bfce6b7d443d65833498d",
+   "exit_code": 0,
+   "timed_out": null,
+   "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/page_types/page_types.pdf",
+   "pdf_sha256": "cd4256dfef82c383cfaaa05da04deb03d4432b42d6c1d9ab60017bb4ca7d391e",
+   "font_families": [
+    "NotoSans-Bold",
+    "NotoSans-Regular",
+    "NotoSansSC",
+    "NotoSansSCBold"
+   ],
+   "font_error": null,
+   "pages": [
+    24,
+    null
+   ],
+   "cjk_stats": [
+    {
+     "pages": 24,
+     "text_len": 1316,
+     "cjk_chars": 491
+    },
+    null
+   ],
+   "png_count": 24,
+   "png_sha256": {
+    "page-01.png": "509c13a76ea460d94c03885a021d2f36bbd9b8039e75639ad54954a217a1eab4",
+    "page-02.png": "7dd3b4c0d8b68b381024066d64bbeb536757d282d1cf25ccdb3bc01f22c4f46c",
+    "page-03.png": "77b5c9984b1d3559384989d9b50cb9e973e6fe902d911c1982bad7fcf3a42e27",
+    "page-04.png": "61ed38201f84ca96431a294014ec6cc5d301bd64b573d1fdb3836dbe08480cee",
+    "page-05.png": "e271cf81b17394d77d9d01e1e59a37bc256f4d909aea08f32e2dffc23dee7fd6",
+    "page-06.png": "d7d516b105cdebebfb943a1c7c643125459500a13958ee43432c456f8cf8c81d",
+    "page-07.png": "bbd798f92c65fa4bc9efebb70286530123226de72e5ae4db7a258d4a0545c0b6",
+    "page-08.png": "dfffb5e4d3c5401d08b1f6493e637751634f933b2e4f560ef15190f7c9b1fd16",
+    "page-09.png": "410c7f609c225a6066fd1869e9aaa1ddcf849c76b26e0aee3e4720805daebce5",
+    "page-10.png": "545d1c42bb305ba7ca38bd7bb35f2a22d32b5c37758ed5641200f67a7401b9fd",
+    "page-11.png": "d4721b86842d4f0b63bff964a1be3fc51aade5aaa4d586ad1fc15bc898a1e890",
+    "page-12.png": "8b279a4187d40dfd42adc3a169fcf2eedc257240b64514262fca55a2f274d03a",
+    "page-13.png": "9cfbb1c5a38cd71e678212f4b13f5351b620a34160050c233ee3a52b6a30115a",
+    "page-14.png": "d795e62aa69b21a79a951b26f261f53dbe81b27f15c129d2ce1edf63dc9ef5cf",
+    "page-15.png": "2e78c2b1515adebcb26d25d143dee8b337252e972b8736dee296df192cbec7bd",
+    "page-16.png": "658dcb9fe0dcf6c81903c3313809b9273376a07efb8eb62b606a300cc98ef8c8",
+    "page-17.png": "ddafd16a869bd14f5192cc5df234515736920baa60bd534ec191ed1812c8f053",
+    "page-18.png": "bdcc1e85c69e05c21fbdd1301166681be98546438c116ba6633da3b59e36caf1",
+    "page-19.png": "c8b39fc8a0e71b4fcb7b18ae0ca033d86ee6b71091cc21b772f3ce087e9987e0",
+    "page-20.png": "a50da51009e41a4c6a8ada20ec4189bd4ec22c536c5ccb7925a670de95a638d3",
+    "page-21.png": "18876242d989206503776144d8aa01df66e8c54a0108cae4fe39331d5c4cd6d8",
+    "page-22.png": "13965414c7e374cc6f06347b1d45bebe31ce2aa0ec1199d07567b0b94281d6e6",
+    "page-23.png": "494283fceb400ac054efc212de2ca8232d8d500290f3dd234a4b8b873fe9bc57",
+    "page-24.png": "f209edcaffafad1c1d6b596eac3811bb0792ceb1cc4003f275bf7156760b3716"
+   },
+   "check": {
+    "pass": true,
+    "page_count": 24,
+    "findings": [
+     {
+      "code": "LAYOUT.OVERFLOW",
+      "severity": "WARN",
+      "page": 6,
+      "detail": "形状 5 文本估算高度可能超出框（估算 924560 EMU / 框 462280 EMU）",
+      "shape_id": 5,
+      "est_h_emu": 924560,
+      "box_h_emu": 462280
+     },
+     {
+      "code": "LAYOUT.OVERFLOW",
+      "severity": "WARN",
+      "page": 6,
+      "detail": "形状 9 文本估算高度可能超出框（估算 924560 EMU / 框 462280 EMU）",
+      "shape_id": 9,
+      "est_h_emu": 924560,
+      "box_h_emu": 462280
+     }
+    ],
+    "size_rules_source": "policy:layout_hard_gate_policy.json"
+   }
+  },
+  {
+   "pptx": "scripts_6.pptx",
+   "pptx_sha256": "95d5561b2d87d0bb0bd52ecb9e6c62d3987a181845cd0586030a484edf73e4cc",
+   "exit_code": 0,
+   "timed_out": null,
+   "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/scripts_6/scripts_6.pdf",
+   "pdf_sha256": "19739f2f12b3a750fa5c33cf4b157a0de7cccff0e77021bfa9b3a560a357f996",
+   "font_families": [
+    "ArialUnicodeMS",
+    "NotoSans-Bold",
+    "NotoSans-Regular",
+    "NotoSansArabic",
+    "NotoSansArabicBold",
+    "NotoSansDevanagari",
+    "NotoSansDevanagariBold",
+    "NotoSansSC",
+    "NotoSansSCBold"
+   ],
+   "font_error": null,
+   "pages": [
+    6,
+    null
+   ],
+   "cjk_stats": [
+    {
+     "pages": 6,
+     "text_len": 351,
+     "cjk_chars": 33
+    },
+    null
+   ],
+   "png_count": 6,
+   "png_sha256": {
+    "page-01.png": "20c4d210d844d986c20b1edf4aefe938e85b83bb064e1dfb8c12807b9cc5af99",
+    "page-02.png": "9d41e96f6274c158c256684b25987a32eab4d6075411222bd54e305ca29ef877",
+    "page-03.png": "dae561d7ad185178acb5968341966c709b02c197b7639cf9ff823b5c87db72ae",
+    "page-04.png": "68dd2e43c13b4215a1331d7652208b95bee386ee330fb25236f7b45ad884334d",
+    "page-05.png": "d0882c43d6b372e45bfc728d1cdbd8196013544a4c024bee2156b7dce95be131",
+    "page-06.png": "0db7a3969dbd2a76640dab71e95f74dafbb472f1fbce7ab47e07829e25cc856b"
+   },
+   "check": {
+    "pass": true,
+    "page_count": 6,
+    "findings": [],
+    "size_rules_source": "policy:layout_hard_gate_policy.json"
+   }
+  },
+  {
+   "pptx": "e2e_deck.pptx",
+   "pptx_sha256": "952bb12ad5de18e5f15ec3aa71517fd017fc5151e1d2607d56eb5c69280ecd5f",
+   "exit_code": 0,
+   "timed_out": null,
+   "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck/e2e_deck.pdf",
+   "pdf_sha256": "9eb1f4135d23c339b597cb2bcfd3f2564f896ce8abfd6b750726591653aede05",
+   "font_families": [
+    "NotoSans-Bold",
+    "NotoSans-Regular",
+    "NotoSansSC",
+    "NotoSansSCBold"
+   ],
+   "font_error": null,
+   "pages": [
+    5,
+    null
+   ],
+   "cjk_stats": [
+    {
+     "pages": 5,
+     "text_len": 389,
+     "cjk_chars": 231
+    },
+    null
+   ],
+   "png_count": 5,
+   "png_sha256": {
+    "page-01.png": "0afbd0b14d16a7603ddd032497a6ac290465151130831bb1173f7a65706bc287",
+    "page-02.png": "63acc86afd4dddc988054aac0474d3acf01160f784f247a6b8f9246074f94d53",
+    "page-03.png": "12bc6b4e6e75145a55a1c54b4f5d65f789214798df31c1a899be1644b47cdae0",
+    "page-04.png": "818a61f65c9ad9d448c0a026a70ec3744e624d93e4d769f332905bf4a4196b51",
+    "page-05.png": "a4771bf2c2125634814e51b61aabca32c2fa2fbe4fbbc696f7d197bb201028b8"
+   },
+   "check": {
+    "pass": true,
+    "page_count": 5,
+    "findings": [],
+    "size_rules_source": "policy:layout_hard_gate_policy.json"
+   }
+  }
+ ]
+}

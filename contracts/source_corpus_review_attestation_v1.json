@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "schema": "source-corpus-review-attestation/v1",
+  "purpose": "Bind each human language/content review to one exact source file and a trusted reviewer key.",
+  "corpus_entry": {
+    "review_attestation": {
+      "path": "relative path below the corpus manifest directory",
+      "sha256": "64 lowercase hex characters"
+    }
+  },
+  "attestation_fields": {
+    "schema": "source-corpus-review-attestation/v1",
+    "case_id": "exact manifest case_id",
+    "source_language": "exact manifest source_language",
+    "source_sha256": "SHA-256 recomputed from the corpus-local source file",
+    "verdict": "PASS",
+    "reviewer_id": "stable reviewer identifier present in the separately trusted roster",
+    "reviewed_at": "ISO-8601 timestamp with timezone",
+    "criteria": {
+      "native_language_and_grammar": "PASS",
+      "facts_and_numbers_preserved": "PASS",
+      "scene_anchor_grounded": "PASS",
+      "topic_distinctness": "PASS"
+    },
+    "review_notes": "At least 20 characters describing the actual review",
+    "issue_log": "array; empty means no issues found, non-empty records concrete issues"
+  },
+  "signature": {
+    "field": "signature",
+    "algorithm": "RSA-SHA256",
+    "signed_payload": "UTF-8 canonical JSON of all attestation fields except signature; keys sorted, separators comma/colon, ensure_ascii false",
+    "path": "relative path below the corpus manifest directory",
+    "sha256": "64 lowercase hex characters of the detached signature file"
+  },
+  "trusted_reviewer_roster": {
+    "location": "separate file, not embedded in the corpus manifest",
+    "sha256_pin": "must be supplied independently to the verifier",
+    "reviewers": [
+      {
+        "reviewer_id": "unique stable identifier",
+        "active": true,
+        "qualified_languages": ["ISO 639-1 language code or *"],
+        "public_key_path": "relative path below roster file directory",
+        "public_key_sha256": "64 lowercase hex characters"
+      }
+    ]
+  },
+  "verification_policy": {
+    "legacy_fixture_review_and_status_fields_count_as_evidence": false,
+    "missing_or_invalid_source_file_blocks": true,
+    "missing_or_invalid_attestation_blocks": true,
+    "untrusted_or_unqualified_reviewer_blocks": true,
+    "missing_or_mismatched_roster_pin_blocks": true,
+    "signature_or_identity_mismatch_blocks": true,
+    "production_cli_expected_entry_count": 50,
+    "production_verdict_pass_requires_every_entry_and_review_to_verify": true
+  }
+}

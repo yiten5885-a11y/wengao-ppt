@@ -1,0 +1,3 @@
+[facts] 14 条已冻结 → reports/p7_lang26/probe/fact_ledger.json
+[plan-error] MODEL.HTTP_ERROR: upstream connect failed: Connection refused (os error 61)
+[from-material] MODEL.HTTP_ERROR: 材料生成未产出可验收的 PPTX（模块返回码 0，run_record 判定 PLAN_FAILED，pptx=无）。 模型调用 MODEL.HTTP_ERROR（HTTP 502）：upstream connect failed: Connection refused (os error 61)

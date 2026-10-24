@@ -1,0 +1,298 @@
+{
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-8f8b31d0dfb5",
+  "created_at": "2026-10-23T21:19:56.096448+00:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "中国商业航天与民营卫星发射市场在2024年的发展现状与行业市场规模 行业均值 市场规模",
+      "locale": "zh",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:19:56.096505+00:00"
+    },
+    {
+      "q": "中国商业航天与民营卫星发射市场在2024年的发展现状与行业市场规模 market share industry benchmark",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:19:56.096505+00:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "f001",
+      "origin": "WEB_RESEARCH",
+      "subject": "习近平向202",
+      "metric": "习近平向202",
+      "value": 6.0,
+      "unit": "",
+      "period": "2026",
+      "definition": "公开报道数据",
+      "publisher": "中国政府网_中央人民政府门户网站",
+      "source_grade": "A",
+      "url": "https://www.gov.cn/?home",
+      "retrieved_at": "2026-10-23T21:20:09.650239+00:00",
+      "quote_span": "习近平向2026全球治理论坛（雄安）致信",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "0d6c047a73e4823f2144438903fdfa16473845d6a9367eae5f741f8dd244c9c9"
+    },
+    {
+      "fact_id": "f002",
+      "origin": "WEB_RESEARCH",
+      "subject": "习近平向202",
+      "metric": "习近平向202",
+      "value": 6.0,
+      "unit": "",
+      "period": "2026",
+      "definition": "公开报道数据",
+      "publisher": "中国政府网_中央人民政府门户网站",
+      "source_grade": "A",
+      "url": "https://www.gov.cn/?home",
+      "retrieved_at": "2026-10-23T21:20:09.650239+00:00",
+      "quote_span": "习近平向2026全球治理论坛（雄安）致信",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "0d6c047a73e4823f2144438903fdfa16473845d6a9367eae5f741f8dd244c9c9"
+    },
+    {
+      "fact_id": "f003",
+      "origin": "WEB_RESEARCH",
+      "subject": "纪念中国工农红军长征",
+      "metric": "纪念中国工农红军长征",
+      "value": 90.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中国政府网_中央人民政府门户网站",
+      "source_grade": "A",
+      "url": "https://www.gov.cn/?home",
+      "retrieved_at": "2026-10-23T21:20:09.650239+00:00",
+      "quote_span": "纪念中国工农红军长征胜利90周年大会隆重举行 习近平发表重要讲话",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "0d6c047a73e4823f2144438903fdfa16473845d6a9367eae5f741f8dd244c9c9"
+    },
+    {
+      "fact_id": "f004",
+      "origin": "WEB_RESEARCH",
+      "subject": "动能向新",
+      "metric": "动能向新",
+      "value": 9.0,
+      "unit": "",
+      "period": "前三季度",
+      "definition": "公开报道数据",
+      "publisher": "中国政府网_中央人民政府门户网站",
+      "source_grade": "A",
+      "url": "https://www.gov.cn/?home",
+      "retrieved_at": "2026-10-23T21:20:09.650239+00:00",
+      "quote_span": "动能向新 结构向优：9组数字看前三季度经济运行总体平稳 高质量发展取得新成效",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "0d6c047a73e4823f2144438903fdfa16473845d6a9367eae5f741f8dd244c9c9"
+    },
+    {
+      "fact_id": "f005",
+      "origin": "WEB_RESEARCH",
+      "subject": "习近平出席纪念中国工",
+      "metric": "习近平出席纪念中国工",
+      "value": 90.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中国政府网_中央人民政府门户网站",
+      "source_grade": "A",
+      "url": "https://www.gov.cn/?home",
+      "retrieved_at": "2026-10-23T21:20:09.650239+00:00",
+      "quote_span": "习近平出席纪念中国工农红军长征胜利90周年大会并发表重要讲话 　 讲话全文",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "0d6c047a73e4823f2144438903fdfa16473845d6a9367eae5f741f8dd244c9c9"
+    },
+    {
+      "fact_id": "f006",
+      "origin": "WEB_RESEARCH",
+      "subject": "34",
+      "metric": "34",
+      "value": 12.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中國 - 维基百科，自由的百科全书",
+      "source_grade": "C",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B",
+      "retrieved_at": "2026-10-23T21:20:24.433197+00:00",
+      "quote_span": "34°12′25″N 113°49′44″E ﻿ / ﻿ 34.207°N 113.829°E ﻿ / 34.207; 113.829",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "ff2b7d2e62691eeaf5c18532a4f11ffbdd28cbd64b0b2e7f9aa41a7da2aa5836"
+    },
+    {
+      "fact_id": "f007",
+      "origin": "WEB_RESEARCH",
+      "subject": "关于194",
+      "metric": "关于194",
+      "value": 9.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中國 - 维基百科，自由的百科全书",
+      "source_grade": "C",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B",
+      "retrieved_at": "2026-10-23T21:20:24.433197+00:00",
+      "quote_span": "关于1949年在 北京 成立，现今国际上广泛承认代表中国，实际统治 中国大陆 （含 港澳地区 ）的政权，请见“ 中华人民共和国 ”",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "ff2b7d2e62691eeaf5c18532a4f11ffbdd28cbd64b0b2e7f9aa41a7da2aa5836"
+    },
+    {
+      "fact_id": "f008",
+      "origin": "WEB_RESEARCH",
+      "subject": "通用拼音",
+      "metric": "通用拼音",
+      "value": 1.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中國 - 维基百科，自由的百科全书",
+      "source_grade": "C",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B",
+      "retrieved_at": "2026-10-23T21:20:24.433197+00:00",
+      "quote_span": "-  通用拼音 Jhong 1 guo 2",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "ff2b7d2e62691eeaf5c18532a4f11ffbdd28cbd64b0b2e7f9aa41a7da2aa5836"
+    },
+    {
+      "fact_id": "f009",
+      "origin": "WEB_RESEARCH",
+      "subject": "威妥玛拼音",
+      "metric": "威妥玛拼音",
+      "value": 1.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中國 - 维基百科，自由的百科全书",
+      "source_grade": "C",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B",
+      "retrieved_at": "2026-10-23T21:20:24.433197+00:00",
+      "quote_span": "-  威妥玛拼音 Chung 1 kuo 2",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "ff2b7d2e62691eeaf5c18532a4f11ffbdd28cbd64b0b2e7f9aa41a7da2aa5836"
+    },
+    {
+      "fact_id": "f010",
+      "origin": "WEB_RESEARCH",
+      "subject": "注音第二式",
+      "metric": "注音第二式",
+      "value": 1.0,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "中國 - 维基百科，自由的百科全书",
+      "source_grade": "C",
+      "url": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B",
+      "retrieved_at": "2026-10-23T21:20:24.433197+00:00",
+      "quote_span": "-  注音第二式 Jung 1 guo 2",
+      "snapshot_path": "evidence/research/snapshots/f006.txt",
+      "snapshot_sha256": "ff2b7d2e62691eeaf5c18532a4f11ffbdd28cbd64b0b2e7f9aa41a7da2aa5836"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "trend",
+      "title": "习近平向202 习近平向202 历史趋势",
+      "metric": "习近平向202",
+      "unit": "",
+      "period": "2026 - 2026",
+      "series": [
+        {
+          "label": "习近平向202",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            {
+              "x": "2026",
+              "value": 6.0,
+              "fact_ref": "f001"
+            },
+            {
+              "x": "2026",
+              "value": 6.0,
+              "fact_ref": "f002"
+            }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "从 2026 的 6.0 至 2026 的 6.0，整体增长 0.0",
+        "fact_refs": [
+          "f001",
+          "f002"
+        ],
+        "rule": "TREND_OVERALL_SPAN_V1",
+        "computed": {
+          "start_value": 6.0,
+          "end_value": 6.0,
+          "total_change": 0.0,
+          "unit": ""
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "数据来源: 中国政府网_中央人民政府门户网站 (2026)",
+        "fact_refs": [
+          "f001",
+          "f002"
+        ]
+      }
+    },
+    {
+      "view_id": "v02",
+      "kind": "insight",
+      "title": "习近平向202 习近平向202 关键洞察",
+      "metric": "习近平向202",
+      "unit": "",
+      "period": "2026",
+      "series": [
+        {
+          "label": "习近平向202",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            {
+              "x": "2026",
+              "value": 6.0,
+              "fact_ref": "f001"
+            }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "习近平向202 核心指标 习近平向202 达到 6.0",
+        "fact_refs": [
+          "f001"
+        ],
+        "rule": "INSIGHT_KEY_METRIC_V1",
+        "computed": {
+          "value": 6.0,
+          "unit": ""
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "数据来源: 中国政府网_中央人民政府门户网站 (2026)",
+        "fact_refs": [
+          "f001"
+        ]
+      }
+    }
+  ],
+  "discarded": [
+    {
+      "code": "RESEARCH.FETCH_FAILED",
+      "detail": "无法抓取页面或有效正文过短: 中华人民共和国_百度百科",
+      "url": "https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD/106554"
+    }
+  ],
+  "omissions": [
+    {
+      "want": "横向对比视图：行业竞品/均值基准",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    }
+  ],
+  "report_path": "evidence/research/report.md"
+}

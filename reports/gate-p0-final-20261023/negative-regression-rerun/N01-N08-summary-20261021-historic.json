@@ -1,0 +1,251 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+ "gate_source_sha256": "2a39f2c4e5c2ca874a0d751db0df8e4d17b1332b78d70f0b7449805172693927",
+ "layout_gate_sha256": "b232521b482406f2b9e64f04fdd828545fa302c0c3adcd2d81b5d4660de8fc41",
+ "baseline_sha256": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+ "run_scope": "全部用例在真实失败件上以新门禁实跑；FAIL 且命中 must_hit 规则 ID 才算通过反向回归",
+ "cases": [
+  {
+   "id": "N01",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG05",
+    "HG08"
+   ],
+   "must_hit": [
+    "HG03",
+    "HG06"
+   ],
+   "result": "FAIL",
+   "evidence": {
+    "artifact": "5a6bcb2d…",
+    "defect": "number_caption_source_collision",
+    "pptx_sha256": "5a6bcb2d03f953d1913cbd786985150260aff96c07a6a0317745814279de3e52",
+    "pdf_sha256": "386bf3c87b2d80cdadc5f13c1d75a265121b9fa288fc5f72e91bd452dab87133"
+   }
+  },
+  {
+   "id": "N02",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG04",
+    "HG05",
+    "HG07",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG04"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "later_opaque_card_occludes_text",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P09.png": "c4e248aad12f24273fca4ebfa88fb6b4716018a34a99c8fe11e92489b8e0c5de"
+    }
+   }
+  },
+  {
+   "id": "N03",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG05",
+    "HG06",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG03",
+    "HG06"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "title_lead_and_body_conclusion_collisions",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P10.png": "517cf847eb07dda72e85d46e503c00d6b6daba996d4ca1b443eddc88aa498472"
+    }
+   }
+  },
+  {
+   "id": "N04",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG04",
+    "HG05",
+    "HG07",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG04",
+    "HG06"
+   ],
+   "result": "FAIL",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "card_clips_description_and_conclusion_intrudes",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P09.png": "c4e248aad12f24273fca4ebfa88fb6b4716018a34a99c8fe11e92489b8e0c5de"
+    },
+    "screenshot_binding": {
+     "screenshot_sha256": "321ee94adcccb2531135f5ec397f9b88d4225e8d5f01770df8dcce7992ca08a7",
+     "bound_page": 9,
+     "text_projection_similarity": 0.656,
+     "title_band_iou": 0.5153,
+     "methods_agree": true,
+     "status": "BOUND——独立双方法像素绑定一致"
+    }
+   }
+  },
+  {
+   "id": "N05",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG04",
+    "HG05",
+    "HG06",
+    "HG07",
+    "HG08",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG03",
+    "HG06",
+    "HG08"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "body_conclusion_stacking_and_footer_ordinals",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P11.png": "8a0988eed7fe3daa8ccaac2644873392cc49315e40707e7232c67fa93eee2f41"
+    },
+    "screenshot_binding": {
+     "screenshot_sha256": "56973559fdba292f26440893b1f30a4c5bd2104f55f6fa209d03b55714c67c45",
+     "bound_page": 11,
+     "text_projection_similarity": 0.5357,
+     "title_band_iou": 0.3058,
+     "methods_agree": true,
+     "status": "BOUND——独立双方法像素绑定一致"
+    }
+   }
+  },
+  {
+   "id": "N06",
+   "verdict": "FAIL",
+   "hits": [
+    "HG03",
+    "HG05",
+    "HG06",
+    "HG07",
+    "HG08",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG03",
+    "HG05",
+    "HG08"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "narrow_column_overflow_conclusion_collision_detached_ordinals",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P12.png": "959df7d8ead48cfbfa5ae590b69b1905e9c95dca0968f80f812fbc678d9944f4"
+    },
+    "screenshot_binding": {
+     "screenshot_sha256": "dd08a430fdb8b99c38fe7b88baa8703e4dec9166822bfdd1962ee9434d99ffeb",
+     "bound_page": 12,
+     "text_projection_similarity": 0.7538,
+     "title_band_iou": 0.3344,
+     "methods_agree": true,
+     "status": "BOUND——独立双方法像素绑定一致"
+    }
+   }
+  },
+  {
+   "id": "N07",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG03",
+    "HG05",
+    "HG06",
+    "HG09"
+   ],
+   "must_hit": [
+    "HG02"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "artifact": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "defect": "unmatched_04_and_bu_gan_sheng_and_da_e_xiao_fei_leng_jing_qi_ignored",
+    "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+    "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+    "render_png_sha256": {
+     "full-P08.png": "1423af39acf738a748a70eef15b887c9f3c8efe2d7d1dcca43ca22e4f06b0226",
+     "full-P10.png": "517cf847eb07dda72e85d46e503c00d6b6daba996d4ca1b443eddc88aa498472"
+    }
+   }
+  },
+  {
+   "id": "N08",
+   "verdict": "FAIL",
+   "hits": [
+    "HG02",
+    "HG05",
+    "HG07",
+    "HG08",
+    "HG09",
+    "HG11"
+   ],
+   "must_hit": [
+    "HG11"
+   ],
+   "result": "PASS",
+   "evidence": {
+    "final_pptx_sha256": "ebf5d5b48a483ca539bca701bc3c4ee7d45da94beb907575f421260aa70f39b5",
+    "expected_old_gate_pass_sha256": "c090aa14eab73fc4131eed5077335da6fc0f5371c2ed40e698d09058db0084ea",
+    "defect": "旧门禁 PASS 绑定 c090aa14，最终交付件为 ebf5d5b4——配对必须错配",
+    "pdf_sha256": "18e5e6ca99619cac439470d106002d59a7f09eeb719518cda5bcc5c6d345ac19",
+    "render_png_sha256": {
+     "full-P01.png": "221d139996cbeb89e68274d853f450b3de6393279a8434de6553dcfcf968c412",
+     "full-P02.png": "453349078801b07165cb98e28c744d600d6b82674d4c9af7e2331959d2e304be",
+     "full-P03.png": "b885a197d49f29443a06fc6e77ebc2841532bc293c8edec7056973982698aff5",
+     "full-P04.png": "74b3ccc6a8c8b3c9e48945dd33da60713febab007de1d049f06f176ea9980c6d",
+     "full-P05.png": "2c541924d4769fe2a5c36cdb87d94f6910a65d679c781a02910d4cfe71ec41c9",
+     "full-P06.png": "78a316d11c9703af47e14d6d826d2d82805ebc95c335ae36559a71af06f5c2c0",
+     "full-P07.png": "51ad0b46f37d99fe43da753333033521afe73ed5320241fe1100441ee1760369",
+     "full-P08.png": "483caa29b82d9823b1d8a1ecfe7fb1eedfea8178fa8388b691c320a818224853",
+     "full-P09.png": "6c13c0763cd4d15542ec0883680d46d85ec84814359a39d4253cae270bf49ce9",
+     "full-P10.png": "0f36a4da84862fca4f264401b4b40d6cbac85e8e43bc44b4cf9dcd75fb48c3e4",
+     "full-P11.png": "e5fdb8bd01f54b796e053a2d3e81ecd8510220b4476f195311985447b3018f6f",
+     "full-P12.png": "57291229331ee2376cfe1ef80cf921175cbac577ae3e3c66c274d20f7bbe55fd",
+     "full-P13.png": "dbc3719f18d2a51da876d4c82cd8d80107190409de01ced5c1035d3978e1a7a2"
+    }
+   }
+  }
+ ],
+ "all_pass": false,
+ "note": "失败件保留但标注未通过，不得作为合格下载或发布；N04–N06 截图已经双方法独立绑定到冻结 6133ad5d 导出件"
+}

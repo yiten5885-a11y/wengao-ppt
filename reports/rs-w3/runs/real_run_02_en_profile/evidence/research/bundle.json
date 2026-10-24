@@ -1,0 +1,105 @@
+{
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-1cca6086a7a0",
+  "created_at": "2026-10-23T21:19:22.420932+00:00",
+  "material_language": "en",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "Tesla Inc 行业均值 市场规模",
+      "locale": "zh",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:19:22.421256+00:00"
+    },
+    {
+      "q": "Tesla Inc market share industry benchmark",
+      "locale": "en",
+      "backend": "searxng",
+      "sent_at": "2026-10-23T21:19:22.421256+00:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "f001",
+      "origin": "WEB_RESEARCH",
+      "subject": "currentCol",
+      "metric": "currentCol",
+      "value": 6.218,
+      "unit": "",
+      "period": "2024",
+      "definition": "公开报道数据",
+      "publisher": "纯电动车、太阳能和清洁能源 | 特斯拉中国",
+      "source_grade": "C",
+      "url": "https://www.tesla.cn/",
+      "retrieved_at": "2026-10-23T21:19:41.298750+00:00",
+      "quote_span": "<path fill=\"currentColor\" d=\"m6.218 9.513.962-.09a.25.25 0 0 0 .223-.207l.157-.953a4.502 4.502 0 0 1 8.88 0l.157.953a.25.25 0 0 0 .223.208",
+      "snapshot_path": "evidence/research/snapshots/f001.txt",
+      "snapshot_sha256": "da1f92352cf26bd91558fdebcb987682f7042036dbb2f3633052f3e4adb3057c"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "insight",
+      "title": "currentCol currentCol 关键洞察",
+      "metric": "currentCol",
+      "unit": "",
+      "period": "2024",
+      "series": [
+        {
+          "label": "currentCol",
+          "origin": "WEB_RESEARCH",
+          "points": [
+            {
+              "x": "2024",
+              "value": 6.218,
+              "fact_ref": "f001"
+            }
+          ]
+        }
+      ],
+      "highlight": {
+        "type": "max_gap",
+        "text": "currentCol 核心指标 currentCol 达到 6.218",
+        "fact_refs": [
+          "f001"
+        ],
+        "rule": "INSIGHT_KEY_METRIC_V1",
+        "computed": {
+          "value": 6.218,
+          "unit": ""
+        }
+      },
+      "conflicts": [],
+      "footnote": {
+        "text": "数据来源: 纯电动车、太阳能和清洁能源 | 特斯拉中国 (2024)",
+        "fact_refs": [
+          "f001"
+        ]
+      }
+    }
+  ],
+  "discarded": [
+    {
+      "code": "RESEARCH.FETCH_FAILED",
+      "detail": "无法抓取页面或有效正文过短: Electric Cars, Solar & Clean Energy | Tesla",
+      "url": "https://www.tesla.com/"
+    },
+    {
+      "code": "RESEARCH.FETCH_FAILED",
+      "detail": "无法抓取页面或有效正文过短: Find Us | Tesla",
+      "url": "https://www.tesla.com/findus/location/store/desmoines"
+    }
+  ],
+  "omissions": [
+    {
+      "want": "横向对比视图：行业竞品/均值基准",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    },
+    {
+      "want": "纵向趋势视图：多期历史数据",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    }
+  ],
+  "report_path": "evidence/research/report.md"
+}

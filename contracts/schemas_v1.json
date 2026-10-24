@@ -1,0 +1,86 @@
+{
+  "bundle_id": "WENGAO_CONTRACTS_V1",
+  "schema_version": "1.0.0",
+  "bundle_version": "1.0.0",
+  "status": "frozen_candidate_for_P0",
+  "schema_version_change_note": "2026-10-12：按本文件 common_rules.all_files_carry_schema_version 的要求补上顶层 schema_version，与 bundle_version 保持一致；未改动任何 schema 定义。",
+  "note": "一个文件集中定义全部版本化格式，便于整体哈希与冻结；运行期按 schema 名分别读写独立文件。",
+  "common_rules": {
+    "all_files_carry_schema_version": true,
+    "model_must_not_write": ["status", "passed", "waiver", "verdict"],
+    "unknown_fields": "显式为 unknown，禁止模型猜填"
+  },
+  "schemas": {
+    "job.json": {
+      "schema_version": "1.0.0",
+      "writer": "runner",
+      "required": ["job_id", "run_id", "attempt_id", "mode", "contract_version", "input_hash", "edit_scope", "support_profile", "target_environment"],
+      "change_rule": "任何变更要求产生新的 job 版本；旧版本保留可追溯。"
+    },
+    "baseline.json": {
+      "schema_version": "1.0.0",
+      "writer": "独立提取器（转换前）",
+      "required": ["input_hash", "objects", "texts", "image_refs", "tables", "charts", "notes", "context_locators"],
+      "change_rule": "不可被模型覆盖；在任何清理和转换之前保存。"
+    },
+    "content_plan.json": {
+      "schema_version": "1.0.0",
+      "writer": "内容层（模型可产出候选，需人工/规则确认）",
+      "required": ["schema_version", "slides"],
+      "slide_fields": ["id", "title", "blocks", "tables", "charts", "notes"],
+      "block_fields": ["id", "text", "source_refs", "fact_ids", "covers"],
+      "rule": "covers/fact_ids 必须引用已有清单，且实际文本与数据仍需验证；引用编号不代表满足内容要求。"
+    },
+    "layout_plan.json": {
+      "schema_version": "1.0.0",
+      "writer": "布局层",
+      "required": ["schema_version", "slides"],
+      "slide_fields": ["id", "page_type", "blocks", "positions", "fonts", "capacity"],
+      "rule": "仅决定呈现；冻结后不得改事实，不得删必讲内容。"
+    },
+    "trace.json": {
+      "schema_version": "1.0.0",
+      "writer": "生成器",
+      "mapping": "原始位置 → 内容块 → 实际输出位置",
+      "rule": "生成器提供候选映射；gate 必须独立核对，不得只信生成器 trace。"
+    },
+    "findings.json": {
+      "schema_version": "1.0.0",
+      "writer": "各检查器追加，runner 汇总",
+      "required_fields_each": ["code", "severity", "origin", "slide", "object", "source_ref", "expected", "actual", "allowed_actions"]
+    },
+    "validation.json": {
+      "schema_version": "1.0.0",
+      "writer": "验收阶段",
+      "required": ["check_set", "per_check_status", "rule_version", "code_version", "font_versions", "engine_version", "hashes"],
+      "rule": "绑定不可变候选；任何源码/规则/输出/环境变化后重新判定证据有效性。"
+    },
+    "status.json": {
+      "schema_version": "1.0.0",
+      "writer": "runner 唯一写入者，原子更新",
+      "required": ["stage", "verdict", "last_activity", "recoverable_actions", "run_id", "attempt_id"],
+      "rule": "禁止子进程回写；取消后旧结果不得覆盖新版本。"
+    },
+    "review_decisions.json": {
+      "schema_version": "1.0.0",
+      "writer": "人工处理记录",
+      "required": ["item", "evidence", "scope", "decided_by", "reason", "related_version"],
+      "rule": "不能覆盖原始问题或硬错误；确认误报、修改要求、接受降级分别记录。"
+    },
+    "release_manifest.json": {
+      "schema_version": "1.0.0",
+      "writer": "正式提升候选时产生",
+      "required": ["final_files", "preview", "reports", "version_relations", "hashes"]
+    }
+  },
+  "source_ref_spec": {
+    "minimum_locators": ["文件及版本", "PPT 页/部件/对象路径或文档段落与标题层级", "表格单元格及必要表头", "原文原句及必要上下文片段", "图表数据来源位置", "必讲/可摘要/明确省略的处理策略及依据"],
+    "fact_fields": ["subject", "predicate_or_metric", "value", "raw_value_text", "unit_class", "time", "scope", "qualifier", "negation_or_comparison"],
+    "missing_value": "unknown"
+  },
+  "normalization_policy": {
+    "default": "保守 NFC 等价处理",
+    "forbidden": ["全局删除减号", "删除星号", "删除指数符号", "删除有意义空格", "静默单位转换以通过比较"],
+    "must_keep": ["原始数值写法", "精度", "正负号", "单位", "百分数与百分点区分"]
+  }
+}

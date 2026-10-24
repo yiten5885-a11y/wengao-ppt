@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "gate_id": "PREPUBLICATION_50_REAL_DECKS_GATE",
+  "status": "GATE_SPECIFIED_IN_PROGRESS",
+  "target_real_decks": 50,
+  "required_acceptance_scope": "existing-matrix-26-v1",
+  "disqualification_rules": [
+    "is_synthetic_fixture == true (synthetic fixtures never count as real decks)",
+    "is_replay == true (playback logs and replay runs never count as fresh real generations)",
+    "is_mock == true (mock responses or mock providers never satisfy the gate)",
+    "actual_scene_images_inserted < 1 (deck must successfully insert at least one genuine licensed photo)",
+    "independent_content_fidelity_verdict != PASS",
+    "layout_and_placement_safety_verdict != PASS",
+    "visual_review_verdict != PASS",
+    "candidate_gate_verdict != PASS"
+  ],
+  "deck_manifest_entry_schema": {
+    "deck_id": "string",
+    "source_file": "string",
+    "source_sha256": "string (64-char hex)",
+    "candidate_pptx_sha256": "string (64-char hex)",
+    "language_codes": "array of strings (from existing 26 language matrix)",
+    "actual_scene_images_inserted": "integer >= 1",
+    "is_synthetic_fixture": "boolean (must be false)",
+    "is_replay": "boolean (must be false)",
+    "is_mock": "boolean (must be false)",
+    "independent_content_fidelity_verdict": "string ('PASS')",
+    "layout_and_placement_safety_verdict": "string ('PASS')",
+    "visual_review_verdict": "string ('PASS')",
+    "candidate_gate_verdict": "string ('PASS')",
+    "timestamp": "ISO-8601 string"
+  },
+  "release_claim_policy": "Under no circumstances should the project claim 50 decks completed or complete multilingual full support until at least 50 independent real decks pass all validation checks without fixtures, replays, or mocks."
+}

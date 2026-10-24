@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "note": "回放包：用于演示冻结内容计划的构建段；跳过内容规划模型，但下游语义配图仍可能调用本地模型并查询图库。产物标记 replay，不计作真实生成验收。",
+  "packs": [
+    {
+      "id": "annual-review-17p",
+      "name": "年度经营评审（17 页 · 回放）",
+      "material": "annual_review_synthetic.md",
+      "plan": "annual_review_17p.plan.json",
+      "pages": 17,
+      "note": "计划来自 2026-10-16 的本地模型输出（已冻结）；本包跳过内容规划模型，但仍运行语义配图阶段，不冒充新的内容规划模型调用或真实生成验收。"
+    },
+    {
+      "id": "annual-review-17p-deduplicated",
+      "name": "年度经营评审（17 页 · 去重修订回放）",
+      "material": "annual_review_synthetic.md",
+      "plan": "annual_review_17p_deduplicated.plan.json",
+      "pages": 17,
+      "note": "基于同一 59 条冻结事实；补全半句、去除完全重复事实并按 24pt/20pt 容量分页。仅跳过内容规划模型，仍运行语义配图阶段。"
+    }
+  ]
+}

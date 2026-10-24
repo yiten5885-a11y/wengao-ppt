@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "material": true,
+  "source_material": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+  "source_material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "ledger_sha256": "988ed970c2f1ed5a582bd76f1c327b81741a21817284a9ccbb8b6eda8f65122e",
+  "plan_sha256": "683394069773a6064e7e212d7bc83888a5efcf45aa5428ea6b203c2e0cb46d6a",
+  "frozen_before_model_call": true,
+  "frozen_at": "2026-10-20T14:25:15.185606+08:00",
+  "note": "身份在建任务时冻结；候选不得改写台账或计划。"
+}

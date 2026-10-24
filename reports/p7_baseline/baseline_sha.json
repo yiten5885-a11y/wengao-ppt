@@ -1,0 +1,32 @@
+{
+  "captured_at_utc": "2026-10-23T15:04:21Z",
+  "root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+  "git_repo": false,
+  "files": {
+    "contracts/language_acceptance_scope_v1.json": {
+      "sha256": "13f2191fbf060efddfe83fb335de939ec065b515cb31c2e00db8d82ceba220ef",
+      "bytes": 6022,
+      "mtime": "2026-10-23T21:30:07"
+    },
+    "workbench/server.py": {
+      "sha256": "7baf415dc5da0cf819fd0d56d1c36198a5d756d3bbaddf9c8110938fcbac600a",
+      "bytes": 130143,
+      "mtime": "2026-10-23T23:04:08"
+    },
+    "workbench/index.html": {
+      "sha256": "174feaf1b75035cc9758d7b2482aa74119a95118a2f734481ad225cd061b90af",
+      "bytes": 124437,
+      "mtime": "2026-10-23T21:34:31"
+    },
+    "workbench/make_flow.py": {
+      "sha256": "15d92bba43b32ab055997346ae868f3fddbb2721e829c6aafe23811ba87603e6",
+      "bytes": 19136,
+      "mtime": "2026-10-22T21:49:01"
+    },
+    "README.md": {
+      "sha256": "a129ea2dc8019e92e2018760fe67472f8af84a1fe8bbd64d3b95ed87493c34cb",
+      "bytes": 10480,
+      "mtime": "2026-10-23T10:32:39"
+    }
+  }
+}

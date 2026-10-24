@@ -1,0 +1,10 @@
+{
+  "schema": "scene-photo-test-fixture/v1",
+  "source_job_id": "job-58c8be3dda38",
+  "pptx_file": "scene-candidate.pptx",
+  "pptx_size": 445947,
+  "pptx_sha256": "2458fc20b0cd98319205e5a00991398c9191b047c434923edda03b4ba936f1aa",
+  "scene_key": "outpatient_ai_diagnosis",
+  "product_acceptance": false,
+  "note": "Exact synthetic candidate PPTX retained only for shape metadata regression. It is not accepted product evidence; the original validation report is deliberately not bundled."
+}

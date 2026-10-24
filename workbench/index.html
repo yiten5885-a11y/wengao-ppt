@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>稳稿 PPT · 演示工作台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#F5F7FB; --surface:#FFFFFF; --ink:#15253D; --muted:#718095;
+    --line:#E5EAF1; --primary:#315CCE; --primary-weak:#EAF0FC;
+    --nav:#132238; --nav-ink:#C9D6E8; --nav-active:#1D3352;
+    --ok:#287668; --ok-weak:#E6F2EF; --warn:#A26C24; --warn-weak:#FBF1E2;
+    --bad:#B5454C; --bad-weak:#FBEAEB; --r-lg:14px; --r-md:10px; --r-sm:7px;
+    --shadow:0 1px 2px rgba(21,37,61,.05),0 8px 24px rgba(21,37,61,.05);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:.2px}
+  p{margin:0}
+  a{color:var(--primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+  button{font:inherit;cursor:pointer}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+  .muted{color:var(--muted)}
+  .small{font-size:12px}
+  .hidden{display:none !important}
+
+  /* ---------- 框架 ---------- */
+  .app{display:grid;grid-template-columns:228px minmax(0,1fr);min-height:100vh}
+  .sidebar{background:var(--nav);color:var(--nav-ink);display:flex;flex-direction:column;
+           padding:18px 14px;position:sticky;top:0;height:100vh}
+  .brand{display:flex;align-items:center;gap:10px;padding:2px 6px 18px}
+  .brand .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(140deg,#4E7BEA,#315CCE);
+               color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+  .brand b{color:#fff;font-size:15px;display:block;line-height:1.2}
+  .brand small{font-size:11px;color:#8FA3BF;letter-spacing:.6px}
+  .nav{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+  .nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+              padding:10px 12px;border:0;border-radius:9px;background:transparent;
+              color:var(--nav-ink);font-size:13.5px;transition:background .15s ease,color .15s ease}
+  .nav button svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;
+                  stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+  .nav button:hover{background:#1A2C47;color:#fff}
+  .nav button[aria-current="page"]{background:var(--nav-active);color:#fff}
+  .side-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+  .inst-mini{background:#182B46;border:1px solid #24395A;border-radius:10px;padding:10px 11px;font-size:11.5px;
+             line-height:1.7;color:#A9BCD6;word-break:break-all}
+  .inst-mini b{display:block;color:#fff;font-size:12px;font-weight:600;margin-bottom:2px}
+  .inst-mini .k{color:#7E93B0}
+  .side-foot .ghost{border-color:#2E4467;color:#C9D6E8;background:transparent}
+  .side-foot .ghost:hover{background:#1A2C47;color:#fff}
+
+  .shell{min-width:0;display:flex;flex-direction:column}
+  .topbar{height:70px;background:var(--surface);border-bottom:1px solid var(--line);
+          display:flex;align-items:center;justify-content:space-between;gap:16px;
+          padding:0 32px;position:sticky;top:0;z-index:20}
+  .topbar h1{font-size:19px}
+  .topbar .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .top-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .pill{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;
+        background:#EEF2F9;color:#3C4E6B;font-size:12px;white-space:nowrap}
+  .pill.ok{background:var(--ok-weak);color:var(--ok)}
+  .pill.warn{background:var(--warn-weak);color:var(--warn)}
+  .pill.bad{background:var(--bad-weak);color:var(--bad)}
+  .pill.dev{background:var(--primary-weak);color:var(--primary)}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+
+  .content{padding:26px 32px 56px;max-width:1440px;width:100%;margin:0 auto}
+  .view{display:block}
+  /* Navigation uses the native hidden attribute; author display rules must not override it. */
+  .view[hidden]{display:none !important}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+        box-shadow:var(--shadow);padding:18px 18px;min-width:0}
+  .card h2{font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .card h2 .idx{width:20px;height:20px;border-radius:6px;background:var(--primary-weak);color:var(--primary);
+                font-size:11px;display:grid;place-items:center;font-weight:700}
+  .card h2 .aside{margin-left:auto;font-weight:400;font-size:12px;color:var(--muted)}
+
+  /* ---------- 控件 ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 16px;
+       border-radius:var(--r-sm);border:1px solid var(--line);background:#fff;color:var(--ink);
+       font-size:13.5px;transition:background .15s ease,border-color .15s ease,color .15s ease}
+  .btn:hover:not(:disabled){border-color:#C9D3E3;background:#FAFBFD}
+  .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+  .btn.primary:hover:not(:disabled){background:#2A50B8;border-color:#2A50B8}
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted)}
+  .btn.danger{color:var(--bad);border-color:#EBC8CA;background:#fff}
+  .btn.danger:hover:not(:disabled){background:var(--bad-weak)}
+  .btn.block{width:100%}
+  .btn.lg{height:44px;font-size:14px;font-weight:500}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.sm{height:30px;padding:0 10px;font-size:12.5px;border-radius:6px}
+  select,input[type=text],input[type=number]{width:100%;height:40px;padding:0 10px;border:1px solid var(--line);
+       border-radius:var(--r-sm);background:#fff;color:var(--ink);font-size:13px;font-family:inherit}
+  select:hover,input:hover{border-color:#C9D3E3}
+  label.field{display:block;font-size:12.5px;color:var(--muted);margin:12px 0 6px}
+  .seg{display:inline-flex;background:#F0F3F8;border-radius:9px;padding:3px;gap:2px}
+  .seg button{border:0;background:transparent;color:var(--muted);padding:6px 12px;border-radius:7px;font-size:13px}
+  .seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(21,37,61,.12)}
+  .hint{font-size:12px;color:var(--muted);line-height:1.65}
+  .note{background:var(--warn-weak);border:1px solid #F0DCBC;color:#7C5320;border-radius:9px;
+        padding:9px 11px;font-size:12.5px;line-height:1.65}
+  .err{background:var(--bad-weak);border:1px solid #EFC9CC;color:#8E3239;border-radius:9px;
+       padding:9px 11px;font-size:12.5px;line-height:1.65}
+  .okbox{background:var(--ok-weak);border:1px solid #C6E2DA;color:#1F6155;border-radius:9px;
+         padding:9px 11px;font-size:12.5px;line-height:1.65}
+  .kv{display:flex;gap:10px;font-size:12.5px;padding:3px 0;min-width:0}
+  .kv b{font-weight:400;color:var(--muted);flex:none;min-width:64px}
+  .kv span{color:var(--ink);word-break:break-all}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:400;background:#FAFBFD}
+
+  /* ---------- 工作室 ---------- */
+  .studio{display:grid;grid-template-columns:352px minmax(0,1fr);gap:20px;align-items:start}
+  .studio-left{display:flex;flex-direction:column;gap:16px;position:sticky;top:90px}
+  .drop{border:1.5px dashed #C6D2E6;border-radius:var(--r-md);background:#FAFBFE;
+        padding:20px 16px;text-align:center;color:var(--muted);font-size:12.5px;cursor:pointer;
+        transition:border-color .15s ease,background .15s ease}
+  .drop:hover,.drop.over{border-color:var(--primary);background:var(--primary-weak)}
+  .drop b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+  .filemeta{margin-top:10px;font-size:12.5px;border:1px solid var(--line);border-radius:var(--r-sm);
+            padding:8px 10px;background:#FBFCFE;word-break:break-all}
+  .filemeta.empty{color:var(--muted);background:#FBFCFE}
+  .themes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .theme{border:1px solid var(--line);border-radius:var(--r-md);padding:8px;background:#fff;text-align:left;
+         transition:border-color .15s ease,box-shadow .15s ease}
+  .theme:hover{border-color:#C6D2E6}
+  .theme[aria-pressed="true"]{border-color:var(--primary);box-shadow:0 0 0 2px rgba(49,92,206,.12)}
+  .theme .sw{height:56px;border-radius:6px;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+  .theme .sw i{position:absolute;display:block;border-radius:2px}
+  .theme .tname{font-size:12.5px;margin-top:7px;display:flex;align-items:center;gap:6px}
+  .theme .tid{font-size:10.5px;color:var(--muted)}
+  .theme .tag{font-size:10px;color:var(--muted);background:#F2F5FA;border-radius:4px;padding:1px 5px}
+
+  .stage{display:flex;flex-direction:column;min-height:520px}
+  .stage-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+              padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .stage-body{flex:1;display:flex;flex-direction:column;min-width:0}
+  .canvas{background:#EEF2F8;border:1px solid var(--line);border-radius:var(--r-md);
+          padding:18px;display:grid;place-items:center;min-height:340px}
+  .canvas img{max-width:100%;max-height:520px;display:block;border-radius:6px;
+              box-shadow:0 4px 18px rgba(21,37,61,.12);background:#fff}
+  .thumbs{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 4px;margin-top:10px}
+  .thumb{flex:none;width:86px;border:1px solid var(--line);border-radius:6px;background:#fff;
+         padding:3px;cursor:pointer;transition:border-color .15s ease}
+  .thumb img{width:100%;display:block;border-radius:4px}
+  .thumb .n{font-size:10.5px;color:var(--muted);text-align:center;padding-top:2px}
+  .thumb[aria-pressed="true"]{border-color:var(--primary);box-shadow:0 0 0 2px rgba(49,92,206,.14)}
+  .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+         text-align:center;color:var(--muted);padding:56px 24px;min-height:340px}
+  .empty .ic{width:44px;height:44px;border-radius:12px;background:#EDF1F8;display:grid;place-items:center;
+             color:#7C8DA8}
+  .empty b{color:var(--ink);font-size:14px;font-weight:600}
+  .empty p{font-size:12.5px;max-width:360px;line-height:1.7}
+  .statusline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;
+              border-top:1px solid var(--line);margin-top:14px}
+  .dl{display:grid;gap:8px;margin-top:12px}
+  .dl .item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--r-sm);
+            padding:8px 10px;background:#FBFCFE}
+  .dl .item .nm{font-size:12.5px;word-break:break-all}
+  .dl .item .meta{font-size:11px;color:var(--muted)}
+  .dl .item a{margin-left:auto;white-space:nowrap}
+  .stages{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+  .st{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted)}
+  .st .b{width:14px;height:14px;border-radius:50%;border:1.5px solid #CBD5E4;display:grid;place-items:center;
+         flex:none;font-size:9px;color:#fff}
+  .st.done{color:var(--ink)}
+  .st.done .b{background:var(--ok);border-color:var(--ok)}
+  .st.run .b{border-color:var(--primary);border-top-color:transparent;animation:spin 1s linear infinite}
+  .st.bad .b{background:var(--bad);border-color:var(--bad)}
+  .st.stop .b{background:var(--warn);border-color:var(--warn)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- 材料 ---------- */
+  .material{display:grid;grid-template-columns:392px minmax(0,1fr);gap:20px;align-items:start}
+  .material-left{display:flex;flex-direction:column;gap:16px;position:sticky;top:90px}
+  .bar{height:4px;border-radius:2px;background:#EDF1F8;overflow:hidden;margin:12px 0 6px}
+  .bar i{display:block;height:100%;background:var(--primary);width:30%;border-radius:2px;
+         animation:slide 1.4s ease-in-out infinite}
+  @keyframes slide{0%{margin-left:-30%}100%{margin-left:100%}}
+
+  /* ---------- 编辑 ---------- */
+  .edit{display:grid;grid-template-columns:150px minmax(0,1fr) 336px;gap:16px;align-items:start}
+  .rail{display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 130px);overflow:auto;padding-right:2px}
+  .rail .rt{font-size:11.5px;color:var(--muted);padding:2px 2px 4px}
+  .edit-canvas{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+               box-shadow:var(--shadow);padding:16px;min-width:0}
+  .page-wrap{position:relative;background:#EEF2F8;border-radius:var(--r-md);padding:14px;
+             display:grid;place-items:center;min-height:420px}
+  .page-inner{position:relative;max-width:100%;display:inline-block;line-height:0}
+  .page-inner img{max-width:100%;max-height:620px;border-radius:5px;box-shadow:0 4px 18px rgba(21,37,61,.14);background:#fff}
+  .box{position:absolute;border:1.5px solid rgba(49,92,206,.45);border-radius:3px;cursor:pointer;
+       transition:background .12s ease,border-color .12s ease}
+  .box:hover{background:rgba(49,92,206,.10);border-color:var(--primary)}
+  .box[aria-selected="true"]{background:rgba(49,92,206,.14);border-color:var(--primary);
+                             box-shadow:0 0 0 2px rgba(49,92,206,.18)}
+  .props{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+         box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:4px;
+         max-height:calc(100vh - 130px);overflow:auto}
+  .props h3{font-size:13px;margin-bottom:6px}
+  .props .sec{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+  .objlist{display:flex;flex-direction:column;gap:4px;max-height:180px;overflow:auto}
+  .objlist button{display:flex;gap:8px;align-items:center;text-align:left;border:1px solid transparent;
+                  background:transparent;border-radius:6px;padding:5px 7px;font-size:12px;color:var(--ink)}
+  .objlist button:hover{background:#F5F8FD}
+  .objlist button[aria-selected="true"]{background:var(--primary-weak);border-color:#CBD9F6}
+  .objlist .ty{font-size:10px;color:var(--muted)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .compare figure{margin:0}
+  .compare img{width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+  .compare figcaption{font-size:11px;color:var(--muted);padding-top:4px}
+
+  /* ---------- 历史 ---------- */
+  .history{display:grid;grid-template-columns:minmax(0,1fr) 392px;gap:20px;align-items:start}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
+  .work{border:1px solid var(--line);border-radius:var(--r-md);background:#fff;overflow:hidden;
+        cursor:pointer;text-align:left;padding:0;transition:border-color .15s ease,box-shadow .15s ease}
+  .work:hover{border-color:#C6D2E6;box-shadow:0 6px 18px rgba(21,37,61,.07)}
+  .work[aria-pressed="true"]{border-color:var(--primary);box-shadow:0 0 0 2px rgba(49,92,206,.12)}
+  .work .shot{height:124px;background:#EEF2F8;display:grid;place-items:center;overflow:hidden}
+  .work .shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .work .shot span{font-size:11.5px;color:var(--muted)}
+  .work .body{padding:10px 12px 12px}
+  .work .nm{font-size:13px;font-weight:500;word-break:break-all;line-height:1.45}
+  .work .meta{font-size:11.5px;color:var(--muted);margin-top:4px;display:flex;gap:8px;flex-wrap:wrap}
+  .timeline{position:relative;margin-left:6px;padding-left:16px;border-left:1px solid var(--line)}
+  .tl{position:relative;padding:2px 0 14px}
+  .tl:before{content:"";position:absolute;left:-21px;top:7px;width:9px;height:9px;border-radius:50%;
+             background:#fff;border:1.5px solid var(--primary)}
+  .tl.restore:before{border-color:var(--warn)}
+  .tl .tt{font-size:12.5px;color:var(--ink)}
+  .tl .td{font-size:11.5px;color:var(--muted);margin-top:2px;word-break:break-all}
+  .tl .acts{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+
+  /* ---------- 抽屉 / 弹窗 / 提示 ---------- */
+  .drawer{position:fixed;inset:0;background:rgba(15,25,40,.32);z-index:60;display:flex;justify-content:flex-end}
+  .drawer .panel{width:min(480px,100%);background:#fff;height:100%;overflow:auto;padding:22px 22px 40px;
+                 box-shadow:-14px 0 40px rgba(15,25,40,.16)}
+  .drawer h2{font-size:16px;margin-bottom:4px}
+  .drawer .close{border:0;background:transparent;font-size:20px;line-height:1;color:var(--muted);
+                 position:absolute;right:18px;top:16px}
+  .modal{position:fixed;inset:0;background:rgba(15,25,40,.34);z-index:70;display:grid;place-items:center;padding:20px}
+  .modal .box{background:#fff;border-radius:var(--r-lg);width:min(520px,100%);padding:20px;
+              box-shadow:0 20px 60px rgba(15,25,40,.24)}
+  .modal h3{font-size:15px;margin-bottom:8px}
+  .modal .acts{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+  .toasts{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:8px;z-index:80}
+  .toast{background:#15253D;color:#fff;border-radius:9px;padding:10px 14px;font-size:12.5px;
+         box-shadow:0 10px 30px rgba(15,25,40,.24);max-width:360px;animation:in .18s ease}
+  .toast.bad{background:#8E3239}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  @media (max-width:1200px){
+    .studio{grid-template-columns:320px minmax(0,1fr)}
+    .edit{grid-template-columns:126px minmax(0,1fr) 300px}
+    .history{grid-template-columns:minmax(0,1fr) 340px}
+  }
+  @media (max-width:1024px){
+    .studio,.material{grid-template-columns:minmax(0,1fr)}
+    .studio-left,.material-left{position:static}
+    .edit{grid-template-columns:110px minmax(0,1fr)}
+    .props{grid-column:1 / -1;max-height:none}
+    .history{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:820px){
+    .app{grid-template-columns:minmax(0,1fr)}
+    .sidebar{position:static;height:auto;flex-direction:row;align-items:center;gap:8px;
+             padding:10px 14px;overflow-x:auto}
+    .brand{padding:0 10px 0 0;flex:none}
+    .brand small{display:none}
+    .nav{flex-direction:row;margin:0;gap:4px}
+    .nav button{padding:8px 10px;white-space:nowrap}
+    .side-foot{display:none}
+    .topbar{height:auto;padding:12px 16px;flex-direction:column;align-items:flex-start;gap:8px}
+    .content{padding:16px 16px 40px}
+    .edit{grid-template-columns:minmax(0,1fr)}
+    .rail{flex-direction:row;max-height:none;overflow-x:auto}
+    .rail .rt{display:none}
+    .themes{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+  }
+  @media (max-width:420px){
+    .card{padding:14px}
+    .top-actions .pill:nth-child(n+3){display:none}
+    .thumbs .thumb{width:72px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="mark">稳</span>
+      <div><b>稳稿 PPT</b><small>LOCAL STUDIO</small></div>
+    </div>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <button data-view="studio" aria-current="page">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+        演示工作室</button>
+      <button data-view="material">
+        <svg viewBox="0 0 24 24"><path d="M4 5h10l4 4v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M14 5v4h4M7 12h8M7 16h5"/></svg>
+        从材料生成</button>
+      <button data-view="edit">
+        <svg viewBox="0 0 24 24"><path d="M4 20h4l10-10a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="M13 6l3 3"/></svg>
+        局部编辑</button>
+      <button data-view="history">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        版本与历史</button>
+    </nav>
+    <div class="side-foot">
+      <div class="inst-mini" id="side-inst">
+        <b>实例信息加载中…</b>
+        <span class="k">正在读取本机实例</span>
+      </div>
+      <button class="btn ghost block" id="btn-tech">技术详情</button>
+    </div>
+  </aside>
+
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">演示工作室</h1>
+        <p class="sub" id="page-sub">选一份 PPTX，选主题，一次完成制作与核对</p>
+      </div>
+      <div class="top-actions">
+        <span class="pill dev" id="label-pill"><span class="dot"></span>内部测试版</span>
+        <span class="pill" id="inst-pill">实例加载中…</span>
+        <button class="btn ghost sm" id="btn-tech2">技术详情</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- ============ 演示工作室 ============ -->
+      <section class="view" id="view-studio" data-view="studio">
+        <div class="studio">
+          <div class="studio-left">
+            <div class="card">
+              <h2><span class="idx">1</span>选择原稿<span class="aside" id="src-state">未选择</span></h2>
+              <div class="drop" id="drop" role="button" tabindex="0" aria-label="选择或拖入 PPTX 文件">
+                <b>拖入 .pptx，或点击选择</b>
+                只读内容、不改原文；上传后进入本实例数据根
+              </div>
+              <input type="file" id="file" accept=".pptx" class="hidden">
+              <div class="filemeta empty" id="file-meta">尚未选择文件</div>
+              <label class="field">或使用内置样例</label>
+              <select id="sample"><option value="">加载中…</option></select>
+            </div>
+
+            <div class="card">
+              <h2><span class="idx">2</span>选择主题<span class="aside" id="theme-state">—</span></h2>
+              <div class="themes" id="themes" role="group" aria-label="主题"></div>
+              <p class="hint" style="margin-top:10px">主题在预检时冻结进任务身份，制作过程中不可更改。卡片配色来自主题注册表，属<b>配色示例</b>，不是本次原稿预览。</p>
+            </div>
+
+            <div class="card">
+              <h2>支持范围</h2>
+              <div id="scope" class="hint">读取中…</div>
+            </div>
+
+            <button class="btn primary lg block" id="btn-make" disabled>开始制作</button>
+            <button class="btn danger block hidden" id="btn-make-cancel">取消制作</button>
+            <div class="hint" id="make-note"></div>
+          </div>
+
+          <div class="studio-right">
+            <div class="card stage">
+              <div class="stage-head">
+                <div class="seg" id="preview-seg" role="group" aria-label="预览对象">
+                  <button data-side="original" aria-pressed="false">原稿</button>
+                  <button data-side="candidate" aria-pressed="true">候选</button>
+                </div>
+                <div class="hint" id="stage-meta">尚未开始制作</div>
+              </div>
+              <div class="stage-body">
+                <div class="empty" id="stage-empty">
+                  <div class="ic">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+                  </div>
+                  <b>还没有可看的真实预览</b>
+                  <p>选择原稿与主题后点「开始制作」。预览只展示本次任务的真实渲染结果，不使用示例图。</p>
+                </div>
+                <div id="stage-loading" class="empty hidden">
+                  <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 9 9"/></svg></div>
+                  <b>正在渲染真实页面</b>
+                  <p>首次渲染由本机 LibreOffice 完成，通常需要数秒。</p>
+                </div>
+                <div id="stage-fail" class="hidden"></div>
+                <div id="stage-canvas" class="hidden">
+                  <div class="canvas"><img id="stage-img" alt="页面预览"></div>
+                  <div class="thumbs" id="thumbs"></div>
+                </div>
+              </div>
+              <div class="statusline" id="statusline"></div>
+              <div id="downloads"></div>
+              <div id="native-review" style="margin-top:12px"></div>
+            </div>
+
+            <div class="card" style="margin-top:16px">
+              <h2>制作过程<span class="aside">阶段来自后端真实推进</span></h2>
+              <div class="stages" id="make-stages"><div class="hint">尚未开始。</div></div>
+              <div id="make-detail" class="hint" style="margin-top:10px"></div>
+            </div>
+
+            <details class="card" style="margin-top:16px">
+              <summary style="cursor:pointer;font-size:13px;color:var(--muted)">技术详情：任务身份与分步操作</summary>
+              <div id="make-tech" style="margin-top:10px" class="hint">尚未创建任务。</div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 从材料生成 ============ -->
+      <section class="view" id="view-material" data-view="material" hidden>
+        <div class="material">
+          <div class="material-left">
+            <div class="card">
+              <h2>材料来源</h2>
+              <div class="seg" id="mat-seg" role="group" aria-label="材料模式" style="width:100%">
+                <button data-mode="model" aria-pressed="false" style="flex:1">上传我的材料</button>
+                <button data-mode="replay" aria-pressed="true" style="flex:1">体验演示</button>
+              </div>
+              <p class="hint" style="margin-top:8px" id="mat-mode-note"></p>
+
+              <div id="mat-model-box" class="hidden">
+                <div class="drop" id="mat-drop" role="button" tabindex="0">
+                  <b>拖入 .md / .txt / .docx</b>
+                  材料先冻结事实台账，再生成内容计划
+                </div>
+                <input type="file" id="mat-file" accept=".md,.markdown,.txt,.text,.docx" class="hidden">
+                <div class="filemeta empty" id="mat-file-meta">尚未选择材料</div>
+                <label class="field">页数（10—20，运行前冻结）</label>
+                <select id="mat-pages"></select>
+              </div>
+
+              <div id="mat-replay-box">
+                <label class="field">演示包</label>
+                <select id="mat-pack"></select>
+                <label class="field">页数（来自冻结计划，只读）</label>
+                <input type="text" id="mat-pack-pages" value="" readonly>
+                <div class="hint" id="mat-pack-note" style="margin-top:6px"></div>
+              </div>
+
+              <label class="field">主题</label>
+              <select id="mat-theme"></select>
+              <p class="hint" style="margin-top:8px" id="mat-replay-warn"></p>
+              <div class="hint" id="mat-scene-policy" style="margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:10px"></div>
+            </div>
+
+            <button class="btn primary lg block" id="btn-material">生成 PPT 并核对</button>
+            <button class="btn danger block hidden" id="btn-material-cancel">取消生成</button>
+            <div class="hint" id="mat-note"></div>
+          </div>
+
+          <div class="material-right">
+            <div class="card">
+              <h2>本次任务<span class="aside" id="mat-task-id">尚未开始</span></h2>
+              <div id="mat-empty" class="empty">
+                <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h10l4 4v10H4z"/><path d="M14 5v4h4"/></svg></div>
+                <b>还没有材料任务</b>
+                <p>页面不会在你打开时调用模型。点「生成 PPT 并核对」才开始真实任务。</p>
+              </div>
+              <div id="mat-live" class="hidden">
+                <div class="bar" id="mat-bar"><i></i></div>
+                <div class="stages" id="mat-stages"></div>
+                <div class="hint" id="mat-progress-note" style="margin-top:8px"></div>
+              </div>
+              <div id="mat-result" style="margin-top:12px"></div>
+            </div>
+
+            <div class="card" style="margin-top:16px">
+              <h2>冻结参数<span class="aside">开始前登记，生成期间不改</span></h2>
+              <div class="grid2" id="mat-frozen"><div class="hint">尚未开始。</div></div>
+            </div>
+
+            <details class="card" style="margin-top:16px">
+              <summary style="cursor:pointer;font-size:13px;color:var(--muted)">技术详情：回放与模型身份</summary>
+              <div class="hint" id="mat-tech" style="margin-top:10px">尚未开始。</div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 局部编辑 ============ -->
+      <section class="view" id="view-edit" data-view="edit" hidden>
+        <div class="card" style="margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div style="min-width:280px">
+            <label class="field" style="margin:0 0 6px">选择作品（需已有可编辑基线）</label>
+            <select id="edit-job"><option value="">加载中…</option></select>
+          </div>
+          <div class="hint" id="edit-job-note" style="flex:1;min-width:220px"></div>
+          <button class="btn ghost sm" id="edit-refresh">刷新</button>
+        </div>
+
+        <div id="edit-blocked" class="card hidden">
+          <div class="empty">
+            <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h4l10-10a2.1 2.1 0 0 0-3-3L5 17v3Z"/></svg></div>
+            <b id="edit-blocked-title">没有可编辑的基线</b>
+            <p id="edit-blocked-text">该作品还没有完成运行/验收/导出，暂时没有可安全修改的固定版本。</p>
+            <button class="btn primary" id="edit-goto-make">去演示工作室制作</button>
+          </div>
+        </div>
+
+        <div class="edit" id="edit-grid">
+          <aside class="rail card" style="padding:10px" id="edit-rail">
+            <div class="rt">页面</div>
+          </aside>
+          <div class="edit-canvas">
+            <div class="page-wrap" id="page-wrap">
+              <div class="page-inner" id="page-inner">
+                <img id="page-img" alt="基线页面" class="hidden">
+                <div id="boxes"></div>
+              </div>
+              <div class="empty" id="page-empty">
+                <b>正在读取基线页面…</b>
+                <p>页面图来自基线 PPTX 的真实渲染。</p>
+              </div>
+            </div>
+            <div class="hint" id="page-note" style="margin-top:10px"></div>
+          </div>
+          <aside class="props" id="props">
+            <h3>对象属性</h3>
+            <div class="hint" id="props-empty">先在画布或列表中选择一个对象。</div>
+            <div id="props-body" class="hidden">
+              <div class="grid2" id="props-meta"></div>
+              <div class="objlist" id="objlist" style="margin-top:10px"></div>
+              <div class="sec">
+                <label class="field">修改类型</label>
+                <select id="edit-field"></select>
+                <div id="edit-extra"></div>
+                <label class="field">新值</label>
+                <textarea id="edit-value" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font:inherit;resize:vertical" placeholder="输入要写入的新值（支持换行）"></textarea>
+                <div class="hint" id="edit-hint" style="margin-top:6px"></div>
+                <button class="btn primary block" id="edit-apply" style="margin-top:10px">生成修改候选</button>
+              </div>
+              <div class="sec hidden" id="edit-result">
+                <div id="edit-result-body"></div>
+                <div id="edit-compare"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ 版本与历史 ============ -->
+      <section class="view" id="view-history" data-view="history" hidden>
+        <div class="card" style="margin-bottom:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="seg" id="hist-filter" role="group" aria-label="筛选">
+            <button data-f="all" aria-pressed="true">全部</button>
+            <button data-f="version" aria-pressed="false">有版本</button>
+            <button data-f="pending" aria-pressed="false">待处理</button>
+          </div>
+          <div class="hint" id="hist-count" style="flex:1">读取中…</div>
+          <button class="btn ghost sm" id="hist-refresh">刷新</button>
+        </div>
+        <div class="history">
+          <div>
+            <div class="cards" id="hist-cards"></div>
+            <div id="hist-empty" class="card hidden" style="margin-top:12px">
+              <div class="empty">
+                <b>当前实例还没有任务</b>
+                <p id="hist-empty-text">安装实例使用安装根的数据目录；初始 0 个任务属正常，不代表历史丢失。</p>
+              </div>
+            </div>
+          </div>
+          <aside class="card" id="hist-detail">
+            <h2>作品与版本<span class="aside" id="hist-detail-id">未选择</span></h2>
+            <div class="hint" id="hist-detail-empty">从左侧选择一件作品，查看它的真实版本轨迹。</div>
+            <div id="hist-detail-body" class="hidden"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="drawer hidden" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+  <div class="panel" style="position:relative">
+    <button class="close" id="drawer-close" aria-label="关闭">×</button>
+    <h2 id="drawer-title">技术详情</h2>
+    <p class="hint" style="margin-bottom:14px">以下为本机真实运行信息，不进入用户主操作路径。</p>
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="box">
+    <h3 id="modal-title">确认</h3>
+    <div id="modal-body" class="hint"></div>
+    <div class="acts">
+      <button class="btn ghost" id="modal-cancel">取消</button>
+      <button class="btn primary" id="modal-ok">确认</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* ============================================================
+   稳稿 PPT 工作台（UI-PREMIUM-REDESIGN）
+   原则：页面只读取后端真实结果；不伪造进度、不合成成功状态。
+   原型中的 demo 数据 / 定时器 / 示例页均未移植。
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+const enc = encodeURIComponent;
+const S = {
+  boot: null,
+  view: "studio",
+  studio: { source: null, meta: null, theme: null, job: null, snapshot: null,
+            side: "candidate", page: 1, pages: {}, pageNumbers: {}, result: null, timer: null,
+            flowState: null },
+  material: { mode: "replay", pack: null, source: null, fileMeta: null, pages: 12,
+              theme: null, task: null, timer: null },
+  edit: { job: null, objects: null, page: 1, objIdx: null, baselinePages: null,
+          rec: null, sides: null },
+  history: { jobs: [], sel: null, filter: "all" },
+};
+
+/* ---------------- 基础工具 ---------------- */
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function bytes(n) {
+  if (n == null) return "—";
+  if (n < 1024) return n + " B";
+  if (n < 1048576) return (n / 1024).toFixed(0) + " KB";
+  return (n / 1048576).toFixed(1) + " MB";
+}
+function shortSha(s) { return s ? String(s).slice(0, 12) : "—"; }
+function nowText(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  const p = (x) => String(x).padStart(2, "0");
+  return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) +
+         " " + p(d.getHours()) + ":" + p(d.getMinutes());
+}
+async function api(path, opts) {
+  const r = await fetch(path, Object.assign({ headers: {} }, opts || {}));
+  let j = null, t = "";
+  try { j = await r.json(); } catch (e) { try { t = await r.text(); } catch (e2) { t = ""; } }
+  return { status: r.status, ok: r.ok, json: j, text: t };
+}
+function toast(msg, bad) {
+  const d = document.createElement("div");
+  d.className = "toast" + (bad ? " bad" : "");
+  d.textContent = msg;
+  $("toasts").appendChild(d);
+  setTimeout(() => d.remove(), bad ? 6000 : 3600);
+}
+function errText(r) {
+  const j = r && r.json;
+  if (j && j.error) return (j.error.code ? j.error.code + " " : "") + (j.error.message || "");
+  if (j && j.detail) return j.detail;
+  return (r && (r.text || "请求失败")) || "请求失败";
+}
+function openModal(title, bodyHtml, okText, onOk) {
+  $("modal-title").textContent = title;
+  $("modal-body").innerHTML = bodyHtml;
+  $("modal-ok").textContent = okText || "确认";
+  $("modal").classList.remove("hidden");
+  S._modalTrigger = document.activeElement;
+  $("modal-ok").focus();
+  S._modalOk = async () => {
+    $("modal-ok").disabled = true;
+    try { await onOk(); } finally { $("modal-ok").disabled = false; }
+  };
+  $("modal").classList.add("open");
+}
+function closeModal() {
+  $("modal").classList.add("hidden");
+  if (S._modalTrigger && S._modalTrigger.focus) S._modalTrigger.focus();
+}
+$("modal-cancel").onclick = closeModal;
+$("modal-ok").onclick = () => { if (S._modalOk) S._modalOk(); };
+$("modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
+
+/* ---------------- 实例 / 顶栏 ---------------- */
+const PAGE_META = {
+  studio: ["演示工作室", "选一份 PPTX，选主题，一次完成制作与核对"],
+  material: ["从材料生成", "TXT / Markdown / DOCX 先冻结事实，再生成原生 PPT"],
+  edit: ["局部编辑", "在真实页面上选对象，改一处、生成独立候选"],
+  history: ["版本与历史", "作品卡片与真实版本轨迹，恢复后仍需重新核对"],
+};
+function setView(name) {
+  S.view = name;
+  document.querySelectorAll("#nav button").forEach((b) =>
+    b.setAttribute("aria-current", b.dataset.view === name ? "page" : "false"));
+  document.querySelectorAll("main .view").forEach((v) => (v.hidden = v.dataset.view !== name));
+  const m = PAGE_META[name] || ["稳稿 PPT", ""];
+  $("page-title").textContent = m[0];
+  $("page-sub").textContent = m[1];
+  if (name === "history") loadHistory();
+  if (name === "edit") initEdit();
+  if (name === "material" && !S.material.task) resumeMaterial();
+}
+document.querySelectorAll("#nav button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));
+
+function renderInstance(inst) {
+  if (!inst) return;
+  const installed = inst.kind === "installed";
+  $("inst-pill").textContent = (installed ? "安装实例" : "开发实例") + " · " +
+    (inst.label || "") + " · 任务 " + (inst.jobs == null ? "—" : inst.jobs);
+  $("inst-pill").className = "pill " + (installed ? "ok" : "dev");
+  $("side-inst").innerHTML =
+    "<b>" + esc(inst.kind_label || "") + "</b>" +
+    "<span class='k'>构建</span> " + esc(inst.label || "—") + "<br>" +
+    "<span class='k'>build</span> " + esc(shortSha(inst.build_id)) + "…<br>" +
+    "<span class='k'>任务</span> " + esc(inst.jobs == null ? "—" : inst.jobs);
+  S.inst = inst;
+}
+
+function drawerBody() {
+  const b = S.boot || {}, i = (S.boot && S.boot.instance) || {};
+  const m = b.support_matrix || {};
+  const rows = [
+    ["实例类型", i.kind_label || "—"],
+    ["构建标记", i.label || "—"],
+    ["构建身份", i.build_id || "—"],
+    ["runner", b.runner_version || "—"],
+    ["程序目录", i.program_dir || "—"],
+    ["数据根", i.data_root || "—"],
+    ["解释器", i.python || "—"],
+    ["任务数", String(i.jobs == null ? "—" : i.jobs)],
+    ["判定标签", (b.label || "—") + " / release_ready=" + String(b.release_ready)],
+    ["监听", b.bind || "—"],
+    ["主题注册表", b.theme_registry_version || "—"],
+    ["实例说明", i.note || "—"],
+  ];
+  return "<div class='grid2'>" + rows.map(([k, v]) =>
+    "<div class='kv'><b>" + esc(k) + "</b><span class='mono'>" + esc(v) + "</span></div>").join("") +
+    "</div>" +
+    (m.scope_statement ? "<div class='sec' style='margin-top:14px'><h2 style='font-size:13px'>契约口径</h2><p class='hint'>" +
+      esc(m.scope_statement) + "</p></div>" : "") +
+    "<p class='hint' style='margin-top:14px'>技术摘要可查，但关键失败与任务状态仍显示在主界面，不会只藏在抽屉里。</p>";
+}
+function openDrawer() {
+  $("drawer-body").innerHTML = drawerBody();
+  $("drawer").classList.remove("hidden");
+  $("drawer-close").focus();
+}
+function closeDrawer() {
+  $("drawer").classList.add("hidden");
+  $("btn-tech").focus();
+}
+$("btn-tech").onclick = openDrawer;
+$("btn-tech2").onclick = openDrawer;
+$("drawer-close").onclick = closeDrawer;
+$("drawer").addEventListener("click", (e) => { if (e.target.id === "drawer") closeDrawer(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!$("modal").classList.contains("hidden")) closeModal();
+  else if (!$("drawer").classList.contains("hidden")) closeDrawer();
+});
+
+/* ---------------- 启动 ---------------- */
+async function boot() {
+  const r = await api("/api/bootstrap");
+  if (!r.ok || !r.json) {
+    $("inst-pill").textContent = "实例信息加载失败";
+    $("inst-pill").className = "pill bad";
+    toast("无法读取实例信息：" + errText(r), true);
+    return;
+  }
+  S.boot = r.json;
+  renderInstance(S.boot.instance);
+  renderThemes(S.boot.themes || [], S.boot.theme_default);
+  renderScope();
+  renderSamples(S.boot.samples || []);
+  renderMaterialMeta();
+  renderHistoryCount(S.boot.jobs || []);
+  $("label-pill").innerHTML = "<span class='dot'></span>" +
+    (S.boot.label === "DEVELOPMENT_CANDIDATE" ? "内部测试版" : esc(S.boot.label || "—"));
+  applyDeepLink();
+}
+
+/* 深链只做只读定位：?view=studio|material|edit|history&job=&task=&side=
+   不会自动创建任务、不会调用模型、不会触发制作。 */
+async function applyDeepLink() {
+  const q = new URLSearchParams(location.search);
+  const view = q.get("view");
+  const job = q.get("job");
+  const task = q.get("task");
+  if (job && /^job-[A-Za-z0-9]+$/.test(job)) {
+    S.studio.job = job;
+    S.studio.side = q.get("side") === "original" ? "original" : "candidate";
+    $("preview-seg").querySelectorAll("button").forEach((x) =>
+      x.setAttribute("aria-pressed", String(x.dataset.side === S.studio.side)));
+    $("stage-empty").classList.add("hidden");
+    await loadStudioPages(job, S.studio.side);
+    await loadStudioResult(job);
+    const snap = await api("/api/make/" + enc(job));
+    if (snap.ok && snap.json) { S.studio.snapshot = snap.json; renderMakeStages(snap.json); }
+  }
+  if (task && /^mt-[0-9a-f]{8}$/.test(task)) {
+    const r = await api("/api/material/tasks/" + enc(task));
+    if (r.ok && r.json && r.json.task) { S.material.task = r.json.task; renderMaterialTask(r.json.task); }
+  }
+  if (view === "edit" && job) S.edit.job = job;
+  if (view) setView(view);
+  if (view === "history" && job) {
+    await loadHistory();
+    const j = S.history.jobs.find((x) => x.job_id === job);
+    if (j) { S.history.sel = j.job_id; renderHistory(); renderHistoryDetail(j); }
+  }
+}
+
+/* ---------------- 工作室：主题 / 来源 / 范围 ---------------- */
+function themeCard(t, on) {
+  const c = t.colors || {}, bg = "#" + (t.slide_bg || "FFFFFF");
+  const dark = String(t.slide_bg || "").toUpperCase() === "0A192F";
+  const txt = "#" + (c.text || "1A1A1A");
+  return "<button class='theme' data-theme='" + esc(t.id) + "' aria-pressed='" + (on ? "true" : "false") + "'>" +
+    "<div class='sw' style='background:" + bg + "'>" +
+      "<i style='left:9%;top:20%;width:46%;height:5px;background:#" + esc(c.primary || "1F3864") + ";opacity:" + (dark ? ".95" : "1") + "'></i>" +
+      "<i style='left:9%;top:33%;width:62%;height:3px;background:" + esc(c.muted || "595959") + ";opacity:.6'></i>" +
+      "<i style='left:9%;top:45%;width:38%;height:3px;background:" + esc(c.muted || "595959") + ";opacity:.45'></i>" +
+      "<i style='left:9%;bottom:12%;width:16%;height:9px;background:#" + esc(c.accent || "C00000") + ";border-radius:1px'></i>" +
+      "<span style='position:absolute;right:8px;top:6px;font-size:9px;color:" + txt + ";opacity:.55'>示例</span>" +
+    "</div>" +
+    "<div class='tname'>" + esc(t.name) + (t.legacy_default ? "<span class='tag'>旧默认</span>" : "") + "</div>" +
+    "<div class='tid'>" + esc(t.id) + " · v" + esc(t.version) + "</div>" +
+  "</button>";
+}
+function renderThemes(themes, defId) {
+  if (!themes.length) { $("themes").innerHTML = "<div class='hint'>主题注册表为空。</div>"; return; }
+  S.studio.theme = S.studio.theme || defId || themes[0].id;
+  $("themes").innerHTML = themes.map((t) => themeCard(t, t.id === S.studio.theme)).join("");
+  $("themes").querySelectorAll(".theme").forEach((b) => (b.onclick = () => {
+    S.studio.theme = b.dataset.theme;
+    $("themes").querySelectorAll(".theme").forEach((x) =>
+      x.setAttribute("aria-pressed", String(x.dataset.theme === S.studio.theme)));
+    $("theme-state").textContent = (themes.find((t) => t.id === S.studio.theme) || {}).name || "";
+    syncMakeButton();
+  }));
+  const cur = themes.find((t) => t.id === S.studio.theme) || {};
+  $("theme-state").textContent = cur.name || "";
+}
+function renderScope() {
+  const m = (S.boot && S.boot.support_matrix) || {};
+  const un = (m.unsupported || []);
+  $("scope").innerHTML =
+    "<p>" + esc(m.scope_statement || "读取契约失败。") + "</p>" +
+    "<p style='margin-top:8px'>模式：" + esc((m.modes || []).join(" / ") || "—") + "</p>" +
+    (un.length ? "<p style='margin-top:8px'>不支持：" + esc(un.join("、")) + "（后端会明确拒绝，界面不提供假按钮）</p>" : "");
+}
+function renderSamples(samples) {
+  const sel = $("sample");
+  if (!samples.length) { sel.innerHTML = "<option value=''>（无内置样例）</option>"; return; }
+  sel.innerHTML = "<option value=''>不使用样例</option>" + samples.map((s) =>
+    "<option value='" + esc(s.path) + "'>" + esc(s.name) + " · " + bytes(s.bytes) + "</option>").join("");
+  sel.onchange = () => {
+    const v = sel.value;
+    if (!v) { S.studio.source = null; S.studio.meta = null; renderSourceMeta(); syncMakeButton(); return; }
+    const s = samples.find((x) => x.path === v);
+    S.studio.source = v;
+    S.studio.meta = { name: s.name, bytes: s.bytes, origin: "内置样例（程序目录）" };
+    S.studio.job = null; S.studio.snapshot = null; S.studio.result = null;
+    renderSourceMeta(); resetStage(); syncMakeButton();
+  };
+}
+function renderSourceMeta() {
+  const m = S.studio.meta;
+  $("src-state").textContent = m ? "已选择" : "未选择";
+  $("file-meta").className = "filemeta" + (m ? "" : " empty");
+  $("file-meta").innerHTML = m
+    ? "<b>" + esc(m.name) + "</b><br><span class='muted'>" + bytes(m.bytes) +
+      " · " + esc(m.origin) + (m.sha256 ? " · sha " + esc(shortSha(m.sha256)) + "…" : "") + "</span>"
+    : "尚未选择文件";
+}
+function syncMakeButton() {
+  const busy = S.studio.flowState === "RUNNING" || S.studio.flowState === "PENDING";
+  $("btn-make").disabled = !(S.studio.source && S.studio.theme) || busy;
+  const cancel = $("btn-make-cancel");
+  cancel.classList.toggle("hidden", !busy);
+  cancel.disabled = !!S.studio.cancelling || !S.studio.job;
+  cancel.textContent = S.studio.cancelling ? "正在取消…" : "取消制作";
+}
+
+/* 选择/上传原稿 */
+$("drop").onclick = () => $("file").click();
+$("drop").onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("file").click(); } };
+["dragenter", "dragover"].forEach((t) => $("drop").addEventListener(t, (e) => {
+  e.preventDefault(); $("drop").classList.add("over");
+}));
+["dragleave", "drop"].forEach((t) => $("drop").addEventListener(t, (e) => {
+  e.preventDefault(); $("drop").classList.remove("over");
+}));
+$("drop").addEventListener("drop", (e) => {
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) uploadPptx(f);
+});
+$("file").onchange = () => { if ($("file").files[0]) uploadPptx($("file").files[0]); };
+
+/* 上传请求身份与取消句柄：旧请求的迟到响应/取消不得覆盖新请求状态。 */
+let uploadSeq = 0;
+let uploadCtrl = null;
+/* 合理等待上限：本地回环上传正常 <1s；超过该时间即明确判失败并允许重试，
+   不再让页面永久停留在"正在上传"（对应故障：空响应/服务无响应时无结束态）。 */
+const UPLOAD_TIMEOUT_MS = 120000;
+
+async function uploadPptx(f) {
+  if (!/\.pptx$/i.test(f.name)) { toast("只支持 .pptx 原稿；材料请到「从材料生成」。", true); return; }
+  const my = ++uploadSeq;                       // 单调递增：仅当前请求可改 UI
+  if (uploadCtrl) { try { uploadCtrl.abort(); } catch (e) {} }   // 取消上一个未完成上传
+  const ctrl = new AbortController();
+  uploadCtrl = ctrl;
+  const timer = setTimeout(() => { try { ctrl.abort(); } catch (e) {} }, UPLOAD_TIMEOUT_MS);
+
+  /* 失败收尾：仅当前请求可执行；不置入不可用原稿，按钮按真实前置条件判定（此处保持禁用）。
+     不在任何地方"直接点亮"开始制作——是否可用仍由 syncMakeButton 依真实输入决定。 */
+  const fail = (reason) => {
+    if (my !== uploadSeq) return;                // 已有更新请求接管，忽略本次迟到结果
+    S.studio.source = null; S.studio.meta = null;
+    renderSourceMeta(); resetStage(); syncMakeButton();
+    $("file-meta").className = "filemeta empty";
+    $("file-meta").textContent = "上传失败：" + reason + "（可重新选择文件或重试）";
+    toast("上传失败：" + reason, true);
+  };
+
+  $("file-meta").className = "filemeta";
+  $("file-meta").textContent = "正在上传 " + f.name + " …";
+  let r = null, j = null, timedOut = false;
+  try {
+    r = await fetch("/api/upload", { method: "POST",
+      headers: { "X-Filename": encodeURIComponent(f.name) }, body: f, signal: ctrl.signal });
+    try { j = await r.json(); } catch (e) { j = null; }
+  } catch (e) {
+    if (e && e.name === "AbortError") {
+      if (my === uploadSeq) timedOut = true;     // 仍属当前请求才算超时；被新请求取消则静默
+    } else {
+      fail("网络中断或服务无响应（" + (e && e.message ? e.message : "连接失败") + "）");
+      return;
+    }
+  } finally {
+    clearTimeout(timer);                         // 只清理本次请求的等待/取消句柄
+    if (uploadCtrl === ctrl) uploadCtrl = null;
+  }
+  if (my !== uploadSeq) return;                  // 迟到响应：不覆盖新请求状态
+
+  if (timedOut) { fail("等待超时（超过 " + Math.round(UPLOAD_TIMEOUT_MS / 1000) + " 秒仍未完成；可重试）"); return; }
+  if (!r) { fail("没有收到服务响应"); return; }
+  if (!r.ok) { fail(errText({ json: j, text: "" }) || ("HTTP " + r.status)); return; }
+  if (!j || !j.uploaded) { fail("响应为空或格式不符，未能确认已保存"); return; }
+
+  S.studio.source = j.path;
+  S.studio.meta = { name: f.name, bytes: j.bytes, sha256: j.sha256, origin: "本次上传（数据根）" };
+  S.studio.job = null; S.studio.snapshot = null; S.studio.result = null;
+  $("sample").value = "";
+  renderSourceMeta(); resetStage(); syncMakeButton();
+  toast("已选择原稿：" + f.name);
+}
+
+/* 开始制作 + 轮询真实状态 */
+$("btn-make").onclick = async () => {
+  if (!S.studio.source || !S.studio.theme) return;
+  if (S.studio.flowState === "RUNNING" || S.studio.flowState === "PENDING") return;
+  if (S.studio.timer) { clearTimeout(S.studio.timer); S.studio.timer = null; }
+  S.studio.job = null; S.studio.snapshot = null; S.studio.result = null;
+  S.studio.cancelling = false;
+  S.studio.flowState = "PENDING";
+  resetStage();
+  syncMakeButton();
+  $("btn-make").disabled = true;
+  $("make-note").textContent = "正在提交预检…";
+  const r = await api("/api/make", { method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ source: S.studio.source, theme: S.studio.theme }) });
+  const j = r.json || {};
+  if (!j.accepted) {
+    S.studio.flowState = null;
+    $("make-note").innerHTML = "<span style='color:var(--bad)'>未创建任务：" +
+      esc(errText(r) || (j.precheck && j.precheck.detail) || "预检被拒绝") + "</span>";
+    syncMakeButton();
+    return;
+  }
+  S.studio.job = j.job_id;
+  S.studio.flowState = "RUNNING";
+  $("make-note").textContent = "已受理，任务 " + j.job_id + "。阶段由后端推进。";
+  $("stage-empty").classList.add("hidden");
+  syncMakeButton();
+  pollMake();
+};
+
+$("btn-make-cancel").onclick = async () => {
+  if (!S.studio.job) return;
+  // 取消请求只是“已提交”：在 runner 返回真正终态前，界面只能显示“正在取消”，
+  // 不能提前写成已取消，也不能因此出现下载。
+  S.studio.cancelling = true;
+  const btn = $("btn-make-cancel");
+  btn.disabled = true;
+  btn.textContent = "正在取消…";
+  $("statusline").innerHTML = chip("warn", "正在取消") +
+    "<span class='hint'>已向后端提交取消请求，等 runner 返回终态。</span>";
+  const r = await api("/api/make/" + enc(S.studio.job) + "/cancel", { method: "POST" });
+  if (!r.ok) {
+    S.studio.cancelling = false;
+    btn.disabled = false;
+    btn.textContent = "取消制作";
+    $("statusline").innerHTML = chip("bad", "取消失败") +
+      "<span class='hint'>" + esc(errText(r)) + "；任务状态未改变。</span>";
+    return;
+  }
+  toast("已提交取消；终态以任务状态为准。");
+  pollMake();
+};
+
+async function pollMake() {
+  if (S.studio.timer) { clearTimeout(S.studio.timer); S.studio.timer = null; }
+  if (!S.studio.job) return;
+  const job = S.studio.job;
+  const r = await api("/api/make/" + enc(job));
+  if (S.studio.job !== job) return;                       // 迟到响应不串任务
+  if (!r.ok || !r.json) {
+    $("make-detail").innerHTML = "<span style='color:var(--bad)'>无法读取最新状态：" +
+      esc(errText(r)) + "（不会把任务归零或重建）</span>";
+    S.studio.timer = setTimeout(pollMake, 3000);
+    return;
+  }
+  S.studio.snapshot = r.json;
+  const flow = r.json.orchestration || {};
+  S.studio.flowState = flow.state;
+  renderMakeStages(r.json);
+  syncMakeButton();
+  const running = flow.state === "RUNNING" || flow.state === "PENDING";
+  if (running) {
+    if (r.json.cancelled || S.studio.cancelling) {
+      $("statusline").innerHTML = chip("warn", "正在取消") +
+        "<span class='hint'>取消已登记；等编排在下一个阶段停住，才算终态。此时不提供下载。</span>";
+    }
+    S.studio.timer = setTimeout(pollMake, 1400);
+    return;
+  }
+  S.studio.cancelling = false;
+  $("btn-make-cancel").textContent = "取消制作";
+  $("btn-make-cancel").disabled = false;
+  await afterMake(job);
+}
+
+function renderMakeStages(snap) {
+  const flow = snap.orchestration || {};
+  const hist = flow.history || [];
+  const labels = { precheck: "预检并冻结身份", run: "渲染候选页面", validate: "契约与来源核对",
+                   publish: "发布候选", export: "固定交付导出", complete: "完成",
+                   stop: "已停止推进", guard: "安全护栏", cancel: "取消请求", orchestrator: "编排" };
+  const latest = {};
+  hist.forEach((h) => { latest[h.stage] = h; });
+  const order = ["precheck", "run", "validate", "publish", "export"];
+  const stateCls = (st) => st === "DONE" || st === "COMPLETED" ? "done"
+    : st === "RUNNING" ? "run" : (st === "FAILED" || st === "ERROR") ? "bad"
+    : st === "STOPPED" ? "stop" : "";
+  let html = order.map((k) => {
+    const h = latest[k];
+    const cls = h ? stateCls(h.state) : "";
+    const txt = h ? (h.state === "RUNNING" ? "进行中" : h.state === "DONE" ? "完成" :
+      h.state === "FAILED" ? "失败" : h.state === "STOPPED" ? "停止" : h.state) : "等待";
+    const extra = h && h.detail && (h.detail.verdict || h.detail.blocking_findings != null)
+      ? " · " + esc(h.detail.verdict || "") +
+        (h.detail.blocking_findings != null ? " / 阻断 " + esc(h.detail.blocking_findings) : "")
+      : "";
+    return "<div class='st " + cls + "'><span class='b'>" + (cls === "done" ? "✓" : cls === "bad" ? "!" : cls === "stop" ? "–" : "") +
+      "</span><span>" + esc(labels[k] || k) + "</span><span class='muted'>" + esc(txt) + extra + "</span></div>";
+  }).join("");
+  if (latest.stop) {
+    html += "<div class='st stop'><span class='b'>–</span><span>停止原因</span><span class='muted'>" +
+      esc((latest.stop.detail || {}).reason || "已停止") + "</span></div>";
+  }
+  $("make-stages").innerHTML = html || "<div class='hint'>尚未开始。</div>";
+  const runner = snap.runner || {};
+  $("make-detail").innerHTML =
+    "<div class='kv'><b>任务</b><span class='mono'>" + esc(runner.job_id || S.studio.job || "—") + "</span></div>" +
+    "<div class='kv'><b>主题</b><span>" + esc(runner.theme_name || runner.theme || "—") +
+      " <span class='mono'>" + esc(runner.theme_version ? "v" + runner.theme_version : "") + "</span></span></div>" +
+    "<div class='kv'><b>编排</b><span>" + esc(flow.state || "—") + "</span></div>" +
+    "<div class='kv'><b>取消</b><span>" + (snap.cancelled ? "已请求/已取消" : "无") + "</span></div>";
+  const validation = snap.validation || {};
+  const sceneStage = runner.semantic_scene_stage || null;
+  if (sceneStage) {
+    const state = sceneStage.status || "UNKNOWN";
+    const sourceLanguages = (sceneStage.detected_source_languages || []).join(", ");
+    const coverageAudit = sceneStage.coverage_audit || {};
+    const languageNote = sourceLanguages ? " · 输入语言 " + esc(sourceLanguages) + "；图库查询使用中性英文" : "";
+    let description = esc(state);
+    if (state === "RUNNING") description = "正在按整稿语义查找授权场景图并规划安全版位";
+    else if (state === "DONE") description = "实际嵌入 " +
+      esc(sceneStage.inserted == null ? sceneStage.planned_photo_count : sceneStage.inserted) +
+      " 张，位于 " + esc((sceneStage.image_pages || []).join("、") || "—") + " 页";
+    else if (state === "FAILED") description = "阻断：未解决场景 " +
+      esc(sceneStage.unresolved_scene_count == null ? "—" : sceneStage.unresolved_scene_count) + " 项" +
+      (sceneStage.failure_code ? " · " + esc(sceneStage.failure_code) : "");
+    if (coverageAudit.status) {
+      description += " · 逐页复核 " + esc(coverageAudit.status) + " " +
+        esc(coverageAudit.pages_checked == null ? 0 : coverageAudit.pages_checked) + "/" +
+        esc(sceneStage.source_page_count == null ? "?" : sceneStage.source_page_count) + " 页";
+      if (coverageAudit.missing_scene_count || coverageAudit.merged_distinct_scene_count) {
+        description += " · 漏项 " + esc(coverageAudit.missing_scene_count || 0) +
+          " / 错误合并 " + esc(coverageAudit.merged_distinct_scene_count || 0);
+      }
+    }
+    if (sceneStage.planned_scene_count != null) {
+      description += " · 具体场景 " + esc(sceneStage.planned_scene_count);
+    }
+    description += languageNote;
+    $("make-detail").innerHTML +=
+      "<div class='kv'><b>语义场景配图</b><span>" + description + "</span></div>";
+    if (state === "FAILED" && sceneStage.model_error) {
+      const modelError = sceneStage.model_error;
+      $("make-detail").innerHTML +=
+        "<div class='kv'><b>场景模型错误</b><span>" +
+        esc(modelError.code || sceneStage.failure_code || "MODEL.ERROR") +
+        (modelError.status_code ? " · HTTP " + esc(modelError.status_code) : "") +
+        (modelError.detail ? " · " + esc(modelError.detail) : "") +
+        "</span></div>";
+    }
+  }
+  const layoutGate = validation.layout_hard_gate || {};
+  if (layoutGate.status) {
+    $("make-detail").innerHTML +=
+      "<div class='kv'><b>排版硬门禁</b><span>" + esc(layoutGate.status) +
+      " · 发现 " + esc(layoutGate.finding_count == null ? "—" : layoutGate.finding_count) +
+      " · 未核验 " + esc(layoutGate.unverified_count == null ? "—" : layoutGate.unverified_count) +
+      "</span></div>" +
+      "<div class='kv'><b>候选 SHA-256</b><span class='mono'>" +
+      esc(validation.candidate_pptx_sha256 || "—") + "</span></div>";
+  }
+  const sceneGate = validation.semantic_scene_gate || {};
+  if (sceneGate.status) {
+    $("make-detail").innerHTML +=
+      "<div class='kv'><b>场景图硬门禁（HG13）</b><span>" +
+      esc(sceneGate.status) + " · 实际图 " +
+      esc(sceneGate.embedded_scene_picture_count == null ? "—" : sceneGate.embedded_scene_picture_count) +
+      " / 计划 " + esc(sceneGate.planned_scene_count == null ? "—" : sceneGate.planned_scene_count) +
+      " · 发现 " + esc(sceneGate.findings == null ? "—" : sceneGate.findings) +
+      (sceneGate.unverified ? " · 未核验 " + esc(sceneGate.unverified) : "") +
+      "</span></div>";
+  }
+  $("make-tech").innerHTML =
+    "<div class='kv'><b>job</b><span class='mono'>" + esc(runner.job_id || "—") + "</span></div>" +
+    "<div class='kv'><b>attempt</b><span class='mono'>" + esc(runner.attempt_id || "—") + "</span></div>" +
+    "<div class='kv'><b>run</b><span class='mono'>" + esc(runner.run_id || "—") + "</span></div>" +
+    "<div class='kv'><b>输入哈希</b><span class='mono'>" + esc(shortSha(runner.input_hash)) + "…</span></div>" +
+    "<div class='kv'><b>配置摘要</b><span class='mono'>" + esc(shortSha(runner.theme_config_digest)) + "…</span></div>" +
+    "<div class='kv'><b>导出目录</b><span class='mono'>" + esc(runner.export_path || "—") + "</span></div>" +
+    "<p style='margin-top:8px'>分步按钮已由「开始制作」编排替代；后端仍在走 precheck → run → validate → publish → export 真实 CLI。</p>";
+}
+
+async function afterMake(job, surface = "make") {
+  const snap = S.studio.snapshot || {};
+  const v = (snap.validation || {}).verdict;
+  const validation = snap.validation || {};
+  const hardGate = validation.layout_hard_gate || {};
+  $("native-review").innerHTML = "";
+  const cancelled = snap.cancelled;
+  if (cancelled) {
+    $("downloads").innerHTML = "";
+    $("stage-canvas").classList.add("hidden");
+    $("stage-meta").textContent = "已取消";
+    $("statusline").innerHTML = chip("warn", "已取消") +
+      "<span class='hint'>取消后不显示成功，也不提供下载。</span>";
+    return;
+  }
+  if (v === "DEVELOPMENT_CANDIDATE") {
+    await loadStudioResult(job);
+    await loadStudioPages(job, "candidate");
+  } else if (v === "NEEDS_REVIEW" || v === "FAILED") {
+    $("statusline").innerHTML = chip("bad", v === "FAILED" ? "未通过" : "需要核对") +
+      "<span class='hint'>未通过的结果不会进入正常下载；请看上方的停止原因与阻断项。</span>";
+    if (validation.candidate_pptx_sha256 && hardGate.status !== "EXECUTED") {
+      $("native-review").innerHTML = nativeReviewPanelHtml(
+        job, validation.candidate_pptx_sha256, hardGate);
+      wireNativeReviewPanel(job, validation.candidate_pptx_sha256, hardGate, surface, null);
+    }
+  } else {
+    $("statusline").innerHTML = chip("warn", "已停止") +
+      "<span class='hint'>编排已结束但未形成可交付结果。</span>";
+  }
+}
+
+async function openHistoricalStudioJob(job) {
+  if (S.studio.timer) { clearTimeout(S.studio.timer); S.studio.timer = null; }
+  S.studio.job = job;
+  S.studio.snapshot = null;
+  S.studio.result = null;
+  S.studio.cancelling = false;
+  $("downloads").innerHTML = "";
+  $("native-review").innerHTML = "";
+  $("statusline").innerHTML = "";
+  $("make-stages").innerHTML = "<div class='hint'>正在恢复历史任务的候选与门禁状态……</div>";
+  $("make-detail").textContent = "";
+  setView("studio");
+
+  await loadStudioPages(job, "candidate");
+  const r = await api("/api/jobs/" + enc(job));
+  if (S.studio.job !== job) return;
+  if (!r.ok || !r.json || !r.json.validation || typeof r.json.validation !== "object" || Array.isArray(r.json.validation)) {
+    $("statusline").innerHTML = chip("bad", "无法恢复") +
+      "<span class='hint'>未读取到该历史任务的完整门禁状态；不会显示下载或复核通过。</span>";
+    $("make-stages").innerHTML = "<div class='hint'>历史任务状态读取失败。</div>";
+    return;
+  }
+
+  const validation = r.json.validation;
+  S.studio.snapshot = { validation, cancelled: false };
+  S.studio.flowState = "COMPLETED";
+  $("make-stages").innerHTML = "<div class='hint'>历史任务已恢复；判定 " +
+    esc(validation.verdict || "—") + "。复核和下载状态以当前后端门禁为准。</div>";
+  $("make-detail").innerHTML = "<div class='kv'><b>历史 job</b><span class='mono'>" +
+    esc(job) + "</span></div><div class='kv'><b>候选 SHA-256</b><span class='mono'>" +
+    esc(validation.candidate_pptx_sha256 || "—") + "</span></div>";
+  await afterMake(job, "history");
+}
+
+async function refreshHistoricalStudioJob(job) {
+  if (S.studio.job !== job) return;
+  const r = await api("/api/jobs/" + enc(job));
+  if (S.studio.job !== job) return;
+  if (!r.ok || !r.json || !r.json.validation || typeof r.json.validation !== "object" || Array.isArray(r.json.validation)) {
+    $("statusline").innerHTML = chip("warn", "状态待刷新") +
+      "<span class='hint'>复核后状态读取失败；正常下载仍不会开放。</span>";
+    return;
+  }
+  S.studio.snapshot = { validation: r.json.validation, cancelled: false };
+  await afterMake(job, "history");
+}
+
+function nativeReviewTemplate(candidateSha, pageCount) {
+  const allPages = Array.from({ length: pageCount }, (_, i) => i + 1);
+  return {
+    schema: "WG-NATIVE-REVIEW/1",
+    pptx_sha256: candidateSha,
+    video_sha256: "",
+    reviewer: { id: "", independent: false },
+    overall: "",
+    playback_application: "",
+    reopened: false,
+    reopened_pptx_sha256: "",
+    pages: allPages.map((page) => ({
+      page, visible_content: false, no_clipping: false, no_occlusion: false,
+      observations: ""
+    })),
+    animation_review: {
+      checked: false, pages: [1, 7, 13].filter((page) => page <= pageCount),
+      observations: ""
+    },
+    completed_at: ""
+  };
+}
+
+function nativeReviewPanelHtml(jobId, candidateSha, gate) {
+  const id = esc(jobId);
+  const pageCount = Number(gate.page_count || 0);
+  const pages = Array.isArray(gate.pages_checked) ? gate.pages_checked.length : 0;
+  const reviewUrl = "/api/jobs/" + enc(jobId) +
+    "/native-review-copy?sha256=" + encodeURIComponent(candidateSha);
+  const countText = Number.isInteger(pageCount) && pageCount > 0
+    ? pageCount + " 页" : "页数尚未确认";
+  const evidenceControls = Number.isInteger(pageCount) && pageCount > 0
+    ? "<div class='grid2' style='margin-top:10px'>" +
+      "<label>原生实播录像（MP4）<input id='native-video-" + id +
+      "' type='file' accept='.mp4,video/mp4'></label>" +
+      "<label>独立复核记录（JSON）<input id='native-record-" + id +
+      "' type='file' accept='.json,application/json'></label></div>" +
+      "<div style='display:flex;gap:8px;flex-wrap:wrap;margin-top:10px'>" +
+      "<button class='btn sm' id='native-template-" + id + "'>下载空白复核记录</button>" +
+      "<button class='btn primary sm' id='native-submit-" + id + "'>附加证据并重新核验</button></div>" +
+      "<div class='hint' id='native-status-" + id + "' aria-live='polite' style='margin-top:8px'></div>"
+    : "<p class='hint'>后端尚未确认全部页数；刷新或重新完成静态核验后再取复核材料。</p>";
+  return "<section class='note' id='native-review-card-" + id + "' style='margin-top:12px'>" +
+    "<b>原生实播复核尚未完成</b>：当前硬门禁 " + esc(gate.status || "未执行") +
+    "；静态页检查 " + pages + "/" + esc(countText) + "；未核验项 " +
+    esc(gate.unverified_count == null ? "—" : gate.unverified_count) + "。<br>" +
+    "<span class='hint'>复核副本只供本机放映检查，不是交付下载。由独立复核人打开并完整实播后，关闭软件、从磁盘重开同一哈希文件，再逐页填写观察和动效记录；录像 SHA 可以留空，上传时会按所选文件计算并绑定。系统不会代填 PASS；JSON 的身份声明不是数字签名，门禁还会实际解码录像并重新检查身份、时长和页覆盖。其他静态 FAIL/缺证据仍会继续阻断。</span>" +
+    "<p style='margin-top:8px'><a class='btn sm' href='" + esc(reviewUrl) + "'>下载复核专用候选（SHA " + esc(shortSha(candidateSha)) + "…）</a></p>" +
+    evidenceControls + "</section>";
+}
+
+function nativeReviewBytesToBase64(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = "";
+  const step = 0x8000;
+  for (let i = 0; i < bytes.length; i += step) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + step));
+  }
+  return btoa(binary);
+}
+
+async function nativeReviewSha256(file) {
+  if (!window.crypto || !window.crypto.subtle)
+    throw new Error("当前浏览器未开放 WebCrypto SHA-256，未上传任何证据。");
+  const digest = await window.crypto.subtle.digest("SHA-256", await file.arrayBuffer());
+  return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function wireNativeReviewPanel(jobId, candidateSha, gate, surface, materialTaskId) {
+  const templateButton = $("native-template-" + jobId);
+  const uploadButton = $("native-submit-" + jobId);
+  if (templateButton) templateButton.onclick = () => {
+    const count = Number(gate.page_count || 0);
+    if (!Number.isInteger(count) || count < 1) return;
+    const blob = new Blob([JSON.stringify(nativeReviewTemplate(candidateSha, count), null, 2)],
+                          { type: "application/json;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "WG-NATIVE-REVIEW-" + candidateSha.slice(0, 12) + ".json";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  if (!uploadButton) return;
+  uploadButton.onclick = async () => {
+    const videoInput = $("native-video-" + jobId);
+    const recordInput = $("native-record-" + jobId);
+    const status = $("native-status-" + jobId);
+    const video = videoInput && videoInput.files && videoInput.files[0];
+    const reviewFile = recordInput && recordInput.files && recordInput.files[0];
+    if (!video || !reviewFile) {
+      status.textContent = "请选择真实 MP4 录像和独立复核 JSON；未上传。";
+      return;
+    }
+    if (video.size <= 0 || video.size > 128 * 1024 * 1024) {
+      status.textContent = "录像必须大于 0 字节且不超过 128 MiB；未上传。";
+      return;
+    }
+    uploadButton.disabled = true;
+    try {
+      status.textContent = "正在本机计算文件哈希并检查身份……";
+      const rawRecord = await reviewFile.text();
+      if (new TextEncoder().encode(rawRecord).byteLength > 36 * 1024)
+        throw new Error("复核 JSON 超过 36 KiB；请精简观察描述后重试，未上传。");
+      let record;
+      try { record = JSON.parse(rawRecord); }
+      catch (_) { throw new Error("复核 JSON 无法解析；未上传。"); }
+      if (!record || record.schema !== "WG-NATIVE-REVIEW/1")
+        throw new Error("复核记录 schema 不匹配；未上传。");
+      if (record.pptx_sha256 !== candidateSha)
+        throw new Error("复核记录绑定的 PPTX SHA 与当前候选不同；未上传。");
+      const videoSha = await nativeReviewSha256(video);
+      if (record.video_sha256 && record.video_sha256 !== videoSha)
+        throw new Error("复核记录中的录像 SHA 与所选 MP4 不同；未上传。");
+      record.video_sha256 = videoSha;
+      const boundRecord = JSON.stringify(record);
+      status.textContent = "正在将录像与复核记录绑定到候选……";
+      const attach = await api("/api/jobs/" + enc(jobId) + "/native-playback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "video/mp4",
+          "X-WG-Expected-Candidate-SHA256": candidateSha,
+          "X-WG-Native-Review-Record-B64": nativeReviewBytesToBase64(boundRecord)
+        },
+        body: video
+      });
+      if (!attach.ok || !attach.json || !attach.json.ok)
+        throw new Error(errText(attach));
+      status.textContent = "证据已绑定；正在重跑完整门禁……";
+      const started = await api("/api/jobs/" + enc(jobId) + "/validate", { method: "POST" });
+      if (!started.ok) throw new Error(errText(started));
+      let finalState = null;
+      for (let i = 0; i < 240; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const state = await api("/api/jobs/" + enc(jobId));
+        if (!state.ok || !state.json) throw new Error(errText(state));
+        finalState = state.json;
+        const op = finalState.op || {};
+        if (op.op === "validate" && op.state === "running") {
+          status.textContent = "完整核验仍在运行；不会显示或提供下载。" +
+            (op.started_at ? " 开始于 " + formatTime(op.started_at) + "。" : "");
+          continue;
+        }
+        if (op.op !== "validate" || op.state !== "done") continue;
+        break;
+      }
+      if (!finalState || !finalState.op || finalState.op.state !== "done")
+        throw new Error("等待完整核验超时；请刷新状态，当前仍不会提供下载。");
+      const verdict = (finalState.validation || {}).verdict;
+      const gateResult = (finalState.validation || {}).layout_hard_gate || {};
+      if (verdict !== "DEVELOPMENT_CANDIDATE" || gateResult.status !== "EXECUTED") {
+        status.textContent = "重新核验仍未通过：" + (verdict || "无判定") +
+          "；布局门禁 " + (gateResult.status || "未执行") +
+          "，未核验项 " + (gateResult.unverified_count == null ? "—" : gateResult.unverified_count) +
+          "。正常下载继续阻断。";
+        if (surface === "make") await pollMake();
+        else if (materialTaskId) await refreshMaterialTask(materialTaskId);
+        else if (surface === "history") await refreshHistoricalStudioJob(jobId);
+        return;
+      }
+      status.textContent = "完整门禁已执行通过，正在请求后端固定导出……";
+      const exported = await api("/api/jobs/" + enc(jobId) + "/export", { method: "POST" });
+      if (!exported.ok || !exported.json || exported.json.exported !== true)
+        throw new Error("门禁已更新，但固定导出未通过后端核验：" + errText(exported));
+      toast("复核证据已核验，固定导出已由后端登记。");
+      if (surface === "make") await pollMake();
+      else if (materialTaskId) await refreshMaterialTask(materialTaskId);
+      else if (surface === "history") await refreshHistoricalStudioJob(jobId);
+    } catch (err) {
+      status.textContent = (err && err.message) || "复核证据处理失败；未提供正常下载。";
+    } finally {
+      uploadButton.disabled = false;
+    }
+  };
+}
+
+async function refreshMaterialTask(taskId) {
+  const r = await api("/api/material/tasks/" + enc(taskId));
+  if (r.ok && r.json && r.json.task) {
+    S.material.task = r.json.task;
+    renderMaterialTask(r.json.task);
+  } else {
+    toast("材料任务状态刷新失败：" + errText(r), true);
+  }
+}
+
+function chip(kind, text) {
+  return "<span class='pill " + kind + "'><span class='dot'></span>" + esc(text) + "</span>";
+}
+
+/* 预览：原稿 / 候选 */
+$("preview-seg").querySelectorAll("button").forEach((b) => (b.onclick = () => {
+  S.studio.side = b.dataset.side;
+  $("preview-seg").querySelectorAll("button").forEach((x) =>
+    x.setAttribute("aria-pressed", String(x.dataset.side === S.studio.side)));
+  if (S.studio.job) loadStudioPages(S.studio.job, S.studio.side);
+}));
+
+function resetStage() {
+  S.studio.pages = {};
+  S.studio.pageNumbers = {};
+  S.studio.page = 1;
+  $("thumbs").innerHTML = "";
+  $("stage-empty").classList.remove("hidden");
+  $("stage-loading").classList.add("hidden");
+  $("stage-fail").classList.add("hidden");
+  $("stage-canvas").classList.add("hidden");
+  $("statusline").innerHTML = "";
+  $("downloads").innerHTML = "";
+  $("make-stages").innerHTML = "<div class='hint'>尚未开始。</div>";
+  $("make-detail").innerHTML = "";
+  $("stage-meta").textContent = "尚未开始制作";
+}
+
+async function loadStudioPages(job, side) {
+  $("stage-empty").classList.add("hidden");
+  $("stage-fail").classList.add("hidden");
+  $("stage-canvas").classList.add("hidden");
+  $("stage-loading").classList.remove("hidden");
+  const r = await api("/api/jobs/" + enc(job) + "/pages?side=" + enc(side));
+  if (S.studio.job !== job) return;                        // 换任务后丢弃迟到结果
+  $("stage-loading").classList.add("hidden");
+  const j = r.json || {};
+  if (!r.ok || !j.available) {
+    $("stage-fail").classList.remove("hidden");
+    $("stage-fail").innerHTML = "<div class='note'>" +
+      esc(j.reason || errText(r) || "预览不可用。") +
+      (side === "candidate" ? " 候选页图为空时不会用原稿或示例图代替。" : "") + "</div>";
+    $("stage-meta").textContent = side === "candidate" ? "候选预览不可用" : "原稿预览不可用";
+    return;
+  }
+  S.studio.pages[side] = j.pages;
+  S.studio.pageNumbers[side] = j.page_numbers || [];
+  S.studio.page = Math.min(S.studio.page || 1, j.pages.length) || 1;
+  renderStagePage(job, side);
+  $("stage-meta").textContent = (side === "candidate" ? "候选" : "原稿") + " · " +
+    (j.total_slides != null
+      ? "共 " + j.total_slides + " 页（" + (j.hidden_slides || []).length +
+        " 页隐藏）· 预览 " + j.pages.length + " 页"
+      : "预览 " + j.pages.length + " 页") + " · sha " + shortSha(j.file_sha256) + "…" +
+    (j.source ? " · " + j.source : "");
+}
+
+function pageFileUrl(job, side, name) {
+  return "/api/preview/file?job=" + enc(job) + "&side=" + enc(side) +
+         "&name=" + enc(name) + "&v=" + Date.now();
+}
+
+function renderStagePage(job, side) {
+  const pages = S.studio.pages[side] || [];
+  const numbers = S.studio.pageNumbers[side] || [];
+  const idx = Math.max(0, Math.min((S.studio.page || 1) - 1, pages.length - 1));
+  $("stage-canvas").classList.remove("hidden");
+  $("stage-img").src = pageFileUrl(job, side, pages[idx]);
+  $("stage-img").alt = (side === "candidate" ? "候选" : "原稿") + "第 " + (numbers[idx] || idx + 1) + " 页";
+  $("thumbs").innerHTML = pages.map((p, i) =>
+    "<button class='thumb' data-i='" + (i + 1) + "' aria-pressed='" + (i === idx) + "'>" +
+      "<img src='" + pageFileUrl(job, side, p) + "' alt='第 " + (numbers[i] || i + 1) + " 页' loading='lazy'>" +
+      "<div class='n'>" + (numbers[i] || i + 1) + "</div></button>").join("");
+  $("thumbs").querySelectorAll(".thumb").forEach((b) => (b.onclick = () => {
+    S.studio.page = parseInt(b.dataset.i, 10);
+    renderStagePage(job, side);
+  }));
+}
+
+async function loadStudioResult(job) {
+  const r = await api("/api/jobs/" + enc(job) + "/result");
+  if (S.studio.job !== job) return;
+  S.studio.result = r.json || {};
+  const res = S.studio.result;
+  if (res.ready) {
+    $("statusline").innerHTML = chip("ok", "可以查看与下载") +
+      "<span class='hint'>下载经过导出清单与整文件 SHA-256 绑定；仍是内部测试候选，不是 READY。</span>";
+    $("downloads").innerHTML = "<div class='dl'>" + (res.items || []).map((it) =>
+      "<div class='item'><span class='muted small'>" + esc((it.kind || "").toUpperCase()) + "</span>" +
+      "<div><div class='nm'>" + esc(it.name) + "</div>" +
+      "<div class='meta'>" + bytes(it.bytes) + " · 预期 sha " + esc(shortSha(it.expected_sha256)) + "…</div></div>" +
+      "<a class='btn sm' href='" + esc(it.url) + "'>下载</a></div>").join("") + "</div>";
+  } else {
+    const c = res.code || "";
+    const blocked = /^(INCIDENT|EVIDENCE|GATE\.)/.test(c) || c === "GATE.NOT_VALIDATED";
+    $("statusline").innerHTML = chip(blocked ? "bad" : "warn",
+        blocked ? "已停止正常交付" : "尚未形成可下载交付") +
+      "<span class='hint'>" + esc(res.message || "导出清单未就绪。") +
+      (blocked ? "（本任务的当前结果不作为合格成品；历史版本仍可在「版本与历史」里核对）" : "") +
+      "</span>";
+    $("downloads").innerHTML = "";
+  }
+}
+
+/* ---------------- 材料生成 ---------------- */
+function renderMaterialMeta() {
+  const m = (S.boot && S.boot.material) || {};
+  const packs = m.packs || [];
+  const pexelsUrl = m.pexels_source_url || "https://www.pexels.com/";
+  const pexelsLicenseUrl = "https://www.pexels.com/license/";
+  const pexelsState = m.pexels_api_configured
+    ? "Pexels API 已配置；检索时只发送中性场景查询，作者与来源链接会保存在图片说明和演讲者备注中。"
+    : "Pexels API 未配置（可选）；需在启动工作台服务进程的环境中设置 PEXELS_API_KEY。密钥不会在此界面输入或展示。";
+  $("mat-scene-policy").innerHTML =
+    "<b>语义场景图硬规则</b>：按每页材料语义选择关联照片；同一具体场景全稿只放一张，不同场景不复用同图。找不到相关且合规的图时阻断生成，不用文字卡片顶替。<br>" +
+    esc(pexelsState) + " <a href='" + esc(pexelsUrl) + "' target='_blank' rel='noopener noreferrer'>Pexels 图片来源</a> · " +
+    "<a href='" + esc(pexelsLicenseUrl) + "' target='_blank' rel='noopener noreferrer'>许可范围</a>";
+  S.material.theme = S.material.theme || (S.boot && S.boot.theme_default);
+  $("mat-theme").innerHTML = (S.boot.themes || []).map((t) =>
+    "<option value='" + esc(t.id) + "'>" + esc(t.name) + " · " + esc(t.id) + "</option>").join("");
+  if (S.material.theme) $("mat-theme").value = S.material.theme;
+  $("mat-theme").onchange = () => { S.material.theme = $("mat-theme").value; };
+
+  const range = m.pages_range || [10, 20];
+  let opts = "";
+  for (let n = range[0]; n <= range[1]; n++) opts += "<option value='" + n + "'" + (n === 12 ? " selected" : "") + ">" + n + " 页</option>";
+  $("mat-pages").innerHTML = opts;
+  S.material.pages = 12;
+
+  if (!packs.length) {
+    $("mat-pack").innerHTML = "<option value=''>（本包没有回放包）</option>";
+    $("mat-pack-pages").value = "";
+    $("mat-pack-note").textContent = "缺少回放包时只能用真实模型模式。";
+    setMaterialMode("model");
+    return;
+  }
+  $("mat-pack").innerHTML = packs.map((p) =>
+    "<option value='" + esc(p.id) + "'>" + esc(p.name) + "</option>").join("");
+  const first = packs[0];
+  S.material.pack = first;
+  $("mat-pack").onchange = () => {
+    S.material.pack = packs.find((p) => p.id === $("mat-pack").value) || packs[0];
+    renderPack();
+  };
+  renderPack();
+  setMaterialMode("replay");
+}
+
+function renderPack() {
+  const p = S.material.pack;
+  if (!p) return;
+  $("mat-pack-pages").value = p.pages ? p.pages + " 页（冻结计划声明）" : "计划未声明页数";
+  $("mat-pack-note").textContent = p.note || "";
+  $("mat-replay-warn").innerHTML = "回放只复用冻结的内容计划，<b>跳过内容规划模型</b>；语义配图仍可能调用本地模型并查询图库。失败会如实阻断，回放不算真实模型生成证据。";
+}
+
+function setMaterialMode(mode) {
+  S.material.mode = mode;
+  $("mat-seg").querySelectorAll("button").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
+  $("mat-model-box").classList.toggle("hidden", mode !== "model");
+  $("mat-replay-box").classList.toggle("hidden", mode !== "replay");
+  $("mat-mode-note").innerHTML = mode === "replay"
+    ? "体验演示：复用冻结内容计划；仍会运行语义配图，可能调用本地模型并查询图库。"
+    : "上传我的材料：先冻结必讲事实，再由本地模型生成内容计划；需要本机模型服务可用。";
+  $("mat-replay-warn").innerHTML = mode === "replay"
+    ? "回放仅跳过内容规划模型；语义配图仍可能调用本地模型并查询图库。失败会阻断导出，不把回放当作真实模型生成证据。"
+    : "真实生成会在点击后调用本机模型；失败或需要核对时不会显示为成功。";
+  syncMaterialButton();
+}
+$("mat-seg").querySelectorAll("button").forEach((b) => (b.onclick = () => setMaterialMode(b.dataset.mode)));
+
+$("mat-drop").onclick = () => $("mat-file").click();
+$("mat-drop").onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("mat-file").click(); } };
+["dragenter", "dragover"].forEach((t) => $("mat-drop").addEventListener(t, (e) => {
+  e.preventDefault(); $("mat-drop").classList.add("over");
+}));
+["dragleave", "drop"].forEach((t) => $("mat-drop").addEventListener(t, (e) => {
+  e.preventDefault(); $("mat-drop").classList.remove("over");
+}));
+$("mat-drop").addEventListener("drop", (e) => {
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) uploadMaterial(f);
+});
+$("mat-file").onchange = () => { if ($("mat-file").files[0]) uploadMaterial($("mat-file").files[0]); };
+$("mat-pages").onchange = () => { S.material.pages = parseInt($("mat-pages").value, 10); };
+
+async function uploadMaterial(f) {
+  if (S.material.task && S.material.task.state === "running") {
+    toast("当前材料任务仍在运行，请等待结束或取消后再更换材料。", true);
+    return;
+  }
+  resetMaterialResultForNewInput();
+  S.material.source = null;
+  S.material.fileMeta = null;
+  if (!/\.(md|markdown|txt|text|docx)$/i.test(f.name)) {
+    $("mat-file-meta").className = "filemeta empty";
+    $("mat-file-meta").textContent = "本次材料格式不支持，未保留旧文件状态。";
+    $("mat-file").value = "";
+    syncMaterialButton();
+    toast("材料只支持 .md / .markdown / .txt / .text / .docx；PPTX 请到演示工作室。", true); return;
+  }
+  $("mat-file-meta").className = "filemeta";
+  $("mat-file-meta").textContent = "正在上传 " + f.name + " …";
+  let r;
+  try {
+    r = await fetch("/api/material/upload", { method: "POST",
+      headers: { "X-Filename": encodeURIComponent(f.name) }, body: f });
+  } catch (e) {
+    $("mat-file-meta").className = "filemeta empty";
+    $("mat-file-meta").textContent = "本次材料上传失败，未保留旧文件状态。";
+    $("mat-file").value = "";
+    syncMaterialButton();
+    toast("上传失败：" + (e && e.message ? e.message : "网络错误"), true);
+    return;
+  }
+  let j = null; try { j = await r.json(); } catch (e) { j = null; }
+  if (!r.ok || !j || !j.uploaded || !j.path || j.bytes !== f.size ||
+      !/^[a-f0-9]{64}$/i.test(j.sha256 || "")) {
+    $("mat-file-meta").className = "filemeta empty";
+    $("mat-file-meta").textContent = "本次材料上传失败，未保留旧文件状态。";
+    $("mat-file").value = "";
+    syncMaterialButton();
+    toast("上传失败：" + errText({ json: j }), true); return;
+  }
+  S.material.source = j.path;
+  S.material.fileMeta = { name: f.name, bytes: j.bytes, sha256: j.sha256 };
+  $("mat-file-meta").className = "filemeta";
+  $("mat-file-meta").innerHTML = "<b>" + esc(f.name) + "</b><br><span class='muted'>" +
+    bytes(j.bytes) + " · sha " + esc(shortSha(j.sha256)) + "…</span>";
+  syncMaterialButton();
+}
+function resetMaterialResultForNewInput() {
+  if (S.material.timer) { clearTimeout(S.material.timer); S.material.timer = null; }
+  S.material.task = null;
+  $("mat-task-id").textContent = "尚未开始";
+  $("mat-empty").classList.remove("hidden");
+  $("mat-live").classList.add("hidden");
+  $("mat-stages").innerHTML = "";
+  $("mat-progress-note").textContent = "";
+  $("mat-result").innerHTML = "";
+  $("mat-frozen").innerHTML = "<div class='hint'>尚未开始。</div>";
+  $("mat-tech").textContent = "尚未开始。";
+  $("mat-note").textContent = "";
+}
+function syncMaterialButton() {
+  const t = S.material.task || {};
+  const busy = t.state === "running";
+  const cancelling = !!t.cancel_requested_at;
+  const ready = S.material.mode === "replay" ? !!S.material.pack : !!S.material.source;
+  $("btn-material").disabled = !!busy || !ready;
+  const cb = $("btn-material-cancel");
+  cb.classList.toggle("hidden", !busy);
+  cb.disabled = !!cancelling;
+  cb.textContent = cancelling ? "正在取消…" : "取消生成";
+}
+
+$("btn-material").onclick = async () => {
+  const body = { mode: S.material.mode, theme: $("mat-theme").value,
+                 auto_advance: true };
+  if (S.material.mode === "replay") {
+    body.replay_id = S.material.pack && S.material.pack.id;
+    body.pages = (S.material.pack && S.material.pack.pages) || 12;
+  } else {
+    body.source = S.material.source;
+    body.pages = parseInt($("mat-pages").value, 10) || S.material.pages;
+  }
+  $("btn-material").disabled = true;
+  $("mat-note").textContent = "正在启动真实任务…";
+  const r = await api("/api/material/tasks", { method: "POST",
+    headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const j = r.json || {};
+  if (!r.ok || !j.task) {
+    $("mat-note").innerHTML = "<span style='color:var(--bad)'>" + esc(errText(r)) + "</span>";
+    syncMaterialButton(); return;
+  }
+  $("mat-note").textContent = "";
+  S.material.task = j.task;
+  renderMaterialTask(j.task);
+  pollMaterial(j.task.task_id);
+};
+
+$("btn-material-cancel").onclick = async () => {
+  const t = S.material.task;
+  if (!t) return;
+  // 先进入“正在取消”：请求提交后、后端终态返回前，不显示已取消，也不出现下载。
+  t.cancel_requested_at = t.cancel_requested_at || new Date().toISOString();
+  renderMaterialTask(t);
+  const r = await api("/api/material/tasks/" + enc(t.task_id) + "/cancel", { method: "POST" });
+  if (r.json && r.json.task) { S.material.task = r.json.task; renderMaterialTask(r.json.task); }
+  toast(r.ok ? "已登记取消：下一个闸门停止，不会显示为成功。" : "取消失败：" + errText(r), !r.ok);
+};
+
+async function pollMaterial(tid) {
+  if (S.material.timer) { clearTimeout(S.material.timer); S.material.timer = null; }
+  const r = await api("/api/material/tasks/" + enc(tid));
+  if (!S.material.task || S.material.task.task_id !== tid) return;
+  if (!r.ok || !r.json || !r.json.task) {
+    $("mat-progress-note").innerHTML = "<span style='color:var(--bad)'>无法读取最新状态：" +
+      esc(errText(r)) + "（不归零、不重建任务）</span>";
+    S.material.timer = setTimeout(() => pollMaterial(tid), 3000);
+    return;
+  }
+  S.material.task = r.json.task;
+  renderMaterialTask(S.material.task);
+  if (S.material.task.state === "running") S.material.timer = setTimeout(() => pollMaterial(tid), 1200);
+};
+
+function renderMaterialTask(t) {
+  $("mat-empty").classList.add("hidden");
+  $("mat-live").classList.remove("hidden");
+  $("mat-task-id").textContent = t.task_id + (t.mode === "replay" ? " · 回放" : " · 真实模型");
+  const labels = { run: "渲染候选并核对对象", validate: "来源与契约核对", export: "固定交付导出" };
+  const adv = t.advance || [];
+  const doneSet = {};
+  adv.forEach((a) => { doneSet[a.stage] = a; });
+  const steps = ["generate", "run", "validate", "export"];
+  const stepLabel = { generate: t.mode === "replay" ? "回放冻结计划并构建" : "生成内容计划并构建",
+                      run: labels.run, validate: labels.validate, export: labels.export };
+  let html = steps.map((k) => {
+    let cls = "", txt = "等待";
+    if (k === "generate") {
+      const genDone = !!t.generated_pptx;
+      cls = genDone ? "done" : (t.state === "running" ? "run" : "");
+      txt = genDone ? "完成" : (t.state === "running" ? "进行中" : "未完成");
+    } else {
+      const a = doneSet[k];
+      if (a) {
+        cls = a.state === "done" ? "done" : a.state === "failed" ? "bad" : "run";
+        txt = a.state === "done" ? "完成" : a.state === "failed" ? "失败" : "进行中";
+      } else if (t.stopped_reason || t.state === "done") { txt = "未执行"; }
+    }
+    return "<div class='st " + cls + "'><span class='b'>" +
+      (cls === "done" ? "✓" : cls === "bad" ? "!" : "") + "</span><span>" +
+      esc(stepLabel[k]) + "</span><span class='muted'>" + esc(txt) + "</span></div>";
+  }).join("");
+  if (t.stopped_reason) {
+    html += "<div class='st stop'><span class='b'>–</span><span>停止原因</span><span class='muted'>" +
+      esc(t.stopped_reason) + "</span></div>";
+  }
+  if (t.cancel_requested_at) {
+    html += "<div class='st stop'><span class='b'>–</span><span>取消</span><span class='muted'>" +
+      (t.state === "running" ? "正在取消（已登记，等后端闸门）" : "已登记取消") + "</span></div>";
+  }
+  $("mat-stages").innerHTML = html;
+  $("mat-bar").classList.toggle("hidden", t.state !== "running");
+  $("mat-progress-note").innerHTML =
+    "<div class='kv'><b>当前阶段</b><span>" + esc(t.stage || "—") + "</span></div>" +
+    "<div class='kv'><b>已用</b><span>" + esc(t.elapsed_seconds == null ? "—" : t.elapsed_seconds + " 秒") + "</span></div>" +
+    (t.state === "running"
+      ? "<p style='margin-top:4px'>" +
+        (t.cancel_requested_at
+          ? "正在取消：已提交取消请求，等后端在下一个闸门停住才算终态；此时不提供下载。"
+          : "进度按后端真实阶段推进；没有预计时间时不给倒计时。") + "</p>"
+      : "");
+  $("mat-frozen").innerHTML = frozenRows(t);
+  $("mat-tech").innerHTML = techRows(t);
+  renderMaterialResult(t);
+  syncMaterialButton();
+}
+
+function frozenRows(t) {
+  const rows = [
+    ["模式", t.mode === "replay" ? "回放（冻结内容计划）" : "真实模型"],
+    ["模型调用范围", t.mode === "replay"
+      ? "跳过内容规划；语义配图仍可能调用本地模型，图库查询可能联网"
+      : "内容规划与语义配图可能调用本地模型，图库查询可能联网"],
+    ["材料", t.source_name || "—"],
+    ["材料哈希", shortSha(t.source_sha256) + "…"],
+    ["请求页数", String(t.pages == null ? "—" : t.pages)],
+    ["主题", t.theme || "—"],
+    ["任务", t.task_id],
+  ];
+  if (t.replay) {
+    rows.push(["回放计划", shortSha(t.replay.plan_sha256) + "…"]);
+    rows.push(["计划页数", t.pages + " 页（冻结声明）"]);
+  }
+  return rows.map(([k, v]) =>
+    "<div class='kv'><b>" + esc(k) + "</b><span class='mono'>" + esc(v) + "</span></div>").join("");
+}
+function techRows(t) {
+  const rows = [
+    ["job", t.job_id || "—"],
+    ["生成器 rc", String(t.returncode == null ? "—" : t.returncode)],
+    ["实际页数", String(t.pages_actual == null ? "—" : t.pages_actual)],
+    ["必讲事实", String(t.facts_frozen == null ? "—" : t.facts_frozen)],
+    ["计划模式", t.plan_mode || "—"],
+    ["判定", t.verdict || "—"],
+    ["导出目录", t.export_path || "—"],
+    ["产物", t.generated_pptx || "—"],
+  ];
+  return rows.map(([k, v]) =>
+    "<div class='kv'><b>" + esc(k) + "</b><span class='mono'>" + esc(v) + "</span></div>").join("");
+}
+
+async function renderMaterialResult(t) {
+  const box = $("mat-result");
+  if (t.state === "running") {
+    box.innerHTML = t.cancel_requested_at
+      ? "<div class='note'><b>正在取消</b>：取消请求已提交，等后端返回终态；在此之前不显示成功，也不提供下载。</div>"
+      : "<div class='note'>任务运行中：失败、取消或来源不完整都不会显示为成功。</div>";
+    return;
+  }
+  if (t.cancel_requested_at) {
+    box.innerHTML = "<div class='note'><b>已取消</b>：取消后不提供下载，也不会把已生成的部分算作成功。</div>" +
+      "<button class='btn secondary sm' id='btn-mat-retry' style='margin-top:8px'>重试该材料任务</button>";
+    wireMaterialRetry(t.task_id);
+    return;
+  }
+  if (!t.success) {
+    let html = "<div class='err'><b>未完成</b>：判定 " + esc(t.verdict || "—") +
+      "，rc " + esc(t.returncode == null ? "—" : t.returncode) +
+      (t.stopped_reason ? "；" + esc(t.stopped_reason) : "") +
+      "。<br>失败/需核对的结果不会进入正常下载。</div>";
+    const modelError = t.model_error || {};
+    if (modelError.code) {
+      html += "<div class='err'><b>模型调用</b>：" + esc(modelError.code) +
+        (modelError.status_code ? "（HTTP " + esc(modelError.status_code) + "）" : "") +
+        "；" + esc(modelError.detail || "无诊断详情") + "</div>";
+    }
+    const gate = t.layout_hard_gate || {};
+    if (t.job_id && t.candidate_pptx_sha256 && gate.status !== "EXECUTED") {
+      html += nativeReviewPanelHtml(t.job_id, t.candidate_pptx_sha256, gate);
+      box.innerHTML = html;
+      wireNativeReviewPanel(t.job_id, t.candidate_pptx_sha256, gate,
+                            "material", t.task_id);
+      return;
+    }
+    html += "<button class='btn secondary sm' id='btn-mat-retry' style='margin-top:8px'>重试该材料任务</button>";
+    box.innerHTML = html;
+    wireMaterialRetry(t.task_id);
+    return;
+  }
+  let html = "<div class='okbox'><b>已生成并通过核对</b>：" + esc(t.pages_actual) + " 页 · 必讲事实 " +
+    esc(t.facts_frozen) + " 条 · 判定 " + esc(t.verdict) + "。</div>";
+  if (t.download_ready) {
+    const r = await api("/api/jobs/" + enc(t.job_id) + "/result");
+    const res = r.json || {};
+    if (res.ready) {
+      html += "<div class='dl'>" + (res.items || []).map((it) =>
+        "<div class='item'><span class='muted small'>" + esc((it.kind || "").toUpperCase()) + "</span>" +
+        "<div><div class='nm'>" + esc(it.name) + "</div><div class='meta'>" + bytes(it.bytes) +
+        " · sha " + esc(shortSha(it.expected_sha256)) + "…</div></div>" +
+        "<a class='btn sm' href='" + esc(it.url) + "'>下载</a></div>").join("") + "</div>";
+    } else {
+      html += "<div class='note'>导出清单暂不可用：" + esc(res.message || "") + "</div>";
+    }
+  } else {
+    html += "<div class='note'>已生成候选，但尚未形成可下载交付。到「局部编辑」或「版本与历史」查看这个任务。</div>";
+  }
+  box.innerHTML = html;
+}
+
+function wireMaterialRetry(taskId) {
+  const btn = $("btn-mat-retry");
+  if (!btn) return;
+  btn.onclick = async () => {
+    btn.disabled = true;
+    btn.textContent = "正在重启…";
+    const r = await api("/api/material/tasks/" + enc(taskId) + "/retry", { method: "POST" });
+    if (r.ok && r.json && r.json.task) {
+      S.material.task = r.json.task;
+      renderMaterialTask(r.json.task);
+      pollMaterial(r.json.task.task_id);
+      toast("已启动重试任务。");
+    } else {
+      toast("重试启动失败：" + errText(r), true);
+      btn.disabled = false;
+      btn.textContent = "重试该材料任务";
+    }
+  };
+}
+
+async function resumeMaterial() {
+  const r = await api("/api/material/tasks");
+  const tasks = (r.json && r.json.tasks) || [];
+  const pick = tasks.find((t) => t.state === "running") || tasks[0];
+  if (!pick) return;
+  S.material.task = pick;
+  renderMaterialTask(pick);
+  if (pick.state === "running") pollMaterial(pick.task_id);
+}
+
+/* ---------------- 局部编辑 ---------------- */
+function editJobCandidates() {
+  return (S.boot && S.boot.jobs) || [];
+}
+async function initEdit() {
+  const fresh = await api("/api/jobs");
+  if (fresh.ok && fresh.json && Array.isArray(fresh.json.jobs)) {
+    S.boot = S.boot || {};
+    S.boot.jobs = fresh.json.jobs;
+    if (S.boot.instance) renderInstance(Object.assign({}, S.boot.instance,
+      { jobs: fresh.json.total == null ? fresh.json.jobs.length : fresh.json.total }));
+  }
+  const jobs = editJobCandidates();
+  const sel = $("edit-job");
+  if (!jobs.length) {
+    sel.innerHTML = "<option value=''>（当前实例没有任务）</option>";
+    showEditBlocked("当前实例还没有任务", "先在「演示工作室」制作一份 PPT，再回来做局部修改。");
+    return;
+  }
+  const prev = S.edit.job || sel.value;
+  sel.innerHTML = jobs.map((j) =>
+    "<option value='" + esc(j.job_id) + "'>" + esc(j.job_id) + " · " + esc(j.theme_name || j.theme || "") +
+    " · " + esc((j.input_path || "").split("/").pop()) + "</option>").join("");
+  const usable = jobs.find((j) => j.job_id === prev) || jobs[0];
+  sel.value = usable.job_id;
+  sel.onchange = () => loadEditJob(sel.value);
+  await loadEditJob(sel.value);
+  $("edit-goto-make").onclick = () => setView("studio");
+  $("edit-refresh").onclick = () => loadEditJob($("edit-job").value);
+}
+
+function showEditBlocked(title, text) {
+  $("edit-grid").classList.add("hidden");
+  $("edit-blocked").classList.remove("hidden");
+  $("edit-blocked-title").textContent = title;
+  $("edit-blocked-text").textContent = text;
+}
+
+async function loadEditJob(job) {
+  if (!job) return;
+  S.edit.job = job;
+  S.edit.rec = null; S.edit.sides = null; S.edit.objIdx = null; S.edit.page = 1;
+  $("edit-result").classList.add("hidden");
+  $("edit-result-body").innerHTML = ""; $("edit-compare").innerHTML = "";
+  $("edit-job-note").textContent = "正在读取对象清单…";
+  const r = await api("/api/jobs/" + enc(job) + "/objects");
+  if (S.edit.job !== job) return;
+  const j = r.json || {};
+  if (!r.ok) {
+    $("edit-job-note").textContent = "";
+    showEditBlocked("任务读取失败", errText(r));
+    return;
+  }
+  if (!j.editable) {
+    $("edit-job-note").textContent = "";
+    showEditBlocked("没有可编辑的基线", j.reason || "该任务还没有可复核的固定版本。");
+    return;
+  }
+  S.edit.objects = j;
+  $("edit-blocked").classList.add("hidden");
+  $("edit-grid").classList.remove("hidden");
+  $("edit-job-note").innerHTML = "基线来源 <b>" + esc(j.objects_source) + "</b> · sha " +
+    esc(shortSha(j.baseline_sha256)) + "… · " + (j.pages || []).length + " 页";
+  renderEditRail();
+  loadBaselinePages(job);
+  selectEditPage(1);
+}
+
+async function loadBaselinePages(job) {
+  const r = await api("/api/jobs/" + enc(job) + "/pages?side=baseline");
+  if (S.edit.job !== job) return;
+  const j = r.json || {};
+  S.edit.baselinePages = j.available ? Object.fromEntries(j.pages.map((name, i) =>
+    [((j.page_numbers || [])[i] || i + 1), name])) : null;
+  S.edit.hiddenPages = j.hidden_slides || [];
+  if (!j.available) {
+    $("page-empty").classList.remove("hidden");
+    $("page-empty").innerHTML = "<b>页面预览不可用</b><p>" + esc(j.reason || "") +
+      "</p><p>仍可修改，但画布不显示页面；这不是成功状态。</p>";
+    $("page-img").classList.add("hidden");
+    $("boxes").innerHTML = "";
+  } else {
+    $("page-empty").classList.add("hidden");
+    $("page-img").classList.remove("hidden");
+    renderEditPage();
+  }
+  renderEditRail();
+}
+
+function renderEditRail() {
+  const objs = S.edit.objects;
+  const pages = (objs && objs.pages) || [];
+  const thumbs = S.edit.baselinePages;
+  $("edit-rail").innerHTML = "<div class='rt'>页面</div>" + pages.map((p) => {
+    const img = thumbs && thumbs[p.page];
+    return "<button class='thumb' data-page='" + p.page + "' aria-pressed='" + (p.page === S.edit.page) + "'>" +
+      (img ? "<img src='" + pageFileUrl(S.edit.job, "baseline", img) + "' alt='第 " + p.page + " 页' loading='lazy'>"
+           : "<div style='height:46px;display:grid;place-items:center;background:#F4F7FC;border-radius:4px;color:#90A0B8;font-size:10px'>无预览</div>") +
+      "<div class='n'>" + p.page + "</div></button>";
+  }).join("");
+  $("edit-rail").querySelectorAll(".thumb").forEach((b) => (b.onclick = () => selectEditPage(parseInt(b.dataset.page, 10))));
+}
+
+function selectEditPage(page) {
+  S.edit.page = page;
+  S.edit.objIdx = null;
+  renderEditRail();
+  renderEditPage();
+  renderObjectList();
+  $("props-body").classList.add("hidden");
+  $("props-empty").classList.remove("hidden");
+  $("props-empty").textContent = "先在画布或列表中选择一个对象。";
+}
+
+function currentPageObjects() {
+  const pages = (S.edit.objects && S.edit.objects.pages) || [];
+  return (pages.find((p) => p.page === S.edit.page) || {}).objects || [];
+}
+
+function renderEditPage() {
+  const thumbs = S.edit.baselinePages;
+  if (!thumbs) return;
+  const name = thumbs[S.edit.page];
+  if (!name) {
+    $("page-img").classList.add("hidden");
+    $("page-empty").classList.remove("hidden");
+    $("page-empty").textContent = (S.edit.hiddenPages || []).includes(S.edit.page)
+      ? "第 " + S.edit.page + " 页为隐藏页，不包含在放映与静态预览中。"
+      : "第 " + S.edit.page + " 页预览不可用。";
+    $("boxes").innerHTML = "";
+    return;
+  }
+  $("page-empty").classList.add("hidden");
+  $("page-img").classList.remove("hidden");
+  $("page-img").src = pageFileUrl(S.edit.job, "baseline", name);
+  $("page-img").alt = "第 " + S.edit.page + " 页基线";
+  const objs = currentPageObjects();
+  $("boxes").innerHTML = objs.map((o, i) => {
+    if (!o.box) return "";
+    return "<div class='box' data-i='" + i + "' role='button' tabindex='0' aria-selected='" + (i === S.edit.objIdx) +
+      "' style='left:" + (o.box.x * 100).toFixed(3) + "%;top:" + (o.box.y * 100).toFixed(3) +
+      "%;width:" + (o.box.w * 100).toFixed(3) + "%;height:" + (o.box.h * 100).toFixed(3) +
+      "%' title='" + esc(o.name) + "'></div>";
+  }).join("");
+  $("boxes").querySelectorAll(".box").forEach((b) => {
+    b.onclick = () => selectObject(parseInt(b.dataset.i, 10));
+    b.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectObject(parseInt(b.dataset.i, 10)); } };
+  });
+  $("page-note").textContent = "选区来自基线 PPTX 的真实几何（按页比例换算），不是手绘框。";
+}
+
+function renderObjectList() {
+  const objs = currentPageObjects();
+  $("objlist").innerHTML = objs.length ? objs.map((o, i) =>
+    "<button data-i='" + i + "' aria-selected='" + (i === S.edit.objIdx) + "'>" +
+    "<span style='flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>" + esc(o.name) + "</span>" +
+    "<span class='ty'>" + esc((o.fields || []).join("/") || "不可编辑") + "</span></button>").join("")
+    : "<div class='hint'>本页没有可解析对象。</div>";
+  $("objlist").querySelectorAll("button").forEach((b) =>
+    (b.onclick = () => selectObject(parseInt(b.dataset.i, 10))));
+}
+
+function selectObject(i) {
+  S.edit.objIdx = i;
+  const o = currentPageObjects()[i];
+  renderEditPage();
+  renderObjectList();
+  if (!o) return;
+  $("props-empty").classList.add("hidden");
+  $("props-body").classList.remove("hidden");
+  const rows = [
+    ["对象", o.name], ["类型", o.type], ["可改字段", (o.fields || []).join(" / ") || "无"],
+  ];
+  if (o.table) rows.push(["表格", o.table.rows + " 行 × " + o.table.cols + " 列"]);
+  if (o.chart) rows.push(["图表", o.chart.series + " 系列 · " + (o.chart.points == null ? "?" : o.chart.points) + " 点"]);
+  $("props-meta").innerHTML = rows.map(([k, v]) =>
+    "<div class='kv'><b>" + esc(k) + "</b><span>" + esc(v) + "</span></div>").join("");
+  $("edit-field").innerHTML = (o.fields || []).map((f) =>
+    "<option value='" + esc(f) + "'>" + ({ text: "文字", cell: "表格单元格", chart_value: "图表数据点", image: "图片" }[f] || f) +
+    "</option>").join("") || "<option value=''>（该对象不支持修改）</option>";
+  $("edit-apply").disabled = !(o.fields || []).length;
+  renderEditExtra();
+  $("edit-field").onchange = renderEditExtra;
+  $("edit-value").value = "";
+}
+
+function renderEditExtra() {
+  const o = currentPageObjects()[S.edit.objIdx];
+  const f = $("edit-field").value;
+  if (!o) { $("edit-extra").innerHTML = ""; return; }
+  let html = "";
+  if (f === "text") {
+    html = "<div class='hint' style='margin-top:8px'>当前文本：<span class='mono'>" +
+      esc((o.text || "").slice(0, 200)) + "</span></div>";
+  } else if (f === "cell") {
+    const t = o.table || {};
+    html = "<div class='hint' style='margin-top:8px'>表头：" + esc((t.header || []).join(" / ")) + "</div>" +
+      "<label class='field'>行（0 = 表头，共 " + esc(t.rows || "?") + " 行）</label><input type='number' id='edit-row' value='1' min='0'>" +
+      "<label class='field'>列（共 " + esc(t.cols || "?") + " 列）</label><input type='number' id='edit-col' value='1' min='0'>";
+  } else if (f === "chart_value") {
+    const c = o.chart || {};
+    const vals = (c.values || []).map((s) => s.name + "=" + (s.values || []).join(",")).join(" | ");
+    html = "<div class='hint' style='margin-top:8px'>系列：" + esc((c.series_names || []).join(" / ")) +
+      "<br>类别：" + esc((c.categories || []).join(" / ")) +
+      "<br>当前值：" + esc(vals || "—") + "</div>" +
+      "<label class='field'>系列序号（0 起）</label><input type='number' id='edit-series' value='0' min='0'>" +
+      "<label class='field'>数据点序号（0 起）</label><input type='number' id='edit-index' value='0' min='0'>";
+  } else if (f === "image") {
+    html = "<div class='hint' style='margin-top:8px'>图片只接受受控上传的资产（png/jpg，≤ 8 MiB），不接受任意本机路径。</div>" +
+      "<input type='file' id='edit-asset' accept='.png,.jpg,.jpeg' style='margin-top:8px'>";
+  }
+  $("edit-extra").innerHTML = html;
+}
+
+$("edit-apply").onclick = async () => {
+  const o = currentPageObjects()[S.edit.objIdx];
+  if (!o || !S.edit.job) return;
+  const field = $("edit-field").value;
+  if (!field) return;
+  const body = { page: S.edit.page, shape: o.name, field: field, new_value: $("edit-value").value };
+  if (field === "cell") {
+    body.row = parseInt(($("edit-row") || {}).value, 10);
+    body.col = parseInt(($("edit-col") || {}).value, 10);
+  }
+  if (field === "chart_value") {
+    body.series = parseInt(($("edit-series") || {}).value, 10);
+    body.index = parseInt(($("edit-index") || {}).value, 10);
+  }
+  if (field === "image") {
+    const f = $("edit-asset") && $("edit-asset").files[0];
+    if (!f) { $("edit-hint").textContent = "请先选择替换图片。"; return; }
+    const up = await fetch("/api/assets", { method: "POST",
+      headers: { "X-Filename": encodeURIComponent(f.name) }, body: f });
+    let uj = null; try { uj = await up.json(); } catch (e) { uj = null; }
+    if (!up.ok || !uj || !uj.uploaded) {
+      $("edit-hint").innerHTML = "<span style='color:var(--bad)'>资产上传失败：" + esc(errText({ json: uj })) + "</span>";
+      return;
+    }
+    body.asset = uj.path;
+    body.new_value = uj.name;
+  }
+  if (field !== "image" && !String(body.new_value || "").trim()) {
+    $("edit-hint").textContent = "请填写新值。"; return;
+  }
+  $("edit-hint").textContent = "正在生成独立候选…";
+  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edit", { method: "POST",
+    headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  if (!r.ok) {
+    $("edit-hint").innerHTML = "<span style='color:var(--bad)'>修改被拒绝：" + esc(errText(r)) + "</span>";
+    return;
+  }
+  S.edit.rec = r.json;
+  S.edit.sides = null;
+  $("edit-hint").textContent = "";
+  $("edit-result").classList.remove("hidden");
+  $("edit-result-body").innerHTML =
+    "<div class='okbox'><b>已生成独立候选</b> " + esc(r.json.version_id) + "：<br>" +
+    esc(r.json.old_value) + " → <b>" + esc(r.json.new_value) + "</b><br>" +
+    "非目标对象核对 " + esc(r.json.untouched_objects_verified) + " 个；未覆盖有效版本。</div>" +
+    "<button class='btn primary block' id='edit-render' style='margin-top:10px'>渲染修改前后</button>" +
+    "<button class='btn ghost block' id='edit-adopt' style='margin-top:8px'>接纳为新任务（重新核对）</button>";
+  $("edit-render").onclick = renderEditCompare;
+  $("edit-adopt").onclick = adoptEdit;
+};
+
+async function renderEditCompare() {
+  if (!S.edit.rec || !S.edit.job) return;
+  const vid = S.edit.rec.version_id;
+  $("edit-compare").innerHTML = "<div class='hint'>正在渲染修改前后（真实 PPTX）…</div>";
+  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) + "/render", { method: "POST" });
+  if (!r.ok) {
+    $("edit-compare").innerHTML = "<div class='err'>渲染不可用：" + esc(errText(r)) + "</div>";
+    return;
+  }
+  const s = r.json.sides || {};
+  S.edit.sides = s;
+  const page = Number((S.edit.rec.edit || {}).page || S.edit.page);
+  const editedPage = (side) => {
+    const preview = s[side] || {};
+    const numbers = preview.page_numbers || [];
+    const index = numbers.length ? numbers.indexOf(page) : page - 1;
+    return index >= 0 ? (preview.pages || [])[index] : null;
+  };
+  const before = editedPage("before");
+  const after = editedPage("after");
+  if (!before || !after) {
+    $("edit-compare").textContent = "第 " + page + " 页没有静态预览（可能为隐藏页），不显示其他页面冒充对照。";
+    return;
+  }
+  const url = (side, name) => "/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) +
+    "/preview?side=" + side + "&name=" + enc(name) + "&v=" + Date.now();
+  $("edit-compare").innerHTML =
+    "<div class='compare'>" +
+    "<figure><img src='" + (before ? url("before", before) : "") + "' alt='修改前'>" +
+      "<figcaption>第 " + esc(page) + " 页修改前 · sha " + esc(shortSha((s.before || {}).sha256)) + "…</figcaption></figure>" +
+    "<figure><img src='" + (after ? url("after", after) : "") + "' alt='修改后'>" +
+      "<figcaption>第 " + esc(page) + " 页修改后 · sha " + esc(shortSha((s.after || {}).sha256)) + "…</figcaption></figure></div>" +
+    "<p class='hint' style='margin-top:6px'>两侧都是真实渲染；候选未接纳前不覆盖任何有效版本，导出仍走原有门禁。</p>";
+}
+
+async function adoptEdit() {
+  if (!S.edit.rec || !S.edit.job) return;
+  const vid = S.edit.rec.version_id;
+  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) + "/adopt", { method: "POST" });
+  const j = r.json || {};
+  if (!j.adopted) {
+    $("edit-result-body").innerHTML += "<div class='err' style='margin-top:8px'>接纳被拒绝：" +
+      esc(j.detail || errText(r)) + "</div>";
+    return;
+  }
+  toast("已作为新任务接纳：" + j.job_id);
+  $("edit-result-body").innerHTML += "<div class='okbox' style='margin-top:8px'>已创建新任务 <span class='mono'>" +
+    esc(j.job_id) + "</span>；到「演示工作室」查看它的真实核对结果。</div>";
+  await boot();
+  initEdit();
+}
+
+/* ---------------- 历史与恢复 ---------------- */
+document.querySelectorAll("#hist-filter button").forEach((b) => (b.onclick = () => {
+  S.history.filter = b.dataset.f;
+  document.querySelectorAll("#hist-filter button").forEach((x) =>
+    x.setAttribute("aria-pressed", String(x.dataset.f === S.history.filter)));
+  renderHistory();
+}));
+$("hist-refresh").onclick = () => loadHistory();
+
+function renderHistoryCount(jobs) {
+  $("hist-count").textContent = jobs.length
+    ? "当前实例共 " + jobs.length + " 个任务（含待处理）。"
+    : "当前实例共 0 个任务。";
+}
+
+async function loadHistory() {
+  $("hist-count").textContent = "正在读取任务…";
+  const r = await api("/api/history");
+  if (!r.ok) {
+    $("hist-count").innerHTML = "<span style='color:var(--bad)'>刷新失败；保留上次数据（未刷新）。</span>";
+    return;
+  }
+  S.history.jobs = (r.json && r.json.jobs) || [];
+  renderHistoryCount(S.history.jobs);
+  renderHistory();
+}
+
+function histStatus(j) {
+  const hasVers = (j.versions || []).length > 0;
+  // 判定"可下载"必须同时看交付资格：事故/状态失效时，即使判定是候选也不给正常出口。
+  if (j.verdict === "DEVELOPMENT_CANDIDATE" && j.export_ready && !(j.delivery && j.delivery.allowed === false))
+    return { k: "ok", t: "可下载候选" };
+  if (j.verdict === "DEVELOPMENT_CANDIDATE" && j.delivery && j.delivery.allowed === false)
+    return { k: "bad", t: "已停止正常交付（" + (j.delivery.code || "资格失效") + "）" };
+  if (j.verdict === "NEEDS_REVIEW") return { k: "warn", t: "需要核对" };
+  if (j.verdict === "FAILED") return { k: "bad", t: "未通过" };
+  if (hasVers) return { k: "warn", t: "有版本·未复核" };
+  if (j.stage === "QUEUED" || !j.verdict) return { k: "", t: "待处理" };
+  return { k: "", t: j.verdict || "—" };
+}
+
+function renderHistory() {
+  const all = S.history.jobs || [];
+  const f = S.history.filter;
+  const jobs = all.filter((j) => {
+    if (f === "version") return (j.versions || []).length > 0;
+    if (f === "pending") return (j.versions || []).length === 0;
+    return true;
+  });
+  $("hist-empty").classList.toggle("hidden", jobs.length > 0);
+  if (!jobs.length) {
+    $("hist-cards").innerHTML = "";
+    $("hist-empty-text").textContent = all.length
+      ? "当前筛选下没有作品。"
+      : "安装实例使用安装根的数据目录；初始 0 个任务属正常，不代表历史丢失。";
+    return;
+  }
+  $("hist-cards").innerHTML = jobs.map((j, i) => {
+    const st = histStatus(j);
+    return "<button class='work' data-id='" + esc(j.job_id) + "' aria-pressed='" +
+      (S.history.sel === j.job_id) + "'>" +
+      "<div class='shot' id='shot-" + esc(j.job_id) + "'><span>缩略图加载中…</span></div>" +
+      "<div class='body'><div class='nm'>" + esc(j.input || j.job_id) + "</div>" +
+      "<div class='meta'><span>" + esc(j.theme_name || j.theme || "") + "</span>" +
+      "<span>" + esc(nowText(j.updated_at || j.created_at)) + "</span>" +
+      "<span>版本 " + (j.versions || []).length + "</span></div>" +
+      "<div style='margin-top:6px'>" + chip(st.k, st.t) + "</div></div></button>";
+  }).join("");
+  $("hist-cards").querySelectorAll(".work").forEach((b) =>
+    (b.onclick = () => selectHistoryJob(b.dataset.id)));
+  jobs.slice(0, 8).forEach((j) => loadThumb(j.job_id));
+}
+
+async function loadThumb(job) {
+  const r = await api("/api/jobs/" + enc(job) + "/pages?side=baseline");
+  const box = $("shot-" + job);
+  if (!box) return;
+  const j = r.json || {};
+  if (!r.ok || !j.available || !(j.pages || []).length) {
+    box.innerHTML = "<span>无基线缩略图</span>";
+    return;
+  }
+  box.innerHTML = "<img src='" + pageFileUrl(job, "baseline", j.pages[0]) + "' alt='作品缩略图' loading='lazy'>";
+}
+
+function selectHistoryJob(job) {
+  S.history.sel = job;
+  $("hist-cards").querySelectorAll(".work").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.id === job)));
+  renderHistoryDetail(S.history.jobs.find((x) => x.job_id === job));
+}
+
+function renderHistoryDetail(j) {
+  if (!j) return;
+  $("hist-detail-id").textContent = j.job_id;
+  $("hist-detail-empty").classList.add("hidden");
+  const body = $("hist-detail-body");
+  body.classList.remove("hidden");
+  const st = histStatus(j);
+  const rows = [
+    ["输入", j.input || "—"], ["主题", (j.theme_name || "") + " · " + (j.theme || "")],
+    ["更新", nowText(j.updated_at || j.created_at)], ["判定", j.verdict || "—"],
+    ["可编辑基线", j.editable_baseline ? "有" : "无"], ["导出", j.export_ready ? "有" : "无"],
+  ];
+  let html = "<div class='grid2'>" + rows.map(([k, v]) =>
+    "<div class='kv'><b>" + esc(k) + "</b><span>" + esc(v) + "</span></div>").join("") + "</div>" +
+    "<div style='margin:10px 0'>" + chip(st.k, st.t) + "</div>";
+  const vers = j.versions || [];
+  if (!vers.length) {
+    html += "<div class='note'>暂无可恢复版本：该作品还没有产生过局部修改或恢复记录。</div>";
+    html += "<button class='btn block' id='hist-open-studio' style='margin-top:10px'>在演示工作室查看</button>";
+    body.innerHTML = html;
+    $("hist-open-studio").onclick = () => { openHistoricalStudioJob(j.job_id); };
+    return;
+  }
+  html += "<div class='timeline'>" + vers.map((v) => {
+    const isRestore = v.kind === "restore";
+    const title = isRestore ? "恢复：" + esc(v.restored_from || "") + " → 当前"
+      : "修改 · " + esc(v.edit && (v.edit.field || v.edit.shape) || "局部");
+    const detail = isRestore
+      ? "恢复产物 sha " + esc(shortSha(v.sha256)) + "… · 需重新核对"
+      : esc(v.old_value) + " → <b>" + esc(v.new_value) + "</b> · sha " + esc(shortSha(v.sha256)) + "…";
+    return "<div class='tl " + (isRestore ? "restore" : "") + "'>" +
+      "<div class='tt'>" + title + "</div>" +
+      "<div class='td'>" + detail + "<br>" + esc(nowText(v.created_at)) + "</div>" +
+      "<div class='acts'>" +
+      (isRestore ? "" : "<button class='btn sm' data-preview='" + esc(v.version_id) + "'>预览</button>") +
+      (isRestore ? "" : "<button class='btn sm danger' data-restore='" + esc(v.version_id) + "'>恢复到此前版本</button>") +
+      "</div></div>";
+  }).join("") + "</div><div id='hist-preview'></div><div id='hist-msg'></div>";
+  body.innerHTML = html;
+  body.querySelectorAll("button[data-preview]").forEach((b) =>
+    (b.onclick = () => historyPreview(j.job_id, b.dataset.preview)));
+  body.querySelectorAll("button[data-restore]").forEach((b) =>
+    (b.onclick = () => historyRestore(j, b.dataset.restore)));
+}
+
+async function historyPreview(job, vid) {
+  $("hist-msg").innerHTML = "";
+  $("hist-preview").innerHTML = "<div class='hint'>正在渲染修改前后…</div>";
+  const r = await api("/api/jobs/" + enc(job) + "/edits/" + enc(vid) + "/render", { method: "POST" });
+  if (!r.ok) {
+    $("hist-preview").innerHTML = "<div class='err'>预览不可用：" + esc(errText(r)) + "</div>";
+    return;
+  }
+  const s = r.json.sides || {};
+  const page = Number(r.json.page);
+  const atPage = (side) => {
+    const preview = s[side] || {};
+    const numbers = preview.page_numbers || [];
+    const index = numbers.length ? numbers.indexOf(page) : page - 1;
+    return index >= 0 ? (preview.pages || [])[index] : null;
+  };
+  const b = atPage("before"), a = atPage("after");
+  if (!b || !a) {
+    $("hist-preview").textContent = "第 " + page + " 页没有静态预览，不显示其他页面冒充对照。";
+    return;
+  }
+  const url = (side, name) => "/api/jobs/" + enc(job) + "/edits/" + enc(vid) +
+    "/preview?side=" + side + "&name=" + enc(name) + "&v=" + Date.now();
+  $("hist-preview").innerHTML = "<div class='compare'>" +
+    "<figure><img src='" + url("before", b) + "' alt='修改前'><figcaption>第 " + esc(page) + " 页修改前</figcaption></figure>" +
+    "<figure><img src='" + url("after", a) + "' alt='修改后'><figcaption>第 " + esc(page) + " 页修改后</figcaption></figure></div>";
+}
+
+function historyRestore(j, vid) {
+  const v = (j.versions || []).find((x) => x.version_id === vid) || {};
+  openModal("恢复确认",
+    "<div class='kv'><b>作品</b><span class='mono'>" + esc(j.job_id) + "</span></div>" +
+    "<div class='kv'><b>源版本</b><span class='mono'>" + esc(vid) + "</span></div>" +
+    "<div class='kv'><b>目标</b><span>该次修改之前的文件（逐字节复制）</span></div>" +
+    "<p style='margin-top:8px'>恢复会生成新的独立候选，<b>不会</b>把任务判定改成 READY；必须重新核对后才能导出。当前有效版本在失败时保持不变。</p>",
+    "确认恢复", async () => {
+      const r = await api("/api/jobs/" + enc(j.job_id) + "/edits/" + enc(vid) + "/restore", { method: "POST" });
+      closeModal();
+      if (!r.ok) { toast("恢复失败：" + errText(r), true); return; }
+      const rec = (r.json || {}).record || {};
+      toast("已恢复为独立候选：" + (rec.restored_pptx || "").split("/").pop());
+      await loadHistory();
+      const nj = S.history.jobs.find((x) => x.job_id === j.job_id);
+      if (nj) renderHistoryDetail(nj);
+    });
+}
+
+/* ---------------- 初始 ---------------- */
+boot();
+window.addEventListener("beforeunload", () => {
+  if (S.studio.timer) clearTimeout(S.studio.timer);
+  if (S.material.timer) clearTimeout(S.material.timer);
+});
+</script>
+</body>
+</html>

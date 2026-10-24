@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "catalog_id": "wengao-semantic-scenes-dev-20261022",
+  "items": [
+    {
+      "scene_id": "consumer.supermarket_shopping",
+      "file": "consumer-shopping-4971925.jpeg",
+      "sha256": "baa246ab6ff90f1610ec9c96e5930054f04ee58b0890da2b55989721045b64c0",
+      "bytes": 250206,
+      "source_page": "https://www.pexels.com/photo/woman-shopping-in-supermarket-4971925/",
+      "creator": "Gustavo Fring",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "description": "consumer shopping in a supermarket",
+      "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "note": "Dev-candidate scene pack only. Do not include this photo file in public source distributions until separate rights review."
+    },
+    {
+      "scene_id": "consumer.receipt_settlement",
+      "file": "consumer-payment-receipt-3570244.jpeg",
+      "sha256": "3ab2b539e4e1a230bf5a0ec909cb130eebe905de71f31eee1fbe781ecad1b52f",
+      "bytes": 1086348,
+      "source_page": "https://www.pexels.com/photo/photo-of-a-person-printing-a-receipt-3570244/",
+      "creator": "Hook Tell",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "description": "POS payment and printed receipt",
+      "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "note": "Dev-candidate scene pack only. Do not include this photo file in public source distributions until separate rights review."
+    },
+    {
+      "scene_id": "production.factory_workers",
+      "file": "factory-workers-32048366.jpeg",
+      "sha256": "4cbc50349c48dff3aa95d4ec333cc946130e989374856d9c921f6cba87e19c2a",
+      "bytes": 377737,
+      "source_page": "https://www.pexels.com/photo/textile-factory-workers-in-a-production-line-32048366/",
+      "creator": "EqualStock India",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "description": "workers operating a production line",
+      "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "note": "Dev-candidate scene pack only. Do not include this photo file in public source distributions until separate rights review."
+    },
+    {
+      "scene_id": "production.capacity_line",
+      "file": "production-line-modern-34718930.jpeg",
+      "sha256": "2a075efb88b6866961e0769de2dd704a885488cbad70f4ce88c32690fb312ecf",
+      "bytes": 390663,
+      "source_page": "https://www.pexels.com/photo/industrial-factory-interior-with-conveyor-34718930/",
+      "creator": "Yetkin Ağaç",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "description": "modern industrial conveyor production line",
+      "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "note": "Dev-candidate scene pack only. Do not include this photo file in public source distributions until separate rights review."
+    },
+    {
+      "scene_id": "delivery.food_courier",
+      "file": "delivery-courier-6868460.jpeg",
+      "sha256": "4f517c92a344caa9e0068176c87aa5a4f92192af93364d93185fd4a7a82cf164",
+      "bytes": 1177556,
+      "source_page": "https://www.pexels.com/photo/man-in-red-t-shirt-riding-bicycle-on-road-6868460/",
+      "creator": "Pexels contributor per page",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "description": "food delivery courier riding a bicycle",
+      "redistribution_status": "NOT_CLEARED_FOR_SOURCE_BUNDLE",
+      "note": "Dev-candidate scene pack only. Do not include this photo file in public source distributions until separate rights review."
+    }
+  ],
+  "license_scope_note": "These photos are used only in an isolated development candidate and test outputs. Pexels allows use in presentations, but redistribution of the raw photos as a stock-photo bundle is not allowed; release packaging remains blocked pending rights review."
+}

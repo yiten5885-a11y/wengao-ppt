@@ -1,0 +1,238 @@
+{
+  "schema": "rs.image_ledger.v1",
+  "total_scenes": 6,
+  "resolved_scenes": 4,
+  "fallback_scenes": 2,
+  "deck_delivery_status": "DELIVERED",
+  "deck_success": true,
+  "scene_coverage_rate": 0.6666666666666666,
+  "tier_distribution": {
+    "T1": 1,
+    "T2": 2,
+    "T3": 1,
+    "T4": 2
+  },
+  "resolutions": [
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p01-s1",
+      "status": "RESOLVED_T1",
+      "asset": {
+        "path": "fixtures/media/images/t1_user_upload.jpg",
+        "sha256": "fa856239b0b4e2face758f9e7d4bec01eb6bc2db8c2f5dd6a9cabf2e4d69a805",
+        "phash": "0180808080808001ff818181818181ff",
+        "width": 1920,
+        "height": 1080,
+        "format": "JPEG",
+        "provider": "user",
+        "license": "User Owned",
+        "license_url": "",
+        "creator": "User Material Asset",
+        "source_url": "",
+        "attribution_text": "Image provided by user material",
+        "generator": null,
+        "model": null,
+        "prompt_digest": null,
+        "seed": null,
+        "similarity": 0.88,
+        "similarity_model": "local_vision_v1"
+      },
+      "attempts": [
+        {
+          "tier": "T1",
+          "provider": "user",
+          "outcome": "SUCCESS",
+          "detail": "User original material image",
+          "elapsed_s": 0.01
+        }
+      ],
+      "reason": null
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p02-s1",
+      "status": "RESOLVED_T2",
+      "asset": {
+        "path": "fixtures/media/images/t2_pexels_photo.jpg",
+        "sha256": "73dc126fa39052c53ba8a8735c24f8ba5de5a9b385892442a5add53ba7dbca66",
+        "phash": "0180808080808001ff818181818181ff",
+        "width": 1920,
+        "height": 1080,
+        "format": "JPEG",
+        "provider": "pexels",
+        "license": "Pexels License",
+        "license_url": "https://www.pexels.com/license/",
+        "creator": "Alex Pexels",
+        "source_url": "https://www.pexels.com/photo/sample-201/",
+        "attribution_text": "Photo by Alex Pexels on Pexels",
+        "generator": null,
+        "model": null,
+        "prompt_digest": null,
+        "seed": null,
+        "similarity": 0.88,
+        "similarity_model": "local_vision_v1"
+      },
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "SUCCESS",
+          "detail": "Matched with high similarity",
+          "elapsed_s": 0.45
+        }
+      ],
+      "reason": null
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p03-s1",
+      "status": "RESOLVED_T2",
+      "asset": {
+        "path": "fixtures/media/images/t2_wikimedia_photo.jpg",
+        "sha256": "2faf9fd157ad3758499fc9c6e9ea7c29e56a20236e20378e402fa6eb7c3b14b8",
+        "phash": "0080808080808000ff818181818181ff",
+        "width": 1600,
+        "height": 1200,
+        "format": "JPEG",
+        "provider": "wikimedia_commons",
+        "license": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "creator": "Commons Contributor",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sample.jpg",
+        "attribution_text": "Photo by Commons Contributor / Wikimedia Commons / CC-BY-SA-4.0",
+        "generator": null,
+        "model": null,
+        "prompt_digest": null,
+        "seed": null,
+        "similarity": 0.88,
+        "similarity_model": "local_vision_v1"
+      },
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "REJECTED_LOW_SIMILARITY",
+          "detail": "Similarity below threshold",
+          "elapsed_s": 0.41
+        },
+        {
+          "tier": "T2",
+          "provider": "wikimedia_commons",
+          "outcome": "SUCCESS",
+          "detail": "Wikimedia fallback matched",
+          "elapsed_s": 0.38
+        }
+      ],
+      "reason": null
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p04-s1",
+      "status": "RESOLVED_T3",
+      "asset": {
+        "path": "fixtures/media/images/t3_comfyui_generated.jpg",
+        "sha256": "d0492741631e89941d212eab43ef9650161365c4b987e716ee3d3303fd453d38",
+        "phash": "80808080808080c0ff818181818181ff",
+        "width": 1024,
+        "height": 1024,
+        "format": "JPEG",
+        "provider": "ai_generated_local",
+        "license": "Local AI Generation",
+        "license_url": "",
+        "creator": "ComfyUI Engine",
+        "source_url": "",
+        "attribution_text": "AI 生成 (ComfyUI / sd_xl_turbo / seed:1024)",
+        "generator": "comfyui",
+        "model": "sd_xl_turbo",
+        "prompt_digest": "futuristic server room, clean minimalist photography",
+        "seed": 1024,
+        "similarity": 0.86,
+        "similarity_model": "local_vision_v1"
+      },
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No licensed photo",
+          "elapsed_s": 0.32
+        },
+        {
+          "tier": "T2",
+          "provider": "wikimedia_commons",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No licensed photo",
+          "elapsed_s": 0.35
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SUCCESS",
+          "detail": "Generated via ComfyUI",
+          "elapsed_s": 3.12
+        }
+      ],
+      "reason": null
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p05-s1",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No photo found",
+          "elapsed_s": 0.28
+        },
+        {
+          "tier": "T2",
+          "provider": "wikimedia_commons",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No photo found",
+          "elapsed_s": 0.29
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "GENERATOR_TIMEOUT",
+          "detail": "ComfyUI timeout",
+          "elapsed_s": 10.0
+        }
+      ],
+      "reason": "All search providers returned zero licensed matches and ComfyUI generation timed out; gracefully downgraded to T4 text layout."
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "p06-s1",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No licensed photo found for specific brand",
+          "elapsed_s": 0.3
+        },
+        {
+          "tier": "T2",
+          "provider": "wikimedia_commons",
+          "outcome": "EMPTY_SEARCH_RESULTS",
+          "detail": "No licensed photo found",
+          "elapsed_s": 0.31
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "requires_real_photo is True; T3 AI generation disallowed",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene requires real photo (requires_real_photo=True), AI generation disallowed; search returned no valid licensed photo; downgraded to T4."
+    }
+  ]
+}

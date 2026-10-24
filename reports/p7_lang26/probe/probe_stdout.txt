@@ -1,0 +1,27 @@
+{
+  "error": {
+    "code": "MODEL.HTTP_ERROR",
+    "detail": "材料生成未产出可验收的 PPTX（模块返回码 0，run_record 判定 PLAN_FAILED，pptx=无）。 模型调用 MODEL.HTTP_ERROR（HTTP 502）：upstream connect failed: Connection refused (os error 61)"
+  },
+  "model_error": {
+    "code": "MODEL.HTTP_ERROR",
+    "provider": "ollama-local",
+    "status_code": 502,
+    "detail": "upstream connect failed: Connection refused (os error 61)"
+  },
+  "job_created": false,
+  "material": {
+    "input": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+    "input_kind": "markdown",
+    "facts_frozen": 14,
+    "plan_mode": "chunked",
+    "plan_slides": null,
+    "generated_pptx": null
+  },
+  "material_verdict": "PLAN_FAILED",
+  "page_range_conflict": null,
+  "artifacts": {
+    "run_record": "reports/p7_lang26/probe/run_record.json",
+    "outdir": "reports/p7_lang26/probe"
+  }
+}

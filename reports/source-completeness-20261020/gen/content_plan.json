@@ -1,0 +1,314 @@
+{
+  "deck_title": "年度经营与下年度规划报告",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "年度经营概况",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "年度经营概况",
+      "must_state": [
+        "一、年度经营概况",
+        "二、产品能力进展",
+        "三、客户与生态",
+        "四、成本与效率",
+        "五、质量与稳定性",
+        "六、问题与改进",
+        "七、下年度计划",
+        "八、结论"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "metrics",
+      "title": "一、年度经营概况",
+      "must_state": [
+        "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%",
+        "其中订阅收入 8.6 亿元，占总收入的 67%",
+        "专业版客户数达到 1240 家，较上年增加 310 家",
+        "年度新增签约客户 1870 家，客户续约率为 91%"
+      ]
+    },
+    {
+      "page": 4,
+      "page_type": "metrics",
+      "title": "一、年度经营概况（续）",
+      "must_state": [
+        "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 5,
+      "page_type": "chart",
+      "title": "二、产品能力进展",
+      "must_state": [
+        "实时数据管道上线，日均处理消息量达到 42 亿条",
+        "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟",
+        "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒",
+        "年内完成三大能力建设。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "三、客户与生态",
+      "must_state": [
+        "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%",
+        "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个",
+        "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "四、成本与效率",
+      "must_state": [
+        "基础设施成本 3.1 亿元，占总收入的 24%",
+        "单位请求成本从 0.021 元下降到 0.013 元",
+        "研发人员规模为 860 人，人均研发投入为 46 万元",
+        "运维自动化覆盖 78% 的常规巡检任务"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "process",
+      "title": "五、质量与稳定性",
+      "must_state": [
+        "全年服务可用性为 99.95%，满足 99.9% 的承诺指标",
+        "P1 级故障发生 4 次，平均恢复时间为 26 分钟",
+        "客户工单总量 8600 件，平均首次响应时间为 18 分钟",
+        "安全合规方面通过了 7 项行业认证审查"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "single_column",
+      "title": "六、问题与改进",
+      "must_state": [
+        "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景",
+        "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口",
+        "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "timeline",
+      "title": "七、下年度计划",
+      "must_state": [
+        "2025 年计划总收入达到 18 亿元，同比增长 40%",
+        "计划新增区域 2 个可用区",
+        "计划将跨区域同步延迟压缩到 30 秒以内",
+        "计划完成全部 22 个存量接口的迁移下线",
+        "计划将续约预警覆盖率提升到 90%"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "timeline",
+      "title": "七、下年度计划（续）",
+      "must_state": [
+        "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人"
+      ],
+      "_continued_from": 9
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "title": "八、结论",
+      "must_state": [
+        "2024 年是平台能力与规模同步扩张的一年",
+        "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。",
+        "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。",
+        "主要短板在跨区域数据同步延迟与老接口维护成本。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "elapsed_s": 49.25,
+      "done_reason": "stop",
+      "eval_count": 511,
+      "raw_response": "{\n  \"deck_title\": \"年度经营与下年度规划报告\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"年度经营概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"年度经营概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"metrics\",\n      \"title\": \"年度经营概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"chart\",\n      \"title\": \"产品能力进展\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"客户与生态\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"table\",\n      \"title\": \"成本与效率\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"质量与稳定性\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"single_column\",\n      \"title\": \"问题与改进\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"下年度计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"summary_action\",\n      \"title\": \"下年度计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"image_caption\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "chunk1",
+      "attempt": 1,
+      "page": 3,
+      "elapsed_s": 16.45,
+      "done_reason": "stop",
+      "eval_count": 229,
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008",
+        "F009",
+        "F010",
+        "F011"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%\",\n    \"其中订阅收入 8.6 亿元，占总收入的 67%\",\n    \"专业版客户数达到 1240 家，较上年增加 310 家\",\n    \"年度新增签约客户 1870 家，客户续约率为 91%\",\n    \"平台整体毛利率为 63.5%，较上年提升 4.2 个百分点\"\n  ],\n  \"order_hint\": [\n    \"F001\",\n    \"F002\",\n    \"F003\",\n    \"F004\",\n    \"F005\",\n    \"F006\",\n    \"F007\",\n    \"F008\",\n    \"F009\",\n    \"F010\",\n    \"F011\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk2",
+      "attempt": 1,
+      "page": 4,
+      "elapsed_s": 11.74,
+      "done_reason": "stop",
+      "eval_count": 152,
+      "assigned_fact_ids": [
+        "F012",
+        "F013",
+        "F014",
+        "F015",
+        "F016",
+        "F017"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"实时数据管道上线，日均处理消息量达到 42 亿条\",\n    \"智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟\",\n    \"多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒\"\n  ],\n  \"order_hint\": [\n    \"F012\",\n    \"F013\",\n    \"F014\",\n    \"F015\",\n    \"F016\",\n    \"F017\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk3",
+      "attempt": 1,
+      "page": 5,
+      "elapsed_s": 11.31,
+      "done_reason": "stop",
+      "eval_count": 133,
+      "assigned_fact_ids": [
+        "F018",
+        "F019",
+        "F020",
+        "F021",
+        "F022",
+        "F023",
+        "F024"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%\",\n    \"开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个\",\n    \"企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个\"\n  ],\n  \"order_hint\": [\n    \"F018\",\n    \"F021\",\n    \"F023\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk4",
+      "attempt": 1,
+      "page": 6,
+      "elapsed_s": 11.8,
+      "done_reason": "stop",
+      "eval_count": 161,
+      "assigned_fact_ids": [
+        "F025",
+        "F026",
+        "F027",
+        "F028",
+        "F029",
+        "F030",
+        "F031"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"基础设施成本 3.1 亿元，占总收入的 24%\",\n    \"单位请求成本从 0.021 元下降到 0.013 元\",\n    \"研发人员规模为 860 人，人均研发投入为 46 万元\",\n    \"运维自动化覆盖 78% 的常规巡检任务\"\n  ],\n  \"order_hint\": [\n    \"F025\",\n    \"F026\",\n    \"F027\",\n    \"F028\",\n    \"F029\",\n    \"F030\",\n    \"F031\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk5",
+      "attempt": 1,
+      "page": 7,
+      "elapsed_s": 12.05,
+      "done_reason": "stop",
+      "eval_count": 152,
+      "assigned_fact_ids": [
+        "F032",
+        "F033",
+        "F034",
+        "F035",
+        "F036",
+        "F037",
+        "F038",
+        "F039"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"全年服务可用性为 99.95%，满足 99.9% 的承诺指标\",\n    \"P1 级故障发生 4 次，平均恢复时间为 26 分钟\",\n    \"客户工单总量 8600 件，平均首次响应时间为 18 分钟\",\n    \"安全合规方面通过了 7 项行业认证审查\"\n  ],\n  \"order_hint\": [\n    \"F032\",\n    \"F034\",\n    \"F036\",\n    \"F037\",\n    \"F039\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk6",
+      "attempt": 1,
+      "page": 8,
+      "elapsed_s": 9.55,
+      "done_reason": "stop",
+      "eval_count": 122,
+      "assigned_fact_ids": [
+        "F040",
+        "F041",
+        "F042",
+        "F043"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"跨区域数据同步存在 3 分钟的延迟，影响实时分析场景\",\n    \"老版本接口未完全下线，维护成本较高，涉及 22 个存量接口\",\n    \"客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标\"\n  ],\n  \"order_hint\": [\n    \"F040\",\n    \"F041\",\n    \"F042\",\n    \"F043\"\n  ]\n}"
+    },
+    {
+      "phase": "chunk7",
+      "attempt": 1,
+      "page": 9,
+      "elapsed_s": 11.58,
+      "done_reason": "stop",
+      "eval_count": 141,
+      "assigned_fact_ids": [
+        "F044",
+        "F045",
+        "F046",
+        "F047",
+        "F048",
+        "F049",
+        "F050",
+        "F051",
+        "F052"
+      ],
+      "raw_response": "{\"must_state\": [\"2025 年计划总收入达到 18 亿元，同比增长 40%\", \"计划新增区域 2 个可用区\", \"计划将跨区域同步延迟压缩到 30 秒以内\", \"计划完成全部 22 个存量接口的迁移下线\", \"计划将续约预警覆盖率提升到 90%\", \"计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人\"], \"order_hint\": [\"F044\", \"F047\", \"F048\", \"F049\", \"F050\", \"F051\"]}"
+    },
+    {
+      "phase": "chunk8",
+      "attempt": 1,
+      "page": 10,
+      "elapsed_s": 10.09,
+      "done_reason": "stop",
+      "eval_count": 135,
+      "assigned_fact_ids": [
+        "F053",
+        "F054",
+        "F055",
+        "F056",
+        "F057"
+      ],
+      "raw_response": "{\n  \"must_state\": [\n    \"2024 年是平台能力与规模同步扩张的一年\",\n    \"收入增速 38% 高于行业平均水平，\",\n    \"毛利率提升 4.2 个百分点说明交付成本控制有效\",\n    \"2025 年的重点是把 18 亿元收入目标与基础设施稳定性、\"\n  ],\n  \"order_hint\": [\n    \"F053\",\n    \"F054\",\n    \"F055\",\n    \"F056\",\n    \"F057\"\n  ]\n}"
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "结论",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "结论",
+      "page_type": "image_caption",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 22pt/表格 18pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 12,
+    "pages_after": 12,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true
+  }
+}

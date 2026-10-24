@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "scope_id": "existing-matrix-26-v1",
+  "status": "ACCEPTANCE_IN_PROGRESS",
+  "decision": "Complete the candidate's existing 26-language acceptance set first; additions outside it are deferred to a later version.",
+  "population_threshold_millions": 20,
+  "worldwide_threshold_list_exhaustive": false,
+  "acceptance_language_codes": [
+    "ar", "bn", "de", "en", "es", "fa", "fr", "hi", "id", "it", "ja",
+    "ko", "ms", "nl", "pl", "pt", "ru", "sw", "ta", "te", "th", "tr",
+    "uk", "ur", "vi", "zh"
+  ],
+  "required_layers": [
+    "text_recognition",
+    "semantic_planning",
+    "visual_query_generation",
+    "typography_and_layout",
+    "generation_and_gate"
+  ],
+  "required_keyword_scene_pipeline_order": [
+    "extract_original_page_text",
+    "detect_source_language_and_script_offline",
+    "apply_language_scoped_legacy_keyword_matcher_only_after_detection",
+    "plan_source_grounded_scene_keywords_in_original_language",
+    "generate_neutral_english_photo_search_queries",
+    "retrieve_and_insert_one_photo_per_unique_scene",
+    "run_scene_and_layout_gates"
+  ],
+  "language_to_scene_wiring": {
+    "detector_runs_before_scene_keyword_extraction": true,
+    "legacy_keyword_matcher_language_scope": "zh_only",
+    "non_chinese_unknown_or_mixed_pages_bypass_legacy_chinese_tag_library": true,
+    "non_chinese_pages_continue_to_multilingual_open_vocabulary_scene_planner": true,
+    "detected_language_and_script_are_bound_into_visual_plan_sha256": true,
+    "planner_receives_original_text_and_language_context": true,
+    "unknown_or_mixed_language_pages_are_still_planned": true,
+    "language_context_is_advisory_and_does_not_override_source_text": true,
+    "remote_photo_search_receives_only_neutral_english_visual_queries": true,
+    "recognition_to_planner_payload_unit_test": "26_LANGUAGE_FIXTURES_PASS",
+    "semantic_model_quality_acceptance": "NOT_FULLY_ACCEPTED",
+    "real_photo_retrieval_and_insertion_acceptance": "NOT_FULLY_ACCEPTED"
+  },
+  "acceptance_rule": "Every in-scope language must have passing evidence for every required layer before it is labeled FULL_SUPPORT. Recognition fixtures alone do not satisfy full language acceptance.",
+  "deferred_existing_hint_codes": ["el", "he"],
+  "deferred_language_examples": ["pcm", "mr", "ha", "pnb", "tl", "yue", "wuu", "am", "jv", "gu", "kn", "yo", "bho", "arz", "apc", "apd"],
+  "deferred_note": "These examples are not a complete future-language backlog. The current release scope is the pinned 26-language set above; later additions require a separately versioned scope and acceptance plan.",
+  "fixture_status": {
+    "recognition_samples": "PASS_26_OFFLINE_RECOGNITION_UNIT_TESTS",
+    "scene_planner_payload_samples": "PASS_26_ORIGINAL_TEXT_AND_LANGUAGE_CONTEXT_FIXTURES",
+    "semantic_planning": "NOT_FULLY_ACCEPTED",
+    "visual_query_generation": "NOT_FULLY_ACCEPTED",
+    "typography_and_layout": "NOT_FULLY_ACCEPTED",
+    "generation_and_gate": "NOT_FULLY_ACCEPTED",
+    "real_50_deck_source_materials": "50_OF_50_PREPARED_CORRECTED_AND_REVIEWED",
+    "real_50_deck_prepublication_gate": "SEPARATE_GATE_IN_PROGRESS_0_OF_50_ACTUAL_DECKS"
+  },
+  "release_claim": "Do not claim complete multilingual support until all 26 languages pass all five layers and the independent 50-deck prepublication gate passes.",
+  "detector": {
+    "version": "unicode-script-lexical-v4",
+    "changes": [
+      "dominant language is chosen by cross-script semantic units, not raw character share, so a Chinese page with English product terms stays zh",
+      "Korean hanja (Han characters inside Hangul text) no longer produces a false Chinese/Korean mixed page",
+      "URLs and e-mail addresses are stripped before lexical scoring; a bare link is reported und instead of Portuguese",
+      "Latin markers carry everyday content words and allow bounded inflection matching (shoppers/shopping, tuketiciler, anazungumza)",
+      "mixed pages report mixed=true with the secondary language when prose evidence exists, not only when a brand name appears",
+      "uncertain pages (numbers, emoji, links, proper nouns, very short labels) are reported und/uncertain and listed for pending handling"
+    ],
+    "evidence": "tests/test_multilingual_scene_acceptance.py::MultilingualRecognitionAcceptance"
+  },
+  "scene_dedupe": {
+    "identity_normalization": "canonical scene ids are unified on case, separators, repeated underscores and simple English plurals before dedupe",
+    "audit_trail": "semantic scene plans carry dedupe_audit with kept/merged decisions per scene identity",
+    "distinct_subscenes_preserved": "normalization never rewrites the head noun, so supermarket/checkout/receipt sub-scenes stay distinct",
+    "evidence": "tests/test_multilingual_scene_acceptance.py::SceneDedupeAcceptance"
+  },
+  "real_run_2026_10_23": {
+    "sample": "retail_clinic_en.pptx (6 pages, English, new sample)",
+    "sample_sha256": "6665b85513ebb6927fdb755bf40e600e3647091bd946abf6352722f3ed79f7ea",
+    "precheck": "QUEUED, support_profile P1_TEXT_LIMITED, upstream_verified VENDOR_DIR_MISSING, real_renderer MISSING",
+    "run_stage_reached": "semantic_scenes",
+    "requested_model": "qwen3.8:27b-wb65536",
+    "endpoint_discovery": "127.0.0.1:18888 (/health) and 127.0.0.1:11434 (/api/tags) both refused; fallback http://127.0.0.1:18888",
+    "result": "FAILED",
+    "model_error_via_ambient_proxy": {
+      "code": "MODEL.HTTP_ERROR",
+      "provider": "ollama-local",
+      "status_code": 502,
+      "detail": "upstream connect failed: Connection refused (os error 61)"
+    },
+    "model_error_without_ambient_proxy": {
+      "code": "MODEL.TRANSPORT_ERROR",
+      "detail": "本机语义模型连接失败（ConnectionRefusedError）。"
+    },
+    "generated_pptx": null,
+    "photo_retrieval_attempted": false,
+    "preview_available": false,
+    "blocker": "no local model gateway on 127.0.0.1:18888 or 127.0.0.1:11434, and no LibreOffice renderer; shared services were not restarted and no model was downloaded"
+  }
+}

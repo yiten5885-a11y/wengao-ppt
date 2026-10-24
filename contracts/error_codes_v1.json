@@ -1,0 +1,954 @@
+{
+  "dictionary_id": "ERROR_CODES_V1",
+  "schema_version": "1.0.0",
+  "status": "frozen_candidate_for_P0",
+  "authority": "本字典是唯一权威错误码集合；Skill 提示词中的能力说明不得与字典冲突。",
+  "severity_levels": {
+    "BLOCKING": "阻断正式 READY；不得降级为 WARN。",
+    "REVIEW": "需人工或规则复核；NEEDS_REVIEW 不等于通过，也不等于语义正确。",
+    "WARN": "版本化规则中明确列出的非阻断问题；关键内容错误不得降级为 WARN。"
+  },
+  "verdict_vocabulary": [
+    "QUEUED",
+    "RUNNING",
+    "VALIDATING",
+    "READY",
+    "FAILED",
+    "NEEDS_REVIEW",
+    "READY_WITH_EXCEPTIONS",
+    "CANCELLED",
+    "WARN"
+  ],
+  "note_on_wrong_reason": "命中错误但原因不符，不算正确检出（wrong_failure_reason_is_not_a_pass）。",
+  "codes": [
+    {
+      "code": "FIDELITY.CHART_CATEGORY_IS_NUMBER",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "图表类别被裸数值代替，不能识别该数据点的主体。"
+    },
+    {
+      "code": "FIDELITY.CHART_CATEGORY_NOT_BOUND_TO_SUBJECT",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "图表类别与该数值在冻结事实中所属主体不匹配。"
+    },
+    {
+      "code": "FIDELITY.CHART_CATEGORY_NOT_DISCRIMINATING",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "同一类别标签对应多个不同数值，无法区分数据点。"
+    },
+    {
+      "code": "FIDELITY.CHART_CATEGORY_TRUNCATED",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "来源类别描述被截断或断在词中；完整但过长的原句标签由实现记 REVIEW，不能将截断内容降级。",
+      "review_condition": "标签完整且超过 24 字并含数值、未收敛为可读类别时需复核。"
+    },
+    {
+      "code": "FIDELITY.CHART_DUPLICATE_POINT",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "重复绘制同一类别和数值的数据点，不得用重复点凑来源覆盖。"
+    },
+    {
+      "code": "FIDELITY.CHART_SERIES_GENERIC",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "图表系列名为空或通用词，未承载指标或单位语义。"
+    },
+    {
+      "code": "FIDELITY.CHART_WORKBOOK_CACHE_MISMATCH",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "图表显示缓存的类别或数值与该图表自己的嵌入工作簿不一致。"
+    },
+    {
+      "code": "GATE.MATERIAL_INTENT_INCOMPLETE",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "材料身份的来源、事实台账、计划参数未同时提供，拒绝建任务。"
+    },
+    {
+      "code": "GATE.MATERIAL_SOURCE_UNAVAILABLE",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "已冻结材料任务的来源台账缺失、损坏或身份不符，来源覆盖不可执行，禁止退回普通 PPTX 自基线路径。"
+    },
+    {
+      "code": "RENDER.CJK_TEXT_PRESENT_NOT_RENDERED",
+      "family": "SF07",
+      "severity": "BLOCKING",
+      "meaning": "候选预期包含中文但真实渲染中未呈现，不得仅依据渲染器退出码放行。"
+    },
+    {
+      "code": "FIDELITY.REQUIRED_TEXT_MISSING",
+      "family": "SF01",
+      "severity": "BLOCKING",
+      "meaning": "逐字锁定的必讲正文缺失（含删字、删段）。",
+      "required_evidence": [
+        "来源锚点",
+        "页码",
+        "缺失内容片段"
+      ]
+    },
+    {
+      "code": "FIDELITY.OCCURRENCE_MISMATCH",
+      "family": "SF01",
+      "severity": "BLOCKING",
+      "meaning": "同文内容的出现次数与独立标注不符；不得因同文仍存在而放行。"
+    },
+    {
+      "code": "FIDELITY.NOTES_MISSING",
+      "family": "SF01",
+      "severity": "BLOCKING",
+      "meaning": "要求保留的备注丢失；正文完整不能替代备注完整。"
+    },
+    {
+      "code": "FIDELITY.SIGN_MISMATCH",
+      "family": "SF02",
+      "severity": "BLOCKING",
+      "meaning": "关键数值正负号改变；文本规范化不得删除数值负号。"
+    },
+    {
+      "code": "FIDELITY.NUMBER_UNIT_MISMATCH",
+      "family": "SF02",
+      "severity": "BLOCKING",
+      "meaning": "小数点、单位或百分比/百分点口径失真。"
+    },
+    {
+      "code": "FIDELITY.SUBJECT_VALUE_MISMATCH",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "主体与数值对调；必须核对关系而非词语集合。"
+    },
+    {
+      "code": "FIDELITY.TABLE_CELL_MISMATCH",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "表格单元格按表/行/列/表头核对不一致。"
+    },
+    {
+      "code": "FIDELITY.CHART_BINDING_MISMATCH",
+      "family": "SF03",
+      "severity": "BLOCKING",
+      "meaning": "图表系列、类别、数值或单位绑定错配；可见图表与内嵌数据均纳入检查。"
+    },
+    {
+      "code": "FIDELITY.LOCKED_CONTEXT_MISSING",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "逐字锁定的适用范围、时间或条件缺失。"
+    },
+    {
+      "code": "FIDELITY.SCOPE_SPLIT",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "已约定同页共同展示的数字与其限制条件被拆到不同页；仅在明确约定同页展示时判错。"
+    },
+    {
+      "code": "FIDELITY.UNSUPPORTED_FACT_CLAIM",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "新增无来源且无法由允许公式推导的关键数值结论。"
+    },
+    {
+      "code": "FIDELITY.IMAGE_PAGE_MISMATCH",
+      "family": "SF05",
+      "severity": "BLOCKING",
+      "meaning": "必需图片被移到不符合来源映射的另一页。"
+    },
+    {
+      "code": "REVIEW.SEMANTIC_AMBIGUITY",
+      "family": "SF04",
+      "severity": "REVIEW",
+      "meaning": "改写等价性无法判定；给出原句、改写和不确定点。"
+    },
+    {
+      "code": "INPUT.CHART_SOURCE_CONFLICT",
+      "family": "SF04",
+      "severity": "REVIEW",
+      "meaning": "原始内嵌工作簿与显示缓存冲突且用户未指定以哪份为准；不得静默选择一方。"
+    },
+    {
+      "code": "EDIT.TABLE_RASTERIZED",
+      "family": "SF06",
+      "severity": "BLOCKING",
+      "meaning": "可见原表格被图片替代。"
+    },
+    {
+      "code": "EDIT.CHART_RASTERIZED",
+      "family": "SF06",
+      "severity": "BLOCKING",
+      "meaning": "可见图表被图片替代。"
+    },
+    {
+      "code": "EDIT.VISIBLE_CONTENT_NOT_NATIVE",
+      "family": "SF06",
+      "severity": "BLOCKING",
+      "meaning": "主要可见内容由整页截图承载，原生对象仅为诱饵。"
+    },
+    {
+      "code": "EDIT.COVERED",
+      "family": "SF06",
+      "severity": "BLOCKING",
+      "meaning": "不透明图层覆盖锁定的关键正文；不得以固定遮挡面积比例代替可见性证据。"
+    },
+    {
+      "code": "EDIT.DECOY",
+      "family": "SF06",
+      "severity": "BLOCKING",
+      "meaning": "可见表格/图表为截图，另放空原生对象作为诱饵；对象数量存在不构成充分证明。"
+    },
+    {
+      "code": "EDIT.UNREFERENCED_MEDIA",
+      "family": "SF05",
+      "severity": "BLOCKING",
+      "meaning": "媒体字节在包内但无页面引用；字节存在不是充分证据。"
+    },
+    {
+      "code": "EDIT.REQUIRED_IMAGE_HIDDEN",
+      "family": "SF05",
+      "severity": "BLOCKING",
+      "meaning": "必须展示的图片被设为不可见。"
+    },
+    {
+      "code": "EDIT.REQUIRED_IMAGE_CROPPED",
+      "family": "SF05",
+      "severity": "BLOCKING",
+      "meaning": "裁掉事先锁定的关键图片区域。"
+    },
+    {
+      "code": "RENDER.REQUIRED_CONTENT_CLIPPED",
+      "family": "SF07",
+      "severity": "BLOCKING",
+      "meaning": "真实渲染下关键文字/标签/图例被裁切；不得只检查 XML 与页数。"
+    },
+    {
+      "code": "RENDER.CJK_GLYPH_MISSING",
+      "family": "SF07",
+      "severity": "BLOCKING",
+      "meaning": "真实渲染产物文本层无中文；渲染器退出码 0 会掩盖字体不可读的静默失败。"
+    },
+    {
+      "code": "RENDER.PNG_RASTERIZATION_FAILED",
+      "family": "SF07",
+      "severity": "BLOCKING",
+      "meaning": "PDF 渲染成功但逐页预览 PNG 缺失或不完整；预览缺失必须阻断，不得用渲染器退出码或近似图代替。"
+    },
+    {
+      "code": "RENDER.PAGE_COUNT_MISMATCH",
+      "family": "SF07",
+      "severity": "BLOCKING",
+      "meaning": "渲染产物实际页数与预期页数不一致；不得用渲染器退出码代替页数核对。"
+    },
+    {
+      "code": "RENDER.EXECUTION_FAILED",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "声明的真实渲染器报错或无法产出渲染产物；不得用轻量预览替代。"
+    },
+    {
+      "code": "RENDER.NOT_AVAILABLE",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "环境中不存在声明的真实渲染器；相关用例记 NOT_EVALUABLE 并阻断发布覆盖。"
+    },
+    {
+      "code": "GATE.CHECKER_CRASH",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "检查器异常退出；只计故障隔离，不计内容错误检出。"
+    },
+    {
+      "code": "GATE.CHECK_NOT_IMPLEMENTED",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "完整发布 profile 中必需检查未实现或不可执行；目标检测记 NOT_EVALUABLE。"
+    },
+    {
+      "code": "GATE.BLOCKING_FINDINGS",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "存在阻断级 finding 仍申请放行；验收未通过不得固化为有效版本。"
+    },
+    {
+      "code": "GATE.RELEASE_BLOCKED",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "发布级门槛未满足（必需检查未执行、证据过期或样本未达发布要求）。"
+    },
+    {
+      "code": "GATE.ARTIFACT_MISSING",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "命令退出码为零但必需 PPT/渲染/报告缺失。"
+    },
+    {
+      "code": "GATE.ARTIFACT_INVALID",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "必需产物存在但最小有效性校验失败。"
+    },
+    {
+      "code": "GATE.PARSER_DIVERGENCE",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "两条独立解析路径的对象集合、类型、组路径或引用关系不一致。"
+    },
+    {
+      "code": "PARSE.EXECUTION_FAILED",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "第二解析路径执行失败；无法形成可比对结论，不得记为一致。"
+    },
+    {
+      "code": "PARSE.COMPARE_FAILED",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "两条解析路径的比较过程失败；不得因为没报差异就记为一致。"
+    },
+    {
+      "code": "PARSE.OBJECT_SET_DIVERGENCE",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "两条独立解析路径的对象集合、类型或表结构不一致（含数量与成员差异）。"
+    },
+    {
+      "code": "GATE.INTERRUPTED",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "进程中断；不得长期停留 RUNNING，不得误报新版本完成。"
+    },
+    {
+      "code": "GATE.TIMEOUT",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "步骤超出可配置时间预算；迟到结果不得覆盖当前状态。"
+    },
+    {
+      "code": "GATE.ARTIFACT_WRITE_FAILED",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "候选写入失败或截断；不完整候选不得替换上一有效版本。"
+    },
+    {
+      "code": "GATE.ATTEMPT_CONFLICT",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "过期尝试延迟提交并试图写 READY；新尝试状态不得被旧尝试覆盖。"
+    },
+    {
+      "code": "GATE.STALE_ATTEMPT",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "提交结果的 attempt_id 不等于当前 attempt；旧尝试不得写入当前产物。"
+    },
+    {
+      "code": "GATE.STALE_RUN",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "提交结果的 run_id 不等于当前 run；跨执行记录的结果不得写入当前产物。"
+    },
+    {
+      "code": "GATE.LATE_RESULT_REJECTED",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "已取消或已过期尝试的迟到结果到达提交入口；必须拒绝且不触碰当前候选与有效版本。"
+    },
+    {
+      "code": "GATE.CANCELLED",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "尝试被用户取消；取消后的结果不得回生为成功，也不得覆盖新尝试状态。"
+    },
+    {
+      "code": "EVIDENCE.STALE",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "旧验收报告用于新候选；重新验收后的成功属于另一个执行记录。"
+    },
+    {
+      "code": "OBJECT.PARSE_ERROR",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "应可读却读取失败的对象；禁止静默跳过。"
+    },
+    {
+      "code": "GATE.CANDIDATE_PARSE_ERROR",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "候选产物无法被解析器读取；不得因解析器报错而跳过验收。"
+    },
+    {
+      "code": "OBJECT.UNCATALOGED",
+      "family": "SF09",
+      "severity": "BLOCKING",
+      "meaning": "未知类型对象未编目；禁止直接跳过。"
+    },
+    {
+      "code": "SCOPE.UNREQUESTED_CHANGE",
+      "family": "SF11",
+      "severity": "BLOCKING",
+      "meaning": "局部修改越界改变了未授权内容、关系或可见结果。"
+    },
+    {
+      "code": "VERSION.USER_EDIT_OVERWRITTEN",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "旧计划覆盖用户外部手改回传的内容。"
+    },
+    {
+      "code": "VERSION.MERGE_CONFLICT",
+      "family": "SF12",
+      "severity": "REVIEW",
+      "meaning": "回传值、旧计划与新指令冲突且优先级无法确定；解决前保留用户回传内容。"
+    },
+    {
+      "code": "REPAIR.FORBIDDEN_CONTENT_CHANGE",
+      "family": "SF11",
+      "severity": "BLOCKING",
+      "meaning": "修复删除必讲内容、挪正文入备注或降低原有内容约束。"
+    },
+    {
+      "code": "MODEL.INVALID_JSON",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "模型输出无法解析为 JSON。"
+    },
+    {
+      "code": "MODEL.SCHEMA_VIOLATION",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "结构合法但字段类型或必需字段不符合版本化 schema。"
+    },
+    {
+      "code": "MODEL.UNAVAILABLE",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "本地端点不可用且付费云端回退未授权；不得自动切换付费云模型。"
+    },
+    {
+      "code": "MODEL.CONTEXT_TRUNCATED",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "已知锁定来源段被静默截断；不得由模型猜补或其自评通过。"
+    },
+    {
+      "code": "INPUT.SOURCE_BASELINE_MISSING",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "冻结任务的原始输入基线缺失或不可读；不得从当前候选/计划重建替代原稿，也不得改变任务模式。"
+    },
+    {
+      "code": "INPUT.INVALID_ENCODING",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "输入包内声明为 UTF-8 的文本含无法解码的字节；必须明确失败或走显式转码流程，不得静默丢弃坏字节。"
+    },
+    {
+      "code": "INPUT.AMBIGUOUS_PACKAGE",
+      "family": "SF04",
+      "severity": "REVIEW",
+      "meaning": "输入包存在规范化后同名但内容不同的成员等结构歧义；必须进入复核，不得自动择一。"
+    },
+    {
+      "code": "THEME.UNKNOWN",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "请求的主题 ID 不在可信主题注册表内（含把文件路径/URL/自定义配置当主题传入）；必须在建任务入口按契约拒绝，不得读取任意本机路径，也不得创建成功交付。",
+      "required_evidence": [
+        "请求中的 theme_id",
+        "注册表内可用 theme_id 清单",
+        "拒绝时的退出码/HTTP 状态"
+      ]
+    },
+    {
+      "code": "THEME.CONFIG_STALE",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "任务冻结的主题有效配置摘要与当前注册表不一致（同名主题的配置已升级）；不得用旧任务、旧候选或旧报告为新配置背书，须按当前配置重新建立任务。",
+      "required_evidence": [
+        "任务冻结摘要",
+        "当前注册表摘要",
+        "被拒绝的操作与时间"
+      ]
+    },
+    {
+      "code": "INPUT.NOT_FOUND",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "指定的原稿路径不存在或不可读；建任务入口即拒绝，不建立待处理任务。",
+      "required_evidence": [
+        "请求路径",
+        "拒绝时的退出码/HTTP 状态"
+      ]
+    },
+    {
+      "code": "INPUT.NOT_A_PPTX_PACKAGE",
+      "family": "SF04",
+      "severity": "BLOCKING",
+      "meaning": "输入不是合法的 OOXML/PPTX 包（损坏、伪装扩展名或非 ZIP）；入口即如实拒绝，不得当成可处理原稿。",
+      "required_evidence": [
+        "输入路径与真实字节类型",
+        "拒绝原因（底层异常摘要）"
+      ]
+    },
+    {
+      "code": "GATE.MATERIAL_PATH_MISSING",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "材料生成所需的生成模块缺失；不得静默降级为 PPTX 美化路径或跳过材料生成。"
+    },
+    {
+      "code": "INPUT.UNSUPPORTED_MATERIAL_TYPE",
+      "family": "SF01",
+      "severity": "BLOCKING",
+      "meaning": "材料生成入口收到不支持的输入类型（如 .pptx）；应拒绝并指向正确路径，不得混用两条流程。"
+    },
+    {
+      "code": "GATE.FACT_COVERAGE_INCOMPLETE",
+      "family": "SF01",
+      "severity": "BLOCKING",
+      "meaning": "内容计划未覆盖全部必讲事实，且未把遗漏事实显式列入 omitted_facts 并写明处理策略；不得静默丢弃必讲内容。"
+    },
+    {
+      "code": "GATE.PLAN_STRUCTURE_INVALID",
+      "family": "SF08",
+      "severity": "BLOCKING",
+      "meaning": "内容计划结构非法（页型越界、标题缺失、正文页无要点、页数少于事实章节数）；有限重试后仍不合法则不得产出 PPTX。"
+    },
+    {
+      "code": "RENDER.FONTCONFIG_RESOURCE_MISSING",
+      "family": "RENDER",
+      "severity": "BLOCKING",
+      "meaning": "发布包内必需的字体配置资源缺失或不可解析；渲染结果不可信，不得以退出码 0 放行。",
+      "required_evidence": [
+        "包内资源清单",
+        "解析到的有效配置路径或失败原因"
+      ]
+    },
+    {
+      "code": "RENDER.GLYPH_MISSING",
+      "family": "RENDER",
+      "severity": "BLOCKING",
+      "meaning": "逐页字形判据判定汉字未被真实绘制（字符框内无笔画/不同汉字共用同一方框位图）。",
+      "required_evidence": [
+        "PDF 哈希与页图绑定",
+        "逐页 flat_ratio/diversity/页号"
+      ]
+    },
+    {
+      "code": "GLYPH.CJK_NOT_DRAWABLE",
+      "family": "GLYPH",
+      "severity": "BLOCKING",
+      "meaning": "某页汉字位置没有墨迹或高度重复的 .notdef 方框：文本层有字但字形未画出。",
+      "required_evidence": [
+        "页号",
+        "不同汉字数与位图数",
+        "抽样字符"
+      ]
+    },
+    {
+      "code": "GLYPH.NOT_EVALUABLE",
+      "family": "GLYPH",
+      "severity": "BLOCKING",
+      "meaning": "字形质量检查无法执行或证据不足，无法证明字被画出；不得放行。",
+      "required_evidence": [
+        "失败原因或证据不足的页号"
+      ]
+    },
+    {
+      "code": "GLYPH.PIXEL_EVIDENCE_INSUFFICIENT",
+      "family": "GLYPH",
+      "severity": "REVIEW",
+      "meaning": "该页汉字可用字符框过少，像素证据不足以判定整页，需人工看页图。",
+      "required_evidence": [
+        "页号",
+        "可用裁片数"
+      ]
+    },
+    {
+      "code": "GLYPH.CJK_TEXT_PRESENT_NOT_RENDERED",
+      "family": "GLYPH",
+      "severity": "BLOCKING",
+      "meaning": "可信来源（原始普查/冻结台账/已授权展示变更）明确要求该页显示原生中文，但真实渲染输出中该页取不到任何可用汉字字符框——文本层可能仍含中文字符，但页面上没有可辨字形（中文整体消失）。判定依据是可信预期，不是输出侧的分母；不得因输出提取为 0 而记为不适用。",
+      "required_evidence": [
+        "页号",
+        "可信来源期望的该页中文单元数/字符数",
+        "输出侧该页取到的汉字字符框数",
+        "输出侧该页中文文本层字符数"
+      ]
+    },
+    {
+      "code": "THEME.UNSAFE_CONVERSION",
+      "family": "THEME",
+      "severity": "BLOCKING",
+      "meaning": "主题改色后文字与实际底色对比度低于原稿（转换使可读性变差）。",
+      "required_evidence": [
+        "页号/对象",
+        "改色前后对比度",
+        "实际底色"
+      ]
+    },
+    {
+      "code": "THEME.BACKDROP_UNVERIFIED",
+      "family": "THEME",
+      "severity": "REVIEW",
+      "meaning": "文字底色为渐变/图片/半透明，无法可靠计算对比度；不得据此声称主题已完整套用。",
+      "required_evidence": [
+        "页号/对象",
+        "底色结构类型"
+      ]
+    },
+    {
+      "code": "THEME.PRESERVE_MUTATED",
+      "family": "THEME",
+      "severity": "BLOCKING",
+      "meaning": "保留原设计路径改动了字节；该路径输出必须与输入逐字节一致。",
+      "required_evidence": [
+        "输入/输出 SHA256"
+      ]
+    },
+    {
+      "code": "INCIDENT.BLOCKED",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "该任务或文件被事故台账标记为已确认不可交付；普通接纳/导出/下载必须拒绝。",
+      "required_evidence": [
+        "事故 ID",
+        "原因",
+        "绑定哈希"
+      ]
+    },
+    {
+      "code": "GATE.NOT_VALIDATED",
+      "family": "GATE",
+      "severity": "BLOCKING",
+      "meaning": "当前 attempt 尚无验收记录（新尝试尚未验收），不得交付。",
+      "required_evidence": [
+        "attempt 身份",
+        "validation 是否存在"
+      ]
+    },
+    {
+      "code": "GATE.IN_PROGRESS",
+      "family": "GATE",
+      "severity": "BLOCKING",
+      "meaning": "当前尝试仍在运行且没有本轮验收，本次结果尚未产生。",
+      "required_evidence": [
+        "job 状态",
+        "attempt 身份"
+      ]
+    },
+    {
+      "code": "EVIDENCE.UNREADABLE",
+      "family": "EVIDENCE",
+      "severity": "BLOCKING",
+      "meaning": "验收/台账文件存在但无法解析；不得当作没有影响。",
+      "required_evidence": [
+        "文件路径",
+        "异常类型"
+      ]
+    },
+    {
+      "code": "GATE.CHECK_NOT_EVALUABLE",
+      "family": "GATE",
+      "severity": "BLOCKING",
+      "meaning": "必需检查无法给出结论（缺证据/不可计算），不得当作通过。",
+      "required_evidence": [
+        "检查名",
+        "无法评价的原因"
+      ]
+    },
+    {
+      "code": "THEME.CONTRAST_BELOW_THRESHOLD",
+      "family": "THEME",
+      "severity": "REVIEW",
+      "meaning": "该文字最终（套主题色或保留原色）仍低于其字号/字重适用的对比度门槛。原稿本来就低只说明不是本次改坏，不构成通过。",
+      "required_evidence": [
+        "页号/对象",
+        "字号",
+        "适用门槛",
+        "实测对比度",
+        "原稿同一位置对比度"
+      ]
+    },
+    {
+      "code": "BASELINE.NOT_EXPORTED",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "任务还没有成功导出过，因此没有可编辑基线。区别于 SCOPE.UNREQUESTED_CHANGE：请求没有越界，缺的是基线文件。"
+    },
+    {
+      "code": "BASELINE.EXPORT_DIR_MISSING",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "job.json 登记的交付目录已不存在；需重新导出或核对 export_path 登记。"
+    },
+    {
+      "code": "BASELINE.EXPORT_EMPTY",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "交付目录存在但其中没有 PPTX；上一次导出未产出可编辑文件。"
+    },
+    {
+      "code": "BASELINE.UNREADABLE",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "job.json 缺失或无法解析，无法确定可编辑基线；不得猜最近一次导出。"
+    },
+    {
+      "code": "BASELINE.CORRUPT",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "基线 PPTX 文件打不开（损坏或非 PPTX 包）；改它没有意义，需重新导出。"
+    },
+    {
+      "code": "OBJECT.NO_EDITABLE",
+      "family": "SF12",
+      "severity": "REVIEW",
+      "meaning": "基线可解析但没有任何带可编辑字段的原生对象（文本/表格/图表/图片）；与“没有基线”是两件事。"
+    },
+    {
+      "code": "JOB.NOT_FOUND",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "--job-id 指向的任务不存在（目录或 job.json 缺失）。命令行入口统一返回该码 + 退出码 4，不再以 Python 栈或 rc=0 空列表返回。"
+    },
+    {
+      "code": "CLI.EXECUTION_FAILED",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "命令行入口出现未预期异常：stdout 转为结构化错误（该码），栈只进 stderr；退出码 4。"
+    },
+    {
+      "code": "GATE.MATERIAL_GENERATION_FAILED",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "材料生成未产出可验收 PPTX（run_record 判定非 GENERATED_PENDING_VALIDATION、或模块返回非 0、或产物缺失）；原始判定保留在 material_verdict。"
+    },
+    {
+      "code": "CLI.BAD_ARGS",
+      "family": "SF12",
+      "severity": "BLOCKING",
+      "meaning": "命令行参数缺失/非法：stdout 输出该码的结构化错误、退出码 4；用法说明仍只进 stderr。"
+    },
+    {
+      "code": "WB.SOURCE_NOT_FOUND",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "工作台材料/原稿路径落在允许的命名空间内但文件不存在（404）；区别于越界路径。"
+    },
+    {
+      "code": "WB.SOURCE_IS_DIR",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "材料来源传成了目录（400）；下一步是指到具体文件，而不是重新上传。"
+    },
+    {
+      "code": "WB.BAD_UPLOAD_TYPE",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "上传文件后缀不在允许清单内（400）；图片资产走 /api/assets。"
+    },
+    {
+      "code": "WB.OP_IN_PROGRESS",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "该任务已有进行中的写操作（409）：同一任务 run/validate/export 单飞，第二个请求被拒。"
+    },
+    {
+      "code": "WB.JOB_BUSY",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "检测到仍有存活的写者（worker.pid / .run.lock 指向活进程），派发新操作前拒绝。"
+    },
+    {
+      "code": "WB.BAD_CLEANUP_TARGET",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "清理目标只允许 uploads / previews；任务目录（jobs/）不在清理范围内。"
+    },
+    {
+      "code": "WB.BAD_CLEANUP_PARAM",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "清理参数不合法（older_than_hours / limit 不是数字等）。"
+    },
+    {
+      "code": "WB.CLEANUP_DIR_MISSING",
+      "family": "DELIVERY",
+      "severity": "BLOCKING",
+      "meaning": "要清理的目录还不存在（还没有产生过可清理内容），不是失败。"
+    }
+  ],
+  "amendments": [
+    {
+      "date": "2026-10-12",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "GATE.STALE_ATTEMPT",
+        "GATE.STALE_RUN",
+        "GATE.LATE_RESULT_REJECTED",
+        "GATE.CANCELLED",
+        "GATE.BLOCKING_FINDINGS",
+        "GATE.RELEASE_BLOCKED",
+        "GATE.CANDIDATE_PARSE_ERROR",
+        "PARSE.EXECUTION_FAILED",
+        "PARSE.COMPARE_FAILED",
+        "PARSE.OBJECT_SET_DIVERGENCE",
+        "RENDER.CJK_GLYPH_MISSING",
+        "RENDER.PAGE_COUNT_MISMATCH"
+      ],
+      "reason": "契约字典声明为唯一权威错误码集合，但实现已在使用这些码；补齐字典而不是让实现使用字典外的码。",
+      "note": "frozen 基线的既有 45 个码含义未改动；本次为增补，不是改写。"
+    },
+    {
+      "date": "2026-10-12",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "RENDER.PNG_RASTERIZATION_FAILED"
+      ],
+      "reason": "实现新增预览阻断码（PDF 成功但 PNG 栅格化失败）；补齐字典而不是让实现使用字典外的码。",
+      "note": "frozen 基线的既有码含义未改动；本次为增补，不是改写。"
+    },
+    {
+      "date": "2026-10-12",
+      "action": "add_codes_for_source_audit_gaps",
+      "codes": [
+        "INPUT.SOURCE_BASELINE_MISSING",
+        "INPUT.INVALID_ENCODING",
+        "INPUT.AMBIGUOUS_PACKAGE"
+      ],
+      "reason": "源码审查（WENGAO_PPT_CODE_AUDIT_20261012）A01/A02 要求：美化任务移走来源基线必须明确失败、不得从候选重建原稿；输入含非法 UTF-8 字节不得静默丢弃。契约字典无对应码，故按 SF04 族增补，而不是让实现使用字典外的码。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "T01（新增，A01 来源基线缺失）",
+          "T04（新增，A02 非法编码）",
+          "T04-V2（新增，A02 包成员歧义）"
+        ],
+        "affected_expectations": "无既有用例期望被改写；仅为新增变体提供正式码。",
+        "note": "frozen 基线的既有码含义未改动；本次为增补，不是改写。"
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "action": "add_codes_for_theme_identity",
+      "codes": [
+        "THEME.UNKNOWN",
+        "THEME.CONFIG_STALE"
+      ],
+      "reason": "D10-B（CLAUDE_D10B_ONE_SHOT_4H_20261014 v2.0 §3 A1/A2）要求主题身份进入任务身份：未注册主题须在入口拒绝；同名主题有效配置升级后不得复用旧任务/旧报告。契约字典原无对应码，故按既有族增补（输入类 SF04、身份/生命周期门禁类 SF10），而不是让实现使用字典外的码。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "E03（新增，无效主题/把 theme_id 当路径）",
+          "E02（新增，同名主题配置升级不复用旧图/旧报告）"
+        ],
+        "affected_expectations": "无既有用例期望被改写；仅为新增主题身份门禁提供正式码。",
+        "note": "frozen 基线的既有 61 个码含义未改动；本次为增补。主题身份新旧兼容：缺主题配置摘要的历史任务标记 legacy_no_digest，不补造主题、不重置其取消/失败状态。"
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "INPUT.NOT_FOUND",
+        "INPUT.NOT_A_PPTX_PACKAGE"
+      ],
+      "reason": "合同校验 error_codes.implementation_codes_in_dictionary 在 D10-B 收尾轮实测报出：wengao_ppt/runner.py 的 verify_input_package 在运行时已使用这两个码，但字典未登记（属于导出门禁轮之后引入、未同步登记的既有缺口；v9 快照中尚无这两个码）。按既有做法补齐字典，而不是让实现使用字典外的码。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "U2-B（损坏 PPTX 经上传入口被拒；既有实测，原因码此前未登记）"
+        ],
+        "affected_expectations": "无既有期望被改写；仅把已实现的拒绝原因纳入正式字典。",
+        "note": "不改动任何实现行为，也不改动既有 63 个码的含义。"
+      }
+    },
+    {
+      "date": "2026-10-17",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "BASELINE.NOT_EXPORTED",
+        "BASELINE.EXPORT_DIR_MISSING",
+        "BASELINE.EXPORT_EMPTY",
+        "BASELINE.UNREADABLE",
+        "BASELINE.CORRUPT",
+        "OBJECT.NO_EDITABLE"
+      ],
+      "reason": "MAINFLOW-REPAIR-30 第 2/3 条实测：未导出时编辑请求返回 SCOPE.UNREQUESTED_CHANGE（范围违规），把“缺基线”说成“改的范围不允许”；同时 job.json 损坏/交付目录缺失/基线打不开/无可编辑对象四种情形都没有独立原因码，/objects 只给一句笼统原因且 pages 为空。按既有做法补齐字典，而不是继续借用范围违规码。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "auto30 第 2 条（编辑必须先导出却报范围违规）",
+          "auto30 第 3 条（导出被拒后 /objects 无原因）"
+        ],
+        "affected_expectations": "未导出时的拒绝原因码由 SCOPE.UNREQUESTED_CHANGE 改为 BASELINE.NOT_EXPORTED；范围违规本身的判定与含义不变。"
+      },
+      "note": "不改动既有 83 个码的含义；新增码只用于描述“基线不可用”的具体情形。"
+    },
+    {
+      "date": "2026-10-17",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "JOB.NOT_FOUND",
+        "CLI.EXECUTION_FAILED",
+        "GATE.MATERIAL_GENERATION_FAILED"
+      ],
+      "reason": "MAINFLOW-REPAIR-30 第 6/7/8 条：from-material 失败仍 rc=0；validate/export 对不存在任务抛 FileNotFoundError 栈；edit-list 对不存在任务 rc=0。修完后这些拒绝需要一个契约内原因码：任务不存在（JOB.NOT_FOUND）、入口未预期异常（CLI.EXECUTION_FAILED）、材料生成失败（GATE.MATERIAL_GENERATION_FAILED）。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "auto30 第 6 条（材料生成失败 rc=0）",
+          "auto30 第 7 条（CLI 未知任务抛栈）",
+          "auto30 第 8 条（edit-list 未知任务 rc=0）"
+        ],
+        "affected_expectations": "以上三种输入的退出码由 0/1 变为 4，stdout 恒为可解析 JSON。"
+      },
+      "note": "不改动既有码含义；仅新增拒绝原因。"
+    },
+    {
+      "date": "2026-10-18",
+      "action": "add_codes_used_by_implementation",
+      "codes": [
+        "CLI.BAD_ARGS",
+        "WB.SOURCE_NOT_FOUND",
+        "WB.SOURCE_IS_DIR",
+        "WB.BAD_UPLOAD_TYPE",
+        "WB.OP_IN_PROGRESS",
+        "WB.JOB_BUSY",
+        "WB.BAD_CLEANUP_TARGET",
+        "WB.BAD_CLEANUP_PARAM",
+        "WB.CLEANUP_DIR_MISSING"
+      ],
+      "reason": "MAINFLOW-REPAIR-30 后半段（A12/A13/A14/A21/A23/A24/A25/A26/A29）：新增的拒绝与状态需要契约内原因码，否则调用方只能靠 HTTP 码猜。其中 WB.* 是工作台传输层命名空间（此前只存在于实现里、未进字典），一并登记以便调用方依赖；CLI.BAD_ARGS 让参数错误与其它拒绝同构。",
+      "impact": {
+        "changed_meanings": [],
+        "affected_cases": [
+          "auto30 A12（预检失败 HTTP 200）",
+          "auto30 A13（两种错误信封）",
+          "auto30 A14（新旧建任务接口错误体不同）",
+          "auto30 A24（无清理入口）",
+          "auto30 A25（上传不校验后缀）",
+          "auto30 A26（目录与不存在不分）"
+        ],
+        "affected_expectations": "建任务预检失败由 200 改为 422 且带 error.code；清理、上传、材料来源的拒绝各有独立原因码。"
+      },
+      "note": "不改动既有码的含义；新增码只用于描述此前“借别人的码”或“没有码”的情形。"
+    }
+  ],
+  "forbidden_model_fields": [
+    "status",
+    "passed",
+    "waiver",
+    "arbitrary_code",
+    "verdict"
+  ],
+  "source_text_is_data": "源材料中的指令样式文字只作为数据处理，不成为程序命令；因出现该类文字本身而拒绝，不算正常安全对照通过。",
+  "status_note": "",
+  "amendment_note": "2026-10-16 R5 材料生成闭环新增 4 码：材料模块缺失、不支持的材料类型、必讲事实覆盖不全、计划结构非法。先记录版本修订与影响再改实现（AGENTS.md §2）。"
+}

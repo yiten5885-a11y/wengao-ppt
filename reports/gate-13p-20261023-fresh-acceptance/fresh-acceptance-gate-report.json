@@ -1,0 +1,2041 @@
+{
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "pptx": "wb_loopback_data/jobs/job-4d584240ec05/candidate/fc829139_v25-readable-13p-dedicated.themed.pptx",
+  "pptx_sha256": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c",
+  "pdf": "reports/gate-13p-20261023-fresh-acceptance/render/fc829139_v25-readable-13p-dedicated.themed.pdf",
+  "pdf_sha256": "9e782042b531cf1fcc794999aa3102a0227c7de4ce5ff0f9613a0b1542b95961",
+  "canvas_in": [
+    13.333,
+    7.5
+  ],
+  "pages_checked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "per_page": {
+    "1": {
+      "shapes": 35,
+      "chars_rendered": 141,
+      "roles": {
+        "Text 6": "body",
+        "Text 7": "title",
+        "Text 9": "body",
+        "Text 10": "body",
+        "Text 11": "body",
+        "Text 12": "source"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 124,
+      "mapped_chars": 124,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "当下热点切入：618降温｜社零转负｜扩内需",
+          "mapped": "当下热点切入：618降温｜社零转负｜扩内需",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "title",
+          "expected": "国家产能越来越强普通人钱包越来越紧",
+          "mapped": "国家产能越来越强普通人钱包越来越紧",
+          "size_pt": 38.0
+        },
+        {
+          "shape": "Text 9",
+          "role": "body",
+          "expected": "商品过剩与有效需求不足：为什么“货架很满”，但普通人越来越不敢消费？",
+          "mapped": "商品过剩与有效需求不足：为什么“货架很满”，但普通人越来越不敢消费？",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "body",
+          "expected": "宏观：工业、出口、产能、补贴",
+          "mapped": "宏观：工业、出口、产能、补贴",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "微观：工资、债务、购物车、生育",
+          "mapped": "微观：工资、债务、购物车、生育",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "source",
+          "expected": "YitenHuang｜财富认知/家庭防坠落系统",
+          "mapped": "YitenHuang｜财富认知/家庭防坠落系统",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "2": {
+      "shapes": 27,
+      "chars_rendered": 342,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "key_number",
+        "Text 5": "body",
+        "Text 6": "source",
+        "Text 8": "key_number",
+        "Text 9": "body",
+        "Text 10": "source",
+        "Text 12": "key_number",
+        "Text 13": "body",
+        "Text 14": "source",
+        "Text 16": "key_number",
+        "Text 17": "body",
+        "Text 18": "source",
+        "Text 20": "quote",
+        "Text 21": "conclusion",
+        "Text 22": "source",
+        "Text 23": "footer",
+        "Text 24": "source"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 275,
+      "mapped_chars": 275,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "从“618不兴奋”切入，而不是从宏观报告切入",
+          "mapped": "从“618不兴奋”切入，而不是从宏观报告切入",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+          "mapped": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "key_number",
+          "expected": "+0.9%",
+          "mapped": "+0.9%",
+          "size_pt": 44.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "2026年618电商GMV近乎横盘",
+          "mapped": "2026年618电商GMV近乎横盘",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "source",
+          "expected": "Syntun数据：8636亿vs8556亿",
+          "mapped": "Syntun数据：8636亿vs8556亿",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "key_number",
+          "expected": "-0.6%",
+          "mapped": "-0.6%",
+          "size_pt": 44.0
+        },
+        {
+          "shape": "Text 9",
+          "role": "body",
+          "expected": "2026年5月社零同比下降",
+          "mapped": "2026年5月社零同比下降",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "source",
+          "expected": "国家统计局：5月社会消费品零售总额",
+          "mapped": "国家统计局：5月社会消费品零售总额",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "key_number",
+          "expected": "+13.8%",
+          "mapped": "+13.8%",
+          "size_pt": 44.0
+        },
+        {
+          "shape": "Text 13",
+          "role": "body",
+          "expected": "2026年5月出口同比增长",
+          "mapped": "2026年5月出口同比增长",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "source",
+          "expected": "国家统计局：5月货物出口",
+          "mapped": "国家统计局：5月货物出口",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "key_number",
+          "expected": "2500亿",
+          "mapped": "2500亿",
+          "size_pt": 44.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "消费品以旧换新专项资金",
+          "mapped": "消费品以旧换新专项资金",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 18",
+          "role": "source",
+          "expected": "国务院：超长期特别国债安排",
+          "mapped": "国务院：超长期特别国债安排",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 21",
+          "role": "conclusion",
+          "expected": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。",
+          "mapped": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。",
+          "size_pt": 30.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 23",
+          "role": "footer",
+          "expected": "02",
+          "mapped": "02",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "source",
+          "expected": "来源：国家统计局、国务院、Reuters",
+          "mapped": "来源：国家统计局、国务院、Reuters",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "3": {
+      "shapes": 30,
+      "chars_rendered": 278,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 3": "body",
+        "Text 4": "body",
+        "Text 6": "body",
+        "Text 7": "body",
+        "Text 10": "ordinal",
+        "Text 11": "body",
+        "Text 12": "body",
+        "Text 15": "ordinal",
+        "Text 16": "body",
+        "Text 17": "body",
+        "Text 20": "ordinal",
+        "Text 21": "body",
+        "Text 22": "body",
+        "Text 24": "quote",
+        "Text 25": "conclusion",
+        "Text 26": "source",
+        "Text 27": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 246,
+      "mapped_chars": 246,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "核心矛盾：不是商品不够，而是支付能力不够",
+          "mapped": "核心矛盾：不是商品不够，而是支付能力不够",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "商品过剩和普遍贫困感可以同时存在，因为两者不在同一个分配通道里。",
+          "mapped": "商品过剩和普遍贫困感可以同时存在，因为两者不在同一个分配通道里。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 3",
+          "role": "body",
+          "expected": "表面现象",
+          "mapped": "表面现象",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "body",
+          "expected": "商品、产能、平台、库存越来越多",
+          "mapped": "商品、产能、平台、库存越来越多",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "本质问题",
+          "mapped": "本质问题",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "body",
+          "expected": "消费者的钱没有同步长出来",
+          "mapped": "消费者的钱没有同步长出来",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "ordinal",
+          "expected": "A",
+          "mapped": "A",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "供给端看见的是“产能”",
+          "mapped": "供给端看见的是“产能”",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "机器、工厂、平台、库存、补贴，越做越大。",
+          "mapped": "机器、工厂、平台、库存、补贴，越做越大。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 15",
+          "role": "ordinal",
+          "expected": "B",
+          "mapped": "B",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "需求端看见的是“工资”",
+          "mapped": "需求端看见的是“工资”",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "房租、教育、医疗、债务、失业风险，先吃掉可支配收入。",
+          "mapped": "房租、教育、医疗、债务、失业风险，先吃掉可支配收入。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "ordinal",
+          "expected": "C",
+          "mapped": "C",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 21",
+          "role": "body",
+          "expected": "个人体感是“穷忙”",
+          "mapped": "个人体感是“穷忙”",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "每天都在生产，每月都在还款，购物车永远等降价。",
+          "mapped": "每天都在生产，每月都在还款，购物车永远等降价。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "conclusion",
+          "expected": "内需不是被广告唤醒的，内需是被工资、保障和预期撑起来的。",
+          "mapped": "内需不是被广告唤醒的，内需是被工资、保障和预期撑起来的。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "footer",
+          "expected": "03",
+          "mapped": "03",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "4": {
+      "shapes": 28,
+      "chars_rendered": 309,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 5": "ordinal",
+        "Text 6": "body",
+        "Text 7": "body",
+        "Text 10": "ordinal",
+        "Text 11": "body",
+        "Text 12": "body",
+        "Text 15": "ordinal",
+        "Text 16": "body",
+        "Text 17": "body",
+        "Text 19": "body",
+        "Text 20": "conclusion",
+        "Text 22": "quote",
+        "Text 23": "body",
+        "Text 24": "source",
+        "Text 25": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 269,
+      "mapped_chars": 269,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "需求侧困境：劳动者被训练成“高产出、低消费”的人",
+          "mapped": "需求侧困境：劳动者被训练成“高产出、低消费”的人",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "普通人不是不想消费，而是消费前先要计算风险。",
+          "mapped": "普通人不是不想消费，而是消费前先要计算风险。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "ordinal",
+          "expected": "01",
+          "mapped": "01",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "收入增长不等于消费能力增长",
+          "mapped": "收入增长不等于消费能力增长",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "body",
+          "expected": "账面收入可能增长，但房租、债务、教育、医疗和失业风险会先扣走安全感。",
+          "mapped": "账面收入可能增长，但房租、债务、教育、医疗和失业风险会先扣走安全感。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "ordinal",
+          "expected": "02",
+          "mapped": "02",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "流动性更容易流向资产端",
+          "mapped": "流动性更容易流向资产端",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "资本收益、金融资产、房产、股权回报，往往比工资更能分享增长。",
+          "mapped": "资本收益、金融资产、房产、股权回报，往往比工资更能分享增长。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 15",
+          "role": "ordinal",
+          "expected": "03",
+          "mapped": "03",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "内卷提高产出，却压低消费欲望",
+          "mapped": "内卷提高产出，却压低消费欲望",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "为了收入更高，被迫加班、兼职、降价竞争，结果更焦虑、更谨慎。",
+          "mapped": "为了收入更高，被迫加班、兼职、降价竞争，结果更焦虑、更谨慎。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 19",
+          "role": "body",
+          "expected": "普通人真正的消费公式",
+          "mapped": "普通人真正的消费公式",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "conclusion",
+          "expected": "愿意花的钱=当前收入−固定支出−债务压力−未来风险预留",
+          "mapped": "愿意花的钱=当前收入−固定支出−债务压力−未来风险预留",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 23",
+          "role": "body",
+          "expected": "不是消费欲望死了，是未来的不确定性太贵。",
+          "mapped": "不是消费欲望死了，是未来的不确定性太贵。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "footer",
+          "expected": "04",
+          "mapped": "04",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "5": {
+      "shapes": 30,
+      "chars_rendered": 222,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "body",
+        "Text 5": "body",
+        "Text 8": "body",
+        "Text 9": "body",
+        "Text 12": "body",
+        "Text 13": "body",
+        "Text 16": "body",
+        "Text 17": "body",
+        "Text 19": "body",
+        "Text 22": "body",
+        "Text 23": "conclusion",
+        "Text 26": "body",
+        "Text 27": "body",
+        "Text 28": "source",
+        "Text 29": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 177,
+      "mapped_chars": 177,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "供给侧扭曲：越会生产，越需要有人买单",
+          "mapped": "供给侧扭曲：越会生产，越需要有人买单",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "供给端扩张如果不能转化为劳动收入，最后会变成价格战、库存和利润挤压。",
+          "mapped": "供给端扩张如果不能转化为劳动收入，最后会变成价格战、库存和利润挤压。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "body",
+          "expected": "补贴企业",
+          "mapped": "补贴企业",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "扩大产能保企业运行",
+          "mapped": "扩大产能保企业运行",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "body",
+          "expected": "供给增加",
+          "mapped": "供给增加",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 9",
+          "role": "body",
+          "expected": "库存变多竞争加剧",
+          "mapped": "库存变多竞争加剧",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "价格战",
+          "mapped": "价格战",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 13",
+          "role": "body",
+          "expected": "利润变薄裁员降薪",
+          "mapped": "利润变薄裁员降薪",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "需求更弱",
+          "mapped": "需求更弱",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "购物延迟消费降级",
+          "mapped": "购物延迟消费降级",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 19",
+          "role": "body",
+          "expected": "恶性循环",
+          "mapped": "恶性循环",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "一句话判断",
+          "mapped": "一句话判断",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 23",
+          "role": "conclusion",
+          "expected": "补贴能让商品更便宜，但不一定让普通人更敢花。",
+          "mapped": "补贴能让商品更便宜，但不一定让普通人更敢花。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "body",
+          "expected": "传播金句",
+          "mapped": "传播金句",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "body",
+          "expected": "价格战解决的是库存，不是焦虑。",
+          "mapped": "价格战解决的是库存，不是焦虑。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 28",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 29",
+          "role": "footer",
+          "expected": "05",
+          "mapped": "05",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "6": {
+      "shapes": 32,
+      "chars_rendered": 216,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "body",
+        "Text 6": "body",
+        "Text 8": "body",
+        "Text 10": "body",
+        "Text 12": "body",
+        "Text 14": "body",
+        "Text 16": "body",
+        "Text 18": "body",
+        "Text 20": "body",
+        "Text 22": "body",
+        "Text 24": "body",
+        "Text 26": "quote",
+        "Text 27": "conclusion",
+        "Text 28": "source",
+        "Text 29": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 179,
+      "mapped_chars": 179,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "结构性缺陷：生产者和消费者其实是同一批普通人",
+          "mapped": "结构性缺陷：生产者和消费者其实是同一批普通人",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "当劳动者的收入份额不足，消费市场就不会自动变强。",
+          "mapped": "当劳动者的收入份额不足，消费市场就不会自动变强。",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "body",
+          "expected": "白天的他",
+          "mapped": "白天的他",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "是工厂员工",
+          "mapped": "是工厂员工",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "body",
+          "expected": "是外卖骑手",
+          "mapped": "是外卖骑手",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "body",
+          "expected": "是销售、客服、个体户",
+          "mapped": "是销售、客服、个体户",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "被要求提高效率、压低成本",
+          "mapped": "被要求提高效率、压低成本",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "body",
+          "expected": "晚上的他",
+          "mapped": "晚上的他",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "是消费者",
+          "mapped": "是消费者",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 18",
+          "role": "body",
+          "expected": "是房贷/租金承担者",
+          "mapped": "是房贷/租金承担者",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "body",
+          "expected": "是孩子教育和老人医疗的付款人",
+          "mapped": "是孩子教育和老人医疗的付款人",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "被迫延迟购买、压缩欲望",
+          "mapped": "被迫延迟购买、压缩欲望",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "body",
+          "expected": "同一个人",
+          "mapped": "同一个人",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 32.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "conclusion",
+          "expected": "把劳动者压成低成本，就等于把消费者压成低需求。",
+          "mapped": "把劳动者压成低成本，就等于把消费者压成低需求。",
+          "size_pt": 30.0
+        },
+        {
+          "shape": "Text 28",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 29",
+          "role": "footer",
+          "expected": "06",
+          "mapped": "06",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "7": {
+      "shapes": 39,
+      "chars_rendered": 319,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 5": "ordinal",
+        "Text 6": "body",
+        "Text 7": "body",
+        "Text 10": "ordinal",
+        "Text 11": "body",
+        "Text 12": "body",
+        "Text 15": "ordinal",
+        "Text 16": "body",
+        "Text 17": "body",
+        "Text 19": "conclusion",
+        "Text 20": "source",
+        "Text 21": "footer",
+        "Text 22": "source"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 285,
+      "mapped_chars": 285,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "为什么“刺激消费”经常显得吃力",
+          "mapped": "为什么“刺激消费”经常显得吃力",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "因为很多刺激落在“买东西”这个动作上，而普通人真正缺的是“敢买”的底气。",
+          "mapped": "因为很多刺激落在“买东西”这个动作上，而普通人真正缺的是“敢买”的底气。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "ordinal",
+          "expected": "01",
+          "mapped": "01",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "补贴可以带来短期订单",
+          "mapped": "补贴可以带来短期订单",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "body",
+          "expected": "以旧换新、消费券、平台满减，会改变购买时点，但未必改变长期收入预期。",
+          "mapped": "以旧换新、消费券、平台满减，会改变购买时点，但未必改变长期收入预期。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "ordinal",
+          "expected": "02",
+          "mapped": "02",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "企业能活下来，但工资未必上来",
+          "mapped": "企业能活下来，但工资未必上来",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "扶持企业如果没有穿透到劳动报酬、就业质量和社保安全，内需仍会弱。",
+          "mapped": "扶持企业如果没有穿透到劳动报酬、就业质量和社保安全，内需仍会弱。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 15",
+          "role": "ordinal",
+          "expected": "03",
+          "mapped": "03",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "财富配置偏资产，消费自然偏谨慎",
+          "mapped": "财富配置偏资产，消费自然偏谨慎",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "钱流向投资和资产端时，普通人看到的是资产价格与生活成本，而不是更宽松的钱包。",
+          "mapped": "钱流向投资和资产端时，普通人看到的是资产价格与生活成本，而不是更宽松的钱包。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 19",
+          "role": "conclusion",
+          "expected": "判断标准：政策有没有把“产能”变成“工资”、把“订单”变成“稳定预期”。",
+          "mapped": "判断标准：政策有没有把“产能”变成“工资”、把“订单”变成“稳定预期”。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 21",
+          "role": "footer",
+          "expected": "07",
+          "mapped": "07",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "source",
+          "expected": "来源：国务院关于扩内需、增收入与以旧换新安排",
+          "mapped": "来源：国务院关于扩内需、增收入与以旧换新安排",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "8": {
+      "shapes": 35,
+      "chars_rendered": 249,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 5": "ordinal",
+        "Text 6": "body",
+        "Text 7": "body",
+        "Text 10": "ordinal",
+        "Text 11": "body",
+        "Text 12": "body",
+        "Text 15": "ordinal",
+        "Text 16": "body",
+        "Text 17": "body",
+        "Text 20": "ordinal",
+        "Text 21": "body",
+        "Text 22": "body",
+        "Text 25": "ordinal",
+        "Text 26": "body",
+        "Text 27": "body",
+        "Text 29": "quote",
+        "Text 30": "conclusion",
+        "Text 31": "source",
+        "Text 32": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 215,
+      "mapped_chars": 215,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "社会影响：宏观增长和民生体感开始脱节",
+          "mapped": "社会影响：宏观增长和民生体感开始脱节",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "这里最适合接你的个人IP：普通人不是看不懂宏观，而是被宏观变化打到现金流。",
+          "mapped": "这里最适合接你的个人IP：普通人不是看不懂宏观，而是被宏观变化打到现金流。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "ordinal",
+          "expected": "01",
+          "mapped": "01",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "不敢花",
+          "mapped": "不敢花",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "body",
+          "expected": "消费降级、延迟购买、只买刚需",
+          "mapped": "消费降级、延迟购买、只买刚需",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "ordinal",
+          "expected": "02",
+          "mapped": "02",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "不敢贷",
+          "mapped": "不敢贷",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "房产和大额消费决策更谨慎",
+          "mapped": "房产和大额消费决策更谨慎",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 15",
+          "role": "ordinal",
+          "expected": "03",
+          "mapped": "03",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "不敢换工作",
+          "mapped": "不敢换工作",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "失业风险抬高，现金流安全优先",
+          "mapped": "失业风险抬高，现金流安全优先",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "ordinal",
+          "expected": "04",
+          "mapped": "04",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 21",
+          "role": "body",
+          "expected": "不敢生",
+          "mapped": "不敢生",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "养育成本和未来收入预期不匹配",
+          "mapped": "养育成本和未来收入预期不匹配",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "ordinal",
+          "expected": "05",
+          "mapped": "05",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "body",
+          "expected": "不敢试错",
+          "mapped": "不敢试错",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "body",
+          "expected": "创业、投资、学习都被现金流约束",
+          "mapped": "创业、投资、学习都被现金流约束",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 29",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 30",
+          "role": "conclusion",
+          "expected": "普通人的问题不是“不努力”，而是所有风险都在向他的家庭资产负债表集中。",
+          "mapped": "普通人的问题不是“不努力”，而是所有风险都在向他的家庭资产负债表集中。",
+          "size_pt": 30.0
+        },
+        {
+          "shape": "Text 31",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 32",
+          "role": "footer",
+          "expected": "08",
+          "mapped": "08",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "9": {
+      "shapes": 22,
+      "chars_rendered": 199,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "body",
+        "Text 5": "body",
+        "Text 7": "body",
+        "Text 8": "body",
+        "Text 10": "body",
+        "Text 11": "body",
+        "Text 13": "body",
+        "Text 14": "body",
+        "Text 16": "quote",
+        "Text 17": "conclusion",
+        "Text 18": "source",
+        "Text 19": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 177,
+      "mapped_chars": 177,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "发展转型：真正的高质量，不只是更会生产",
+          "mapped": "发展转型：真正的高质量，不只是更会生产",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+          "mapped": "高质量发展要解决的不是“有没有货”，而是“谁有能力买、谁有信心买”。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "body",
+          "expected": "去产能",
+          "mapped": "去产能",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "让低效率竞争退出，减少低价内卷",
+          "mapped": "让低效率竞争退出，减少低价内卷",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "body",
+          "expected": "提报酬",
+          "mapped": "提报酬",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "body",
+          "expected": "提高劳动者在分配中的稳定份额",
+          "mapped": "提高劳动者在分配中的稳定份额",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "body",
+          "expected": "稳预期",
+          "mapped": "稳预期",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "降低教育、医疗、养老、失业不确定性",
+          "mapped": "降低教育、医疗、养老、失业不确定性",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 13",
+          "role": "body",
+          "expected": "强创新",
+          "mapped": "强创新",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "body",
+          "expected": "把效率提升转成工资、服务与新岗位",
+          "mapped": "把效率提升转成工资、服务与新岗位",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "conclusion",
+          "expected": "产能升级只是上半场，支付能力修复才是下半场。",
+          "mapped": "产能升级只是上半场，支付能力修复才是下半场。",
+          "size_pt": 30.0
+        },
+        {
+          "shape": "Text 18",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 19",
+          "role": "footer",
+          "expected": "09",
+          "mapped": "09",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "10": {
+      "shapes": 30,
+      "chars_rendered": 246,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "body",
+        "Text 6": "body",
+        "Text 8": "body",
+        "Text 10": "body",
+        "Text 12": "body",
+        "Text 14": "body",
+        "Text 16": "body",
+        "Text 18": "body",
+        "Text 20": "body",
+        "Text 22": "body",
+        "Text 24": "quote",
+        "Text 25": "conclusion",
+        "Text 26": "source",
+        "Text 27": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 212,
+      "mapped_chars": 212,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "你的个人IP切口：不写宏观结论，写普通人的防坠落方案",
+          "mapped": "你的个人IP切口：不写宏观结论，写普通人的防坠落方案",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+          "mapped": "这套内容最好不要做成“批评经济”，而要做成“普通人现金流自保”。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "body",
+          "expected": "宏观内容容易空",
+          "mapped": "宏观内容容易空",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "讲概念：内需、产能、通缩",
+          "mapped": "讲概念：内需、产能、通缩",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "body",
+          "expected": "讲政策：刺激、补贴、去产能",
+          "mapped": "讲政策：刺激、补贴、去产能",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "body",
+          "expected": "讲宏观：数据很多，行动很少",
+          "mapped": "讲宏观：数据很多，行动很少",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "body",
+          "expected": "你的切口要落地",
+          "mapped": "你的切口要落地",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "body",
+          "expected": "家庭最低生存支出表",
+          "mapped": "家庭最低生存支出表",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "body",
+          "expected": "12个月现金流安全垫",
+          "mapped": "12个月现金流安全垫",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 18",
+          "role": "body",
+          "expected": "债务收入比警戒线",
+          "mapped": "债务收入比警戒线",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "body",
+          "expected": "大额消费冷静期",
+          "mapped": "大额消费冷静期",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "职业与副业收入冗余",
+          "mapped": "职业与副业收入冗余",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "conclusion",
+          "expected": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+          "mapped": "宏观风险不一定由普通人造成，但最后一定会落到普通人的现金流上。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "footer",
+          "expected": "10",
+          "mapped": "10",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "11": {
+      "shapes": 34,
+      "chars_rendered": 347,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "ordinal",
+        "Text 5": "body",
+        "Text 7": "ordinal",
+        "Text 8": "body",
+        "Text 10": "ordinal",
+        "Text 11": "body",
+        "Text 13": "ordinal",
+        "Text 14": "body",
+        "Text 16": "ordinal",
+        "Text 17": "body",
+        "Text 19": "ordinal",
+        "Text 20": "body",
+        "Text 22": "ordinal",
+        "Text 23": "body",
+        "Text 25": "ordinal",
+        "Text 26": "body",
+        "Text 28": "quote",
+        "Text 29": "conclusion",
+        "Text 30": "source",
+        "Text 31": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 282,
+      "mapped_chars": 282,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "标题按你的标准：宏观向好vs个人窘迫",
+          "mapped": "标题按你的标准：宏观向好vs个人窘迫",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "统一结构：国家/行业/产能/平台越强，普通人/工资/钱包/购物车越紧。",
+          "mapped": "统一结构：国家/行业/产能/平台越强，普通人/工资/钱包/购物车越紧。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "ordinal",
+          "expected": "01",
+          "mapped": "01",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "国家产能越来越强，普通人钱包越来越紧",
+          "mapped": "国家产能越来越强，普通人钱包越来越紧",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "ordinal",
+          "expected": "02",
+          "mapped": "02",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "body",
+          "expected": "中国制造全线升级，打工人的购物车却越来越空",
+          "mapped": "中国制造全线升级，打工人的购物车却越来越空",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "ordinal",
+          "expected": "03",
+          "mapped": "03",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 11",
+          "role": "body",
+          "expected": "工厂机器昼夜不停，年轻人却不敢结婚生孩子",
+          "mapped": "工厂机器昼夜不停，年轻人却不敢结婚生孩子",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 13",
+          "role": "ordinal",
+          "expected": "04",
+          "mapped": "04",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "body",
+          "expected": "618成交额还在撑场面，普通人的钱包已经投了反对票",
+          "mapped": "618成交额还在撑场面，普通人的钱包已经投了反对票",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "ordinal",
+          "expected": "05",
+          "mapped": "05",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "宏观经济要扩内需，微观家庭先扩现金流",
+          "mapped": "宏观经济要扩内需，微观家庭先扩现金流",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 19",
+          "role": "ordinal",
+          "expected": "06",
+          "mapped": "06",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "body",
+          "expected": "企业库存堆成山，普通人连降价都不敢买",
+          "mapped": "企业库存堆成山，普通人连降价都不敢买",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "ordinal",
+          "expected": "07",
+          "mapped": "07",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 23",
+          "role": "body",
+          "expected": "国家补贴刺激消费，个人先算下个月房租",
+          "mapped": "国家补贴刺激消费，个人先算下个月房租",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "ordinal",
+          "expected": "08",
+          "mapped": "08",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "body",
+          "expected": "产业升级讲未来，普通人的账本讲今天",
+          "mapped": "产业升级讲未来，普通人的账本讲今天",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 28",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 29",
+          "role": "conclusion",
+          "expected": "标题不要只写“问题很严重”，要写“宏观很漂亮，个人很狼狈”。",
+          "mapped": "标题不要只写“问题很严重”，要写“宏观很漂亮，个人很狼狈”。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 30",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 31",
+          "role": "footer",
+          "expected": "11",
+          "mapped": "11",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "12": {
+      "shapes": 30,
+      "chars_rendered": 277,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 4": "ordinal",
+        "Text 5": "body",
+        "Text 6": "body",
+        "Text 8": "ordinal",
+        "Text 9": "body",
+        "Text 10": "body",
+        "Text 12": "ordinal",
+        "Text 13": "body",
+        "Text 14": "body",
+        "Text 16": "ordinal",
+        "Text 17": "body",
+        "Text 18": "body",
+        "Text 20": "ordinal",
+        "Text 21": "body",
+        "Text 22": "body",
+        "Text 24": "quote",
+        "Text 25": "conclusion",
+        "Text 26": "source",
+        "Text 27": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 239,
+      "mapped_chars": 239,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "转成公众号/短视频的结构",
+          "mapped": "转成公众号/短视频的结构",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+          "mapped": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 4",
+          "role": "ordinal",
+          "expected": "1",
+          "mapped": "1",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "开场钩子",
+          "mapped": "开场钩子",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "618这么大阵仗，为什么你还是不想买？",
+          "mapped": "618这么大阵仗，为什么你还是不想买？",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "ordinal",
+          "expected": "2",
+          "mapped": "2",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 9",
+          "role": "body",
+          "expected": "反常识",
+          "mapped": "反常识",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 10",
+          "role": "body",
+          "expected": "商品过剩不是富足，可能是支付能力不足的结果。",
+          "mapped": "商品过剩不是富足，可能是支付能力不足的结果。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 12",
+          "role": "ordinal",
+          "expected": "3",
+          "mapped": "3",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 13",
+          "role": "body",
+          "expected": "机制解释",
+          "mapped": "机制解释",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 14",
+          "role": "body",
+          "expected": "工资、债务、房租、风险预期如何压缩有效需求。",
+          "mapped": "工资、债务、房租、风险预期如何压缩有效需求。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 16",
+          "role": "ordinal",
+          "expected": "4",
+          "mapped": "4",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 17",
+          "role": "body",
+          "expected": "个人落点",
+          "mapped": "个人落点",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 18",
+          "role": "body",
+          "expected": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+          "mapped": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 20",
+          "role": "ordinal",
+          "expected": "5",
+          "mapped": "5",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 21",
+          "role": "body",
+          "expected": "转化引导",
+          "mapped": "转化引导",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 22",
+          "role": "body",
+          "expected": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+          "mapped": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 24",
+          "role": "quote",
+          "expected": "“",
+          "mapped": "“",
+          "size_pt": 20.0
+        },
+        {
+          "shape": "Text 25",
+          "role": "conclusion",
+          "expected": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+          "mapped": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 26",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 27",
+          "role": "footer",
+          "expected": "12",
+          "mapped": "12",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    },
+    "13": {
+      "shapes": 32,
+      "chars_rendered": 297,
+      "roles": {
+        "Text 1": "title",
+        "Text 2": "lead",
+        "Text 3": "body",
+        "Text 5": "body",
+        "Text 6": "body",
+        "Text 7": "source",
+        "Text 8": "source",
+        "Text 9": "footer"
+      },
+      "render_evidence": {
+        "full": true,
+        "notext": true
+      },
+      "expected_chars": 265,
+      "mapped_chars": 265,
+      "unmatched_chars": 0,
+      "ledger": [
+        {
+          "shape": "Text 1",
+          "role": "title",
+          "expected": "结论：没有支付能力的繁荣，是悬空的繁荣",
+          "mapped": "结论：没有支付能力的繁荣，是悬空的繁荣",
+          "size_pt": 36.0
+        },
+        {
+          "shape": "Text 2",
+          "role": "lead",
+          "expected": "最后一句要有收束感：从宏观问题落回普通人的资产负债表。",
+          "mapped": "最后一句要有收束感：从宏观问题落回普通人的资产负债表。",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 3",
+          "role": "body",
+          "expected": "真正的内需，不是靠口号喊出来的，是当普通人的工资、保障和未来预期足够稳定时，自然长出来的。",
+          "mapped": "真正的内需，不是靠口号喊出来的，是当普通人的工资、保障和未来预期足够稳定时，自然长出来的。",
+          "size_pt": 26.0
+        },
+        {
+          "shape": "Text 5",
+          "role": "body",
+          "expected": "适合转化的收口",
+          "mapped": "适合转化的收口",
+          "size_pt": 24.0
+        },
+        {
+          "shape": "Text 6",
+          "role": "body",
+          "expected": "如果你也感觉“生产越来越拼，生活越来越紧”，先不要急着找风口。先做一次家庭现金流体检，看看你的家庭能不能扛过下一轮收入波动。",
+          "mapped": "如果你也感觉“生产越来越拼，生活越来越紧”，先不要急着找风口。先做一次家庭现金流体检，看看你的家庭能不能扛过下一轮收入波动。",
+          "size_pt": 28.0
+        },
+        {
+          "shape": "Text 7",
+          "role": "source",
+          "expected": "资料来源：国家统计局《2026年5月国民经济运行》；国务院《2026政府工作报告》相关报道；Reuters关于2026年618消费、工业利润与信贷需求报道。",
+          "mapped": "资料来源：国家统计局《2026年5月国民经济运行》；国务院《2026政府工作报告》相关报道；Reuters关于2026年618消费、工业利润与信贷需求报道。",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 8",
+          "role": "source",
+          "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+          "size_pt": 16.0
+        },
+        {
+          "shape": "Text 9",
+          "role": "footer",
+          "expected": "13",
+          "mapped": "13",
+          "size_pt": 16.0
+        }
+      ],
+      "issues": [],
+      "findings_count": 0
+    }
+  },
+  "identity": {
+    "pptx_sha256": "f92232e1820b60e23d9d9e12a249b689e7d3ce9c9506cff49f41c96b091d300c",
+    "pdf_sha256": "9e782042b531cf1fcc794999aa3102a0227c7de4ce5ff0f9613a0b1542b95961",
+    "baseline_pptx_sha256": "0edb7ea298bf20c66f735fa5c8b71613ac7ae653036ad246c6c4420c380b5711",
+    "source_fidelity_verified": true,
+    "policy_version": "WG-LAYOUT-20261021.1",
+    "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+    "per_page_render_sha256": {
+      "1": "2764c84ac9edbce1dd2cb10ebecaa0ee9b2dec46227c7e9f75820b33004dc74e",
+      "2": "d82cf67dbfc9a724564ab373e2bf6bfe543d1926b9aa73b4da61a3293b9d1067",
+      "3": "73acb1ada0c90fd07f37eca4d561cece59f900d3bbc58a33b86faff2c2e4523a",
+      "4": "b17508c98b7a42df011049a457b421f7357fbbb52d58f04890ec6b7ba504a4a6",
+      "5": "19c786e76627771a03b5afaccc22d4e618c070fa35194570d0f436454776a3e6",
+      "6": "5b4f99837d12034a4dc9c2fec84330ffef0e4416458f92c704fad29f92c0bddc",
+      "7": "405572202018a17f3b8a2703426bcd88c11c00b3f12afe2c0b41b949f4a0aa66",
+      "8": "1aad2f89efbddfd83ee22f74e300c30ff1e3777e5f6fc0497a2e70179ea4d966",
+      "9": "e85f5ddf4b30f47946fbd5109d0570bb57c9d5a8a785b961b42cce78c63dd70f",
+      "10": "8cbc9693d16d2571e1fe0b14f0326793ebcbfa4c3c7263677303cecfc20d790f",
+      "11": "34a9a51ec8cf3a6c27d7bed451313cb988e5a95e0769be996be60a943f572d00",
+      "12": "ae69d9ea3716ba592e677d5cec0124daf036d28032e82196eab0ee25feb21870",
+      "13": "283166807d0bdba971391c8656c56862f99903d9763290365e4cc8b614248650"
+    },
+    "export_parameters": {
+      "renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
+      "gate": "layout_gate.py WG-LAYOUT-20261021.1"
+    }
+  },
+  "hg10": {
+    "render_width_px": 1920,
+    "pages_rendered": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "selected_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "static_only": false,
+    "native_playback_provided": true,
+    "native_playback_checks": {
+      "machine_checks_pass": true,
+      "review_record_present": true,
+      "native_playback_valid": true,
+      "review_record_schema_valid": true,
+      "review_attestation_authenticity": "not_cryptographically_verified",
+      "video_inspection": {
+        "ok": true,
+        "duration_seconds": 45.5,
+        "video_track_count": 1,
+        "sample_count": 1365,
+        "sample_payload_bytes": 5154276,
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0
+      },
+      "video_decode": {
+        "decoded": true,
+        "detail": "avfoundation_full_transcode_completed"
+      },
+      "measured_duration_seconds": 45.5
+    }
+  },
+  "findings": [],
+  "unverified": [],
+  "gates_hit": [],
+  "counts": {
+    "findings": 0,
+    "unmatched_chars": 0,
+    "missing_chars": 0,
+    "collisions": 0,
+    "occlusions": 0
+  },
+  "verdict": "PASS",
+  "static_layout_only": false
+}

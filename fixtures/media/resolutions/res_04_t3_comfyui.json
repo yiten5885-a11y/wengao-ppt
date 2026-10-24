@@ -1,0 +1,49 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p04-s1",
+  "status": "RESOLVED_T3",
+  "asset": {
+    "path": "fixtures/media/images/t3_comfyui_generated.jpg",
+    "sha256": "d0492741631e89941d212eab43ef9650161365c4b987e716ee3d3303fd453d38",
+    "phash": "80808080808080c0ff818181818181ff",
+    "width": 1024,
+    "height": 1024,
+    "format": "JPEG",
+    "provider": "ai_generated_local",
+    "license": "Local AI Generation",
+    "license_url": "",
+    "creator": "ComfyUI Engine",
+    "source_url": "",
+    "attribution_text": "AI 生成 (ComfyUI / sd_xl_turbo / seed:1024)",
+    "generator": "comfyui",
+    "model": "sd_xl_turbo",
+    "prompt_digest": "futuristic server room, clean minimalist photography",
+    "seed": 1024,
+    "similarity": 0.86,
+    "similarity_model": "local_vision_v1"
+  },
+  "attempts": [
+    {
+      "tier": "T2",
+      "provider": "pexels",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No licensed photo",
+      "elapsed_s": 0.32
+    },
+    {
+      "tier": "T2",
+      "provider": "wikimedia_commons",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No licensed photo",
+      "elapsed_s": 0.35
+    },
+    {
+      "tier": "T3",
+      "provider": "ai_generated_local",
+      "outcome": "SUCCESS",
+      "detail": "Generated via ComfyUI",
+      "elapsed_s": 3.12
+    }
+  ],
+  "reason": null
+}

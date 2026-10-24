@@ -1,0 +1,32 @@
+{
+  "schema": "rs.error_codes.v1",
+  "namespace": "TRANSITION",
+  "owner": "W1",
+  "contract": "rs-contracts-v1",
+  "codes": [
+    {
+      "code": "TRANSITION.MISSING_TRANSITION",
+      "severity": "FAIL",
+      "meaning": "开启转场策略时某页幻灯片缺少 p:transition 节点",
+      "blocking": true
+    },
+    {
+      "code": "TRANSITION.INVALID_FAMILY",
+      "severity": "FAIL",
+      "meaning": "转场家族类型不合法或跨软件（PowerPoint / LibreOffice）不兼容",
+      "blocking": true
+    },
+    {
+      "code": "TRANSITION.XML_STRUCTURE_INVALID",
+      "severity": "FAIL",
+      "meaning": "写入 p:transition 位置不符合 PresentationML 次序（cSld -> clrMapOvr -> transition -> timing -> extLst）",
+      "blocking": true
+    },
+    {
+      "code": "TRANSITION.INSPECTION_FAILED",
+      "severity": "FAIL",
+      "meaning": "逐页核对幻灯片转场 XML 失败或无法解析 PPTX",
+      "blocking": true
+    }
+  ]
+}

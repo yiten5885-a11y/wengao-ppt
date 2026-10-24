@@ -1,0 +1,36 @@
+{
+  "fixture": true,
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-fixture-sample-empty",
+  "created_at": "2026-10-24T05:00:00+08:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {
+      "q": "某极冷门细分领域 市场规模 2024",
+      "locale": "zh",
+      "backend": "searxng",
+      "sent_at": "2026-10-24T05:00:01+08:00"
+    }
+  ],
+  "facts": [],
+  "views": [],
+  "discarded": [
+    {
+      "code": "RESEARCH.NO_RELIABLE_SOURCE",
+      "detail": "检索返回结果均为低质未标出处的聚合网站，触发内容农场过滤规则",
+      "url": "https://example.com/unverified_doc"
+    }
+  ],
+  "omissions": [
+    {
+      "want": "横向对比：行业竞品均值",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    },
+    {
+      "want": "纵向走势：历史增长趋势",
+      "code": "RESEARCH.NO_RELIABLE_SOURCE"
+    }
+  ],
+  "report_path": "evidence/research/report.md"
+}

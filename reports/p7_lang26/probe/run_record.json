@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-23T15:06:24.162373+00:00",
+  "material": "samples/open-source-50-decks/multilingual-inputs/L01-en.md",
+  "material_sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "16ecaa4b7e350f8b50a0233a4068bd4eb559b1278b0179c53cf6633e6e615e12",
+    "pages": 8,
+    "units": 21,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/p7_lang26/probe/fact_ledger.json",
+    "count": 14,
+    "frozen_before_model_call": true
+  },
+  "model_error": {
+    "code": "MODEL.HTTP_ERROR",
+    "provider": "ollama-local",
+    "status_code": 502,
+    "detail": "upstream connect failed: Connection refused (os error 61)"
+  },
+  "plan": {
+    "mode": "chunked",
+    "failed": true,
+    "error": "MODEL.HTTP_ERROR",
+    "trace": []
+  },
+  "finished_at": "2026-10-23T15:06:24.194575+00:00",
+  "verdict": "PLAN_FAILED"
+}

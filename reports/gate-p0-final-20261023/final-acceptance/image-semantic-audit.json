@@ -1,0 +1,41 @@
+{
+ "policy_basis": "scene_visual_plan.json",
+ "plan_sha256": "24a903ce9e88df96f93e76243bd90d7fa0f4933d21fb737e4cb0b1ef5123d0a1",
+ "baseline_unique_media": 4,
+ "scene_images": [
+  {
+   "scene_key": "factory_worker_production",
+   "planned_page": 1,
+   "planned_sha256": "61299c6974a759c522f2fb6632499c83f6a76476ecc847b6aa6ccc23a2ac7d09",
+   "provider": "wikimedia-commons",
+   "source_key": "wikimedia-commons:File:StateLibQld 2 207897 Tasmin Boyd and her fellow workers on the production line at a food packing factory, Brisbane, 1942.jpg",
+   "asset_on_disk": true,
+   "asset_sha_matches": true,
+   "embedded_on_page": true,
+   "embedded_shape": "WENGAO_SCENE|factory_worker_production|61299c6974a759c522f2fb6632499c83f6a76476ecc847b6aa6ccc23a2ac7d09",
+   "embedded_box_in": [
+    0.72,
+    5.66,
+    12.67,
+    6.88
+   ],
+   "crop_values": {
+    "crop_left": 0.0,
+    "crop_right": 0.0,
+    "crop_top": 0.4622,
+    "crop_bottom": 0.4622
+   },
+   "crop_kind": "center_cover",
+   "crop_declared_ok": true,
+   "inside_canvas": true,
+   "aspect_visible": 9.7884,
+   "aspect_box": 9.7951,
+   "aspect_preserved": true,
+   "ok": true
+  }
+ ],
+ "all_scene_images_ok": true,
+ "unplanned_embedded_images": [],
+ "unplanned_count": 0,
+ "note": "unplanned=0 表示被检件相对『计划∪基线原稿』没有计划外图片；场景图零裁切或对称居中裁切、裁后等比、页位与计划一致"
+}

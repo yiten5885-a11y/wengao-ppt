@@ -1,0 +1,1321 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/readability-20261021/v13-readable-13p-glyphfit.pptx",
+ "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+ "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-6133/frozen-6133ad5d.pdf",
+ "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+ "canvas_in": [
+  13.333,
+  7.5
+ ],
+ "pages_checked": [
+  12
+ ],
+ "per_page": {
+  "12": {
+   "shapes": 30,
+   "chars_rendered": 320,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "ordinal",
+    "Text 5": "body",
+    "Text 6": "body",
+    "Text 8": "ordinal",
+    "Text 9": "body",
+    "Text 10": "body",
+    "Text 12": "ordinal",
+    "Text 13": "body",
+    "Text 14": "body",
+    "Text 16": "ordinal",
+    "Text 17": "body",
+    "Text 18": "body",
+    "Text 20": "footer",
+    "Text 21": "body",
+    "Text 22": "body",
+    "Text 24": "quote",
+    "Text 25": "conclusion",
+    "Text 26": "source",
+    "Text 27": "footer"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 239,
+   "mapped_chars": 239,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "转成公众号/短视频的结构",
+     "mapped": "转成公众号/短视频的结构",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+     "mapped": "PPT可以当选题脚本，也可以直接拆成一篇公众号文章。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "ordinal",
+     "expected": "1",
+     "mapped": "1",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "开场钩子",
+     "mapped": "开场钩子",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "body",
+     "expected": "618这么大阵仗，为什么你还是不想买？",
+     "mapped": "618这么大阵仗，为什么你还是不想买？",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "ordinal",
+     "expected": "2",
+     "mapped": "2",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "反常识",
+     "mapped": "反常识",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "body",
+     "expected": "商品过剩不是富足，可能是支付能力不足的结果。",
+     "mapped": "商品过剩不是富足，可能是支付能力不足的结果。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "ordinal",
+     "expected": "3",
+     "mapped": "3",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "机制解释",
+     "mapped": "机制解释",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "body",
+     "expected": "工资、债务、房租、风险预期如何压缩有效需求。",
+     "mapped": "工资、债务、房租、风险预期如何压缩有效需求。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "ordinal",
+     "expected": "4",
+     "mapped": "4",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "个人落点",
+     "mapped": "个人落点",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "body",
+     "expected": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+     "mapped": "普通人必须先守住现金流，再谈消费、投资和翻身。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "footer",
+     "expected": "5",
+     "mapped": "5",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "body",
+     "expected": "转化引导",
+     "mapped": "转化引导",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "body",
+     "expected": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+     "mapped": "领取/使用家庭财富体检表，先算清自己能不能扛过36个月。",
+     "size_pt": 24.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 32.0
+    },
+    {
+     "shape": "Text 25",
+     "role": "conclusion",
+     "expected": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+     "mapped": "你的内容不是告诉读者“世界很难”，而是告诉他“家庭现金流不能再裸奔”。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 26",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 27",
+     "role": "footer",
+     "expected": "12",
+     "mapped": "12",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [
+    {
+     "gate": "HG03",
+     "type": "GLYPH_COLLISION",
+     "page": 12,
+     "shapes": [
+      "Text 4",
+      "Text 26"
+     ],
+     "overlap_in": [
+      0.086,
+      0.157
+     ],
+     "char_pair": [
+      "1",
+      "普"
+     ],
+     "char_overlap_in": [
+      0.042,
+      0.157
+     ],
+     "glyph_a": [
+      2.202,
+      7.163,
+      2.288,
+      7.32
+     ],
+     "glyph_b": [
+      0.72,
+      7.131,
+      5.321,
+      7.373
+     ]
+    },
+    {
+     "gate": "HG03",
+     "type": "GLYPH_COLLISION",
+     "page": 12,
+     "shapes": [
+      "Text 8",
+      "Text 26"
+     ],
+     "overlap_in": [
+      0.117,
+      0.161
+     ],
+     "char_pair": [
+      "2",
+      "坠"
+     ],
+     "char_overlap_in": [
+      0.004,
+      0.161
+     ],
+     "glyph_a": [
+      4.65,
+      7.159,
+      4.767,
+      7.32
+     ],
+     "glyph_b": [
+      0.72,
+      7.131,
+      5.321,
+      7.373
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 12,
+     "shape": "Text 26",
+     "role": "source",
+     "glyph": [
+      0.72,
+      7.131,
+      5.321,
+      7.373
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_TEXT_ESCAPED",
+     "page": 12,
+     "card": "Shape 7",
+     "heading": "Text 9",
+     "text_shape": "Text 25",
+     "glyph": [
+      1.256,
+      4.768,
+      10.82,
+      5.814
+     ],
+     "card_box": [
+      3.33,
+      1.95,
+      5.38,
+      5.5
+     ],
+     "note": "标题与所属正文未同容器：正文越出卡片边界"
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_TEXT_ESCAPED",
+     "page": 12,
+     "card": "Shape 11",
+     "heading": "Text 13",
+     "text_shape": "Text 25",
+     "glyph": [
+      1.256,
+      4.768,
+      10.82,
+      5.814
+     ],
+     "card_box": [
+      5.78,
+      1.95,
+      7.83,
+      5.5
+     ],
+     "note": "标题与所属正文未同容器：正文越出卡片边界"
+    },
+    {
+     "gate": "HG06",
+     "type": "ORDINAL_IN_FOOTER",
+     "page": 12,
+     "shape": "Text 4",
+     "glyph": [
+      2.202,
+      7.163,
+      2.288,
+      7.32
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "ORDINAL_IN_FOOTER",
+     "page": 12,
+     "shape": "Text 8",
+     "glyph": [
+      4.65,
+      7.159,
+      4.767,
+      7.32
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "ORDINAL_IN_FOOTER",
+     "page": 12,
+     "shape": "Text 12",
+     "glyph": [
+      7.095,
+      7.159,
+      7.217,
+      7.324
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "ORDINAL_IN_FOOTER",
+     "page": 12,
+     "shape": "Text 16",
+     "glyph": [
+      9.543,
+      7.163,
+      9.674,
+      7.32
+     ]
+    },
+    {
+     "gate": "HG07",
+     "type": "ROLE_SIZE",
+     "page": 12,
+     "shape": "Text 4",
+     "role": "ordinal",
+     "size_pt": 16.0,
+     "allowed": [
+      18,
+      22
+     ],
+     "all_run_sizes": [
+      16.0
+     ]
+    },
+    {
+     "gate": "HG07",
+     "type": "ROLE_SIZE",
+     "page": 12,
+     "shape": "Text 8",
+     "role": "ordinal",
+     "size_pt": 16.0,
+     "allowed": [
+      18,
+      22
+     ],
+     "all_run_sizes": [
+      16.0
+     ]
+    },
+    {
+     "gate": "HG07",
+     "type": "ROLE_SIZE",
+     "page": 12,
+     "shape": "Text 12",
+     "role": "ordinal",
+     "size_pt": 16.0,
+     "allowed": [
+      18,
+      22
+     ],
+     "all_run_sizes": [
+      16.0
+     ]
+    },
+    {
+     "gate": "HG07",
+     "type": "ROLE_SIZE",
+     "page": 12,
+     "shape": "Text 16",
+     "role": "ordinal",
+     "size_pt": 16.0,
+     "allowed": [
+      18,
+      22
+     ],
+     "all_run_sizes": [
+      16.0
+     ]
+    },
+    {
+     "gate": "HG08",
+     "type": "TOKEN_SPLIT",
+     "page": 12,
+     "shape": "Text 22",
+     "token": "36个月",
+     "line_baselines": [
+      4.71,
+      5.26
+     ],
+     "line_texts": [
+      "36个",
+      "月"
+     ]
+    },
+    {
+     "gate": "HG08",
+     "type": "ORPHAN_CHAR_LINE",
+     "page": 12,
+     "shape": "Text 20",
+     "char": "5"
+    },
+    {
+     "gate": "HG08",
+     "type": "ORDINAL_UNBOUND",
+     "page": 12,
+     "shape": "Text 4"
+    },
+    {
+     "gate": "HG08",
+     "type": "ORDINAL_UNBOUND",
+     "page": 12,
+     "shape": "Text 8"
+    },
+    {
+     "gate": "HG08",
+     "type": "ORDINAL_UNBOUND",
+     "page": 12,
+     "shape": "Text 12"
+    },
+    {
+     "gate": "HG08",
+     "type": "ORDINAL_UNBOUND",
+     "page": 12,
+     "shape": "Text 16"
+    },
+    {
+     "gate": "HG09",
+     "type": "EMPTY_CONTAINER",
+     "page": 12,
+     "shape": "Shape 23",
+     "box_in": [
+      1.55,
+      6.33,
+      11.75,
+      6.96
+     ]
+    }
+   ],
+   "findings_count": 20,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 29",
+      "cls": "PICTURE (13)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 30",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.33,
+      "height": 7.5,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.38
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.22,
+      "width": 11.8933,
+      "height": 0.885,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.205,
+      "width": 11.8933,
+      "height": 0.6558,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.88,
+      "top": 1.95,
+      "width": 2.05,
+      "height": 3.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.66,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.55,
+      "top": 2.0008,
+      "width": 2.2867,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.55,
+      "top": 2.6608,
+      "width": 2.2867,
+      "height": 1.6633,
+      "text_chars": 19,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.33,
+      "top": 1.95,
+      "width": 2.05,
+      "height": 3.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 4.11,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.0367,
+      "top": 2.0008,
+      "width": 2.2867,
+      "height": 0.61,
+      "text_chars": 3,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 3.0367,
+      "top": 2.6608,
+      "width": 2.2867,
+      "height": 2.19,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.78,
+      "top": 1.95,
+      "width": 2.05,
+      "height": 3.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.56,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.5233,
+      "top": 2.0008,
+      "width": 2.2867,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 5.5233,
+      "top": 2.6608,
+      "width": 2.2867,
+      "height": 2.19,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.23,
+      "top": 1.95,
+      "width": 2.05,
+      "height": 3.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 9.01,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.01,
+      "top": 2.0008,
+      "width": 2.2867,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 8.01,
+      "top": 2.6608,
+      "width": 2.2867,
+      "height": 2.19,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.68,
+      "top": 1.95,
+      "width": 2.05,
+      "height": 3.55,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.4133,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.4966,
+      "top": 2.0008,
+      "width": 2.2867,
+      "height": 0.61,
+      "text_chars": 4,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.4966,
+      "top": 2.6608,
+      "width": 2.2867,
+      "height": 2.7167,
+      "text_chars": 28,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Shape 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.55,
+      "top": 6.33,
+      "width": 10.2,
+      "height": 0.63,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 4.2883,
+      "width": 0.35,
+      "height": 0.42,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 27,
+      "name": "Text 25",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 4.5483,
+      "width": 9.6,
+      "height": 1.4058,
+      "text_chars": 35,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 28,
+      "name": "Text 26",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 7.0133,
+      "width": 6.7,
+      "height": 0.4267,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 29,
+      "name": "Text 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.4133,
+      "top": 7.0133,
+      "width": 1.2,
+      "height": 0.36,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 29",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350",
+      "box_in": [
+       0.0,
+       0.0,
+       13.33,
+       7.5
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.0275,
+       "crop_bottom": 0.0412
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "d8a84727f1de91769fbefe0d24519840071588392c774c4b977a37638ee398e4"
+   }
+  }
+ },
+ "identity": {
+  "pptx_sha256": "6133ad5db168baf45894dda57449d1886ce91460b03cbcfc5eb056ab876404a0",
+  "pdf_sha256": "aacb4518f6891b0fb1f4c534102c20d7e7ccc7d7d348149f0c36440cae37a15f",
+  "baseline_pptx_sha256": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+  "source_fidelity_verified": false,
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "build_identity": {
+   "program_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+   "build_id": "6b1569f1bbb34d7e126dbe45d045e13a",
+   "build_id_scope": "程序成员聚合（wengao_ppt.install.build_id：排除数据根/运行期文件；门禁自算，不接受自报）"
+  },
+  "per_page_render_sha256": {
+   "12": null
+  },
+  "per_page_notext_render_sha256": {
+   "12": null
+  },
+  "export_parameters": {
+   "renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
+   "gate": "layout_gate.py WG-LAYOUT-20261021.1"
+  }
+ },
+ "hg10": {
+  "render_width_px": 1920,
+  "pages_rendered": [
+   12
+  ],
+  "selected_pages": [
+   12
+  ],
+  "static_only": true,
+  "native_playback_provided": false,
+  "native_playback_checks": null
+ },
+ "findings": [
+  {
+   "gate": "HG03",
+   "type": "GLYPH_COLLISION",
+   "page": 12,
+   "shapes": [
+    "Text 4",
+    "Text 26"
+   ],
+   "overlap_in": [
+    0.086,
+    0.157
+   ],
+   "char_pair": [
+    "1",
+    "普"
+   ],
+   "char_overlap_in": [
+    0.042,
+    0.157
+   ],
+   "glyph_a": [
+    2.202,
+    7.163,
+    2.288,
+    7.32
+   ],
+   "glyph_b": [
+    0.72,
+    7.131,
+    5.321,
+    7.373
+   ]
+  },
+  {
+   "gate": "HG03",
+   "type": "GLYPH_COLLISION",
+   "page": 12,
+   "shapes": [
+    "Text 8",
+    "Text 26"
+   ],
+   "overlap_in": [
+    0.117,
+    0.161
+   ],
+   "char_pair": [
+    "2",
+    "坠"
+   ],
+   "char_overlap_in": [
+    0.004,
+    0.161
+   ],
+   "glyph_a": [
+    4.65,
+    7.159,
+    4.767,
+    7.32
+   ],
+   "glyph_b": [
+    0.72,
+    7.131,
+    5.321,
+    7.373
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 12,
+   "shape": "Text 26",
+   "role": "source",
+   "glyph": [
+    0.72,
+    7.131,
+    5.321,
+    7.373
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_TEXT_ESCAPED",
+   "page": 12,
+   "card": "Shape 7",
+   "heading": "Text 9",
+   "text_shape": "Text 25",
+   "glyph": [
+    1.256,
+    4.768,
+    10.82,
+    5.814
+   ],
+   "card_box": [
+    3.33,
+    1.95,
+    5.38,
+    5.5
+   ],
+   "note": "标题与所属正文未同容器：正文越出卡片边界"
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_TEXT_ESCAPED",
+   "page": 12,
+   "card": "Shape 11",
+   "heading": "Text 13",
+   "text_shape": "Text 25",
+   "glyph": [
+    1.256,
+    4.768,
+    10.82,
+    5.814
+   ],
+   "card_box": [
+    5.78,
+    1.95,
+    7.83,
+    5.5
+   ],
+   "note": "标题与所属正文未同容器：正文越出卡片边界"
+  },
+  {
+   "gate": "HG06",
+   "type": "ORDINAL_IN_FOOTER",
+   "page": 12,
+   "shape": "Text 4",
+   "glyph": [
+    2.202,
+    7.163,
+    2.288,
+    7.32
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "ORDINAL_IN_FOOTER",
+   "page": 12,
+   "shape": "Text 8",
+   "glyph": [
+    4.65,
+    7.159,
+    4.767,
+    7.32
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "ORDINAL_IN_FOOTER",
+   "page": 12,
+   "shape": "Text 12",
+   "glyph": [
+    7.095,
+    7.159,
+    7.217,
+    7.324
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "ORDINAL_IN_FOOTER",
+   "page": 12,
+   "shape": "Text 16",
+   "glyph": [
+    9.543,
+    7.163,
+    9.674,
+    7.32
+   ]
+  },
+  {
+   "gate": "HG07",
+   "type": "ROLE_SIZE",
+   "page": 12,
+   "shape": "Text 4",
+   "role": "ordinal",
+   "size_pt": 16.0,
+   "allowed": [
+    18,
+    22
+   ],
+   "all_run_sizes": [
+    16.0
+   ]
+  },
+  {
+   "gate": "HG07",
+   "type": "ROLE_SIZE",
+   "page": 12,
+   "shape": "Text 8",
+   "role": "ordinal",
+   "size_pt": 16.0,
+   "allowed": [
+    18,
+    22
+   ],
+   "all_run_sizes": [
+    16.0
+   ]
+  },
+  {
+   "gate": "HG07",
+   "type": "ROLE_SIZE",
+   "page": 12,
+   "shape": "Text 12",
+   "role": "ordinal",
+   "size_pt": 16.0,
+   "allowed": [
+    18,
+    22
+   ],
+   "all_run_sizes": [
+    16.0
+   ]
+  },
+  {
+   "gate": "HG07",
+   "type": "ROLE_SIZE",
+   "page": 12,
+   "shape": "Text 16",
+   "role": "ordinal",
+   "size_pt": 16.0,
+   "allowed": [
+    18,
+    22
+   ],
+   "all_run_sizes": [
+    16.0
+   ]
+  },
+  {
+   "gate": "HG08",
+   "type": "TOKEN_SPLIT",
+   "page": 12,
+   "shape": "Text 22",
+   "token": "36个月",
+   "line_baselines": [
+    4.71,
+    5.26
+   ],
+   "line_texts": [
+    "36个",
+    "月"
+   ]
+  },
+  {
+   "gate": "HG08",
+   "type": "ORPHAN_CHAR_LINE",
+   "page": 12,
+   "shape": "Text 20",
+   "char": "5"
+  },
+  {
+   "gate": "HG08",
+   "type": "ORDINAL_UNBOUND",
+   "page": 12,
+   "shape": "Text 4"
+  },
+  {
+   "gate": "HG08",
+   "type": "ORDINAL_UNBOUND",
+   "page": 12,
+   "shape": "Text 8"
+  },
+  {
+   "gate": "HG08",
+   "type": "ORDINAL_UNBOUND",
+   "page": 12,
+   "shape": "Text 12"
+  },
+  {
+   "gate": "HG08",
+   "type": "ORDINAL_UNBOUND",
+   "page": 12,
+   "shape": "Text 16"
+  },
+  {
+   "gate": "HG09",
+   "type": "EMPTY_CONTAINER",
+   "page": 12,
+   "shape": "Shape 23",
+   "box_in": [
+    1.55,
+    6.33,
+    11.75,
+    6.96
+   ]
+  }
+ ],
+ "unverified": [
+  {
+   "gate": "HG10",
+   "type": "PARTIAL_PAGE_SCOPE",
+   "selected": [
+    12
+   ],
+   "actual_pages": 13,
+   "note": "诊断子集可以有界子结果，但不构成全稿合格判定"
+  },
+  {
+   "gate": "HG10",
+   "type": "NATIVE_PLAYBACK_EVIDENCE_MISSING",
+   "note": "static_only=False 布尔开关不构成原生实播证据；需 30–60s 连续放映录像 + 关闭后磁盘重开核哈希"
+  },
+  {
+   "gate": "HG10",
+   "reason": "animation_states_and_native_playback_not_run",
+   "note": "静态渲染通过只能记 STATIC_LAYOUT_ONLY；原生实播/重开为最终条件"
+  }
+ ],
+ "gates_hit": [
+  "HG03",
+  "HG05",
+  "HG06",
+  "HG07",
+  "HG08",
+  "HG09"
+ ],
+ "counts": {
+  "findings": 20,
+  "unmatched_chars": 0,
+  "missing_chars": 0,
+  "collisions": 2,
+  "occlusions": 0
+ },
+ "verdict": "FAIL",
+ "static_layout_only": true
+}

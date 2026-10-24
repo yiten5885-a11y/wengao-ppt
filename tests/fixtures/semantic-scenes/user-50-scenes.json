@@ -1,0 +1,447 @@
+{
+  "schema_version": "1.0",
+  "source": "User-provided open-vocabulary scene examples, normalized from semantic-scene-image-prompt-hard-gate-20261022.md",
+  "scope": "Regression coverage only; these examples must not become a closed vocabulary, keyword allowlist, or fixed image mapping.",
+  "scenario_prompt_fields": [
+    "subject",
+    "environment",
+    "action_or_state",
+    "lighting",
+    "composition_or_camera",
+    "style",
+    "quality"
+  ],
+  "default_quality_preferences": [
+    "高清",
+    "细节丰富",
+    "真实质感",
+    "自然光",
+    "专业摄影",
+    "8K"
+  ],
+  "negative_prompt": {
+    "applies_only_when_provider_supports_it": true,
+    "terms": [
+      "低质量",
+      "模糊",
+      "畸形手指",
+      "多余肢体",
+      "文字乱码",
+      "水印",
+      "过曝"
+    ]
+  },
+  "scenarios": [
+    {
+      "case_id": "user-scene-01",
+      "index": 1,
+      "category": "daily_life",
+      "label": "起床洗漱",
+      "scenario_brief": "清晨卧室，年轻人伸懒腰，柔和晨光透过薄纱窗帘；浴室镜前刷牙；生活纪实摄影、暖色调。"
+    },
+    {
+      "case_id": "user-scene-02",
+      "index": 2,
+      "category": "daily_life",
+      "label": "在家做饭",
+      "scenario_brief": "明亮现代厨房，系围裙的女士切菜备菜，新鲜蔬菜，锅中蒸汽升腾，侧逆光、俯拍、美食摄影。"
+    },
+    {
+      "case_id": "user-scene-03",
+      "index": 3,
+      "category": "daily_life",
+      "label": "点餐用餐",
+      "scenario_brief": "温馨餐厅，顾客手机扫码点餐，桌上热气腾腾的菜品，暖黄灯光、浅景深。"
+    },
+    {
+      "case_id": "user-scene-04",
+      "index": 4,
+      "category": "daily_life",
+      "label": "上下班通勤",
+      "scenario_brief": "早高峰地铁站，上班族手拿咖啡匆匆走过，人流动态模糊，广角、城市纪实。"
+    },
+    {
+      "case_id": "user-scene-05",
+      "index": 5,
+      "category": "daily_life",
+      "label": "购物",
+      "scenario_brief": "周末超市货架间推着购物车挑选商品，明亮日光灯、广角、真实生活感。"
+    },
+    {
+      "case_id": "user-scene-06",
+      "index": 6,
+      "category": "daily_life",
+      "label": "打扫整理",
+      "scenario_brief": "阳光客厅，人拿吸尘器打扫，收纳盒整齐，北欧极简风、明亮清爽。"
+    },
+    {
+      "case_id": "user-scene-07",
+      "index": 7,
+      "category": "daily_life",
+      "label": "洗衣晾晒",
+      "scenario_brief": "阳台上晾晒白衬衫和床单，微风吹动，逆光、日系清新、治愈感。"
+    },
+    {
+      "case_id": "user-scene-08",
+      "index": 8,
+      "category": "daily_life",
+      "label": "家庭聚餐",
+      "scenario_brief": "中式家宴，三代同堂围坐圆桌，满桌佳肴，欢声笑语，暖色灯光、温馨氛围。"
+    },
+    {
+      "case_id": "user-scene-09",
+      "index": 9,
+      "category": "daily_life",
+      "label": "看病买药",
+      "scenario_brief": "社区医院诊室，医生用听诊器耐心问诊，患者微笑，洁净明亮、写实风格。"
+    },
+    {
+      "case_id": "user-scene-10",
+      "index": 10,
+      "category": "daily_life",
+      "label": "运动健身",
+      "scenario_brief": "清晨河边步道跑步，运动服、朝阳、汗水，侧面跟拍、动感、运动摄影。"
+    },
+    {
+      "case_id": "user-scene-11",
+      "index": 11,
+      "category": "daily_life",
+      "label": "接送孩子",
+      "scenario_brief": "家长牵着背书包的孩子走向校门，金色晨光、背影、温情、电影感。"
+    },
+    {
+      "case_id": "user-scene-12",
+      "index": 12,
+      "category": "daily_life",
+      "label": "辅导作业",
+      "scenario_brief": "台灯下父母陪孩子写作业，书本文具、暖光、近景、温馨。"
+    },
+    {
+      "case_id": "user-scene-13",
+      "index": 13,
+      "category": "daily_life",
+      "label": "看电影追剧",
+      "scenario_brief": "昏暗客厅，一家人坐沙发看投影，爆米花，屏幕光映在脸上、氛围感。"
+    },
+    {
+      "case_id": "user-scene-14",
+      "index": 14,
+      "category": "daily_life",
+      "label": "玩游戏",
+      "scenario_brief": "电竞房，玩家戴耳机盯着双屏，RGB 灯光、专注表情、赛博氛围。"
+    },
+    {
+      "case_id": "user-scene-15",
+      "index": 15,
+      "category": "daily_life",
+      "label": "阅读看资讯",
+      "scenario_brief": "咖啡馆窗边读书，午后阳光、书页、拿铁、浅景深、文艺风。"
+    },
+    {
+      "case_id": "user-scene-16",
+      "index": 16,
+      "category": "daily_life",
+      "label": "社交聊天",
+      "scenario_brief": "沙发上用手机视频通话，屏幕里亲人笑脸，夜晚台灯、温暖治愈。"
+    },
+    {
+      "case_id": "user-scene-17",
+      "index": 17,
+      "category": "daily_life",
+      "label": "旅游出行",
+      "scenario_brief": "游客拖行李箱站在机场出发大厅，手机订票，落地窗外飞机、蓝调时刻。"
+    },
+    {
+      "case_id": "user-scene-18",
+      "index": 18,
+      "category": "daily_life",
+      "label": "理财记账",
+      "scenario_brief": "书桌上笔记本电脑显示 K 线图，计算器和记账本、咖啡、简洁冷色调。"
+    },
+    {
+      "case_id": "user-scene-19",
+      "index": 19,
+      "category": "daily_life",
+      "label": "缴费",
+      "scenario_brief": "手机屏幕显示缴费界面，桌上水电燃气账单，窗边自然光、特写、生活静物。"
+    },
+    {
+      "case_id": "user-scene-20",
+      "index": 20,
+      "category": "daily_life",
+      "label": "租房搬家",
+      "scenario_brief": "新家客厅堆满纸箱，情侣手握钥匙开心拥抱，明亮阳光、纪实风。"
+    },
+    {
+      "case_id": "user-scene-21",
+      "index": 21,
+      "category": "daily_life",
+      "label": "宠物",
+      "scenario_brief": "公园草地上主人遛金毛犬，逆光、毛发发光、欢快、宠物摄影。"
+    },
+    {
+      "case_id": "user-scene-22",
+      "index": 22,
+      "category": "daily_life",
+      "label": "节日送礼",
+      "scenario_brief": "春节、红灯笼、一家人互送礼盒，喜庆红金配色、温暖、中国风。"
+    },
+    {
+      "case_id": "user-scene-23",
+      "index": 23,
+      "category": "daily_life",
+      "label": "睡眠午休",
+      "scenario_brief": "卧室夜晚，人安睡在床上，窗外月光、柔和蓝调、宁静。"
+    },
+    {
+      "case_id": "user-scene-24",
+      "index": 24,
+      "category": "daily_life",
+      "label": "老人照护",
+      "scenario_brief": "子女搀扶白发老人在庭院散步，秋日暖阳、温情、纪实摄影。"
+    },
+    {
+      "case_id": "user-scene-25",
+      "index": 25,
+      "category": "daily_life",
+      "label": "政务办事",
+      "scenario_brief": "政务服务大厅，窗口人员为市民办理业务，取号屏、明亮整洁、写实。"
+    },
+    {
+      "case_id": "user-scene-26",
+      "index": 26,
+      "category": "production",
+      "label": "农业种植",
+      "scenario_brief": "航拍金色麦田，无人机喷洒作业，日出薄雾、广阔大场景。"
+    },
+    {
+      "case_id": "user-scene-27",
+      "index": 27,
+      "category": "production",
+      "label": "畜牧养殖",
+      "scenario_brief": "现代化牧场，工人给奶牛投放饲料，蓝天白云、干净明亮、纪实。"
+    },
+    {
+      "case_id": "user-scene-28",
+      "index": 28,
+      "category": "production",
+      "label": "渔业",
+      "scenario_brief": "清晨海面，渔民在渔船上收网，银色鱼群、晨雾、逆光、纪实摄影。"
+    },
+    {
+      "case_id": "user-scene-29",
+      "index": 29,
+      "category": "production",
+      "label": "采矿勘探",
+      "scenario_brief": "露天矿场，巨型矿卡行驶并扬起尘土，工程师手持平板勘测、工业史诗感。"
+    },
+    {
+      "case_id": "user-scene-30",
+      "index": 30,
+      "category": "production",
+      "label": "原料采购",
+      "scenario_brief": "仓库里采购员手持平板验收原材料，与供应商握手，堆叠货箱、写实。"
+    },
+    {
+      "case_id": "user-scene-31",
+      "index": 31,
+      "category": "production",
+      "label": "仓储盘点",
+      "scenario_brief": "高架立体仓库，叉车穿行，工人用扫码枪盘点，整齐货架、透视构图。"
+    },
+    {
+      "case_id": "user-scene-32",
+      "index": 32,
+      "category": "production",
+      "label": "物流配送",
+      "scenario_brief": "夜晚港口集装箱堆场，货运卡车进出、调度中心大屏，冷暖对比、广角。"
+    },
+    {
+      "case_id": "user-scene-33",
+      "index": 33,
+      "category": "production",
+      "label": "零部件加工",
+      "scenario_brief": "数控机床切削金属，火花四溅、冷却液飞溅，微距特写、高速摄影。"
+    },
+    {
+      "case_id": "user-scene-34",
+      "index": 34,
+      "category": "production",
+      "label": "生产线装配",
+      "scenario_brief": "汽车总装车间，机械臂焊接、橙色火花、工人协同、工业摄影。"
+    },
+    {
+      "case_id": "user-scene-35",
+      "index": 35,
+      "category": "production",
+      "label": "质量检测",
+      "scenario_brief": "质检员戴手套用卡尺测量零件，放大镜、检测台灯光、特写、专业严谨。"
+    },
+    {
+      "case_id": "user-scene-36",
+      "index": 36,
+      "category": "production",
+      "label": "设备点检维修",
+      "scenario_brief": "工程师戴安全帽，手持平板巡检管道设备，蒸汽、工业场景、景深。"
+    },
+    {
+      "case_id": "user-scene-37",
+      "index": 37,
+      "category": "production",
+      "label": "能源生产",
+      "scenario_brief": "黄昏风电场与光伏电站、高压输电塔，航拍、金色天空、科技感。"
+    },
+    {
+      "case_id": "user-scene-38",
+      "index": 38,
+      "category": "production",
+      "label": "建筑施工",
+      "scenario_brief": "塔吊林立的工地，工人戴安全帽、工程师对照图纸，黄昏逆光、宏大。"
+    },
+    {
+      "case_id": "user-scene-39",
+      "index": 39,
+      "category": "production",
+      "label": "化工制药",
+      "scenario_brief": "洁净车间，白色防护服人员、不锈钢反应釜，蓝白冷光、无菌质感。"
+    },
+    {
+      "case_id": "user-scene-40",
+      "index": 40,
+      "category": "production",
+      "label": "食品加工",
+      "scenario_brief": "饮料灌装生产线，玻璃瓶传送带、不锈钢设备，明亮洁净、商业摄影。"
+    },
+    {
+      "case_id": "user-scene-41",
+      "index": 41,
+      "category": "production",
+      "label": "纺织服装",
+      "scenario_brief": "服装厂缝纫车间，女工操作缝纫机，彩色布料和线轴、暖光、纪实。"
+    },
+    {
+      "case_id": "user-scene-42",
+      "index": 42,
+      "category": "production",
+      "label": "产品包装",
+      "scenario_brief": "自动包装线、贴标机贴标、纸箱封箱、传送带，整齐有序、工业风。"
+    },
+    {
+      "case_id": "user-scene-43",
+      "index": 43,
+      "category": "production",
+      "label": "生产排程",
+      "scenario_brief": "调度中心大屏显示甘特图和产线数据，管理者围桌讨论、科技蓝调。"
+    },
+    {
+      "case_id": "user-scene-44",
+      "index": 44,
+      "category": "production",
+      "label": "安全巡检",
+      "scenario_brief": "巡检员穿反光背心，手电检查消防设施和管线，昏暗车间、强调安全、写实。"
+    },
+    {
+      "case_id": "user-scene-45",
+      "index": 45,
+      "category": "production",
+      "label": "研发设计",
+      "scenario_brief": "设计师工作台，3D 打印机打样，草图和模型、明亮工作室、创意氛围。"
+    },
+    {
+      "case_id": "user-scene-46",
+      "index": 46,
+      "category": "production",
+      "label": "软件开发运维",
+      "scenario_brief": "深夜办公室，程序员面对多块屏幕代码，机房服务器指示灯、赛博蓝光。"
+    },
+    {
+      "case_id": "user-scene-47",
+      "index": 47,
+      "category": "production",
+      "label": "客户服务",
+      "scenario_brief": "客服中心，员工戴耳麦微笑接听，屏幕显示工单、明亮现代办公室。"
+    },
+    {
+      "case_id": "user-scene-48",
+      "index": 48,
+      "category": "production",
+      "label": "销售营销",
+      "scenario_brief": "会议室里销售向客户演示方案和投影图表，或直播间主播带货、专业商务风。"
+    },
+    {
+      "case_id": "user-scene-49",
+      "index": 49,
+      "category": "production",
+      "label": "财务人事行政",
+      "scenario_brief": "办公室里财务人员核对报表，考勤打卡机、文件整齐、明亮商务摄影。"
+    },
+    {
+      "case_id": "user-scene-50",
+      "index": 50,
+      "category": "production",
+      "label": "废料回收",
+      "scenario_brief": "资源回收分拣线，工人分拣塑料和金属，绿色环保、整洁、纪实风格。"
+    }
+  ],
+  "behavioral_cases": [
+    {
+      "case_id": "same-concrete-scene-across-pages",
+      "input": "Three pages describe the same person shopping in a supermarket aisle, in Chinese and English.",
+      "expected": {
+        "canonical_scene_id_count": 1,
+        "max_placements_for_scene_id": 1,
+        "max_reuses_of_same_asset": 1
+      }
+    },
+    {
+      "case_id": "consumer-distinct-subscenes",
+      "input": "One deck contains supermarket shopping, checkout/settlement, and a receipt/invoice still life.",
+      "expected": {
+        "canonical_scene_id_count": 3,
+        "min_distinct_asset_sha256": 3,
+        "allows_each_subscene_one_photo": true
+      }
+    },
+    {
+      "case_id": "open-vocabulary-outside-examples",
+      "input": "A user requests an unlisted but visually grounded topic and setting.",
+      "expected": {
+        "must_plan_from_source_context": true,
+        "must_not_reject_for_missing_keyword": true,
+        "must_not_invent_business_facts": true
+      }
+    },
+    {
+      "case_id": "provider-aware-prompt-adapter",
+      "input": "Use a photo search provider and an SD-compatible image generation provider.",
+      "expected": {
+        "search_query_is_concise_neutral_scene_phrase": true,
+        "negative_prompt_only_for_supported_provider": true,
+        "image_generation_fields": [
+          "subject",
+          "environment",
+          "action_or_state",
+          "lighting",
+          "composition_or_camera",
+          "style",
+          "quality"
+        ]
+      }
+    },
+    {
+      "case_id": "privacy-and-provenance",
+      "input": "Source material includes names, confidential text, and scene-relevant facts.",
+      "expected": {
+        "external_query_contains_source_text_or_personal_data": false,
+        "asset_has_source_license_and_attribution": true,
+        "original_asset_sha256_required": true
+      }
+    }
+  ],
+  "notes": [
+    "Respectful, context-appropriate depictions; no stereotyping or stigmatizing language.",
+    "No identifiable medical records, patients, or private data.",
+    "Do not force natural daylight when the requested scene calls for night, industrial, or other lighting.",
+    "No text, pseudo-UI, watermarks, or altered business facts inside generated images."
+  ]
+}

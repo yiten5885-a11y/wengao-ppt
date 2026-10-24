@@ -1,0 +1,720 @@
+{
+  "generated_at": "2026-10-21 00:25 需求",
+  "layout_version": "readability-2026-10-21.0120-glyphfit-p268",
+  "baseline": {
+    "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/evidence/exact_v12.pptx",
+    "sha256": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+    "sha256_after": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+    "unchanged": true
+  },
+  "output": {
+    "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/readability-20261021/v13-readable-P268-13p.pptx",
+    "sha256": "ebf5d5b48a483ca539bca701bc3c4ee7d45da94beb907575f421260aa70f39b5",
+    "slides": 13
+  },
+  "ea_font": "Arial Unicode MS",
+  "ea_font_changes": 510,
+  "size_policy": {
+    "page_title": 36,
+    "lead": 26,
+    "body": 26,
+    "body_min": 24,
+    "section_head": 28,
+    "conclusion": 30,
+    "key_number": 44,
+    "table": 21,
+    "chart_label": 19,
+    "aux": 18,
+    "footer": 16,
+    "index": 20
+  },
+  "acts": [
+    {
+      "rule": "layout_p2",
+      "page": 2,
+      "layout_version": "readability-2026-10-21.0120-glyphfit-p268"
+    },
+    {
+      "rule": "layout_p6",
+      "page": 6,
+      "layout_version": "readability-2026-10-21.0120-glyphfit-p268"
+    },
+    {
+      "rule": "layout_p8",
+      "page": 8,
+      "layout_version": "readability-2026-10-21.0120-glyphfit-p268"
+    }
+  ],
+  "zip": {
+    "baseline_members": 74,
+    "output_members": 74,
+    "missing_vs_baseline": []
+  },
+  "conservation": {
+    "pages": 13,
+    "text_changed_pages": [],
+    "notes_changed_pages": [],
+    "notes_missing": [],
+    "notes_added": []
+  },
+  "size_distribution": {
+    "2": [
+      {
+        "shape": "Text 1",
+        "pt": [
+          36.0
+        ],
+        "left_in": 0.72,
+        "top_in": 0.22,
+        "w_in": 11.893,
+        "h_in": 0.885,
+        "text": "从“618不兴奋”切入，而不是从宏观报告切入"
+      },
+      {
+        "shape": "Text 2",
+        "pt": [
+          26.0
+        ],
+        "left_in": 0.72,
+        "top_in": 1.13,
+        "w_in": 11.893,
+        "h_in": 0.656,
+        "text": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。"
+      },
+      {
+        "shape": "Text 4",
+        "pt": [
+          44.0
+        ],
+        "left_in": 0.92,
+        "top_in": 1.96,
+        "w_in": 2.35,
+        "h_in": 0.885,
+        "text": "+0.9%"
+      },
+      {
+        "shape": "Text 5",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.37,
+        "top_in": 1.96,
+        "w_in": 2.95,
+        "h_in": 1.226,
+        "text": "2026年618电商GMV近乎横盘"
+      },
+      {
+        "shape": "Text 6",
+        "pt": [
+          16.0
+        ],
+        "left_in": 0.92,
+        "top_in": 3.25,
+        "w_in": 5.397,
+        "h_in": 0.427,
+        "text": "Syntun数据：8636亿 vs 8556亿"
+      },
+      {
+        "shape": "Text 8",
+        "pt": [
+          44.0
+        ],
+        "left_in": 7.017,
+        "top_in": 1.96,
+        "w_in": 2.35,
+        "h_in": 0.885,
+        "text": "-0.6%"
+      },
+      {
+        "shape": "Text 9",
+        "pt": [
+          26.0
+        ],
+        "left_in": 9.467,
+        "top_in": 1.96,
+        "w_in": 2.95,
+        "h_in": 1.226,
+        "text": "2026年5月社零同比下降"
+      },
+      {
+        "shape": "Text 10",
+        "pt": [
+          16.0
+        ],
+        "left_in": 7.017,
+        "top_in": 3.25,
+        "w_in": 5.397,
+        "h_in": 0.427,
+        "text": "国家统计局：5月社会消费品零售总额"
+      },
+      {
+        "shape": "Text 12",
+        "pt": [
+          44.0
+        ],
+        "left_in": 0.92,
+        "top_in": 3.87,
+        "w_in": 2.35,
+        "h_in": 0.885,
+        "text": "+13.8%"
+      },
+      {
+        "shape": "Text 13",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.37,
+        "top_in": 3.87,
+        "w_in": 2.95,
+        "h_in": 1.226,
+        "text": "2026年5月出口同比增长"
+      },
+      {
+        "shape": "Text 14",
+        "pt": [
+          16.0
+        ],
+        "left_in": 0.92,
+        "top_in": 5.16,
+        "w_in": 5.397,
+        "h_in": 0.427,
+        "text": "国家统计局：5月货物出口"
+      },
+      {
+        "shape": "Text 16",
+        "pt": [
+          44.0
+        ],
+        "left_in": 7.017,
+        "top_in": 3.87,
+        "w_in": 2.35,
+        "h_in": 1.068,
+        "text": "2500亿"
+      },
+      {
+        "shape": "Text 17",
+        "pt": [
+          26.0
+        ],
+        "left_in": 9.467,
+        "top_in": 3.87,
+        "w_in": 2.95,
+        "h_in": 1.226,
+        "text": "消费品以旧换新专项资金"
+      },
+      {
+        "shape": "Text 18",
+        "pt": [
+          16.0
+        ],
+        "left_in": 7.017,
+        "top_in": 5.16,
+        "w_in": 5.397,
+        "h_in": 0.427,
+        "text": "国务院：超长期特别国债安排"
+      },
+      {
+        "shape": "Text 20",
+        "pt": [
+          32.0
+        ],
+        "left_in": 0.85,
+        "top_in": 5.48,
+        "w_in": 0.35,
+        "h_in": 0.42,
+        "text": "“"
+      },
+      {
+        "shape": "Text 21",
+        "pt": [
+          30.0
+        ],
+        "left_in": 1.25,
+        "top_in": 5.74,
+        "w_in": 8.87,
+        "h_in": 1.406,
+        "text": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。"
+      },
+      {
+        "shape": "Text 22",
+        "pt": [
+          16.0
+        ],
+        "left_in": 0.72,
+        "top_in": 7.03,
+        "w_in": 6.1,
+        "h_in": 0.427,
+        "text": "Yiten Huang｜普通人的财富守恒与防坠落系统"
+      },
+      {
+        "shape": "Text 23",
+        "pt": [
+          16.0
+        ],
+        "left_in": 11.8,
+        "top_in": 7.03,
+        "w_in": 0.81,
+        "h_in": 0.36,
+        "text": "02"
+      },
+      {
+        "shape": "Text 24",
+        "pt": [
+          16.0
+        ],
+        "left_in": 6.95,
+        "top_in": 7.03,
+        "w_in": 4.6,
+        "h_in": 0.427,
+        "text": "来源：国家统计局、国务院、Reuters"
+      }
+    ],
+    "6": [
+      {
+        "shape": "Text 1",
+        "pt": [
+          36.0
+        ],
+        "left_in": 0.72,
+        "top_in": 0.22,
+        "w_in": 11.893,
+        "h_in": 0.885,
+        "text": "结构性缺陷：生产者和消费者其实是同一批普通人"
+      },
+      {
+        "shape": "Text 2",
+        "pt": [
+          26.0
+        ],
+        "left_in": 0.72,
+        "top_in": 1.13,
+        "w_in": 11.893,
+        "h_in": 0.656,
+        "text": "当劳动者的收入份额不足，消费市场就不会自动变强。"
+      },
+      {
+        "shape": "Text 4",
+        "pt": [
+          28.0
+        ],
+        "left_in": 0.94,
+        "top_in": 1.91,
+        "w_in": 4.63,
+        "h_in": 0.702,
+        "text": "白天的他"
+      },
+      {
+        "shape": "Text 6",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.27,
+        "top_in": 2.66,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "是工厂员工"
+      },
+      {
+        "shape": "Text 8",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.27,
+        "top_in": 3.376,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "是外卖骑手"
+      },
+      {
+        "shape": "Text 10",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.27,
+        "top_in": 4.092,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "是销售、客服、个体户"
+      },
+      {
+        "shape": "Text 12",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.27,
+        "top_in": 4.808,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "被要求提高效率、压低成本"
+      },
+      {
+        "shape": "Text 14",
+        "pt": [
+          28.0
+        ],
+        "left_in": 7.783,
+        "top_in": 1.91,
+        "w_in": 4.63,
+        "h_in": 0.702,
+        "text": "晚上的他"
+      },
+      {
+        "shape": "Text 16",
+        "pt": [
+          26.0
+        ],
+        "left_in": 8.113,
+        "top_in": 2.66,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "是消费者"
+      },
+      {
+        "shape": "Text 18",
+        "pt": [
+          26.0
+        ],
+        "left_in": 8.113,
+        "top_in": 3.376,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "是房贷/租金承担者"
+      },
+      {
+        "shape": "Text 20",
+        "pt": [
+          26.0
+        ],
+        "left_in": 8.113,
+        "top_in": 4.092,
+        "w_in": 4.4,
+        "h_in": 1.226,
+        "text": "是孩子教育和老人医疗的付款人"
+      },
+      {
+        "shape": "Text 22",
+        "pt": [
+          26.0
+        ],
+        "left_in": 8.113,
+        "top_in": 5.378,
+        "w_in": 4.4,
+        "h_in": 0.656,
+        "text": "被迫延迟购买、压缩欲望"
+      },
+      {
+        "shape": "Text 24",
+        "pt": [
+          28.0
+        ],
+        "left_in": 5.78,
+        "top_in": 1.91,
+        "w_in": 1.77,
+        "h_in": 0.702,
+        "text": "同一个人"
+      },
+      {
+        "shape": "Text 26",
+        "pt": [
+          32.0
+        ],
+        "left_in": 0.85,
+        "top_in": 5.94,
+        "w_in": 0.35,
+        "h_in": 0.42,
+        "text": "“"
+      },
+      {
+        "shape": "Text 27",
+        "pt": [
+          30.0
+        ],
+        "left_in": 1.25,
+        "top_in": 6.26,
+        "w_in": 11.36,
+        "h_in": 0.748,
+        "text": "把劳动者压成低成本，就等于把消费者压成低需求。"
+      },
+      {
+        "shape": "Text 28",
+        "pt": [
+          16.0
+        ],
+        "left_in": 0.72,
+        "top_in": 7.03,
+        "w_in": 6.1,
+        "h_in": 0.427,
+        "text": "Yiten Huang｜普通人的财富守恒与防坠落系统"
+      },
+      {
+        "shape": "Text 29",
+        "pt": [
+          16.0
+        ],
+        "left_in": 11.8,
+        "top_in": 7.03,
+        "w_in": 0.81,
+        "h_in": 0.36,
+        "text": "06"
+      }
+    ],
+    "8": [
+      {
+        "shape": "Text 1",
+        "pt": [
+          36.0
+        ],
+        "left_in": 0.72,
+        "top_in": 0.2,
+        "w_in": 11.893,
+        "h_in": 0.885,
+        "text": "社会影响：宏观增长和民生体感开始脱节"
+      },
+      {
+        "shape": "Text 2",
+        "pt": [
+          24.0
+        ],
+        "left_in": 0.72,
+        "top_in": 1.11,
+        "w_in": 11.893,
+        "h_in": 1.137,
+        "text": "这里最适合接你的个人IP：普通人不是看不懂宏观，而是被宏观变化打到现金流。"
+      },
+      {
+        "shape": "Text 5",
+        "pt": [
+          20.0
+        ],
+        "left_in": 0.9,
+        "top_in": 2.286,
+        "w_in": 0.55,
+        "h_in": 0.435,
+        "text": "01"
+      },
+      {
+        "shape": "Text 6",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.52,
+        "top_in": 2.24,
+        "w_in": 2.1,
+        "h_in": 0.656,
+        "text": "不敢花"
+      },
+      {
+        "shape": "Text 7",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.75,
+        "top_in": 2.24,
+        "w_in": 8.733,
+        "h_in": 0.656,
+        "text": "消费降级、延迟购买、只买刚需"
+      },
+      {
+        "shape": "Text 10",
+        "pt": [
+          20.0
+        ],
+        "left_in": 0.9,
+        "top_in": 2.992,
+        "w_in": 0.55,
+        "h_in": 0.435,
+        "text": "02"
+      },
+      {
+        "shape": "Text 11",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.52,
+        "top_in": 2.946,
+        "w_in": 2.1,
+        "h_in": 0.656,
+        "text": "不敢贷"
+      },
+      {
+        "shape": "Text 12",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.75,
+        "top_in": 2.946,
+        "w_in": 8.733,
+        "h_in": 0.656,
+        "text": "房产和大额消费决策更谨慎"
+      },
+      {
+        "shape": "Text 15",
+        "pt": [
+          20.0
+        ],
+        "left_in": 0.9,
+        "top_in": 3.697,
+        "w_in": 0.55,
+        "h_in": 0.435,
+        "text": "03"
+      },
+      {
+        "shape": "Text 16",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.52,
+        "top_in": 3.652,
+        "w_in": 2.1,
+        "h_in": 0.656,
+        "text": "不敢换工作"
+      },
+      {
+        "shape": "Text 17",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.75,
+        "top_in": 3.652,
+        "w_in": 8.733,
+        "h_in": 0.656,
+        "text": "失业风险抬高，现金流安全优先"
+      },
+      {
+        "shape": "Text 20",
+        "pt": [
+          20.0
+        ],
+        "left_in": 0.9,
+        "top_in": 4.403,
+        "w_in": 0.55,
+        "h_in": 0.435,
+        "text": "04"
+      },
+      {
+        "shape": "Text 21",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.52,
+        "top_in": 4.357,
+        "w_in": 2.1,
+        "h_in": 0.656,
+        "text": "不敢生"
+      },
+      {
+        "shape": "Text 22",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.75,
+        "top_in": 4.357,
+        "w_in": 8.733,
+        "h_in": 0.656,
+        "text": "养育成本和未来收入预期不匹配"
+      },
+      {
+        "shape": "Text 25",
+        "pt": [
+          20.0
+        ],
+        "left_in": 0.9,
+        "top_in": 5.109,
+        "w_in": 0.55,
+        "h_in": 0.435,
+        "text": "05"
+      },
+      {
+        "shape": "Text 26",
+        "pt": [
+          26.0
+        ],
+        "left_in": 1.52,
+        "top_in": 5.063,
+        "w_in": 2.1,
+        "h_in": 0.656,
+        "text": "不敢试错"
+      },
+      {
+        "shape": "Text 27",
+        "pt": [
+          26.0
+        ],
+        "left_in": 3.75,
+        "top_in": 5.063,
+        "w_in": 8.733,
+        "h_in": 0.656,
+        "text": "创业、投资、学习都被现金流约束"
+      },
+      {
+        "shape": "Text 29",
+        "pt": [
+          32.0
+        ],
+        "left_in": 0.85,
+        "top_in": 5.52,
+        "w_in": 0.35,
+        "h_in": 0.42,
+        "text": "“"
+      },
+      {
+        "shape": "Text 30",
+        "pt": [
+          30.0
+        ],
+        "left_in": 1.25,
+        "top_in": 5.78,
+        "w_in": 8.87,
+        "h_in": 1.406,
+        "text": "普通人的问题不是“不努力”，而是所有风险都在向他的家庭资产负债表集中。"
+      },
+      {
+        "shape": "Text 31",
+        "pt": [
+          16.0
+        ],
+        "left_in": 0.72,
+        "top_in": 7.06,
+        "w_in": 6.1,
+        "h_in": 0.427,
+        "text": "Yiten Huang｜普通人的财富守恒与防坠落系统"
+      },
+      {
+        "shape": "Text 32",
+        "pt": [
+          16.0
+        ],
+        "left_in": 11.8,
+        "top_in": 7.06,
+        "w_in": 0.81,
+        "h_in": 0.36,
+        "text": "08"
+      }
+    ]
+  },
+  "geometry": {
+    "canvas_in": [
+      13.333,
+      7.5
+    ],
+    "out_of_canvas": [],
+    "text_overlaps": [
+      "P2 Text 14 × Text 20 交叠 0.28x0.11in",
+      "P2 Text 21 × Text 22 交叠 5.57x0.12in",
+      "P2 Text 21 × Text 24 交叠 3.17x0.12in",
+      "P3 Text 10 × Text 12 交叠 0.51x0.07in",
+      "P3 Text 15 × Text 17 交叠 0.51x0.07in",
+      "P3 Text 20 × Text 22 交叠 0.51x0.07in",
+      "P4 Text 5 × Text 7 交叠 0.51x0.07in",
+      "P4 Text 10 × Text 12 交叠 0.51x0.07in",
+      "P4 Text 15 × Text 17 交叠 0.51x0.07in",
+      "P5 Text 22 × Text 23 交叠 4.90x0.05in",
+      "P5 Text 26 × Text 27 交叠 4.90x0.05in",
+      "P7 Text 5 × Text 7 交叠 0.51x0.07in",
+      "P7 Text 10 × Text 12 交叠 0.51x0.07in",
+      "P7 Text 15 × Text 17 交叠 0.51x0.07in",
+      "P7 Text 20 × Text 22 交叠 0.05x0.22in",
+      "P8 Text 30 × Text 31 交叠 5.57x0.13in"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+ "schema": "rs.check_report.v1",
+ "check": "check_layout",
+ "pptx_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck.pptx",
+ "pptx_sha256": "952bb12ad5de18e5f15ec3aa71517fd017fc5151e1d2607d56eb5c69280ecd5f",
+ "page_count": 5,
+ "size_rules_source": "policy:layout_hard_gate_policy.json",
+ "size_rules": {
+  "title": [
+   36,
+   40
+  ],
+  "body_preferred": [
+   26,
+   28
+  ],
+  "body_hard_min": 24,
+  "conclusion": [
+   28,
+   32
+  ],
+  "key_number": [
+   44,
+   56
+  ],
+  "table": [
+   20,
+   22
+  ],
+  "chart_auxiliary": [
+   18,
+   20
+  ],
+  "source_footer": [
+   16,
+   18
+  ],
+  "content_ordinal_allowed_ranges": [
+   18,
+   22
+  ],
+  "cover_title": [
+   36,
+   null
+  ]
+ },
+ "findings": [],
+ "blocking_codes": [
+  "LAYOUT.OVERLAP",
+  "LAYOUT.FONT_TOO_SMALL",
+  "LAYOUT.CONTRAST_TOO_LOW",
+  "LAYOUT.MARGIN_VIOLATION",
+  "LAYOUT.ORPHAN_CONTINUATION",
+  "LAYOUT.EMPTY_PAGE"
+ ],
+ "pass": true
+}

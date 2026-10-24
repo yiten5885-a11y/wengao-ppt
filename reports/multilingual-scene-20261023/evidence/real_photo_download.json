@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at": "2026-10-23T01:52:15-0700",
+  "environment": {
+    "candidate_path": "/Volumes/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+    "execution_note": "candidate is an SMB mount of a second machine; retrieval executed from a byte-identical local mirror (/tmp/wengao-local) because the share intermittently returns OSError 5",
+    "network": "ambient HTTP_PROXY=127.0.0.1:52719; every hostname resolves to 172.19.0.x (proxy fake-IP)"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "scene_query": "doctor consulting patient clinic",
+      "scene_anchors": {"subject": "doctor", "action": "consulting patient", "setting": "clinic"},
+      "elapsed_s": 4.19,
+      "provider": "wikimedia-commons",
+      "title": "Doctor Patient (NIH BioArt 130)",
+      "creator": "Courtesy of NIAID Ryan Kissinger",
+      "license": "Public domain",
+      "license_url": "",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Doctor_Patient_(NIH_BioArt_130).png",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Doctor_Patient_%28NIH_BioArt_130%29.png/1920px-Doctor_Patient_%28NIH_BioArt_130%29.png",
+      "sha256": "4e4405ab02f00d9913cb784205949e94dc1a722f905006d2b5fa3e5c2d124876",
+      "bytes": 461934,
+      "format": "PNG",
+      "width": 1920,
+      "height": 1164,
+      "perceptual_hash": "333333335951dada00242666f7f7f7ff",
+      "metadata_relevance": 1.0,
+      "visual_inspection": "line-art illustration, not a photograph",
+      "verdict": "REJECTED_AFTER_FIX",
+      "rejected_by": "SCENE.PHOTO_NOT_PHOTOGRAPHIC (unique_5bit=440, top8_fraction=0.7953)"
+    },
+    {
+      "attempt": 2,
+      "scene_query": "doctor consulting patient clinic",
+      "scene_anchors": {"subject": "doctor", "action": "consulting patient", "setting": "clinic"},
+      "elapsed_s": 9.8,
+      "provider": "wikimedia-commons",
+      "title": "Doctor Spurzheim in his consulting room measuring the head of a patient",
+      "license": "CC BY 4.0",
+      "sha256": "06e260e55c87",
+      "sha256_prefix_only": true,
+      "width": 1704,
+      "height": 1089,
+      "verdict": "ACCEPTED_BY_PROVIDER",
+      "caveat": "historical engraving scan; passes metadata anchors and the flat-art guard but is semantically weak for a modern business deck. Not counted as a relevant professional scene photo."
+    }
+  ],
+  "negative_attempts": [
+    {"scene_query": "shoppers browsing produce supermarket", "elapsed_s": 53.1, "result": "SCENE.PROVIDER_UNAVAILABLE (TimeoutError, provider budget exhausted)"},
+    {"scene_query": "worker assembling products factory", "elapsed_s": 53.0, "result": "SCENE.PROVIDER_UNAVAILABLE (TimeoutError, provider budget exhausted)"},
+    {"scene_query": "cashier scanning items checkout", "elapsed_s": 50.9, "result": "SCENE.PROVIDER_ROWS_INELIGIBLE (34 candidates, all SCENE.IMAGE_CONTEXT_UNVERIFIED)"}
+  ],
+  "latency_measurements": [
+    {"target": "https://example.com/", "http": 200, "tls_s": 0.557, "total_s": 1.2, "note": "control"},
+    {"target": "https://api.openverse.org/v1/images/?q=cat", "http": 200, "bytes": 1425, "note": "cf-cache-status HIT"},
+    {"target": "api.openverse.org q=supermarket+shopping (minimal filters)", "http": 200, "result_count": 240, "total_s": 18.81},
+    {"target": "api.openverse.org q=supermarket+shopping (full filters)", "http": 200, "result_count": 25, "total_s": 0.28, "note": "cache hit"},
+    {"target": "https://commons.wikimedia.org/w/api.php", "http": 200, "total_s": 0.42},
+    {"target": "api.openverse.org q=factory", "result": "TimeoutError after 35.2 s"}
+  ],
+  "query_shape_measurements": [
+    {"query": "shoppers browsing produce supermarket", "rows": 0, "s": 6.4},
+    {"query": "supermarket shopping", "rows": 6, "s": 0.3},
+    {"query": "shoppers supermarket", "rows": 0, "s": 6.6},
+    {"query": "cashier scanning items checkout", "rows": 0, "s": 12.1},
+    {"query": "cashier checkout", "rows": 0, "s": 4.9},
+    {"query": "factory production line", "rows": 2, "s": 0.3}
+  ]
+}

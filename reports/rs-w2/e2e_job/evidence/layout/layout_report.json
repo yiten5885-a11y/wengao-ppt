@@ -1,0 +1,105 @@
+{
+ "schema": "rs.compose_report.v1",
+ "deck_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck.pptx",
+ "deck_sha256": "5494d5a0e2f04ffb87c00530c9e7a05e9f87e98a983fb796a31eb20c212d2e8b",
+ "pages": [
+  {
+   "mode": "cover_centered",
+   "overflow": [],
+   "placements": [],
+   "page_id": "p01",
+   "index": 1,
+   "role": "cover",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 1849120
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "page_id": "p02",
+   "index": 2,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 1386840
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "page_id": "p03",
+   "index": 3,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 924560
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "page_id": "p04",
+   "index": 4,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "closing_actions",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "actions"
+    }
+   ],
+   "page_id": "p05",
+   "index": 5,
+   "role": "closing",
+   "variant": "b"
+  }
+ ],
+ "page_count": 5,
+ "theme": "ink",
+ "overflow": [],
+ "warnings": []
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "rs.error_codes.v1",
+  "namespace": "SCENE",
+  "owner": "W1",
+  "contract": "rs-contracts-v1",
+  "codes": [
+    {
+      "code": "SCENE.UNRESOLVED_SCENES",
+      "severity": "INFO",
+      "meaning": "场景未解决（不再作为阻断出稿异常，改为标记为 FALLBACK_T4 并在账本与报告中汇总）",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.NO_LICENSED_PHOTO",
+      "severity": "INFO",
+      "meaning": "未检索到有合格许可的照片，降级为 FALLBACK_T4，不阻断整稿出稿",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.LOW_SIMILARITY",
+      "severity": "WARN",
+      "meaning": "候选图片与场景描述图文相似度低于标定阈值，拒绝该图并尝试下一候选或级别",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.DISALLOWED_STYLE",
+      "severity": "WARN",
+      "meaning": "候选图为历史版画、线描插画或色数过低非实拍图，色数启发式或风格检测拒绝",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.DISALLOWED_LICENSE",
+      "severity": "WARN",
+      "meaning": "候选图许可不在白名单允许集合内，拒绝该图",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.DUPLICATE_ASSET",
+      "severity": "WARN",
+      "meaning": "全稿重复图或近似图（sha256 相同或感知哈希 phash 汉明距离 ≤4），禁止跨场景复用",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.PROVIDER_BUDGET_EXCEEDED",
+      "severity": "WARN",
+      "meaning": "单场景查询次数/单场景耗时预算或整稿耗时预算超限，自动降级至下一级别",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.RATE_LIMIT_EXCEEDED",
+      "severity": "WARN",
+      "meaning": "检索源调用达到限流配额（如 Pexels 200次/小时），记录计数并降级至备用源",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.REAL_PHOTO_REQUIRED_NO_T3",
+      "severity": "INFO",
+      "meaning": "场景要求真实照片（真人/品牌/具体地点/实物），严格跳过 T3 生成直接进入 T4",
+      "blocking": false
+    },
+    {
+      "code": "SCENE.OBJECT_INSERTION_FAILED",
+      "severity": "FAIL",
+      "meaning": "图片写入幻灯片形状对象失败",
+      "blocking": true
+    },
+    {
+      "code": "SCENE.LEDGER_MISMATCH",
+      "severity": "FAIL",
+      "meaning": "从 PPTX 独立重验 p:pic / ppt/media 结果与 ledger.json 记录不符",
+      "blocking": true
+    }
+  ]
+}

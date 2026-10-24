@@ -1,0 +1,409 @@
+{
+ "schema": "rs.w2_replay_check.v1",
+ "material": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+ "material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+ "frozen_plan": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_17p.plan.json",
+ "facts_total": 60,
+ "baseline_frozen_17p": {
+  "total": 60,
+  "covered": 58,
+  "missing_ids": [
+   "F019",
+   "F060"
+  ],
+  "missing_detail": [
+   {
+    "fact_id": "F019",
+    "raw_value_text": "",
+    "sentence": "年内完成三大能力建设。"
+   },
+   {
+    "fact_id": "F060",
+    "raw_value_text": "",
+    "sentence": "主要短板在跨区域数据同步延迟与老接口维护成本。"
+   }
+  ]
+ },
+ "w2_plan": {
+  "pages": 10,
+  "page_list": [
+   {
+    "index": 1,
+    "role": "cover",
+    "variant": "a",
+    "title": "一、年度经营概况",
+    "items": 0
+   },
+   {
+    "index": 2,
+    "role": "content",
+    "variant": "a",
+    "title": "一、年度经营概况",
+    "items": 5
+   },
+   {
+    "index": 3,
+    "role": "content",
+    "variant": "a",
+    "title": "二、产品能力进展",
+    "items": 4
+   },
+   {
+    "index": 4,
+    "role": "content",
+    "variant": "a",
+    "title": "三、客户与生态",
+    "items": 3
+   },
+   {
+    "index": 5,
+    "role": "content",
+    "variant": "a",
+    "title": "四、成本与效率",
+    "items": 4
+   },
+   {
+    "index": 6,
+    "role": "content",
+    "variant": "a",
+    "title": "五、质量与稳定性",
+    "items": 4
+   },
+   {
+    "index": 7,
+    "role": "content",
+    "variant": "a",
+    "title": "六、问题与改进",
+    "items": 3
+   },
+   {
+    "index": 8,
+    "role": "content",
+    "variant": "a",
+    "title": "七、下年度计划",
+    "items": 6
+   },
+   {
+    "index": 9,
+    "role": "content",
+    "variant": "a",
+    "title": "八、结论",
+    "items": 4
+   },
+   {
+    "index": 10,
+    "role": "closing",
+    "variant": "b",
+    "title": "小结与行动",
+    "items": 4
+   }
+  ],
+  "stats": {
+   "facts_total": 60,
+   "facts_numeric": 58,
+   "facts_qualitative": 2,
+   "pages_total": 10,
+   "views_total": 0,
+   "views_rendered": 0,
+   "supplement_section": false
+  },
+  "warnings": []
+ },
+ "w2_compose": {
+  "page_count": 10,
+  "overflow": [],
+  "deck_sha256": "fe4054e3583ac4126358f384c8cc6df1c8a1693684329a6e068e2bdf0ff9b2a8"
+ },
+ "w2_coverage": {
+  "total": 60,
+  "covered": 60,
+  "missing_ids": [],
+  "findings": [],
+  "blocking_count": 0
+ },
+ "pagination_defects": {
+  "frozen_continuation_pages": [
+   {
+    "page": 2,
+    "title": "一、年度经营概况（续）",
+    "_continued_from": 1
+   },
+   {
+    "page": 3,
+    "title": "一、年度经营概况（续）",
+    "_continued_from": 1
+   },
+   {
+    "page": 4,
+    "title": "一、年度经营概况（续）",
+    "_continued_from": 1
+   },
+   {
+    "page": 5,
+    "title": "一、年度经营概况（续）",
+    "_continued_from": 1
+   },
+   {
+    "page": 6,
+    "title": "一、年度经营概况（续）",
+    "_continued_from": 1
+   },
+   {
+    "page": 9,
+    "title": "三、客户与生态（续）",
+    "_continued_from": 3
+   },
+   {
+    "page": 11,
+    "title": "四、成本与效率（续）",
+    "_continued_from": 4
+   },
+   {
+    "page": 13,
+    "title": "五、质量与稳定性（续）",
+    "_continued_from": 5
+   },
+   {
+    "page": 16,
+    "title": "七、下年度计划（续）",
+    "_continued_from": 7
+   }
+  ],
+  "w2_continuation_pages": [],
+  "frozen_duplicate_items": [
+   {
+    "page": 1,
+    "scope": "in_page",
+    "times": 2,
+    "text": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%"
+   },
+   {
+    "page": 7,
+    "scope": "in_page",
+    "times": 3,
+    "text": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟"
+   },
+   {
+    "page": 7,
+    "scope": "in_page",
+    "times": 2,
+    "text": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒"
+   },
+   {
+    "page": 8,
+    "scope": "in_page",
+    "times": 3,
+    "text": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%"
+   },
+   {
+    "page": 9,
+    "scope": "in_page",
+    "times": 2,
+    "text": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个"
+   },
+   {
+    "page": 10,
+    "scope": "in_page",
+    "times": 2,
+    "text": "基础设施成本 3.1 亿元，占总收入的 24%"
+   },
+   {
+    "page": 10,
+    "scope": "in_page",
+    "times": 2,
+    "text": "单位请求成本从 0.021 元下降到 0.013 元"
+   },
+   {
+    "page": 12,
+    "scope": "in_page",
+    "times": 2,
+    "text": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标"
+   },
+   {
+    "page": 12,
+    "scope": "in_page",
+    "times": 2,
+    "text": "P1 级故障发生 4 次，"
+   },
+   {
+    "page": 13,
+    "scope": "in_page",
+    "times": 2,
+    "text": "客户工单总量 8600 件，平均首次响应时间为 18 分钟"
+   },
+   {
+    "page": 14,
+    "scope": "in_page",
+    "times": 2,
+    "text": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标"
+   },
+   {
+    "page": 15,
+    "scope": "in_page",
+    "times": 3,
+    "text": "2025 年计划总收入达到 18 亿元，同比增长 40%"
+   },
+   {
+    "page": 16,
+    "scope": "in_page",
+    "times": 2,
+    "text": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人"
+   },
+   {
+    "page": 17,
+    "scope": "in_page",
+    "times": 2,
+    "text": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 3,
+    "text": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "专业版客户数达到 1240 家，较上年增加 310 家"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 3,
+    "text": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 3,
+    "text": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "基础设施成本 3.1 亿元，占总收入的 24%"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "单位请求成本从 0.021 元下降到 0.013 元"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "研发人员规模为 860 人，人均研发投入为 46 万元"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "P1 级故障发生 4 次，"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "客户工单总量 8600 件，平均首次响应时间为 18 分钟"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 3,
+    "text": "2025 年计划总收入达到 18 亿元，同比增长 40%"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人"
+   },
+   {
+    "page": null,
+    "scope": "cross_page",
+    "times": 2,
+    "text": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、"
+   }
+  ],
+  "w2_duplicate_items": []
+ },
+ "layout_check": {
+  "pass": true,
+  "page_count": 10,
+  "findings": [],
+  "size_rules_source": "policy:layout_hard_gate_policy.json"
+ },
+ "render": {
+  "pptx": "replay_deck.pptx",
+  "exit_code": 0,
+  "timed_out": null,
+  "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/replay_deck/replay_deck.pdf",
+  "pdf_sha256": "6b440bb21d229af19eee8610af8377029b58db17ecb8a800bd08afdfa9c3730b",
+  "font_families": [
+   "NotoSans-Bold",
+   "NotoSans-Regular",
+   "NotoSansSC",
+   "NotoSansSCBold"
+  ],
+  "font_error": null,
+  "pages": 10,
+  "cjk_stats": [
+   {
+    "pages": 10,
+    "text_len": 1184,
+    "cjk_chars": 708
+   },
+   null
+  ],
+  "png_count": 10
+ },
+ "verdict": {
+  "coverage_not_decreased": true,
+  "coverage_delta": 2,
+  "no_continuation_orphan": true,
+  "no_duplicate_items": true,
+  "no_blocking_findings": true,
+  "layout_pass": true,
+  "rendered": true,
+  "pass": true
+ }
+}

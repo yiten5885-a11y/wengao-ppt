@@ -1,0 +1,30 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p05-s1",
+  "status": "FALLBACK_T4",
+  "asset": null,
+  "attempts": [
+    {
+      "tier": "T2",
+      "provider": "pexels",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No photo found",
+      "elapsed_s": 0.28
+    },
+    {
+      "tier": "T2",
+      "provider": "wikimedia_commons",
+      "outcome": "EMPTY_SEARCH_RESULTS",
+      "detail": "No photo found",
+      "elapsed_s": 0.29
+    },
+    {
+      "tier": "T3",
+      "provider": "ai_generated_local",
+      "outcome": "GENERATOR_TIMEOUT",
+      "detail": "ComfyUI timeout",
+      "elapsed_s": 10.0
+    }
+  ],
+  "reason": "All search providers returned zero licensed matches and ComfyUI generation timed out; gracefully downgraded to T4 text layout."
+}

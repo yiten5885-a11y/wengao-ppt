@@ -1,0 +1,14 @@
+{
+  "cache_key": {
+    "candidate_sha256": "c00301a66477dd83e565b06efd1f5aeae3e714b595dfaee62a8dd2d4aa2a1e39",
+    "policy": "fontenv/2",
+    "fontconfig_mode": "packaged",
+    "fontconfig_ok": true,
+    "fontconfig_sha256": "d409faf4e1ff5cc9e040d64fa6be5db5262afc2e30b507ac4c81d94ab67e8b3b",
+    "platform": "darwin",
+    "dpi": 110,
+    "renderer": "libreoffice",
+    "renderer_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1"
+  },
+  "cache_key_sha256": "fd0d11aaae658bbff3a9e79cc1fcc4b358b3124d447301a0830393a93a72aa82"
+}

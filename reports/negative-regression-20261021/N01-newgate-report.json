@@ -1,0 +1,1435 @@
+{
+ "policy_version": "WG-LAYOUT-20261021.1",
+ "pptx": "/private/tmp/failed-5a6bcb2d.pptx",
+ "pptx_sha256": "5a6bcb2d03f953d1913cbd786985150260aff96c07a6a0317745814279de3e52",
+ "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-5a6/failed-5a6bcb2d.pdf",
+ "pdf_sha256": "386bf3c87b2d80cdadc5f13c1d75a265121b9fa288fc5f72e91bd452dab87133",
+ "canvas_in": [
+  13.333,
+  7.5
+ ],
+ "pages_checked": [
+  2
+ ],
+ "per_page": {
+  "2": {
+   "shapes": 27,
+   "chars_rendered": 336,
+   "roles": {
+    "Text 1": "title",
+    "Text 2": "lead",
+    "Text 4": "key_number",
+    "Text 5": "body",
+    "Text 6": "source",
+    "Text 8": "key_number",
+    "Text 9": "body",
+    "Text 10": "source",
+    "Text 12": "key_number",
+    "Text 13": "body",
+    "Text 14": "source",
+    "Text 16": "key_number",
+    "Text 17": "body",
+    "Text 18": "source",
+    "Text 20": "quote",
+    "Text 21": "conclusion",
+    "Text 22": "source",
+    "Text 23": "footer",
+    "Text 24": "source"
+   },
+   "render_evidence": {
+    "full": true,
+    "notext": true
+   },
+   "expected_chars": 275,
+   "mapped_chars": 275,
+   "unmatched_chars": 0,
+   "ledger": [
+    {
+     "shape": "Text 1",
+     "role": "title",
+     "expected": "从“618不兴奋”切入，而不是从宏观报告切入",
+     "mapped": "从“618不兴奋”切入，而不是从宏观报告切入",
+     "size_pt": 36.0
+    },
+    {
+     "shape": "Text 2",
+     "role": "lead",
+     "expected": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+     "mapped": "热点不是结论，热点是入口：它把内需不足变成普通人能感知的生活现场。",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 4",
+     "role": "key_number",
+     "expected": "+0.9%",
+     "mapped": "+0.9%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 5",
+     "role": "body",
+     "expected": "2026年618电商GMV近乎横盘",
+     "mapped": "2026年618电商GMV近乎横",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 6",
+     "role": "source",
+     "expected": "Syntun数据：8636亿vs8556亿",
+     "mapped": "盘Syntun数据：8636亿vs8556亿",
+     "size_pt": 18.0
+    },
+    {
+     "shape": "Text 8",
+     "role": "key_number",
+     "expected": "-0.6%",
+     "mapped": "-0.6%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 9",
+     "role": "body",
+     "expected": "2026年5月社零同比下降",
+     "mapped": "2026年5月社零同比下降",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 10",
+     "role": "source",
+     "expected": "国家统计局：5月社会消费品零售总额",
+     "mapped": "国家统计局：5月社会消费品零售总额",
+     "size_pt": 18.0
+    },
+    {
+     "shape": "Text 12",
+     "role": "key_number",
+     "expected": "+13.8%",
+     "mapped": "+13.8%",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 13",
+     "role": "body",
+     "expected": "2026年5月出口同比增长",
+     "mapped": "2026年5月出口同比增长",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 14",
+     "role": "source",
+     "expected": "国家统计局：5月货物出口",
+     "mapped": "国家统计局：5月货物出口",
+     "size_pt": 18.0
+    },
+    {
+     "shape": "Text 16",
+     "role": "key_number",
+     "expected": "2500亿",
+     "mapped": "2500亿",
+     "size_pt": 44.0
+    },
+    {
+     "shape": "Text 17",
+     "role": "body",
+     "expected": "消费品以旧换新专项资金",
+     "mapped": "消费品以旧换新专项资金",
+     "size_pt": 26.0
+    },
+    {
+     "shape": "Text 18",
+     "role": "source",
+     "expected": "国务院：超长期特别国债安排",
+     "mapped": "国务院：超长期特别国债安排",
+     "size_pt": 18.0
+    },
+    {
+     "shape": "Text 20",
+     "role": "quote",
+     "expected": "“",
+     "mapped": "“",
+     "size_pt": 32.0
+    },
+    {
+     "shape": "Text 21",
+     "role": "conclusion",
+     "expected": "最好的切口不是“经济不好”，而是：东西越来越多，普通人越来越不敢买。",
+     "mapped": "最好的切口不是“经济不好”，而是：东西越来越多普通人越来越不敢买。",
+     "size_pt": 30.0
+    },
+    {
+     "shape": "Text 22",
+     "role": "source",
+     "expected": "YitenHuang｜普通人的财富守恒与防坠落系统",
+     "mapped": "，YitenHuang｜普通人的财富守恒与防坠落系统",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 23",
+     "role": "footer",
+     "expected": "02",
+     "mapped": "02",
+     "size_pt": 16.0
+    },
+    {
+     "shape": "Text 24",
+     "role": "source",
+     "expected": "来源：国家统计局、国务院、Reuters",
+     "mapped": "来源：国家统计局、国务院、Reuters",
+     "size_pt": 16.0
+    }
+   ],
+   "issues": [
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 2,
+     "shape": "Text 5",
+     "missing": "盘"
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 2,
+     "shape": "Text 6",
+     "unexpected_extra": "盘"
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 2,
+     "shape": "Text 21",
+     "missing": "，"
+    },
+    {
+     "gate": "HG02",
+     "type": "CHAR_MISSING",
+     "page": 2,
+     "shape": "Text 22",
+     "unexpected_extra": "，"
+    },
+    {
+     "gate": "HG03",
+     "type": "GLYPH_COLLISION",
+     "page": 2,
+     "shapes": [
+      "Text 4",
+      "Text 5"
+     ],
+     "overlap_in": [
+      1.889,
+      0.098
+     ],
+     "char_pair": [
+      "+",
+      "2"
+     ],
+     "char_overlap_in": [
+      0.175,
+      0.017
+     ],
+     "glyph_a": [
+      0.954,
+      2.455,
+      2.843,
+      2.927
+     ],
+     "glyph_b": [
+      0.939,
+      2.828,
+      6.007,
+      3.159
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 1",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      0.72,
+      0.3,
+      12.613,
+      0.96
+     ],
+     "glyph": [
+      0.729,
+      0.503,
+      10.729,
+      0.996
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 5",
+     "sides": [
+      "top"
+     ],
+     "declared": [
+      0.92,
+      2.96,
+      6.317,
+      3.45
+     ],
+     "glyph": [
+      0.939,
+      2.828,
+      6.007,
+      3.159
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 6",
+     "sides": [
+      "top",
+      "bottom"
+     ],
+     "declared": [
+      0.92,
+      3.49,
+      6.317,
+      3.79
+     ],
+     "glyph": [
+      0.933,
+      3.405,
+      4.755,
+      3.848
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_PADDING",
+     "page": 2,
+     "shape": "Text 6",
+     "card": "Shape 3",
+     "padding_in": [
+      0.213,
+      1.355,
+      1.762,
+      0.062
+     ],
+     "required_in": 0.1
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 10",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      7.017,
+      3.49,
+      12.413,
+      3.79
+     ],
+     "glyph": [
+      7.047,
+      3.577,
+      11.266,
+      3.808
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 14",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      0.92,
+      5.51,
+      6.317,
+      5.81
+     ],
+     "glyph": [
+      0.951,
+      5.596,
+      3.889,
+      5.826
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 16",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      7.017,
+      4.19,
+      12.413,
+      4.94
+     ],
+     "glyph": [
+      7.049,
+      4.42,
+      9.32,
+      4.965
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 18",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      7.017,
+      5.51,
+      12.413,
+      5.81
+     ],
+     "glyph": [
+      7.047,
+      5.598,
+      10.251,
+      5.829
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CARD_PADDING",
+     "page": 2,
+     "shape": "Text 20",
+     "card": "Shape 19",
+     "padding_in": [
+      0.149,
+      0.219,
+      9.338,
+      0.897
+     ],
+     "required_in": 0.156
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 21",
+     "sides": [
+      "bottom"
+     ],
+     "declared": [
+      1.25,
+      6.04,
+      10.12,
+      7.14
+     ],
+     "glyph": [
+      1.277,
+      6.157,
+      9.843,
+      7.197
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 2,
+     "shape": "Text 22",
+     "role": "source",
+     "glyph": [
+      0.72,
+      7.124,
+      5.321,
+      7.484
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "OWNER_BOX_OVERFLOW",
+     "page": 2,
+     "shape": "Text 22",
+     "sides": [
+      "top",
+      "bottom"
+     ],
+     "declared": [
+      0.72,
+      7.15,
+      6.82,
+      7.45
+     ],
+     "glyph": [
+      0.72,
+      7.124,
+      5.321,
+      7.484
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 2,
+     "shape": "Text 24",
+     "role": "source",
+     "glyph": [
+      7.865,
+      7.243,
+      11.539,
+      7.45
+     ]
+    },
+    {
+     "gate": "HG05",
+     "type": "CANVAS_MARGIN",
+     "page": 2,
+     "shape": "Text 23",
+     "role": "footer",
+     "glyph": [
+      12.366,
+      7.27,
+      12.593,
+      7.435
+     ]
+    },
+    {
+     "gate": "HG06",
+     "type": "REGION_INTRUSION",
+     "page": 2,
+     "pair": "key_number->body",
+     "shapes": [
+      "Text 4",
+      "Text 5"
+     ],
+     "intrusion_in": 0.098,
+     "horizontal_overlap_in": 1.889,
+     "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+    },
+    {
+     "gate": "HG06",
+     "type": "REGION_INTRUSION",
+     "page": 2,
+     "pair": "key_number->body",
+     "shapes": [
+      "Text 12",
+      "Text 5"
+     ],
+     "intrusion_in": 2.119,
+     "horizontal_overlap_in": 2.283,
+     "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+    },
+    {
+     "gate": "HG06",
+     "type": "REGION_INTRUSION",
+     "page": 2,
+     "pair": "key_number->body",
+     "shapes": [
+      "Text 16",
+      "Text 9"
+     ],
+     "intrusion_in": 1.851,
+     "horizontal_overlap_in": 2.271,
+     "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+    },
+    {
+     "gate": "HG08",
+     "type": "TOKEN_SPLIT",
+     "page": 2,
+     "shape": "Text 21",
+     "token": "越多",
+     "line_baselines": [
+      6.54,
+      7.19
+     ],
+     "line_texts": [
+      "越",
+      "多"
+     ]
+    }
+   ],
+   "findings_count": 23,
+   "structure": {
+    "objects": [
+     {
+      "z": 0,
+      "name": "Shape 0",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.0,
+      "top": 0.0,
+      "width": 13.333,
+      "height": 0.06,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "C9A45B",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 1,
+      "name": "Picture 26",
+      "cls": "PICTURE (13)",
+      "left": 10.59,
+      "top": 5.92,
+      "width": 2.02,
+      "height": 1.22,
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      },
+      "rotation": 0.0,
+      "media": {
+       "embed_part": "image.png",
+       "content_type": "image/png",
+       "ext": "png",
+       "pixel_size": [
+        1536,
+        928
+       ],
+       "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350"
+      },
+      "fill": {
+       "kind": "inherit"
+      }
+     },
+     {
+      "z": 2,
+      "name": "Rectangle 27",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 10.59,
+      "top": 5.92,
+      "width": 2.02,
+      "height": 1.22,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 0.58
+      }
+     },
+     {
+      "z": 3,
+      "name": "Text 1",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 0.3,
+      "width": 11.8933,
+      "height": 0.66,
+      "text_chars": 22,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 4,
+      "name": "Text 2",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 1.0,
+      "width": 11.8933,
+      "height": 0.9533,
+      "text_chars": 33,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 5,
+      "name": "Shape 3",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 2.05,
+      "width": 5.7967,
+      "height": 1.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 6,
+      "name": "Text 4",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 2.17,
+      "width": 5.3967,
+      "height": 0.75,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 7,
+      "name": "Text 5",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 2.96,
+      "width": 5.3967,
+      "height": 0.49,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 8,
+      "name": "Text 6",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 3.49,
+      "width": 5.3967,
+      "height": 0.3,
+      "text_chars": 23,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 9,
+      "name": "Shape 7",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.8167,
+      "top": 2.05,
+      "width": 5.7967,
+      "height": 1.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 10,
+      "name": "Text 8",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 2.17,
+      "width": 5.3967,
+      "height": 0.75,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 11,
+      "name": "Text 9",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 2.96,
+      "width": 5.3967,
+      "height": 0.49,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 12,
+      "name": "Text 10",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 3.49,
+      "width": 5.3967,
+      "height": 0.3,
+      "text_chars": 17,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 13,
+      "name": "Shape 11",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 4.07,
+      "width": 5.7967,
+      "height": 1.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 14,
+      "name": "Text 12",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 4.19,
+      "width": 5.3967,
+      "height": 0.75,
+      "text_chars": 6,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 15,
+      "name": "Text 13",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 4.98,
+      "width": 5.3967,
+      "height": 0.49,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 16,
+      "name": "Text 14",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.92,
+      "top": 5.51,
+      "width": 5.3967,
+      "height": 0.3,
+      "text_chars": 12,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 17,
+      "name": "Shape 15",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.8167,
+      "top": 4.07,
+      "width": 5.7967,
+      "height": 1.86,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 18,
+      "name": "Text 16",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 4.19,
+      "width": 5.3967,
+      "height": 0.75,
+      "text_chars": 5,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 19,
+      "name": "Text 17",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 4.98,
+      "width": 5.3967,
+      "height": 0.49,
+      "text_chars": 11,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 20,
+      "name": "Text 18",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 7.0167,
+      "top": 5.51,
+      "width": 5.3967,
+      "height": 0.3,
+      "text_chars": 13,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 21,
+      "name": "Shape 19",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 5.92,
+      "width": 9.6,
+      "height": 1.22,
+      "text_chars": 0,
+      "fill": {
+       "kind": "solid",
+       "rgb": "101014",
+       "alpha": 1.0
+      }
+     },
+     {
+      "z": 22,
+      "name": "Text 20",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.85,
+      "top": 6.0,
+      "width": 0.35,
+      "height": 0.4,
+      "text_chars": 1,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 23,
+      "name": "Text 21",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 1.25,
+      "top": 6.04,
+      "width": 8.87,
+      "height": 1.1,
+      "text_chars": 34,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 24,
+      "name": "Text 22",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 0.72,
+      "top": 7.15,
+      "width": 6.1,
+      "height": 0.3,
+      "text_chars": 26,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 25,
+      "name": "Text 23",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 11.8,
+      "top": 7.15,
+      "width": 0.81,
+      "height": 0.3,
+      "text_chars": 2,
+      "fill": {
+       "kind": "none"
+      }
+     },
+     {
+      "z": 26,
+      "name": "Text 24",
+      "cls": "AUTO_SHAPE (1)",
+      "left": 6.95,
+      "top": 7.15,
+      "width": 4.6,
+      "height": 0.3,
+      "text_chars": 20,
+      "fill": {
+       "kind": "none"
+      }
+     }
+    ],
+    "media": [
+     {
+      "shape": "Picture 26",
+      "embed_part": "image.png",
+      "content_type": "image/png",
+      "ext": "png",
+      "pixel_size": [
+       1536,
+       928
+      ],
+      "blob_sha256": "eb64bda6bc462e60c8cce88b08a60113d273e88750efa73ca9506db89abf0350",
+      "box_in": [
+       10.59,
+       5.92,
+       12.61,
+       7.14
+      ],
+      "crop": {
+       "crop_left": 0.0,
+       "crop_right": 0.0,
+       "crop_top": 0.4571,
+       "crop_bottom": 0.374
+      }
+     }
+    ],
+    "notes": {
+     "present": true,
+     "chars": 0,
+     "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "animations": {
+     "present": false,
+     "effect_node_counts": {}
+    },
+    "transition": {
+     "present": true,
+     "type": "fade",
+     "attributes": {
+      "spd": "med",
+      "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "800"
+     },
+     "transition_xml_sha256": "ec4843cbec603e2f33ad5b1ac64b7e306d608ee047a300d16145b1f001de4fdf"
+    },
+    "inventory_sha256": "d635dba1dad47d23b4dd06826bdd94a86d2caf62c8ca77521acef982d07f0311"
+   }
+  }
+ },
+ "identity": {
+  "pptx_sha256": "5a6bcb2d03f953d1913cbd786985150260aff96c07a6a0317745814279de3e52",
+  "pdf_sha256": "386bf3c87b2d80cdadc5f13c1d75a265121b9fa288fc5f72e91bd452dab87133",
+  "baseline_pptx_sha256": "e43dad9e36c07a78b5a4d8490448427e8802886730e4091f266e6a451d14ea9b",
+  "source_fidelity_verified": false,
+  "policy_version": "WG-LAYOUT-20261021.1",
+  "policy_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "build_identity": {
+   "program_root": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+   "build_id": "6b1569f1bbb34d7e126dbe45d045e13a",
+   "build_id_scope": "程序成员聚合（wengao_ppt.install.build_id：排除数据根/运行期文件；门禁自算，不接受自报）"
+  },
+  "per_page_render_sha256": {
+   "2": null
+  },
+  "per_page_notext_render_sha256": {
+   "2": null
+  },
+  "export_parameters": {
+   "renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
+   "gate": "layout_gate.py WG-LAYOUT-20261021.1"
+  }
+ },
+ "hg10": {
+  "render_width_px": 1920,
+  "pages_rendered": [
+   2
+  ],
+  "selected_pages": [
+   2
+  ],
+  "static_only": true,
+  "native_playback_provided": false,
+  "native_playback_checks": null
+ },
+ "findings": [
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 2,
+   "shape": "Text 5",
+   "missing": "盘"
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 2,
+   "shape": "Text 6",
+   "unexpected_extra": "盘"
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 2,
+   "shape": "Text 21",
+   "missing": "，"
+  },
+  {
+   "gate": "HG02",
+   "type": "CHAR_MISSING",
+   "page": 2,
+   "shape": "Text 22",
+   "unexpected_extra": "，"
+  },
+  {
+   "gate": "HG03",
+   "type": "GLYPH_COLLISION",
+   "page": 2,
+   "shapes": [
+    "Text 4",
+    "Text 5"
+   ],
+   "overlap_in": [
+    1.889,
+    0.098
+   ],
+   "char_pair": [
+    "+",
+    "2"
+   ],
+   "char_overlap_in": [
+    0.175,
+    0.017
+   ],
+   "glyph_a": [
+    0.954,
+    2.455,
+    2.843,
+    2.927
+   ],
+   "glyph_b": [
+    0.939,
+    2.828,
+    6.007,
+    3.159
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 1",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    0.72,
+    0.3,
+    12.613,
+    0.96
+   ],
+   "glyph": [
+    0.729,
+    0.503,
+    10.729,
+    0.996
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 5",
+   "sides": [
+    "top"
+   ],
+   "declared": [
+    0.92,
+    2.96,
+    6.317,
+    3.45
+   ],
+   "glyph": [
+    0.939,
+    2.828,
+    6.007,
+    3.159
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 6",
+   "sides": [
+    "top",
+    "bottom"
+   ],
+   "declared": [
+    0.92,
+    3.49,
+    6.317,
+    3.79
+   ],
+   "glyph": [
+    0.933,
+    3.405,
+    4.755,
+    3.848
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_PADDING",
+   "page": 2,
+   "shape": "Text 6",
+   "card": "Shape 3",
+   "padding_in": [
+    0.213,
+    1.355,
+    1.762,
+    0.062
+   ],
+   "required_in": 0.1
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 10",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    7.017,
+    3.49,
+    12.413,
+    3.79
+   ],
+   "glyph": [
+    7.047,
+    3.577,
+    11.266,
+    3.808
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 14",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    0.92,
+    5.51,
+    6.317,
+    5.81
+   ],
+   "glyph": [
+    0.951,
+    5.596,
+    3.889,
+    5.826
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 16",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    7.017,
+    4.19,
+    12.413,
+    4.94
+   ],
+   "glyph": [
+    7.049,
+    4.42,
+    9.32,
+    4.965
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 18",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    7.017,
+    5.51,
+    12.413,
+    5.81
+   ],
+   "glyph": [
+    7.047,
+    5.598,
+    10.251,
+    5.829
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CARD_PADDING",
+   "page": 2,
+   "shape": "Text 20",
+   "card": "Shape 19",
+   "padding_in": [
+    0.149,
+    0.219,
+    9.338,
+    0.897
+   ],
+   "required_in": 0.156
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 21",
+   "sides": [
+    "bottom"
+   ],
+   "declared": [
+    1.25,
+    6.04,
+    10.12,
+    7.14
+   ],
+   "glyph": [
+    1.277,
+    6.157,
+    9.843,
+    7.197
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 2,
+   "shape": "Text 22",
+   "role": "source",
+   "glyph": [
+    0.72,
+    7.124,
+    5.321,
+    7.484
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "OWNER_BOX_OVERFLOW",
+   "page": 2,
+   "shape": "Text 22",
+   "sides": [
+    "top",
+    "bottom"
+   ],
+   "declared": [
+    0.72,
+    7.15,
+    6.82,
+    7.45
+   ],
+   "glyph": [
+    0.72,
+    7.124,
+    5.321,
+    7.484
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 2,
+   "shape": "Text 24",
+   "role": "source",
+   "glyph": [
+    7.865,
+    7.243,
+    11.539,
+    7.45
+   ]
+  },
+  {
+   "gate": "HG05",
+   "type": "CANVAS_MARGIN",
+   "page": 2,
+   "shape": "Text 23",
+   "role": "footer",
+   "glyph": [
+    12.366,
+    7.27,
+    12.593,
+    7.435
+   ]
+  },
+  {
+   "gate": "HG06",
+   "type": "REGION_INTRUSION",
+   "page": 2,
+   "pair": "key_number->body",
+   "shapes": [
+    "Text 4",
+    "Text 5"
+   ],
+   "intrusion_in": 0.098,
+   "horizontal_overlap_in": 1.889,
+   "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+  },
+  {
+   "gate": "HG06",
+   "type": "REGION_INTRUSION",
+   "page": 2,
+   "pair": "key_number->body",
+   "shapes": [
+    "Text 12",
+    "Text 5"
+   ],
+   "intrusion_in": 2.119,
+   "horizontal_overlap_in": 2.283,
+   "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+  },
+  {
+   "gate": "HG06",
+   "type": "REGION_INTRUSION",
+   "page": 2,
+   "pair": "key_number->body",
+   "shapes": [
+    "Text 16",
+    "Text 9"
+   ],
+   "intrusion_in": 1.851,
+   "horizontal_overlap_in": 2.271,
+   "note": "正文/结论并集顶端高于 KPI 数字并集底端：语义区域真实重叠（政策 HG06 区域侵入）"
+  },
+  {
+   "gate": "HG08",
+   "type": "TOKEN_SPLIT",
+   "page": 2,
+   "shape": "Text 21",
+   "token": "越多",
+   "line_baselines": [
+    6.54,
+    7.19
+   ],
+   "line_texts": [
+    "越",
+    "多"
+   ]
+  }
+ ],
+ "unverified": [
+  {
+   "gate": "HG10",
+   "type": "PARTIAL_PAGE_SCOPE",
+   "selected": [
+    2
+   ],
+   "actual_pages": 13,
+   "note": "诊断子集可以有界子结果，但不构成全稿合格判定"
+  },
+  {
+   "gate": "HG10",
+   "type": "NATIVE_PLAYBACK_EVIDENCE_MISSING",
+   "note": "static_only=False 布尔开关不构成原生实播证据；需 30–60s 连续放映录像 + 关闭后磁盘重开核哈希"
+  },
+  {
+   "gate": "HG10",
+   "reason": "animation_states_and_native_playback_not_run",
+   "note": "静态渲染通过只能记 STATIC_LAYOUT_ONLY；原生实播/重开为最终条件"
+  }
+ ],
+ "gates_hit": [
+  "HG02",
+  "HG03",
+  "HG05",
+  "HG06",
+  "HG08"
+ ],
+ "counts": {
+  "findings": 23,
+  "unmatched_chars": 0,
+  "missing_chars": 4,
+  "collisions": 1,
+  "occlusions": 0
+ },
+ "verdict": "FAIL",
+ "static_layout_only": true
+}

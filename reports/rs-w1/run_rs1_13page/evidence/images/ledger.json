@@ -1,0 +1,409 @@
+{
+  "schema": "rs.image_ledger.v1",
+  "request_hash": "1dbb1d77f15421f4b40fc97cef153293802ca56759df796223405bb368c14de3",
+  "total_scenes": 17,
+  "resolved_scenes": 0,
+  "fallback_scenes": 17,
+  "deck_delivery_status": "DELIVERED",
+  "deck_success": true,
+  "scene_coverage_rate": 0.0,
+  "tier_distribution": {
+    "T1": 0,
+    "T2": 0,
+    "T3": 0,
+    "T4": 17
+  },
+  "resolutions": [
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_01_clinic_patient_checkin",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_02_commute_metro_bus",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_03_customer_receiving_food",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_04_factory_assembly",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_05_factory_production_line",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_06_food_delivery_motorbike",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_07_food_delivery_service",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_08_quality_inspection",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_09_senior_mountain_hike",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_10_senior_park_walk",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_11_senior_travel",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_12_student_classroom_learning",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_13_supermarket_shopping",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_14_clinic_medical_care",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_15_office_desk_work",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_16_smartphone_digital_service",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    },
+    {
+      "schema": "rs.scene_resolution.v1",
+      "scene_id": "scene_17_student_library_study",
+      "status": "FALLBACK_T4",
+      "asset": null,
+      "attempts": [
+        {
+          "tier": "T2",
+          "provider": "pexels",
+          "outcome": "NO_API_KEY",
+          "detail": "PEXELS_API_KEY not configured in environment",
+          "elapsed_s": 0.0
+        },
+        {
+          "tier": "T3",
+          "provider": "ai_generated_local",
+          "outcome": "SKIPPED",
+          "detail": "allow_ai_generated option is disabled",
+          "elapsed_s": 0.0
+        }
+      ],
+      "reason": "Scene fell back to T4 design (T2:NO_API_KEY | T3:SKIPPED)"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "pptx": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/readability-20261021/v13-readable-P268-13p.pptx",
+  "pptx_sha256": "c090aa14eab73fc4131eed5077335da6fc0f5371c2ed40e698d09058db0084ea",
+  "pdf": "reports/readability-20261021/render/v13-readable-P268-13p.pdf",
+  "pdf_sha256": "cfbeeb18b7b292fc103b066868ccb2552ed64cc806513e81b7a003dc40e9293f",
+  "pages_checked": [
+    2,
+    6,
+    8
+  ],
+  "canvas_in": [
+    13.333,
+    7.5
+  ],
+  "tolerances": {
+    "frame_in": 0.03,
+    "collision_in": 0.03,
+    "canvas_in": 0.05
+  },
+  "findings": [],
+  "per_page": {
+    "2": {
+      "lines": 36,
+      "shapes_with_glyphs": 18,
+      "unmatched_lines": 3,
+      "issues": []
+    },
+    "6": {
+      "lines": 31,
+      "shapes_with_glyphs": 16,
+      "unmatched_lines": 0,
+      "issues": []
+    },
+    "8": {
+      "lines": 36,
+      "shapes_with_glyphs": 18,
+      "unmatched_lines": 1,
+      "issues": []
+    }
+  },
+  "verdict": "PASS",
+  "counts": {
+    "overflow": 0,
+    "collision": 0,
+    "canvas_out": 0
+  }
+}
