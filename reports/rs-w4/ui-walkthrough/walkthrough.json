@@ -1,0 +1,55 @@
+{
+  "states": [
+    {
+      "state": "01-empty",
+      "file": "01-empty.png",
+      "note": "空状态：引导拖入 + 示例 chips"
+    },
+    {
+      "state": "03-done-timeline",
+      "file": "03-done-timeline.png",
+      "note": "完成态：8 步时间线（读取/检索/对比/趋势/配图/版式/转场/核对）"
+    },
+    {
+      "state": "04-conflict-open",
+      "file": "04-conflict-open.png",
+      "note": "待确认：行业均值两个数（采用公开来源/保留我的数据）"
+    },
+    {
+      "state": "04b-conflict-resolved",
+      "file": "04b-conflict-resolved.png",
+      "note": "裁决后：记录选择并局部重排"
+    },
+    {
+      "state": "05-degraded",
+      "file": "05-degraded.png",
+      "note": "部分降级：未配图页数与说明"
+    },
+    {
+      "state": "07-sources",
+      "file": "07-sources.png",
+      "note": "来源标签：2 个来源（含已丢弃）"
+    },
+    {
+      "state": "08-images",
+      "file": "08-images.png",
+      "note": "配图标签：1 个场景（实拍/生成/未配图）"
+    },
+    {
+      "state": "09-page-check",
+      "file": "09-page-check.png",
+      "note": "本页检查：渲染/配图账本/转场/版式/研究证据"
+    },
+    {
+      "state": "10-narrow",
+      "file": "10-narrow.png",
+      "note": "窄屏（720px）：三栏堆叠，功能不丢"
+    },
+    {
+      "state": "06-toast-feedback",
+      "file": "06-toast-feedback.png",
+      "note": "操作反馈：toast（ aria-live ）"
+    }
+  ],
+  "js_errors": []
+}

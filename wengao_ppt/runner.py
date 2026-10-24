@@ -232,13 +232,17 @@ def _glyph_check_status(glyph) -> str:
     return "NOT_EVALUABLE"
 
 
-def expected_required_checks(profile, census=None, in_doc=None) -> dict:
+def expected_required_checks(profile, census=None, in_doc=None, rs_options=None) -> dict:
     """W01：预期必需检查集合 = profile 侧 ∪ 内容侧（原始对象台账）∪ 恒成立项。
 
     返回值带三块信息：
       - required：本次实际到期的集合（不含未实现项）
       - scope_gaps：内容侧到期但当前未实现的项（如实暴露，不冒充已核验）
       - derived_from：每一项由什么推导出来，便于复核"谁把必需项删掉了"
+
+    rs_options：RS 管线（W4）传入的 JobOptions；传入时把 RS 条件必检项
+    （配图账本/转场一致性/研究证据/版式复核）并入 required——**只加不减**。
+    不传（旧美化/材料路径）时行为与本函数历史版本完全一致。
     """
     derived = {}
     for name in ALWAYS_REQUIRED_CHECKS:
@@ -282,11 +286,20 @@ def expected_required_checks(profile, census=None, in_doc=None) -> dict:
                 scope_gaps.append({"check": name, "derived_from": f"content:{flag}",
                                    "detail": "输入台账推导出该项到期，但当前未实现；"
                                              "登记为缺口，不冒充已核验。"})
-    return {"required": sorted(derived),
-            "derived_from": {k2: sorted(set(v)) for k2, v in derived.items()},
-            "scope_gaps": scope_gaps,
-            "material_source": None,
-            "material_plan": None}
+    exp = {"required": sorted(derived),
+           "derived_from": {k2: sorted(set(v)) for k2, v in derived.items()},
+           "scope_gaps": scope_gaps,
+           "material_source": None,
+           "material_plan": None,
+           "rs_checks": {}}
+    if rs_options:
+        # RS 条件必检项并入（只加不减；wengao_ppt.gate_rs 拥有注册表）
+        try:
+            from wengao_ppt import gate_rs
+            exp = gate_rs.extend_expected(exp, rs_options)
+        except Exception:  # noqa: BLE001 —— 注册表不可用时不凭空加项
+            pass
+    return exp
 
 
 def now_iso():
@@ -1722,6 +1735,12 @@ class Runner:
         findings = []
         # W01：预期必需集合由 profile + 原始普查 + 提取台账共同推导，不从报告反推
         exp = expected_required_checks(job["support_profile"], census, in_doc)
+        # RS-9：新管线任务带有 JobOptions（evidence/pipeline/options.json）时，
+        # 条件必检项（配图账本/转场/研究证据/版式复核）并入必需集合——只加不减。
+        rs_options = load_json(d / "evidence" / "pipeline" / "options.json")
+        if rs_options:
+            exp = expected_required_checks(job["support_profile"], census, in_doc,
+                                           rs_options=rs_options)
         ledger, mplan, mstatus, mreason = load_material_source(
             d, job.get("material_intent") or load_material_intent(d))
         exp["material_source"] = ledger
@@ -2345,6 +2364,17 @@ class Runner:
             checks_map["source.fact_coverage"] = exp.get(
                 "source_fact_coverage_status",
                 "EXECUTED" if exp.get("material_source") is not None else "NOT_EVALUABLE")
+
+        # RS-9：条件必检项执行（W4 接线）。函数由 W1/W2/W3 交付；未就位/异常/超时
+        # 一律 NOT_EVALUABLE——缺证据不能当通过（下面 missing_from_report 之前并入，
+        # 使"到期但未执行"与"未实现"走同一条既有拦截）。
+        if rs_options:
+            try:
+                from wengao_ppt import gate_rs
+                for _rs_name, _rs_status in gate_rs.run_rs_checks(pptx, d, rs_options).items():
+                    checks_map[_rs_name] = _rs_status
+            except Exception:  # noqa: BLE001 —— 接线层异常不得凭空放行
+                pass
 
         # 报告漏项：预期必需但 checks 里根本没有这一条 → 单独列出，不能被"全绿"掩盖
         missing_from_report = [c for c in req if c not in checks_map]

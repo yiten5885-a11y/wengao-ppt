@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.scene_resolution.v1",
+  "title": "SceneResolution（C3）",
+  "description": "一个场景的配图结果。每个 SceneRequest 必有一条返回；永不抛 UNRESOLVED_SCENES；幂等。FALLBACK_T4 时 asset 为 null 且 reason 必填。",
+  "type": "object",
+  "required": ["schema", "scene_id", "status", "attempts"],
+  "properties": {
+    "schema": {"const": "rs.scene_resolution.v1"},
+    "scene_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["RESOLVED_T1", "RESOLVED_T2", "RESOLVED_T3", "FALLBACK_T4"]},
+    "asset": {
+      "type": ["object", "null"],
+      "required": ["path", "sha256", "provider", "license"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "phash": {"type": "string"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1},
+        "format": {"type": "string"},
+        "provider": {"enum": ["user", "pexels", "wikimedia_commons", "openverse", "ai_generated_local"]},
+        "license": {"type": "string", "minLength": 1},
+        "license_url": {"type": "string"},
+        "creator": {"type": "string"},
+        "source_url": {"type": "string"},
+        "attribution_text": {"type": "string"},
+        "generator": {"type": ["string", "null"]},
+        "model": {"type": ["string", "null"]},
+        "prompt_digest": {"type": ["string", "null"]},
+        "seed": {"type": ["integer", "null"]},
+        "similarity": {"type": "number", "minimum": 0, "maximum": 1},
+        "similarity_model": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tier", "provider", "outcome"],
+        "properties": {
+          "tier": {"enum": ["T1", "T2", "T3", "T4"]},
+          "provider": {"type": "string"},
+          "outcome": {"type": "string"},
+          "detail": {"type": "string"},
+          "elapsed_s": {"type": "number", "minimum": 0}
+        },
+        "additionalProperties": true
+      }
+    },
+    "reason": {"type": "string", "description": "仅 FALLBACK_T4 必填：为什么没有图"}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "FALLBACK_T4"}}},
+      "then": {"required": ["reason"]}
+    },
+    {
+      "if": {"properties": {"status": {"const": "FALLBACK_T4"}}},
+      "then": {"properties": {"asset": {"type": "null"}}}
+    }
+  ]
+}

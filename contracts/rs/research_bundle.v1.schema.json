@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.research_bundle.v1",
+  "title": "ResearchBundle（C4）",
+  "description": "联网检索结果包。USER_MATERIAL 事实也进 facts；数字只能出自 facts[].value；冲突裁决不改 bundle，由 W4 写 conflict_decisions.json。",
+  "type": "object",
+  "required": ["schema", "bundle_id", "created_at", "material_language", "enabled", "queries", "facts", "views", "discarded", "omissions"],
+  "properties": {
+    "schema": {"const": "rs.research_bundle.v1"},
+    "bundle_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "minLength": 1},
+    "material_language": {"type": "string", "minLength": 1},
+    "enabled": {"type": "boolean"},
+    "queries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["q", "locale", "sent_at"],
+        "properties": {
+          "q": {"type": "string", "minLength": 1},
+          "locale": {"enum": ["zh", "en"]},
+          "backend": {"type": "string"},
+          "sent_at": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fact_id", "origin", "subject", "metric", "value", "unit", "publisher", "url", "retrieved_at", "snapshot_path", "snapshot_sha256"],
+        "properties": {
+          "fact_id": {"type": "string", "minLength": 1},
+          "origin": {"enum": ["USER_MATERIAL", "WEB_RESEARCH"]},
+          "subject": {"type": "string"},
+          "metric": {"type": "string"},
+          "value": {"type": "number"},
+          "unit": {"type": "string"},
+          "period": {"type": "string"},
+          "definition": {"type": "string"},
+          "publisher": {"type": "string"},
+          "source_grade": {"enum": ["A", "B", "C"]},
+          "url": {"type": "string"},
+          "retrieved_at": {"type": "string"},
+          "quote_span": {"type": "string"},
+          "snapshot_path": {"type": "string", "minLength": 1},
+          "snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["view_id", "kind", "title", "metric", "series"],
+        "properties": {
+          "view_id": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["comparison", "trend", "insight"]},
+          "title": {"type": "string"},
+          "metric": {"type": "string"},
+          "unit": {"type": "string"},
+          "period": {"type": "string"},
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label", "origin", "points"],
+              "properties": {
+                "label": {"type": "string"},
+                "origin": {"enum": ["USER_MATERIAL", "WEB_RESEARCH"]},
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["x", "value", "fact_ref"],
+                    "properties": {
+                      "x": {"type": "string"},
+                      "value": {"type": "number"},
+                      "fact_ref": {"type": "string"}
+                    },
+                    "additionalProperties": true
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "highlight": {"type": ["object", "null"]},
+          "conflicts": {"type": "array"},
+          "footnote": {"type": ["object", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "discarded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "code": {"type": "string"},
+          "detail": {"type": "string"},
+          "url": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "omissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "want": {"type": "string"},
+          "code": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "report_path": {"type": "string"}
+  },
+  "additionalProperties": false
+}

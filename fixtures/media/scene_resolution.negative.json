@@ -1,0 +1,11 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p06-s2",
+  "status": "FALLBACK_T4",
+  "asset": {"path": "evidence/images/assets/p06-s2.jpg"},
+  "attempts": [
+    {"tier": "T2", "provider": "pexels", "outcome": "REJECTED_LOW_SIMILARITY", "detail": "最高 0.41 < 阈值 0.72", "elapsed_s": 3.4},
+    {"tier": "T3", "provider": "ai_generated_local", "outcome": "SKIPPED_REQUIRES_REAL_PHOTO", "detail": "场景要求真实照片，禁止生成", "elapsed_s": 0.0}
+  ],
+  "reason": ""
+}

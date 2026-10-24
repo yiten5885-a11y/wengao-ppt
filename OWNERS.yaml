@@ -1,0 +1,72 @@
+# 稳稿 PPT 并行开发窗口 · 文件独占清单（rs-contracts-v1，Step 0.3）
+# 规则：每个路径模式只有一个 owner。合并前由 scripts/ownership_guard.py 检查，
+# 越界即拒绝。owner = main 的唯一合并者（W4）。
+version: 1
+frozen_at: "2026-10-24"
+merge_owner: W4
+
+owners:
+  W1:  # 素材与动效
+    - wengao_ppt/scene_images.py
+    - wengao_ppt/scene_model.py
+    - wengao_ppt/semantic_scenes.py
+    - wengao_ppt/visual_plan.py
+    - wengao_ppt/transitions.py        # 新建
+    - wengao_ppt/media/**
+    - tests/test_scene_*.py
+    - tests/test_transition*.py
+  W2:  # 版式与成稿
+    - wengao_ppt/page_catalog.py
+    - wengao_ppt/theme.py
+    - wengao_ppt/render.py
+    - wengao_ppt/layout/**
+    - wengao_ppt/builders/**
+    - wengao_ppt/planner/**
+    - wengao_ppt/fonts/**
+    - tests/test_layout_*.py
+    - tests/test_builder*.py
+    - tests/test_page_*.py
+  W3:  # 联网研究
+    - wengao_ppt/research/**
+    - tools/searxng/**
+    - tests/test_research_*.py
+  W4:  # 工作台与集成（owner）
+    - wengao_ppt/pipeline/**
+    - wengao_ppt/events.py
+    - wengao_ppt/netsafe.py
+    - wengao_ppt/resource_lock.py
+    - wengao_ppt/contracts_rs.py
+    - wengao_ppt/gate_rs.py           # 新建：RS 条件必检项注册
+    - wengao_ppt/env_probe.py         # 新建：本机依赖探测（只探测不安装）
+    - wengao_ppt/runner.py
+    - wengao_ppt/cli.py
+    - wengao_ppt/install.py
+    - wengao_ppt/local_edit.py
+    - wengao_ppt/checks.py
+    - wengao_ppt/census.py
+    - wengao_ppt/source_fidelity.py
+    - wengao_ppt/repair.py
+    - wengao_ppt/charts.py
+    - wengao_ppt/tables.py
+    - wengao_ppt/parsers_xml.py
+    - wengao_ppt/extractors.py
+    - wengao_ppt/language_support.py
+    - workbench/**
+    - contracts/rs/**
+    - contracts/errors/pipe.json
+    - contracts/errors/layout.json   # W4 汇总登记；内容变更走变更请求单
+    - contracts/errors/research.json # 同上
+    - OWNERS.yaml
+    - scripts/**
+    - fixtures/**
+    - tests/pipeline/**
+    - tests/ui/**
+    - tests/contracts/**
+    - reports/rs-w4/**
+
+# 公共只读区（任何人可读、谁都不单独拥有；变更走 W4 变更请求单）
+shared_readonly:
+  - wengao_ppt/__init__.py
+  - 01_公共契约.md
+  - contracts/error_codes_v1.json
+  - contracts/schemas_v1.json

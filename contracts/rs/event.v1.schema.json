@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.event.v1",
+  "title": "Event（C2）",
+  "description": "工作台步骤时间线的唯一数据源。8 个 stage 一一对应 8 步；summary 面向用户，≤40 字，不含内部路径、堆栈、密钥。",
+  "type": "object",
+  "required": ["schema", "job_id", "seq", "ts", "stage", "status", "summary"],
+  "properties": {
+    "schema": {"const": "rs.event.v1"},
+    "job_id": {"type": "string", "minLength": 1},
+    "seq": {"type": "integer", "minimum": 1},
+    "ts": {"type": "string", "minLength": 1},
+    "stage": {"enum": ["read", "research", "compare", "trend", "images", "layout", "transition", "check"]},
+    "status": {"enum": ["running", "done", "warn", "failed", "skipped"]},
+    "summary": {"type": "string", "maxLength": 40},
+    "counts": {"type": "object"},
+    "refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

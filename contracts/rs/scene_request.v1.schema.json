@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.scene_request.v1",
+  "title": "SceneRequest（C3）",
+  "description": "一个场景的配图请求。anchors 与 visual_query 来自现有 semantic_scenes.py，不重新发明。requires_real_photo=true 时禁止 T3 生成。",
+  "type": "object",
+  "required": ["schema", "scene_id", "page_id", "visual_query", "language", "aspect", "orientation"],
+  "properties": {
+    "schema": {"const": "rs.scene_request.v1"},
+    "scene_id": {"type": "string", "minLength": 1},
+    "page_id": {"type": "string", "minLength": 1},
+    "slot_id": {"type": ["string", "null"]},
+    "visual_query": {"type": "string", "minLength": 1, "description": "中性英文检索词；唯一允许外发的查询"},
+    "anchors": {
+      "type": "object",
+      "properties": {
+        "subject": {"type": "string"},
+        "action": {"type": "string"},
+        "setting": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "language": {"type": "string", "minLength": 1},
+    "aspect": {"type": "string", "pattern": "^[0-9]+:[0-9]+$"},
+    "orientation": {"enum": ["landscape", "portrait", "square"]},
+    "requires_real_photo": {"type": "boolean"},
+    "user_image": {
+      "type": ["object", "null"],
+      "properties": {
+        "path": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
+    "exclude_sha256": {"type": "array", "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "rs.scene_resolution.v1",
+  "scene_id": "p06-s1",
+  "status": "RESOLVED_T2",
+  "asset": {
+    "path": "evidence/images/assets/p06-s1.jpg",
+    "sha256": "be8614d943d875c808e2ac08773da5e9cec783512aef7b6a525a75118954065f",
+    "phash": "f0e1d2c3b4a59687",
+    "width": 1600,
+    "height": 900,
+    "format": "JPEG",
+    "provider": "pexels",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "creator": "Example Photographer",
+    "source_url": "https://www.pexels.com/photo/example/",
+    "attribution_text": "Photo by Example Photographer from Pexels",
+    "generator": null,
+    "model": null,
+    "prompt_digest": null,
+    "seed": null,
+    "similarity": 0.83,
+    "similarity_model": "siglip-base-patch16-224"
+  },
+  "attempts": [
+    {"tier": "T2", "provider": "pexels", "outcome": "SELECTED", "detail": "similarity 0.83 ≥ 阈值 0.72", "elapsed_s": 1.2}
+  ],
+  "reason": ""
+}

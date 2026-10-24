@@ -1,0 +1,10 @@
+{
+  "schema": "rs.job_options.v1",
+  "mode": "generate",
+  "language": "auto",
+  "research": {"enabled": true, "max_queries": 12, "locales": ["material", "en"]},
+  "images": {"enabled": true, "allow_ai_generated": true, "per_scene_budget_s": 20, "deck_budget_s": 300},
+  "transition": {"enabled": true, "family": "fade", "duration_ms": 500},
+  "theme": "wengao-default",
+  "target_pages": null
+}

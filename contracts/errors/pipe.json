@@ -1,0 +1,56 @@
+{
+  "schema": "rs.error_codes.v1",
+  "namespace": "PIPE",
+  "owner": "W4",
+  "contract": "rs-contracts-v1",
+  "codes": [
+    {
+      "code": "PIPE.CONTRACT_INVALID",
+      "severity": "BLOCKING",
+      "meaning": "契约对象未通过 rs JSON Schema 校验（缺字段/类型错/取值越界）",
+      "blocking": true
+    },
+    {
+      "code": "PIPE.STAGE_FAILED",
+      "severity": "BLOCKING",
+      "meaning": "管线某阶段抛出未按 C8 降级的异常；按失败语义处理，不假装完成",
+      "blocking": true
+    },
+    {
+      "code": "PIPE.RESOURCE_BUSY",
+      "severity": "WARN",
+      "meaning": "共享资源锁（llm/gen/vision）排队超时；调用方按 C8 降级（如 T2→T3→T4）",
+      "blocking": false
+    },
+    {
+      "code": "PIPE.CANCELLED",
+      "severity": "WARN",
+      "meaning": "任务在阶段间被取消；已产出保留，未开始阶段不再推进",
+      "blocking": false
+    },
+    {
+      "code": "PIPE.MODULE_MISSING",
+      "severity": "BLOCKING",
+      "meaning": "接线阶段发现契约模块未到位（如 W1/W2/W3 未合入），管线拒绝假冒成功",
+      "blocking": true
+    },
+    {
+      "code": "PIPE.EVENT_DEGRADED",
+      "severity": "WARN",
+      "meaning": "事件落盘或订阅失败；主流程继续，界面提示事件可能不完整",
+      "blocking": false
+    },
+    {
+      "code": "PIPE.RESEARCH_OFF",
+      "severity": "WARN",
+      "meaning": "用户关闭联网研究或材料不触发研究；对比/趋势页按宁缺勿编省略",
+      "blocking": false
+    },
+    {
+      "code": "PIPE.CONFLICT_OPEN",
+      "severity": "WARN",
+      "meaning": "用户材料与网络数据存在未裁决冲突；页面并列呈现并标待确认，不覆盖用户值",
+      "blocking": false
+    }
+  ]
+}

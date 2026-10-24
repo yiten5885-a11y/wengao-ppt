@@ -1,0 +1,49 @@
+{
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-fixture-001",
+  "created_at": "2026-10-24T05:00:00+08:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {"q": "retail industry repurchase rate 2026", "locale": "en", "backend": "searxng", "sent_at": "2026-10-24T04:59:00+08:00"}
+  ],
+  "facts": [
+    {
+      "fact_id": "f001",
+      "origin": "WEB_RESEARCH",
+      "subject": "零售行业",
+      "metric": "行业平均复购率",
+      "value": 37.4,
+      "unit": "%",
+      "period": "2026Q3",
+      "definition": "当季发生二次购买的会员占活跃会员比例",
+      "publisher": "行业协会（示例）",
+      "source_grade": "A",
+      "url": "https://example.org/industry-report-2026q3",
+      "retrieved_at": "2026-10-24T04:59:30+08:00",
+      "quote_span": "行业平均复购率为 37.4%，较上年同期提高 0.4 个百分点",
+      "snapshot_path": "fixtures/research/snapshot_f001.txt",
+      "snapshot_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "views": [
+    {
+      "view_id": "v01",
+      "kind": "comparison",
+      "title": "本季度复购率横向对比",
+      "metric": "复购率",
+      "unit": "%",
+      "period": "2026Q3",
+      "series": [
+        {"label": "云帆零售", "origin": "USER_MATERIAL", "points": [{"x": "2026Q3", "value": 46.8, "fact_ref": "f000"}]},
+        {"label": "行业均值", "origin": "WEB_RESEARCH", "points": [{"x": "2026Q3", "value": 37.4, "fact_ref": "f001"}]}
+      ],
+      "highlight": {"type": "max_gap", "text": "高于行业均值 9.4 个百分点", "fact_refs": ["f000", "f001"], "rule": "max_gap", "computed": {"gap": 9.4}},
+      "conflicts": [],
+      "footnote": {"text": "来源：行业协会 2026 Q3 季度报告，检索于 2026-10-24", "fact_refs": ["f001"]}
+    }
+  ],
+  "discarded": [],
+  "omissions": [],
+  "report_path": "evidence/research/report.md"
+}

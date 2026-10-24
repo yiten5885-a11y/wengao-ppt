@@ -1,0 +1,30 @@
+{
+  "schema": "rs.research_bundle.v1",
+  "bundle_id": "rb-fixture-002",
+  "created_at": "2026-10-24T05:00:00+08:00",
+  "material_language": "zh",
+  "enabled": true,
+  "queries": [
+    {"q": "retail industry repurchase rate 2026", "locale": "fr", "backend": "searxng", "sent_at": "2026-10-24T04:59:00+08:00"}
+  ],
+  "facts": [
+    {
+      "fact_id": "f001",
+      "origin": "MODEL_GUESS",
+      "subject": "零售行业",
+      "metric": "行业平均复购率",
+      "value": 37.4,
+      "unit": "%",
+      "publisher": "",
+      "url": "",
+      "retrieved_at": "",
+      "quote_span": "行业平均复购率为 41.4%",
+      "snapshot_path": "fixtures/research/snapshot_f001.txt",
+      "snapshot_sha256": "not-a-hash"
+    }
+  ],
+  "views": [],
+  "discarded": [],
+  "omissions": [],
+  "report_path": ""
+}

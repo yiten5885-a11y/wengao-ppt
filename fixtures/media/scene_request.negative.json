@@ -1,0 +1,10 @@
+{
+  "schema": "rs.scene_request.v1",
+  "scene_id": "p06-s1",
+  "page_id": "p06",
+  "visual_query": "",
+  "language": "zh",
+  "aspect": "wide",
+  "orientation": "landscape",
+  "requires_real_photo": false
+}

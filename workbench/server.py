@@ -1579,34 +1579,38 @@ class Handler(BaseHTTPRequestHandler):
 
     # ---------------- 基础工具 ----------------
     def _send(self, code, obj, ctype="application/json"):
-        body = json.dumps(obj, ensure_ascii=False, indent=2).encode("utf-8")
+        body = b"" if getattr(self, "_head_only", False) else \
+            json.dumps(obj, ensure_ascii=False, indent=2).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", f"{ctype}; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(body)
+        if body:
+            self.wfile.write(body)
 
     def _send_file(self, path: Path):
         import mimetypes
-        data = path.read_bytes()
+        data = b"" if getattr(self, "_head_only", False) else path.read_bytes()
         ctype = mimetypes.guess_type(str(path))[0] or "application/octet-stream"
         self.send_response(200)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(data)
+        if data:
+            self.wfile.write(data)
 
     def _send_html(self, path: Path):
         """按原始字节发送本地页面（不做任何 JSON 转义）。"""
-        data = path.read_bytes()
+        data = b"" if getattr(self, "_head_only", False) else path.read_bytes()
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(data)
+        if data:
+            self.wfile.write(data)
 
     def _err(self, code, gw_code, message, extra=None):
         payload = {"error": {"code": gw_code, "message": message}}
@@ -1627,11 +1631,26 @@ class Handler(BaseHTTPRequestHandler):
         sys.stderr.write("[workbench] %s %s\n" % (now_iso(), fmt % args))
 
     # ---------------- 路由 ----------------
+    def do_HEAD(self):
+        # 存在性探测（新界面页图探测用）：与 GET 同路由，只回状态码与头
+        self._head_only = True
+        try:
+            self.do_GET()
+        finally:
+            self._head_only = False
+
     def do_GET(self):
         try:
             u = urllib.parse.urlparse(self.path)
             path = u.path
             q = urllib.parse.parse_qs(u.query)
+            # RS-9 新工作台界面端点（/ui 与 /api/... 新路由）；旧路由保持原样
+            try:
+                from workbench import ui_api
+                if ui_api.dispatch_get(self, path, q):
+                    return
+            except ImportError:
+                pass
             if path in ("/", "/index.html"):
                 # 页面必须按**原始字节**发送：不能走 _send()（那会对整个 HTML 做
                 # json.dumps，把 <!DOCTYPE …> 变成带引号的 JSON 字符串，浏览器只能
@@ -1747,6 +1766,13 @@ class Handler(BaseHTTPRequestHandler):
         try:
             u = urllib.parse.urlparse(self.path)
             path = u.path
+            # RS-9 新工作台界面端点（/ui 与 /api/... 新路由）；旧路由保持原样
+            try:
+                from workbench import ui_api
+                if ui_api.dispatch_post(self, path):
+                    return
+            except ImportError:
+                pass
             if path == "/api/upload":
                 return self._upload()
             if path == "/api/material/upload":
@@ -2034,6 +2060,11 @@ class Handler(BaseHTTPRequestHandler):
         # A15：/api/meta 之前缺 runner_version/label，调用方只能再打 /api/bootstrap。
         # 两者定位不同（bootstrap 是"首屏一次拿全"，meta 是"随时问身份"），
         # 但产品身份这类字段不该只在一处出现，这里补齐。
+        try:
+            from wengao_ppt import gate_rs
+            rs_checks = gate_rs.registry_view()
+        except Exception:  # noqa: BLE001
+            rs_checks = {}
         return self._send(200, {
             "product": "稳稿 PPT 本地工作台",
             "runner_version": __version__,
@@ -2049,6 +2080,9 @@ class Handler(BaseHTTPRequestHandler):
                          "model_note": "真实生成会调用本地模型进行内容规划与语义配图；体验回放只跳过内容规划模型，下游语义配图仍可能调用本地模型，照片检索也可能联网。回放不计作真实模型生成证据。",
                          "pexels_api_configured": bool(os.environ.get("PEXELS_API_KEY")),
                          "pexels_source_url": "https://www.pexels.com/"},
+            "rs_checks": rs_checks,
+            "rs_note": "RS 条件必检项：JobOptions 打开对应能力时到期；模块未就位记 "
+                       "NOT_EVALUABLE（阻断），不冒充通过。",
             "bind": "127.0.0.1（仅本机回环）",
         })
 

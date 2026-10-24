@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>稳稿 · 工作台</title>
+<link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ============ 左栏：演示列表与本机状态 ============ -->
+  <aside class="col-left" aria-label="演示列表">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">稳</div>
+      <span class="brand-name">稳稿</span>
+    </div>
+
+    <button type="button" class="btn btn-dark btn-block" id="btn-new">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+      新建演示
+    </button>
+
+    <label class="search" for="search-input">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+      <input id="search-input" type="text" placeholder="搜索演示" aria-label="搜索演示">
+    </label>
+
+    <nav class="side-nav" aria-label="工作区">
+      <button type="button" class="side-nav-item is-active" data-filter="all" aria-pressed="true">全部演示<span class="count" id="count-all">0</span></button>
+      <button type="button" class="side-nav-item" data-filter="imported" aria-pressed="false">导入的 PPT<span class="count" id="count-imported">0</span></button>
+      <button type="button" class="side-nav-item" data-filter="research" aria-pressed="false">有联网研究<span class="count" id="count-research">0</span></button>
+    </nav>
+
+    <div class="hint" id="job-list-empty">还没有演示。点「新建演示」开始，或把材料拖进中间输入区。</div>
+    <div class="job-list" id="job-list" role="listbox" aria-label="演示列表"></div>
+
+    <div class="localrun" id="localrun" aria-label="本机运行状态">
+      <div class="localrun-head">
+        <span class="localrun-title">本机运行</span>
+        <span class="localrun-privacy">数据不出本机</span>
+      </div>
+      <div class="localrun-rows" id="localrun-rows">
+        <div class="hint">正在探测本机环境…</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ 中栏：对话与步骤 ============ -->
+  <main class="col-mid" aria-label="对话与步骤">
+    <header class="mid-head">
+      <div class="mid-title">
+        <div class="mid-name" id="job-title">新建演示</div>
+        <div class="mid-sub" id="job-sub">把文章、文案或 PPT 交给我</div>
+      </div>
+      <button type="button" class="btn btn-ghost" id="btn-history">历史版本</button>
+    </header>
+
+    <div class="mid-scroll" id="mid-scroll">
+      <!-- 空状态 -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h10l4 4v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M14 5v4h4M7 12h8M7 16h5"/></svg>
+        </div>
+        <b>还没有可看的演示</b>
+        <p>把一篇文章、一段文案或一个主题发给我，或者把做好的 PPT 拖进来让我修改。<br>我会先读材料，再联网检索行业数据，做完横向对比和纵向趋势，配上场景图，加好转场，逐页核对后交给你。</p>
+        <div class="empty-chips" id="empty-chips">
+          <button type="button" class="chip" data-sample="云帆零售 Q3 经营复盘">试试：云帆零售 Q3 复盘</button>
+          <button type="button" class="chip" data-sample="新品发布会提案">试试：新品发布会提案</button>
+        </div>
+      </div>
+
+      <!-- 对话流（运行中/完成后填充） -->
+      <div class="chat" id="chat" hidden></div>
+    </div>
+
+    <!-- 输入区 -->
+    <div class="composer">
+      <div class="composer-box">
+        <label for="msg" class="sr-only">继续调整这份演示</label>
+        <textarea id="msg" rows="2" placeholder="继续调整，或把做好的 PPT 拖进来让我修改"></textarea>
+        <div class="composer-bar">
+          <div class="composer-tools">
+            <button type="button" class="icon-btn" id="btn-import" aria-label="导入 PPT 或材料">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 7.5l-4.6 4.6a2.6 2.6 0 0 1-3.7-3.7l5-5a1.8 1.8 0 0 1 2.6 2.6l-5 5a.9.9 0 0 1-1.3-1.3L10 5.6"/></svg>
+            </button>
+            <input type="file" id="file-input" class="sr-only" accept=".pptx,.md,.txt,.docx" multiple>
+            <button type="button" class="toggle-btn is-on" id="btn-research" aria-pressed="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2 2 2 11 0 13M8 1.5c-2 2-2 11 0 13"/></svg>
+              联网研究
+            </button>
+            <button type="button" class="text-btn" id="btn-lang" aria-haspopup="listbox">语言：自动</button>
+          </div>
+          <div class="composer-send">
+            <span class="kbd-hint">回车发送</span>
+            <button type="button" class="send-btn" id="btn-send" aria-label="发送">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="privacy-note">联网检索只发送实体名和指标，不会发送你的原文。</p>
+    </div>
+  </main>
+
+  <!-- ============ 右栏：预览 / 来源 / 配图 ============ -->
+  <section class="col-right" aria-label="预览与核对">
+    <div class="right-head">
+      <div class="seg" role="group" aria-label="右侧视图" id="tabs">
+        <button type="button" class="seg-btn is-active" data-tab="preview" aria-pressed="true">预览<span class="count" id="tab-count-preview">0</span></button>
+        <button type="button" class="seg-btn" data-tab="sources" aria-pressed="false">来源<span class="count" id="tab-count-sources">0</span></button>
+        <button type="button" class="seg-btn" data-tab="images" aria-pressed="false">配图<span class="count" id="tab-count-images">0</span></button>
+      </div>
+      <div class="right-actions">
+        <button type="button" class="btn btn-ghost" id="btn-share">分享</button>
+        <button type="button" class="btn btn-dark" id="btn-export">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5L8 11l3.5-3.5M3 13.5h10"/></svg>
+          导出
+        </button>
+      </div>
+    </div>
+
+    <!-- 预览 -->
+    <div class="right-body" id="tab-preview">
+      <div class="preview-empty hint" id="preview-empty">
+        <b>还没有可预览的页面</b>
+        <p>生成完成后，这里会显示每一页的真实渲染图。</p>
+      </div>
+      <div class="preview-main" id="preview-main" hidden>
+        <div class="preview-bar">
+          <span class="preview-page-label" id="preview-page-label">第 1 页</span>
+          <div class="preview-bar-actions">
+            <button type="button" class="btn btn-ghost sm" id="btn-transition">淡入淡出 · 0.5 秒</button>
+            <button type="button" class="btn btn-ghost sm" id="btn-play">放映</button>
+          </div>
+        </div>
+        <div class="preview-stage" id="preview-stage">
+          <img id="preview-img" alt="当前页面预览">
+        </div>
+        <div class="thumbs" id="thumbs" role="tablist" aria-label="页面缩略条"></div>
+        <div class="page-check" id="page-check">
+          <div class="page-check-head">本页检查</div>
+          <div class="page-check-rows" id="page-check-rows"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 来源 -->
+    <div class="right-body" id="tab-sources" hidden>
+      <div class="tab-intro" id="sources-intro"></div>
+      <div class="source-list" id="source-list"></div>
+    </div>
+
+    <!-- 配图 -->
+    <div class="right-body" id="tab-images" hidden>
+      <div class="tab-intro" id="images-intro"></div>
+      <div class="image-grid" id="image-grid"></div>
+    </div>
+  </section>
+
+  <!-- 状态提示（aria-live） -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</div>
+<script src="/ui/app.js"></script>
+<script src="/ui/render.js"></script>
+<script src="/ui/actions.js"></script>
+</body>
+</html>

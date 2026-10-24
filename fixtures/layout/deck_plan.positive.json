@@ -1,0 +1,37 @@
+{
+  "schema": "rs.deck_plan.v1",
+  "deck_id": "deck-fixture-001",
+  "language": "zh",
+  "mode": "generate",
+  "pages": [
+    {
+      "page_id": "p01",
+      "index": 1,
+      "role": "cover",
+      "page_type": "cover",
+      "variant": "a",
+      "density": "standard",
+      "title": "云帆零售 Q3 复盘",
+      "blocks": [{"kind": "text", "text": "2026 年第三季度经营复盘"}],
+      "image_slots": [],
+      "footnote": null,
+      "research_view_ref": null
+    },
+    {
+      "page_id": "p06",
+      "index": 6,
+      "role": "insight",
+      "page_type": "insight",
+      "variant": "a",
+      "density": "standard",
+      "title": "复购率连续 8 个季度领先行业均值",
+      "blocks": [
+        {"kind": "bignumber", "value": 46.8, "unit": "%"},
+        {"kind": "chart", "view_ref": "v01"}
+      ],
+      "image_slots": [],
+      "footnote": {"text": "来源：行业协会 2026 Q3 季度报告，检索于 2026-10-24", "fact_refs": ["f001"]},
+      "research_view_ref": "v01"
+    }
+  ]
+}

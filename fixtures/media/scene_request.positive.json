@@ -1,0 +1,14 @@
+{
+  "schema": "rs.scene_request.v1",
+  "scene_id": "p06-s1",
+  "page_id": "p06",
+  "slot_id": "p06-img1",
+  "visual_query": "retail store checkout counter customer",
+  "anchors": {"subject": "checkout counter", "action": "customer paying", "setting": "retail store"},
+  "language": "zh",
+  "aspect": "16:9",
+  "orientation": "landscape",
+  "requires_real_photo": false,
+  "user_image": {"path": null, "sha256": null},
+  "exclude_sha256": []
+}

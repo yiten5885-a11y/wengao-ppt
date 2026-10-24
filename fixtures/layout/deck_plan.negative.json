@@ -1,0 +1,14 @@
+{
+  "schema": "rs.deck_plan.v1",
+  "deck_id": "deck-fixture-002",
+  "language": "zh",
+  "mode": "generate",
+  "pages": [
+    {
+      "page_id": "p06",
+      "index": 0,
+      "role": "dashboard",
+      "image_slots": [{"slot_id": "", "aspect": "sixteen-nine"}]
+    }
+  ]
+}

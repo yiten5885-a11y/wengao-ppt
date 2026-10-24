@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.deck_plan.v1",
+  "title": "DeckPlan / PageSpec（C5）",
+  "description": "页面规划。W2 拥有；W1/W4 只依赖标 ★ 的字段（page_id/index/role/image_slots/footnote）。",
+  "type": "object",
+  "required": ["schema", "deck_id", "language", "mode", "pages"],
+  "properties": {
+    "schema": {"const": "rs.deck_plan.v1"},
+    "deck_id": {"type": "string", "minLength": 1},
+    "language": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["generate", "beautify", "edit"]},
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["page_id", "index", "role"],
+        "properties": {
+          "page_id": {"type": "string", "minLength": 1},
+          "index": {"type": "integer", "minimum": 1},
+          "role": {"enum": ["cover", "section", "content", "compare", "trend", "insight", "image", "process", "timeline", "table", "closing"]},
+          "page_type": {"type": "string"},
+          "variant": {"type": "string"},
+          "density": {"type": "string"},
+          "title": {"type": "string"},
+          "blocks": {"type": "array"},
+          "image_slots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["slot_id", "aspect"],
+              "properties": {
+                "slot_id": {"type": "string", "minLength": 1},
+                "aspect": {"type": "string", "pattern": "^[0-9]+:[0-9]+$"},
+                "scene": {"type": ["object", "null"]}
+              },
+              "additionalProperties": true
+            }
+          },
+          "footnote": {
+            "type": ["object", "null"],
+            "properties": {
+              "text": {"type": "string"},
+              "fact_refs": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": true
+          },
+          "research_view_ref": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

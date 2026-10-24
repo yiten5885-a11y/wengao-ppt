@@ -869,6 +869,9 @@ def main(argv=None) -> int:
     p = sub.add_parser("uninstall", help="卸载预演；--apply 仅移动程序，保留数据")
     p.add_argument("--apply", action="store_true")
 
+    p = sub.add_parser("probe", help="探测本机新增依赖（SearXNG/ComfyUI/视觉模型/字体）；只探测不安装")
+    p.add_argument("--json", action="store_true")
+
     a = ap.parse_args(argv)
     root = root_dir(a)
 
@@ -914,6 +917,15 @@ def main(argv=None) -> int:
         return do_cli(root, rest)
     if a.cmd == "uninstall":
         return do_uninstall(root, a.apply)
+    if a.cmd == "probe":
+        # RS-9 §9：新增依赖探测。只探测不安装；探测不到就如实显示。
+        from wengao_ppt.env_probe import as_text, probe_all
+        rep = probe_all()
+        if a.json:
+            print(json.dumps(rep, ensure_ascii=False, indent=2))
+        else:
+            print(as_text(rep))
+        return 0
     return 2
 
 

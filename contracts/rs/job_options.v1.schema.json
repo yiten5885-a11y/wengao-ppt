@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "rs.job_options.v1",
+  "title": "JobOptions（C1）",
+  "description": "一次任务的选项；W4 定义，其余窗口只读用到的字段。数值为初始值，W1/W3 实测后由 W4 调整默认值。",
+  "type": "object",
+  "required": ["schema", "mode"],
+  "properties": {
+    "schema": {"const": "rs.job_options.v1"},
+    "mode": {"enum": ["generate", "beautify", "edit"]},
+    "language": {"type": ["string", "null"], "enum": ["auto", "zh", "en", "ja", "ar", "hi", "ru", null]},
+    "research": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "max_queries": {"type": "integer", "minimum": 0, "maximum": 50},
+        "locales": {"type": "array", "items": {"enum": ["material", "en"]}}
+      },
+      "additionalProperties": true
+    },
+    "images": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "allow_ai_generated": {"type": "boolean"},
+        "per_scene_budget_s": {"type": "integer", "minimum": 1},
+        "deck_budget_s": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "transition": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "family": {"type": "string"},
+        "duration_ms": {"type": "integer", "minimum": 100, "maximum": 3000}
+      },
+      "additionalProperties": true
+    },
+    "theme": {"type": ["string", "null"]},
+    "target_pages": {"type": ["integer", "null"], "minimum": 1}
+  },
+  "additionalProperties": true
+}
