@@ -62,6 +62,7 @@ owners:
     - contracts/errors/layout.json   # W4 汇总登记；内容变更走变更请求单
     - contracts/errors/research.json # 同上
     - OWNERS.yaml
+    - .gitignore                         # 补注：RS-0 仓库基线配置
     - scripts/**
     - fixtures/**
     - tests/pipeline/**
