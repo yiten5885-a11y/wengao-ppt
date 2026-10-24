@@ -22,3 +22,4 @@ workbench_previews/
 .fontconfig/
 .lo-profile/
 .DS_Store
+.locks/

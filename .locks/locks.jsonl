@@ -1,4 +1,0 @@
-{"lock": "llm", "event": "acquired", "owner": "pid94178", "waited_s": 0.0, "held_s": 0.0, "at": "2026-10-24T09:36:36.091445+08:00"}
-{"lock": "llm", "event": "released", "owner": "pid94178", "waited_s": 0.0, "held_s": 12.002, "at": "2026-10-24T09:36:48.094380+08:00"}
-{"lock": "llm", "event": "acquired", "owner": "pid59316", "waited_s": 0.0, "held_s": 0.0, "at": "2026-10-24T12:59:57.278699+08:00"}
-{"lock": "llm", "event": "released", "owner": "pid59316", "waited_s": 0.0, "held_s": 12.003, "at": "2026-10-24T13:00:09.282435+08:00"}

@@ -15,10 +15,12 @@ owners:
     - wengao_ppt/media/**
     - tests/test_scene_*.py
     - tests/test_transition*.py
+    - reports/rs-w1/**
   W2:  # 版式与成稿
     - wengao_ppt/page_catalog.py
     - wengao_ppt/theme.py
     - wengao_ppt/render.py
+    - wengao_ppt/glyphcheck.py          # 补注：字形/回退兜底检测，随渲染一并归 W2
     - wengao_ppt/layout/**
     - wengao_ppt/builders/**
     - wengao_ppt/planner/**
@@ -26,10 +28,13 @@ owners:
     - tests/test_layout_*.py
     - tests/test_builder*.py
     - tests/test_page_*.py
+    - tests/test_w2_*.py                # 补注：W2 实际采用的测试命名
+    - reports/rs-w2/**
   W3:  # 联网研究
     - wengao_ppt/research/**
     - tools/searxng/**
     - tests/test_research_*.py
+    - reports/rs-w3/**
   W4:  # 工作台与集成（owner）
     - wengao_ppt/pipeline/**
     - wengao_ppt/events.py
