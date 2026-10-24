@@ -1,0 +1,351 @@
+{
+ "schema": "rs.deck_plan.v1",
+ "deck_id": "dp-8813915774626",
+ "language": "zh",
+ "mode": "generate",
+ "job_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/job_zh",
+ "pages": [
+  {
+   "role": "cover",
+   "variant": "a",
+   "title": "2024年新能源汽车市场复盘",
+   "blocks": [
+    {
+     "kind": "text",
+     "text": "稳稿 PPT"
+    }
+   ],
+   "units": [],
+   "page_id": "p01",
+   "index": 1
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "2024年新能源汽车市场复盘",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。"
+     ],
+     "fact_refs": [
+      "F001"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。",
+     "fact_ids": [
+      "F001"
+     ]
+    }
+   ],
+   "page_id": "p02",
+   "index": 2,
+   "image_slots": [
+    {
+     "slot_id": "p02-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p02-img1",
+      "page_id": "p02",
+      "slot_id": "p02-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "2024年新能源汽车市场复盘",
+      "context_sentences": [
+       "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "role": "compare",
+   "variant": "b",
+   "title": "2024Q3 中欧新能源汽车市场渗透率横向对比",
+   "blocks": [
+    {
+     "kind": "chart",
+     "chart_kind": "bar",
+     "categories": [
+      "2024Q3"
+     ],
+     "series": {
+      "中国市场": [
+       46.8
+      ],
+      "欧洲市场": [
+       14.8
+      ]
+     },
+     "legend": true,
+     "highlight_series": null,
+     "fact_refs": [
+      "f001",
+      "f004"
+     ],
+     "h_emu": 2743200
+    }
+   ],
+   "footnote": {
+    "text": "数据来源: 乘联分会 (2024Q3); 欧洲汽车制造商协会(ACEA) (2024Q3)",
+    "fact_refs": [
+     "f001",
+     "f004"
+    ]
+   },
+   "conflicts": [],
+   "research_view_ref": "v01",
+   "page_id": "p03",
+   "index": 3,
+   "units": [],
+   "image_slots": [
+    {
+     "slot_id": "p03-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p03-img1",
+      "page_id": "p03",
+      "slot_id": "p03-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "2024Q3 中欧新能源汽车市场渗透率横向对比",
+      "context_sentences": []
+     }
+    }
+   ]
+  },
+  {
+   "role": "trend",
+   "variant": "a",
+   "title": "2024年前三季度中国新能源乘用车渗透率走势",
+   "blocks": [
+    {
+     "kind": "chart",
+     "chart_kind": "line",
+     "categories": [
+      "2024Q1",
+      "2024Q2",
+      "2024Q3"
+     ],
+     "series": {
+      "中国新能源乘用车": [
+       31.8,
+       37.4,
+       46.8
+      ]
+     },
+     "legend": false,
+     "fact_refs": [
+      "f003",
+      "f002",
+      "f001"
+     ],
+     "h_emu": 2926080
+    }
+   ],
+   "footnote": {
+    "text": "数据来源: 乘联分会 (2024Q1-2024Q3)",
+    "fact_refs": [
+     "f003",
+     "f002",
+     "f001"
+    ]
+   },
+   "research_view_ref": "v02",
+   "page_id": "p04",
+   "index": 4,
+   "units": []
+  },
+  {
+   "role": "insight",
+   "variant": "a",
+   "title": "中国新能源车产业渗透主导地位洞察",
+   "blocks": [
+    {
+     "kind": "bignumber",
+     "value": "46.8",
+     "label": "市场零售渗透率",
+     "note": "中国新能源乘用车核心指标市场零售渗透率达到 46.8%，确立全面主导地位",
+     "fact_refs": [
+      "f001"
+     ],
+     "pending": false
+    }
+   ],
+   "footnote": {
+    "text": "数据来源: 乘联分会 (2024Q3)",
+    "fact_refs": [
+     "f001"
+    ]
+   },
+   "research_view_ref": "v03",
+   "page_id": "p05",
+   "index": 5,
+   "units": [],
+   "image_slots": [
+    {
+     "slot_id": "p05-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p05-img1",
+      "page_id": "p05",
+      "slot_id": "p05-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "中国新能源车产业渗透主导地位洞察",
+      "context_sentences": []
+     }
+    }
+   ]
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "市场格局",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "自主品牌继续扩大领先优势，供应链协同效应显著。"
+     ],
+     "fact_refs": [
+      "F004"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "自主品牌继续扩大领先优势，供应链协同效应显著。",
+     "fact_ids": [
+      "F004"
+     ]
+    }
+   ],
+   "page_id": "p06",
+   "index": 6,
+   "image_slots": [
+    {
+     "slot_id": "p06-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p06-img1",
+      "page_id": "p06",
+      "slot_id": "p06-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "市场格局",
+      "context_sentences": [
+       "自主品牌继续扩大领先优势，供应链协同效应显著。"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "role": "closing",
+   "variant": "b",
+   "title": "小结与行动",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "2024年新能源汽车市场复盘",
+      "市场格局"
+     ]
+    }
+   ],
+   "units": [],
+   "page_id": "p07",
+   "index": 7
+  }
+ ],
+ "warnings": [
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p02-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  },
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p03-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  },
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p05-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  },
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p06-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  }
+ ],
+ "stats": {
+  "facts_total": 4,
+  "facts_numeric": 3,
+  "facts_qualitative": 1,
+  "pages_total": 7,
+  "views_total": 3,
+  "views_rendered": 3,
+  "supplement_section": false
+ }
+}

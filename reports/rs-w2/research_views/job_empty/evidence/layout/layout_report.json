@@ -1,0 +1,58 @@
+{
+ "schema": "rs.compose_report.v1",
+ "deck_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_empty.pptx",
+ "deck_sha256": "c55dc5a9494d73a7e5c6ffcc7d0720c4b76aaf6b8c578ae66a57655e944f66e1",
+ "pages": [
+  {
+   "mode": "cover_centered",
+   "overflow": [],
+   "placements": [],
+   "page_id": "p01",
+   "index": 1,
+   "role": "cover",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 462280
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "image_status": "FALLBACK_T4",
+   "page_id": "p02",
+   "index": 2,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "closing_actions",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "actions"
+    }
+   ],
+   "page_id": "p03",
+   "index": 3,
+   "role": "closing",
+   "variant": "b"
+  }
+ ],
+ "page_count": 3,
+ "theme": "ink",
+ "overflow": [],
+ "warnings": []
+}

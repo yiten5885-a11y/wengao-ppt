@@ -1,0 +1,111 @@
+{
+ "schema": "rs.compose_report.v1",
+ "deck_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_conflict.pptx",
+ "deck_sha256": "f446a728a42a56f397d4716bb7409920815904aa99e5e98cdef21493c5eb0795",
+ "pages": [
+  {
+   "mode": "cover_centered",
+   "overflow": [],
+   "placements": [],
+   "page_id": "p01",
+   "index": 1,
+   "role": "cover",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 462280
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "image_status": "FALLBACK_T4",
+   "page_id": "p02",
+   "index": 2,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 462280
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "image_status": "FALLBACK_T4",
+   "page_id": "p03",
+   "index": 3,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "section_number_rule",
+   "overflow": [],
+   "placements": [],
+   "page_id": "p04",
+   "index": 4,
+   "role": "section",
+   "variant": "a"
+  },
+  {
+   "mode": "compare_chart",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "chart",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 7390176,
+      "h": 3840480
+     }
+    }
+   ],
+   "page_id": "p05",
+   "index": 5,
+   "role": "compare",
+   "variant": "b"
+  },
+  {
+   "mode": "closing_actions",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "actions"
+    }
+   ],
+   "page_id": "p06",
+   "index": 6,
+   "role": "closing",
+   "variant": "b"
+  }
+ ],
+ "page_count": 6,
+ "theme": "ink",
+ "overflow": [],
+ "warnings": []
+}

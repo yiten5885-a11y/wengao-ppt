@@ -1,0 +1,49 @@
+{
+  "schema": "rs.research_views_verification.v1",
+  "results": [
+    {
+      "fixture": "conflict",
+      "bundle_id": "rb-fixture-sample-conflict",
+      "pages_in_plan": 6,
+      "views_total": 1,
+      "deck_path": "reports/rs-w2/research_views/bundle_conflict.pptx",
+      "check_pass": true,
+      "render_ok": null,
+      "pdf_path": "reports/rs-w2/research_views/conflict/bundle_conflict.pdf",
+      "png_count": 6
+    },
+    {
+      "fixture": "zh",
+      "bundle_id": "rb-fixture-sample-zh",
+      "pages_in_plan": 7,
+      "views_total": 3,
+      "deck_path": "reports/rs-w2/research_views/bundle_zh.pptx",
+      "check_pass": true,
+      "render_ok": null,
+      "pdf_path": "reports/rs-w2/research_views/zh/bundle_zh.pdf",
+      "png_count": 7
+    },
+    {
+      "fixture": "en",
+      "bundle_id": "rb-fixture-sample-en",
+      "pages_in_plan": 6,
+      "views_total": 1,
+      "deck_path": "reports/rs-w2/research_views/bundle_en.pptx",
+      "check_pass": true,
+      "render_ok": null,
+      "pdf_path": "reports/rs-w2/research_views/en/bundle_en.pdf",
+      "png_count": 6
+    },
+    {
+      "fixture": "empty",
+      "bundle_id": "rb-fixture-sample-empty",
+      "pages_in_plan": 3,
+      "views_total": 0,
+      "deck_path": "reports/rs-w2/research_views/bundle_empty.pptx",
+      "check_pass": true,
+      "render_ok": null,
+      "pdf_path": "reports/rs-w2/research_views/empty/bundle_empty.pdf",
+      "png_count": 3
+    }
+  ]
+}

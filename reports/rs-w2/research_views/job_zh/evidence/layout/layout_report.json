@@ -1,0 +1,128 @@
+{
+ "schema": "rs.compose_report.v1",
+ "deck_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_zh.pptx",
+ "deck_sha256": "eda909fa5a0dba7313aa61cf561cd8d86f0a570a2d1cb97dae1e40cf3eb0d92b",
+ "pages": [
+  {
+   "mode": "cover_centered",
+   "overflow": [],
+   "placements": [],
+   "page_id": "p01",
+   "index": 1,
+   "role": "cover",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 924560
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "image_status": "FALLBACK_T4",
+   "page_id": "p02",
+   "index": 2,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "compare_chart",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "chart",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 7390176,
+      "h": 3840480
+     }
+    }
+   ],
+   "page_id": "p03",
+   "index": 3,
+   "role": "compare",
+   "variant": "b"
+  },
+  {
+   "mode": "trend_line",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "chart"
+    }
+   ],
+   "page_id": "p04",
+   "index": 4,
+   "role": "trend",
+   "variant": "a"
+  },
+  {
+   "mode": "insight_left",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bignumber"
+    }
+   ],
+   "page_id": "p05",
+   "index": 5,
+   "role": "insight",
+   "variant": "a"
+  },
+  {
+   "mode": "content_single",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "bullets",
+     "role": "body",
+     "rect": {
+      "x": 502920,
+      "y": 1078992,
+      "w": 11185848,
+      "h": 462280
+     },
+     "col_start": 0,
+     "col_span": 1,
+     "est_lines": 0,
+     "overflow": false
+    }
+   ],
+   "image_status": "FALLBACK_T4",
+   "page_id": "p06",
+   "index": 6,
+   "role": "content",
+   "variant": "a"
+  },
+  {
+   "mode": "closing_actions",
+   "overflow": [],
+   "placements": [
+    {
+     "kind": "actions"
+    }
+   ],
+   "page_id": "p07",
+   "index": 7,
+   "role": "closing",
+   "variant": "b"
+  }
+ ],
+ "page_count": 7,
+ "theme": "ink",
+ "overflow": [],
+ "warnings": []
+}

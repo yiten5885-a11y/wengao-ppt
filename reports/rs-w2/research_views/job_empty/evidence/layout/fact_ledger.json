@@ -1,0 +1,23 @@
+[
+ {
+  "fact_id": "F001",
+  "subject": "空检索兜底演示",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 3,
+   "line_end": 3,
+   "heading": "空检索兜底演示",
+   "locator": "line 3-3 / 空检索兜底演示",
+   "unit_id": "u1-0",
+   "sentence": "本材料不含有效联网检索数据，系统应平滑降级，仅呈现材料本身事实。"
+  }
+ }
+]

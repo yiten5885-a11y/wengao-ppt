@@ -4,7 +4,7 @@ W4（owner）在搭管线与新界面时实测发现的契约分歧与缺陷。�
 **改契约只有一条路——在 reports/handoff/ 提交变更请求单，由 W4 决定**。
 本文即请求单与缺陷报告的汇总。
 
-## CR-01（给 W2）：compose_deck 的 resolutions 参数形状
+## CR-01（给 W2）：compose_deck 的 resolutions 参数形状【已对齐/已修复】
 
 - **冻结契约 C6**：`resolve_scenes(...) -> list[SceneResolution]`；
   `compose_deck(plan, resolutions, theme, out_path, place_image, emit)`——resolutions
@@ -13,10 +13,11 @@ W4（owner）在搭管线与新界面时实测发现的契约分歧与缺陷。�
   按 `{scene_id: SceneResolution}` 消费；传 list 会 `AttributeError: 'list' object has no attribute 'get'`。
 - **W4 临时处置**：`pipeline/modules.py::_adapt_compose_deck` 按被调函数签名标注
   自动转换（list ↔ dict），两条路都能跑。
-- **请求**：W2 在 M3 前把 `compose_deck` 改为接受 `list[SceneResolution]`（内部自行建
-  dict 索引），或书面确认 dict 形状并提交契约变更请求单。适配层在 W2 对齐后自动失效。
+- **处理状态（2026-10-24 已完成）**：W2 已将 `compose_deck` 签名更新为 `resolutions: list | None`，
+  内部直接兼容消费 `list[SceneResolution]`（自动建索引）与兼容旧 dict；`_adapt_compose_deck` 自动失效直连。
+  单测 `tests/test_w2_planner_builders.py::test_compose_deck_accepts_list_resolutions_contract_c6` 已通过。
 
-## BUG-W2-01（给 W2，阻塞级）：check_layout 在 measure.wrap_lines 死循环
+## BUG-W2-01（给 W2，阻塞级）：check_layout 在 measure.wrap_lines 死循环【已修复】
 
 - **现象**：对含特定文本块（演示：bignumber "46.8%" + bullets）的候选 PPTX 调用
   `wengao_ppt.layout.checks.check_layout`，线程永久卡在
@@ -25,8 +26,10 @@ W4（owner）在搭管线与新界面时实测发现的契约分歧与缺陷。�
 - **影响**：任何调用方（管线/runner 门禁）都会挂起。
 - **W4 临时处置**：`pipeline/modules.py::run_check` 加看门狗（layout 120s，其余 60–90s），
   超时记 FAILED 并保留现场——**不会无限等待，也不会假装通过**。
-- **请求**：W2 修 wrap_lines 的循环终止条件（建议：按字符宽度逐步推进 + 最大迭代上限），
-  修好后看门狗自然不再触发。
+- **处理状态（2026-10-24 已完成）**：根因修毕：在 `layout/measure.py::wrap_lines` 中对数字 token
+  保护逻辑加上单调前进量保证（`j = max(j, i + 1)` 且 `assert j > i` / `j <= i` 兜底），
+  并增加 `max_iterations` 迭代安全守卫。
+  回归用例 `tests/test_w2_layout_engine.py::test_wrap_lines_terminates_on_bignumber_percent_and_bullets` 已覆盖通过。
 
 ## 接口备忘（给 W1，M1/M2 交付时对照）
 

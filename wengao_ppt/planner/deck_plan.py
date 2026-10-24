@@ -66,25 +66,38 @@ def collect_grounded_numbers(facts: list[dict], bundle: dict | None) -> set[str]
     b = bundle or {}
     for f in b.get("facts") or []:
         v = f.get("value")
-        if v is None:
-            continue
-        allowed.add(str(v))
-        allowed.add(f"{v:g}")
-    # views 的数值由 W3 产生并经 verify_bundle 重算；引用其值视为已溯源
+        if v is not None:
+            allowed.add(str(v))
+            allowed.add(f"{v:g}")
+        if f.get("period"):
+            allowed.add(str(f["period"]).strip())
+    # views 的数值由 W3 产生并经 verify_bundle 重算；引用其值与周期视为已溯源
     for v in b.get("views") or []:
+        if v.get("period"):
+            allowed.add(str(v["period"]).strip())
         for s in v.get("series") or []:
             for pt in s.get("points") or []:
                 if pt.get("value") is not None:
                     allowed.add(str(pt["value"]))
                     allowed.add(f"{pt['value']:g}")
+                if pt.get("x") is not None:
+                    allowed.add(str(pt["x"]).strip())
+        # view title 与 footnote 中的数字同样可信（来自 research bundle）
+        if v.get("title"):
+            for m in re.finditer(r"\d+(?:\.\d+)?", v["title"]):
+                allowed.add(m.group(0).strip())
+        if v.get("footnote", {}).get("text"):
+            for m in re.finditer(r"\d+(?:\.\d+)?", v["footnote"]["text"]):
+                allowed.add(m.group(0).strip())
     return allowed
 
 
-#: 非数据数字：ISO 日期、独立年份、分页序号"（1/3）"——结构性文本，不溯源
+#: 非数据数字：ISO 日期、独立年份/带年份/季度、分页序号"（1/3）"——结构性文本，不溯源
 _NON_DATA_PATTERNS = (
-    re.compile(r"\d{4}-\d{2}-\d{2}"),      # ISO 日期
-    re.compile(r"（\d+/\d+）"),             # 同节分页序号
-    re.compile(r"\b(19|20)\d{2}\b"),       # 独立年份
+    re.compile(r"\d{4}-\d{2}-\d{2}"),           # ISO 日期
+    re.compile(r"（\d+/\d+）"),                  # 同节分页序号
+    re.compile(r"(19|20)\d{2}(?:Q[1-4])?年?"),  # 年份（含季度/中文"年"）
+    re.compile(r"\bQ[1-4]\b"),                  # 季度标记 Q1-Q4
 )
 
 
@@ -274,14 +287,21 @@ def _view_page_spec(view: dict, decisions: dict | None) -> dict | None:
         if not series or not series[0].get("points"):
             return None
         pts = series[0]["points"]
+        cats = [str(p.get("x")) for p in pts]
+        sdict = {}
+        for s in series:
+            lab = str(s.get("label") or "值")
+            pts_s = s.get("points") or []
+            sdict[lab] = [p.get("value") for p in pts_s]
         block = {"kind": "chart", "chart_kind": "bar",
-                 "categories": [str(p.get("x")) for p in pts],
-                 "series": {labels[0] if labels else "值":
-                            [p.get("value") for p in pts]},
+                 "categories": cats,
+                 "series": sdict,
+                 "legend": len(sdict) > 1,
                  "highlight_series": None, "fact_refs": fact_refs,
                  "h_emu": int(3.0 * tokens.EMU_PER_IN)}
         return {"role": "compare", "variant": "b", "title": title,
                 "blocks": [block], "footnote": footnote,
+                "conflicts": conflicts,
                 "research_view_ref": view.get("view_id")}
     if kind == "trend":
         pts_all = [(s.get("label") or "series", s.get("points") or []) for s in series]

@@ -661,6 +661,31 @@ def _image_split(slide, page, ctx, variant):
     return rep
 
 
+def _image_bleed_mask(slide, page, ctx, variant):
+    """图片页型变体 c：全出血带蒙版（Full Bleed with Mask）。"""
+    from ..media.mask import apply_bleed_mask
+    regions = engine.page_regions(has_footnote=True)
+    g = regions.grid
+    img_rect, asset, status = _image_rect_and_asset(page, ctx, regions.content)
+    if asset is not None:
+        full_rect = engine.Rect(0, 0, tokens.CANVAS_W_EMU, tokens.CANVAS_H_EMU)
+        ctx.place_image(slide, full_rect, asset, fit="cover", alt_text=_alt_for(page, ctx))
+        # 叠加半透明暗场蒙版（55% 遮罩保护正文与标题对比度）
+        apply_bleed_mask(slide, full_rect, kind="solid_dark", alpha_pct=55)
+
+        # 文字排版：排在安全区域（反白字高对比）
+        t_r = g.rect(0, 10, regions.content.y, regions.content.h)
+        rep = _render_blocks(slide, page.get("blocks") or [], t_r, g, ctx, allow_two_col=False)
+        rep["mode"] = "image_bleed_mask"
+        rep["image_status"] = status
+        rep["placements"] = []
+    else:
+        rep = _t4_text(slide, page, ctx, regions, g)
+        rep["image_status"] = status
+    _footnote_band(slide, page, ctx, regions, _image_note(page, rep.get("image_status", "NO_SLOT")))
+    return rep
+
+
 def _t4_text(slide, page, ctx, regions, g) -> dict:
     """T4 无图版式：文字重排占满内容区，不留空洞、不放占位图。"""
     rep = _render_blocks(slide, page.get("blocks") or [], regions.content, g, ctx,
@@ -899,7 +924,7 @@ VARIANTS: dict[str, dict[str, object]] = {
     "compare":  {"a": _compare_cards, "b": _compare_chart},
     "trend":    {"a": _trend_line, "b": _trend_column_note},
     "insight":  {"a": _insight_left, "b": _insight_center},
-    "image":    {"a": _image_full, "b": _image_split},
+    "image":    {"a": _image_full, "b": _image_split, "c": _image_bleed_mask},
     "process":  {"a": _process_h, "b": _process_v},
     "timeline": {"a": _timeline_h, "b": _timeline_v},
     "table":    {"a": _table_full, "b": _table_note},
@@ -918,10 +943,18 @@ ROLE_ALIAS = {
 class TemplateContext:
     """模板上下文：主题、图片解析结果与注入的 place_image。"""
 
-    def __init__(self, theme: tokens.Theme, resolutions: dict | None = None,
+    def __init__(self, theme: tokens.Theme, resolutions: list | dict | None = None,
                  place_image=None, emit=None):
         self.theme = theme
-        self.resolutions = resolutions or {}
+        if isinstance(resolutions, list):
+            self.resolutions = {
+                r.get("scene_id"): r for r in resolutions
+                if isinstance(r, dict) and r.get("scene_id")
+            }
+        elif isinstance(resolutions, dict):
+            self.resolutions = dict(resolutions)
+        else:
+            self.resolutions = {}
         self._place_image = place_image
         self.emit = emit
 

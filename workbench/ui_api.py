@@ -305,6 +305,9 @@ def dispatch_get(handler, path: str, q: dict) -> bool:
     m = _match(r"/api/jobs/([A-Za-z0-9-]+)/checks", path)
     if m:
         return handler._send(200, checks_summary(root / "jobs" / m.group(1)))
+    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/objects", path)
+    if m:
+        return handler._send(200, _job_objects_summary(root / "jobs" / m.group(1)))
     m = _match(r"/api/jobs/([A-Za-z0-9-]+)/decisions", path)
     if m:
         return handler._send(200, _decisions_state(root / "jobs" / m.group(1)))
@@ -365,6 +368,29 @@ def dispatch_post(handler, path: str) -> bool:
     m = _match(r"/api/jobs/([A-Za-z0-9-]+)/export", path)
     if m:
         return handler._send(200, _export(root, m.group(1), body))
+
+    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/cancel", path)
+    if m:
+        jid = m.group(1)
+        jdir = root / "jobs" / jid
+        if jdir.is_dir():
+            (jdir / "cancel.request").write_text("cancel requested\n", encoding="utf-8")
+        try:
+            srv = _server_module()
+            if hasattr(srv, "MAKE"):
+                srv.MAKE.cancel(jid)
+        except Exception:
+            pass
+        return handler._send(200, {"status": "CANCELLED", "job_id": jid})
+
+    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/retry", path)
+    if m:
+        jid = m.group(1)
+        jdir = root / "jobs" / jid
+        req_cf = jdir / "cancel.request"
+        if req_cf.is_file():
+            req_cf.unlink(missing_ok=True)
+        return handler._send(200, {"status": "RETRY_TRIGGERED", "job_id": jid})
     return False
 
 
@@ -539,3 +565,56 @@ def _export(root: Path, job_id: str, body: dict) -> dict:
         p.write_text(json.dumps(attr, ensure_ascii=False, indent=2), encoding="utf-8")
         result["attribution"] = attr
     return result
+
+
+def _job_objects_summary(job_dir: Path) -> dict:
+    """提取任务候选/基线 PPTX 中逐页的对象清单供新工作台对象级编辑面板使用。"""
+    cand = job_dir / "candidate" / "deck.pptx"
+    base = job_dir / "baseline.pptx"
+    target = cand if cand.is_file() else (base if base.is_file() else None)
+    if not target or not target.is_file():
+        pts = list(job_dir.glob("*.pptx")) + list((job_dir / "candidate").glob("*.pptx"))
+        target = pts[0] if pts else None
+    if not target:
+        return {"job_id": job_dir.name, "pages": [], "editable_objects": 0, "total_objects": 0}
+
+    from pptx import Presentation
+    try:
+        prs = Presentation(str(target))
+    except Exception as e:
+        return {"job_id": job_dir.name, "error": str(e), "pages": []}
+
+    pages = []
+    editable_n = 0
+    total_n = 0
+    for idx, slide in enumerate(prs.slides, start=1):
+        objs = []
+        for shp in slide.shapes:
+            total_n += 1
+            fields = []
+            txt = ""
+            if shp.has_text_frame and shp.text_frame.text.strip():
+                fields.append("text")
+                txt = shp.text_frame.text.strip()
+                editable_n += 1
+            elif getattr(shp, "has_table", False):
+                fields.append("table")
+                editable_n += 1
+            item = {
+                "shape_id": shp.shape_id,
+                "name": shp.name or f"Shape {shp.shape_id}",
+                "type": str(shp.shape_type or ""),
+                "text": txt,
+                "fields": fields,
+            }
+            objs.append(item)
+        pages.append({"page": idx, "objects": objs})
+
+    return {
+        "job_id": job_dir.name,
+        "source": target.name,
+        "pages": pages,
+        "editable_objects": editable_n,
+        "total_objects": total_n,
+    }
+

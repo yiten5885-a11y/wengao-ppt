@@ -106,6 +106,12 @@ def page_spec(role: str, variant: str, index: int, title: str) -> dict:
                            "rows": [["营业收入", "3.2 亿元", "合并报表"],
                                     ["同比增速", "18%", "同比"],
                                     ["客户数", "46 家", "签约口径"]]}]
+        if variant == "b":
+            spec["blocks"].append({"kind": "bullets", "role": "caption",
+                                   "items": ["口径注释：",
+                                             "1. 营业收入以审计后合并报表为准；",
+                                             "2. 同比增速剔除汇率与口径调整影响；",
+                                             "3. 签约客户统计截至季度末在保合同。"]})
     elif role == "quote":
         spec["blocks"] = [{"kind": "quote", "text": "事实只有一种，就是把话说实。"}]
         spec["footnote"] = {"text": "来源：用户材料"}

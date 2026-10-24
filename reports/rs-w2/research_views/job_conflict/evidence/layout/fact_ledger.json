@@ -1,0 +1,43 @@
+[
+ {
+  "fact_id": "F001",
+  "subject": "Company A 经营概述",
+  "raw_value_text": "35.0%",
+  "value": "35.0",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 3,
+   "line_end": 3,
+   "heading": "Company A 经营概述",
+   "locator": "line 3-3 / Company A 经营概述",
+   "unit_id": "u1-0",
+   "sentence": "Company A 在企业云基础设施领域的市场份额达到了35.0%，领先竞争对手。"
+  }
+ },
+ {
+  "fact_id": "F002",
+  "subject": "核心战略",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 6,
+   "line_end": 6,
+   "heading": "核心战略",
+   "locator": "line 6-6 / 核心战略",
+   "unit_id": "u2-0",
+   "sentence": "持续加大研发投入，推动产品智能化升级。"
+  }
+ }
+]

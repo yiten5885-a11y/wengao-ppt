@@ -2,7 +2,7 @@
  "schema": "rs.check_report.v1",
  "check": "check_layout",
  "pptx_path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck.pptx",
- "pptx_sha256": "952bb12ad5de18e5f15ec3aa71517fd017fc5151e1d2607d56eb5c69280ecd5f",
+ "pptx_sha256": "ad077234eea14c5160defc5ea946a7a5c4d72ef59963acc470ef30df742a5e92",
  "page_count": 5,
  "size_rules_source": "policy:layout_hard_gate_policy.json",
  "size_rules": {

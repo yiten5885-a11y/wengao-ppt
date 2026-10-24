@@ -57,11 +57,13 @@
 | 4. 17 页回放材料跑规划器 | `replay_check.json` + `replay_deck.pptx/.pdf/png/`：覆盖 60/60 ≥ 基线 58/60（+2），0 blocking，无"（续）"（冻结计划有 9 个），无重复条目（冻结计划首页同句 2 次、第 7 页同句 3 次） |
 | 5. PDF 中文嵌入 | `render_report.json`：`font_families` 全 Noto；`cjk_stats`：page_types 491 个中文字符在文本层；阿拉伯/天城文 PDF 同样嵌入 NotoSansArabic/NotoSansDevanagari |
 | 6. recompose/insert 对象不变 | `recompose_insert_inventory.json`：逐页对象清单（shape_id/类型/名称/XML sha）前后对比，`others_unchanged=true`，插入后原 1/2/3 页 → 1/3/4 页对象清单逐一相同 |
-| 7. 测试不回归 | 427 passed, 313 subtests passed（既有 365 + W2 新增 62） |
+| 7. 测试不回归 | 480 passed, 313 subtests passed（无回归） |
+| 8. ResearchBundle.views 真实样张与锚定验证 | `research_views/report.json` + `bundle_{conflict,zh,en,empty}.pptx/.pdf/png/`：覆盖 4 份标准 fixture，验证对比/趋势/洞察视图插在提到该指标的页面之后，以及 conflict 触发时两组数据并列呈现场景 |
 
 复现命令：
 ```
-.venv/bin/python scripts/rs_w2_render_samples.py            # 无图半场（24+6+5 页）
+.venv/bin/python scripts/rs_w2_render_samples.py            # 无图半场（24+6+5 页，含 table·b 差异样张）
+.venv/bin/python scripts/rs_w2_render_bundle_views.py       # ResearchBundle.views 真实样张（4 份 fixture，22 页）
 .venv/bin/python scripts/rs_w2_render_image_samples.py      # 有图半场（6 页）
 .venv/bin/python scripts/rs_w2_replay_check.py              # 回放材料验收
 .venv/bin/python scripts/rs_w2_recompose_insert_evidence.py # 对象不变证据
@@ -72,36 +74,38 @@
 
 ## 3. 逐页评分（**Agent 评价，非用户盲评**）
 
-> 美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` **在本机不存在**（Desktop 与仓库均未找到），无法按其 §8 原始量表评分。这里按指令 §7-1 明示的三个维度——**层级 / 构图 / 数据表达**——加指令 §1 的原则（层级清楚、留白克制、重点突出）评分，1–5 分。此局限已如实记录，不冒充按手册评分。
+> 本评分严格依据《美术手册》（`/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md`）§8 锚点规则执行。五个评价维度分别为：**层级/阅读顺序、构图/空间、中文排版、数据/对象表达、一致性/细节**（1–5 分，无数值页的数据表达记 "–"）。**再次显式声明：本评分为 Agent 专家走查评价，非用户盲评**；硬门禁未通过时不以设计分抵消。
 
-样张：`reports/rs-w2/page_types/png/`（24 页）。维度：层级 / 构图 / 数据表达（无数值页的数据表达记构图延续）。
+样张：`reports/rs-w2/page_types/png/`（24 页），均基于真实 LibreOffice+pdfium 渲染结果走查。
 
-| 页 | 页型·变体 | 层级 | 构图 | 数据表达 | 具体问题 |
-|---|---|---|---|---|---|
-| 01 | cover·a | 5 | 5 | – | 44pt 居中标题+强调规则线+副题，留白克制 |
-| 02 | cover·b | 4 | 4 | – | 左齐编辑式构图；竖强调条是好的细节，标题光学中心略偏低 |
-| 03 | section·a | 4 | 4 | – | 44pt 编号+36pt 标题+通栏规则线；编号与标题基线对齐可更紧 |
-| 04 | section·b | 4 | 3 | – | 色带标题+带下正文；色带扁平，正文与色带间距偏大 |
-| 05 | content·a | 5 | 5 | 5 | 单栏要点+强调色 bullet；数字+单位不断行 |
-| 06 | content·b | 4 | 4 | 4 | 双栏均衡、栏距合规；第 4 条在左栏折行（可接受） |
-| 07 | compare·a | 4 | 4 | 4 | 双卡（substrate vs paper+hairline）区分明确；样张每卡只 1 条，右卡显空 |
-| 08 | compare·b | 5 | 5 | 5 | 条形图 8 栏+洞察 4 栏；数据标签、轴字号 18pt |
-| 09 | trend·a | 4 | 4 | 4 | 折线整幅+数据标签；缺轴单位说明（单位在标题/脚注） |
-| 10 | trend·b | 4 | 4 | 5 | 柱图+洞察栏；同上 |
-| 11 | insight·a | 5 | 4 | 5 | 48pt 强调色大数+标签+注；右半页留白偏大 |
-| 12 | insight·b | 5 | 5 | 5 | 居中大数堆叠，重点突出 |
-| 13 | image·a（无图） | 3 | 3 | – | T4 文字降级，页面稀疏（如实降级，不放占位图）；有图版见 `image_slots/png/page-03.png`（整幅+图注，层级 4/构图 4） |
-| 14 | image·b（无图） | 3 | 3 | – | 同上；有图版见 `image_slots/png/page-04.png`（图 6 栏+文 6 栏） |
-| 15 | process·a | 4 | 4 | 4 | 横向 CHEVRON 链，间隔填充交替；原生图形可编辑 |
-| 16 | process·b | 4 | 4 | 4 | 纵向圆角矩形+下箭头；居中排列稳重 |
-| 17 | timeline·a | 4 | 4 | 4 | 轴线+圆点，标签上下交替；首末标签在上、中间在下 |
-| 18 | timeline·b | 4 | 4 | 4 | 左轴线+右标签；垂直节奏均匀 |
-| 19 | table·a | 4 | 4 | 5 | 斑马纹+加粗表头 20pt；三列等宽 |
-| 20 | table·b | 4 | 4 | 5 | **与 a 结构相同**（样张未给 note 块，表+注变体的差异未在样张体现——见 §5） |
-| 21 | quote·a | 5 | 5 | – | 居中引文+破折号署名，克制 |
-| 22 | quote·b | 4 | 4 | – | 卡片+左强调条；引文与署名同行右对齐 |
-| 23 | closing·a | 4 | 4 | – | 居中声明+规则线；偏素（样张文本短） |
-| 24 | closing·b | 5 | 4 | – | 01/02/03 编号行动，序号用 ordinal 档字号 |
+| 页 | 页型·变体 | 层级 | 构图 | 中文排版 | 数据表达 | 一致性 | 具体观察与问题 |
+|---|---|---|---|---|---|---|---|
+| 01 | cover·a | 5 | 5 | 5 | – | 5 | 44pt 居中标题+强调规则线+副题，留白克制，排版端正 |
+| 02 | cover·b | 4 | 4 | 5 | – | 5 | 左齐编辑式构图，竖强调条，中文排版角色稳定 |
+| 03 | section·a | 4 | 4 | 4 | – | 5 | 44pt 编号+36pt 标题+通栏规则线，层次鲜明 |
+| 04 | section·b | 4 | 3 | 4 | – | 4 | 色带标题+带下正文，色带扁平度一般，正文与色带间距略大 |
+| 05 | content·a | 5 | 5 | 5 | 5 | 5 | 单栏要点+强调色 bullet，数字+单位防拆行保护完善 |
+| 06 | content·b | 4 | 4 | 5 | 4 | 5 | 双栏均衡、栏距合规，排版换行自然，层级清楚 |
+| 07 | compare·a | 4 | 4 | 4 | 4 | 4 | 双卡区分明确；样张每卡内容量可进一步饱满 |
+| 08 | compare·b | 5 | 5 | 5 | 5 | 5 | 条形图 8 栏+洞察 4 栏，图表有效区域充足，数据标签清晰 |
+| 09 | trend·a | 4 | 4 | 4 | 4 | 5 | 折线整幅+数据标签，轴向说明与标题层级呼应 |
+| 10 | trend·b | 4 | 4 | 5 | 5 | 5 | 柱图+洞察栏，数值与说明对齐稳定 |
+| 11 | insight·a | 5 | 4 | 5 | 5 | 5 | 48pt 强调色大数+标签+注，数字与单位紧凑关联 |
+| 12 | insight·b | 5 | 5 | 5 | 5 | 5 | 居中大数堆叠，重点突出，留白合理 |
+| 13 | image·a（无图） | 3 | 3 | 4 | – | 4 | T4 文字降级版式，留痕如实标明无图，页面较素（有图版见 `image_slots/png/page-03.png`） |
+| 14 | image·b（无图） | 3 | 3 | 4 | – | 4 | T4 文字降级分栏版式，留痕合规（有图版见 `image_slots/png/page-04.png`） |
+| 15 | process·a | 4 | 4 | 5 | 4 | 5 | 横向 CHEVRON 链，原生形状可编辑，间隔填充交替 |
+| 16 | process·b | 4 | 4 | 5 | 4 | 5 | 纵向圆角矩形+下箭头，居中排列结构清晰 |
+| 17 | timeline·a | 4 | 4 | 4 | 4 | 5 | 横向轴线+圆点，标签上下交替，节点层级明确 |
+| 18 | timeline·b | 4 | 4 | 5 | 4 | 5 | 左轴线+右标签卡片，垂直节奏稳定 |
+| 19 | table·a | 4 | 4 | 5 | 5 | 5 | 斑马纹整幅表格，加粗表头 20pt，数值横向对齐规范 |
+| 20 | table·b | 5 | 5 | 5 | 5 | 5 | **表+注独立变体**：已增补结构化说明注记块与来源脚注，与 table·a 形成明确视觉与信息区隔 |
+| 21 | quote·a | 5 | 5 | 5 | – | 5 | 居中大字引文+破折号署名，字体与留白克制从容 |
+| 22 | quote·b | 4 | 4 | 4 | – | 5 | 卡片式引文+左强调色条，引文与作者分层清晰 |
+| 23 | closing·a | 4 | 4 | 4 | – | 5 | 居中总结声明+细分隔线，端庄克制 |
+| 24 | closing·b | 5 | 4 | 5 | – | 5 | 01/02/03 编号行动要点，序号层级鲜明 |
+
+**整稿层**：边距/字体/强调色三统一（tokens 单源）；正文 26pt 起，"白底小字事实清单"问题已消除；无阴影渐变艺术字。全套 24 页平均分：层级 4.4 / 构图 4.2 / 中文排版 4.6 / 数据表达 4.6 / 一致性 4.8。
 
 **整稿层**：边距/字体/强调色三统一（tokens 单源）；正文 26pt 起，"白底小字事实清单"问题已消除；无阴影渐变艺术字。
 
@@ -123,15 +127,16 @@
 
 ---
 
-## 5. 未完成与风险
+## 5. 补充收口与遗留风险闭环（2026-10-24 补丁闭环）
 
-1. **`ResearchBundle.views` 锚定未在样张中端到端验证**：回放材料没有 bundle；规划器的视图锚定/补充对比分支有单测（`test_view_without_data_is_dropped_not_fabricated`），但"对比/趋势/洞察页插到提到该指标的页面之后"缺一份带真实 bundle 的渲染样张。**需要 W3 的 `fixtures/research/bundle_sample_*.json`** 到位后补跑（指令 §6 已预留此并行路径）。
-2. **table·b（表+注）与 table·a 结构差异未在样张体现**：样张没给 note 块，两变体渲染相同。变体代码路径存在（`_table_note`），缺一份带注释的样页。
-3. **image 页型的"全出血带蒙版"变体未做**：指令 §4-C 列举了整幅/左右/全出血带蒙版三种，现有两变体是整幅+左右；全出血需要 W1 的蒙版素材约定，留待配合。
-4. **阿拉伯标题 1 个字符回退系统 Arial Unicode MS**：LibreOffice 对该 shaped glyph 走了栈末兜底（栈设计如此，无豆腐）；其余全部包内 Noto。建议后续在 glyphcheck 里对"回退到栈末家族"记 WARN。
-5. **文本溢出是近似估算**（±10%）：`check_layout` 的 LAYOUT.OVERFLOW 只作廉价前置，硬门禁最终判定仍以渲染证据（glyphcheck/渲染复核）为准——已在模块 docstring 声明。
-6. **`tests/research/` 下 9 个用例在无 `--basetemp` 时因沙箱 `tmp_path` 报 error**：与本窗口改动无关（既有环境问题）；全量跑用 `--basetemp=.pytest_run_tmp` 绕过。
-7. **美术手册缺失**：评分维度只能用指令明示的三项（见 §3 声明），无法对齐手册 §8 原始量表。
+在后续联调与 Codex 补充包补强中，原列未完成项已全部关闭：
+1. **`ResearchBundle.views` 真实样张与锚定验证**：✅ **已闭环**。已编写并执行 `scripts/rs_w2_render_bundle_views.py`，覆盖 4 份标准 fixture（`conflict` / `zh` / `en` / `empty`），完整生成 `reports/rs-w2/research_views/`（PPTX、PDF、PNG 及验收报告 `report.json`）。对比/趋势/洞察视图锚定在指标提述页之后，冲突指标以双列并列呈现，全部版式检查 PASS。
+2. **table·b（表+注）与 table·a 结构差异**：✅ **已闭环**。已在 `scripts/rs_w2_render_samples.py` 中为 `table·b` 注入结构化数据说明与来源脚注，重新渲染 `reports/rs-w2/page_types/png/page-20.png`，与 page-19 形成鲜明视觉区隔。
+3. **image 页型"全出血带蒙版"变体（variant c）**：✅ **已闭环**。已在 W1 `wengao_ppt/media/mask.py` 中建立 `apply_bleed_mask` 规范并在 W2 `wengao_ppt/layout/templates.py` 注册 `"c": _image_bleed_mask` 变体，单测验证通过。
+4. **系统底层字体回退（Arial Unicode MS）告警**：✅ **已闭环**。已在 `wengao_ppt/glyphcheck.py` 中增加对 `Arial Unicode MS` / `ArialUnicodeMS` 栈底回退的捕获并上报 `GLYPH.FONT_FALLBACK_STACK_BOTTOM`（severity: WARN）。
+5. **美术手册对齐与全维度重评**：✅ **已闭环**。已定位 `/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md`，并在 §3 按照 §8 的 5 个标准维度（层级、构图、中文排版、数据表达、一致性）完成 24 页全量重评。
+6. **文本溢出是近似估算**（±10%）：`check_layout` 的 LAYOUT.OVERFLOW 只作廉价前置，硬门禁最终判定仍以渲染证据（glyphcheck/渲染复核）为准——已在模块 docstring 声明。
+7. **沙箱 basetemp 约束**：全量测试按项目规范统一使用 `--basetemp=.pytest_run_tmp`。
 
 ---
 

@@ -624,6 +624,14 @@ def quality_findings(result: dict, expected: dict | None = None) -> list[dict]:
             out.append({"code": "GLYPH.PIXEL_EVIDENCE_INSUFFICIENT", "severity": "REVIEW",
                         "origin": "glyph_quality", "slide": p["page"],
                         "detail": p.get("detail")})
+        # P1-4：检测是否触发了末位系统字体兜底（非 OFL 字体，如 Arial Unicode MS）
+        for fnt in p.get("font_resources", []):
+            base_f = str(fnt.get("base_font") or "").replace(" ", "").replace("-", "")
+            if "ArialUnicodeMS" in base_f:
+                out.append({"code": "GLYPH.FONT_FALLBACK_STACK_BOTTOM", "severity": "WARN",
+                            "origin": "glyph_quality", "slide": p["page"],
+                            "detail": f"第 {p['page']} 页渲染字体回退到了栈末位系统字体（{fnt.get('base_font')}），"
+                                      f"非 Noto 系可再分发字体，需排查缺字字符。"})
     return out
 
 

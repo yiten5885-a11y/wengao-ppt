@@ -29,6 +29,17 @@
       WB.state.lang = order[(i + 1) % order.length];
       this.textContent = "语言：" + ({ auto: "自动", zh: "中文", en: "英文", ja: "日文", ar: "阿拉伯文", hi: "印地文", ru: "俄文" })[WB.state.lang];
     });
+    var themeBtn = document.getElementById("btn-theme");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", function () {
+        var themes = ["ink", "slate", "sand", "ocean"];
+        var names = { ink: "水墨", slate: "岩灰", sand: "暖沙", ocean: "沧海" };
+        var i = themes.indexOf(WB.state.theme);
+        WB.state.theme = themes[(i + 1) % themes.length];
+        this.textContent = "主题：" + (names[WB.state.theme] || WB.state.theme) + " (" + WB.state.theme + ")";
+        WB.toast("已选择主题：" + (names[WB.state.theme] || WB.state.theme));
+      });
+    }
     // 空状态示例
     Array.prototype.forEach.call(document.querySelectorAll("#empty-chips .chip"), function (el) {
       el.addEventListener("click", function () {
@@ -71,7 +82,7 @@
       body: {
         text: text,
         pages: 12,
-        theme: (WB.state.meta && WB.state.meta.theme_default) || undefined,
+        theme: WB.state.theme || ((WB.state.meta && WB.state.meta.theme_default) || "ink"),
         research: WB.state.researchOn,
         language: WB.state.lang,
       },
@@ -94,7 +105,7 @@
         WB.toast("已导入 " + file.name);
         WB.loadOverview();
         if (isPptx) {
-          WB.api("/api/make", { body: { source: d.path || d.name, theme: (WB.state.meta && WB.state.meta.theme_default) || undefined } })
+          WB.api("/api/make", { body: { source: d.path || d.name, theme: WB.state.theme || ((WB.state.meta && WB.state.meta.theme_default) || "ink") } })
             .then(function (r) {
               WB.toast("制作任务已创建");
               WB.loadOverview();
@@ -127,6 +138,33 @@
       WB.renderTimeline(); WB.renderPreview(); WB.renderJobHead(); WB.renderJobList();
       document.getElementById("msg").focus();
     });
+    var btnCancel = document.getElementById("btn-cancel");
+    if (btnCancel) {
+      btnCancel.addEventListener("click", function () {
+        if (!WB.state.currentJobId) return;
+        WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/cancel", { method: "POST" })
+          .then(function () {
+            WB.toast("已取消制作");
+            WB.state.running = false;
+            WB.state.terminal = "CANCELLED";
+            WB.renderJobHead();
+          }).catch(function (e) { WB.toast("取消请求失败：" + e.message); });
+      });
+    }
+    var btnRetry = document.getElementById("btn-retry");
+    if (btnRetry) {
+      btnRetry.addEventListener("click", function () {
+        if (!WB.state.currentJobId) return;
+        WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/retry", { method: "POST" })
+          .then(function () {
+            WB.toast("重试任务已提交");
+            WB.state.terminal = null;
+            WB.state.running = true;
+            WB.renderJobHead();
+            WB.loadOverview();
+          }).catch(function (e) { WB.toast("重试失败：" + e.message); });
+      });
+    }
     document.getElementById("btn-export").addEventListener("click", function () {
       if (!WB.state.currentJobId) { WB.toast("先选一份演示"); return; }
       WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/export", {
@@ -180,5 +218,31 @@
         t = t.parentNode;
       }
     });
+    // 事件委托：本页对象编辑
+    var po = document.getElementById("page-objects");
+    if (po) {
+      po.addEventListener("click", function (e) {
+        var t = e.target;
+        if (t && t.classList && t.classList.contains("btn-apply-obj")) {
+          var card = t.closest(".obj-card");
+          var shapeId = t.getAttribute("data-shape-id");
+          var textarea = card ? card.querySelector(".obj-edit-input") : null;
+          var newText = textarea ? textarea.value.trim() : "";
+          if (!WB.state.currentJobId) { WB.toast("请先选择演示任务"); return; }
+          WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
+            body: {
+              op: "local_edit",
+              edit: {
+                instruction: "修改对象 " + shapeId + " 文本为：" + newText,
+                targets: [{ slide: WB.state.currentPage || 1, shape_id: parseInt(shapeId, 10), text: newText }]
+              }
+            }
+          }).then(function (r) {
+            WB.toast("对象修改已提交处理");
+            WB.loadEvidence(WB.state.currentJobId);
+          }).catch(function (err) { WB.toast("修改失败：" + err.message); });
+        }
+      });
+    }
   };
 })();

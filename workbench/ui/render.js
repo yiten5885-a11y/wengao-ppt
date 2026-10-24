@@ -102,6 +102,21 @@
     }
     if (j.theme_name) parts.push(j.theme_name);
     sub.textContent = parts.join(" · ") || "进行中";
+
+    var btnCancel = document.getElementById("btn-cancel");
+    var btnRetry = document.getElementById("btn-retry");
+    if (btnCancel && btnRetry) {
+      if (st.running) {
+        btnCancel.hidden = false;
+        btnRetry.hidden = true;
+      } else if (st.terminal === "FAILED" || st.terminal === "BLOCKED" || st.terminal === "CANCELLED") {
+        btnCancel.hidden = true;
+        btnRetry.hidden = false;
+      } else {
+        btnCancel.hidden = true;
+        btnRetry.hidden = true;
+      }
+    }
   };
 
   WB.renderTimeline = function () {
@@ -327,10 +342,11 @@
     Array.prototype.forEach.call(thumbs.querySelectorAll(".thumb"), function (el) {
       el.addEventListener("click", function () {
         st.currentPage = parseInt(el.getAttribute("data-page"), 10);
-        WB.renderPreview(); WB.renderPageCheck();
+        WB.renderPreview(); WB.renderPageCheck(); WB.renderPageObjects();
       });
     });
     WB.renderPageCheck();
+    WB.renderPageObjects();
   };
 
   WB.renderPageCheck = function () {
@@ -348,5 +364,45 @@
       return '<span class="k">' + WB.esc(r.label) + "</span><span>" +
         WB.esc(r.reason || "") + "</span>" + pill;
     }).join("");
+  };
+  WB.renderPageObjects = function () {
+    var st = WB.state;
+    var box = document.getElementById("page-objects-list");
+    var countEl = document.getElementById("page-objects-count");
+    if (!box) return;
+    var curPage = st.currentPage || 1;
+    var d = st.objects;
+    if (!d || !d.pages || !d.pages.length) {
+      box.innerHTML = '<div class="hint">当前演示未解析出对象或正在读取…</div>';
+      if (countEl) countEl.textContent = "0 个对象";
+      return;
+    }
+    var pageData = d.pages.filter(function (p) { return p.page === curPage; })[0];
+    var objs = (pageData && pageData.objects) || [];
+    if (countEl) countEl.textContent = objs.length + " 个对象";
+    if (!objs.length) {
+      box.innerHTML = '<div class="hint">第 ' + curPage + ' 页没有可编辑的对象。</div>';
+      return;
+    }
+    var html = "";
+    objs.forEach(function (obj) {
+      var canEdit = obj.fields && obj.fields.length > 0;
+      html += '<div class="obj-card" data-shape-id="' + WB.esc(obj.shape_id) + '">' +
+        '<div class="obj-card-head">' +
+        '<span class="obj-card-name">' + WB.esc(obj.name) + '</span>' +
+        '<span class="obj-card-type">' + WB.esc(obj.type ? obj.type.replace(/^.*_/, "") : "形状") + '</span>' +
+        '</div>' +
+        '<div class="obj-card-body">';
+      if (canEdit) {
+        html += '<textarea rows="2" class="obj-edit-input">' + WB.esc(obj.text || "") + '</textarea>' +
+          '<div class="obj-card-actions">' +
+          '<button type="button" class="btn btn-ghost sm btn-apply-obj" data-shape-id="' + WB.esc(obj.shape_id) + '">保存修改</button>' +
+          '</div>';
+      } else {
+        html += '<span class="hint">该对象为图形元素，暂不支持直接修改文本。</span>';
+      }
+      html += '</div></div>';
+    });
+    box.innerHTML = html;
   };
 })();

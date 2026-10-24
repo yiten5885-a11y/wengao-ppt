@@ -1,0 +1,112 @@
+{
+ "schema": "rs.deck_plan.v1",
+ "deck_id": "dp-4377123164743",
+ "language": "zh",
+ "mode": "generate",
+ "job_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/job_empty",
+ "pages": [
+  {
+   "role": "cover",
+   "variant": "a",
+   "title": "空检索兜底演示",
+   "blocks": [
+    {
+     "kind": "text",
+     "text": "稳稿 PPT"
+    }
+   ],
+   "units": [],
+   "page_id": "p01",
+   "index": 1
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "空检索兜底演示",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "本材料不含有效联网检索数据，系统应平滑降级，仅呈现材料本身事实。"
+     ],
+     "fact_refs": [
+      "F001"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "本材料不含有效联网检索数据，系统应平滑降级，仅呈现材料本身事实。",
+     "fact_ids": [
+      "F001"
+     ]
+    }
+   ],
+   "page_id": "p02",
+   "index": 2,
+   "image_slots": [
+    {
+     "slot_id": "p02-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p02-img1",
+      "page_id": "p02",
+      "slot_id": "p02-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "空检索兜底演示",
+      "context_sentences": [
+       "本材料不含有效联网检索数据，系统应平滑降级，仅呈现材料本身事实。"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "role": "closing",
+   "variant": "b",
+   "title": "小结与行动",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "空检索兜底演示"
+     ]
+    }
+   ],
+   "units": [],
+   "page_id": "p03",
+   "index": 3
+  }
+ ],
+ "warnings": [
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p02-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  }
+ ],
+ "stats": {
+  "facts_total": 1,
+  "facts_numeric": 0,
+  "facts_qualitative": 1,
+  "pages_total": 3,
+  "views_total": 0,
+  "views_rendered": 0,
+  "supplement_section": false
+ }
+}

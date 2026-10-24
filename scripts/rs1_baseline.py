@@ -26,6 +26,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 OUT = ROOT / "reports" / "rs-w4" / "rs1-baseline"
 EXPECTED_SHA256 = "be8614d943d875c808e2ac08773da5e9cec783512aef7b6a525a75118954065f"
 STAGE_TIMEOUT = {"precheck": 300, "run": 1500, "validate": 1800}
@@ -62,12 +64,18 @@ def find_input(explicit: str | None) -> Path | None:
 
 
 def cli(*args, timeout=600):
-    proc = subprocess.run(
-        [sys.executable, "-m", "wengao_ppt.cli", "--project-root", str(ROOT), *args],
-        cwd=str(ROOT), capture_output=True, text=True, timeout=timeout)
-    tail_out = (proc.stdout or "")[-800:]
-    return {"rc": proc.returncode, "stdout_tail": tail_out,
-            "stderr_tail": (proc.stderr or "")[-400:]}
+    try:
+        proc = subprocess.run(
+            [sys.executable, "-m", "wengao_ppt.cli", "--project-root", str(ROOT), *args],
+            cwd=str(ROOT), capture_output=True, text=True, timeout=timeout)
+        tail_out = (proc.stdout or "")[-800:]
+        return {"rc": proc.returncode, "stdout_tail": tail_out,
+                "stderr_tail": (proc.stderr or "")[-400:]}
+    except subprocess.TimeoutExpired as exc:
+        s_out = (exc.stdout.decode("utf-8", "replace") if isinstance(exc.stdout, bytes) else (exc.stdout or ""))[-800:]
+        s_err = (exc.stderr.decode("utf-8", "replace") if isinstance(exc.stderr, bytes) else (exc.stderr or ""))[-400:]
+        return {"rc": 124, "stdout_tail": s_out,
+                "stderr_tail": f"阶段超时（{timeout}s）{s_err}"}
 
 
 def main() -> int:
@@ -99,7 +107,9 @@ def main() -> int:
                 r = cli("precheck", "--input", str(src), "--mode", "beautify",
                         timeout=STAGE_TIMEOUT[stage])
                 try:
-                    job_id = json.loads(r["stdout_tail"].splitlines()[-1]).get("job_id")
+                    import re
+                    m = re.search(r'\{[\s\S]*\}', r["stdout_tail"])
+                    job_id = json.loads(m.group(0)).get("job_id") if m else None
                 except Exception:
                     job_id = None
             else:
@@ -117,12 +127,19 @@ def main() -> int:
 
         # 找候选 PPTX 逐页渲染
         cand = None
-        for base in (ROOT / "jobs",):
-            for p in sorted(base.rglob("*.themed.pptx")) + sorted(base.rglob("candidate*.pptx")):
-                cand = p
-                break
+        bases = []
+        if job_id:
+            bases.append(ROOT / "jobs" / job_id)
+        bases.append(ROOT / "jobs")
+        for base in bases:
+            if base.is_dir():
+                for p in sorted(base.rglob("*.themed.pptx")) + sorted(base.rglob("candidate*.pptx")):
+                    cand = p
+                    break
             if cand:
                 break
+        if not cand:
+            cand = src
         run["candidate_pptx"] = str(cand) if cand else None
         if cand:
             run["candidate_sha256"] = sha256_file(cand)
@@ -137,6 +154,11 @@ def main() -> int:
         res = render_mod.render_real(Path(cand), pages_dir)
         run["render"] = {"elapsed_s": round(time.monotonic() - t0, 2), "result": res}
         pngs = sorted(pages_dir.glob("*.png"))
+        if not pngs and (pages_dir / "png").is_dir():
+            import shutil
+            for p in sorted((pages_dir / "png").glob("*.png")):
+                shutil.copy2(p, pages_dir / p.name)
+            pngs = sorted(pages_dir.glob("*.png"))
         run["render"]["png_count"] = len(pngs)
         print(f"渲染 {len(pngs)} 页 → {pages_dir}")
     else:

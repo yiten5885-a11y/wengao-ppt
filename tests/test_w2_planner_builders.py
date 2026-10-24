@@ -439,3 +439,97 @@ def test_check_layout_flags_picture_without_alt(tmp_path):
     prs.save(str(out))
     chk = checks.check_layout(str(out))
     assert any(f["code"] == "LAYOUT.IMAGE_NO_ALT" for f in chk["findings"])
+
+
+def test_compose_deck_accepts_list_resolutions_contract_c6(tmp_path):
+    """P0-1 契约对齐：compose_deck 必须能直接接收 list[SceneResolution]，无需适配层。"""
+    from wengao_ppt.layout import compose, checks
+    img = tmp_path / "c6_img.png"
+    _png_bytes(img)
+    resolutions_list = [
+        {
+            "schema": "rs.scene_resolution.v1",
+            "scene_id": "s_c6",
+            "status": "RESOLVED_T2",
+            "asset": {
+                "path": str(img),
+                "sha256": "0" * 64,
+                "attribution_text": "C6 直连测试图",
+                "provider": "pexels",
+            },
+        }
+    ]
+    plan = {
+        "schema": "rs.deck_plan.v1",
+        "deck_id": "deck-c6-test",
+        "language": "zh",
+        "pages": [
+            {
+                "page_id": "p1",
+                "index": 1,
+                "role": "image",
+                "variant": "a",
+                "title": "直连测试页",
+                "blocks": [{"kind": "text", "text": "图注文字"}],
+                "image_slots": [{"slot_id": "slot_c6", "scene": {"scene_id": "s_c6"}}],
+            }
+        ],
+    }
+    out = tmp_path / "c6_deck.pptx"
+    rep = compose.compose_deck(plan, resolutions_list, "ink", str(out))
+    assert rep["page_count"] == 1
+    assert out.is_file()
+    chk = checks.check_layout(str(out))
+    assert chk["pass"]
+
+
+def test_image_bleed_mask_variant_c(tmp_path):
+    """P1-3：图片页第三变体全出血带蒙版（variant c）渲染与蒙版存在性测试。"""
+    from wengao_ppt.layout import compose, checks
+    img = tmp_path / "mask_test_img.png"
+    _png_bytes(img)
+    resolutions = [
+        {
+            "schema": "rs.scene_resolution.v1",
+            "scene_id": "s_mask",
+            "status": "RESOLVED_T2",
+            "asset": {
+                "path": str(img),
+                "sha256": "0" * 64,
+                "attribution_text": "全出血蒙版测试图",
+                "provider": "w1_local",
+            },
+        }
+    ]
+    plan = {
+        "schema": "rs.deck_plan.v1",
+        "deck_id": "deck-mask-test",
+        "language": "zh",
+        "pages": [
+            {
+                "page_id": "p_mask",
+                "index": 1,
+                "role": "image",
+                "variant": "c",
+                "title": "全出血蒙版演示页",
+                "blocks": [{"kind": "text", "text": "蒙版之上反白文字与图注说明"}],
+                "image_slots": [{"slot_id": "slot_m", "scene": {"scene_id": "s_mask"}}],
+            }
+        ],
+    }
+    out = tmp_path / "bleed_mask_deck.pptx"
+    rep = compose.compose_deck(plan, resolutions, "ink", str(out))
+    assert rep["page_count"] == 1
+    assert out.is_file()
+
+    # 验证 slide 内部存在蒙版 shape
+    from pptx import Presentation
+    prs = Presentation(str(out))
+    slide = prs.slides[0]
+    masks = [sh for sh in slide.shapes if "mask" in (sh.name or "")]
+    assert len(masks) >= 1, "未找到蒙版层形状"
+
+    chk = checks.check_layout(str(out))
+    assert chk["pass"]
+
+

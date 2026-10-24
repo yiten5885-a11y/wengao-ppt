@@ -53,7 +53,11 @@
         <div class="mid-name" id="job-title">新建演示</div>
         <div class="mid-sub" id="job-sub">把文章、文案或 PPT 交给我</div>
       </div>
-      <button type="button" class="btn btn-ghost" id="btn-history">历史版本</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="button" class="btn btn-warn sm" id="btn-cancel" hidden>取消制作</button>
+        <button type="button" class="btn btn-dark sm" id="btn-retry" hidden>重试制作</button>
+        <button type="button" class="btn btn-ghost" id="btn-history">历史版本</button>
+      </div>
     </header>
 
     <div class="mid-scroll" id="mid-scroll">
@@ -90,6 +94,7 @@
               联网研究
             </button>
             <button type="button" class="text-btn" id="btn-lang" aria-haspopup="listbox">语言：自动</button>
+            <button type="button" class="text-btn" id="btn-theme" aria-haspopup="listbox">主题：水墨 (ink)</button>
           </div>
           <div class="composer-send">
             <span class="kbd-hint">回车发送</span>
@@ -141,6 +146,13 @@
         <div class="page-check" id="page-check">
           <div class="page-check-head">本页检查</div>
           <div class="page-check-rows" id="page-check-rows"></div>
+        </div>
+        <div class="page-objects" id="page-objects">
+          <div class="page-objects-head">
+            <span>本页对象编辑</span>
+            <span class="count" id="page-objects-count">0 个对象</span>
+          </div>
+          <div class="page-objects-list" id="page-objects-list"></div>
         </div>
       </div>
     </div>

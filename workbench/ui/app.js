@@ -15,6 +15,8 @@
       decisions: null,
       localrun: null,
       meta: null,
+      objects: null,
+      theme: "ink",
       pages: [],          // [{page_no, url}]
       currentPage: 1,
       tab: "preview",
@@ -139,7 +141,18 @@
     WB.api("/api/jobs/" + jobId + "/decisions").then(function (d) {
       WB.state.decisions = d; WB.renderChatExtras(); WB.renderSources();
     }).catch(function () {});
+    WB.loadPageObjects(jobId);
     WB.loadPages(jobId);
+  };
+
+  WB.loadPageObjects = function (jobId) {
+    WB.api("/api/jobs/" + encodeURIComponent(jobId) + "/objects").then(function (d) {
+      WB.state.objects = d;
+      WB.renderPageObjects();
+    }).catch(function () {
+      WB.state.objects = null;
+      WB.renderPageObjects();
+    });
   };
 
   WB.loadPages = function (jobId) {

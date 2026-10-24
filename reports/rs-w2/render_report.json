@@ -4,11 +4,11 @@
  "artifacts": [
   {
    "pptx": "page_types.pptx",
-   "pptx_sha256": "b118c6e7e485fd1c63c9c8dae7bd6c3a9f3ebe612f8bfce6b7d443d65833498d",
+   "pptx_sha256": "ea4807007c5a109b96168df12b5731727e0cb8febcab2d86e5ef5445bf4ed7bf",
    "exit_code": 0,
    "timed_out": null,
    "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/page_types/page_types.pdf",
-   "pdf_sha256": "cd4256dfef82c383cfaaa05da04deb03d4432b42d6c1d9ab60017bb4ca7d391e",
+   "pdf_sha256": "5c366460c08545697ec9bab01c61353f5b839053edcf5c93d814ae4994d39185",
    "font_families": [
     "NotoSans-Bold",
     "NotoSans-Regular",
@@ -23,8 +23,8 @@
    "cjk_stats": [
     {
      "pages": 24,
-     "text_len": 1316,
-     "cjk_chars": 491
+     "text_len": 1392,
+     "cjk_chars": 539
     },
     null
    ],
@@ -49,7 +49,7 @@
     "page-17.png": "ddafd16a869bd14f5192cc5df234515736920baa60bd534ec191ed1812c8f053",
     "page-18.png": "bdcc1e85c69e05c21fbdd1301166681be98546438c116ba6633da3b59e36caf1",
     "page-19.png": "c8b39fc8a0e71b4fcb7b18ae0ca033d86ee6b71091cc21b772f3ce087e9987e0",
-    "page-20.png": "a50da51009e41a4c6a8ada20ec4189bd4ec22c536c5ccb7925a670de95a638d3",
+    "page-20.png": "24d8b1c98045ba8d899eb49f3beccb20aec87ba41460a09011548315470be84d",
     "page-21.png": "18876242d989206503776144d8aa01df66e8c54a0108cae4fe39331d5c4cd6d8",
     "page-22.png": "13965414c7e374cc6f06347b1d45bebe31ce2aa0ec1199d07567b0b94281d6e6",
     "page-23.png": "494283fceb400ac054efc212de2ca8232d8d500290f3dd234a4b8b873fe9bc57",
@@ -83,11 +83,11 @@
   },
   {
    "pptx": "scripts_6.pptx",
-   "pptx_sha256": "95d5561b2d87d0bb0bd52ecb9e6c62d3987a181845cd0586030a484edf73e4cc",
+   "pptx_sha256": "bc8306d44f2b179f2a37276ba1b72d325b3a7a7d388202858b8fb174fa43c644",
    "exit_code": 0,
    "timed_out": null,
    "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/scripts_6/scripts_6.pdf",
-   "pdf_sha256": "19739f2f12b3a750fa5c33cf4b157a0de7cccff0e77021bfa9b3a560a357f996",
+   "pdf_sha256": "d707ce6ae9223aa5e14228576090ea0ddcdec8e4b37e939db74166a7c00fc2b6",
    "font_families": [
     "ArialUnicodeMS",
     "NotoSans-Bold",
@@ -130,11 +130,11 @@
   },
   {
    "pptx": "e2e_deck.pptx",
-   "pptx_sha256": "952bb12ad5de18e5f15ec3aa71517fd017fc5151e1d2607d56eb5c69280ecd5f",
+   "pptx_sha256": "ad077234eea14c5160defc5ea946a7a5c4d72ef59963acc470ef30df742a5e92",
    "exit_code": 0,
    "timed_out": null,
    "pdf": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck/e2e_deck.pdf",
-   "pdf_sha256": "9eb1f4135d23c339b597cb2bcfd3f2564f896ce8abfd6b750726591653aede05",
+   "pdf_sha256": "9a116d97b15648a095db5471857ceee6fe0c63fd28f12c1fbe3eba9d5d93459a",
    "font_families": [
     "NotoSans-Bold",
     "NotoSans-Regular",

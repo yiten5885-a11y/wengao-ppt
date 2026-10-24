@@ -1,0 +1,83 @@
+[
+ {
+  "fact_id": "F001",
+  "subject": "2024年新能源汽车市场复盘",
+  "raw_value_text": "2024",
+  "value": "2024",
+  "unit_class": "unknown",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 3,
+   "line_end": 3,
+   "heading": "2024年新能源汽车市场复盘",
+   "locator": "line 3-3 / 2024年新能源汽车市场复盘",
+   "unit_id": "u1-0",
+   "sentence": "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。"
+  }
+ },
+ {
+  "fact_id": "F002",
+  "subject": "2024年新能源汽车市场复盘",
+  "raw_value_text": "3",
+  "value": "3",
+  "unit_class": "unknown",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 3,
+   "line_end": 3,
+   "heading": "2024年新能源汽车市场复盘",
+   "locator": "line 3-3 / 2024年新能源汽车市场复盘",
+   "unit_id": "u1-0",
+   "sentence": "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。"
+  }
+ },
+ {
+  "fact_id": "F003",
+  "subject": "2024年新能源汽车市场复盘",
+  "raw_value_text": "46.8%",
+  "value": "46.8",
+  "unit_class": "%",
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 3,
+   "line_end": 3,
+   "heading": "2024年新能源汽车市场复盘",
+   "locator": "line 3-3 / 2024年新能源汽车市场复盘",
+   "unit_id": "u1-0",
+   "sentence": "2024Q3国内新能源乘用车市场零售渗透率达到46.8%，较去年同期大幅提升，展现出强劲替代效应。"
+  }
+ },
+ {
+  "fact_id": "F004",
+  "subject": "市场格局",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 6,
+   "line_end": 6,
+   "heading": "市场格局",
+   "locator": "line 6-6 / 市场格局",
+   "unit_id": "u2-0",
+   "sentence": "自主品牌继续扩大领先优势，供应链协同效应显著。"
+  }
+ }
+]

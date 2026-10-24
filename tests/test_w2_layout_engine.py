@@ -79,6 +79,53 @@ def test_wrap_lines_terminates_on_signed_numbers():
         assert "".join(lines).replace(" ", "") == text.replace(" ", "")
 
 
+def test_wrap_lines_terminates_on_bignumber_percent_and_bullets(tmp_path):
+    """P0-2 回归 (BUG-W2-01)：大数字 46.8% + 要点混排文本不得导致 wrap_lines 死循环。"""
+    import time
+    from pptx import Presentation
+    from wengao_ppt.layout import checks, templates, tokens
+
+    # 1. 直接单元测试 wrap_lines 在不同宽度下立即终止
+    texts = [
+        "46.8%",
+        "复购率 46.8%，连续 8 个季度提升。门店扩展到 120 家，会员规模达到 85 万。",
+        "• 46.8% 核心指标渗透率\n• 同比提升 18.2 个百分点\n• 行业均值 37.4%",
+    ]
+    t0 = time.perf_counter()
+    for t in texts:
+        for w in (0, 1000, 50000, 300000, 1200000):
+            res = measure.wrap_lines(t, w, 24)
+            assert isinstance(res, list) and len(res) >= 1
+    assert time.perf_counter() - t0 < 1.0, "wrap_lines 执行超时（死循环回归）"
+
+    # 2. 真实 PPTX 渲染 + check_layout 回归测试
+    prs = Presentation()
+    prs.slide_width, prs.slide_height = tokens.CANVAS_W_EMU, tokens.CANVAS_H_EMU
+    ctx = templates.TemplateContext(tokens.THEMES["ink"], {}, lambda *a, **k: None, None)
+    s = prs.slides.add_slide(prs.slide_layouts[6])
+    page = {
+        "role": "insight",
+        "variant": "a",
+        "page_id": "p_bug01",
+        "index": 1,
+        "title": "新能源汽车零售渗透率突破 46.8%",
+        "blocks": [
+            {"kind": "bignumber", "value": "46.8%", "label": "渗透率", "note": "同比大幅提升"},
+            {"kind": "bullets", "items": ["2024Q3 国内新能源乘用车市场零售渗透率达到 46.8%",
+                                          "较去年同期大幅提升，展现强劲替代效应",
+                                          "全面确立在中国汽车消费市场的主导地位"]},
+        ],
+    }
+    templates.render_page(s, page, ctx)
+    deck_path = tmp_path / "bignumber_check.pptx"
+    prs.save(str(deck_path))
+    t1 = time.perf_counter()
+    chk = checks.check_layout(str(deck_path))
+    assert time.perf_counter() - t1 < 5.0, "check_layout 在含 46.8% 页面超时"
+    assert isinstance(chk, dict)
+
+
+
 def test_block_height_scales_with_font_and_wrap():
     short = measure.block_height_emu("短文本", 900000, 26)
     long = measure.block_height_emu("短文本" * 12, 900000, 26)
@@ -342,3 +389,27 @@ def test_arabic_paragraph_is_rtl_and_right_aligned(tmp_path):
             assert p.alignment == PP_ALIGN.RIGHT, p.alignment
             rtl_seen += 1
     assert rtl_seen >= 2  # 标题 + 要点
+
+
+def test_glyphcheck_warns_on_system_font_fallback():
+    """P1-4：当页面实际渲染字体落到栈末位系统字体（如 Arial Unicode MS）时必须报 WARN。"""
+    from wengao_ppt import glyphcheck
+    mock_result = {
+        "error": None,
+        "pages": [
+            {
+                "page": 1,
+                "status": "OK",
+                "distinct_cjk": 10,
+                "font_resources": [
+                    {"resource": "F1", "base_font": "ArialUnicodeMS", "embedded_program": False}
+                ],
+            }
+        ],
+    }
+    findings = glyphcheck.quality_findings(mock_result)
+    assert any(
+        f.get("code") == "GLYPH.FONT_FALLBACK_STACK_BOTTOM" and f.get("severity") == "WARN"
+        for f in findings
+    )
+

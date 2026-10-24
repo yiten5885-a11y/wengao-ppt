@@ -119,17 +119,23 @@ def _page_inventory(slide) -> list[dict]:
     return inv
 
 
-def compose_deck(plan: dict, resolutions: dict | None, theme, out_path,
+def compose_deck(plan: dict, resolutions: list | None, theme, out_path,
                  place_image=None, emit=None) -> dict:
     """按 DeckPlan 成稿。返回 ComposeReport（契约 C6）。
 
-    resolutions: {scene_id: SceneResolution dict}（C3）。
+    resolutions: list[SceneResolution]（契约 C6 直连）或兼容易用的 dict。
     """
     th = _resolve_theme(theme)
     place_fn = place_image or _default_place_image()
     prs = Presentation()
     prs.slide_width, prs.slide_height = CANVAS_W_EMU, CANVAS_H_EMU
-    ctx = templates.TemplateContext(th, resolutions or {}, place_fn, emit)
+    if isinstance(resolutions, list):
+        res_map = {r["scene_id"]: r for r in resolutions if isinstance(r, dict) and "scene_id" in r}
+    elif isinstance(resolutions, dict):
+        res_map = dict(resolutions)
+    else:
+        res_map = {}
+    ctx = templates.TemplateContext(th, res_map, place_fn, emit)
     page_reports = templates.render_deck(prs, plan, ctx)
     out = Path(out_path)
     out.parent.mkdir(parents=True, exist_ok=True)

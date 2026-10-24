@@ -1,0 +1,44 @@
+[
+ {
+  "fact_id": "F001",
+  "subject": "第 1 段",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 1,
+   "line_end": 1,
+   "heading": "",
+   "locator": "line 1-1",
+   "unit_id": "u1-0",
+   "sentence": "Global Cloud Infrastructure ReviewCompany A achieved significant market presence with resilient hybrid cloud deployments."
+  }
+ },
+ {
+  "fact_id": "F002",
+  "subject": "Outlook",
+  "raw_value_text": "",
+  "value": "",
+  "unit_class": "qualitative",
+  "qualitative": true,
+  "time": "unknown",
+  "scope": "unknown",
+  "qualifier": "unknown",
+  "negation_or_comparison": "unknown",
+  "source_ref": {
+   "file": "material.txt",
+   "line_start": 6,
+   "line_end": 6,
+   "heading": "Outlook",
+   "locator": "line 6-6 / Outlook",
+   "unit_id": "u2-0",
+   "sentence": "Expanding AI inference platforms across core regions."
+  }
+ }
+]

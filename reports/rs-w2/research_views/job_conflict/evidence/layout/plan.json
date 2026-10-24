@@ -1,0 +1,264 @@
+{
+ "schema": "rs.deck_plan.v1",
+ "deck_id": "dp-5365310793934",
+ "language": "zh",
+ "mode": "generate",
+ "job_dir": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/job_conflict",
+ "pages": [
+  {
+   "role": "cover",
+   "variant": "a",
+   "title": "Company A 经营概述",
+   "blocks": [
+    {
+     "kind": "text",
+     "text": "稳稿 PPT"
+    }
+   ],
+   "units": [],
+   "page_id": "p01",
+   "index": 1
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "Company A 经营概述",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "Company A 在企业云基础设施领域的市场份额达到了35.0%，领先竞争对手。"
+     ],
+     "fact_refs": [
+      "F001"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "Company A 在企业云基础设施领域的市场份额达到了35.0%，领先竞争对手。",
+     "fact_ids": [
+      "F001"
+     ]
+    }
+   ],
+   "page_id": "p02",
+   "index": 2,
+   "image_slots": [
+    {
+     "slot_id": "p02-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p02-img1",
+      "page_id": "p02",
+      "slot_id": "p02-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "Company A 经营概述",
+      "context_sentences": [
+       "Company A 在企业云基础设施领域的市场份额达到了35.0%，领先竞争对手。"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "role": "content",
+   "variant": "a",
+   "page_type": "single_column",
+   "title": "核心战略",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "持续加大研发投入，推动产品智能化升级。"
+     ],
+     "fact_refs": [
+      "F002"
+     ]
+    }
+   ],
+   "units": [
+    {
+     "sentence": "持续加大研发投入，推动产品智能化升级。",
+     "fact_ids": [
+      "F002"
+     ]
+    }
+   ],
+   "page_id": "p03",
+   "index": 3,
+   "image_slots": [
+    {
+     "slot_id": "p03-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p03-img1",
+      "page_id": "p03",
+      "slot_id": "p03-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "核心战略",
+      "context_sentences": [
+       "持续加大研发投入，推动产品智能化升级。"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "role": "section",
+   "variant": "a",
+   "title": "补充对比",
+   "blocks": [],
+   "units": [],
+   "page_id": "p04",
+   "index": 4
+  },
+  {
+   "role": "compare",
+   "variant": "b",
+   "title": "Company A 2024年市场份额（材料自述 vs 权威机构统计）",
+   "blocks": [
+    {
+     "kind": "chart",
+     "chart_kind": "bar",
+     "categories": [
+      "2024"
+     ],
+     "series": {
+      "Company A (材料自述)": [
+       35.0
+      ],
+      "Company A (IDC统计-待确认)": [
+       24.2
+      ]
+     },
+     "legend": true,
+     "highlight_series": null,
+     "fact_refs": [
+      "uf001",
+      "wf001"
+     ],
+     "h_emu": 2743200
+    }
+   ],
+   "footnote": {
+    "text": "数据来源: 用户材料自述 (2024); IDC (2024) [数据存在差异，并列呈现供裁决]",
+    "fact_refs": [
+     "uf001",
+     "wf001"
+    ]
+   },
+   "conflicts": [
+    {
+     "conflict_id": "c01",
+     "user_fact": "uf001",
+     "web_fact": "wf001"
+    }
+   ],
+   "research_view_ref": "v01",
+   "page_id": "p05",
+   "index": 5,
+   "units": [],
+   "image_slots": [
+    {
+     "slot_id": "p05-img1",
+     "aspect": "16:9",
+     "scene": {
+      "schema": "rs.scene_request.v1",
+      "scene_id": "p05-img1",
+      "page_id": "p05",
+      "slot_id": "p05-img1",
+      "visual_query": "",
+      "anchors": {
+       "subject": "",
+       "action": "",
+       "setting": ""
+      },
+      "language": "zh",
+      "aspect": "16:9",
+      "orientation": "landscape",
+      "requires_real_photo": false,
+      "user_image": {
+       "path": null,
+       "sha256": null
+      },
+      "exclude_sha256": [],
+      "context_topic": "Company A 2024年市场份额（材料自述 vs 权威机构统计）",
+      "context_sentences": []
+     }
+    }
+   ]
+  },
+  {
+   "role": "closing",
+   "variant": "b",
+   "title": "小结与行动",
+   "blocks": [
+    {
+     "kind": "bullets",
+     "items": [
+      "Company A 经营概述",
+      "核心战略"
+     ]
+    }
+   ],
+   "units": [],
+   "page_id": "p06",
+   "index": 6
+  }
+ ],
+ "warnings": [
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p02-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  },
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p03-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  },
+  {
+   "code": "LAYOUT.SCENE_REQUEST_UNAVAILABLE",
+   "detail": "p05-img1 的 visual_query/anchors 待 semantic_scenes 填充"
+  }
+ ],
+ "stats": {
+  "facts_total": 2,
+  "facts_numeric": 1,
+  "facts_qualitative": 1,
+  "pages_total": 6,
+  "views_total": 1,
+  "views_rendered": 1,
+  "supplement_section": true
+ }
+}

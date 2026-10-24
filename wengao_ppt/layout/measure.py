@@ -61,7 +61,19 @@ def wrap_lines(text: str, width_emu: int, pt: float) -> list[str]:
     lines, cur, cur_w = [], [], 0
     i = 0
     n = len(text)
+    iteration_guard = 0
+    max_iterations = n * 4 + 100
     while i < n:
+        iteration_guard += 1
+        if iteration_guard > max_iterations:
+            # 双重保险：绝不允许死循环拖垮管线与门禁
+            if cur:
+                lines.append("".join(cur))
+            rest = text[i:]
+            if rest:
+                lines.append(rest)
+            return lines or [""]
+
         # 数字+单位 token 保护：连续数字/小数点/逗号与其后紧跟的 %、拉丁单位、
         # 中文量词（亿/万/个月…）取为一个 token
         j = i
@@ -70,19 +82,26 @@ def wrap_lines(text: str, width_emu: int, pt: float) -> list[str]:
                 j += 1                     # 符号位先吃掉，再吃数字主体
             while j < n and (text[j].isdigit() or text[j] in ".,"):
                 j += 1
-            while j < n and (text[j] == "%" or text[j].isalpha() and text[j].isascii()):
+            while j < n and (text[j] == "%" or (text[j].isalpha() and text[j].isascii())):
                 j += 1
             k = j
             while k < n and text[k] in _CJK_UNITS and (k - j) < 4:
                 k += 1
             if k > j:
                 j = k
+            # 保证至少前进 1 个字符
+            j = max(j, i + 1)
             token = text[i:j]
         else:
             token = text[i]
             j = i + 1
-        if not token:                      # 防御：绝不允许空 token 造成死循环
+        if not token:                      # 防御：绝不允许空 token
             token, j = text[i], i + 1
+        # 严格单调前进量保证
+        if j <= i:
+            j = i + 1
+            token = text[i:j]
+
         w = text_width_emu(token, pt)
         if cur and cur_w + w > width_emu:
             # 换行：去掉行尾悬挂空格
