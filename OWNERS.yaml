@@ -63,6 +63,7 @@ owners:
     - tests/ui/**
     - tests/contracts/**
     - reports/rs-w4/**
+    - reports/handoff/**              # 补注：给其他窗口的接口对齐/缺陷报告（W4 产出）
 
 # 公共只读区（任何人可读、谁都不单独拥有；变更走 W4 变更请求单）
 shared_readonly:
