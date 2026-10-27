@@ -60,12 +60,20 @@ def probe_comfyui() -> dict:
 
 def probe_vision_model() -> dict:
     row = {"key": "vision_model", "label": "视觉模型（图文相似度）", "ok": False,
-           "detail": "未探测到 clip/siglip 类模型"}
+           "detail": "未探测到视觉模型服务"}
+    try:
+        health = _get_json("http://127.0.0.1:8080/health")
+        name = health.get("loaded_model") or ""
+        if name:
+            row.update(ok=True, detail=f"mlx_vlm 已就位：{name}", models=[name])
+            return row
+    except Exception:
+        pass
     try:
         tags = _get_json("http://127.0.0.1:11434/api/tags")
         names = [m.get("name", "") for m in tags.get("models") or []]
         hits = [n for n in names
-                if any(k in n.lower() for k in ("clip", "siglip", "vision"))]
+                if any(k in n.lower() for k in ("clip", "siglip", "vision", "vl"))]
         if hits:
             row.update(ok=True, detail=f"已就位：{'、'.join(hits[:3])}", models=hits)
     except Exception as e:  # noqa: BLE001
@@ -105,8 +113,16 @@ def probe_libreoffice() -> dict:
 
 
 def probe_ollama() -> dict:
-    row = {"key": "ollama", "label": "语义模型（Ollama）", "ok": False,
-           "detail": "未探测到 127.0.0.1:11434", "models": []}
+    row = {"key": "ollama", "label": "语义模型", "ok": False,
+           "detail": "未探测到 127.0.0.1:18088 / 11434", "models": []}
+    try:
+        health = _get_json("http://127.0.0.1:18088/health")
+        name = health.get("model") or ""
+        row.update(ok=True, detail=f"mlx-dspark，已加载 {name or '模型'}",
+                   models=[name] if name else [])
+        return row
+    except Exception:
+        pass
     try:
         ver = _get_json("http://127.0.0.1:11434/api/version").get("version", "")
         tags = _get_json("http://127.0.0.1:11434/api/tags")

@@ -277,7 +277,12 @@ class SceneCoverageGapDiagnosticsTests(unittest.TestCase):
         self.assertRegex(
             caught.exception.diagnostics["empty_scene_recovery_original_plan_sha256"],
             r"^[0-9a-f]{64}$")
-        self.assertEqual(len(calls), 3)
+        # 1 (empty plan) + 1 (NO_GAPS audit) + 2 x [1 reconsidered-plan call +
+        # 1 bounded same-model evidence-repair attempt] before failing closed:
+        # the reconsidered plan's evidence is never grounded, so the repair
+        # correctly refuses to invent it and the whole batch gets one
+        # corrective retry before SCENE.EVIDENCE_NOT_GROUNDED propagates.
+        self.assertEqual(len(calls), 6)
 
     def test_page_key_mismatch_diagnostic_reports_counts_without_disclosing_keys(self):
         pages, plan, _ = self._valid_common()

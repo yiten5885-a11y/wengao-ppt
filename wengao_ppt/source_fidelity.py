@@ -763,7 +763,10 @@ def check_fact_coverage(fact_ledger: dict, pptx_path, plan: dict | None = None) 
         core = re.sub(r"^[一二三四五六七八九十、\s]+", "", subject.strip())
         if (core and not _structural_subject(core) and core != "unknown"
                 and not _structural_subject(subject)):
-            head = core[:6]
+            # 线索必须与候选同一规范化口径：normalize 会删除全部空白
+            # （2026-10-27 实证：主体"27 来源与发布决策记录"的线索带空格，
+            # 全文去空格后永远匹配不上 → 13 条假阳性"疑似错绑"）。
+            head = normalize(core)[:6]
             if head and head not in full:
                 findings.append({
                     "code": CODE_SUBJECT, "severity": "BLOCKING", "origin": "source_coverage",

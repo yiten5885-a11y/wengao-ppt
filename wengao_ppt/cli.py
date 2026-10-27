@@ -289,7 +289,8 @@ def cmd_precheck(a):
 
 def cmd_run(a):
     r = Runner(a.project_root)
-    info = r.run(a.job_id, timeout=a.timeout, hold_after_build=a.hold_after_build)
+    info = r.run(a.job_id, timeout=a.timeout, hold_after_build=a.hold_after_build,
+                allow_text_card_fallback=a.allow_text_card_fallback)
     _emit("run", info)
     return 0
 
@@ -598,9 +599,13 @@ def main(argv=None):
 
     p = sub.add_parser("run")
     p.add_argument("--job-id", required=True)
-    p.add_argument("--timeout", type=int, default=900)
+    p.add_argument("--timeout", type=int, default=3600)
     p.add_argument("--hold-after-build", type=float, default=0,
                    help="生成完毕、发布之前停留的秒数（取消类故障测试用）")
+    p.add_argument("--allow-text-card-fallback", action="store_true", default=False,
+                   help="默认关闭。开启后，找不到可核验合规配图的场景改用"
+                        "说明文字卡片代替，不再整单阻断；卡片内容如实标注"
+                        "为未配图兜底，从不冒充真实照片。")
     p.set_defaults(func=_gate_cli(cmd_run))
 
     p = sub.add_parser("cancel")

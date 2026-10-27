@@ -554,13 +554,58 @@ def _is_page_number(s) -> bool:
     return bool(re.fullmatch(r"\d{1,2}", t)) and s["top"] > 6.9 and s["left"] > 11.0
 
 
+_SOURCE_LINE_RE = re.compile(
+    r"^(?:数据来源|资料来源|图源|图片来源|来源|Source)\s*[:：]?",
+    re.IGNORECASE)
+
+
 def _is_source(s) -> bool:
+    """来源标注行：**行首**是来源前缀且整行足够短才成立。
+
+    旧实现用 `"来源" in t` 子串判断，章节标题（如「27 来源与发布决策
+    记录」）也会被当成 16–18pt 的来源标注，触发 HG07 误报。
+    来源标注行都很短（≤60 字符），长句一律不按来源处理。
+    """
     t = s["text"].strip()
-    if ("来源" in t) or ("Yiten Huang" in t) or ("YitenHuang" in t):
+    if not t:
+        return False
+    if _SOURCE_LINE_RE.match(t):
+        # 短来源行直接成立；「来源…：」标签式注脚（如"来源与限定（原句）：
+        # …"，冒号出现在行首前 14 字内）同样成立——正文段落不会以「来源」
+        # 开头且这么早出冒号。章标题「27 来源与…」行首不匹配，不受影响。
+        _colon = min((t.find(c) for c in ":：" if c in t), default=-1)
+        if len(t) <= 60 or 0 <= _colon <= 14:
+            return True
+    if ("Yiten Huang" in t) or ("YitenHuang" in t):
         return True
     # 数据来源标注的常见署名（数据供应商/官方机构/外媒）——与"来源："同语义
     return any(k in t for k in ("Syntun", "统计局", "国务院：", "Reuters",
                                 "财政部", "新华社"))
+
+
+_PHOTO_CREDIT_HEADER = "[WENGAO PHOTO CREDIT]"
+
+
+def _notes_photo_credit_sanctioned(slide, nb: str, nc: str) -> bool:
+    """场景图照片署名备注豁免（HG01 备注守恒）。
+
+    场景阶段给带 WENGAO_SCENE| 图片的页写入固定格式的照片署名备注
+    （[WENGAO PHOTO CREDIT] 头 + Depiction/License…），这是**受控的
+    合规新增**，不是内容篡改。三条件同时成立才豁免：
+    1) 基线备注为空；2) 候选备注以固定头开始；3) 该页确有
+    WENGAO_SCENE| 命名的场景图片。其余备注变化仍然照报。
+    """
+    if (nb or "").strip():
+        return False
+    if not (nc or "").startswith(_PHOTO_CREDIT_HEADER):
+        return False
+    try:
+        for sh in slide.shapes:
+            if str(getattr(sh, "name", "")).startswith("WENGAO_SCENE|"):
+                return True
+    except Exception:
+        return False
+    return False
 
 
 def infer_roles(shapes) -> dict:
@@ -1892,7 +1937,7 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
             bslide = bprs.slides[pageno - 1]
             nb = bslide.notes_slide.notes_text_frame.text if bslide.has_notes_slide else ""
             nc = slide.notes_slide.notes_text_frame.text if slide.has_notes_slide else ""
-            if nb != nc:
+            if nb != nc and not _notes_photo_credit_sanctioned(slide, nb, nc):
                 pg_find.append({"gate": "HG01", "type": "NOTES_CHANGED", "page": pageno})
 
         # ---------- HG02 逐字覆盖 + 可见性 ----------

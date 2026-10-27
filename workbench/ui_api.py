@@ -16,13 +16,23 @@ GET  /api/jobs/<id>/images    配图标签数据（W1 账本摘要）
 GET  /api/jobs/<id>/checks    本页检查数据（各 check_* 报告汇总）
 GET  /api/jobs/<id>/decisions 冲突裁决现状
 GET  /api/jobs/<id>/attribution 导出用"来源与署名清单"
-POST /api/jobs/<id>/decisions  记录冲突裁决并局部重排
-POST /api/jobs/<id>/page-ops   页级操作（换版式/插页/换图/转场开关）
-POST /api/jobs/<id>/export     导出 PPTX/PDF（可附来源与署名清单）
+POST /api/ui/jobs/<id>/decisions  记录冲突裁决并局部重排（/api/jobs/<id>/decisions 亦兼容）
+POST /api/ui/jobs/<id>/page-ops   页级操作（换版式/插页/换图/转场开关）（/api/jobs/<id>/page-ops 亦兼容）
+POST /api/ui/jobs/<id>/export     导出 PPTX/PDF（可附来源与署名清单）
+POST /api/ui/jobs/<id>/cancel     取消制作（写 cancel.request 并通知 runner）
+POST /api/ui/jobs/<id>/retry      重试任务（/api/jobs/<id>/retry 亦兼容）
+GET  /api/env/libreoffice/status  本机 LibreOffice 探测结果
+GET  /api/env/libreoffice/plan    一键安装会拉取的版本/体积/校验值（只读，不下载）
+POST /api/env/libreoffice/install 触发一键安装（异步，用进度端点轮询）
+GET  /api/env/libreoffice/install/progress  安装进度轮询
+GET  /api/env/cloud-model/status  云端模型配置状态（不回显 key 明文）
+POST /api/env/cloud-model/config  保存云端模型配置（用户显式开启，默认关闭）
 """
 from __future__ import annotations
 
 import json
+import re
+import threading
 import time
 import urllib.parse
 from pathlib import Path
@@ -30,6 +40,32 @@ from pathlib import Path
 # ---------------------------------------------------------------- 常量
 UI_DIR = Path(__file__).resolve().parent / "ui"
 SSE_HEARTBEAT_S = 15
+
+# ---------------------------------------------------------------- LibreOffice 一键安装
+# 单进程内存状态：本服务是单机单实例本地工具，不需要跨进程持久化安装进度。
+_LO_INSTALL_LOCK = threading.Lock()
+_LO_INSTALL_STATE: dict = {"stage": "idle", "detail": {}}
+
+
+def _lo_install_worker():
+    from wengao_ppt import libreoffice_setup as lo
+
+    def progress(stage, detail):
+        with _LO_INSTALL_LOCK:
+            _LO_INSTALL_STATE["stage"] = stage
+            _LO_INSTALL_STATE["detail"] = detail
+
+    try:
+        result = lo.install(progress=progress)
+        with _LO_INSTALL_LOCK:
+            _LO_INSTALL_STATE["stage"] = "succeeded"
+            _LO_INSTALL_STATE["detail"] = result
+    except Exception as e:  # noqa: BLE001
+        code = getattr(e, "code", "LO_SETUP.UNEXPECTED_ERROR")
+        detail = getattr(e, "detail", str(e))
+        with _LO_INSTALL_LOCK:
+            _LO_INSTALL_STATE["stage"] = "failed"
+            _LO_INSTALL_STATE["detail"] = {"code": code, "detail": detail}
 
 
 def _load_json(p: Path):
@@ -58,18 +94,24 @@ def probe_localrun(root: Path) -> dict:
     """本机运行面板：只报真实探测结果。任何一项探测失败都如实显示，不猜。"""
     rows = []
 
-    # 1. 语义模型（Ollama，本机回环）
+    # 1. 语义模型（本机回环：mlx-dspark / 通用 llama.cpp 风格 / Ollama）
     model = {"key": "semantic_model", "label": "语义模型", "ok": False,
              "detail": "未探测到本机模型服务"}
     try:
-        ver = json.loads(_probe_loopback("http://127.0.0.1:11434/api/version").decode("utf-8")).get("version", "")
-        tags = json.loads(_probe_loopback("http://127.0.0.1:11434/api/tags").decode("utf-8"))
-        names = [m.get("name") for m in tags.get("models") or []]
+        health = json.loads(_probe_loopback("http://127.0.0.1:18088/health").decode("utf-8"))
         model = {"key": "semantic_model", "label": "语义模型", "ok": True,
-                 "detail": f"Ollama {ver}，{len(names)} 个模型",
-                 "models": names[:8]}
-    except Exception as e:  # noqa: BLE001
-        model["detail"] = f"未探测到（{type(e).__name__}）"
+                 "detail": f"mlx-dspark，已加载 {health.get('model') or '模型'}",
+                 "models": [health.get("model")] if health.get("model") else []}
+    except Exception:
+        try:
+            ver = json.loads(_probe_loopback("http://127.0.0.1:11434/api/version").decode("utf-8")).get("version", "")
+            tags = json.loads(_probe_loopback("http://127.0.0.1:11434/api/tags").decode("utf-8"))
+            names = [m.get("name") for m in tags.get("models") or []]
+            model = {"key": "semantic_model", "label": "语义模型", "ok": True,
+                     "detail": f"Ollama {ver}，{len(names)} 个模型",
+                     "models": names[:8]}
+        except Exception as e:  # noqa: BLE001
+            model["detail"] = f"未探测到（{type(e).__name__}）"
     rows.append(model)
 
     # 2. 联网检索（SearXNG，固定 127.0.0.1:8890）
@@ -331,14 +373,49 @@ def dispatch_get(handler, path: str, q: dict) -> bool:
         return handler._send(200, probe_localrun(root))
     if path == "/api/overview":
         return handler._send(200, _overview(handler, root))
+    if path == "/api/env/libreoffice/status":
+        from wengao_ppt import libreoffice_setup as lo
+        return handler._send(200, lo.status())
+    if path == "/api/env/libreoffice/plan":
+        from wengao_ppt import libreoffice_setup as lo
+        try:
+            return handler._send(200, lo.plan_install())
+        except lo.LibreOfficeSetupError as e:
+            return handler._send(502, {"error": {"code": e.code, "message": e.detail}})
+    if path == "/api/env/libreoffice/install/progress":
+        with _LO_INSTALL_LOCK:
+            return handler._send(200, {"stage": _LO_INSTALL_STATE["stage"],
+                                       "detail": _LO_INSTALL_STATE["detail"]})
+    if path == "/api/env/cloud-model/status":
+        from wengao_ppt import cloud_model_config as cmc
+        return handler._send(200, cmc.status())
     return False
 
 
+# FIX-W4-001: dispatch_post 自己处理的 POST 路由。
+# 为避免与旧工作台路由冲突，新界面的 POST 路由优先使用 /api/ui/ 前缀；
+# 且必须在任何请求体读取之前放行不属于自己的路径，避免读空套接字引发下游阻塞。
+_POST_PATTERNS = (
+    re.compile(r"^/api/ui/jobs/([A-Za-z0-9-]+)/(decisions|page-ops|export|cancel|retry)$"),
+    re.compile(r"^/api/jobs/([A-Za-z0-9-]+)/(decisions|page-ops|retry)$"),
+    re.compile(r"^/api/env/libreoffice/install$"),
+    re.compile(r"^/api/env/cloud-model/config$"),
+)
+
+
+def _owns_post(path: str) -> bool:
+    return any(p.match(path) for p in _POST_PATTERNS)
+
+
 def dispatch_post(handler, path: str) -> bool:
+    # FIX-W4-001：非本模块路由必须在任何读取之前放行，否则请求体被读空，
+    # 旧路由再按 Content-Length 读取时会永久阻塞。
+    if not _owns_post(path):
+        return False
     root = _root_of(handler)
     body = handler._body_json() or {}
 
-    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/decisions", path)
+    m = _match(r"/api/(?:ui/)?jobs/([A-Za-z0-9-]+)/decisions", path)
     if m:
         job_dir = root / "jobs" / m.group(1)
         cid = str(body.get("conflict_id") or "")
@@ -361,15 +438,15 @@ def dispatch_post(handler, path: str) -> bool:
                                    "choice": choice, "rerun": rerun,
                                    "decisions": _decisions_state(job_dir)})
 
-    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/page-ops", path)
+    m = _match(r"/api/(?:ui/)?jobs/([A-Za-z0-9-]+)/page-ops", path)
     if m:
         return handler._send(200, _page_ops(root, m.group(1), body))
 
-    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/export", path)
+    m = _match(r"/api/ui/jobs/([A-Za-z0-9-]+)/export", path)
     if m:
         return handler._send(200, _export(root, m.group(1), body))
 
-    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/cancel", path)
+    m = _match(r"/api/ui/jobs/([A-Za-z0-9-]+)/cancel", path)
     if m:
         jid = m.group(1)
         jdir = root / "jobs" / jid
@@ -383,7 +460,7 @@ def dispatch_post(handler, path: str) -> bool:
             pass
         return handler._send(200, {"status": "CANCELLED", "job_id": jid})
 
-    m = _match(r"/api/jobs/([A-Za-z0-9-]+)/retry", path)
+    m = _match(r"/api/(?:ui/)?jobs/([A-Za-z0-9-]+)/retry", path)
     if m:
         jid = m.group(1)
         jdir = root / "jobs" / jid
@@ -391,6 +468,43 @@ def dispatch_post(handler, path: str) -> bool:
         if req_cf.is_file():
             req_cf.unlink(missing_ok=True)
         return handler._send(200, {"status": "RETRY_TRIGGERED", "job_id": jid})
+
+    if path == "/api/env/libreoffice/install":
+        from wengao_ppt import libreoffice_setup as lo
+        with _LO_INSTALL_LOCK:
+            if _LO_INSTALL_STATE["stage"] not in ("idle", "succeeded", "failed"):
+                return handler._send(409, {"error": {"code": "LO_SETUP.ALREADY_RUNNING",
+                                                      "message": "安装已在进行中。"}})
+            if lo.status()["installed"]:
+                _LO_INSTALL_STATE["stage"] = "succeeded"
+                _LO_INSTALL_STATE["detail"] = {"ok": True, "already_installed": True,
+                                               **lo.status()}
+                return handler._send(200, {"status": "ALREADY_INSTALLED"})
+            _LO_INSTALL_STATE["stage"] = "starting"
+            _LO_INSTALL_STATE["detail"] = {}
+        threading.Thread(target=_lo_install_worker, daemon=True).start()
+        return handler._send(202, {"status": "INSTALL_STARTED"})
+
+    if path == "/api/env/cloud-model/config":
+        from wengao_ppt import cloud_model_config as cmc
+        enabled = bool(body.get("enabled"))
+        endpoint = str(body.get("endpoint") or "")
+        text_model = str(body.get("text_model") or "")
+        vision_model = str(body.get("vision_model") or "")
+        image_gen_model = str(body.get("image_gen_model") or "")
+        api_key = body.get("api_key")
+        if api_key is not None:
+            api_key = str(api_key)
+        if enabled and (not endpoint or not text_model):
+            return handler._send(400, {"error": {"code": "CLOUD_MODEL.CONFIG_INCOMPLETE",
+                                                  "message": "启用云端模型需要填写端点与文本模型名。"}})
+        if enabled and not (cmc.load()["api_key"] or (api_key or "").strip()):
+            return handler._send(400, {"error": {"code": "CLOUD_MODEL.API_KEY_MISSING",
+                                                  "message": "启用云端模型需要提供 API key。"}})
+        result = cmc.save(enabled=enabled, endpoint=endpoint, api_key=api_key,
+                          text_model=text_model, vision_model=vision_model,
+                          image_gen_model=image_gen_model)
+        return handler._send(200, result)
     return False
 
 

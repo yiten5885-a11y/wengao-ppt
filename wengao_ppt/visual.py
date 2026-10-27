@@ -887,6 +887,313 @@ def real_text_h_in(text: str, pt: float, box_w: float,
     return real_lines(text, pt, box_w) * pt * line_factor / 72.0
 
 
+def _shape_has_opaque_fill(shape) -> bool:
+    try:
+        fill = shape.fill
+        if fill.type is None:
+            return False
+        transparency = fill.transparency
+        return transparency is None or float(transparency) < 0.97
+    except Exception:
+        # The installed python-pptx here has no FillFormat.transparency at
+        # all (AttributeError on every call, not just an unreadable value),
+        # so this is the ordinary path for any solid-filled shape, not a
+        # rare fallback: check the XML directly for a real <a:solidFill>.
+        try:
+            return shape._element.spPr.find(
+                "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill") is not None
+        except Exception:
+            return False
+
+
+def _backdrop_shapes_for(slide, rect, *, exclude) -> list:
+    """Plain, textless, opaquely-filled shapes mostly behind `rect`.
+
+    A quote/highlight card's solid-fill background is a separate shape from
+    the text it frames, with no text of its own — is_text_shape excludes it,
+    so the push-down loop below never sees it as something to move. A
+    background that is mostly behind this one text box (not a full-page
+    backdrop: its own area is comparable to the text box's, not many times
+    larger, so the overlap ratio against *its own* area stays high) is this
+    text's own card and must move with it, or it is left stranded exactly
+    where the text used to be instead of where the text now is.
+    """
+    left, top, width, height = rect
+    out = []
+    for other in slide.shapes:
+        # `in exclude`/`is` never matches shape wrappers reliably: python-pptx
+        # hands back a fresh wrapper object on each iteration, even for the
+        # same underlying XML element, so identity/equality checks against a
+        # previously-captured wrapper silently fail — shape_id is the
+        # element's stable identity, not the wrapper's.
+        if other.shape_id in exclude or is_text_shape(other):
+            continue
+        o_l, o_t = _in(other.left), _in(other.top)
+        o_w, o_h = _in(other.width), _in(other.height)
+        other_area = o_w * o_h
+        if other_area <= 0:
+            continue
+        ix = max(0.0, min(left + width, o_l + o_w) - max(left, o_l))
+        iy = max(0.0, min(top + height, o_t + o_h) - max(top, o_t))
+        if (ix * iy) / other_area < 0.5:
+            continue
+        if not _shape_has_opaque_fill(other):
+            continue
+        out.append(other)
+    return out
+
+
+def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
+                             gap: float = 0.04, slide_h_in: float | None = None,
+                             bottom_margin: float = 0.15,
+                             slide_w_in: float | None = None) -> list[dict]:
+    """Keep a text shape's own content on-slide, and push a later text shape
+    down when the real (wrapped) height of the text shape above it bleeds
+    past its nominal box into the next one.
+
+    Font size is often raised after this geometry is laid out (e.g. the
+    readability floor), which makes text that used to fit wrap onto more
+    lines than its box was sized for. Two symptoms follow, both handled here
+    from the same real-height measurement: the shape's own text can run past
+    its own box (and even off the bottom of the slide, with no other shape
+    to detect against), and/or it can visually bleed into whatever text box
+    comes next. Neither font size nor text content is ever touched — only a
+    shape's own `height` (grown just enough to hold its real content, capped
+    at the slide's bottom edge so it is never pushed off-canvas) and a later
+    shape's `top` (moved down only when the shape above it genuinely needs
+    more room than its box has). Only shapes whose horizontal extents
+    actually overlap are considered, so side-by-side columns are left alone.
+    """
+    changed = []
+    texts = sorted([T(s, i) for i, s in enumerate(slide.shapes) if is_text_shape(s)],
+                   key=lambda t: t.T)
+    for i, a in enumerate(texts):
+        pt = a.size()
+        if pt <= 0 or not a.text.strip():
+            continue
+        # A shape can be positioned past the canvas bottom margin on its
+        # own declared geometry, independent of whether its content wraps
+        # to fit that box or not (seen on a real deck: a textbox's own
+        # `top` already left only its very last sliver above the slide
+        # edge). Growing height never helps here — there is no room left
+        # to grow into — so pull the box itself back up first, before any
+        # content-driven check below, as long as that does not run it
+        # into something genuinely above it.
+        if slide_h_in is not None and a.T + a.H > slide_h_in - bottom_margin + 0.01:
+            min_top = 0.0
+            for other in slide.shapes:
+                if other is a.shape:
+                    continue
+                o_l, o_w = _in(other.left), _in(other.width)
+                if min(a.L + a.W, o_l + o_w) <= max(a.L, o_l) + 0.02:
+                    continue  # different column
+                o_b = _in(other.top) + _in(other.height)
+                if o_b <= a.T + 0.02 and o_b > min_top:
+                    min_top = o_b + gap
+            new_top = max(min_top, slide_h_in - bottom_margin - a.H)
+            if new_top < a.T - 0.01:
+                old_top = a.T
+                a.move_to(top=new_top)
+                changed.append({"shape": a.name, "before": [old_top, a.H],
+                                "after": [a.T, a.H], "pulled_up_into_canvas": True})
+        real_h = real_text_h_in(a.text, pt, a.W)
+        # real_text_h_in's line-wrap model is passed the shape's full width;
+        # it does not know about a bullet's indent eating into the usable
+        # width, nor about inter-paragraph spacing — both make it under-
+        # count wrapped lines for bulleted, multi-paragraph body text (the
+        # common case this whole function exists for), badly enough that it
+        # can miss a real overflow entirely, not just under-size the fix.
+        # Use this more cautious estimate to decide whether there is a
+        # problem at all, not only how much to grow by: a generous estimate
+        # here only costs a slightly taller box or a slightly smaller font,
+        # while an optimistic one leaves text cut off past the slide edge,
+        # which is the defect being fixed.
+        margin_w = max(0.2, a.W - 0.5)
+        spacing_in = sum(
+            (float(p.space_before.pt) if p.space_before is not None else 0.0)
+            + (float(p.space_after.pt) if p.space_after is not None else 0.0)
+            for p in a.paras) / 72.0
+        # +0.1in flat buffer on top of the formula: the real layout/export
+        # gate that actually decides pass/fail checks true PDF glyph bounds
+        # against a tight bottom safety margin, and this estimate — however
+        # it is refined — can never perfectly reproduce that measurement. A
+        # fixed buffer catches the narrow, easy-to-miss violations (a few
+        # hundredths to tenths of an inch past the margin) that a purely
+        # formula-driven estimate keeps landing just short of.
+        needed_h = max(real_h, real_text_h_in(a.text, pt, margin_w) * 1.15 + spacing_in + 0.1)
+        if needed_h > a.H + 0.01:
+            cap = (slide_h_in - bottom_margin - a.T) if slide_h_in else None
+            # A shape's box can have been deliberately shrunk by an earlier
+            # reflow to make room for something placed right below it (a
+            # photo in a reflowed row, a caption, ...). Growing past that
+            # neighbor's top edge would grow this text right on top of it,
+            # which is worse than the overflow being fixed — so any shape
+            # that genuinely sits below (not beside) this one caps how far
+            # it may grow, the same way the canvas edge does.
+            for other in slide.shapes:
+                if other is a.shape:
+                    continue
+                o_l, o_w = _in(other.left), _in(other.width)
+                if min(a.L + a.W, o_l + o_w) <= max(a.L, o_l) + 0.02:
+                    continue  # different column — no horizontal overlap
+                o_t = _in(other.top)
+                if o_t <= a.T + 0.02:
+                    continue  # not below this shape's own top
+                neighbor_cap = o_t - a.T - gap
+                cap = neighbor_cap if cap is None else min(cap, neighbor_cap)
+            # Growing a shape's own `height` never moves where its (default
+            # top-anchored) text actually renders — PowerPoint/LibreOffice do
+            # not clip text to a shape's box, so the glyphs land wherever the
+            # content naturally wraps to regardless of the declared box size.
+            # Growing only makes the box's declared bounds honestly describe
+            # that content (fixes an "owner box too small" finding); it can
+            # never pull the real content's bottom edge up off the canvas
+            # edge. Shrinking the font is NOT a safe second lever here: a
+            # placeholder's role (e.g. "body") has an enforced pt range
+            # (scripts/layout_gate.py ROLE_PT), and body text is laid out at
+            # that range's floor already, so shrinking it trades a canvas-
+            # margin violation for a role-size violation instead of fixing
+            # anything. Reducing inter-paragraph spacing does move the real
+            # bottom edge up (every paragraph after the first renders higher)
+            # without touching font size, so try that instead.
+            new_h = min(needed_h, max(a.H, cap)) if cap else needed_h
+            spacing_change = None
+            content_bottom = a.T + needed_h
+            # Compare against whichever boundary actually constrains this
+            # shape — a neighbor sitting right below it, if that is closer
+            # than the canvas margin — not always the canvas margin itself.
+            boundary = (a.T + cap) if cap is not None else None
+            if boundary is not None and content_bottom > boundary + 0.01:
+                spacing_floor_pt = 4.0
+                cur_spacing_pt = spacing_in * 72.0
+                floor_total_pt = spacing_floor_pt * 2 * len(a.paras) if a.paras else 0.0
+                if cur_spacing_pt > floor_total_pt + 1e-6:
+                    overflow_pt = (content_bottom - boundary) * 72.0
+                    target_pt = max(floor_total_pt, cur_spacing_pt - overflow_pt - 2.0)
+                    scale = target_pt / cur_spacing_pt
+                    for p in a.paras:
+                        for attr in ("space_before", "space_after"):
+                            cur = getattr(p, attr)
+                            if cur is None or float(cur.pt) <= spacing_floor_pt:
+                                continue
+                            setattr(p, attr, Pt(round(max(spacing_floor_pt, float(cur.pt) * scale), 1)))
+                    new_spacing_in = sum(
+                        (float(p.space_before.pt) if p.space_before is not None else 0.0)
+                        + (float(p.space_after.pt) if p.space_after is not None else 0.0)
+                        for p in a.paras) / 72.0
+                    if new_spacing_in < spacing_in - 0.001:
+                        cand_h = real_text_h_in(a.text, pt, margin_w) * 1.15 + new_spacing_in + 0.1
+                        spacing_change = [round(spacing_in, 3), round(new_spacing_in, 3)]
+                        new_h = min(cand_h, cap)
+            if new_h > a.H + 0.01 or spacing_change is not None:
+                old_self = [a.T, a.H]
+                a.move_to(height=new_h)
+                entry = {"shape": a.name, "before": old_self, "after": [a.T, a.H],
+                         "self_grow": True, "real_h": round(real_h, 3)}
+                if spacing_change is not None:
+                    entry["paragraph_spacing_in"] = spacing_change
+                changed.append(entry)
+        # A long CJK line that wraps can leave a single trailing character
+        # alone on its own line (a typographic "widow") whenever the real
+        # usable width — the box width minus the bullet marker's indent,
+        # which real_wrapped_lines is not told about — falls just short of
+        # fitting it. Widening the box (only into space nothing else needs:
+        # never past the canvas margin or a neighboring shape) pulls that
+        # character back onto the line above without touching font size or
+        # text content, so try it whenever such a widow is detected.
+        if slide_w_in is not None:
+            # A lone trailing punctuation mark (a line ending in "。" etc.)
+            # is not a widow — the gate itself excludes these — so testing
+            # against that same exclusion set here keeps this check from
+            # "fixing" lines that were never actually flagged.
+            _punct = "，。、；：！？“”‘’（）()·—…"
+            orphaned = any(
+                len(lns := real_wrapped_lines("".join(r.text for r in p.runs), a.size() or pt, margin_w)) >= 2
+                and len(lns[-1].strip()) == 1 and lns[-1].strip() not in _punct
+                for p in a.paras if "".join(r.text for r in p.runs).strip())
+            if orphaned:
+                # 0.15in here cost a real fix: job-c0af57f36099 P10 needed
+                # the box to reach within 0.10in of the photo beside it to
+                # pull "元" back onto the line above, and the authoritative
+                # gate (collisions/occlusions, both pixel-measured) is
+                # clean at that gap — 0.15 was just an untested guess.
+                neighbor_gap = 0.10
+                left_limit, right_limit = 0.40, slide_w_in - 0.40
+                for other in slide.shapes:
+                    if other is a.shape:
+                        continue
+                    o_t, o_h = _in(other.top), _in(other.height)
+                    if o_t + o_h <= a.T or a.T + a.H <= o_t:
+                        continue  # no vertical overlap with this shape
+                    o_l, o_w = _in(other.left), _in(other.width)
+                    if o_l >= a.L + a.W:
+                        right_limit = min(right_limit, o_l - neighbor_gap)
+                    elif o_l + o_w <= a.L:
+                        left_limit = max(left_limit, o_l + o_w + neighbor_gap)
+                max_w = right_limit - left_limit
+
+                def _any_orphan(width: float) -> bool:
+                    test_margin_w = max(0.2, width - 0.5)
+                    return any(
+                        len(lns := real_wrapped_lines("".join(r.text for r in p.runs), a.size() or pt, test_margin_w)) >= 2
+                        and len(lns[-1].strip()) == 1 and lns[-1].strip() not in _punct
+                        for p in a.paras if "".join(r.text for r in p.runs).strip())
+
+                if max_w > a.W + 0.01:
+                    # Jumping straight to the widest available width can
+                    # land in a *different* bad wrap point than the one
+                    # that triggered this fix — this heuristic word-wrap
+                    # model doesn't track LibreOffice's text shaping
+                    # exactly, especially for mixed digit+CJK runs, so a
+                    # width that looks clear in this model's own estimate
+                    # can still wrap badly in the real render. Searching
+                    # outward in small steps and stopping at the first
+                    # width this model itself sees as clear — rather than
+                    # the widest one — stays closer to the original wrap
+                    # points elsewhere in the same text, so it disturbs
+                    # fewer of them.
+                    widest = max_w
+                    step_w = a.W
+                    while step_w < widest - 0.01:
+                        step_w = min(widest, step_w + 0.1)
+                        if not _any_orphan(step_w):
+                            max_w = step_w
+                            break
+                    else:
+                        max_w = widest
+                    resolved = not _any_orphan(max_w)
+                    if resolved:
+                        old_lw = [a.L, a.W]
+                        a.shape.left = Inches(round(left_limit, 3))
+                        a.L = left_limit
+                        a.shape.width = Inches(round(max_w, 3))
+                        a.W = max_w
+                        changed.append({"shape": a.name, "before": old_lw,
+                                        "after": [a.L, a.W], "widen_for_orphan_char": True})
+        real_bottom = a.T + max(real_h, a.H)
+        for b in texts[i + 1:]:
+            if min(a.L + a.W, b.L + b.W) <= max(a.L, b.L) + 0.02:
+                continue  # different column — leave side-by-side shapes alone
+            if b.T >= real_bottom - 0.02:
+                continue  # already clear
+            old = [b.T, b.H]
+            delta = (real_bottom + gap) - b.T
+            backdrops = _backdrop_shapes_for(slide, (b.L, b.T, b.W, b.H),
+                                             exclude={a.shape.shape_id, b.shape.shape_id})
+            b.move_to(top=real_bottom + gap)
+            changed.append({"shape": b.name, "before": old, "after": [b.T, b.H],
+                            "pushed_by": a.name, "real_h": round(real_h, 3)})
+            for card in backdrops:
+                card_old_top = _in(card.top)
+                card.top = Inches(round(card_old_top + delta, 3))
+                changed.append({"shape": card.name, "before": [card_old_top],
+                                "after": [_in(card.top)], "moved_with": b.name,
+                                "backdrop_follows_text": True})
+    if changed and acts is not None:
+        acts.append({"rule": "fix_stacked_text_overlap", "page": page, "changed": changed})
+    return changed
+
+
 # --------------------------------------------------------------------------- 指标卡定向修复
 
 def reflow_cards(slide, card_names, left: float = 0.72, right: float = 12.67,

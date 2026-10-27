@@ -475,9 +475,11 @@ class SemanticSceneTests(unittest.TestCase):
             resolve_scene_semantics(
                 pages, model="fixture-local-model", model_call=model_call)
         self.assertEqual(caught.exception.code, "SCENE.PHOTO_SEARCH_ANCHORS_INVALID")
-        self.assertEqual(len(calls), 2)
+        # One original call plus two bounded same-model repair attempts
+        # (local models occasionally miss the strict anchor format once).
+        self.assertEqual(len(calls), 3)
         self.assertTrue(caught.exception.diagnostics["same_model"])
-        self.assertEqual(caught.exception.diagnostics["repair_attempts"], 1)
+        self.assertEqual(caught.exception.diagnostics["repair_attempts"], 2)
         self.assertRegex(caught.exception.diagnostics["repair_response_sha256"],
                          r"^[0-9a-f]{64}$")
 
@@ -856,8 +858,10 @@ class SemanticSceneTests(unittest.TestCase):
             provider=FakePhotoProvider(self.images),
             semantic_resolution=semantic_fixture())
         self.assertNotIn("hand_drinking_from_ceramic_cup", plan["images"])
+        # 版位放不下是如实登记的"未放置"，不是阻断交付的未解决缺口。
         self.assertIn("SCENE.NO_SAFE_PHOTO_AREA",
-                      {row["reason"] for row in plan["unresolved_scenes"]})
+                      {row["reason"] for row in plan["unplaced_scenes"]})
+        self.assertEqual(plan["unresolved_scenes"], [])
 
     def test_offline_language_hints_cover_major_scripts_and_latin_languages(self):
         samples = {
@@ -1673,14 +1677,23 @@ class SemanticSceneTests(unittest.TestCase):
         self.assertFalse((self.root / "must-not-exist.pptx").exists())
 
     def test_full_slide_card_blocks_photo_placement(self):
+        # A full-slide (or full-height half-slide) opaque color fill sits
+        # behind everything in z-order — it is always among the first shapes
+        # in document order, and a newly inserted photo is appended later and
+        # drawn on top of it. Treating it as a blocking "card" made scene
+        # photo placement impossible on every page of any themed deck that
+        # uses this extremely common background-panel pattern (2026-10-27
+        # job-c915c8c7deff: 0 of 7 planned, source-grounded scenes could be
+        # placed anywhere in a 13-page deck because every page's backdrop
+        # panel alone was enough to reject every candidate rect).
         source = make_source_pptx(self.root / "blocked.pptx", full_slide_fill=True)
         resolution = semantic_fixture()
         provider = FakePhotoProvider(self.images)
         plan = semantic_scenes.build_plan(source, semantic_resolution=resolution, provider=provider)
-        self.assertTrue(plan["unresolved_scenes"])
-        self.assertTrue(any(row["reason"] == "SCENE.NO_SAFE_PHOTO_AREA"
-                            for row in plan["unresolved_scenes"]))
-        self.assertEqual(plan["images"], {})
+        self.assertEqual(plan["unplaced_scenes"], [])
+        self.assertEqual(plan["unresolved_scenes"], [])
+        self.assertEqual(set(plan["images"]),
+                         {"hand_drinking_from_ceramic_cup", "iphone_mac_work_use"})
 
     def test_query_privacy_guard_rejects_numbers_and_source_text(self):
         pages = semantic_scenes._source_pages(self.source)

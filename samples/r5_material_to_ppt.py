@@ -36,22 +36,37 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+# 本机模型/服务端点绝不能经系统代理：工作台进程若带着 HTTP(S)_PROXY 启动，
+# 裸 urlopen 对 http://127.0.0.1:* 的调用会被代理拦截（2026-10-27 mt-3aa02671
+# SSLEOFError 根因——探测用无代理 opener 成功、实际调用走代理失败）。
+# 只豁免回环地址：外网（图库检索、云端模型）仍按既有代理配置。
+_LOOPBACK_HOSTS = "127.0.0.1,localhost,::1"
+for _k in ("no_proxy", "NO_PROXY"):
+    _v = os.environ.get(_k, "")
+    if _LOOPBACK_HOSTS not in _v:
+        os.environ[_k] = (f"{_v},{_LOOPBACK_HOSTS}" if _v else _LOOPBACK_HOSTS)
+del _k, _v
+
 from wengao_ppt import extractors  # noqa: E402  （复用既有提取器）
+from wengao_ppt import cloud_model_config  # noqa: E402  （用户自备云端 API 时优先路由）
 
 def _detect_endpoint() -> str:
     ep = os.environ.get("WENGAO_LOCAL_MODEL_ENDPOINT")
     if ep:
         return ep
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-    for cand in ("http://127.0.0.1:18888", "http://127.0.0.1:11434"):
+    # 18088：本机加速推理框架（mlx-dspark，OpenAI 兼容 /v1/chat/completions）；
+    # 18888：通用 llama.cpp 风格端点；11434：Ollama。按此优先级探测首个可用端口。
+    for cand in ("http://127.0.0.1:18088", "http://127.0.0.1:18888", "http://127.0.0.1:11434"):
         try:
-            req = urllib.request.Request(cand + "/health" if cand.endswith(":18888") else cand + "/api/tags", method="GET")
+            probe_path = "/api/tags" if cand.endswith(":11434") else "/health"
+            req = urllib.request.Request(cand + probe_path, method="GET")
             with opener.open(req, timeout=1) as r:
                 if r.status in (200, 404):
                     return cand
         except Exception:
             continue
-    return "http://127.0.0.1:18888"
+    return "http://127.0.0.1:18088"
 
 ENDPOINT = _detect_endpoint()
 OUTROOT = ROOT / "reports" / "r5"
@@ -82,6 +97,40 @@ NUM_RE = re.compile(
     r"(?P<num>-?\d[\d,]*\.?\d*)\s*"
     r"(?P<unit>%|个百分点|亿元|万元|亿|万|元|人|家|天|小时|分钟|倍|台|次|分)?")
 NEG_RE = re.compile(r"(下降|减少|降低|下滑|亏损|负增长|减少额)")
+
+
+_CJK_COMPOUND_DATE_RE = re.compile(r"\d{1,4}年\d{1,2}月\d{1,2}日")
+
+
+def _embedded_numeric_token(text: str, m: "re.Match") -> bool:
+    """该数字命中是不是**更大字母数字链的碎片**（日期 2026-09-18、版本 V3.0、
+    文件名 02_V2、编号 [S1]）。这类碎片不是业务数值：冻成"必讲事实"后会被
+    画进图表（2026-10-27 实证：'-09'/'-18.' 来自文件名日期，图表出现 -9 点），
+    数值核对也会按错误的数字边界误判。判定口径：
+      - 命中落在「N年N月N日」复合日期内 → 日期成分（'2026年10月12日' 的
+        '10'/'12'），按数值画日期是垃圾数据；
+      - 命中前一个字符是数字/ASCII 字母 → 链中段（'2026-09' 的 '-09'、'V3.0' 的 '3.0'）；
+      - 命中后紧跟 '-' 或 '_' → 链延续（'02_V2'、'10-20'）；
+      - 命中后是 '.' 且再往后是 ASCII 字母 → 文件名/域名（'18.xlsx'）。
+    """
+    s = m.string
+    a, b = m.start(), m.end()
+    for _dm in _CJK_COMPOUND_DATE_RE.finditer(s):
+        if a < _dm.end() and b > _dm.start():
+            return True
+    if a > 0:
+        prev = s[a - 1]
+        if prev.isdigit() or ("a" <= prev.lower() <= "z"):
+            return True
+    if b < len(s):
+        nxt = s[b]
+        if nxt in "-_":
+            return True
+        if nxt == "." and b + 1 < len(s):
+            after = s[b + 1]
+            if ("a" <= after.lower() <= "z"):
+                return True
+    return False
 
 
 def now_iso() -> str:
@@ -266,7 +315,7 @@ def _call_model_single(endpoint: str, model: str, prompt: str, num_predict: int,
                                            method="POST")
             l_req.add_header("Content-Type", "application/json")
             try:
-                with urllib.request.urlopen(l_req, timeout=BUDGET["request_timeout_s"]) as r:
+                with call_open(l_req, timeout=BUDGET["request_timeout_s"]) as r:
                     resp = json.loads(r.read().decode("utf-8"))
                     resp_str = (resp.get("content") or resp.get("response") or "").strip()
                     timings = resp.get("timings") or {}
@@ -277,7 +326,42 @@ def _call_model_single(endpoint: str, model: str, prompt: str, num_predict: int,
                             "elapsed_s": round(time.time() - t0, 2),
                             "raw": resp}
             except urllib.error.HTTPError as exc2:
-                exc = exc2
+                if exc2.code == 404:
+                    # 既非 Ollama 也非 llama.cpp 原生路由：尝试 OpenAI 兼容
+                    # /v1/chat/completions（本机加速推理框架 mlx-dspark 等采用此格式）。
+                    openai_payload = {
+                        "model": model,
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": BUDGET["temperature"],
+                        "max_tokens": num_predict,
+                        "stream": False,
+                        "chat_template_kwargs": {"enable_thinking": False},
+                    }
+                    if fmt == "json":
+                        openai_payload["response_format"] = {"type": "json_object"}
+                    o_req = urllib.request.Request(endpoint + "/v1/chat/completions",
+                                                   data=json.dumps(openai_payload).encode("utf-8"),
+                                                   method="POST")
+                    o_req.add_header("Content-Type", "application/json")
+                    try:
+                        with call_open(o_req, timeout=BUDGET["request_timeout_s"]) as r:
+                            resp = json.loads(r.read().decode("utf-8"))
+                            choices = resp.get("choices") or []
+                            message = (choices[0].get("message") or {}) if choices else {}
+                            resp_str = str(message.get("content") or "").strip()
+                            usage = resp.get("usage") or {}
+                            return {"payload": openai_payload, "response": resp_str,
+                                    "done_reason": (choices[0].get("finish_reason") if choices else None),
+                                    "eval_count": usage.get("completion_tokens"),
+                                    "prompt_eval_count": usage.get("prompt_tokens"),
+                                    "elapsed_s": round(time.time() - t0, 2),
+                                    "raw": resp}
+                    except urllib.error.HTTPError as exc3:
+                        exc = exc3
+                    except urllib.error.URLError as exc3:
+                        raise _model_transport_error(exc3) from None
+                else:
+                    exc = exc2
             except urllib.error.URLError as exc2:
                 raise _model_transport_error(exc2) from None
         raise _model_http_error(exc) from None
@@ -285,7 +369,93 @@ def _call_model_single(endpoint: str, model: str, prompt: str, num_predict: int,
         raise _model_transport_error(exc) from None
 
 
+def _call_cloud_model_single(target: dict, prompt: str, num_predict: int, fmt: str = "json") -> dict:
+    """OpenAI 兼容云端端点（用户自备 key，显式启用）。原文片段会发往该端点。"""
+    t0 = time.time()
+
+    def _post(pl: dict) -> dict:
+        req = urllib.request.Request(
+            target["endpoint"] + "/chat/completions",
+            data=json.dumps(pl, ensure_ascii=False).encode("utf-8"),
+            method="POST")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("Authorization", "Bearer " + target["api_key"])
+        try:
+            with urllib.request.urlopen(req, timeout=BUDGET["request_timeout_s"]) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            raise _model_http_error(exc) from None
+        except urllib.error.URLError as exc:
+            raise _model_transport_error(exc) from None
+        except (TimeoutError, socket.timeout):
+            raise _model_timeout_error() from None
+
+    # 关闭思维链：flash 档云端模型默认开思考、会把预算耗尽导致 content 空；
+    # pro 档（gemini-3.1-pro-preview 等）没有这个开关——thinkingBudget 0 被
+    # API 直接拒绝（400 "Budget 0 is invalid. This model only works in
+    # thinking mode."，2026-10-27 mt-67315496 实证），须给最小非零 effort。
+    # 口径与 wengao_ppt/scene_model.py 的 _reasoning_effort_for 一致。
+    _effort = "low" if "pro" in str(target.get("model") or "").lower() else "none"
+    # Gemini 兼容层把 thinking 与可见内容**合并计入** max_tokens（2026-10-27
+    # 实证：计划调用 3000 上限两次 length 截断，可见内容仅 ~49 token）。
+    # 首请求即放大，给思考留余量；计费按实际用量，不按上限。
+    _cloud_max_tokens = max(int(num_predict) * 2, int(num_predict) + 4096)
+    payload = {
+        "model": target["model"],
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": BUDGET["temperature"],
+        "max_tokens": _cloud_max_tokens,
+        "stream": False,
+        "reasoning_effort": _effort,
+    }
+    if fmt == "json":
+        payload["response_format"] = {"type": "json_object"}
+    try:
+        resp = _post(payload)
+    except ModelCallError as exc:
+        # 只能思考的模型（Gemini 3.x pro 等）拒绝 reasoning_effort:"none"
+        #（映射为 thinkingBudget 0 → 400 "Budget 0 is invalid. This model
+        # only works in thinking mode."，2026-10-27 mt-67315496 实证）。
+        # 处置：去掉该参数按模型默认思考行为重试一次，并放大 max_tokens
+        # 给思考内容留余量；思考过程不进 content，JSON 解析不受影响。
+        detail = str(getattr(exc, "detail", "") or "")
+        low = detail.lower()
+        if exc.code == "MODEL.HTTP_ERROR" and (
+                "thinking" in low or "budget" in low or "reasoning" in low):
+            payload.pop("reasoning_effort", None)
+            payload["max_tokens"] = max(int(num_predict) + 4096,
+                                        int(num_predict) * 2)
+            resp = _post(payload)
+        else:
+            raise
+    choices = resp.get("choices") or []
+    message = (choices[0].get("message") or {}) if choices else {}
+    resp_str = str(message.get("content") or "").strip()
+    if not resp_str:
+        # 思考耗尽 token 预算（finish=length 且 content 空）——放大预算重试
+        # 一次；再空则尝试 reasoning_content 兜底。
+        payload["max_tokens"] = max(int(num_predict) + 4096,
+                                    int(num_predict) * 2)
+        resp = _post(payload)
+        choices = resp.get("choices") or []
+        message = (choices[0].get("message") or {}) if choices else {}
+        resp_str = str(message.get("content") or "").strip()
+        if not resp_str:
+            resp_str = str(message.get("reasoning_content") or "").strip()
+    usage = resp.get("usage") or {}
+    return {"payload": payload, "response": resp_str,
+            "done_reason": (choices[0].get("finish_reason") if choices else None),
+            "eval_count": usage.get("completion_tokens"),
+            "prompt_eval_count": usage.get("prompt_tokens"),
+            "elapsed_s": round(time.time() - t0, 2),
+            "raw": resp}
+
+
 def call_model(model: str, prompt: str, num_predict: int, fmt: str = "json") -> dict:
+    cloud_target = cloud_model_config.active_text_target()
+    if cloud_target is not None:
+        return _call_cloud_model_single(cloud_target, prompt, num_predict, fmt)
+
     endpoint = os.environ.get("WENGAO_LOCAL_MODEL_ENDPOINT") or _detect_endpoint()
 
     def _call_with_timeout(endpoint_to_call: str) -> dict:
@@ -333,9 +503,17 @@ def _as_dict(o):
             if not k.startswith("_") and not callable(getattr(o, k))}
 
 
+#: 行尾出现这些标点才把下一行当作同一句的续行——这些标点本身就表示
+#: "后面还有内容"（顿号/逗号/冒号），跨行拼接后才能取到完整句。缺少任何
+#: 续行标点的短行（标题、副标题、状态标签等常见于 DOCX 中未被识别为
+#: heading 样式的段落）必须各自成段，否则会被整句吞并成一句读不通的拼接
+#: 文本，而后续的"半句门禁"又会把这类拼接文本误判成被截断的原句。
+_LINE_CONTINUATION_CHARS = "、，,：:"
+
+
 def _page_segments(pd) -> list[dict]:
-    """把一页的单元流拼成**段**：连续 body 单元用换行相接（跨行不断句），
-    heading 单元切段。行尾的"、"后句子在下一行继续——拼接后才能取到完整句。
+    """把一页的单元流拼成**段**：行尾带续行标点的连续 body 单元用换行相接
+    （跨行不断句），heading 单元切段。
     """
     segs: list[dict] = []
     for raw_unit in (pd.get("units") or []):
@@ -348,8 +526,10 @@ def _page_segments(pd) -> list[dict]:
             segs.append({"kind": "heading", "text": text})
             continue
         ref = _as_dict(unit.get("source_ref") or {})
-        if segs and segs[-1]["kind"] == "body":
-            segs[-1]["text"] += "\n" + text
+        prev = segs[-1] if segs else None
+        if (prev and prev["kind"] == "body"
+                and prev["text"].rstrip().endswith(tuple(_LINE_CONTINUATION_CHARS))):
+            prev["text"] += "\n" + text
         else:
             segs.append({"kind": "body", "text": text, "ref": ref, "unit": unit})
     return segs
@@ -415,6 +595,10 @@ def build_fact_ledger(doc) -> list[dict]:
                     val = m.group("num")
                     if not unit_txt and not val:
                         continue
+                    # 内嵌数字片段（日期 2026-09-18 的 -09/-18.、版本 V3.0、
+                    # 文件名 02_V2 等）不是必讲数值，建档会生成垃圾图表。
+                    if _embedded_numeric_token(sent, m):
+                        continue
                     facts.append({
                         "fact_id": f"F{len(facts)+1:03d}",
                         "subject": subject[:40],
@@ -465,6 +649,176 @@ def build_fact_ledger(doc) -> list[dict]:
                     },
                 })
     return facts
+
+
+# ----------------------------------------------------------------- 必讲容量预算
+#: 目录/议程页每页可承载的章节名条目数（目录 high 档、单行 ≤16 字；
+#: 与 paginate_plan._readable_cap("toc_section") 的实测口径一致）。
+_AGENDA_ITEMS_PER_PAGE = 5
+#: 结构页预留：封面 1 + 结论收尾 1（目录页数随章节数另行计入）。
+_STRUCTURE_PAGES = 2
+#: 正文页可用高度（英寸）——与分页器同一 5.1in 口径，另留 8% 余量，
+#: 防止预算内条目在真实几何门禁处被拆到续页。
+_BODY_USABLE_INCH = 5.1 * 0.92
+#: 内容页页数上限：总页数 ≤ 冻结上限时 1(封面)+ceil(n/5)(目录)+n(内容)+1(结论)
+#: ≤ 20 → n ≤ 15。
+_MAX_CONTENT_PAGES = 15
+
+
+def _body_item_inch(text: str) -> float:
+    """单栏正文条目高度估算（英寸），与分页器同口径：
+    24pt × 1.25 行距 × 1.45 中文行盒，11.7in 可用宽 ≈ 35 全角字/行，条目间距 0.16in。"""
+    t = re.sub(r"\s+", "", str(text or ""))
+    if not t:
+        return 0.0
+    per_line = max(1, int((11.9 - 0.2) * 72 / 24))
+    lines = max(1, -(-len(t) // per_line))
+    return lines * 24 * 1.25 * 1.45 / 72 + 0.16
+
+
+def _fact_statement(f: dict) -> str:
+    """计划注入口径的原句（make_plan_chunked：sentence 优先，回退原始值）。"""
+    return (str((f.get("source_ref") or {}).get("sentence") or "").strip()
+            or str(f.get("raw_value_text") or "").strip())
+
+
+def budget_must_teach_facts(facts: list[dict],
+                            target_pages: int) -> tuple[list[dict], dict]:
+    """把全量候选台账预算成本轮**必讲子集**（模型调用之前、确定性、显式留痕）。
+
+    2026-10-27 mt-c4b795f2 根因：90 页 docx 冻结 562 条候选事实（89 个章节、
+    351 个唯一原句）。chunked 规划"一章一页"注入全部章节 → 计划 91 页、
+    分页 152 页，与冻结页数区间 10—20 在数学上不可同时满足；旧契约只能
+    以 PAGE_RANGE_UNSATISFIED 拒绝，任务面板把它显示成"任务进程意外退出"。
+
+    两条硬约束——"必讲清单在模型调用前冻结"与"页数区间 10—20 不降"——
+    在大材料上互斥，必须在**冻结时刻**显式取舍，而不是等分页后失败：
+
+      1. 章节等距抽样：入选章节均匀覆盖全文跨度，不偏向开头；
+      2. 每章按源稿句子顺序截取，装满该章分得的页数预算为止
+         （高度口径与分页器一致，保证每个内容页分页后仍是 1 页）；
+      3. 落选事实**逐条**记录 reason=PAGE_BUDGET 写入台账与运行记录——
+         是显式省略，不是静默截断；覆盖核对只针对本轮必讲子集。
+    """
+    candidates = list(facts)
+    by_subject: dict[str, list[dict]] = {}
+    order: list[str] = []
+    for f in candidates:
+        s = f.get("subject") or "unknown"
+        if s not in by_subject:
+            by_subject[s] = []
+            order.append(s)
+        by_subject[s].append(f)
+
+    # —— 自然规模估算（不预算时全量注入会分到多少页）——
+    def _natural_pages() -> tuple[int, int]:
+        content = 0
+        for s in order:
+            h = sum(_body_item_inch(_fact_statement(f)) for f in by_subject[s])
+            content += max(1, int(-(-h // 5.1)))
+        return content, 1 + -(-len(order) // _AGENDA_ITEMS_PER_PAGE) + content + 1
+
+    natural_content, natural_total = _natural_pages()
+    if natural_total <= PAGE_RANGE[1]:
+        return candidates, {
+            "activated": False, "policy": "材料自然规模在冻结页数区间内，不预算。",
+            "candidates": len(candidates), "selected": len(candidates),
+            "omitted": 0, "subjects_total": len(order),
+            "subjects_selected": len(order),
+            "estimated_pages_unbudgeted": natural_total,
+            "omitted_facts": [],
+        }
+
+    # —— 章节选取数量：总页数 = 1 + ceil(n/5) + n×quota + 1 ≈ target ——
+    n_subjects = len(order)
+    if n_subjects >= 6:
+        # 总页数 = 1(封面) + ceil(n/5)(目录) + n(内容) + 1(结论) ≈ target
+        # → n ≈ target - 4；夹在 [6, 15] 保证分页后落在 10—20 冻结区间内。
+        n_sel = min(n_subjects, max(6, min(_MAX_CONTENT_PAGES,
+                                           int(target_pages) - 4)))
+        quota = 1
+    else:
+        n_sel = n_subjects
+        quota = max(1, round((int(target_pages) - _STRUCTURE_PAGES) / max(1, n_sel)))
+    # 章节等距抽样（含首尾），保证摘要覆盖全文跨度。
+    if n_sel < n_subjects:
+        if n_sel == 1:
+            sel_idx = [0]
+        else:
+            step = (n_subjects - 1) / (n_sel - 1)
+            sel_idx = sorted({round(i * step) for i in range(n_sel)})
+        selected_subjects = [order[i] for i in sel_idx]
+    else:
+        selected_subjects = list(order)
+
+    selected: list[dict] = []
+    omitted_records: list[dict] = []
+    omitted_ids: set[str] = set()
+    budget_height = quota * _BODY_USABLE_INCH
+    for s in selected_subjects:
+        seen_sentences: set[str] = set()
+        taken_height = 0.0
+        taken_in_subject = 0
+        for f in by_subject[s]:
+            st = _fact_statement(f)
+            key = re.sub(r"\s+", "", st)
+            if f.get("fact_id") in omitted_ids:
+                continue
+            if not st or key in seen_sentences:
+                # 同句多事实：句子注入一次即可共同覆盖，不占额外预算，
+                # 但只有已经随本章入选的事实才算选中。
+                if key in seen_sentences and taken_in_subject > 0:
+                    selected.append(f)
+                else:
+                    omitted_ids.add(f.get("fact_id") or "")
+                    omitted_records.append(
+                        {"fact_id": f.get("fact_id"), "subject": s,
+                         "reason": "PAGE_BUDGET: 同句已由其他事实共同覆盖，"
+                                   "整句注入一次，不重复占页。"})
+                continue
+            ih = _body_item_inch(st)
+            if taken_in_subject > 0 and taken_height + ih > budget_height:
+                omitted_ids.add(f.get("fact_id") or "")
+                omitted_records.append(
+                    {"fact_id": f.get("fact_id"), "subject": s,
+                     "reason": f"PAGE_BUDGET: 全量必讲需约 {natural_total} 页，"
+                               f"超出冻结上限 {PAGE_RANGE[1]}；本章页数预算已满，"
+                               "原句显式省略（非静默截断）。"})
+                continue
+            seen_sentences.add(key)
+            selected.append(f)
+            taken_height += ih
+            taken_in_subject += 1
+    # 未入选章节的全部事实
+    chosen = set(selected_subjects)
+    for s in order:
+        if s in chosen:
+            continue
+        for f in by_subject[s]:
+            omitted_ids.add(f.get("fact_id") or "")
+            omitted_records.append(
+                {"fact_id": f.get("fact_id"), "subject": s,
+                 "reason": f"PAGE_BUDGET: 全量必讲需约 {natural_total} 页，"
+                           f"超出冻结上限 {PAGE_RANGE[1]}；章节等距抽样未入选，"
+                           "整章原句显式省略（非静默截断）。"})
+
+    selected.sort(key=lambda f: str(f.get("fact_id") or ""))
+    omitted_records.sort(key=lambda r: str(r.get("fact_id") or ""))
+    est_pages = (1 + -(-len(selected_subjects) // _AGENDA_ITEMS_PER_PAGE)
+                 + len(selected_subjects) * quota + 1)
+    return selected, {
+        "activated": True,
+        "policy": ("章节等距抽样 + 每章按源稿顺序截取至页数预算；"
+                   "落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。"),
+        "candidates": len(candidates), "selected": len(selected),
+        "omitted": len(omitted_records),
+        "subjects_total": n_subjects, "subjects_selected": len(selected_subjects),
+        "pages_per_subject": quota,
+        "estimated_pages_unbudgeted": natural_total,
+        "estimated_pages_budgeted": est_pages,
+        "selected_subjects": selected_subjects,
+        "omitted_facts": omitted_records,
+    }
 
 
 # ----------------------------------------------------------------- 计划生成
@@ -1814,8 +2168,15 @@ def build_pptx(plan: dict, facts: list[dict], out_path: Path, theme_mod):
             p2 = tf.add_paragraph()
             p2.line_spacing = 1.2
             p2.space_before = Pt(6)
-            r2 = p2.add_run(); r2.text = val or "（来源待补）"
-            r2.font.size = Pt(24); r2.font.color.rgb = _rgb(colors["text"])
+            # 保真（兑现本函数 docstring）：正文行渲染**完整原条目**。
+            # 「标签：正文」被拆开后冒号丢失，完整句在成稿中不再连续，
+            # 保真核对（FIDELITY.REQUIRED_TEXT_MISSING）必挂。
+            _body = item if val else "（来源待补）"
+            # 长句降字号，避免整句放回正文后撑爆卡片（HG05/HG06 溢出）。
+            _blen = len(_body)
+            _bsz = 24 if _blen <= 26 else (20 if _blen <= 48 else 18)
+            r2 = p2.add_run(); r2.text = _body
+            r2.font.size = Pt(_bsz); r2.font.color.rgb = _rgb(colors["text"])
         # 溢出条目携带**原始 must_state 字符串**，续排时不再拆解，
         # 避免把 "3.1 亿元" 拆成 "3.1" + "亿元" 而破坏事实。
         overflow = list(items[CAP:])
@@ -2169,7 +2530,7 @@ def build_pptx(plan: dict, facts: list[dict], out_path: Path, theme_mod):
 
         inline_table_height = sum(_inline_row_height(x) for x in [
             "同页完整事实（未绘入图表）", *rest]) if inline_rest_candidate else 0.0
-        inline_note_height = max(0.45, src_height)
+        inline_note_height = max(0.45, src_height + 0.12)  # +0.12：文本框默认上下 inset，防视觉裁切
         inline_table_top = 4.90 + inline_note_height + 0.10
         inline_rest = (inline_rest_candidate and len(src_lines) <= 3
                        and src_height <= 0.90
@@ -2215,8 +2576,13 @@ def build_pptx(plan: dict, facts: list[dict], out_path: Path, theme_mod):
                 over_rest.extend("来源与限定（原句）：" + line for line in src_lines)
                 src_lines = []
             if src_lines:
-                nb = s.shapes.add_textbox(Inches(0.6), Inches(6.32),
-                                          Inches(12.2), Inches(1.05))
+                # 注脚框高度按内容估算，顶部贴图表底沿。原先固定 1.05in
+                # 把框底压到 7.37in，距页脚安全线只剩 0.022in，触发
+                # HG06 CONTENT_FOOTER_GAP（要求 ≥0.12in）。
+                _foot_top = chart_top + chart_height + 0.07
+                _foot_h = max(0.45, min(src_height + 0.12, 7.27 - _foot_top))
+                nb = s.shapes.add_textbox(Inches(0.6), Inches(_foot_top),
+                                          Inches(12.2), Inches(_foot_h))
                 ntf = nb.text_frame
                 ntf.word_wrap = True
                 for i, snt in enumerate(src_lines[:3]):
@@ -2504,17 +2870,44 @@ def main() -> int:
         (outdir / "run_record.json").write_text(
             json.dumps(run, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # 2) 必讲事实台账（**模型调用之前**冻结）
-    facts = build_fact_ledger(doc)
+    # 2) 必讲事实台账（**模型调用之前**冻结）。
+    #    全量候选先入账（可审计），再按冻结页数契约做**显式容量预算**：
+    #    大材料全量必讲与"页数区间 10—20"数学上互斥（2026-10-27 mt-c4b795f2
+    #    90 页 docx → 562 条候选 → 152 页），必须在冻结时刻取舍并逐条留痕，
+    #    而不是分页后才以 PAGE_RANGE_UNSATISFIED 失败。
+    candidates = build_fact_ledger(doc)
+    facts, fact_budget = budget_must_teach_facts(candidates, args.pages)
     fp = outdir / "fact_ledger.json"
+    # 台账文件的双层语义：
+    #   facts           = 本轮**必讲子集**（模型调用之前冻结；下游来源侧保真
+    #                     核对 check_fact_coverage 的期望集合就是它——
+    #                     2026-10-27 mt-76244dad：若把 562 条全量候选当期望，
+    #                     预算后的 12 页稿会被判 416 条 REQUIRED_TEXT_MISSING）；
+    #   candidate_facts = 全量候选（审计留痕，不作为期望集合）。
     fp.write_text(json.dumps({"schema_version": "1.0.0",
                               "frozen_at": now_iso(),
                               "frozen_before_model_call": True,
-                              "count": len(facts), "facts": facts},
+                              "count": len(facts), "facts": facts,
+                              "budget": {k: v for k, v in fact_budget.items()
+                                         if k != "omitted_facts"},
+                              "candidate_count": len(candidates),
+                              "candidate_facts": candidates,
+                              "budget_omitted_facts": fact_budget["omitted_facts"]},
                              ensure_ascii=False, indent=2), encoding="utf-8")
-    run["fact_ledger"] = {"path": rel(fp), "count": len(facts),
+    run["fact_ledger"] = {"path": rel(fp), "count": len(candidates),
+                          "selected": fact_budget["selected"],
                           "frozen_before_model_call": True}
-    print(f"[facts] {len(facts)} 条已冻结 → {rel(fp)}", flush=True)
+    run["fact_budget"] = {k: v for k, v in fact_budget.items()
+                          if k != "omitted_facts"}
+    if fact_budget.get("activated"):
+        run["fact_budget"]["omitted_facts_path"] = rel(fp) + "#budget_omitted_facts"
+        print(f"[facts] 候选 {fact_budget['candidates']} 条，页数预算后必讲 "
+              f"{fact_budget['selected']} 条（章节 {fact_budget['subjects_selected']}"
+              f"/{fact_budget['subjects_total']}，落选逐条留痕）；"
+              f"不预算约 {fact_budget['estimated_pages_unbudgeted']} 页 > 冻结上限 "
+              f"{PAGE_RANGE[1]}", flush=True)
+    else:
+        print(f"[facts] {len(facts)} 条已冻结 → {rel(fp)}", flush=True)
 
     # 3) 全局内容计划（模型）。默认按章节确定性注入冻结原句；--single-pass 用于短材料对照。
     already_paginated = False

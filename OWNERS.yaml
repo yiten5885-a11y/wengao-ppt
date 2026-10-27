@@ -67,6 +67,7 @@ owners:
     - fixtures/**
     - tests/pipeline/**
     - tests/ui/**
+    - tests/test_ui_*.py                # 补注：UI 回归测试
     - tests/contracts/**
     - reports/rs-w4/**
     - reports/handoff/**              # 补注：给其他窗口的接口对齐/缺陷报告（W4 产出）

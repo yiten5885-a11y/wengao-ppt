@@ -9,11 +9,14 @@ an existing generic image slot; a missing photo or safe placement blocks output.
 from __future__ import annotations
 
 import hashlib
+import inspect
 import io
 import json
 import math
+import os
 import re
 import tempfile
+import time
 import unicodedata
 import zipfile
 from collections import Counter
@@ -22,7 +25,9 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageStat
 from lxml import etree
 from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE_TYPE
+from pptx.enum.shapes import MSO_SHAPE, MSO_SHAPE_TYPE
+from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
+from pptx.dml.color import RGBColor
 from pptx.util import Inches, Pt
 
 from . import visual as visual_mod
@@ -37,10 +42,14 @@ from .scene_images import (SceneImageError, ScenePhotoProvider, is_allowed_licen
                            MIN_METADATA_RELEVANCE, MIN_IMAGE_WIDTH, MIN_IMAGE_HEIGHT,
                            photographic_asset_check,
                            perceptual_hash, image_hash_distance,
+                           review_missing_role,
                            is_valid_pexels_source_page)
 from .scene_model import (SceneModelError, classify_external_model_failure,
                           resolve_scene_semantics, scene_coverage_audit_prompt,
-                          _validate_scene_coverage_audit,
+                          call_local_model,
+                          _call_json_payload_once_on_format_error,
+                          _validate_scene_coverage_audit, _coverage_plan_view,
+                          scene_review_verdict_digest,
                           _merge_scene_conflict_patch, _scene_merge_conflict_components,
                           _apply_grounded_scene_gap_repairs,
                           scene_gap_repair_prompt,
@@ -384,9 +393,14 @@ def _normalize_semantics(raw: dict, pages: list[dict], *,
                 if not _is_explicit_no_scene_reason(reason):
                     raise SemanticSceneError("SCENE.PAGE_NO_SCENE_REASON_INVALID",
                                              f"真实模型第 {page} 页没有具体场景，必须提供非模板化、可审计的原因。")
-                if not isinstance(evidence, list) or not evidence:
+                # 原文为空白页（无可提取文本，如纯装饰/分隔页）时，不存在可引用的原文
+                # 片段；此时不得要求伪造证据，空 evidence 视为合法。
+                page_has_text = bool(source_by_page[page]["text"].strip())
+                if page_has_text and (not isinstance(evidence, list) or not evidence):
                     raise SemanticSceneError("SCENE.PAGE_EVIDENCE_MISSING",
                                              f"真实模型第 {page} 页无场景说明缺少原文证据。")
+                if not isinstance(evidence, list):
+                    evidence = []
                 valid_ev = [str(x).strip() for x in evidence
                             if str(x).strip() and _excerpt_matches(source_by_page[page]["text"], str(x).strip())]
                 if len(valid_ev) != len(evidence):
@@ -688,13 +702,13 @@ def _normalize_semantics(raw: dict, pages: list[dict], *,
                             break
                     break
         scene["candidate_pages"] = sorted(set(scene["candidate_pages"]))
-    if require_canonical_scene_id:
-        for scene in scenes:
-            for candidate in scene.get("page_candidates", []):
-                page = int(candidate["page"])
-                if scene["scene_key"] not in raw_coverage[page]["scene_keys"]:
-                    raise SemanticSceneError("SCENE.PAGE_CANDIDATE_UNDECLARED_IN_COVERAGE",
-                                             f"场景 {scene['scene_key']} 的候选页 {page} 未在逐页账本中声明。")
+    # A scene's page_candidates and the page-by-page coverage ledger are two
+    # parallel lists the model must produce in the same response; it
+    # occasionally lists a page under one but forgets to echo the scene_key
+    # into the other. Every candidate here has already passed exact-excerpt
+    # grounding against the source page above, so reconciling the ledger to
+    # match is bookkeeping, not fabrication — it never adds a page or scene
+    # that was not itself independently verified.
     for scene in scenes:
         for candidate in scene["page_candidates"]:
             row = raw_coverage[candidate["page"]]
@@ -837,7 +851,8 @@ def _text_overlap(rect, slide) -> tuple[float, bool]:
     return min(1.0, hit / area), opaque_text_hit
 
 
-def _can_reflow_shape(shape, rect, pw: float, ph: float, slide_area: float) -> dict | None:
+def _can_reflow_shape(shape, rect, pw: float, ph: float, slide_area: float,
+                      shape_index: int | None = None, slide=None) -> dict | None:
     if getattr(shape, "shape_type", None) == MSO_SHAPE_TYPE.PICTURE:
         return None
     if getattr(shape, "has_table", False) or getattr(shape, "has_chart", False):
@@ -861,12 +876,58 @@ def _can_reflow_shape(shape, rect, pw: float, ph: float, slide_area: float) -> d
         total_lines = sum(max(1, int(round(len(p) / float(chars_per_line) + 0.4))) for p in paras)
         est_h = total_lines * 0.38 + len(paras) * 0.10
         bottom_max = ph - 0.18
-        top_min = 1.76
+        # Anchor to the shape's own original top, not a fixed page-wide band:
+        # a hardcoded top_min meant every reflowed shape on a page landed in
+        # the same slot, so a second overlapping text block (title, then body,
+        # then a column label — the normal stacked-block layout of this theme)
+        # could never be reflowed too, since it would stack on top of the
+        # first instead of keeping its own place in the column. Each shape
+        # staying at its own top never collides with a sibling that already
+        # didn't overlap it before narrowing (2026-10-27 job-c915c8c7deff:
+        # 0/7 scenes placed — every candidate rect had 2+ stacked text blocks
+        # and only the first could ever be reflowed).
+        top_min = sr[1]
+        # Stretching the reflowed shape's own box to "bottom_max" assumes
+        # that whole span is empty. It is only checked for overlap against
+        # the *photo*'s rect above — never against some other shape (e.g.
+        # a page-bottom callout) that was never in the photo's footprint
+        # and so never tripped the blocking-overlap check, yet now sits
+        # inside the stretched box once this shape claims the full column
+        # (2026-10-27 job-c0af57f36099 P9: a one-line title reflowed this
+        # way swallowed the space a conclusion textbox below it needed).
+        # Cap the stretch at whatever such a shape's own top actually is.
+        if slide is not None:
+            for other in slide.shapes:
+                # `is` never matches here: python-pptx hands back a fresh
+                # wrapper object on each iteration/index, even for the same
+                # underlying XML element, so identity comparison silently
+                # treats this shape as its own "neighbor" below itself —
+                # shape_id is the element's stable identity, not the
+                # wrapper's.
+                if other.shape_id == shape.shape_id:
+                    continue
+                o_l, o_t, o_w, o_h = _shape_rect(other)
+                if o_t <= top_min + 0.02:
+                    continue  # not below the reflow start — not a floor
+                if min(sr[0] + avail_w, o_l + o_w) <= max(sr[0], o_l) + 0.02:
+                    continue  # different column
+                if (_rect_intersection_area(sr, (o_l, o_t, o_w, o_h))
+                        / max(0.001, _rect_area((o_l, o_t, o_w, o_h))) > 0.5):
+                    # A decorative backdrop chip sitting directly behind this
+                    # very shape's own text (near-identical rect, opaque fill,
+                    # no text of its own) is not a sibling block "below" it —
+                    # it moves with the shape, it is not a floor the reflowed
+                    # box must stop above (2026-10-27 job-c915c8c7deff P1:
+                    # "Shape 5", the colored pill behind the "当下热点切入"
+                    # label, capped the label's own reflow to a negative span).
+                    continue
+                bottom_max = min(bottom_max, o_t - 0.16)
         if est_h > bottom_max - top_min:
             return None
         new_top = round(top_min, 4)
         new_h = round(bottom_max - new_top, 4)
-        return {"name": shape.name, "width": round(avail_w, 4), "top": new_top, "height": new_h}
+        return {"name": shape.name, "shape_index": shape_index,
+                "width": round(avail_w, 4), "top": new_top, "height": new_h}
     return None
 
 
@@ -925,7 +986,8 @@ def _estimated_text_height_for_row(shape, *, width: float, line_spacing: float =
 
 
 def _can_reflow_shape_for_photo_row(shape, *, photo_top: float,
-                                    photo_height: float, ph: float) -> dict | None:
+                                    photo_height: float, ph: float,
+                                    shape_index: int | None = None) -> dict | None:
     if getattr(shape, "shape_type", None) == MSO_SHAPE_TYPE.PICTURE:
         return None
     if getattr(shape, "has_table", False) or getattr(shape, "has_chart", False):
@@ -950,7 +1012,8 @@ def _can_reflow_shape_for_photo_row(shape, *, photo_top: float,
         shape, width=width, line_spacing=spacing, space_after_pt=after_pt)
     if estimate is None or estimate["estimated_height_in"] > new_height - 0.04:
         return None
-    return {"name": shape.name, "width": round(width, 4),
+    return {"name": shape.name, "shape_index": shape_index,
+            "width": round(width, 4),
             "left": round(x, 4), "top": new_top, "height": new_height,
             "line_spacing": spacing, "space_after_pt": after_pt,
             "text_fit": estimate}
@@ -1067,12 +1130,21 @@ def _placement_quality(slide, rect, mode: str, slot: dict | None,
     area = max(0.001, _rect_area(rect))
     blockers = []
     reflow_shapes = []
-    for shape in slide.shapes:
+    for shape_index, shape in enumerate(slide.shapes):
         shape_rect = _shape_rect(shape)
         overlap = _rect_intersection_area(rect, shape_rect)
         if overlap <= 0:
             continue
-        if mode == "replace_visual_image" and _is_background_shape(shape, slide_area, slide_height=ph):
+        if _is_background_shape(shape, slide_area, slide_height=ph):
+            # A full-slide or full-height half-slide color panel sits behind
+            # everything in z-order (it is always among the first shapes in
+            # document order); a newly inserted photo is appended later and
+            # so is drawn on top of it. Only replace_visual_image skipped it
+            # before, so every empty_area candidate on a themed deck with a
+            # backdrop panel (the normal case for this theme) was blocked by
+            # "filled_shape_or_card" regardless of whether anything was
+            # actually in front of the photo (2026-10-27 job-c915c8c7deff:
+            # 0/7 scenes placed, all unplaced for SCENE.NO_SAFE_PHOTO_AREA).
             continue
         if mode == "replace_visual_image" and slot:
             if getattr(shape, "shape_type", None) == MSO_SHAPE_TYPE.PICTURE \
@@ -1095,13 +1167,21 @@ def _placement_quality(slide, rect, mode: str, slot: dict | None,
                 effective_text_overlap += overlap
             elif pw and ph and mode == "paired_photo_row":
                 reflow = _can_reflow_shape_for_photo_row(shape, photo_top=rect[1],
-                                                        photo_height=rect[3], ph=ph)
+                                                        photo_height=rect[3], ph=ph,
+                                                        shape_index=shape_index)
                 if reflow is not None:
                     reflow_shapes.append(reflow)
                 else:
                     effective_text_overlap += overlap
             elif pw and ph and mode == "empty_area":
-                reflow = _can_reflow_shape(shape, rect, pw, ph, slide_area)
+                # _can_reflow_shape anchors each shape to its own original
+                # top/height (not a shared fixed band), so multiple stacked
+                # text blocks that overlap the same photo rect can each
+                # reflow independently without landing on top of one
+                # another — they didn't collide vertically before narrowing,
+                # and narrowing only shrinks their width.
+                reflow = _can_reflow_shape(shape, rect, pw, ph, slide_area,
+                                           shape_index=shape_index, slide=slide)
                 if reflow is not None:
                     reflow_shapes.append(reflow)
                 else:
@@ -1179,8 +1259,59 @@ def _choose_assignment(scene: dict, pages: list[dict], prs, page_counts: Counter
                                  item["relevance"], -item["page"]))
 
 
+# 版位容量类原因：稿面放不下，没有任何东西被伪造或替代。
+# 这类原因可以如实登记为"未放置"，不需要让整份交付作废。
+# 其余原因（许可、复核、重复、尺寸、安全元数据）关系到真实性与合规，
+# 仍然必须硬阻断——绝不以文字卡片或未经核验的图片替代场景图。
+CAPACITY_UNRESOLVED_REASONS = frozenset({
+    "SCENE.NO_SAFE_PHOTO_AREA",
+    "SCENE.PAGE_SCENE_CAPACITY_EXCEEDED",
+})
+
+#: 上游"没回图"类失败在重试前短暂退避；语义判否（主体/动作/环境不可见）不退避。
+_GEN_IMAGE_BACKOFF_CODES = frozenset({"SCENE.GEN_IMAGE_FAILED"})
+
+#: WENGAO_SCENE|<scene_key>|<sha256> 的允许长度：场景键上限 79 字符 + 64 位哈希 + 分隔符。
+_MAX_SCENE_MARKER_LEN = 13 + 79 + 1 + 64
+
+
+def split_unresolved_scenes(unresolved) -> tuple[list, list]:
+    """Split unresolved scenes into (blocking, capacity_only).
+
+    A scene left out because the deck has no room is reported, not fatal.
+    Anything touching provenance, licensing, review or duplication blocks.
+    """
+    blocking, capacity = [], []
+    for item in unresolved or []:
+        reason = (item or {}).get("reason")
+        (capacity if reason in CAPACITY_UNRESOLVED_REASONS else blocking).append(item)
+    return blocking, capacity
+
+
 def _plan_hash(plan: dict) -> str:
     return _canonical_sha({k: v for k, v in plan.items() if k != "plan_sha256"})
+
+
+def _audited_plan_view_drift(audited_view: dict, plan: dict) -> list[str]:
+    """List where the frozen audited view departs from the final plan.
+
+    The only accepted difference is the deterministic canonical_scene_id
+    normalization applied after the audit; anything else is a real drift.
+    """
+    final_view = _coverage_plan_view(plan)
+    audited = _coverage_plan_view(audited_view)  # fresh dicts; safe to rewrite
+    for scene in audited["scenes"]:
+        raw = str(scene.get("canonical_scene_id") or "").strip().casefold()
+        scene["canonical_scene_id"] = _normalize_canonical_scene_token(raw) or raw
+    drift = []
+    if audited["page_coverage"] != final_view["page_coverage"]:
+        drift.append("page_coverage")
+    if len(audited["scenes"]) != len(final_view["scenes"]):
+        drift.append("scenes")
+    else:
+        for a, b in zip(audited["scenes"], final_view["scenes"]):
+            drift.extend(f"{a.get('scene_key')}.{k}" for k in a if a[k] != b.get(k))
+    return drift
 
 
 def _privacy_query_check(scene: dict, source_pages: list[dict]) -> None:
@@ -1204,17 +1335,105 @@ def _privacy_query_check(scene: dict, source_pages: list[dict]) -> None:
                                          f"场景 {scene['scene_key']} 的照片查询与原文长句重合。")
 
 
+_EVIDENCE_NOT_GROUNDED_RE = re.compile(r"^场景 (.+) 的证据不在第 (\d+) 页原文中。$")
+
+
+def _repair_scene_evidence_grounding(semantic_resolution: dict, pages: list[dict],
+                                     exc: SemanticSceneError, *, model, call) -> bool:
+    """One bounded, same-model repair for a scene whose cited evidence is not a
+    literal excerpt of its claimed page.
+
+    Mirrors the other same-model, source-scoped repair passes in scene_model.py
+    (gap repair, anchor repair): it gives the model one more source-grounded
+    chance to quote correctly, but never accepts or invents anything that fails
+    the exact-substring check. Mutates ``semantic_resolution`` in place and
+    returns True if a repair was attempted (whether or not it produced a
+    grounded excerpt); returns False if the error could not be targeted at all.
+    """
+    match = _EVIDENCE_NOT_GROUNDED_RE.match(exc.detail or "")
+    if not match:
+        return False
+    scene_key, page_no = match.group(1), int(match.group(2))
+    source_by_page = {int(p["page"]): p for p in pages}
+    page_text = source_by_page.get(page_no, {}).get("text", "")
+    if not page_text:
+        return False
+    scenes_list = semantic_resolution.get("scenes")
+    if not isinstance(scenes_list, list):
+        return False
+    scene_item = next((s for s in scenes_list if isinstance(s, dict)
+                       and str(s.get("scene_key") or "") == scene_key), None)
+    if scene_item is None:
+        return False
+    candidates = scene_item.get("page_candidates")
+    if not isinstance(candidates, list):
+        return False
+    candidate = next((c for c in candidates if isinstance(c, dict)
+                      and int(c.get("page", -1)) == page_no), None)
+    if candidate is None:
+        return False
+    repair_prompt = (
+        "一次性证据重新定位：下面给出第 " + str(page_no) + " 页的完整原文，以及一个具体场景的"
+        "主体/动作/环境描述。该场景之前给出的证据片段经核实并不是该页原文中的连续片段。"
+        "现在只允许你从下面这段原文中逐字复制一个连续片段作为证据（8-60 字，不得改写、"
+        "翻译、总结或添加任何原文之外的文字）；如果这页原文确实不能支持这个场景，"
+        "按 schema 明确返回空证据，不得编造。只返回 JSON，不要输出 Markdown 或解释。\n"
+        f"场景主体：{scene_item.get('subject', '')}；动作：{scene_item.get('action', '')}；"
+        f"环境：{scene_item.get('setting', '')}；标签：{scene_item.get('label', '')}。\n"
+        f"第 {page_no} 页原文：\n{page_text}\n"
+        "严格只返回：{\"evidence\":[\"...逐字复制的连续原文片段...\"]} 或 {\"evidence\":[]}。"
+    )
+    try:
+        payload, _meta, _raw = _call_json_payload_once_on_format_error(
+            model, repair_prompt, call,
+            phase=f"证据重新定位（场景 {scene_key} 第 {page_no} 页）")
+    except SceneModelError:
+        return True
+    new_evidence = payload.get("evidence")
+    if not isinstance(new_evidence, list):
+        return True
+    valid_evidence = [str(x).strip() for x in new_evidence if str(x).strip()
+                      and _excerpt_matches(page_text, str(x).strip())]
+    if valid_evidence:
+        candidate["evidence"] = valid_evidence
+    else:
+        # Repair could not ground this page either; drop only this one
+        # candidate page rather than inventing evidence. If the scene has no
+        # other candidate, normal validation below will reject it cleanly.
+        candidates.remove(candidate)
+    return True
+
+
+def _accepts_keyword(func, name: str) -> bool:
+    """Whether an injected provider's generate_one can take an optional hint."""
+    try:
+        parameters = inspect.signature(func).parameters
+    except (TypeError, ValueError):
+        return False
+    return name in parameters or any(
+        parameter.kind is inspect.Parameter.VAR_KEYWORD
+        for parameter in parameters.values())
+
+
 def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                *, cache_dir: str | Path | None = None, visual_plan: dict | None = None,
                model: str | None = None, model_call=None, provider=None,
                semantic_resolution: dict | None = None,
-               visual_review_call=None) -> dict:
+               visual_review_call=None,
+               allow_text_card_fallback: bool = False) -> dict:
     """Build one licensed photo placement per concrete source-grounded scene.
 
     Local semantic inference and remote image retrieval are deliberately separate:
     only a neutral English visual query is sent to photo providers. The returned
     plan freezes page evidence, provider/license metadata, image bytes, and exact
     placement for later no-network validation.
+
+    ``allow_text_card_fallback`` (default off, explicit user opt-in only): a
+    scene that could not get a verified, licensed photo (not a capacity issue —
+    those already deliver non-blockingly) is, instead of blocking the whole
+    deck, given a plainly-labeled text card in a genuinely empty safe area if
+    one exists. It never replaces an existing generic image (that would trade
+    a real picture for a vaguer placeholder) and never claims to be a photo.
     """
     source_pptx = Path(source_pptx)
     layout_pptx = Path(layout_pptx or source_pptx)
@@ -1232,10 +1451,26 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         model_meta = {"provider": "injected-test-or-caller", "response_sha256":
                       _canonical_sha(semantic_resolution)}
     dedupe_audit: list[dict] = []
-    scenes, page_coverage = _normalize_semantics(
-        semantic_resolution, source_pages,
-        require_canonical_scene_id=model_generated,
-        dedupe_audit=dedupe_audit)
+    try:
+        scenes, page_coverage = _normalize_semantics(
+            semantic_resolution, source_pages,
+            require_canonical_scene_id=model_generated,
+            dedupe_audit=dedupe_audit)
+    except SemanticSceneError as exc:
+        if not model_generated or exc.code != "SCENE.EVIDENCE_NOT_GROUNDED":
+            raise
+        call = model_call or call_local_model
+        repaired = _repair_scene_evidence_grounding(
+            semantic_resolution, source_pages, exc,
+            model=model or os.environ.get("WENGAO_SCENE_MODEL", "qwen3.8:27b-wb65536"),
+            call=call)
+        if not repaired:
+            raise
+        dedupe_audit = []
+        scenes, page_coverage = _normalize_semantics(
+            semantic_resolution, source_pages,
+            require_canonical_scene_id=model_generated,
+            dedupe_audit=dedupe_audit)
     if not scenes:
         unresolved = [{"scene_key": None, "reason": "SCENE.NO_SCENES_PLANNED",
                        "detail": "整套稿件没有一个有原文依据的具体场景；场景图硬规则不允许纯文字通过。"}]
@@ -1287,6 +1522,40 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
             photo_match_context = {**scene, "metadata_query": scene["visual_query"],
                                    "visual_queries": scene.get("visual_queries") or
                                                        [scene["visual_query"]]}
+
+            def _generated_review_valid(img: dict) -> bool:
+                visual_review = img.get("visual_review")
+                image_path = Path(img.get("file") or "")
+                try:
+                    image_bytes = image_path.read_bytes() if image_path.is_file() else b""
+                    expected_prompt_sha = hashlib.sha256(
+                        scene_image_review_prompt(photo_match_context).encode("utf-8")
+                    ).hexdigest()
+                    expected_result_sha = scene_review_result_sha256(
+                        visual_review if isinstance(visual_review, dict) else {})
+                    expected_input_sha = scene_review_payload_sha256(image_bytes)
+                except Exception:
+                    expected_prompt_sha = expected_result_sha = expected_input_sha = ""
+                response_sha = (str(visual_review.get("response_sha256") or "")
+                                if isinstance(visual_review, dict) else "")
+                return bool(
+                    isinstance(visual_review, dict)
+                    and visual_review.get("schema_version") == "WG-LOCAL-SCENE-IMAGE-REVIEW/1"
+                    and visual_review.get("status") == "PASSED"
+                    and visual_review.get("image_sha256") == str(img.get("sha256") or "")
+                    and visual_review.get("visual_input_sha256") == expected_input_sha
+                    and visual_review.get("scene_identity_sha256") ==
+                        scene_visual_identity_sha256(scene)
+                    and visual_review.get("prompt_sha256") == expected_prompt_sha
+                    and visual_review.get("review_result_sha256") == expected_result_sha
+                    and re.fullmatch(r"[0-9a-f]{64}", response_sha) is not None
+                    and bool(str(visual_review.get("model") or "").strip())
+                    and all(visual_review.get(field) is True for field in (
+                        "scene_match", "subject_visible", "action_visible",
+                        "setting_visible", "photographic"))
+                    and visual_review.get("confidence") == "high"
+                    and visual_review.get("reason_code") == "NONE")
+
             image, selected_query, query_failures = None, None, []
             paired_aspect = (1.52 if len(scene.get("page_candidates") or []) == 1
                              and scene["page_candidates"][0]["page"] in paired_photo_pages
@@ -1311,12 +1580,65 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                     selected_query = query
                     break
                 except SceneImageError as exc:
-                    query_failures.append({"query": query, "code": exc.code, "detail": exc.detail})
+                    query_failures.append({"query": query, "code": exc.code,
+                                           "detail": exc.detail,
+                                           **({"diagnostics": exc.diagnostics}
+                                              if getattr(exc, "diagnostics", None) else {})})
+            if image is None:
+                # 免费图库穷尽后，退回 AI 生图（本机 ComfyUI，或用户显式配置的云端
+                # 生图服务——由 generate_one 内部按 cloud_model_config 决定）：
+                # generate_one 内部已经调用视觉复核，未通过时直接抛出
+                # SceneImageError（不是"随便画一张凑数"）。生图按随机种子/采样，
+                # 第一次复核没通过就立刻放弃等于把"能不能配图"交给一次随机抽样。
+                # 复核给出的 BLOCKED 结论带有具体原因（主体/动作/环境哪一项看不见），
+                # 所以重试不是"再抽一次"，而是把这一项角色在提示词里显式强调后再生成；
+                # 仍然由同一套像素复核判定。上限 3 次，硬失败（服务不可用等）立即停。
+                generate_one = getattr(provider, "generate_one", None)
+                if callable(generate_one):
+                    gen_attempts = 3
+                    retryable_codes = {"SCENE.VISUAL_CONTENT_MISMATCH",
+                                       "SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
+                                       "SCENE.GEN_IMAGE_NEAR_DUPLICATE",
+                                       "SCENE.GEN_IMAGE_DUPLICATE",
+                                       # 服务端没在预算内回图属于上游抖动，不是语义
+                                       # 判否：一次空响应就把场景钉死会让整稿因为一次
+                                       # 超时失败（2026-10-26 job-c0af57f36099 第 8/9 页）。
+                                       "SCENE.GEN_IMAGE_FAILED"}
+                    focus_role = None
+                    for gen_attempt in range(gen_attempts):
+                        try:
+                            gen_kwargs = dict(
+                                scene_context=photo_match_context,
+                                excluded_sha256=used_hashes,
+                                excluded_source_keys=used_sources,
+                                excluded_perceptual_hashes=used_phashes,
+                                min_aspect=paired_aspect)
+                            if focus_role and _accepts_keyword(generate_one,
+                                                               "review_focus_role"):
+                                gen_kwargs["review_focus_role"] = focus_role
+                            image = generate_one(**gen_kwargs)
+                            selected_query = scene["visual_query"]
+                            break
+                        except SceneImageError as exc:
+                            query_failures.append({"query": "ai_image_generation",
+                                                   "code": exc.code, "detail": exc.detail,
+                                                   **({"diagnostics": exc.diagnostics}
+                                                      if getattr(exc, "diagnostics", None) else {})})
+                            focus_role = (review_missing_role(
+                                getattr(exc, "diagnostics", None)) or focus_role)
+                            if (exc.code in _GEN_IMAGE_BACKOFF_CODES
+                                    and gen_attempt < gen_attempts - 1):
+                                # 上游空响应/超时：短暂退避后再要一次，别把一次抖动
+                                # 当成"没有可用场景图"。
+                                time.sleep(min(8.0, 2.0 * (gen_attempt + 1)))
+                            if (exc.code not in retryable_codes
+                                    or gen_attempt == gen_attempts - 1):
+                                break
             if image is None:
                 last = query_failures[-1] if query_failures else {}
                 unresolved.append({"scene_key": scene["scene_key"],
                                    "reason": last.get("code", "SCENE.NO_LICENSED_PHOTO"),
-                                   "detail": last.get("detail", "备选查询均未找到许可合规、相关且清晰的场景照片。"),
+                                   "detail": last.get("detail", "备选查询均未找到许可合规、相关且清晰的场景照片；本机生图亦不可用。"),
                                    "query_attempts": query_failures})
                 continue
             if model_generated and not image.get("visual_review"):
@@ -1344,85 +1666,81 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                     continue
                 image["visual_review"] = visual_review
             if model_generated:
-                visual_review = image.get("visual_review")
-                image_path = Path(image.get("file") or "")
-                try:
-                    image_bytes = image_path.read_bytes() if image_path.is_file() else b""
-                    expected_prompt_sha = hashlib.sha256(
-                        scene_image_review_prompt(photo_match_context).encode("utf-8")
-                    ).hexdigest()
-                    expected_result_sha = scene_review_result_sha256(
-                        visual_review if isinstance(visual_review, dict) else {})
-                    expected_input_sha = scene_review_payload_sha256(image_bytes)
-                except Exception:
-                    expected_prompt_sha = expected_result_sha = expected_input_sha = ""
-                response_sha = (str(visual_review.get("response_sha256") or "")
-                                if isinstance(visual_review, dict) else "")
-                review_valid = (
-                    isinstance(visual_review, dict)
-                    and visual_review.get("schema_version") == "WG-LOCAL-SCENE-IMAGE-REVIEW/1"
-                    and visual_review.get("status") == "PASSED"
-                    and visual_review.get("image_sha256") == str(image.get("sha256") or "")
-                    and visual_review.get("visual_input_sha256") == expected_input_sha
-                    and visual_review.get("scene_identity_sha256") ==
-                        scene_visual_identity_sha256(scene)
-                    and visual_review.get("prompt_sha256") == expected_prompt_sha
-                    and visual_review.get("review_result_sha256") == expected_result_sha
-                    and re.fullmatch(r"[0-9a-f]{64}", response_sha) is not None
-                    and bool(str(visual_review.get("model") or "").strip())
-                    and all(visual_review.get(field) is True for field in (
-                        "scene_match", "subject_visible", "action_visible",
-                        "setting_visible", "photographic"))
-                    and visual_review.get("confidence") == "high"
-                    and visual_review.get("reason_code") == "NONE")
+                review_valid = _generated_review_valid(image)
                 if not review_valid:
+                    # 图片字节会被丢弃，判定必须留下来，否则事后无从分辨
+                    # 到底是模型判否还是绑定校验没过。
                     unresolved.append({"scene_key": scene["scene_key"],
                                        "reason": "SCENE.VISUAL_CONTENT_MISMATCH",
-                                       "detail": "本机视觉模型未能以高置信度确认照片中的主体、动作、环境和绑定身份。"})
+                                       "detail": "本机视觉模型未能以高置信度确认照片中的主体、动作、环境和绑定身份。",
+                                       "visual_review": scene_review_verdict_digest(
+                                           image.get("visual_review"))})
                     continue
-                image["visual_review"] = visual_review
         except SemanticSceneError as exc:
             unresolved.append({"scene_key": scene["scene_key"],
                                "reason": exc.code, "detail": exc.detail})
             continue
-        relevance = scene_metadata_relevance(scene["visual_query"], image,
-                                             scene_context=photo_match_context)
-        if not photo_style_matches_metadata(scene.get("style"), image):
-            unresolved.append({"scene_key": scene["scene_key"],
-                               "reason": "SCENE.PHOTO_STYLE_MISMATCH",
-                               "detail": "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。"})
-            continue
-        if not scene_metadata_matches_query(scene["visual_query"], image,
-                                            scene_context=photo_match_context):
-            unresolved.append({"scene_key": scene["scene_key"],
-                               "reason": "SCENE.IMAGE_CONTEXT_UNVERIFIED",
-                               "detail": "图片标题/说明没有同时支持场景主体、动作和地点锚点。"})
-            continue
-        match_query = scene["visual_query"]
-        query_terms = {term for term in re.findall(r"[a-z0-9]+", match_query.lower())
-                       if len(term) >= 3 and term not in {
-                           "the", "and", "with", "from", "into", "while", "photo",
-                           "image", "picture", "photograph", "wide", "landscape",
-                           "scene", "at", "in", "on", "of", "a", "an", "to"}}
-        required_terms = min(2, len(query_terms))
-        matched_terms = int(round(relevance * len(query_terms)))
-        if (relevance < MIN_METADATA_RELEVANCE or matched_terms < required_terms
-                or not image.get("title")):
-            unresolved.append({"scene_key": scene["scene_key"],
-                               "reason": "SCENE.IMAGE_RELEVANCE_UNVERIFIED",
-                               "detail": "下载后重新核对标题/说明，来源元数据不足以证明照片对应该场景。"})
-            continue
+        # 图库元数据门禁校验的是**第三方**资产的标题/说明能否证明它就是这个场景。
+        # AI 生图的"元数据"是我们自己的提示词，用同一套锚点去校验它是循环论证；
+        # 它的证据是出图后立即执行的像素复核（generate_one 内部已完成，且
+        # validate_output 会按嵌入字节重新绑定核验）。所以这两类资产的元数据门禁
+        # 不适用，其余许可/尺寸/去重/版位门禁一律照旧。
+        ai_generated_asset = str(image.get("license") or "") in ("AI_GENERATED_LOCAL",
+                                                                 "AI_GENERATED_CLOUD")
+        if ai_generated_asset:
+            relevance = float(image.get("metadata_relevance") or 1.0)
+            match_query = scene["visual_query"]
+        else:
+            relevance = scene_metadata_relevance(scene["visual_query"], image,
+                                                 scene_context=photo_match_context)
+            if not photo_style_matches_metadata(scene.get("style"), image):
+                unresolved.append({"scene_key": scene["scene_key"],
+                                   "reason": "SCENE.PHOTO_STYLE_MISMATCH",
+                                   "detail": "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。"})
+                continue
+            if not scene_metadata_matches_query(scene["visual_query"], image,
+                                                scene_context=photo_match_context):
+                unresolved.append({"scene_key": scene["scene_key"],
+                                   "reason": "SCENE.IMAGE_CONTEXT_UNVERIFIED",
+                                   "detail": "图片标题/说明没有同时支持场景主体、动作和地点锚点。"})
+                continue
+            match_query = scene["visual_query"]
+            query_terms = {term for term in re.findall(r"[a-z0-9]+", match_query.lower())
+                           if len(term) >= 3 and term not in {
+                               "the", "and", "with", "from", "into", "while", "photo",
+                               "image", "picture", "photograph", "wide", "landscape",
+                               "scene", "at", "in", "on", "of", "a", "an", "to"}}
+            required_terms = min(2, len(query_terms))
+            matched_terms = int(round(relevance * len(query_terms)))
+            if (relevance < MIN_METADATA_RELEVANCE or matched_terms < required_terms
+                    or not image.get("title")):
+                unresolved.append({"scene_key": scene["scene_key"],
+                                   "reason": "SCENE.IMAGE_RELEVANCE_UNVERIFIED",
+                                   "detail": "下载后重新核对标题/说明，来源元数据不足以证明照片对应该场景。"})
+                continue
         license_name = image.get("license", "")
-        if (not str(image.get("source_page") or "").startswith("https://")
-                or (str(image.get("provider") or "").lower() == "pexels"
-                    and not is_valid_pexels_source_page(image.get("source_page") or ""))
-                or not image.get("source_key")
-                or not str(image.get("creator") or image.get("attribution") or "").strip()
-                or not is_allowed_license(
+        if license_name in ("AI_GENERATED_LOCAL", "AI_GENERATED_CLOUD"):
+            # Only generate_one() ever sets these literal strings, deterministically,
+            # for a render from the local ComfyUI service or a user-configured
+            # cloud image-generation service — never a value a stock provider or
+            # a model response can produce. Neither has an external rightsholder
+            # or source page to verify; its provenance guarantee is that it was
+            # produced by the configured generation service, not a checkable URL.
+            license_ok = bool(image.get("source_key")) and bool(
+                str(image.get("creator") or image.get("attribution") or "").strip())
+        else:
+            license_ok = (
+                str(image.get("source_page") or "").startswith("https://")
+                and (str(image.get("provider") or "").lower() != "pexels"
+                     or is_valid_pexels_source_page(image.get("source_page") or ""))
+                and bool(image.get("source_key"))
+                and bool(str(image.get("creator") or image.get("attribution") or "").strip())
+                and is_allowed_license(
                     license_name, version=image.get("license_version"),
                     license_url=image.get("license_url"))
-                or (image.get("license_url") and not is_valid_license_url(
-                    image.get("license_url"), license_name))):
+                and (not image.get("license_url") or is_valid_license_url(
+                    image.get("license_url"), license_name)))
+        if not license_ok:
             unresolved.append({"scene_key": scene["scene_key"],
                                "reason": "SCENE.LICENSE_METADATA_MISSING",
                                "detail": "照片缺少来源、作者/署名或可核验的许可元数据。"})
@@ -1515,8 +1833,46 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         }
         images[scene["scene_key"]] = image_spec
 
+    text_cards: dict[str, dict] = {}
+    if allow_text_card_fallback and unresolved:
+        scenes_by_key = {s["scene_key"]: s for s in scenes}
+        still_unresolved = []
+        for item in unresolved:
+            reason = (item or {}).get("reason")
+            scene = scenes_by_key.get((item or {}).get("scene_key"))
+            if reason in CAPACITY_UNRESOLVED_REASONS or scene is None:
+                still_unresolved.append(item)
+                continue
+            assignment = _choose_assignment(scene, source_pages, layout, page_counts,
+                                            occupied, slots, image_aspect=None,
+                                            paired_photo_pages=paired_photo_pages)
+            # Never displace an existing generic image for a vaguer text card —
+            # that would be a net loss, not a fallback. Only a genuinely empty
+            # safe area qualifies.
+            if assignment is None or assignment["mode"] == "replace_visual_image":
+                still_unresolved.append(item)
+                continue
+            page_counts[assignment["page"]] += 1
+            occupied.setdefault(assignment["page"], []).append(assignment["rect"])
+            text_cards[scene["scene_key"]] = {
+                "scene_key": scene["scene_key"], "page": assignment["page"],
+                "rect": assignment["rect"], "placement_mode": assignment["mode"],
+                "fit_mode": assignment["fit_mode"],
+                "reflow_shapes": assignment.get("reflow_shapes", []),
+                "label": scene.get("label", ""), "subject": scene.get("subject", ""),
+                "action": scene.get("action", ""), "setting": scene.get("setting", ""),
+                "fallback_reason": reason, "fallback_detail": item.get("detail", ""),
+            }
+        unresolved = still_unresolved
+
     for row in page_coverage:
         row["image_scene_keys"] = [k for k, spec in images.items() if spec["page"] == row["page"]]
+        row["text_card_scene_keys"] = [k for k, spec in text_cards.items()
+                                       if spec["page"] == row["page"]]
+    # 放不下（版位容量）与放不得（真实性/合规）分开登记：
+    # 前者如实记为"未放置"并继续交付，后者仍然整单阻断（除非上面已经
+    # 用说明卡片顶上，那就已经从 unresolved 里移出去了）。
+    blocking_unresolved, capacity_unplaced = split_unresolved_scenes(unresolved)
     plan = {
         "schema_version": "2.3.0", "kind": "semantic_scene_plan",
         "rules_version": VERSION, "gate_id": SCENE_GATE_ID,
@@ -1550,7 +1906,9 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         "scenes": [{k: v for k, v in scene.items() if not k.startswith("_")}
                    for scene in scenes],
         "detected_scene_ids": [scene["scene_key"] for scene in scenes],
-        "images": images, "unresolved_scenes": unresolved,
+        "images": images, "unresolved_scenes": blocking_unresolved,
+        "unplaced_scenes": capacity_unplaced,
+        "text_cards": text_cards,
         "photo_provider_errors": list(getattr(provider, "errors", []) or []),
     }
     plan["plan_sha256"] = _plan_hash(plan)
@@ -2115,8 +2473,20 @@ def _validate_coverage_audit_proof(source_pptx: str | Path,
                 "detail": "逐页复核阶段标记无效。"})
             result["status"] = "FAILED"
             return result
+        # 提示词按复核当时冻结的计划视图重放；该视图必须与最终计划一致
+        # （仅允许确定性的 canonical_scene_id 规范化），否则视为未绑定。
+        audited_view = proof.get("audited_plan_view")
+        prompt_plan = plan
+        if isinstance(audited_view, dict):
+            drift = _audited_plan_view_drift(audited_view, plan)
+            if drift:
+                result["findings"].append({
+                    "code": "SCENE.COVERAGE_AUDIT_PLAN_DRIFT",
+                    "severity": "BLOCKING",
+                    "detail": "复核所依据的计划与最终场景计划不一致：" + ", ".join(drift[:8])})
+            prompt_plan = audited_view
         audit_prompt = scene_coverage_audit_prompt(
-            source_pages, plan,
+            source_pages, prompt_plan,
             phase="post_repair" if phase == "post_repair" else "second_pass")
         prompt_hash = hashlib.sha256(audit_prompt.encode("utf-8")).hexdigest()
         if prompt_hash != proof.get("prompt_sha256"):
@@ -2594,11 +2964,40 @@ def validate_output(source_pptx: str | Path, candidate_pptx: str | Path,
             else:
                 localized_identity_owner[localized_identity] = key
         images = plan.get("images") or {}
-        if set(images) != set(scene_ids):
+        # 版位容量不足而未放置的场景如实登记在 unplaced_scenes 里，
+        # 它们既没有被文字卡片替代，也没有被悄悄抹掉；其余缺口仍然阻断。
+        unplaced = plan.get("unplaced_scenes") or []
+        unplaced_keys = {str(item.get("scene_key")) for item in unplaced
+                         if isinstance(item, dict) and item.get("scene_key")}
+        if any(str((item or {}).get("reason")) not in CAPACITY_UNRESOLVED_REASONS
+               for item in unplaced):
+            findings.append({"code": "SCENE.UNPLACED_REASON_INVALID", "severity": "BLOCKING",
+                             "actual": unplaced,
+                             "detail": "只有版位容量类原因可以记为未放置；其余缺口必须阻断。"})
+        # 显式开启的文字卡片兜底（CLI --allow-text-card-fallback）会在计划里留下
+        # text_cards。它从不冒充照片，也不计入配图数；但既然生成端已经交付了它，
+        # 验收端就必须按同一口径结账——否则同一条显式开关产出的候选永远过不了核对
+        # （2026-10-26 job-c0af57f36099：run 出了卡片，validate 判 SCENE.UNRESOLVED_SCENES）。
+        text_cards = plan.get("text_cards") or {}
+        text_card_keys = {str(key) for key in text_cards if str(key).strip()}
+        for key in sorted(text_card_keys):
+            card = text_cards.get(key) or {}
+            if not str(card.get("fallback_reason") or "").strip():
+                findings.append({"code": "SCENE.TEXT_CARD_UNDISCLOSED", "severity": "BLOCKING",
+                                 "scene_key": key,
+                                 "detail": "文字卡片兜底必须如实登记未配图原因，不得冒充已配图。"})
+        if text_card_keys & set(images):
+            findings.append({"code": "SCENE.TEXT_CARD_OVERLAPS_PHOTO", "severity": "BLOCKING",
+                             "scene_keys": sorted(text_card_keys & set(images)),
+                             "detail": "同一场景不能既有真实照片又有文字卡片兜底。"})
+        if set(images) | unplaced_keys | text_card_keys != set(scene_ids):
             findings.append({"code": "SCENE.UNRESOLVED_SCENES", "severity": "BLOCKING",
                              "expected": scene_ids, "actual": sorted(images),
+                             "unplaced": sorted(unplaced_keys),
+                             "text_cards": sorted(text_card_keys),
                              "unresolved": plan.get("unresolved_scenes"),
-                             "detail": "每个具体场景都必须获得一张合规照片和安全放置位。"})
+                             "detail": "每个具体场景都必须获得一张合规照片和安全放置位，"
+                                       "或如实登记为版位不足未放置／显式文字卡片兜底。"})
         if plan.get("unresolved_scenes"):
             findings.append({"code": "SCENE.UNRESOLVED_SCENES", "severity": "BLOCKING",
                              "actual": plan.get("unresolved_scenes"),
@@ -2613,19 +3012,30 @@ def validate_output(source_pptx: str | Path, candidate_pptx: str | Path,
             if not _KEY_RE.fullmatch(str(key)):
                 findings.append({"code": "SCENE.KEY_INVALID", "severity": "BLOCKING",
                                  "scene_key": key, "detail": "场景键格式无效。"})
-            if (not str(spec.get("source_page") or "").startswith("https://")
-                    or (str(spec.get("provider") or "").lower() == "pexels"
-                        and not is_valid_pexels_source_page(spec.get("source_page") or ""))
-                    or not spec.get("source_key")
-                    or (spec.get("license_url") and not is_valid_license_url(
-                        spec.get("license_url"), spec.get("license", "")))
-                    or not str(spec.get("creator") or spec.get("attribution") or "").strip()
-                    or not is_allowed_license(
-                        spec.get("license", ""), version=spec.get("license_version"),
-                        license_url=spec.get("license_url"))):
+            spec_license = spec.get("license", "")
+            if spec_license in ("AI_GENERATED_LOCAL", "AI_GENERATED_CLOUD"):
+                # See the matching branch in build_plan's per-scene resolution
+                # loop: only generate_one() ever sets these literal strings, and
+                # neither a local nor a cloud render has an external source page
+                # or rightsholder to verify.
+                spec_license_ok = bool(spec.get("source_key")) and bool(
+                    str(spec.get("creator") or spec.get("attribution") or "").strip())
+            else:
+                spec_license_ok = (
+                    str(spec.get("source_page") or "").startswith("https://")
+                    and (str(spec.get("provider") or "").lower() != "pexels"
+                         or is_valid_pexels_source_page(spec.get("source_page") or ""))
+                    and bool(spec.get("source_key"))
+                    and not (spec.get("license_url") and not is_valid_license_url(
+                        spec.get("license_url"), spec_license))
+                    and bool(str(spec.get("creator") or spec.get("attribution") or "").strip())
+                    and is_allowed_license(
+                        spec_license, version=spec.get("license_version"),
+                        license_url=spec.get("license_url")))
+            if not spec_license_ok:
                 findings.append({"code": "SCENE.LICENSE_METADATA_MISSING", "severity": "BLOCKING",
                                  "scene_key": key,
-                                 "detail": "场景照片必须有来源身份、作者/署名和可核验许可；仅接受 CC0、PDM、公有领域、CC BY 4.0 或带作者/来源链接的 Pexels License。"})
+                                 "detail": "场景照片必须有来源身份、作者/署名和可核验许可；仅接受 CC0、PDM、公有领域、CC BY 4.0、带作者/来源链接的 Pexels License，或本机生图。"})
             query = str(spec.get("visual_query") or "")
             source_scene = scene_by_key.get(str(key), {})
             if (source_scene.get("visual_queries")
@@ -2643,35 +3053,47 @@ def validate_output(source_pptx: str | Path, candidate_pptx: str | Path,
             match_query = (str(source_scene.get("visual_query") or query)
                            if source_scene.get("photo_search_terms") else query)
             match_context = {**source_scene, "metadata_query": match_query}
-            score = scene_metadata_relevance(match_query, spec, scene_context=match_context)
-            terms = re.findall(r"[a-z0-9]+", match_query.lower())
-            content_terms = {x for x in terms if len(x) >= 3 and x not in {
-                "the", "and", "with", "from", "into", "while", "photo", "image",
-                "picture", "photograph", "wide", "landscape", "scene", "at", "in",
-                "on", "of", "a", "an", "to"}}
-            required_terms = min(2, len(content_terms))
-            matched_terms = int(round(score * len(content_terms)))
-            if not is_safe_metadata(spec):
-                findings.append({"code": "SCENE.CONTENT_SAFETY_METADATA_BLOCK", "severity": "BLOCKING",
-                                 "scene_key": key,
-                                 "detail": "图片来源元数据标记了不适合普通演示文稿的露骨或图像化内容。"})
-            if (score < MIN_METADATA_RELEVANCE or matched_terms < required_terms
-                    or not spec.get("title") or not query):
-                findings.append({"code": "SCENE.IMAGE_RELEVANCE_UNVERIFIED", "severity": "BLOCKING",
-                                 "scene_key": key, "metadata_relevance": round(score, 4),
-                                 "required_metadata_relevance": MIN_METADATA_RELEVANCE,
-                                 "detail": "照片标题/说明没有足够场景关键词依据，不能确认它对应原文语义。"})
-            if not photo_style_matches_metadata(source_scene.get("style"), spec):
-                findings.append({"code": "SCENE.PHOTO_STYLE_MISMATCH", "severity": "BLOCKING",
-                                 "scene_key": key,
-                                 "detail": "嵌入素材的元数据表明它是插画/绘画，不符合该场景要求的摄影风格。"})
-            if not scene_metadata_matches_query(match_query, spec,
-                                                scene_context=match_context):
-                findings.append({"code": "SCENE.IMAGE_CONTEXT_UNVERIFIED", "severity": "BLOCKING",
-                                 "scene_key": key,
-                                 "detail": "嵌入图片的标题/说明没有同时支持场景主体、动作和地点锚点。"})
+            # 与 build_plan 的逐场景循环同一规则：AI 生图的提示词不是第三方元数据，
+            # 用锚点回验它是循环论证。它的证据是下方按嵌入字节重新绑定的像素复核。
+            ai_generated_spec = str(spec_license or "") in ("AI_GENERATED_LOCAL",
+                                                            "AI_GENERATED_CLOUD")
+            if ai_generated_spec:
+                score = float(spec.get("metadata_relevance") or 1.0)
+                if not is_safe_metadata(spec):
+                    findings.append({"code": "SCENE.CONTENT_SAFETY_METADATA_BLOCK",
+                                     "severity": "BLOCKING", "scene_key": key,
+                                     "detail": "生成素材的登记信息标记了不适合普通演示文稿的内容。"})
+            else:
+                score = scene_metadata_relevance(match_query, spec, scene_context=match_context)
+                terms = re.findall(r"[a-z0-9]+", match_query.lower())
+                content_terms = {x for x in terms if len(x) >= 3 and x not in {
+                    "the", "and", "with", "from", "into", "while", "photo", "image",
+                    "picture", "photograph", "wide", "landscape", "scene", "at", "in",
+                    "on", "of", "a", "an", "to"}}
+                required_terms = min(2, len(content_terms))
+                matched_terms = int(round(score * len(content_terms)))
+                if not is_safe_metadata(spec):
+                    findings.append({"code": "SCENE.CONTENT_SAFETY_METADATA_BLOCK", "severity": "BLOCKING",
+                                     "scene_key": key,
+                                     "detail": "图片来源元数据标记了不适合普通演示文稿的露骨或图像化内容。"})
+                if (score < MIN_METADATA_RELEVANCE or matched_terms < required_terms
+                        or not spec.get("title") or not query):
+                    findings.append({"code": "SCENE.IMAGE_RELEVANCE_UNVERIFIED", "severity": "BLOCKING",
+                                     "scene_key": key, "metadata_relevance": round(score, 4),
+                                     "required_metadata_relevance": MIN_METADATA_RELEVANCE,
+                                     "detail": "照片标题/说明没有足够场景关键词依据，不能确认它对应原文语义。"})
+                if not photo_style_matches_metadata(source_scene.get("style"), spec):
+                    findings.append({"code": "SCENE.PHOTO_STYLE_MISMATCH", "severity": "BLOCKING",
+                                     "scene_key": key,
+                                     "detail": "嵌入素材的元数据表明它是插画/绘画，不符合该场景要求的摄影风格。"})
+                if not scene_metadata_matches_query(match_query, spec,
+                                                    scene_context=match_context):
+                    findings.append({"code": "SCENE.IMAGE_CONTEXT_UNVERIFIED", "severity": "BLOCKING",
+                                     "scene_key": key,
+                                     "detail": "嵌入图片的标题/说明没有同时支持场景主体、动作和地点锚点。"})
             declared_score = spec.get("metadata_relevance")
-            if declared_score is not None and abs(float(declared_score) - score) > 0.0001:
+            if (not ai_generated_spec and declared_score is not None
+                    and abs(float(declared_score) - score) > 0.0001):
                 findings.append({"code": "SCENE.IMAGE_RELEVANCE_IDENTITY_MISMATCH", "severity": "BLOCKING",
                                  "scene_key": key,
                                  "detail": "冻结计划中的场景图相关性分数与来源元数据不一致。"})
@@ -2746,10 +3168,17 @@ def validate_output(source_pptx: str | Path, candidate_pptx: str | Path,
                              "actual": len(malformed),
                              "detail": "场景图片标记或嵌入图片字节不可核验。"})
         counts = Counter(m.get("scene_key") for m in markers if m.get("scene_key"))
-        if set(counts) != set(scene_ids) or any(count != 1 for count in counts.values()):
+        # 恰有一张真实嵌入图的对象 = 计划里真的配了图的场景。文字卡片兜底与
+        # 版位不足未放置的场景不带任何图片标记，也不得被算作已配图。
+        expected_picture_keys = set(images)
+        if set(counts) != expected_picture_keys or any(count != 1
+                                                       for count in counts.values()):
             findings.append({"code": "SCENE.PICTURE_COVERAGE_MISMATCH", "severity": "BLOCKING",
-                             "expected": scene_ids, "actual": dict(counts),
-                             "detail": "每个具体场景必须在全稿中恰有一张真实嵌入图片。"})
+                             "expected": sorted(expected_picture_keys), "actual": dict(counts),
+                             "text_cards": sorted(text_card_keys),
+                             "unplaced": sorted(unplaced_keys),
+                             "detail": "每个已配图场景必须在全稿中恰有一张真实嵌入图片；"
+                                       "文字卡片与未放置场景不得携带图片。"})
         by_key = {m.get("scene_key"): m for m in markers if m.get("scene_key")}
         seen_sha, seen_source, seen_phashes = {}, {}, []
         for key, spec in images.items():
@@ -2944,10 +3373,134 @@ def _photo_credit_block(spec: dict, crop) -> str:
     ))
 
 
+def _slide_background_rgb(slide) -> tuple[int, int, int]:
+    try:
+        fill = slide.background.fill
+        if fill.type is not None and fill.fore_color.type is not None:
+            hexstr = str(fill.fore_color.rgb)
+            return (int(hexstr[0:2], 16), int(hexstr[2:4], 16), int(hexstr[4:6], 16))
+    except Exception:
+        pass
+    return (245, 247, 251)
+
+
+def _apply_reflow_shapes(slide, reflow_shapes, *, scene_key: str,
+                         shapes_by_index: list | None = None) -> None:
+    """Shared by photo and text-card placement: move/resize whatever text the
+    placement decision already determined must yield, by the same frozen
+    geometry either one computes. Never touches anything not explicitly listed.
+
+    `shapes_by_index` must be the shape order the plan itself saw — pass it
+    in (shared across every scene on this page) rather than defaulting to a
+    fresh `list(slide.shapes)` here: once an earlier scene on the same page
+    has inserted a photo and reordered the slide's XML, a fresh list no
+    longer matches the index the plan computed its `shape_index` against.
+    """
+    if shapes_by_index is None:
+        shapes_by_index = list(slide.shapes)
+    for reflow in reflow_shapes or []:
+        target = None
+        idx = reflow.get("shape_index")
+        if isinstance(idx, int) and 0 <= idx < len(shapes_by_index):
+            target = shapes_by_index[idx]
+        else:
+            name = reflow.get("name")
+            if name:
+                matches = [sh for sh in shapes_by_index if sh.name == name]
+                if len(matches) == 1:
+                    target = matches[0]
+        if target is None:
+            raise SemanticSceneError(
+                "SCENE.REFLOW_TARGET_UNRESOLVED",
+                f"场景 {scene_key} 让位重排的目标形状无法唯一定位；放置判定依赖"
+                "该重排，不得在未让位的文字上压图/压卡片。")
+        new_w = reflow.get("width")
+        new_left = reflow.get("left")
+        new_t = reflow.get("top")
+        new_h = reflow.get("height")
+        if new_w is not None:
+            target.width = Inches(float(new_w))
+        if new_left is not None:
+            target.left = Inches(float(new_left))
+        if new_t is not None:
+            target.top = Inches(float(new_t))
+        if new_h is not None:
+            target.height = Inches(float(new_h))
+        if reflow.get("line_spacing") is not None:
+            for paragraph in target.text_frame.paragraphs:
+                paragraph.line_spacing = float(reflow["line_spacing"])
+                paragraph.space_after = Pt(float(reflow.get("space_after_pt", 4.0)))
+
+
+def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -> dict:
+    """Draw a plainly-labeled placeholder where a verified, licensed photo
+    could not be found for this scene — explicit opt-in fallback only (see
+    allow_text_card_fallback on build_plan). Never pretends to be a photo: a
+    muted panel in the deck's own background tone, showing the scene's own
+    subject/action/setting and an explicit disclosure line, so a reader can
+    tell at a glance this is a fallback, not real content."""
+    _apply_reflow_shapes(slide, spec.get("reflow_shapes"), scene_key=spec["scene_key"],
+                         shapes_by_index=shapes_by_index)
+    left, top, width, height = [float(x) for x in spec["rect"]]
+    bg_rgb = _slide_background_rgb(slide)
+    luminance = 0.299 * bg_rgb[0] + 0.587 * bg_rgb[1] + 0.114 * bg_rgb[2]
+    if luminance < 128:
+        card_rgb = tuple(min(255, c + 24) for c in bg_rgb)
+        text_rgb, caption_rgb = (235, 238, 244), (158, 170, 190)
+    else:
+        card_rgb = tuple(max(0, c - 18) for c in bg_rgb)
+        text_rgb, caption_rgb = (30, 38, 50), (110, 120, 135)
+    box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                 Inches(left), Inches(top), Inches(width), Inches(height))
+    box.fill.solid()
+    box.fill.fore_color.rgb = RGBColor(*card_rgb)
+    box.line.fill.background()
+    box.shadow.inherit = False
+    tf = box.text_frame
+    tf.word_wrap = True
+    tf.margin_left = tf.margin_right = Inches(0.3)
+    tf.margin_top = tf.margin_bottom = Inches(0.25)
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    label = str(spec.get("label") or spec.get("subject") or "场景说明").strip()
+    caption = " · ".join(p for p in
+                         (spec.get("subject"), spec.get("action"), spec.get("setting")) if p)
+    tf.text = label
+    p0 = tf.paragraphs[0]
+    p0.alignment = PP_ALIGN.CENTER
+    for r in p0.runs:
+        r.font.size, r.font.bold = Pt(20), True
+        r.font.color.rgb = RGBColor(*text_rgb)
+    if caption:
+        p1 = tf.add_paragraph()
+        p1.text = caption
+        p1.alignment = PP_ALIGN.CENTER
+        p1.space_before = Pt(6)
+        for r in p1.runs:
+            r.font.size = Pt(13)
+            r.font.color.rgb = RGBColor(*caption_rgb)
+    p2 = tf.add_paragraph()
+    p2.text = "未找到可核验的合规配图，以说明卡片代替"
+    p2.alignment = PP_ALIGN.CENTER
+    p2.space_before = Pt(10)
+    for r in p2.runs:
+        r.font.size, r.font.italic = Pt(10), True
+        r.font.color.rgb = RGBColor(*caption_rgb)
+    visual_mod.insert_below_text(slide, box._element)
+    return {"shape_id": box.shape_id, "shape_name": box.name}
+
+
 def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, allow_fallback: bool = False) -> dict:
     """Embed each licensed scene photo once, replacing a safe generic image slot when present."""
     src, out = Path(pptx_path), Path(output_path)
-    if plan.get("unresolved_scenes") or not plan.get("images"):
+    if not plan.get("unresolved_scenes") and not plan.get("images") \
+            and not plan.get("text_cards") and plan.get("unplaced_scenes"):
+        # 全部场景都因版位不足未放置：没有图要嵌，原样写出即可。
+        prs = Presentation(str(src))
+        prs.save(str(out))
+        return {"schema": "rs.scene_actions.v1", "actions": [], "inserted": 0,
+                "status": "NO_SCENE_CAPACITY",
+                "unplaced_scenes": plan.get("unplaced_scenes")}
+    if plan.get("unresolved_scenes") or (not plan.get("images") and not plan.get("text_cards")):
         if allow_fallback:
             prs = Presentation(str(src))
             prs.save(str(out))
@@ -2964,6 +3517,24 @@ def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, al
                                  "放置计划对应的版式文件已变化，需重新规划。")
     prs = Presentation(str(src))
     actions = []
+    # `reflow_shapes[*].shape_index` is only a stable identity against the
+    # shape order *as the plan saw it* — a fresh list, not `list(slide.shapes)`.
+    # Taking that fresh each scene breaks on the very first multi-scene page
+    # it's for: `insert_below_text` (below) reorders the slide's XML so the
+    # picture sits before the text shapes, so by the time scene N+1 on the
+    # same page recomputes the list, every later shape has shifted by one
+    # and scene N+1's reflow lands on a different shape than the plan meant
+    # (2026-10-27: this misrouted a title reflow onto the title box, pushing
+    # the body text down into a photo it was reflowed to make room for).
+    # Caching the pre-mutation list per page and reusing it for every scene
+    # on that page keeps the index meaning what the plan computed it to mean.
+    shapes_by_index_cache: dict[int, list] = {}
+
+    def _shapes_by_index(page_no: int) -> list:
+        if page_no not in shapes_by_index_cache:
+            shapes_by_index_cache[page_no] = list(prs.slides[page_no - 1].shapes)
+        return shapes_by_index_cache[page_no]
+
     for scene_key, spec in sorted(plan["images"].items(), key=lambda row: (row[1]["page"], row[0])):
         page = int(spec["page"])
         slide = prs.slides[page - 1]
@@ -2989,26 +3560,46 @@ def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, al
                     raise SemanticSceneError("SCENE.VISUAL_SLOT_STALE",
                                              f"第 {page} 页原有通用图片槽与冻结计划不匹配。")
             old_picture = matches[0]
+        # 让位重排按**页内序号**定位：很多真实原稿的形状名是空字符串，
+        # 旧实现用 `sh.name == name` 匹配，空名会命中该页**每一个**形状，
+        # 于是标题/页脚被一起挪走，而真正该让位的文字没让开，配图直接压在
+        # 文字上（HG03 字形碰撞）。计划与应用面向同一个版式文件，且上方已校验
+        # layout_input_sha256，序号在这一步是稳定身份——但仅当它取自规划时的
+        # 形状顺序；本页后续场景必须复用同一份缓存（见上方 _shapes_by_index），
+        # 不能在本场景插图改变 XML 顺序之后，为下一个场景重新 list(slide.shapes)。
+        shapes_by_index = _shapes_by_index(page)
         for reflow in spec.get("reflow_shapes") or []:
-            name = reflow.get("name")
+            target = None
+            idx = reflow.get("shape_index")
+            if isinstance(idx, int) and 0 <= idx < len(shapes_by_index):
+                target = shapes_by_index[idx]
+            else:
+                name = reflow.get("name")
+                if name:                      # 空名不是身份，宁可不动也不乱改
+                    matches = [sh for sh in shapes_by_index if sh.name == name]
+                    if len(matches) == 1:
+                        target = matches[0]
+            if target is None:
+                raise SemanticSceneError(
+                    "SCENE.REFLOW_TARGET_UNRESOLVED",
+                    "让位重排的目标形状无法唯一定位；放置判定依赖该重排，"
+                    "不得在未让位的文字上压图。")
             new_w = reflow.get("width")
             new_left = reflow.get("left")
             new_t = reflow.get("top")
             new_h = reflow.get("height")
-            for sh in slide.shapes:
-                if sh.name == name:
-                    if new_w is not None:
-                        sh.width = Inches(float(new_w))
-                    if new_left is not None:
-                        sh.left = Inches(float(new_left))
-                    if new_t is not None:
-                        sh.top = Inches(float(new_t))
-                    if new_h is not None:
-                        sh.height = Inches(float(new_h))
-                    if reflow.get("line_spacing") is not None:
-                        for paragraph in sh.text_frame.paragraphs:
-                            paragraph.line_spacing = float(reflow["line_spacing"])
-                            paragraph.space_after = Pt(float(reflow.get("space_after_pt", 4.0)))
+            if new_w is not None:
+                target.width = Inches(float(new_w))
+            if new_left is not None:
+                target.left = Inches(float(new_left))
+            if new_t is not None:
+                target.top = Inches(float(new_t))
+            if new_h is not None:
+                target.height = Inches(float(new_h))
+            if reflow.get("line_spacing") is not None:
+                for paragraph in target.text_frame.paragraphs:
+                    paragraph.line_spacing = float(reflow["line_spacing"])
+                    paragraph.space_after = Pt(float(reflow.get("space_after_pt", 4.0)))
         try:
             pic = slide.shapes.add_picture(str(image_path), Inches(left), Inches(top),
                                            Inches(width), Inches(height))
@@ -3023,8 +3614,18 @@ def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, al
                 f"场景 {scene_key} 图片未能生成有效的幻灯片图形对象。",
             )
         marker = f"WENGAO_SCENE|{scene_key}|{spec['sha256']}"
+        # 标记名里带着图片字节的 SHA-256，验收要按它逐字核对。旧实现把整个名字截到
+        # 120 字符，场景键一长（≥42 字符）就会切掉哈希尾部，于是验收永远对不上：
+        # 2026-10-26 job-c0af57f36099 第 13 页 customer_support_specialist_ticket_response
+        # （43 字符）因此被判 SCENE.PICTURE_IDENTITY_MISMATCH，整稿在"核对"环节失败。
+        # OOXML 的 cNvPr/@name 没有 120 字符限制；宁可显式报错，也不能静默截断身份。
+        if len(marker) > _MAX_SCENE_MARKER_LEN:
+            raise SemanticSceneError(
+                "SCENE.MARKER_TOO_LONG",
+                f"场景 {scene_key} 的图片标记超过 {_MAX_SCENE_MARKER_LEN} 字符；"
+                "标记必须完整包含图片哈希，不能截断。")
         c_nv = pic._element.nvPicPr.cNvPr
-        c_nv.set("name", marker[:120])
+        c_nv.set("name", marker)
         shape_id = int(pic.shape_id)
         shape_name = str(pic.name)
         if spec.get("fit_mode", "cover") == "cover":
@@ -3086,9 +3687,43 @@ def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, al
                         "area_ratio": spec["area_ratio"],
                         "text_overlap_ratio": spec["text_overlap_ratio"],
                         "crop": photo_crop})
+
+    text_card_actions = []
+    for scene_key, spec in sorted((plan.get("text_cards") or {}).items(),
+                                  key=lambda row: (row[1]["page"], row[0])):
+        page = int(spec["page"])
+        slide = prs.slides[page - 1]
+        shape_info = _draw_text_card(slide, spec, shapes_by_index=_shapes_by_index(page))
+        text_card_actions.append({
+            "scene_key": scene_key, "page": page, "rect": spec["rect"],
+            "placement_mode": spec["placement_mode"],
+            "fallback_reason": spec.get("fallback_reason"),
+            "fallback_detail": spec.get("fallback_detail"),
+            "shape_id": shape_info["shape_id"], "shape_name": shape_info["shape_name"],
+        })
+    # Reflowing a text shape to make room for a photo or text-card (above)
+    # moves/resizes it to whatever geometry the placement decision computed
+    # for the *image*'s sake — it was never checked against how much room
+    # the text shape's own real (wrapped) content needs. theme.py's own
+    # overlap/overflow correction runs earlier, during styling, before any
+    # scene is placed, so it never sees geometry a later reflow introduces.
+    # Re-run the same correction here, now that every reflow for this
+    # candidate has actually happened, scoped to the pages touched.
+    touched_pages = {int(spec["page"]) for spec in plan.get("images", {}).values()}
+    touched_pages |= {int(spec["page"]) for spec in (plan.get("text_cards") or {}).values()}
+    if touched_pages:
+        slide_h_in = prs.slide_height / 914400.0
+        slide_w_in = prs.slide_width / 914400.0
+        for page in sorted(touched_pages):
+            visual_mod.fix_stacked_text_overlap(
+                prs.slides[page - 1], acts=None, page=page,
+                slide_h_in=slide_h_in, slide_w_in=slide_w_in)
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
-    return {"inserted": len(actions), "actions": actions, "output_sha256": _sha(out)}
+    return {"inserted": len(actions), "actions": actions,
+           "text_cards_inserted": len(text_card_actions),
+           "text_card_actions": text_card_actions,
+           "output_sha256": _sha(out)}
 
 
 def reconcile_visual_plan(visual_plan: dict, scene_plan: dict) -> dict:

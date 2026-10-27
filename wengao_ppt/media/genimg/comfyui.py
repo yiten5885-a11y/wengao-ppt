@@ -42,13 +42,38 @@ def acquire_gen_lock():
         yield
 
 
+def _strip_disallowed(text: str) -> str:
+    """Remove brand/celebrity tokens so a prompt never targets a real identity."""
+    sanitized = text.lower()
+    for pattern in DISALLOWED_PROMPT_PATTERNS:
+        sanitized = re.sub(pattern, "", sanitized, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", sanitized).strip(" ,")
+
+
 def sanitize_scene_prompt(scene_request: Dict[str, Any]) -> str:
-    """Build neutral, photographic prompt excluding brands, celebrities, and specific locations."""
+    """Build neutral, photographic prompt excluding brands, celebrities, and specific locations.
+
+    ``identity_prompt`` (the plan's own frozen 7-component prompt: subject /
+    environment / action_state / lighting / composition_camera / style /
+    quality) wins over the three English search anchors. The generated picture
+    is reviewed against the scene's source-language identity, so it has to be
+    generated from that same identity: a three-word English search phrase can
+    describe a different place than the one the reviewer will look for — the
+    recorded 2026-10-26 failure generated an open-plan office for
+    ``datacenter`` while the review was asked to confirm 应急指挥室.
+
+    ``prompt_focus`` repeats the single role (source-language subject, action or
+    setting) that the previous visual review could not confirm, so a bounded
+    retry aims at the missing visual evidence instead of resampling the exact
+    same wording.
+    """
     visual_query = str(scene_request.get("visual_query") or "").strip()
     anchors = scene_request.get("anchors") or {}
     subject = str(anchors.get("subject") or "").strip()
     action = str(anchors.get("action") or "").strip()
     setting = str(anchors.get("setting") or "").strip()
+    identity = str(scene_request.get("identity_prompt") or "").strip()
+    focus = str(scene_request.get("prompt_focus") or "").strip()
 
     components = []
     if subject:
@@ -58,16 +83,25 @@ def sanitize_scene_prompt(scene_request: Dict[str, Any]) -> str:
     if setting:
         components.append(setting)
 
-    base = ", ".join(components) if components else visual_query
+    base = identity or (", ".join(components) if components else visual_query)
     if not base:
         base = "professional workspace environment"
 
-    # Filter out disallowed terms
-    sanitized = base.lower()
-    for pattern in DISALLOWED_PROMPT_PATTERNS:
-        sanitized = re.sub(pattern, "", sanitized, flags=re.IGNORECASE)
+    sanitized = _strip_disallowed(base) or "professional workspace environment"
+    focus_text = _strip_disallowed(focus)
 
-    clean_prompt = f"realistic documentary photograph of {sanitized}, neutral lighting, high resolution, sharp focus"
+    if focus_text:
+        clean_prompt = (f"{sanitized}. The scene clearly shows {focus_text}. "
+                        "Realistic documentary photograph, wide 16:9 landscape framing, "
+                        "neutral lighting, high resolution, sharp focus")
+    elif identity:
+        clean_prompt = (f"{sanitized}, realistic documentary photograph, "
+                        "wide 16:9 landscape framing, "
+                        "neutral lighting, high resolution, sharp focus")
+    else:
+        clean_prompt = (f"realistic documentary photograph of {sanitized}, "
+                        "wide 16:9 landscape framing, "
+                        "neutral lighting, high resolution, sharp focus")
     return re.sub(r"\s+", " ", clean_prompt).strip()
 
 

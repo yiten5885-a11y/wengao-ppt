@@ -164,9 +164,10 @@ class MakeOrchestrator:
         if self._guard(job_id, held_attempt, held_run):
             return self._flow(job_id)
         self._append(job_id, "run", "RUNNING")
-        rc, obj, out, err = self.cli("run", "--job-id", job_id,
-                                     "--timeout", "900",
-                                     timeout=STAGE_TIMEOUT["run"])
+        run_args = ["run", "--job-id", job_id, "--timeout", "900"]
+        if (self._flow(job_id) or {}).get("allow_text_card_fallback"):
+            run_args.append("--allow-text-card-fallback")
+        rc, obj, out, err = self.cli(*run_args, timeout=STAGE_TIMEOUT["run"])
         self._append(job_id, "run", "DONE" if rc == 0 else "FAILED",
                      {"rc": rc, "tail": (out or err)[-400:]})
         if rc != 0:
@@ -228,7 +229,7 @@ class MakeOrchestrator:
         return False
 
     # ---------------------------------------------------------------- 受理
-    def start(self, source: str, theme: str):
+    def start(self, source: str, theme: str, allow_text_card_fallback: bool = False):
         """受理一次「开始制作」。重复点击返回既有编排，不新开。"""
         from wengao_ppt import theme as theme_mod
         theme = theme or theme_mod.DEFAULT_THEME_ID
@@ -287,7 +288,8 @@ class MakeOrchestrator:
         self._set(job_id, state="RUNNING", stage="precheck",
                   history=[], finished_at=None,
                   theme=frozen_theme, held_attempt=held_attempt,
-                  held_run=held_run, started_at=now_iso(), input_path=str(p))
+                  held_run=held_run, started_at=now_iso(), input_path=str(p),
+                  allow_text_card_fallback=bool(allow_text_card_fallback))
         self._append(job_id, "precheck", "DONE",
                      {"rc": rc, "input_sha256": obj.get("input_sha256"),
                       "frozen_theme": frozen_theme})

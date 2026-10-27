@@ -14,6 +14,16 @@ from wengao_ppt.scene_model import (
 
 
 class SceneModelTimeoutTests(unittest.TestCase):
+    def setUp(self):
+        # These tests exercise the local-endpoint transport path in isolation;
+        # they must not be influenced by a real machine's ~/.wengao_ppt/cloud_model.json
+        # (call_local_model checks cloud routing before falling back to local).
+        patcher = mock.patch(
+            "wengao_ppt.scene_model.cloud_model_config.active_text_target",
+            return_value=None)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_scene_policy_error_is_not_mislabeled_as_local_model_failure(self):
         record = SceneModelError("SCENE.COVERAGE_AUDIT_GAPS", "audit gaps").as_record()
         self.assertEqual(record["provider"], "semantic-scene-gate")

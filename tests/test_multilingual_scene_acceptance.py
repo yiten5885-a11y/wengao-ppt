@@ -532,11 +532,12 @@ class SceneDedupeAcceptance(unittest.TestCase):
 class SceneFailureAcceptance(unittest.TestCase):
     """Requirement 4: failures are recorded, never dressed up as success."""
 
-    def _build(self, tmp, semantic, mode):
+    def _build(self, tmp, semantic, mode, allow_text_card_fallback=False):
         source = make_deck(Path(tmp) / "source.pptx", EN_CONSUMER_PAGES[:1])
         provider = AcceptancePhotoProvider(Path(tmp) / "assets", mode=mode)
         plan = semantic_scenes.build_plan(source, semantic_resolution=semantic,
-                                          provider=provider)
+                                          provider=provider,
+                                          allow_text_card_fallback=allow_text_card_fallback)
         return source, plan
 
     def _semantic(self):
@@ -559,13 +560,36 @@ class SceneFailureAcceptance(unittest.TestCase):
             self.assertEqual(len(plan["unresolved_scenes"]), 1)
             self.assertEqual(plan["unresolved_scenes"][0]["reason"],
                              "SCENE.NO_LICENSED_PHOTO")
-            # No text-card or placeholder may be recorded as a scene image.
+            # No text-card or placeholder may be recorded as a scene image
+            # unless the caller explicitly opted in (not done here).
+            self.assertEqual(plan.get("text_cards"), {})
             serialized = json.dumps(plan, ensure_ascii=False)
-            self.assertNotIn("text_card", serialized)
             self.assertNotIn("placeholder_image", serialized)
             with self.assertRaises(semantic_scenes.SemanticSceneError) as ctx:
                 semantic_scenes.apply_plan(source, plan, Path(tmp) / "out.pptx")
         self.assertEqual(ctx.exception.code, "SCENE.UNRESOLVED_SCENES")
+
+    def test_text_card_fallback_only_applies_when_explicitly_opted_in(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, plan = self._build(tmp, self._semantic(), "fail",
+                                       allow_text_card_fallback=True)
+            self.assertEqual(plan["images"], {})
+            self.assertEqual(plan["unresolved_scenes"], [])
+            self.assertEqual(list(plan["text_cards"]), ["supermarket_shopping"])
+            card = plan["text_cards"]["supermarket_shopping"]
+            self.assertEqual(card["fallback_reason"], "SCENE.NO_LICENSED_PHOTO")
+            self.assertNotEqual(card["placement_mode"], "replace_visual_image")
+            out = Path(tmp) / "out.pptx"
+            result = semantic_scenes.apply_plan(source, plan, out)
+            self.assertEqual(result["text_cards_inserted"], 1)
+            self.assertTrue(out.is_file())
+            prs = Presentation(str(out))
+            # The card must carry the scene's own words, never a generic
+            # placeholder string, and must disclose that it is a fallback.
+            all_text = "\n".join(sh.text_frame.text for sh in prs.slides[0].shapes
+                                 if sh.has_text_frame)
+            self.assertIn("Supermarket shopping", all_text)
+            self.assertIn("未找到可核验的合规配图", all_text)
 
     def test_unrelated_photo_is_rejected_by_metadata_gate(self):
         with tempfile.TemporaryDirectory() as tmp:

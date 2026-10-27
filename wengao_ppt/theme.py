@@ -578,6 +578,17 @@ def apply_theme(pptx_path, out_path, theme_name: str | None = None,
                     changed["contrast"]["unsafe"].append(kept)
                 else:
                     changed["contrast"]["kept_original"].append(kept)
+        # 3.5) 抬字号后可能把原来一行的文字顶成好几行，自己的框装不下
+        # （甚至直接出画布），或者压住下一个文字框——这里按真实折行高度把
+        # 框适当加高（不超出画布底边），并把被压的后续形状顺势下移；
+        # 不改字号、不改文字。
+        from . import visual as vis_mod
+        overlap_fixes = vis_mod.fix_stacked_text_overlap(
+            slide, acts=None, page=idx, slide_h_in=slide_h / 914400,
+            slide_w_in=slide_w / 914400)
+        if overlap_fixes:
+            changed.setdefault("stacked_text_overlap_fixes", []).extend(overlap_fixes)
+
         # 4) 业务色账本：原色、最终底色、保留后的实测对比度、是否达标
         for sh in info["shapes"]:
             prot = protected.get(sh.name) or []

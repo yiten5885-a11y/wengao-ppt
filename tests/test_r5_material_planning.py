@@ -30,6 +30,15 @@ def _skeleton_plan():
 
 
 class MaterialModelTimeoutTests(unittest.TestCase):
+    def setUp(self):
+        # These tests exercise the local-endpoint transport path in isolation;
+        # they must not be influenced by a real machine's ~/.wengao_ppt/cloud_model.json
+        # (call_model checks cloud routing before falling back to local).
+        patcher = patch.object(material.cloud_model_config, "active_text_target",
+                               return_value=None)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_bare_socket_timeout_is_normalized_and_does_not_retry_fallback(self):
         with patch.dict("os.environ", {
                 "WENGAO_LOCAL_MODEL_ENDPOINT": "http://127.0.0.1:11434",

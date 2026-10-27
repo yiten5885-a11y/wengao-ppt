@@ -48,6 +48,17 @@ def now_iso():
     return datetime.now(timezone.utc).astimezone().isoformat()
 
 
+# 回环地址绝不走系统代理：工作台及其子进程（材料 CLI、场景模型、ComfyUI）
+# 大量调用 http://127.0.0.1:*；若服务带着 HTTP(S)_PROXY 启动，这些调用会被
+# 代理拦截（2026-10-27 SSLEOFError）。只豁免回环，外网请求仍按既有代理配置。
+for _lp_k in ("no_proxy", "NO_PROXY"):
+    _lp_v = os.environ.get(_lp_k, "")
+    if "127.0.0.1" not in _lp_v:
+        _lp_hosts = "127.0.0.1,localhost,::1"
+        os.environ[_lp_k] = (f"{_lp_v},{_lp_hosts}" if _lp_v else _lp_hosts)
+del _lp_k, _lp_v
+
+
 def load_json(p: Path):
     try:
         return json.loads(p.read_text(encoding="utf-8"))
@@ -68,6 +79,37 @@ def _pid_alive(pid) -> bool:
     except Exception:  # noqa: BLE001
         return False
     return True
+
+
+#: 材料链路的**规范拒绝**判定（与 /api/material/from-material 的 REFUSAL_VERDICTS
+#: 同一口径）：生成器按契约拒绝不是进程崩溃。任务面板必须给出具体拒绝原因，
+#: 而不是把 rc!=0 一律标成"任务进程意外退出"（2026-10-27 mt-c4b795f2 误报根因）。
+MT_REFUSAL_VERDICTS = {"PLAN_FAILED", "PLAN_ASSET_INVALID",
+                       "PAGE_RANGE_UNSATISFIED", "PAGE_COUNT_MISMATCH",
+                       "CANCELLED"}
+
+
+def _mt_refusal_reason(rr: dict) -> str:
+    """把 run_record 里的规范拒绝翻译成给用户看的具体原因。"""
+    verdict = rr.get("verdict")
+    if verdict == "PAGE_RANGE_UNSATISFIED":
+        c = rr.get("page_range_conflict") or {}
+        rng = c.get("range") or ["?", "?"]
+        problems = "；".join(str(p) for p in (c.get("problems") or []))
+        return (f"材料按契约拒绝：分页后 {c.get('pages')} 页，"
+                f"超出冻结区间 {rng[0]}—{rng[1]}（{problems}）。"
+                "材料全量必讲内容无法落入该页数区间，已按契约留痕拒绝，"
+                "详见运行记录 page_range_conflict / fact_budget。")
+    if verdict == "PLAN_ASSET_INVALID":
+        return "材料按契约拒绝：计划声明了无受控资产的 image_caption 页。"
+    if verdict == "PLAN_FAILED":
+        err = str((rr.get("plan") or {}).get("error") or "")
+        return f"材料按契约拒绝：内容计划失败。{err}" if err else \
+            "材料按契约拒绝：内容计划失败。"
+    if verdict == "PAGE_COUNT_MISMATCH":
+        return (f"材料按契约拒绝：构建页数与计划不一致。"
+                f"{rr.get('page_count_source') or ''}")
+    return f"材料按契约拒绝：{verdict or '未知判定'}"
 
 
 def last_json(stdout: str):
@@ -230,8 +272,26 @@ class Workbench:
         return {"started": True, "op": op, "pid": proc.pid, "job_id": job_id}
 
     # ---------------- 任务状态（全部来自真实落盘文件）----------------
+    @staticmethod
+    def _reap_abandoned(job_id=None):
+        """读状态前先收尾"worker 已死却还停在 RUNNING"的任务。
+
+        契约 GATE.INTERRUPTED 要求进程中断后不得长期停留 RUNNING。worker 被
+        kill、崩溃或机器重启时没有人改写 job.json，界面就会一直显示"制作中"。
+        在这里顺带回收，读到的状态才是真的。清理失败不影响状态读取。
+        """
+        try:
+            from wengao_ppt.runner import Runner
+            r = Runner(ROOT)
+            if job_id:
+                return r.reap_abandoned_run(job_id)
+            return r.reap_all_abandoned_runs()
+        except Exception:  # noqa: BLE001 — 清理是尽力而为，不能挡住状态查询
+            return None
+
     def job_state(self, job_id):
         d = ROOT / "jobs" / job_id
+        self._reap_abandoned(job_id)
         job = load_json(d / "job.json")
         if job is None:
             return None
@@ -306,6 +366,7 @@ class Workbench:
         jd = ROOT / "jobs"
         if not jd.exists():
             return out
+        self._reap_abandoned()
         for d in sorted(jd.iterdir(), key=lambda p: p.name):
             job = load_json(d / "job.json")
             if not job:
@@ -618,9 +679,19 @@ def _mt_load(tid: str):
         ]
         modified = True
 
-    if rec.get("state") == "running" and not pid_alive and not job_active \
-            and not active_handoff:
-        # worker 进程与下游流水线均已退出，且没有刚启动的 runner 交接，纠正为终态
+    hb_stale = True
+    _hb = rec.get("heartbeat_at")
+    if _hb:
+        try:
+            hb_stale = (datetime.now(timezone.utc).astimezone()
+                        - datetime.fromisoformat(str(_hb))).total_seconds() > 90
+        except Exception:  # noqa: BLE001
+            hb_stale = True
+    if (rec.get("state") == "running" and not pid_alive and not job_active
+            and not active_handoff and hb_stale):
+        # worker 进程与下游流水线均已退出，且没有刚启动的 runner 交接，纠正为终态。
+        # 心跳宽限 90 秒：CLI 刚退出、收尾线程尚未写回终态的窗口内不得误判为
+        # "任务进程意外退出"（runner 心跳间隔约 2 秒，收尾只需写几个文件）。
         if linked_job and linked_job.get("verdict") in ("FAILED", "CANCELLED"):
             runner_verdict = linked_job.get("verdict")
             rec["state"] = "failed" if runner_verdict == "FAILED" else "cancelled"
@@ -905,10 +976,10 @@ def _mt_advance(tid: str, job_id: str, cancel_file: Path):
         return
     stamp("run", state="running")
     try:
-        rc, _obj, out, err = cli(ROOT, "run", "--job-id", job_id, timeout=900)
+        rc, _obj, out, err = cli(ROOT, "run", "--job-id", job_id, timeout=3600)
     except subprocess.TimeoutExpired:
         rc = 124
-        out, err = "", "CLI run 超时（超过 900 秒）"
+        out, err = "", "CLI run 超时（超过 3600 秒）"
     except Exception as exc:
         rc = 1
         out, err = "", f"CLI run 异常: {exc}"
@@ -1181,6 +1252,14 @@ def _mt_start(body: dict):
             done["state"] = "failed"
             done["verdict"] = "FAILED"
             done["stopped_reason"] = done.get("stopped_reason") or "材料生成超时"
+        elif (proc.returncode != 0 and isinstance(rr, dict)
+              and rr.get("verdict") in MT_REFUSAL_VERDICTS):
+            # 规范拒绝（rc=4 等受控退出）：不是进程崩溃。判定与具体原因
+            # 直接取自本次运行记录，覆盖轮询竞态可能写入的"意外退出"。
+            done["state"] = "failed"
+            done["verdict"] = rr.get("verdict")
+            done["fail_reason"] = f"MATERIAL.{rr.get('verdict')}"
+            done["stopped_reason"] = _mt_refusal_reason(rr)
         elif done.get("verdict") == "FAILED" or done.get("fail_reason") or (proc.returncode != 0):
             done["state"] = "failed"
             done["verdict"] = done.get("verdict") or "FAILED"
@@ -1573,6 +1652,15 @@ def _history_data() -> dict:
             "note": "版本身份来自 versions/*.json 与 job.json；不以文件名或修改时间作为唯一依据。"}
 
 
+class BodyAlreadyConsumedError(Exception):
+    """FIX-W4-001：请求体已被前置逻辑读取，不可重复消费。"""
+
+
+# FIX-W4-001：请求体缓存的"未设置"哨兵。请求体本身可能是 JSON null，
+# 不能用 None 兼作"尚未读取"的标记，否则二次读取会误判为已消费。
+_BODY_UNSET = object()
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "WenGaoWorkbench/1.0"
     protocol_version = "HTTP/1.1"
@@ -1619,12 +1707,22 @@ class Handler(BaseHTTPRequestHandler):
         self._send(code, payload)
 
     def _body_json(self):
+        cached = getattr(self, "_body_cached_json", _BODY_UNSET)
+        if cached is not _BODY_UNSET:
+            return cached
+        if getattr(self, "_body_consumed", False):
+            raise BodyAlreadyConsumedError("请求体已被前置逻辑读取，不可重复消费。")
         n = int(self.headers.get("Content-Length") or 0)
         if n <= 0 or n > 1 << 20:
+            self._body_cached_json = {}
             return {}
+        self._body_consumed = True
         try:
-            return json.loads(self.rfile.read(n).decode("utf-8"))
+            raw = self.rfile.read(n)
+            self._body_cached_json = json.loads(raw.decode("utf-8"))
+            return self._body_cached_json
         except Exception:  # noqa: BLE001
+            self._body_cached_json = {}
             return {}
 
     def log_message(self, fmt, *args):
@@ -1640,6 +1738,8 @@ class Handler(BaseHTTPRequestHandler):
             self._head_only = False
 
     def do_GET(self):
+        self._body_consumed = False
+        self._body_cached_json = _BODY_UNSET
         try:
             u = urllib.parse.urlparse(self.path)
             path = u.path
@@ -1759,10 +1859,14 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/preview/file":
                 return self._preview_file(q)
             return self._err(404, "WB.NOT_FOUND", "接口不存在。")
+        except BodyAlreadyConsumedError as e:
+            return self._err(500, "WB.BODY_ALREADY_CONSUMED", str(e))
         except Exception as e:  # noqa: BLE001
             return self._err(500, "WB.INTERNAL", f"{type(e).__name__}: {e}")
 
     def do_POST(self):
+        self._body_consumed = False
+        self._body_cached_json = _BODY_UNSET
         try:
             u = urllib.parse.urlparse(self.path)
             path = u.path
@@ -1825,6 +1929,8 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/cleanup":
                 return self._cleanup()
             return self._err(404, "WB.NOT_FOUND", "接口不存在。")
+        except BodyAlreadyConsumedError as e:
+            return self._err(500, "WB.BODY_ALREADY_CONSUMED", str(e))
         except Exception as e:  # noqa: BLE001
             return self._err(500, "WB.INTERNAL", f"{type(e).__name__}: {e}")
 
@@ -2030,9 +2136,13 @@ class Handler(BaseHTTPRequestHandler):
         body = self._body_json() or {}
         src = body.get("source") or ""
         theme = body.get("theme") or ""
+        # 默认开启：找不到可核验配图不再整单阻断稿子，改用如实标注的说明
+        # 卡片兜底（从不顶替已有图片、从不假装是真实照片）。调用方显式传
+        # false 才会退回"找不到图就整单阻断"的严格模式。
+        allow_text_card_fallback = bool(body.get("allow_text_card_fallback", True))
         if not src:
             return self._err(400, "WB.BAD_SOURCE", "缺少原稿来源。")
-        r = MAKE.start(src, theme)
+        r = MAKE.start(src, theme, allow_text_card_fallback=allow_text_card_fallback)
         if not r.get("accepted"):
             # A14：/api/make（新入口）与 /api/jobs（旧入口）此前错误体不同、
             # 且都返回 200，调用方只能靠 body 猜。这里与 /api/jobs 取齐：
@@ -2208,6 +2318,9 @@ class Handler(BaseHTTPRequestHandler):
         })
 
     def _asset_upload(self):
+        if getattr(self, "_body_consumed", False):
+            return self._err(500, "WB.BODY_ALREADY_CONSUMED", "请求体已被前置逻辑读取，不可重复消费。")
+        self._body_consumed = True
         raw = self.headers.get("X-Filename") or ""
         name = urllib.parse.unquote(raw)
         name = SAFE_NAME.sub("_", Path(name).name)[:80]
@@ -2277,6 +2390,9 @@ class Handler(BaseHTTPRequestHandler):
         })
 
     def _upload_bytes(self, allowed_suffixes, *, type_code, type_message):
+        if getattr(self, "_body_consumed", False):
+            return self._err(500, "WB.BODY_ALREADY_CONSUMED", "请求体已被前置逻辑读取，不可重复消费。")
+        self._body_consumed = True
         raw_name = self.headers.get("X-Filename") or ""
         name = urllib.parse.unquote(raw_name)
         name = SAFE_NAME.sub("_", Path(name).name)[:80] or "upload.pptx"
@@ -2436,12 +2552,18 @@ class Handler(BaseHTTPRequestHandler):
             return self._err(404, "WB.JOB_NOT_FOUND", "任务不存在。")
         if action in ("run", "validate"):
             if action == "run":
-                args = ["run", "--job-id", job_id, "--timeout", "900"]
+                # 配图环节可能需要本机生图兜底（每张数十秒到数分钟），900 秒对
+                # 多场景稿件不够用，会被误判为 VISUAL.SCENE_PLAN_FAILED/timeout。
+                args = ["run", "--job-id", job_id, "--timeout", "3600"]
+                run_body = self._body_json() or {}
+                # 默认开启（同 /api/make）：显式传 false 才退回严格整单阻断。
+                if run_body.get("allow_text_card_fallback", True):
+                    args.append("--allow-text-card-fallback")
                 # 取消测试接缝：仅在显式开启时接受 hold（生成完毕、发布之前停留 N 秒），
                 # 让"运行中取消"有真实可观测的时间窗；默认不启用。
                 if os.environ.get("WENGAO_WB_HOLD_SEAM") == "1":
                     try:
-                        hold = float((self._body_json() or {}).get("hold") or 0)
+                        hold = float(run_body.get("hold") or 0)
                     except (TypeError, ValueError):
                         hold = 0.0
                     if hold > 0:
@@ -2601,6 +2723,9 @@ class Handler(BaseHTTPRequestHandler):
         if not record_b64 or len(record_b64) > 48 * 1024:
             return self._err(400, "WB.NATIVE_REVIEW_RECORD",
                              "缺少复核记录，或 Base64 记录超过 48 KiB 限额。")
+        if getattr(self, "_body_consumed", False):
+            return self._err(500, "WB.BODY_ALREADY_CONSUMED", "请求体已被前置逻辑读取，不可重复消费。")
+        self._body_consumed = True
         video_bytes = self.rfile.read(n)
         if len(video_bytes) != n:
             return self._err(400, "WB.NATIVE_VIDEO_TRUNCATED", "录像上传未完整接收。")

@@ -32,12 +32,16 @@
     var themeBtn = document.getElementById("btn-theme");
     if (themeBtn) {
       themeBtn.addEventListener("click", function () {
-        var themes = ["ink", "slate", "sand", "ocean"];
-        var names = { ink: "水墨", slate: "岩灰", sand: "暖沙", ocean: "沧海" };
-        var i = themes.indexOf(WB.state.theme);
-        WB.state.theme = themes[(i + 1) % themes.length];
-        this.textContent = "主题：" + (names[WB.state.theme] || WB.state.theme) + " (" + WB.state.theme + ")";
-        WB.toast("已选择主题：" + (names[WB.state.theme] || WB.state.theme));
+        // FIX-W4-001：只循环后端可信主题注册表里的主题（/api/meta.themes），
+        // 不再使用不在注册表内的虚构主题（旧代码的 ink/slate/sand/ocean 会被
+        // /api/make 以 THEME.UNKNOWN 拒绝，"开始制作"必然失败）。
+        var themes = (WB.state.meta && WB.state.meta.themes) || [];
+        if (!themes.length) { WB.toast("主题清单尚未加载，请稍候再试。"); return; }
+        var ids = themes.map(function (t) { return t.id; });
+        var i = ids.indexOf(WB.state.theme);
+        WB.state.theme = ids[(i + 1) % ids.length];
+        WB.renderThemeButton();
+        WB.toast("已选择主题：" + WB.state.theme);
       });
     }
     // 空状态示例
@@ -69,7 +73,7 @@
     msg.value = "";
     if (WB.state.currentJobId) {
       // 已有任务：作为继续调整指令（局部修改）
-      WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
+      WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
         body: { op: "local_edit", edit: { instruction: text } },
       }).then(function (r) {
         WB.toast(r.status === "UNKNOWN_OP" ? "已收到：" + text : "已提交处理");
@@ -82,7 +86,7 @@
       body: {
         text: text,
         pages: 12,
-        theme: WB.state.theme || ((WB.state.meta && WB.state.meta.theme_default) || "ink"),
+        theme: WB.state.theme || (WB.state.meta && WB.state.meta.theme_default) || "",
         research: WB.state.researchOn,
         language: WB.state.lang,
       },
@@ -95,17 +99,22 @@
   }
 
   function importFile(file) {
-    var fd = new FormData();
-    fd.append("file", file);
+    // FIX-W4-001：上传必须是"原始字节 + X-Filename 头"（服务端 _upload_bytes 按
+    // Content-Length 流式落盘，不解析 multipart）。此前误用 FormData 且未带
+    // X-Filename，服务端把文件名回退为 upload.pptx，导致 /ui 的材料导入必然失败。
     var isPptx = /\.pptx$/i.test(file.name);
-    fetch(isPptx ? "/api/upload" : "/api/material/upload", { method: "POST", body: fd })
+    fetch(isPptx ? "/api/upload" : "/api/material/upload", {
+      method: "POST",
+      headers: { "X-Filename": encodeURIComponent(file.name) },
+      body: file,
+    })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && d.error) throw new Error(d.error.message);
         WB.toast("已导入 " + file.name);
         WB.loadOverview();
         if (isPptx) {
-          WB.api("/api/make", { body: { source: d.path || d.name, theme: WB.state.theme || ((WB.state.meta && WB.state.meta.theme_default) || "ink") } })
+          WB.api("/api/make", { body: { source: d.path || d.name, theme: WB.state.theme || (WB.state.meta && WB.state.meta.theme_default) || "" } })
             .then(function (r) {
               WB.toast("制作任务已创建");
               WB.loadOverview();
@@ -142,7 +151,7 @@
     if (btnCancel) {
       btnCancel.addEventListener("click", function () {
         if (!WB.state.currentJobId) return;
-        WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/cancel", { method: "POST" })
+        WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/cancel", { method: "POST" })
           .then(function () {
             WB.toast("已取消制作");
             WB.state.running = false;
@@ -155,7 +164,7 @@
     if (btnRetry) {
       btnRetry.addEventListener("click", function () {
         if (!WB.state.currentJobId) return;
-        WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/retry", { method: "POST" })
+        WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/retry", { method: "POST" })
           .then(function () {
             WB.toast("重试任务已提交");
             WB.state.terminal = null;
@@ -167,7 +176,7 @@
     }
     document.getElementById("btn-export").addEventListener("click", function () {
       if (!WB.state.currentJobId) { WB.toast("先选一份演示"); return; }
-      WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/export", {
+      WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/export", {
         body: { format: "pptx", with_attribution: true },
       }).then(function (r) {
         if (r.status === "OK") WB.toast("已导出：" + (r.files || []).join("、") + "（含来源与署名清单）");
@@ -182,7 +191,7 @@
     });
     document.getElementById("btn-transition").addEventListener("click", function () {
       if (!WB.state.currentJobId) { WB.toast("先选一份演示"); return; }
-      WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
+      WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
         body: { op: "transition", enabled: true, duration_ms: 500 },
       }).then(function () { WB.toast("转场设置已记录：整稿统一淡入淡出"); })
         .catch(function (e) { WB.toast("设置失败：" + e.message); });
@@ -202,7 +211,7 @@
         if (t.hasAttribute && t.hasAttribute("data-decision")) {
           var cid = t.getAttribute("data-cid");
           var choice = t.getAttribute("data-decision");
-          WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/decisions", {
+          WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/decisions", {
             body: { conflict_id: cid, choice: choice },
           }).then(function () {
             WB.toast("已记录你的选择，相关页面已重排");
@@ -229,7 +238,7 @@
           var textarea = card ? card.querySelector(".obj-edit-input") : null;
           var newText = textarea ? textarea.value.trim() : "";
           if (!WB.state.currentJobId) { WB.toast("请先选择演示任务"); return; }
-          WB.api("/api/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
+          WB.api("/api/ui/jobs/" + encodeURIComponent(WB.state.currentJobId) + "/page-ops", {
             body: {
               op: "local_edit",
               edit: {

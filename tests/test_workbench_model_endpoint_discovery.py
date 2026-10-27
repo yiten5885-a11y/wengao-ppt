@@ -63,7 +63,7 @@ class WorkbenchModelEndpointDiscoveryTests(unittest.TestCase):
 
         def open_url(request, timeout):
             seen.append((request.full_url, timeout))
-            if ":18888/" in request.full_url:
+            if ":18088/" in request.full_url or ":18888/" in request.full_url:
                 raise urllib.error.URLError(ConnectionRefusedError())
             return Response()
 
@@ -82,8 +82,10 @@ class WorkbenchModelEndpointDiscoveryTests(unittest.TestCase):
         opener.open.assert_has_calls([
             call(ANY, timeout=1),
             call(ANY, timeout=1),
+            call(ANY, timeout=1),
         ])
         self.assertEqual([url for url, _timeout in seen], [
+            "http://127.0.0.1:18088/health",
             "http://127.0.0.1:18888/health",
             "http://127.0.0.1:11434/api/tags",
         ])

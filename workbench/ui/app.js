@@ -16,7 +16,7 @@
       localrun: null,
       meta: null,
       objects: null,
-      theme: "ink",
+      theme: null,        // FIX-W4-001：启动时由 /api/meta 的真实主题注册表解析，不写死
       pages: [],          // [{page_no, url}]
       currentPage: 1,
       tab: "preview",
@@ -66,8 +66,27 @@
   };
 
   // ------------------------------------------------------------ 引导
+  // FIX-W4-001：主题按钮标签始终按后端注册表渲染；不虚构主题名。
+  WB.renderThemeButton = function () {
+    var btn = document.getElementById("btn-theme");
+    if (!btn) return;
+    var themes = (WB.state.meta && WB.state.meta.themes) || [];
+    var t = null;
+    for (var i = 0; i < themes.length; i++) {
+      if (themes[i].id === WB.state.theme) { t = themes[i]; break; }
+    }
+    btn.textContent = "主题：" + (t ? t.name : (WB.state.theme || "默认")) +
+      " (" + (WB.state.theme || "-") + ")";
+  };
+
   WB.boot = function () {
-    WB.api("/api/meta").then(function (m) { WB.state.meta = m; }).catch(function () {});
+    WB.api("/api/meta").then(function (m) {
+      WB.state.meta = m;
+      // FIX-W4-001：主题必须来自后端可信注册表（THEMES），
+      // 旧代码写死 "ink" 不在注册表内，/api/make 一律 THEME.UNKNOWN。
+      if (!WB.state.theme && m && m.theme_default) WB.state.theme = m.theme_default;
+      WB.renderThemeButton();
+    }).catch(function () {});
     WB.loadLocalrun();
     WB.loadOverview();
     WB.bindComposer();

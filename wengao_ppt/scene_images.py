@@ -33,13 +33,20 @@ except ImportError:
 
 
 class SceneImageError(RuntimeError):
-    def __init__(self, code: str, detail: str):
+    def __init__(self, code: str, detail: str, diagnostics: dict | None = None):
         super().__init__(detail)
         self.code = code
         self.detail = str(detail)[:500]
+        # Metadata only (mirrors SceneModelError.diagnostics): never a prompt or
+        # a raw model response. Carries the review verdict so a rejected image
+        # stays auditable after its bytes are discarded.
+        self.diagnostics = dict(diagnostics or {})
 
     def as_record(self) -> dict:
-        return {"code": self.code, "detail": self.detail}
+        record = {"code": self.code, "detail": self.detail}
+        if self.diagnostics:
+            record["diagnostics"] = dict(self.diagnostics)
+        return record
 
 
 MAX_IMAGE_BYTES = 24 * 1024 * 1024
@@ -1472,6 +1479,52 @@ class WikimediaCommonsPhotoProvider:
         )
 
 
+SCENE_PROMPT_FIELD_ORDER = ("subject", "environment", "action_state", "lighting",
+                            "composition_camera", "style", "quality")
+_REVIEW_REASON_ROLE = {"SUBJECT_NOT_VISIBLE": "subject",
+                       "ACTION_NOT_VISIBLE": "action",
+                       "SETTING_NOT_VISIBLE": "setting"}
+
+
+def scene_identity_prompt(scene: dict | None) -> str:
+    """Return the plan's own frozen 7-component photo prompt, if it is safe to send.
+
+    The visual review judges the scene's source-language identity, so generation
+    has to start from that same identity. The stored plan already carries it:
+    ``image_plan.positive_prompt`` when the planner supplied one, otherwise the
+    seven ``image_prompt_fields``. Anything containing digits is dropped — a
+    prompt that carried a metric would send source text to a remote service,
+    which the neutral-English boundary forbids.
+    """
+    if not isinstance(scene, dict):
+        return ""
+    image_plan = scene.get("image_plan")
+    candidate = ""
+    if isinstance(image_plan, dict):
+        candidate = str(image_plan.get("positive_prompt") or "").strip()
+    if not candidate:
+        fields = scene.get("image_prompt_fields")
+        if isinstance(fields, dict):
+            candidate = ", ".join(
+                str(fields.get(name) or "").strip()
+                for name in SCENE_PROMPT_FIELD_ORDER
+                if str(fields.get(name) or "").strip())
+    candidate = re.sub(r"\s+", " ", candidate).strip()
+    if not candidate or len(candidate) > 300 or re.search(r"\d", candidate):
+        return ""
+    return candidate
+
+
+def review_missing_role(diagnostics: dict | None) -> str | None:
+    """Map a blocked visual-review verdict onto the role that was not confirmed."""
+    if not isinstance(diagnostics, dict):
+        return None
+    review = diagnostics.get("visual_review")
+    if not isinstance(review, dict):
+        return None
+    return _REVIEW_REASON_ROLE.get(str(review.get("reason_code") or ""))
+
+
 class ScenePhotoProvider:
     """Search providers in order, cache verified bytes, and reject deck-wide reuse."""
     def __init__(self, cache_dir: str | Path, providers=None, *,
@@ -1505,6 +1558,7 @@ class ScenePhotoProvider:
     def fetch_one(self, query: str, *, excluded_sha256=None, excluded_source_keys=None,
                   excluded_perceptual_hashes=None, scene_context=None,
                   min_aspect: float | None = None) -> dict:
+        from .scene_model import scene_review_verdict_digest
         q = _safe_query(query)
         metadata_query = q
         if isinstance(scene_context, dict) and scene_context.get("metadata_query"):
@@ -1702,7 +1756,8 @@ class ScenePhotoProvider:
                     if not review_valid:
                         failures.append({"provider": provider.name,
                                          "code": "SCENE.VISUAL_CONTENT_MISMATCH",
-                                         "detail": "本机视觉模型未能以高置信度确认照片中的主体、动作和环境；继续检查其他候选。"})
+                                         "detail": "本机视觉模型未能以高置信度确认照片中的主体、动作和环境；继续检查其他候选。",
+                                         "visual_review": scene_review_verdict_digest(visual_review)})
                         continue
                 path = self.cache_dir / f"{sha}{ALLOWED_FORMATS[fmt]}"
                 if not path.exists():
@@ -1749,6 +1804,174 @@ class ScenePhotoProvider:
                 f"逐项拒绝原因：{summary}")
         raise SceneImageError("SCENE.NO_LICENSED_PHOTO",
                               "图库没有返回任何与查询匹配的候选照片。")
+
+    def generate_one(self, *, scene_context: dict, excluded_sha256=None,
+                     excluded_source_keys=None, excluded_perceptual_hashes=None,
+                     min_aspect: float | None = None,
+                     review_focus_role: str | None = None) -> dict:
+        """AI-generated fallback when no stock photo clears the licensing/metadata
+        gate. Local (ComfyUI, loopback-only) by default; routes to a user-
+        configured cloud image-generation service instead when one is explicitly
+        enabled (wengao_ppt.cloud_model_config.active_image_gen_target()).
+
+        Only reached after every configured stock provider has been exhausted for
+        this scene (see the caller in semantic_scenes.py). The generated image is
+        never trusted on the strength of the prompt alone: it goes through the
+        same perceptual-dedupe and visual-review gate as a downloaded photo, so a
+        generated picture that does not actually show the scene's subject,
+        action, and setting is rejected exactly like a mismatched stock photo
+        would be. The prompt is built from the scene's own frozen structured
+        identity (see ``scene_identity_prompt``), never from the English search
+        anchors alone, so what is generated and what the reviewer checks are the
+        same scene. ``review_focus_role`` re-emphasizes the one role a previous
+        review could not confirm on a bounded retry. With the local client, no
+        bytes leave the machine. With a cloud client, the sanitized prompt is
+        sent to that user-configured service — never the original-language
+        source text.
+        """
+        from .scene_model import scene_review_verdict_digest
+        from wengao_ppt.media.genimg.comfyui import ComfyUIClient, sanitize_scene_prompt
+        from wengao_ppt import cloud_model_config
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageClient
+        excluded_sha256 = set(excluded_sha256 or ())
+        excluded_source_keys = set(excluded_source_keys or ())
+        excluded_perceptual_hashes = list(excluded_perceptual_hashes or ())
+        cloud_target = cloud_model_config.active_image_gen_target()
+        is_cloud = cloud_target is not None
+        client = CloudImageClient(cloud_target) if is_cloud else ComfyUIClient()
+        if not client.is_available():
+            if is_cloud:
+                raise SceneImageError("SCENE.GEN_IMAGE_UNAVAILABLE",
+                                      "云端生图服务未正确配置，无法生成替代场景图。")
+            raise SceneImageError("SCENE.GEN_IMAGE_UNAVAILABLE",
+                                  "本机生图服务（ComfyUI）未运行，无法生成替代场景图。")
+        anchors = (scene_context or {}).get("photo_search_terms") or {
+            "subject": scene_context.get("subject", ""),
+            "action": scene_context.get("action", ""),
+            "setting": scene_context.get("setting", ""),
+        }
+        scene_request = {
+            "visual_query": (scene_context or {}).get("metadata_query")
+                            or (scene_context or {}).get("visual_query") or "",
+            "anchors": anchors,
+        }
+        identity_prompt = scene_identity_prompt(scene_context)
+        if identity_prompt:
+            scene_request["identity_prompt"] = identity_prompt
+        focus_role = str(review_focus_role or "").strip().lower()
+        if focus_role in _REVIEW_REASON_ROLE.values():
+            focus_value = str((scene_context or {}).get(focus_role) or "").strip()
+            if focus_value:
+                scene_request["prompt_focus"] = focus_value
+        if min_aspect:
+            # Without this, the generator always returns its own default
+            # aspect (square, for the cloud client) and the image is judged
+            # against min_aspect only *after* generating it — so every scene
+            # that needs a wide slot (a paired photo row, a wide single
+            # area) was guaranteed to fail SCENE.GEN_IMAGE_ASPECT_UNSUITABLE
+            # on the very first try, every time, regardless of prompt
+            # quality. Request a bucket at least as wide as required —
+            # only clients that understand the hint act on it; others
+            # ignore the extra field exactly as before.
+            if min_aspect >= 1.6:
+                scene_request["target_aspect_ratio"] = "16:9"
+            elif min_aspect >= 1.2:
+                scene_request["target_aspect_ratio"] = "4:3"
+        result = client.generate_image(scene_request, timeout_s=180.0)
+        if not result or not result.get("image_bytes"):
+            raise SceneImageError("SCENE.GEN_IMAGE_FAILED",
+                                  "生图服务没有在预算内返回可用图片。")
+        data = result["image_bytes"]
+        sha = hashlib.sha256(data).hexdigest()
+        if sha in excluded_sha256:
+            raise SceneImageError("SCENE.GEN_IMAGE_DUPLICATE", "生成的图片与本稿已用图片重复。")
+        photo_check = photographic_asset_check(data)
+        if not photo_check.get("photographic"):
+            raise SceneImageError("SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
+                                  "生成的图片不是可辨识的写实场景画面，已拒绝使用。")
+        if Image is None:
+            raise SceneImageError("SCENE.PIL_UNAVAILABLE", "PIL/Pillow 未安装，无法处理生成的图片。")
+        try:
+            with Image.open(io.BytesIO(data)) as im:
+                fmt = str(im.format or "").upper()
+                size = tuple(int(x) for x in im.size)
+                im.verify()
+        except Exception:
+            raise SceneImageError("SCENE.GEN_IMAGE_DECODE_FAILED", "生成的图片无法解码。") from None
+        if fmt not in ALLOWED_FORMATS:
+            raise SceneImageError("SCENE.GEN_IMAGE_FORMAT_UNSUPPORTED",
+                                  "生图服务返回的格式不是可嵌入的 JPEG/PNG。")
+        if size[0] < MIN_IMAGE_WIDTH or size[1] < MIN_IMAGE_HEIGHT:
+            raise SceneImageError("SCENE.GEN_IMAGE_RESOLUTION_TOO_LOW",
+                                  "生成图片分辨率不足以用作主要场景图。")
+        if min_aspect and size[0] / max(1, size[1]) + 0.0001 < min_aspect:
+            raise SceneImageError("SCENE.GEN_IMAGE_ASPECT_UNSUITABLE",
+                                  "生成图片方向无法满足本页版位。")
+        phash = perceptual_hash(data)
+        if any(image_hash_distance(phash, old) <= 4 for old in excluded_perceptual_hashes):
+            raise SceneImageError("SCENE.GEN_IMAGE_NEAR_DUPLICATE", "生成的图片与本稿已有图片过于相似。")
+        source_prefix = "cloud_genimg" if is_cloud else "comfyui"
+        source_key = f"{source_prefix}:{result.get('prompt_digest', '')}:{result.get('seed', '')}"
+        if source_key in excluded_source_keys:
+            raise SceneImageError("SCENE.GEN_IMAGE_DUPLICATE", "生成的图片来源标识与本稿已用图片重复。")
+        visual_review = None
+        if self.visual_reviewer is not None:
+            try:
+                visual_review = self.visual_reviewer(scene_context, data)
+            except Exception as exc:  # noqa: BLE001 — see fetch_one's identical handling
+                error_code = str(getattr(exc, "code", "") or "")
+                if error_code.startswith(("MODEL.", "SCENE.VISION_")):
+                    raise
+                raise SceneImageError(
+                    "SCENE.VISUAL_REVIEW_UNAVAILABLE",
+                    "图片语义复核没有完成；生成的场景图被阻断。") from None
+            review_valid = (
+                isinstance(visual_review, dict)
+                and visual_review.get("status") == "PASSED"
+                and visual_review.get("image_sha256") == sha
+                and all(visual_review.get(field) is True for field in (
+                    "scene_match", "subject_visible", "action_visible",
+                    "setting_visible", "photographic"))
+                and visual_review.get("confidence") == "high")
+            if not review_valid:
+                raise SceneImageError(
+                    "SCENE.VISUAL_CONTENT_MISMATCH",
+                    "视觉模型未能以高置信度确认生成图片中的主体、动作和环境。",
+                    diagnostics={"visual_review":
+                                 scene_review_verdict_digest(visual_review)})
+        path = self.cache_dir / f"{sha}{ALLOWED_FORMATS[fmt]}"
+        if not path.exists():
+            tmp = path.with_suffix(path.suffix + ".tmp")
+            tmp.write_bytes(data)
+            os.replace(tmp, path)
+        prompt_text = sanitize_scene_prompt(scene_request)
+        if is_cloud:
+            license_scope = "云端生图（用户自配服务，按该服务条款，非真实照片）"
+            license_name = "AI_GENERATED_CLOUD"
+            attribution = (f"云端生图（{result.get('generator', 'cloud')}, "
+                           f"{result.get('model', 'default')}），提示词：{prompt_text}")
+            title = "云端生成场景图"
+            provider = "cloud_image_generation"
+        else:
+            license_scope = "本机生成（无第三方版权，非真实照片）"
+            license_name = "AI_GENERATED_LOCAL"
+            attribution = f"本机生成（ComfyUI, {result.get('model', 'default')}），提示词：{prompt_text}"
+            title = "本机生成场景图"
+            provider = "comfyui_local_generation"
+        return {
+            "file": str(path), "sha256": sha, "content_hash": sha,
+            "download_url": "", "asset_id": source_key,
+            "perceptual_hash": phash, "bytes": len(data),
+            "actual_format": fmt, "actual_width": size[0], "actual_height": size[1],
+            "query": scene_request["visual_query"], "metadata_relevance": 1.0,
+            "license_scope": license_scope,
+            "license": license_name, "license_version": None, "license_url": None,
+            "attribution": attribution,
+            "title": title, "description": prompt_text,
+            "creator": None, "source_page": "",
+            "visual_review": visual_review, "source_key": source_key,
+            "provider": provider,
+        }
 
 
 # ----------------------------------------------------------------- Provider-Aware Prompt Architecture

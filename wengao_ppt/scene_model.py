@@ -23,6 +23,7 @@ import urllib.request
 
 from PIL import Image
 
+from . import cloud_model_config
 from .language_support import (
     CURRENT_LANGUAGE_ACCEPTANCE_CODES,
     LANGUAGE_SUPPORT_MATRIX,
@@ -70,6 +71,24 @@ def _safe_error_detail(raw: bytes | str | None) -> str:
     return text[:500] or "empty error body"
 
 
+def _strip_model_json_fence(raw: str) -> str:
+    """Strip <think> blocks and ```json/``` code fences some models (notably
+    cloud models like Gemini) wrap JSON in even when asked for a bare object."""
+    clean_raw = str(raw or "").strip()
+    clean_raw = re.sub(r"<think>.*?</think>", "", clean_raw, flags=re.DOTALL).strip()
+    if "<think>" in clean_raw and not clean_raw.startswith("{"):
+        clean_raw = (clean_raw[clean_raw.find("</think>") + 8:].strip()
+                     if "</think>" in clean_raw else
+                     clean_raw[:clean_raw.find("<think>")].strip())
+    if clean_raw.startswith("```json"):
+        clean_raw = clean_raw[7:]
+    elif clean_raw.startswith("```"):
+        clean_raw = clean_raw[3:]
+    if clean_raw.endswith("```"):
+        clean_raw = clean_raw[:-3]
+    return clean_raw.strip()
+
+
 def classify_external_model_failure(exc: Exception) -> SceneModelError | None:
     """Classify known model-runtime errors wrapped by Workbench adapters.
 
@@ -102,9 +121,25 @@ def classify_external_model_failure(exc: Exception) -> SceneModelError | None:
         return SceneModelError("MODEL.RUNTIME_UNAVAILABLE", detail)
     if ("connection refused" in lowered or "connection reset" in lowered
             or "connection failed" in lowered or "not listening" in lowered
+            or "remote end closed connection" in lowered
+            or "connection aborted" in lowered or "connection broken" in lowered
+            or "broken pipe" in lowered or "eof occurred" in lowered
+            or "ssleoferror" in lowered or "ssl" in lowered
+            or "timed out" in lowered or "timeout" in lowered
             or "local ollama connection failed" in lowered or status in (502, 503, 504)):
         return SceneModelError("MODEL.TRANSPORT_ERROR", detail,
                                status if isinstance(status, int) else None)
+    # 类型兜底：socket/http 客户端异常在文本上不一定带上面那些关键词
+    # （RemoteDisconnected 就是"远端直接断开"），仍然属于传输问题，不是语义判否。
+    try:
+        import http.client as _http
+        import socket as _socket
+        import ssl as _ssl
+        if isinstance(exc, (_http.RemoteDisconnected, _http.IncompleteRead,
+                            ConnectionError, TimeoutError, _socket.timeout, _ssl.SSLError)):
+            return SceneModelError("MODEL.TRANSPORT_ERROR", detail)
+    except Exception:  # noqa: BLE001 — 分类器不能自己抛错
+        pass
     return None
 
 
@@ -121,15 +156,46 @@ def _loopback_endpoint() -> str:
                                   "语义场景规划只允许调用本机 loopback 模型端点。")
         return endpoint.rstrip("/")
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-    for cand in ("http://127.0.0.1:18888", "http://127.0.0.1:11434"):
+    # 18088：本机加速推理框架（mlx-dspark，OpenAI 兼容 /v1/chat/completions）；
+    # 18888：通用 llama.cpp 风格端点；11434：Ollama。按此优先级探测首个可用端口。
+    for cand in ("http://127.0.0.1:18088", "http://127.0.0.1:18888", "http://127.0.0.1:11434"):
         try:
-            req = urllib.request.Request(cand + "/health" if cand.endswith(":18888") else cand + "/api/tags", method="GET")
+            probe_path = "/api/tags" if cand.endswith(":11434") else "/health"
+            req = urllib.request.Request(cand + probe_path, method="GET")
             with opener.open(req, timeout=1) as r:
                 if r.status in (200, 404):
                     return cand
         except Exception:
             continue
-    return "http://127.0.0.1:18888"
+    return "http://127.0.0.1:18088"
+
+
+def _vision_loopback_endpoint() -> str:
+    """Resolve the loopback endpoint for image semantic review.
+
+    The main text-planning endpoint (mlx-dspark on 18088) runs a text-only
+    target model and silently ignores image input rather than erroring, so it
+    must never be used for vision. 8080 is the dedicated local mlx_vlm vision
+    server (OpenAI-compatible); 11434 is Ollama for setups where a
+    vision-capable model is still served there.
+    """
+    endpoint = os.environ.get("WENGAO_LOCAL_VISION_MODEL_ENDPOINT")
+    if endpoint:
+        if not _is_loopback_url(endpoint):
+            raise SceneModelError("MODEL.ENDPOINT_NOT_LOCAL",
+                                  "图像语义复核只允许调用本机 loopback 模型端点。")
+        return endpoint.rstrip("/")
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    for cand in ("http://127.0.0.1:8080", "http://127.0.0.1:11434"):
+        try:
+            probe_path = "/api/tags" if cand.endswith(":11434") else "/health"
+            req = urllib.request.Request(cand + probe_path, method="GET")
+            with opener.open(req, timeout=1) as r:
+                if r.status in (200, 404):
+                    return cand
+        except Exception:
+            continue
+    return "http://127.0.0.1:8080"
 
 
 def _call_endpoint_once(endpoint: str, model: str, prompt: str, timeout_s: int,
@@ -192,7 +258,52 @@ def _call_endpoint_once(endpoint: str, model: str, prompt: str, timeout_s: int,
                             "eval_count": timings.get("predicted_n"),
                             "done_reason": obj.get("stop_type") or obj.get("stop_reason")}
             except urllib.error.HTTPError as exc2:
-                exc = exc2
+                if exc2.code == 404:
+                    # 既非 Ollama 也非 llama.cpp 原生路由：尝试 OpenAI 兼容
+                    # /v1/chat/completions（本机加速推理框架 mlx-dspark 等采用此格式）。
+                    openai_payload = {
+                        "model": model,
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0.1,
+                        "max_tokens": num_predict,
+                        "stream": False,
+                        "response_format": {"type": "json_object"},
+                        # 关闭思维链：产品需要直接 JSON 结果，不是推理过程；否则 content
+                        # 可能为空（推理内容单独落在 reasoning_content 里）或被 token 预算截断。
+                        "chat_template_kwargs": {"enable_thinking": False},
+                    }
+                    openai_req = urllib.request.Request(
+                        endpoint + "/v1/chat/completions",
+                        data=json.dumps(openai_payload, ensure_ascii=False).encode("utf-8"),
+                        method="POST")
+                    openai_req.add_header("Content-Type", "application/json")
+                    try:
+                        with opener.open(openai_req, timeout=timeout_s) as response:
+                            obj = json.loads(response.read().decode("utf-8"))
+                            choices = obj.get("choices") or []
+                            message = (choices[0].get("message") or {}) if choices else {}
+                            resp_text = str(message.get("content") or "").strip()
+                            usage = obj.get("usage") or {}
+                            return {"response": resp_text,
+                                    "model": str(obj.get("model") or model),
+                                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                                    "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
+                                    "prompt_eval_count": usage.get("prompt_tokens"),
+                                    "eval_count": usage.get("completion_tokens"),
+                                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
+                    except urllib.error.HTTPError as exc3:
+                        exc = exc3
+                    except urllib.error.URLError as exc3:
+                        reason = getattr(exc3, "reason", None)
+                        if isinstance(reason, (TimeoutError, socket.timeout)):
+                            raise SceneModelError(
+                                "MODEL.REQUEST_TIMEOUT",
+                                f"本机语义模型请求超过 {timeout_s} 秒超时预算。") from None
+                        reason_name = type(reason).__name__ if reason is not None else "URLError"
+                        raise SceneModelError("MODEL.TRANSPORT_ERROR",
+                                              f"本机语义模型连接失败（{reason_name}）。") from None
+                else:
+                    exc = exc2
             except urllib.error.URLError as exc2:
                 reason = getattr(exc2, "reason", None)
                 if isinstance(reason, (TimeoutError, socket.timeout)):
@@ -256,6 +367,72 @@ def _scene_timeout_budget(timeout_s: int | None) -> int:
     return value
 
 
+def _reasoning_effort_for(model: str) -> str:
+    """"none" turns off a model's hidden thinking step so the whole token
+    budget goes to the visible JSON response — needed for flash-tier
+    models, which otherwise silently spend the entire budget on reasoning
+    and return empty content. A "pro"-tier model (e.g. gemini-3.1-pro-
+    preview) has no such off switch — the API itself rejects a zero
+    thinking budget — so send a minimal non-zero effort there instead."""
+    return "low" if "pro" in (model or "").lower() else "none"
+
+
+def _call_cloud_text_once(target: dict, prompt: str, timeout_s: int,
+                          *, num_predict: int) -> dict:
+    """OpenAI 兼容云端端点（用户自备 key，显式启用）。原文片段会发往该端点。"""
+    started = time.monotonic()
+    payload = {
+        "model": target["model"],
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.1,
+        "max_tokens": num_predict,
+        "stream": False,
+        "response_format": {"type": "json_object"},
+        # 关闭思维链：部分云端推理模型（如 Gemini 3.x flash）默认开启思考模式，
+        # 会把整个 token 预算都花在推理过程上，导致 content 为空。
+        # pro 档模型没有这个开关，必须给非零 budget（见 _reasoning_effort_for）。
+        "reasoning_effort": _reasoning_effort_for(target["model"]),
+    }
+    req = urllib.request.Request(
+        target["endpoint"] + "/chat/completions",
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+        method="POST")
+    req.add_header("Content-Type", "application/json")
+    req.add_header("Authorization", "Bearer " + target["api_key"])
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_s) as response:
+            obj = json.loads(response.read().decode("utf-8"))
+            choices = obj.get("choices") or []
+            message = (choices[0].get("message") or {}) if choices else {}
+            resp_text = str(message.get("content") or "").strip()
+            usage = obj.get("usage") or {}
+            return {"response": resp_text,
+                    "model": str(obj.get("model") or target["model"]),
+                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                    "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
+                    "prompt_eval_count": usage.get("prompt_tokens"),
+                    "eval_count": usage.get("completion_tokens"),
+                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
+    except urllib.error.HTTPError as exc:
+        detail = _safe_error_detail(exc.read(4096))
+        code = ("MODEL.AUTH_FAILED" if exc.code in (401, 403) else
+                "MODEL.RATE_LIMITED" if exc.code == 429 else
+                "MODEL.QUOTA_EXCEEDED" if re.search(
+                    r"(?i)(quota|insufficient\s+(credits?|balance)|payment required)", detail) else
+                "MODEL.CLOUD_HTTP_ERROR")
+        raise SceneModelError(code, f"云端模型调用失败：{detail}", exc.code) from None
+    except urllib.error.URLError as exc:
+        reason = getattr(exc, "reason", None)
+        if isinstance(reason, (TimeoutError, socket.timeout)):
+            raise SceneModelError("MODEL.REQUEST_TIMEOUT",
+                                  f"云端模型请求超过 {timeout_s} 秒超时预算。") from None
+        raise SceneModelError("MODEL.TRANSPORT_ERROR",
+                              f"云端模型连接失败（{type(reason).__name__}）。") from None
+    except json.JSONDecodeError as exc:
+        raise SceneModelError("MODEL.RESPONSE_INVALID",
+                              f"云端模型响应不可用（{type(exc).__name__}）。") from None
+
+
 def call_local_model(model: str, prompt: str, *, timeout_s: int | None = None) -> dict:
     """Call the existing local model endpoint on loopback, with fallback support.
 
@@ -264,14 +441,12 @@ def call_local_model(model: str, prompt: str, *, timeout_s: int | None = None) -
     budget used by material planning. A timeout remains a hard failure; there is
     no automatic retry or provider switch after an uncertain in-flight request.
     """
-    primary = _loopback_endpoint()
     timeout_s = _scene_timeout_budget(timeout_s)
-    is_audit = ("second-pass semantic coverage auditor" in prompt[:200]
-                or "post-repair semantic coverage verifier" in prompt[:200])
-    # Full-deck audits may need a verbose, source-grounded repair record. The
-    # former 1024-token ceiling truncated otherwise valid audit JSON on real
-    # 20-page runs. This is a maximum, not a target; complete replies stop early.
     num_predict = 4096
+    cloud_target = cloud_model_config.active_text_target()
+    if cloud_target:
+        return _call_cloud_text_once(cloud_target, prompt, timeout_s, num_predict=num_predict)
+    primary = _loopback_endpoint()
     keep_alive = os.environ.get("WENGAO_SCENE_KEEP_ALIVE", "15m")
     try:
         return _call_endpoint_once(primary, model, prompt, timeout_s,
@@ -357,6 +532,27 @@ def scene_review_payload_sha256(image_bytes: bytes) -> str:
     return hashlib.sha256(_scene_review_image_bytes(image_bytes)).hexdigest()
 
 
+SCENE_REVIEW_VERDICT_FIELDS = ("status", "reason_code", "confidence",
+                               "scene_match", "subject_visible", "action_visible",
+                               "setting_visible", "photographic",
+                               "image_sha256", "model", "format_repair_retries")
+
+
+def scene_review_verdict_digest(visual_review) -> dict | None:
+    """Compact, auditable record of why one image passed or was rejected.
+
+    A rejected image is discarded, so without this the only trace left is an
+    error code and nobody can tell afterwards which check actually failed.
+    Metadata only, matching SceneModelError.diagnostics: never the prompt text
+    or the raw model response.
+    """
+    if not isinstance(visual_review, dict):
+        return None
+    digest = {k: visual_review[k] for k in SCENE_REVIEW_VERDICT_FIELDS
+              if k in visual_review}
+    return digest or None
+
+
 def scene_review_result_sha256(result: dict) -> str:
     """Hash the exact allowlisted visual-review fields frozen in a scene plan."""
     canonical = {key: result.get(key) for key in _SCENE_IMAGE_REVIEW_FIELDS}
@@ -406,15 +602,78 @@ def scene_image_review_prompt(scene: dict) -> str:
     )
 
 
+def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout_s: int) -> dict:
+    """OpenAI 兼容云端视觉端点（用户自备 key，显式启用）。候选图片会发往该端点。"""
+    started = time.monotonic()
+    payload = {
+        "model": target["model"],
+        "messages": [{"role": "user", "content": [
+            {"type": "text", "text": prompt},
+            {"type": "image_url", "image_url": {
+                "url": "data:image/jpeg;base64," + image_b64}},
+        ]}],
+        "temperature": 0,
+        "max_tokens": 1024,
+        "stream": False,
+        "response_format": {"type": "json_object"},
+        "reasoning_effort": _reasoning_effort_for(target["model"]),
+    }
+    req = urllib.request.Request(
+        target["endpoint"] + "/chat/completions",
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+        method="POST")
+    req.add_header("Content-Type", "application/json")
+    req.add_header("Authorization", "Bearer " + target["api_key"])
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_s) as response:
+            obj = json.loads(response.read().decode("utf-8"))
+            choices = obj.get("choices") or []
+            message = (choices[0].get("message") or {}) if choices else {}
+            text = str(message.get("content") or "").strip()
+            if not text:
+                raise SceneModelError("SCENE.VISION_RESPONSE_INVALID",
+                                      "云端视觉模型没有返回结构化复核结果。")
+            usage = obj.get("usage") or {}
+            return {"response": text,
+                    "model": str(obj.get("model") or target["model"]),
+                    "elapsed_seconds": round(time.monotonic() - started, 3),
+                    "response_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                    "prompt_eval_count": usage.get("prompt_tokens"),
+                    "eval_count": usage.get("completion_tokens"),
+                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
+    except SceneModelError:
+        raise
+    except urllib.error.HTTPError as exc:
+        detail = _safe_error_detail(exc.read(4096))
+        code = ("MODEL.AUTH_FAILED" if exc.code in (401, 403) else
+                "MODEL.RATE_LIMITED" if exc.code == 429 else
+                "MODEL.VISION_HTTP_ERROR")
+        raise SceneModelError(code, f"云端视觉模型调用失败：{detail}", exc.code) from None
+    except urllib.error.URLError as exc:
+        reason = getattr(exc, "reason", None)
+        if isinstance(reason, (TimeoutError, socket.timeout)):
+            raise SceneModelError("MODEL.REQUEST_TIMEOUT",
+                                  f"云端图片语义复核超过 {timeout_s} 秒时限。") from None
+        raise SceneModelError("MODEL.TRANSPORT_ERROR",
+                              f"云端图片语义复核连接失败（{type(reason).__name__}）。") from None
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        raise SceneModelError("MODEL.VISION_RESPONSE_INVALID",
+                              "云端视觉模型响应无法解析。") from None
+
+
 def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
                             timeout_s: int | None = None) -> dict:
     """Send one bounded image and a neutral scene tuple to the selected loopback model."""
-    endpoint = _loopback_endpoint()
     timeout_s = _scene_timeout_budget(timeout_s)
     prepared = _scene_review_image_bytes(image_bytes)
+    image_b64 = base64.b64encode(prepared).decode("ascii")
+    cloud_target = cloud_model_config.active_vision_target()
+    if cloud_target:
+        return _call_cloud_vision_once(cloud_target, prompt, image_b64, timeout_s)
+    endpoint = _vision_loopback_endpoint()
     payload = {
         "model": str(model), "stream": False, "prompt": prompt,
-        "images": [base64.b64encode(prepared).decode("ascii")],
+        "images": [image_b64],
         "format": "json", "think": False,
         "options": {"temperature": 0, "num_predict": 256, "num_ctx": 8192},
         "keep_alive": os.environ.get("WENGAO_SCENE_KEEP_ALIVE", "15m"),
@@ -424,9 +683,11 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         method="POST")
     req.add_header("Content-Type", "application/json")
+    opener = (urllib.request.build_opener(urllib.request.ProxyHandler({}))
+              if _is_loopback_url(endpoint) else urllib.request.build_opener())
     started = time.monotonic()
     try:
-        with urllib.request.urlopen(req, timeout=timeout_s) as response:
+        with opener.open(req, timeout=timeout_s) as response:
             obj = json.loads(response.read().decode("utf-8"))
             text = str(obj.get("response") or "").strip()
             if not text:
@@ -442,6 +703,74 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
     except SceneModelError:
         raise
     except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            # 既非 Ollama 多模态路由：尝试 OpenAI 兼容 /v1/chat/completions
+            # 图片输入格式（本机 mlx_vlm 等视觉服务采用此格式）。调用方传入的
+            # model 是 Ollama 风格的标签（如 "qwen3.8:27b-wb65536"），带冒号不是
+            # 合法的 HF repo id；mlx_vlm 会把 model 字段当作要加载的仓库名，非法
+            # 格式直接拒绝。改为探测该端点当前已加载的真实模型名。
+            vision_model = None
+            try:
+                with opener.open(urllib.request.Request(endpoint + "/health", method="GET"),
+                                  timeout=3) as health_resp:
+                    health = json.loads(health_resp.read().decode("utf-8"))
+                    vision_model = health.get("loaded_model") or health.get("model")
+            except Exception:
+                pass
+            if not vision_model:
+                # 探测不到已加载模型名（端点不支持 /health，或模型已被卸载/未加载）：
+                # 继续用调用方传入的 Ollama 风格标签必然再次被当作非法仓库名拒绝，
+                # 不如直接给出可诊断的错误，而不是让下游看到一条误导性的
+                # "Repo id must use alphanumeric..." 报错。
+                raise SceneModelError(
+                    "MODEL.VISION_UNAVAILABLE",
+                    "图像语义复核端点当前没有已加载的模型（可能处于卸载/未就绪状态），场景图不放行。")
+            openai_payload = {
+                "model": vision_model,
+                "messages": [{"role": "user", "content": [
+                    {"type": "text", "text": prompt},
+                    {"type": "image_url", "image_url": {
+                        "url": "data:image/jpeg;base64," + image_b64}},
+                ]}],
+                "temperature": 0,
+                "max_tokens": 256,
+                "stream": False,
+                "response_format": {"type": "json_object"},
+            }
+            openai_req = urllib.request.Request(
+                endpoint + "/v1/chat/completions",
+                data=json.dumps(openai_payload, ensure_ascii=False).encode("utf-8"),
+                method="POST")
+            openai_req.add_header("Content-Type", "application/json")
+            try:
+                with opener.open(openai_req, timeout=timeout_s) as response:
+                    obj = json.loads(response.read().decode("utf-8"))
+                    choices = obj.get("choices") or []
+                    message = (choices[0].get("message") or {}) if choices else {}
+                    text = str(message.get("content") or "").strip()
+                    if not text:
+                        raise SceneModelError("SCENE.VISION_RESPONSE_INVALID",
+                                              "本机视觉模型没有返回结构化复核结果。")
+                    usage = obj.get("usage") or {}
+                    return {"response": text,
+                            "model": str(obj.get("model") or model),
+                            "elapsed_seconds": round(time.monotonic() - started, 3),
+                            "response_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                            "prompt_eval_count": usage.get("prompt_tokens"),
+                            "eval_count": usage.get("completion_tokens"),
+                            "done_reason": (choices[0].get("finish_reason") if choices else None)}
+            except SceneModelError:
+                raise
+            except urllib.error.HTTPError as exc2:
+                exc = exc2
+            except urllib.error.URLError as exc2:
+                reason = getattr(exc2, "reason", None)
+                if isinstance(reason, (TimeoutError, socket.timeout)):
+                    raise SceneModelError("MODEL.REQUEST_TIMEOUT",
+                                          f"本机图片语义复核超过 {timeout_s} 秒时限。") from None
+                reason_name = type(reason).__name__ if reason is not None else "URLError"
+                raise SceneModelError("MODEL.TRANSPORT_ERROR",
+                                      f"本机图片语义复核连接失败（{reason_name}）。") from None
         detail = _safe_error_detail(exc.read(4096))
         if exc.code == 404 or "does not support images" in detail.lower():
             code = "MODEL.VISION_UNAVAILABLE"
@@ -474,28 +803,49 @@ def review_semantic_scene_image(model: str, scene: dict, image_bytes: bytes, *,
     """Review one actual photo against the exact source-grounded scene identity."""
     image_sha = hashlib.sha256(bytes(image_bytes)).hexdigest()
     scene_sha = scene_visual_identity_sha256(scene)
-    prompt = scene_image_review_prompt(scene)
-    raw = call_local_vision_model(model, prompt, image_bytes, timeout_s=timeout_s)
-    try:
-        result = json.loads(str(raw.get("response") or ""))
-    except (TypeError, ValueError):
-        raise SceneModelError("SCENE.VISION_REVIEW_INVALID",
-                              "本机视觉复核未返回有效 JSON。") from None
+    base_prompt = scene_image_review_prompt(scene)
+    prompt = base_prompt
     boolean_fields = ("scene_match", "subject_visible", "action_visible",
                       "setting_visible", "photographic")
-    if (not isinstance(result, dict)
-            or any(type(result.get(field)) is not bool for field in boolean_fields)
-            or result.get("confidence") not in {"high", "medium", "low"}
-            or result.get("reason_code") not in {
-                "NONE", "SUBJECT_NOT_VISIBLE", "ACTION_NOT_VISIBLE",
-                "SETTING_NOT_VISIBLE", "NOT_PHOTOGRAPHIC", "UNCERTAIN"}):
-        raise SceneModelError("SCENE.VISION_REVIEW_INVALID",
-                              "本机视觉复核字段缺失或类型不受支持。")
+    # 视觉模型偶尔不按要求只输出 JSON（夹带解释文字/截断）；同一张图给两次
+    # 独立复核机会，而不是第一次解析失败就整张图作废。第二次附带更明确的
+    # 格式修复要求，而不是原样重发同一提示词寄望于随机性。
+    review_attempts = 2
+    for review_attempt in range(review_attempts):
+        raw = call_local_vision_model(model, prompt, image_bytes, timeout_s=timeout_s)
+        try:
+            result = json.loads(_strip_model_json_fence(str(raw.get("response") or "")))
+        except (TypeError, ValueError):
+            result = None
+        malformed = (result is None or not isinstance(result, dict)
+                    or any(type(result.get(field)) is not bool for field in boolean_fields)
+                    or result.get("confidence") not in {"high", "medium", "low"}
+                    or result.get("reason_code") not in {
+                        "NONE", "SUBJECT_NOT_VISIBLE", "ACTION_NOT_VISIBLE",
+                        "SETTING_NOT_VISIBLE", "NOT_PHOTOGRAPHIC", "UNCERTAIN"})
+        if not malformed:
+            break
+        if review_attempt == review_attempts - 1:
+            if result is None:
+                raise SceneModelError("SCENE.VISION_REVIEW_INVALID",
+                                      "本机视觉复核两次均未返回有效 JSON。")
+            raise SceneModelError("SCENE.VISION_REVIEW_INVALID",
+                                  "本机视觉复核两次字段均缺失或类型不受支持。")
+        prompt = (
+            base_prompt
+            + "\n\n格式修复重试：上次响应无法解析为合法 JSON 或字段缺失/类型错误。"
+              "请只返回一个完整的 JSON 对象，不要输出 Markdown 代码围栏、解释、"
+              "前后缀或任何多余文字。")
     accepted = (result["scene_match"] and result["subject_visible"]
                 and result["action_visible"] and result["setting_visible"]
                 and result["photographic"] and result["confidence"] == "high"
                 and result["reason_code"] == "NONE")
-    prompt_sha = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    # prompt_sha256 始终是**基础提示词**的哈希：出口门禁按场景身份重放的就是它。
+    # 格式修复重试只改写措辞、不改变复核要求，若把重试后的提示词哈希记在这里，
+    # 重放必然对不上，通过的图会被误判成 SCENE.VISUAL_CONTENT_MISMATCH。
+    # 重试本身不隐瞒：次数与实际产出该结果的提示词哈希单独登记。
+    prompt_sha = hashlib.sha256(base_prompt.encode("utf-8")).hexdigest()
+    answered_prompt_sha = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
     return {
         "schema_version": _SCENE_IMAGE_REVIEW_SCHEMA,
         "status": "PASSED" if accepted else "BLOCKED",
@@ -503,6 +853,8 @@ def review_semantic_scene_image(model: str, scene: dict, image_bytes: bytes, *,
         "visual_input_sha256": scene_review_payload_sha256(image_bytes),
         "scene_identity_sha256": scene_sha,
         "prompt_sha256": prompt_sha,
+        "format_repair_retries": review_attempt,
+        "answered_prompt_sha256": answered_prompt_sha,
         "review_result_sha256": scene_review_result_sha256(result),
         "model": str(raw.get("model") or model),
         "response_sha256": str(raw.get("response_sha256") or ""),
@@ -663,6 +1015,8 @@ def scene_prompt(pages: list[dict], *, batch_context: dict | None = None,
         "例子只作解释，不是固定映射表；不要把不相关图片硬贴到页面。只要存在清晰、常见且对理解有帮助的代表场景，就不能因为原文没有逐字写出场景细节而登记 NO_SCENE。"
         "若确实无法找到安全、相关且不误导的代表场景，才可登记逐页、具体、可审计的 no_scene_reason。"
         "6. " + coverage_scope + " 若有场景列 scene_keys；若无场景给 no_scene_reason，并用 evidence 给出该页原文连续片段。"
+        "若某页原文字段为空（无可提取文本，如纯装饰页、分隔页或空白收尾页），no_scene_reason 须如实说明该页无原文内容，"
+        "evidence 允许留空数组，不得为凑证据编造或从其他页挪用文字。"
         "所有在 page_coverage 中引用的 scene_keys，必须在 scenes 数组中完整定义对应的 scene 对象，严禁引用未定义的键名。"
         "每页都有具体场景时不能谎报无场景。若整套稿件没有任何可支持的场景，照实返回空 scenes，硬门禁会阻止纯文字通过。\n"
         "6. 每个 scene 的所有 page_candidates 都要包含逐页原文 evidence；所有 evidence 必须逐字连续出现在对应页原文中。"
@@ -707,19 +1061,7 @@ def _response_payload(response, *, phase: str) -> tuple[dict, dict, str]:
     else:
         raise SceneModelError("SCENE.MODEL_RESPONSE_INVALID",
                               f"语义场景{phase}响应无法读取。")
-    clean_raw = raw.strip()
-    clean_raw = re.sub(r"<think>.*?</think>", "", clean_raw, flags=re.DOTALL).strip()
-    if "<think>" in clean_raw and not clean_raw.startswith("{"):
-        clean_raw = (clean_raw[clean_raw.find("</think>") + 8:].strip()
-                     if "</think>" in clean_raw else
-                     clean_raw[:clean_raw.find("<think>")].strip())
-    if clean_raw.startswith("```json"):
-        clean_raw = clean_raw[7:]
-    elif clean_raw.startswith("```"):
-        clean_raw = clean_raw[3:]
-    if clean_raw.endswith("```"):
-        clean_raw = clean_raw[:-3]
-    clean_raw = clean_raw.strip()
+    clean_raw = _strip_model_json_fence(raw)
     try:
         obj = json.loads(clean_raw)
     except (TypeError, ValueError):
@@ -764,6 +1106,35 @@ def _response_payload(response, *, phase: str) -> tuple[dict, dict, str]:
     if "response_sha256" not in meta:
         meta["response_sha256"] = hashlib.sha256(raw.encode("utf-8")).hexdigest()
     return obj, meta, clean_raw
+
+
+_MODEL_TRANSIENT_CODES = frozenset({"MODEL.TRANSPORT_ERROR", "MODEL.REQUEST_TIMEOUT"})
+
+
+def _call_json_payload_with_transport_retry(model: str, prompt: str, call, *,
+                                            phase: str,
+                                            attempts: int = 3) -> tuple[dict, dict, str]:
+    """同一个模型、同一份提示词，遇传输抖动时的有界重试。
+
+    连接被上游掐断（RemoteDisconnected / SSL EOF / 读超时）不是"这个场景不成立"，
+    一次抖动就让整稿渲染失败属于误判。只重试传输类错误：格式错误仍由
+    ``_call_json_payload_once_on_format_error`` 自己的一次修复负责，配额/认证
+    等硬失败立即抛出，语义判否不受影响。
+    """
+    for attempt in range(max(1, int(attempts))):
+        try:
+            return _call_json_payload_once_on_format_error(model, prompt, call, phase=phase)
+        except Exception as exc:  # noqa: BLE001 — 先分类再决定是否重试
+            classified = classify_external_model_failure(exc)
+            if (classified is None
+                    or classified.code not in _MODEL_TRANSIENT_CODES
+                    or attempt == max(1, int(attempts)) - 1):
+                if classified is not None and classified is not exc:
+                    raise classified from None
+                raise
+            time.sleep(min(8.0, 2.0 * (attempt + 1)))
+    raise SceneModelError("SCENE.MODEL_RESPONSE_INVALID",
+                          f"语义场景{phase}响应无法读取。")
 
 
 def _call_json_payload_once_on_format_error(model: str, prompt: str, call,
@@ -891,6 +1262,59 @@ def _excerpt_is_in_source(source_text: str, excerpt: str) -> bool:
     return bool(value) and value in source
 
 
+def _ground_evidence_excerpt(source_text: str, evidence: str) -> str | None:
+    """把复核模型给的"近似原文引用"确定性地修回原文的连续片段。
+
+    复核模型偶尔会把页面证据加引号、加"原文：/证据："类前缀，或对句子
+    做轻度改写后引用。evidence 的作用是证明"该页原文确有此内容"，因此
+    把引用修回**原文自身的最长连续片段**只会更严格、不会放水：修复结果
+    仍必须是原文逐字子串（空白折叠 + casefold 口径，与校验一致），且
+    长度必须达到可信下限（≥12 字符且 ≥ 引用长度的 40%）。修不动返回
+    None，由调用方按 UNGROUNDED 判死。
+    """
+    src_norm = re.sub(r"\s+", " ", str(source_text or "")).strip().casefold()
+    ev = str(evidence or "").strip()
+    if not ev or not src_norm:
+        return None
+    # 1) 剥对称包裹引号与常见前缀
+    for _ in range(2):
+        if len(ev) >= 2 and ev[0] in "「『《〈“\"'"'"'"`‘" and ev[-1] in "」』》〉”\"'"'"'"`’":
+            ev = ev[1:-1].strip()
+    ev = re.sub(r"^(?:原文|证据|原文摘录|摘录|引文|依据)\s*[:：]\s*", "", ev)
+    ev_norm = re.sub(r"\s+", " ", ev).strip().casefold()
+    if not ev_norm:
+        return None
+    if ev_norm in src_norm:
+        return ev_norm
+    # 2) 最长公共连续子串回退：对 evidence 的每个起点二分扩展最长前缀，
+    #    取全局最长。总量 O(L·logL) 次子串查找，毫秒级。
+    min_len = max(12, int(len(ev_norm) * 0.4))
+    if min_len > len(src_norm):
+        return None
+    best = ""
+    for s in range(len(ev_norm)):
+        hi = len(ev_norm) - s
+        lo = min(min_len, hi)
+        probe = ev_norm[s:s + lo]
+        if len(probe) < min_len or probe not in src_norm:
+            continue
+        found = lo
+        lo += 1
+        hi2 = hi
+        while lo <= hi2:
+            mid = (lo + hi2) // 2
+            if ev_norm[s:s + mid] in src_norm:
+                found = mid
+                lo = mid + 1
+            else:
+                hi2 = mid - 1
+        if found > len(best):
+            best = ev_norm[s:s + found]
+    if len(best) >= min_len:
+        return best
+    return None
+
+
 def _source_language_code(page: dict) -> str | None:
     """Return only a confident, non-mixed source-language hint for identity checks.
 
@@ -961,7 +1385,10 @@ def scene_coverage_audit_prompt(pages: list[dict], plan: dict, *,
         "subject, action, setting, label, photo_search_terms with separate English subject/action/setting anchors, "
         "neutral short English visual_query, up to two neutral "
         "English visual_query_alternatives, lighting, composition_camera, style, quality, and one exact "
-        "source-language evidence excerpt. The evidence excerpt grounds the source topic, not the literal occurrence "
+        "source-language evidence excerpt. The evidence excerpt must be a verbatim continuous run copied "
+        "from that page's own text (at least 12 characters; no surrounding quotation marks, no paraphrase, "
+        "no edits or insertions, no stitching across distant sentences); an excerpt that does not appear "
+        "verbatim in the page text is rejected and the whole audit fails. The evidence excerpt grounds the source topic, not the literal occurrence "
         "of the pictured event; the rationale must describe a helpful representative image without claiming it happened. "
         "Each English visual_query must use 4-7 useful words ordered subject first, "
         "action/use next, and one concrete setting as the final word, for example 'worker assembling vehicle factory'. "
@@ -1088,11 +1515,23 @@ def _validate_scene_coverage_audit(audit: dict, pages: list[dict], plan: dict, *
             source_text = str(page_map.get(page_no, {}).get("text") or "")
             if (isinstance(page_no, bool) or not isinstance(page_no, int)
                     or page_no not in page_map or not isinstance(evidence, str)
-                    or not evidence.strip()
-                    or re.sub(r"\s+", " ", evidence).strip() not in
-                    re.sub(r"\s+", " ", source_text).strip()):
+                    or not evidence.strip()):
                 raise SceneModelError("SCENE.COVERAGE_AUDIT_UNGROUNDED",
                                       "漏项复核没有提供属于对应页原文的连续证据。")
+            # 复核模型偶尔把证据加引号/前缀或轻度改写后引用。先把"近似
+            # 引用"确定性地修回原文连续片段（只会更严格：结果仍是原文
+            # 逐字子串且达到可信长度），修不动才判死。
+            grounded = _ground_evidence_excerpt(source_text, evidence)
+            if grounded is None:
+                raise SceneModelError(
+                    "SCENE.COVERAGE_AUDIT_UNGROUNDED",
+                    "漏项复核没有提供属于对应页原文的连续证据。",
+                    diagnostics={
+                        "page": page_no,
+                        "evidence_chars": len(re.sub(r"\s+", " ", evidence).strip()),
+                        "source_chars": len(re.sub(r"\s+", " ", source_text).strip()),
+                    })
+            item["evidence"] = grounded
         for item in merged:
             if not isinstance(item, dict) or not isinstance(item.get("pages"), list):
                 raise SceneModelError("SCENE.COVERAGE_AUDIT_INVALID",
@@ -2094,7 +2533,7 @@ def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
                 canonicalization_blob.encode("utf-8")).hexdigest(),
         }
     prompt_payload = json.dumps(invalid, ensure_ascii=False, separators=(",", ":"))
-    prompt = (
+    base_prompt = (
         "You are correcting only the English photo-search anchor formatting for existing "
         "source-grounded scenes. Do not create, remove, merge, or rename a scene; do not "
         "change page candidates or evidence; do not propose images. Interpret each source "
@@ -2116,83 +2555,96 @@ def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
         "Existing scene identities and source evidence (local inference only):\n"
         + prompt_payload
     )
-    prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
-    try:
-        repaired, meta, _ = _call_json_payload_once_on_format_error(
-            model, prompt, call, phase="照片检索锚点定向格式修复")
-    except SceneModelError as exc:
-        diagnostics = dict(exc.diagnostics or {})
-        diagnostics.update({"repair_attempts": 1, "same_model": True,
-                            "invalid_scene_count": len(invalid),
-                            "canonicalized_scene_count": len(canonicalized_rows),
-                            "canonicalization_records": canonicalized_rows,
-                            "repair_prompt_sha256": prompt_sha256})
-        raise SceneModelError(exc.code, exc.detail, exc.status_code,
-                              diagnostics=diagnostics) from exc
+    # 同一本机模型偶尔在首次尝试上产出不满足严格字段/词数约束的锚点；给第二次
+    # 独立尝试的机会，而不是第一次失手就整单阻断（与漏项修复的重试节奏一致）。
+    repair_total_attempts = 2
+    for repair_attempt in range(repair_total_attempts):
+        prompt = base_prompt if repair_attempt == 0 else (
+            base_prompt + "\n\nYour previous attempt did not pass validation: "
+            f"{'; '.join(list(dict.fromkeys(invalid_reasons))[:4]) or 'schema or word-count mismatch'}. "
+            "Re-read the constraints above carefully and return corrected anchors for every scene_key.")
+        prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        try:
+            repaired, meta, _ = _call_json_payload_once_on_format_error(
+                model, prompt, call,
+                phase=f"照片检索锚点定向格式修复（第{repair_attempt + 1}次）")
+        except SceneModelError as exc:
+            if repair_attempt < repair_total_attempts - 1:
+                continue
+            diagnostics = dict(exc.diagnostics or {})
+            diagnostics.update({"repair_attempts": repair_attempt + 1, "same_model": True,
+                                "invalid_scene_count": len(invalid),
+                                "canonicalized_scene_count": len(canonicalized_rows),
+                                "canonicalization_records": canonicalized_rows,
+                                "repair_prompt_sha256": prompt_sha256})
+            raise SceneModelError(exc.code, exc.detail, exc.status_code,
+                                  diagnostics=diagnostics) from exc
 
-    repair_rows = repaired.get("repairs")
-    expected_keys = [row["scene_key"] for row in invalid]
-    expected_set = set(expected_keys)
-    if (not isinstance(repair_rows, list)
-            or any(not isinstance(row, dict) for row in repair_rows)):
-        repair_rows = []
-    repair_by_key = {}
-    top_level_keys = set(repaired.keys())
-    schema_error = (top_level_keys not in ({"repairs"}, {"schema_version", "repairs"})
-                    or ("schema_version" in repaired
-                        and str(repaired.get("schema_version")) != "1.0.0")
-                    or len(repair_rows) != len(expected_keys))
-    for row in repair_rows:
-        key = str(row.get("scene_key") or "")
-        if (set(row.keys()) != {"scene_key", "photo_search_terms"}
-                or key not in expected_set or key in repair_by_key):
-            schema_error = True
-            continue
-        repair_by_key[key] = row
-    if set(repair_by_key) != expected_set:
-        schema_error = True
-
-    normalized_repairs = []
-    model_canonicalized_rows = []
-    if not schema_error:
-        for key in expected_keys:
-            terms_object = repair_by_key[key].get("photo_search_terms")
-            if not isinstance(terms_object, dict) or set(terms_object) != {
-                    "subject", "action", "setting"}:
+        repair_rows = repaired.get("repairs")
+        expected_keys = [row["scene_key"] for row in invalid]
+        expected_set = set(expected_keys)
+        if (not isinstance(repair_rows, list)
+                or any(not isinstance(row, dict) for row in repair_rows)):
+            repair_rows = []
+        repair_by_key = {}
+        top_level_keys = set(repaired.keys())
+        schema_error = (top_level_keys not in ({"repairs"}, {"schema_version", "repairs"})
+                        or ("schema_version" in repaired
+                            and str(repaired.get("schema_version")) != "1.0.0")
+                        or len(repair_rows) != len(expected_keys))
+        for row in repair_rows:
+            key = str(row.get("scene_key") or "")
+            if (set(row.keys()) != {"scene_key", "photo_search_terms"}
+                    or key not in expected_set or key in repair_by_key):
                 schema_error = True
-                break
-            try:
-                terms = normalize_photo_search_terms(terms_object)
-            except ValueError as exc:
-                terms = canonicalize_duplicate_photo_search_terms(terms_object)
-                if terms is None:
-                    invalid_reasons.append(str(exc)[:120])
+                continue
+            repair_by_key[key] = row
+        if set(repair_by_key) != expected_set:
+            schema_error = True
+
+        normalized_repairs = []
+        model_canonicalized_rows = []
+        if not schema_error:
+            for key in expected_keys:
+                terms_object = repair_by_key[key].get("photo_search_terms")
+                if not isinstance(terms_object, dict) or set(terms_object) != {
+                        "subject", "action", "setting"}:
                     schema_error = True
                     break
-                input_sha = hashlib.sha256(json.dumps(
-                    {"scene_key": key, "photo_search_terms": terms_object},
-                    ensure_ascii=False, sort_keys=True, separators=(",", ":")
-                ).encode("utf-8")).hexdigest()
-                result_sha = hashlib.sha256(json.dumps(
-                    {"scene_key": key, "photo_search_terms": terms},
-                    ensure_ascii=False, sort_keys=True, separators=(",", ":")
-                ).encode("utf-8")).hexdigest()
-                model_canonicalized_rows.append({"scene_key": key,
-                                                 "input_sha256": input_sha,
-                                                 "result_sha256": result_sha})
-            normalized_repairs.append({"scene_key": key,
-                                       "photo_search_terms": terms})
-    if schema_error:
-        raise SceneModelError(
-            "SCENE.PHOTO_SEARCH_ANCHORS_INVALID",
-            "同一模型的一次锚点格式修复未通过严格字段、词数或场景身份校验。",
-            diagnostics={"invalid_scene_count": len(invalid),
-                         "repair_attempts": 1, "same_model": True,
-                         "repair_prompt_sha256": prompt_sha256,
-                         "repair_response_sha256": meta.get("response_sha256"),
-                         "canonicalized_scene_count": len(canonicalized_rows),
-                         "model_canonicalized_scene_count": len(model_canonicalized_rows),
-                         "safe_validation_reasons": list(dict.fromkeys(invalid_reasons))[:4]})
+                try:
+                    terms = normalize_photo_search_terms(terms_object)
+                except ValueError as exc:
+                    terms = canonicalize_duplicate_photo_search_terms(terms_object)
+                    if terms is None:
+                        invalid_reasons.append(str(exc)[:120])
+                        schema_error = True
+                        break
+                    input_sha = hashlib.sha256(json.dumps(
+                        {"scene_key": key, "photo_search_terms": terms_object},
+                        ensure_ascii=False, sort_keys=True, separators=(",", ":")
+                    ).encode("utf-8")).hexdigest()
+                    result_sha = hashlib.sha256(json.dumps(
+                        {"scene_key": key, "photo_search_terms": terms},
+                        ensure_ascii=False, sort_keys=True, separators=(",", ":")
+                    ).encode("utf-8")).hexdigest()
+                    model_canonicalized_rows.append({"scene_key": key,
+                                                     "input_sha256": input_sha,
+                                                     "result_sha256": result_sha})
+                normalized_repairs.append({"scene_key": key,
+                                           "photo_search_terms": terms})
+        if not schema_error:
+            break
+        if repair_attempt == repair_total_attempts - 1:
+            raise SceneModelError(
+                "SCENE.PHOTO_SEARCH_ANCHORS_INVALID",
+                "连续两次同一模型的锚点格式修复都未通过严格字段、词数或场景身份校验。",
+                diagnostics={"invalid_scene_count": len(invalid),
+                             "repair_attempts": repair_attempt + 1, "same_model": True,
+                             "repair_prompt_sha256": prompt_sha256,
+                             "repair_response_sha256": meta.get("response_sha256"),
+                             "canonicalized_scene_count": len(canonicalized_rows),
+                             "model_canonicalized_scene_count": len(model_canonicalized_rows),
+                             "safe_validation_reasons": list(dict.fromkeys(invalid_reasons))[:4]})
 
     by_scene_key = {str(scene.get("scene_key") or ""): scene
                     for scene in plan.get("scenes", []) if isinstance(scene, dict)}
@@ -2323,6 +2775,42 @@ def _unwrap_scene_plan(obj: dict) -> dict:
     return obj
 
 
+def _repair_batch_scene_evidence(scene_item: dict, page_no: int, source_text: str,
+                                 *, model: str, call) -> list[str] | None:
+    """One bounded, same-model repair attempt for a batch-planned scene whose
+    cited evidence is not a literal excerpt of its claimed page.
+
+    Mirrors the other same-model, source-scoped repair passes here (gap
+    repair, anchor repair): gives the model one more source-grounded chance to
+    quote correctly. Returns a non-empty list of genuinely grounded excerpts,
+    or None if the repair could not produce one (the caller then fails closed
+    exactly as it did before this repair existed).
+    """
+    repair_prompt = (
+        "一次性证据重新定位：下面给出第 " + str(page_no) + " 页的完整原文，以及一个具体场景的"
+        "主体/动作/环境描述。该场景之前给出的证据片段经核实并不是该页原文中的连续片段。"
+        "现在只允许你从下面这段原文中逐字复制一个连续片段作为证据（8-60 字，不得改写、"
+        "翻译、总结或添加任何原文之外的文字）；如果这页原文确实不能支持这个场景，"
+        "按 schema 明确返回空证据，不得编造。只返回 JSON，不要输出 Markdown 或解释。\n"
+        f"场景主体：{scene_item.get('subject', '')}；动作：{scene_item.get('action', '')}；"
+        f"环境：{scene_item.get('setting', '')}。\n"
+        f"第 {page_no} 页原文：\n{source_text}\n"
+        "严格只返回：{\"evidence\":[\"...逐字复制的连续原文片段...\"]} 或 {\"evidence\":[]}。"
+    )
+    try:
+        payload, _meta, _raw = _call_json_payload_once_on_format_error(
+            model, repair_prompt, call,
+            phase=f"证据重新定位（场景 {scene_item.get('scene_key')} 第 {page_no} 页）")
+    except SceneModelError:
+        return None
+    new_evidence = payload.get("evidence")
+    if not isinstance(new_evidence, list):
+        return None
+    valid_evidence = [str(x).strip() for x in new_evidence if str(x).strip()
+                      and _source_excerpt_matches(source_text, str(x).strip())]
+    return valid_evidence or None
+
+
 def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
                                    reconsider_empty_plan: bool = False):
     """Plan long decks in small page batches and bind them into one scene ledger.
@@ -2355,104 +2843,141 @@ def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
             "included_original_page_numbers": expected_pages,
             "scope": "partial_page_batch",
         }
-        prompt = scene_prompt(batch, batch_context=context,
-                              prior_scene_catalog=catalog,
-                              reconsider_empty_plan=reconsider_empty_plan)
+        base_prompt = scene_prompt(batch, batch_context=context,
+                                   prior_scene_catalog=catalog,
+                                   reconsider_empty_plan=reconsider_empty_plan)
+        prompt = base_prompt
         prompt_sha = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
-        try:
-            batch_obj, batch_meta, _ = _call_json_payload_once_on_format_error(
-                model, prompt, call,
-                phase=f"规划批次第{expected_pages[0]}-{expected_pages[-1]}页")
-        except SceneModelError as exc:
-            if (exc.code == "SCENE.MODEL_OUTPUT_TRUNCATED"
-                    and len(batch) > 1):
-                middle = len(batch) // 2
-                left, right = batch[:middle], batch[middle:]
-                truncation_splits.append({
-                    "page_numbers": expected_pages,
-                    "response_sha256": (exc.diagnostics or {}).get("response_sha256"),
-                    "eval_count": (exc.diagnostics or {}).get("eval_count"),
-                    "split_into": [
-                        [int(page["page"]) for page in left],
-                        [int(page["page"]) for page in right],
-                    ],
-                })
-                queue[0:0] = [left, right]
-                continue
-            raise
+        # A batch response occasionally fails one internal self-consistency
+        # check (missing a top-level key, a malformed scene_key, a page
+        # double-booked in the ledger) even though it parsed as valid JSON.
+        # These are the model's own bookkeeping mistakes, not fabrication —
+        # give it one corrective retry with the specific failure named before
+        # failing the whole deck over one batch's slip.
+        batch_retryable = {
+            "SCENE.MODEL_SCHEMA_INVALID", "SCENE.CANONICAL_SCENE_ID_MISSING",
+            "SCENE.KEY_DUPLICATED", "SCENE.CANDIDATE_INVALID",
+            "SCENE.EVIDENCE_NOT_GROUNDED", "SCENE.PAGE_COVERAGE_INVALID",
+            "SCENE.PAGE_COVERAGE_DUPLICATED", "SCENE.PAGE_COVERAGE_INCOMPLETE",
+        }
+        batch_validate_attempts = 2
+        for batch_validate_attempt in range(batch_validate_attempts):
+            try:
+                batch_obj, batch_meta, _ = _call_json_payload_with_transport_retry(
+                    model, prompt, call,
+                    phase=f"规划批次第{expected_pages[0]}-{expected_pages[-1]}页")
+            except SceneModelError as exc:
+                if (exc.code == "SCENE.MODEL_OUTPUT_TRUNCATED"
+                        and len(batch) > 1):
+                    middle = len(batch) // 2
+                    left, right = batch[:middle], batch[middle:]
+                    truncation_splits.append({
+                        "page_numbers": expected_pages,
+                        "response_sha256": (exc.diagnostics or {}).get("response_sha256"),
+                        "eval_count": (exc.diagnostics or {}).get("eval_count"),
+                        "split_into": [
+                            [int(page["page"]) for page in left],
+                            [int(page["page"]) for page in right],
+                        ],
+                    })
+                    queue[0:0] = [left, right]
+                    batch_obj = None
+                    break
+                raise
 
-        batch_obj = _unwrap_scene_plan(batch_obj)
-        batch_scenes = batch_obj.get("scenes")
-        batch_coverage = batch_obj.get("page_coverage")
-        if not isinstance(batch_scenes, list) or not isinstance(batch_coverage, list):
-            raise SceneModelError("SCENE.MODEL_SCHEMA_INVALID",
-                                  "场景规划批次必须提供 scenes 与 page_coverage 数组。")
-        expected_set = set(expected_pages)
-        seen_coverage = set()
-        local_scenes = {}
-        for item in batch_scenes:
-            if not isinstance(item, dict):
-                raise SceneModelError("SCENE.MODEL_SCHEMA_INVALID",
-                                      "场景规划批次含无效场景对象。")
-            key = str(item.get("scene_key") or "").strip().casefold()
-            canonical = str(item.get("canonical_scene_id") or "").strip().casefold()
-            key_pattern = r"[a-z0-9][a-z0-9_]{1,79}"
-            if not re.fullmatch(key_pattern, key) or not re.fullmatch(key_pattern, canonical):
-                raise SceneModelError("SCENE.CANONICAL_SCENE_ID_MISSING",
-                                      "场景规划批次缺少稳定 scene_key 或 canonical_scene_id。")
-            if key in local_scenes or canonical in {row["canonical_scene_id"] for row in local_scenes.values()}:
-                raise SceneModelError("SCENE.KEY_DUPLICATED",
-                                      "同一场景规划批次重复定义稳定场景身份。")
-            local_scenes[key] = item
-            candidates = item.get("page_candidates")
-            if not isinstance(candidates, list) or not candidates:
-                raise SceneModelError("SCENE.CANDIDATE_INVALID",
-                                      f"场景 {key} 缺少当前批次候选页。")
-            seen_candidate_pages = set()
-            for candidate in candidates:
-                if not isinstance(candidate, dict):
-                    raise SceneModelError("SCENE.CANDIDATE_INVALID",
-                                          f"场景 {key} 的候选页格式无效。")
-                candidate_page = candidate.get("page")
-                if (isinstance(candidate_page, bool) or not isinstance(candidate_page, int)
-                        or candidate_page not in expected_set
-                        or candidate_page in seen_candidate_pages):
-                    raise SceneModelError("SCENE.CANDIDATE_INVALID",
-                                          f"场景 {key} 的候选页重复或超出当前批次。")
-                seen_candidate_pages.add(candidate_page)
-                evidence = candidate.get("evidence")
-                source_text = next(row["text"] for row in batch
-                                   if int(row["page"]) == candidate_page)
-                if (not isinstance(evidence, list) or not evidence
-                        or any(not str(text).strip()
-                               or not _source_excerpt_matches(source_text, str(text))
-                               for text in evidence)):
-                    raise SceneModelError("SCENE.EVIDENCE_NOT_GROUNDED",
-                                          f"场景 {key} 的当前批次证据不在对应页原文中。")
+            try:
+                batch_obj = _unwrap_scene_plan(batch_obj)
+                batch_scenes = batch_obj.get("scenes")
+                batch_coverage = batch_obj.get("page_coverage")
+                if not isinstance(batch_scenes, list) or not isinstance(batch_coverage, list):
+                    raise SceneModelError("SCENE.MODEL_SCHEMA_INVALID",
+                                          "场景规划批次必须提供 scenes 与 page_coverage 数组。")
+                expected_set = set(expected_pages)
+                seen_coverage = set()
+                local_scenes = {}
+                for item in batch_scenes:
+                    if not isinstance(item, dict):
+                        raise SceneModelError("SCENE.MODEL_SCHEMA_INVALID",
+                                              "场景规划批次含无效场景对象。")
+                    key = str(item.get("scene_key") or "").strip().casefold()
+                    canonical = str(item.get("canonical_scene_id") or "").strip().casefold()
+                    key_pattern = r"[a-z0-9][a-z0-9_]{1,79}"
+                    if not re.fullmatch(key_pattern, key) or not re.fullmatch(key_pattern, canonical):
+                        raise SceneModelError("SCENE.CANONICAL_SCENE_ID_MISSING",
+                                              "场景规划批次缺少稳定 scene_key 或 canonical_scene_id。")
+                    if key in local_scenes or canonical in {row["canonical_scene_id"] for row in local_scenes.values()}:
+                        raise SceneModelError("SCENE.KEY_DUPLICATED",
+                                              "同一场景规划批次重复定义稳定场景身份。")
+                    local_scenes[key] = item
+                    candidates = item.get("page_candidates")
+                    if not isinstance(candidates, list) or not candidates:
+                        raise SceneModelError("SCENE.CANDIDATE_INVALID",
+                                              f"场景 {key} 缺少当前批次候选页。")
+                    seen_candidate_pages = set()
+                    for candidate in candidates:
+                        if not isinstance(candidate, dict):
+                            raise SceneModelError("SCENE.CANDIDATE_INVALID",
+                                                  f"场景 {key} 的候选页格式无效。")
+                        candidate_page = candidate.get("page")
+                        if (isinstance(candidate_page, bool) or not isinstance(candidate_page, int)
+                                or candidate_page not in expected_set
+                                or candidate_page in seen_candidate_pages):
+                            raise SceneModelError("SCENE.CANDIDATE_INVALID",
+                                                  f"场景 {key} 的候选页重复或超出当前批次。")
+                        seen_candidate_pages.add(candidate_page)
+                        evidence = candidate.get("evidence")
+                        source_text = next(row["text"] for row in batch
+                                           if int(row["page"]) == candidate_page)
+                        if (not isinstance(evidence, list) or not evidence
+                                or any(not str(text).strip()
+                                       or not _source_excerpt_matches(source_text, str(text))
+                                       for text in evidence)):
+                            repaired_evidence = _repair_batch_scene_evidence(
+                                item, candidate_page, source_text, model=model, call=call)
+                            if repaired_evidence is None:
+                                raise SceneModelError("SCENE.EVIDENCE_NOT_GROUNDED",
+                                                      f"场景 {key} 的当前批次证据不在对应页原文中。")
+                            candidate["evidence"] = repaired_evidence
 
-        for row in batch_coverage:
-            if not isinstance(row, dict):
-                raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
-                                      "场景规划批次的逐页账本含无效行。")
-            page_number = row.get("page")
-            if (isinstance(page_number, bool) or not isinstance(page_number, int)
-                    or page_number not in expected_set or page_number in seen_coverage):
-                raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
-                                      "场景规划批次页码缺失、重复或超出本批范围。")
-            keys = row.get("scene_keys")
-            if not isinstance(keys, list) or any(
-                    not isinstance(key, str) or key.strip().casefold() not in local_scenes
-                    for key in keys):
-                raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
-                                      f"场景规划批次第 {page_number} 页引用了未定义场景。")
-            if len(keys) != len({str(key).strip().casefold() for key in keys}):
-                raise SceneModelError("SCENE.PAGE_COVERAGE_DUPLICATED",
-                                      f"场景规划批次第 {page_number} 页重复登记场景键。")
-            seen_coverage.add(page_number)
-            coverage_by_page[page_number] = copy.deepcopy(row)
-        if seen_coverage != expected_set:
-            raise SceneModelError("SCENE.PAGE_COVERAGE_INCOMPLETE",
-                                  "场景规划批次没有逐页覆盖其全部原稿页码。")
+                for row in batch_coverage:
+                    if not isinstance(row, dict):
+                        raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
+                                              "场景规划批次的逐页账本含无效行。")
+                    page_number = row.get("page")
+                    if (isinstance(page_number, bool) or not isinstance(page_number, int)
+                            or page_number not in expected_set or page_number in seen_coverage):
+                        raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
+                                              "场景规划批次页码缺失、重复或超出本批范围。")
+                    keys = row.get("scene_keys")
+                    if not isinstance(keys, list) or any(
+                            not isinstance(key, str) or key.strip().casefold() not in local_scenes
+                            for key in keys):
+                        raise SceneModelError("SCENE.PAGE_COVERAGE_INVALID",
+                                              f"场景规划批次第 {page_number} 页引用了未定义场景。")
+                    if len(keys) != len({str(key).strip().casefold() for key in keys}):
+                        raise SceneModelError("SCENE.PAGE_COVERAGE_DUPLICATED",
+                                              f"场景规划批次第 {page_number} 页重复登记场景键。")
+                    seen_coverage.add(page_number)
+                    coverage_by_page[page_number] = copy.deepcopy(row)
+                if seen_coverage != expected_set:
+                    raise SceneModelError("SCENE.PAGE_COVERAGE_INCOMPLETE",
+                                          "场景规划批次没有逐页覆盖其全部原稿页码。")
+                break
+            except SceneModelError as exc:
+                if (exc.code not in batch_retryable
+                        or batch_validate_attempt == batch_validate_attempts - 1):
+                    raise
+                prompt = (
+                    base_prompt
+                    + "\n\n格式修复重试：上一次这一批次的响应未通过校验（"
+                      f"{exc.code}：{exc.detail}）。请重新完成同一批次的场景规划，"
+                      "确保同时提供完整的 scenes 与 page_coverage 数组、每个场景的 "
+                      "scene_key/canonical_scene_id 均为稳定小写英文标识、候选页不重复"
+                      "且在本批页码范围内、证据必须是对应页原文的逐字连续片段、"
+                      "page_coverage 必须覆盖本批每一页且只引用已定义的场景键。"
+                      "不得省略字段或编造信息。")
+        if batch_obj is None:
+            continue
 
         for key, item in local_scenes.items():
             canonical = str(item["canonical_scene_id"]).strip().casefold()
@@ -2547,7 +3072,7 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
             ensure_ascii=True, separators=(",", ":")).encode("utf-8")).hexdigest()
     else:
         prompt = scene_prompt(pages)
-        obj, meta, clean_raw = _call_json_payload_once_on_format_error(
+        obj, meta, clean_raw = _call_json_payload_with_transport_retry(
             model, prompt, call, phase="规划")
         obj = _unwrap_scene_plan(obj)
         initial_planner_prompt_sha = hashlib.sha256(
@@ -2561,7 +3086,9 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
         obj, pages, model=model, model_call=call,
         anchor_repair_records=anchor_repair_records)
     audit_prompt = scene_coverage_audit_prompt(pages, obj)
-    audit_obj, audit_meta, _ = _call_json_payload_once_on_format_error(
+    # 冻结提示词所依据的计划视图：之后的计划改写不能让复核凭据失去可重放的绑定。
+    audit_plan_view = copy.deepcopy(_coverage_plan_view(obj))
+    audit_obj, audit_meta, _ = _call_json_payload_with_transport_retry(
         model, audit_prompt, call, phase="逐页复核")
     initial_summary = _validate_scene_coverage_audit(audit_obj, pages, obj,
                                                       allow_gaps=True)
@@ -2617,22 +3144,35 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
                     if exc.code not in {"SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                                         "SCENE.COVERAGE_AUDIT_GAPS"}:
                         raise
-                    gap_prompt = scene_gap_repair_prompt(pages, replanned_obj, gap_audit)
-                    gap_obj, gap_meta, _ = _call_json_payload_once_on_format_error(
-                        model, gap_prompt, call, phase="冲突修复后漏项检索锚点修复")
-                    gap_repair_result = _validate_scene_gap_repair_scope(gap_audit, gap_obj)
-                    gap_audit_for_apply = copy.deepcopy(gap_audit)
-                    gap_audit_for_apply["missing_scenes"] = gap_repair_result["missing_scenes"]
-                    gap_applied = _apply_grounded_scene_gap_repairs(
-                        gap_audit_for_apply, pages, replanned_obj)
-                    gap_repair_prompt_hash = hashlib.sha256(
-                        gap_prompt.encode("utf-8")).hexdigest()
-                    gap_repair_response_hash = gap_meta.get("response_sha256")
-                    gap_repair_result_hash = hashlib.sha256(json.dumps(
-                        gap_repair_result, ensure_ascii=False, sort_keys=True,
-                        separators=(",", ":")).encode("utf-8")).hexdigest()
-                    gap_repair_model = gap_meta.get("model")
-                    gap_repair_elapsed = gap_meta.get("elapsed_seconds")
+                    # 同一本机模型在这类严格格式约束（如 setting 必须 1-2 个英文词）
+                    # 上偶有不稳定；给两次独立的修复机会，而不是第一次失手就整单阻断。
+                    gap_repair_attempts = 2
+                    for gap_attempt in range(gap_repair_attempts):
+                        gap_prompt = scene_gap_repair_prompt(pages, replanned_obj, gap_audit)
+                        gap_obj, gap_meta, _ = _call_json_payload_once_on_format_error(
+                            model, gap_prompt, call,
+                            phase=f"冲突修复后漏项检索锚点修复（第{gap_attempt + 1}次）")
+                        try:
+                            gap_repair_result = _validate_scene_gap_repair_scope(gap_audit, gap_obj)
+                            gap_audit_for_apply = copy.deepcopy(gap_audit)
+                            gap_audit_for_apply["missing_scenes"] = gap_repair_result["missing_scenes"]
+                            gap_applied = _apply_grounded_scene_gap_repairs(
+                                gap_audit_for_apply, pages, replanned_obj)
+                        except SceneModelError as exc2:
+                            if (exc2.code not in {"SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
+                                                  "SCENE.COVERAGE_AUDIT_GAPS"}
+                                    or gap_attempt == gap_repair_attempts - 1):
+                                raise
+                            continue
+                        gap_repair_prompt_hash = hashlib.sha256(
+                            gap_prompt.encode("utf-8")).hexdigest()
+                        gap_repair_response_hash = gap_meta.get("response_sha256")
+                        gap_repair_result_hash = hashlib.sha256(json.dumps(
+                            gap_repair_result, ensure_ascii=False, sort_keys=True,
+                            separators=(",", ":")).encode("utf-8")).hexdigest()
+                        gap_repair_model = gap_meta.get("model")
+                        gap_repair_elapsed = gap_meta.get("elapsed_seconds")
+                        break
                 replanned_obj = gap_applied["plan"]
                 gap_patch_details = {
                     "gap_repair_prompt_sha256": gap_repair_prompt_hash,
@@ -2726,17 +3266,20 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
             }
         verification_prompt = scene_coverage_audit_prompt(
             pages, obj, phase="post_repair")
-        audit_obj, audit_meta, _ = _call_json_payload_once_on_format_error(
+        verification_plan_view = copy.deepcopy(_coverage_plan_view(obj))
+        audit_obj, audit_meta, _ = _call_json_payload_with_transport_retry(
             model, verification_prompt, call, phase="修复后全稿复核")
         coverage_summary = _validate_scene_coverage_audit(audit_obj, pages, obj)
         gap_repair["status"] = "APPLIED_AND_REVERIFIED"
         coverage_summary["phase"] = "post_repair"
         coverage_summary["gap_repair"] = gap_repair
         coverage_prompt = verification_prompt
+        coverage_plan_view = verification_plan_view
     else:
         coverage_summary = initial_summary
         coverage_summary["phase"] = "second_pass"
         coverage_prompt = audit_prompt
+        coverage_plan_view = audit_plan_view
 
     _enrich_scene_image_prompts(
         obj, pages, model=model, model_call=call,
@@ -2796,6 +3339,7 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
         if reconsidered.get("scenes"):
             verification_prompt = scene_coverage_audit_prompt(
                 pages, reconsidered, phase="post_repair")
+            reconsidered_plan_view = copy.deepcopy(_coverage_plan_view(reconsidered))
             verification_prompt_sha = hashlib.sha256(
                 verification_prompt.encode("utf-8")).hexdigest()
             verification_meta = {}
@@ -2833,6 +3377,7 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
             coverage_summary["phase"] = "post_empty_plan_reconsideration"
             coverage_summary["empty_scene_recovery"] = empty_scene_recovery
             coverage_prompt = verification_prompt
+            coverage_plan_view = reconsidered_plan_view
             audit_obj = verification_obj
             audit_meta = verification_meta
             empty_scene_recovery["status"] = "APPLIED_AND_REVERIFIED"
@@ -2851,6 +3396,7 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
     coverage_summary["response_sha256"] = audit_meta["response_sha256"]
     coverage_summary["prompt_sha256"] = hashlib.sha256(
         coverage_prompt.encode("utf-8")).hexdigest()
+    coverage_summary["audited_plan_view"] = coverage_plan_view
     coverage_summary["result"] = audit_obj
     coverage_summary["result_sha256"] = hashlib.sha256(
         json.dumps(audit_obj, ensure_ascii=False, sort_keys=True,

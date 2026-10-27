@@ -200,6 +200,17 @@ class Sh:
         pt = self.max_pt() or 12.0
         return self.line_count(box_w) * pt * 1.22 / 72.0
 
+    def text_inset_in(self) -> float:
+        """文本框上下内边距之和（英寸）。未显式设置时用 PPT 默认 0.05in。"""
+        if not self.is_text:
+            return 0.0
+        tf = self.shape.text_frame
+        top = tf.margin_top
+        bot = tf.margin_bottom
+        top = 0.05 if top is None else top / 914400.0
+        bot = 0.05 if bot is None else bot / 914400.0
+        return top + bot
+
     def one_line_fits(self, pt, box_w):
         t = self.text.strip()
         if not t:
@@ -825,6 +836,226 @@ def rule_universal(shs, P, lang, acts, sw, sh_, ptype="generic"):
             acts.append({"rule": "vcenter", "shape": t.name, "card": c.name})
 
 
+# --------------------------------------------------------------------------- 可读性字号下限
+
+#: 冻结策略 contracts/layout_hard_gate_policy.json 的 font_roles_pt，按
+#: scripts/layout_gate.py:ROLE_PT 的角色名展开。抬字是产品硬要求（用户"字太小"
+#: 的直接修复），但 theme.py 只抬字不动几何，于是 24pt 的正文被塞进为 12pt
+#: 设计的框里——溢出、压字、字形跑出属主框。本模块负责"抬字 + 吸收几何后果"。
+READABILITY_ROLE_PT = {
+    "title": (36, 40), "lead": (24, 28), "body": (24, 28),
+    "conclusion": (28, 32), "key_number": (44, 56), "table": (20, 22),
+    "chart_aux": (18, 20), "ordinal": (18, 22), "footer": (16, 18),
+    "source": (16, 18), "label": (18, 20),
+}
+
+#: 页面四周安全边距（英寸，按 13.33in 宽标定）：框不得长到纸外。
+FLOOR_EDGE_MARGIN_IN = 0.25
+#: 相邻块之间至少保留的垂直净空。
+FLOOR_MIN_GAP_IN = 0.06
+
+
+def _floor_is_page_number(sh, sw, sh_) -> bool:
+    import re as _re
+    t = sh.text.strip()
+    return bool(_re.fullmatch(r"\d{1,2}", t)) and sh.T > sh_ * 0.92 and sh.L > sw * 0.82
+
+
+def _floor_is_source(sh) -> bool:
+    t = sh.text.strip()
+    if ("来源" in t) or ("Yiten Huang" in t) or ("YitenHuang" in t):
+        return True
+    return any(k in t for k in ("Syntun", "统计局", "国务院：", "Reuters",
+                                "财政部", "新华社"))
+
+
+def infer_text_roles(shs, sw, sh_) -> dict:
+    """推断文本角色，与 scripts/layout_gate.py:infer_roles 同口径。
+
+    门禁按角色区间检查**每一个 run** 的字号，所以抬字必须按同一套角色判定，
+    否则抬了也对不上。几何阈值按页宽/页高比例化，不写死 13.33in 的绝对值。
+    """
+    import re as _re
+    roles = {}
+    top_zone = sh_ * 0.307          # 13.33x7.5 稿的 2.3in
+    bottom_zone = sh_ * 0.56        # 同稿的 4.2in
+    for s in shs:
+        if not s.is_text or not s.text.strip():
+            continue
+        t = s.text.strip()
+        if s.has_table:
+            roles[s.idx] = "table"
+        elif s.has_chart:
+            roles[s.idx] = "chart_aux"
+        elif t in ("“", "”", "「", "」"):
+            roles[s.idx] = "quote"
+        elif _floor_is_page_number(s, sw, sh_):
+            roles[s.idx] = "footer"
+        elif _floor_is_source(s):
+            roles[s.idx] = "source"
+        elif _re.fullmatch(r"\d{1,2}|[A-Za-z]", t):
+            roles[s.idx] = "ordinal"
+        elif _re.search(r"\d", t) and _re.search(r"%|亿|万", t) and len(t) <= 12:
+            roles[s.idx] = "key_number"
+        else:
+            roles[s.idx] = "body"
+    by_idx = {s.idx: s for s in shs}
+    rest = [i for i, r in roles.items() if r == "body"]
+    if rest:
+        tops = [i for i in rest if by_idx[i].T < top_zone]
+        if tops:
+            top_i = max(tops, key=lambda i: ((by_idx[i].max_pt() or 0.0), -by_idx[i].T))
+        else:
+            top_i = min(rest, key=lambda i: by_idx[i].T)
+        roles[top_i] = "title"
+        below = [i for i in rest if i != top_i and roles[i] == "body"
+                 and by_idx[i].T < top_zone and by_idx[i].T > by_idx[top_i].T]
+        if below:
+            roles[min(below, key=lambda i: by_idx[i].T)] = "lead"
+        bottom = [i for i in rest if roles[i] == "body"
+                  and by_idx[i].T > bottom_zone and len(by_idx[i].text.strip()) >= 15]
+        if bottom:
+            roles[max(bottom, key=lambda i: (by_idx[i].T, len(by_idx[i].text.strip())))] = "conclusion"
+    return roles
+
+
+def _headroom_below(target, shs, sh_) -> float:
+    """target 向下可以长多少英寸而不压到下方任何块，也不越出页面安全边距。"""
+    limit = sh_ - FLOOR_EDGE_MARGIN_IN
+    bottom = target.T + target.H
+    for o in shs:
+        if o.idx == target.idx or o.W <= 0 or o.H <= 0:
+            continue
+        if o.L >= target.L + target.W or o.L + o.W <= target.L:
+            continue                      # 水平不重叠，互不相干
+        if o.T + o.H <= bottom + 1e-6:
+            continue                      # 在上方或同高
+        limit = min(limit, o.T - FLOOR_MIN_GAP_IN)
+    return max(0.0, limit - bottom)
+
+
+def _column_peers(target, shs):
+    """与 target 水平重叠、且在其**下方**的块，按从上到下排序（级联推移对象）。
+
+    "下方"按顶边比较，而不是"顶边在目标底边之下"：后者会漏掉原本就与目标
+    纵向交叠的块，于是目标一长高就直接压上去（GLYPH_COLLISION）。
+    但原稿里"文字叠在卡片上"是正常设计，这类高度重合的配对不是上下关系，
+    推开它们等于拆掉版面——按原始重叠比例把它们排除在级联之外。
+    """
+    out = []
+    for o in shs:
+        if o.idx == target.idx or o.W <= 0 or o.H <= 0:
+            continue
+        if o.L >= target.L + target.W or o.L + o.W <= target.L:
+            continue
+        if o.T <= target.T + 1e-6:
+            continue                      # 同高或更靠上：不是下方块
+        overlap = min(o.T + o.H, target.T + target.H) - max(o.T, target.T)
+        if overlap > 0.5 * min(o.H, target.H):
+            continue                      # 本就高度重合：同一组件，不拆
+        out.append(o)
+    return sorted(out, key=lambda o: o.T)
+
+
+def _plan_cascade(target, grow, shs, sh_):
+    """把 target 下边界下移 grow 英寸，返回需要连带下移的 {idx: 位移}。
+
+    放不下就返回 None——本模块的纪律是宁可不动，也不压字、不越出纸面。
+    """
+    moves = {}
+    frontier = [(target, grow)]
+    guard = 0
+    while frontier:
+        guard += 1
+        if guard > 200:
+            return None
+        cur, delta = frontier.pop()
+        if delta <= 1e-6:
+            continue
+        cur_bottom = cur.T + cur.H + moves.get(cur.idx, 0.0) + (delta if cur.idx == target.idx else 0.0)
+        for o in _column_peers(cur, shs):
+            o_top = o.T + moves.get(o.idx, 0.0)
+            need = cur_bottom + FLOOR_MIN_GAP_IN - o_top
+            if need <= 1e-6:
+                continue
+            moves[o.idx] = moves.get(o.idx, 0.0) + need
+            if o.T + moves[o.idx] + o.H > sh_ - FLOOR_EDGE_MARGIN_IN + 1e-6:
+                return None                      # 推到纸外：整笔放弃
+            frontier.append((o, need))
+    return moves
+
+
+def _set_run_sizes(s, lo, hi):
+    """把形状内每个 run 的字号钳进 [lo, hi]，并同步缓存的 runs 台账。"""
+    from pptx.util import Pt
+    for pi, ri, _t, pt, _c, _b in s.runs:
+        if pt is None:
+            continue
+        s.shape.text_frame.paragraphs[pi].runs[ri].font.size = Pt(round(min(max(pt, lo), hi), 1))
+    s.runs = [(pi, ri, t, (round(min(max(pt, lo), hi), 1) if pt else pt), c, b)
+              for pi, ri, t, pt, c, b in s.runs]
+
+
+def _restore_run_sizes(s, original):
+    """抬字放不下时回退到原字号——宁可不动，也不留一个塞不下的版面。"""
+    from pptx.util import Pt
+    for pi, ri, _t, pt, _c, _b in original:
+        if pt is None:
+            continue
+        s.shape.text_frame.paragraphs[pi].runs[ri].font.size = Pt(pt)
+    s.runs = list(original)
+
+
+def rule_readability_floor(shs, P, acts, sw, sh_):
+    """把每个 run 的字号钳进角色区间，并让几何吸收随之增加的占位。
+
+    门禁按角色区间检查**每一个 run**，所以字号必须抬到位——退半步只会把
+    OWNER_BOX_OVERFLOW 换成 ROLE_SIZE。几何后果由本函数承担：先按新字号
+    把框撑到内容高度，再把下方同列的块依次下推腾出空间。整页推不下时
+    （会越出纸面）放弃该块的抬字并如实登记，绝不压行、缩框或 autofit 塞字。
+    文字内容一字不改。
+    """
+    from pptx.util import Pt
+
+    roles = infer_text_roles(shs, sw, sh_)
+    by_idx = {s.idx: s for s in shs}
+    for idx, role in sorted(roles.items()):
+        rng = READABILITY_ROLE_PT.get(role)
+        if rng is None:
+            continue
+        lo, hi = rng
+        s = by_idx[idx]
+        if not s.is_text or s.has_table or s.has_chart:
+            continue
+        cur = [r[3] for r in s.runs if r[3]]
+        if not cur or all(lo - 1e-9 <= v <= hi + 1e-9 for v in cur):
+            continue
+        planned = [round(min(max(v, lo), hi), 1) for v in cur]
+        # 字号必须先真正落到 run 上再测高度：字大一档往往**多折一行**，
+        # 高度不是按字号线性放大的，照比例估算会少算整整一行。
+        original = list(s.runs)
+        _set_run_sizes(s, lo, hi)
+        # 渲染器按"内容 + 上下内边距"排版，这 0.1in 不计就会继续溢出。
+        need_h = s.content_h_in() + s.text_inset_in()
+        grow = max(0.0, need_h - s.H)
+        moves = _plan_cascade(s, grow, shs, sh_) if grow > 0 else {}
+        if moves is None:
+            _restore_run_sizes(s, original)
+            acts.append({"rule": "readability_floor_skipped", "shape": s.name,
+                         "role": role, "reason": "no_room_on_page",
+                         "sizes": cur, "target_range": [lo, hi],
+                         "needed_in": round(grow, 3)})
+            continue
+        if grow > 0:
+            s.move(H=round(s.H + grow, 3))
+        for oid, dy in moves.items():
+            o = by_idx[oid]
+            o.move(T=round(o.T + dy, 3))
+        acts.append({"rule": "readability_floor", "shape": s.name, "role": role,
+                     "from": cur, "to": planned, "target_range": [lo, hi],
+                     "grew_in": round(grow, 3), "pushed": len(moves)})
+
+
 # --------------------------------------------------------------------------- 主入口
 
 def refine_deck(pptx_path, out_path, ident=None, params=None):
@@ -904,6 +1135,8 @@ def refine_deck(pptx_path, out_path, ident=None, params=None):
                 rule_two_panel(shs, P, stats["detected_language"], acts, sw, sh)
             if ptype not in ("kpi_row", "card_grid", "card_grid_plain", "label_rows"):
                 rule_universal(shs, P, stats["detected_language"], acts, sw, sh, ptype)
+            # 结构规则先把版面理顺，最后统一落实可读性字号下限并吸收几何后果。
+            rule_readability_floor(shs, P, acts, sw, sh)
         except Exception as e:  # noqa: BLE001
             stats["warnings"].append(f"slide{i} {ptype}: {type(e).__name__}: {e}")
             acts.append({"rule": "ERROR", "detail": f"{type(e).__name__}: {e}"})

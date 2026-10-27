@@ -626,7 +626,8 @@ class Runner:
                       and not report.get("findings") and not report.get("unverified")
                       else "NOT_EVALUABLE")
         except Exception as exc:  # noqa: BLE001 — checker failures are evidence gaps, never passes
-            details.append({"type": "LAYOUT_GATE_EXECUTION_UNVERIFIED",
+            details.append({"code": "LAYOUT.HARD_GATE_EXECUTION_ERROR", "severity": "REVIEW",
+                            "type": "LAYOUT_GATE_EXECUTION_UNVERIFIED",
                             "error_type": type(exc).__name__,
                             "detail": str(exc)[:500]})
             report = {
@@ -1026,6 +1027,69 @@ class Runner:
                 return True   # 锁存在但内容不可解析：按"可能有人在写"处理，不抢
         return False
 
+    #: worker 进程消失后，任务最多还能停在 RUNNING 多久（秒）才被回收。
+    #: 给足一个启动窗口：worker 先写 job.json 再落 worker.pid，
+    #: 这中间的空档不能被误判成"已死"。
+    ABANDONED_RUN_GRACE_S = 120
+
+    def _heartbeat_age_s(self, job) -> float | None:
+        """距最后一次心跳多少秒；时间戳缺失或不可解析时返回 None。"""
+        raw = job.get("heartbeat_at") or job.get("last_activity")
+        if not raw:
+            return None
+        try:
+            ts = datetime.fromisoformat(str(raw))
+        except ValueError:
+            return None
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
+        return (datetime.now(timezone.utc) - ts).total_seconds()
+
+    def reap_abandoned_run(self, job_id, *, grace_s: float | None = None) -> dict | None:
+        """worker 已不在而任务仍停在 RUNNING 时，按契约收尾为 GATE.INTERRUPTED。
+
+        契约 SF10 的 GATE.INTERRUPTED 明确要求"进程中断不得长期停留 RUNNING"：
+        worker 被 kill、机器重启或进程崩溃时没有人改写 job.json，工作台就会
+        一直显示"制作中"。这里只做**如实收尾**，不重跑、不改候选、不碰导出。
+
+        两个条件同时成立才回收，避免误杀刚启动还没写 worker.pid 的 worker：
+        进程确实不在，且心跳已超过宽限期。返回回收记录，未回收返回 None。
+        """
+        d = self._job_dir(job_id)
+        job = load_json(d / "job.json") if (d / "job.json").is_file() else None
+        if not isinstance(job, dict) or job.get("verdict") != "RUNNING":
+            return None
+        if self._has_active_writer(job_id):
+            return None
+        age = self._heartbeat_age_s(job)
+        limit = self.ABANDONED_RUN_GRACE_S if grace_s is None else grace_s
+        if age is None or age < limit:
+            return None
+        detail = ("运行进程已不存在，任务停留在 RUNNING 超过 %d 秒未更新心跳；"
+                  "按契约收尾为中断，不代表已完成。" % int(limit))
+        self._stage(job_id, job.get("stage") or "run", "FAILED",
+                    {"code": "GATE.INTERRUPTED", "detail": detail,
+                     "heartbeat_age_s": round(age, 1),
+                     "last_heartbeat_at": job.get("heartbeat_at")})
+        self._mark_run_stage_failure(job_id, "GATE.INTERRUPTED", detail)
+        return {"job_id": job_id, "reaped": True, "code": "GATE.INTERRUPTED",
+                "heartbeat_age_s": round(age, 1), "at": now_iso()}
+
+    def reap_all_abandoned_runs(self, *, grace_s: float | None = None) -> list:
+        """扫描全部任务，回收所有 worker 已死却仍停在 RUNNING 的任务。"""
+        root = self.root / "jobs"
+        if not root.is_dir():
+            return []
+        out = []
+        for d in sorted(root.glob("job-*")):
+            try:
+                rec = self.reap_abandoned_run(d.name, grace_s=grace_s)
+            except Exception:  # noqa: BLE001 — 单个任务异常不能中断整轮清理
+                continue
+            if rec:
+                out.append(rec)
+        return out
+
     def cancel(self, job_id, grace=5.0):
         """取消：标记取消、终止真实子进程、释放锁，并记录被取消的 attempt。
 
@@ -1344,7 +1408,8 @@ class Runner:
         self._stage(job_id, "precheck", "DONE", info)
         return info
 
-    def run(self, job_id, timeout=900, hold_after_build=0):
+    def run(self, job_id, timeout=3600, hold_after_build=0,
+           allow_text_card_fallback=False):
         """执行候选生成（不写正式版本）。
 
         产物先落到 staging/<attempt_id>/，再经 submit_result 这个真实入口发布为 candidate。
@@ -1558,9 +1623,18 @@ class Runner:
             try:
                 scene_plan = scene_mod.build_plan(
                     job["input_path"], themed, cache_dir=stage / "scene_assets",
-                    visual_plan=vplan)
+                    visual_plan=vplan,
+                    allow_text_card_fallback=allow_text_card_fallback)
                 save_json_atomic(scene_plan, stage / "scene_visual_plan.json")
-                if scene_plan.get("unresolved_scenes") or not scene_plan.get("images"):
+                # 没有配图分两种：一种是**找不到/不合规**（真失败），一种是
+                # 这份稿子**没地方放**（版位容量）。后者已如实登记在
+                # unplaced_scenes 里，没有任何东西被伪造或替代，稿子照常交付。
+                unplaced_only = bool(scene_plan.get("unplaced_scenes")) and not (
+                    scene_plan.get("images") or scene_plan.get("text_cards")
+                    or scene_plan.get("unresolved_scenes"))
+                if scene_plan.get("unresolved_scenes") or (
+                        not scene_plan.get("images") and not scene_plan.get("text_cards")
+                        and not unplaced_only):
                     blockers = scene_plan.get("unresolved_scenes") or [{
                         "reason": "SCENE.NO_SCENE_IMAGES",
                         "detail": "整套演示文稿没有可嵌入的关联场景照片。"}]
@@ -1577,10 +1651,14 @@ class Runner:
                                  },
                                  "planned_scene_count": len(scene_plan.get("scenes") or []),
                                  "planned_photo_count": len(scene_plan.get("images") or {}),
+                                 "text_card_count": len(scene_plan.get("text_cards") or {}),
                                  "unresolved_scenes": blockers,
                                  "plan_sha256": scene_plan.get("plan_sha256")})
-                    raise GateError("VISUAL.SCENE_UNRESOLVED",
-                                    "场景照片或安全版位未完整解决；阻止文字卡片替代场景图。")
+                    detail = ("场景照片或安全版位未完整解决。"
+                             if allow_text_card_fallback else
+                             "场景照片或安全版位未完整解决；未开启说明卡片兜底，"
+                             "整单阻断（可在生成时勾选「找不到配图时用说明卡片兜底」后重试）。")
+                    raise GateError("VISUAL.SCENE_UNRESOLVED", detail)
                 pre_scene = stage / (src.stem + ".themed.prescenes.pptx")
                 scene_output = stage / (src.stem + ".themed.scenes.pptx")
                 shutil.copyfile(themed, pre_scene)
@@ -1606,6 +1684,14 @@ class Runner:
                                                      scene_plan.get("images", {}).values()}),
                              "inserted": scene_actions.get("inserted", 0),
                              "unresolved_scenes": [],
+                             # 版位不足未放置的场景如实上报，不静默吞掉。
+                             "unplaced_scenes": scene_plan.get("unplaced_scenes") or [],
+                             # 说明卡片兜底如实披露：哪些场景、什么原因没能配上真图。
+                             "text_card_count": len(scene_plan.get("text_cards") or {}),
+                             "text_card_scenes": [
+                                 {"scene_key": k, "page": v["page"],
+                                  "fallback_reason": v.get("fallback_reason")}
+                                 for k, v in (scene_plan.get("text_cards") or {}).items()],
                              "plan_sha256": scene_plan.get("plan_sha256"),
                              "output_sha256": sha256_file(themed)})
             except scene_mod.SceneModelError as e:
@@ -1737,7 +1823,8 @@ class Runner:
         exp = expected_required_checks(job["support_profile"], census, in_doc)
         # RS-9：新管线任务带有 JobOptions（evidence/pipeline/options.json）时，
         # 条件必检项（配图账本/转场/研究证据/版式复核）并入必需集合——只加不减。
-        rs_options = load_json(d / "evidence" / "pipeline" / "options.json")
+        rs_options_path = d / "evidence" / "pipeline" / "options.json"
+        rs_options = load_json(rs_options_path) if rs_options_path.is_file() else None
         if rs_options:
             exp = expected_required_checks(job["support_profile"], census, in_doc,
                                            rs_options=rs_options)
@@ -2162,7 +2249,19 @@ class Runner:
             else:
                 plan_data = json.loads(scene_plan_file.read_text(encoding="utf-8"))
                 planned_images = plan_data.get("images") or {}
-                if not planned_images:
+                # 没有配图分两种，run 阶段（见 semantic_scenes 调用处）已经按这个
+                # 口径放行过一次："版位容量不足"（unplaced_scenes，如实登记、
+                # 没有伪造替代）允许稿子照常交付；只有"找不到/不合规"
+                # （unresolved_scenes，真失败）或两者皆空（没有一个有依据的
+                # 具体场景）才阻断。validate 阶段之前对这两种原因不加区分，
+                # 一律 BLOCKING——这让 run 阶段明确放行过的版位容量受限稿件，
+                # 到 validate 必然又被此门禁拦下，两处口径互相矛盾
+                # （2026-10-27 job-c915c8c7deff / job-a7f6f5400f70：场景规划
+                # 找到了有依据的场景，但稿面确实放不下，仍被判 BLOCKING）。
+                capacity_only = (not planned_images and bool(plan_data.get("unplaced_scenes"))
+                                 and not plan_data.get("unresolved_scenes")
+                                 and not plan_data.get("text_cards"))
+                if not planned_images and not capacity_only:
                     scene_gate_status = "FAILED"
                     scene_gate_report = {
                         "schema_version": "WG-COMPLETE-SEMANTIC-SCENE-GATE/1",
@@ -2173,6 +2272,19 @@ class Runner:
                         "unverified": [],
                     }
                     findings.extend(scene_gate_report["findings"])
+                elif capacity_only:
+                    scene_gate_status = "NOT_EVALUABLE"
+                    scene_gate_report = {
+                        "schema_version": "WG-COMPLETE-SEMANTIC-SCENE-GATE/1",
+                        "gate_id": "HG13_SEMANTIC_SCENE_COVERAGE",
+                        "status": "NOT_EVALUABLE", "blocking": False,
+                        "findings": [],
+                        "unverified": [{"code": "SCENE.CAPACITY_NO_SAFE_AREA",
+                                        "detail": ("所有规划场景都有原文依据，但稿面没有空间可安全放置照片"
+                                                   "（已逐一记录在 unplaced_scenes，不是找不到/不合规）；"
+                                                   "本稿未嵌入场景照片，按容量限制如实交付，未伪造或替代任何内容。"),
+                                        "unplaced_scenes": plan_data.get("unplaced_scenes")}],
+                    }
                 else:
                     # 1. 制造仅移除标记场景图片的抑制参考件
                     suppressed_dir = d / "scene_suppressed_render"
@@ -2233,7 +2345,7 @@ class Runner:
                         render_evidence = {
                             "schema": "WG-SEMANTIC-SCENE-RENDER-EVIDENCE/1",
                             "candidate_pptx_sha256": sha256_file(pptx),
-                            "scene_plan_sha256": sha256_file(scene_plan_file),
+                            "scene_plan_sha256": (load_json(scene_plan_file) or {}).get("plan_sha256"),
                             "scene_suppressed_pptx_sha256": suppressed_identity["scene_suppressed_pptx_sha256"],
                             "policy_sha256": scene_mod.POLICY_SHA256,
                             "rendered_pdf_sha256": rr.get("pdf_sha256"),
