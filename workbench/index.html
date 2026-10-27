@@ -1385,7 +1385,6 @@ async function afterMake(job, surface = "make") {
   const snap = S.studio.snapshot || {};
   const v = (snap.validation || {}).verdict;
   const validation = snap.validation || {};
-  const hardGate = validation.layout_hard_gate || {};
   $("native-review").innerHTML = "";
   const cancelled = snap.cancelled;
   if (cancelled) {
@@ -1400,13 +1399,11 @@ async function afterMake(job, surface = "make") {
     await loadStudioResult(job);
     await loadStudioPages(job, "candidate");
   } else if (v === "NEEDS_REVIEW" || v === "FAILED") {
+    // 2026-10-27：原生实播复核（人工录屏+重开核哈希）不再是通过条件，
+    // 这个面板不再跟着"未通过"一起弹出——它以前常常和跟原生复核完全
+    // 无关的失败（比如材料分页被拒）一起显示，误导成"还差一步上传视频"。
     $("statusline").innerHTML = chip("bad", v === "FAILED" ? "未通过" : "需要核对") +
       "<span class='hint'>未通过的结果不会进入正常下载；请看上方的停止原因与阻断项。</span>";
-    if (validation.candidate_pptx_sha256 && hardGate.status !== "EXECUTED") {
-      $("native-review").innerHTML = nativeReviewPanelHtml(
-        job, validation.candidate_pptx_sha256, hardGate);
-      wireNativeReviewPanel(job, validation.candidate_pptx_sha256, hardGate, surface, null);
-    }
   } else {
     $("statusline").innerHTML = chip("warn", "已停止") +
       "<span class='hint'>编排已结束但未形成可交付结果。</span>";
@@ -2065,14 +2062,9 @@ async function renderMaterialResult(t) {
         (modelError.status_code ? "（HTTP " + esc(modelError.status_code) + "）" : "") +
         "；" + esc(modelError.detail || "无诊断详情") + "</div>";
     }
-    const gate = t.layout_hard_gate || {};
-    if (t.job_id && t.candidate_pptx_sha256 && gate.status !== "EXECUTED") {
-      html += nativeReviewPanelHtml(t.job_id, t.candidate_pptx_sha256, gate);
-      box.innerHTML = html;
-      wireNativeReviewPanel(t.job_id, t.candidate_pptx_sha256, gate,
-                            "material", t.task_id);
-      return;
-    }
+    // 2026-10-27：原生实播复核不再是通过条件，这里不再附带那个面板——
+    // 它以前会在跟原生复核完全无关的失败（比如材料分页被拒）后面一起
+    // 弹出，让人以为"还差一步上传视频"，其实根本不是这个原因。
     html += "<button class='btn secondary sm' id='btn-mat-retry' style='margin-top:8px'>重试该材料任务</button>";
     box.innerHTML = html;
     wireMaterialRetry(t.task_id);

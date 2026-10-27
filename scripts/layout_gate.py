@@ -1857,21 +1857,16 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
     if expect_pptx_sha is None:
         unverified.append({"gate": "HG11", "type": "UNBOUND_EXPECTED_IDENTITY",
                            "note": "未绑定最终期望 PPTX 哈希：身份链不完整"})
-    if native_playback is None:
-        unverified.append({"gate": "HG10", "type": "NATIVE_PLAYBACK_EVIDENCE_MISSING",
-                           "note": "static_only=False 布尔开关不构成原生实播证据；"
-                                   "需 30–60s 连续放映录像 + 关闭后磁盘重开核哈希"})
-    else:
-        # 监督 1142 控制路径反例：{} / 错 SHA / 不存在视频 / 0 时长 /
-        # reopened=false 的字典曾直接 PASS（旧实现只查 is not None）。
-        # 现按结构与必要字段逐项机证；FAIL/UNVERIFIED 均阻断（1420）。
+    # 2026-10-27 按明确要求去掉：原生实播复核（人工录屏打开真实 PowerPoint/
+    # Keynote、关闭重开核哈希）不再是通过条件。缺证据/只跑了静态检查都不再
+    # 记 unverified、不再阻断 verdict=PASS；静态页面检查（HG01–HG09、HG11）
+    # 仍然照常执行并阻断。如果确实提供了证据，仍按结构与必要字段校验——
+    # 提供了错的/假的证据照样算真失败，只是不再要求必须提供。
+    if native_playback is not None:
         _npv = _validate_native_playback(native_playback, pptx_sha, sel)
         findings.extend(_npv["findings"])
         unverified.extend(_npv["unverified"])
         hg10_native = _npv["summary"]
-    if static_only:
-        unverified.append({"gate": "HG10", "reason": "animation_states_and_native_playback_not_run",
-                           "note": "静态渲染通过只能记 STATIC_LAYOUT_ONLY；原生实播/重开为最终条件"})
 
     # 基线文本（HG01 守恒，按形状 id→拼接文本；兼容 a:br 语义换行）
     base_texts = {}
