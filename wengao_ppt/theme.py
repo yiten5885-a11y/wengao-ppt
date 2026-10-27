@@ -664,6 +664,31 @@ def apply_theme(pptx_path, out_path, theme_name: str | None = None,
         except Exception as e:  # noqa: BLE001
             changed["warnings"].append(f"slide{idx} notes: {type(e).__name__}")
 
+    # 换肤主题同样靠 _capped(raise_to_floor=True) 把过小来源字号抬到可读下限，
+    # 但那一步只改字号、不动框——24pt 正文塞进为更小字号设计的框里就是
+    # OWNER_BOX_OVERFLOW/CANVAS_MARGIN 的直接成因；而 _classify() 只有
+    # title/subtitle/heading/body/note 五档粗分类，和门禁 HG07 实际检查的
+    # title/lead/body/conclusion/key_number/table/chart_aux/ordinal/footer/
+    # source/label 十一档角色区间对不上，字号钳的是错的区间。
+    # wengao_ppt.refine 已经实现了同口径的角色判定 + 字号钳 + 几何吸收
+    # （抬字后撑高框、级联下推同列块，放不下就如实放弃不强塞），原本只接给
+    # wengao-adaptive 主题用；这里对所有换肤主题的最终结果复用同一遍，
+    # 让字号与门禁用的是同一套角色区间，几何后果也一并吸收。
+    from . import refine as refine_mod
+    sw_in = slide_w / 914400.0
+    sh_in = slide_h / 914400.0
+    readability_pages = []
+    for idx, slide in enumerate(prs.slides, start=1):
+        shs = [refine_mod.Sh(slide, sp, j, sw_in, sh_in) for j, sp in enumerate(slide.shapes)]
+        acts = []
+        try:
+            refine_mod.rule_readability_floor(shs, {}, acts, sw_in, sh_in)
+        except Exception as e:  # noqa: BLE001
+            changed["warnings"].append(f"slide{idx} readability_floor: {type(e).__name__}")
+        if acts:
+            readability_pages.append({"slide": idx, "actions": acts})
+    changed["readability_floor_actions"] = readability_pages
+
     prs.save(str(out))
     changed["font_substitution"] = p["font_fallback_note"]
     # 主题整体结论：有无法证明的底色或保留原色 → 不是"完整套用"
