@@ -1693,6 +1693,9 @@ class Runner:
                                   "fallback_reason": v.get("fallback_reason")}
                                  for k, v in (scene_plan.get("text_cards") or {}).items()],
                              "plan_sha256": scene_plan.get("plan_sha256"),
+                             # 开跑前预检的端点健康摘要：内存压力等环境问题不阻断，
+                             # 但要留下证据，事后能判断失败是不是环境造成的。
+                             "model_health": scene_plan.get("model_health"),
                              "output_sha256": sha256_file(themed)})
             except scene_mod.SceneModelError as e:
                 model_error = e.as_record()

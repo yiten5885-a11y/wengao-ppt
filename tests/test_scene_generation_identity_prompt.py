@@ -446,7 +446,18 @@ class ModelTransportRetryTests(unittest.TestCase):
 
     2026-10-26 job-83f27a9a9dc2：规划调用抛 RemoteDisconnected，旧实现直接判
     VISUAL.SCENE_PLAN_FAILED，整稿渲染失败——而它只是一次连接被断开。
+
+    注入的假调用没有真实端点，健康门无从探测；重试节奏（10 秒 / 30 秒）在这里
+    没有意义，压成 0 以免用例白等 40 秒。真实重试的节奏由
+    tests/test_local_model_transport.py 覆盖。
     """
+
+    def setUp(self):
+        from unittest import mock
+        from wengao_ppt import scene_model
+        patcher = mock.patch.multiple(scene_model, _LOCAL_TRANSPORT_BACKOFF_S=(0.0, 0.0))
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def test_remote_disconnected_is_a_transport_failure(self):
         import http.client

@@ -436,6 +436,17 @@
       "meaning": "已知锁定来源段被静默截断；不得由模型猜补或其自评通过。"
     },
     {
+      "code": "MODEL.VISION_RUNTIME_UNAVAILABLE",
+      "family": "SF10",
+      "severity": "BLOCKING",
+      "meaning": "本次运行需要图片语义复核，但云端视觉未启用、本机视觉端点（mlx_vlm 8080 / Ollama 11434）也不可用；必须在语义场景阶段开跑前的预检里直接失败，不得先跑完文本规划再崩在图片复核处，也不得静默跳过复核。",
+      "required_evidence": [
+        "预检探测的端点与端口",
+        "探测结果（连接失败/超时）",
+        "可供用户执行的下一步（启用云端视觉或启动本机视觉服务）"
+      ]
+    },
+    {
       "code": "INPUT.SOURCE_BASELINE_MISSING",
       "family": "SF04",
       "severity": "BLOCKING",
@@ -785,6 +796,18 @@
     }
   ],
   "amendments": [
+  {
+    "date": "2026-10-28",
+    "action": "add_codes_for_model_runtime_preflight",
+    "codes": ["MODEL.VISION_RUNTIME_UNAVAILABLE"],
+    "reason": "WENGAO-LOCAL-MODEL-TRANSPORT：job-3afdd5d88bd9 在云端关闭时先跑完约 5 分钟文本规划，才在本机图片复核处以 ConnectionRefused 失败，页面只显示原始英文传输错误。语义场景阶段需要在调用任何模型之前预检视觉端点；字典原无对应码，按既有做法增补，而不是让实现使用字典外的码。",
+    "impact": {
+      "changed_meanings": [],
+      "affected_cases": ["本地模型断连（job-3afdd5d88bd9 重跑）", "云端关闭 + 本机视觉未启动"],
+      "affected_expectations": "视觉端点不可用时 semantic_scenes 在 10 秒内以本码停止，并在 detail/next_actions 给出启用云端视觉或启动 8080 两条建议；不再出现误导性的 provider=ollama-local。"
+    },
+    "note": "不改动既有码的含义；新增码只描述视觉运行时缺失这一此前无码可报的情形。"
+  },
     {
       "date": "2026-10-12",
       "action": "add_codes_used_by_implementation",

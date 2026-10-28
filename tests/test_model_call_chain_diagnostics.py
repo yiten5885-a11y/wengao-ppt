@@ -47,7 +47,8 @@ class ModelCallChainDiagnosticsTests(unittest.TestCase):
         self.assertIn("Local Ollama connection failed", err.detail)
         self.assertNotIn("QUOTA", err.code)
         record = err.as_record()
-        self.assertEqual(record["provider"], "ollama-local")
+        # 供应方按实际端点标注，不再一律写成 "ollama-local"（2026-10-28 起）。
+        self.assertEqual(record["provider"], "local:127.0.0.1:11435")
         self.assertEqual(record["code"], "MODEL.TRANSPORT_ERROR")
 
     def test_r5_planner_502_classified_as_transport_error(self):

@@ -1342,12 +1342,25 @@ function renderMakeStages(snap) {
       "<div class='kv'><b>语义场景配图</b><span>" + description + "</span></div>";
     if (state === "FAILED" && sceneStage.model_error) {
       const modelError = sceneStage.model_error;
+      const modelDiagnostics = modelError.diagnostics || {};
+      const retried = modelDiagnostics.retried != null ? modelDiagnostics.retried
+        : (Array.isArray(modelDiagnostics.attempts) ? modelDiagnostics.attempts.length : null);
       $("make-detail").innerHTML +=
         "<div class='kv'><b>场景模型错误</b><span>" +
         esc(modelError.code || sceneStage.failure_code || "MODEL.ERROR") +
         (modelError.status_code ? " · HTTP " + esc(modelError.status_code) : "") +
+        (modelError.provider ? " · " + esc(modelError.provider) : "") +
+        (modelDiagnostics.endpoint ? " · 端点 " + esc(modelDiagnostics.endpoint) : "") +
+        (retried ? " · 重试 " + esc(retried) + " 次" : "") +
         (modelError.detail ? " · " + esc(modelError.detail) : "") +
         "</span></div>";
+      const nextActions = modelDiagnostics.next_actions || [];
+      if (Array.isArray(nextActions) && nextActions.length) {
+        $("make-detail").innerHTML +=
+          "<div class='kv'><b>可以这样处理</b><span>" +
+          nextActions.map(function (item) { return esc(item); }).join("<br>") +
+          "</span></div>";
+      }
     }
   }
   const layoutGate = validation.layout_hard_gate || {};

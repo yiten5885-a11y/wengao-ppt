@@ -15,7 +15,9 @@ import json
 import os
 import re
 import copy
+import http.client
 import socket
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -33,19 +35,28 @@ from .language_support import (
 
 class SceneModelError(RuntimeError):
     def __init__(self, code: str, detail: str, status_code: int | None = None,
-                 diagnostics: dict | None = None):
+                 diagnostics: dict | None = None, provider: str | None = None):
         super().__init__(detail)
         self.code = code
         self.detail = detail[:500]
         self.status_code = status_code
+        self.provider = provider
         # Diagnostics are metadata-only: never retain a source-derived prompt or
         # model response in a shared job record.
         self.diagnostics = dict(diagnostics or {})
 
     def as_record(self) -> dict:
-        provider = ("ollama-local" if self.code.startswith("MODEL.") else
-                    "semantic-scene-gate" if self.code.startswith("SCENE.") else
-                    "unknown")
+        # 供应方一律由调用点显式标注（local:host:port / cloud:域名）：本机
+        # mlx-dspark、llama.cpp、mlx_vlm 都不是 Ollama，旧的 "ollama-local" 默认
+        # 会把排查引向错误方向。没有显式标注时只报"本机端点未知"，不猜具体产品。
+        if self.provider:
+            provider = self.provider
+        elif self.code.startswith("MODEL."):
+            provider = "local:unknown"
+        elif self.code.startswith("SCENE."):
+            provider = "semantic-scene-gate"
+        else:
+            provider = "unknown"
         record = {"code": self.code, "provider": provider,
                   "status_code": self.status_code, "detail": self.detail}
         if self.diagnostics:
@@ -148,6 +159,103 @@ def _is_loopback_url(endpoint: str) -> bool:
     return parsed.scheme == "http" and parsed.hostname in ("127.0.0.1", "localhost", "::1")
 
 
+# "连接被对端关闭"这一类错误：Python 的 urllib 只把发送请求阶段的错误包成
+# URLError，读响应头/读响应体阶段的 http.client.RemoteDisconnected、
+# IncompleteRead、ConnectionResetError、ssl.SSLError 会原样抛出。少了这一组，
+# 原始英文异常会一路冒到页面（2026-10-28 job-3afdd5d88bd9）。
+_LOCAL_TRANSPORT_EXCEPTIONS = (http.client.HTTPException, ConnectionError,
+                               ssl.SSLError, TimeoutError, socket.timeout)
+
+
+def _endpoint_authority(endpoint: str) -> str:
+    parsed = urllib.parse.urlparse(endpoint)
+    host = parsed.hostname or "unknown"
+    port = parsed.port
+    return f"{host}:{port}" if port else host
+
+
+def _local_provider_label(endpoint: str) -> str:
+    """本机调用点的供应方标注：``local:host:port``。
+
+    不猜具体产品：mlx-dspark、llama.cpp、mlx_vlm 都不是 Ollama，旧默认值
+    ``ollama-local`` 会把排查引向错误方向。
+    """
+    return "local:" + _endpoint_authority(endpoint)
+
+
+def _cloud_provider_label(endpoint: str) -> str:
+    return "cloud:" + (urllib.parse.urlparse(endpoint).hostname or "unknown")
+
+
+def _opener_for(endpoint: str):
+    """本机端点直连（绕过系统代理）；云端端点沿用系统代理。"""
+    if _is_loopback_url(endpoint):
+        return urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    return urllib.request.build_opener()
+
+
+def _endpoint_health_path(endpoint: str) -> str:
+    return "/api/tags" if _endpoint_authority(endpoint).endswith(":11434") else "/health"
+
+
+def _probe_endpoint_health(endpoint: str, timeout_s: float = 3.0) -> tuple[bool, dict]:
+    """探测端点健康接口，返回 ``(是否可用, 健康体)``。
+
+    可用判定沿用既有规则：HTTP 200 或 404 都说明该端点上确有服务在监听（部分
+    llama.cpp 风格服务没有 ``/health``）。连接被拒/超时/断开一律视为不可用。
+    """
+    req = urllib.request.Request(endpoint + _endpoint_health_path(endpoint), method="GET")
+    body = b""
+    try:
+        with _opener_for(endpoint).open(req, timeout=timeout_s) as response:
+            status = response.status
+            body = response.read(65536)
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        try:
+            body = exc.read(65536)
+        finally:
+            exc.close()
+    except (urllib.error.URLError, *_LOCAL_TRANSPORT_EXCEPTIONS):
+        return False, {}
+    payload: dict = {}
+    if body:
+        try:
+            decoded = json.loads(body.decode("utf-8"))
+        except (ValueError, UnicodeDecodeError):
+            decoded = None
+        if isinstance(decoded, dict):
+            payload = decoded
+    return status in (200, 404), payload
+
+
+def _model_health_record(endpoint: str, payload: dict) -> dict:
+    """把端点 ``/health`` 归纳成可诊断摘要。
+
+    内存压力只记录、不阻断：mlx-dspark 在 pressure 下仍能出结果，只是慢且更容易
+    断连；写进阶段 detail 的 ``model_health`` 便于事后判断是不是环境问题。
+    """
+    warnings = []
+    for item in payload.get("warnings") or []:
+        if not isinstance(item, dict):
+            continue
+        code = str(item.get("code") or "").strip()
+        if not code:
+            continue
+        warnings.append({"code": code, "level": item.get("level"),
+                         "message": str(item.get("message") or "")[:200]})
+    pressure = next((w for w in warnings if "memory_pressure" in w["code"]), None)
+    record = {"endpoint": _endpoint_authority(endpoint),
+              "status": str(payload.get("status") or ("ok" if payload else "unknown")),
+              "memory_pressure": (pressure or {}).get("level") or "none",
+              "warning_codes": [w["code"] for w in warnings]}
+    if payload.get("model"):
+        record["model"] = str(payload.get("model"))
+    if warnings:
+        record["warnings"] = warnings
+    return record
+
+
 def _loopback_endpoint() -> str:
     endpoint = os.environ.get("WENGAO_LOCAL_MODEL_ENDPOINT")
     if endpoint:
@@ -198,123 +306,147 @@ def _vision_loopback_endpoint() -> str:
     return "http://127.0.0.1:8080"
 
 
-def _call_endpoint_once(endpoint: str, model: str, prompt: str, timeout_s: int,
-                        *, num_predict: int = 4096,
-                        keep_alive: str = "15m") -> dict:
-    started = time.monotonic()
-    ollama_payload = {
-        "model": model,
-        "stream": False,
-        "prompt": prompt,
-        "format": "json",
-        "think": False,
-        "options": {"temperature": 0.1, "num_predict": num_predict,
-                    "num_ctx": 8192},
-        "keep_alive": keep_alive,
-    }
+
+# 本机视觉不可用时给用户的两条可操作建议（页面与阶段 detail 共用）。
+_VISION_UNAVAILABLE_NEXT_ACTIONS = (
+    "启用云端视觉：在工作台「云端模型」设置里打开视觉模型（原稿图片会发往该云端服务商，需你显式同意）",
+    "启动本机视觉服务（mlx_vlm，端口 8080）",
+)
+
+
+def preflight_scene_models(*, needs_vision: bool,
+                           probe_timeout_s: float = 3.0) -> dict:
+    """语义场景阶段开跑前的可用性预检（fail fast）。
+
+    云端可用即通过；否则探测本机端点，3 秒内没有应答就直接失败。旧的失败方式
+    是先跑几分钟文本规划，再在图片复核处以 ConnectionRefused 崩掉——用户看到
+    的是一个读不懂的传输错误，而不是"视觉服务没启动"。
+
+    内存压力只记录、不阻断：写进返回值供阶段 detail 的 ``model_health`` 使用。
+    """
+    record: dict = {"needs_vision": bool(needs_vision)}
+    cloud_text = cloud_model_config.active_text_target()
+    if cloud_text:
+        record["text"] = {"mode": "cloud", "available": True,
+                          "provider": _cloud_provider_label(cloud_text["endpoint"])}
+    else:
+        endpoint = _loopback_endpoint()
+        provider = _local_provider_label(endpoint)
+        available, health = _probe_endpoint_health(endpoint, timeout_s=probe_timeout_s)
+        record["text"] = {"mode": "local", "available": available,
+                          "provider": provider,
+                          "health_path": _endpoint_health_path(endpoint)}
+        if not available:
+            raise SceneModelError(
+                "MODEL.RUNTIME_UNAVAILABLE",
+                f"本机语义模型端点 {_endpoint_authority(endpoint)} "
+                f"{probe_timeout_s:g} 秒内无响应；语义场景规划无法开始。",
+                diagnostics={
+                    "endpoint": _endpoint_authority(endpoint),
+                    "phase": "预检（文本）",
+                    "probe_timeout_s": probe_timeout_s,
+                    "next_actions": ["启动本机语义模型服务",
+                                     "或在云端设置里启用云端文本模型"],
+                },
+                provider=provider)
+        health_record = _model_health_record(endpoint, health)
+        record["model_health"] = health_record
+        if health_record.get("model"):
+            record["text"]["model"] = health_record["model"]
+    if not needs_vision:
+        record["vision"] = {"required": False}
+        return record
+    cloud_vision = cloud_model_config.active_vision_target()
+    if cloud_vision:
+        record["vision"] = {"mode": "cloud", "available": True,
+                            "provider": _cloud_provider_label(cloud_vision["endpoint"])}
+        return record
+    vision_endpoint = _vision_loopback_endpoint()
+    available, _health = _probe_endpoint_health(vision_endpoint, timeout_s=probe_timeout_s)
+    record["vision"] = {"mode": "local", "available": available,
+                        "provider": _local_provider_label(vision_endpoint)}
+    if not available:
+        raise SceneModelError(
+            "MODEL.VISION_RUNTIME_UNAVAILABLE",
+            "图片语义复核需要本机视觉模型（127.0.0.1:8080 或 11434）或启用云端视觉，"
+            "当前都不可用。",
+            diagnostics={
+                "endpoint": _endpoint_authority(vision_endpoint),
+                "phase": "预检（视觉）",
+                "probed_endpoints": ["127.0.0.1:8080", "127.0.0.1:11434"],
+                "next_actions": list(_VISION_UNAVAILABLE_NEXT_ACTIONS),
+                # 文本端点已经检过：把它的健康摘要一并带上，免得"视觉不可用"
+                # 这条报错把内存压力之类的环境证据吞掉。
+                "text_model_health": record.get("model_health"),
+            },
+            provider=_local_provider_label(vision_endpoint))
+    return record
+
+# 本机端点支持的三种协议。首次成功的协议按端点记住，后续调用直接复用，
+# 不再每次先撞两次 404（旧实现还因为 404 响应体没关闭而留下 CLOSE_WAIT 连接）。
+_ENDPOINT_PROTOCOL: dict[str, str] = {}
+_ENDPOINT_PROTOCOLS = ("ollama", "llama", "openai")
+_PROTOCOL_PATHS = {"ollama": "/api/generate", "llama": "/completion",
+                   "openai": "/v1/chat/completions"}
+
+
+def reset_endpoint_protocol_cache() -> None:
+    """清空协议缓存（测试用；端点变更时会自动清）。"""
+    _ENDPOINT_PROTOCOL.clear()
+
+
+def _protocol_order(endpoint: str) -> list[str]:
+    cached = _ENDPOINT_PROTOCOL.get(endpoint)
+    if cached in _ENDPOINT_PROTOCOLS:
+        return [cached] + [p for p in _ENDPOINT_PROTOCOLS if p != cached]
+    return list(_ENDPOINT_PROTOCOLS)
+
+
+class _ProtocolNotSupported(Exception):
+    """端点对该协议路径返回 404：不是传输故障，调用方可以换下一种协议。"""
+
+    def __init__(self, detail: str, status_code: int = 404):
+        super().__init__(detail)
+        self.detail = detail
+        self.status_code = status_code
+
+
+def _post_json(opener, endpoint: str, path: str, payload: dict, timeout_s: int, *,
+               provider: str, phase: str, authority: str,
+               protocol: str) -> dict:
+    """POST 一个 JSON 请求并解析响应。
+
+    统一处理三类"看起来像业务失败、其实是连接问题"的异常，并且：
+    - 404 交给上层换协议（``_ProtocolNotSupported``）；
+    - ``HTTPError`` 读完 body 后一定 ``close()``，不在客户端留 CLOSE_WAIT；
+    - 原始英文异常文本不直接当 detail，统一换成带端点/协议/阶段的说明。
+    """
+    url = endpoint + path
     req = urllib.request.Request(
-        endpoint + "/api/generate",
-        data=json.dumps(ollama_payload, ensure_ascii=False).encode("utf-8"),
+        url,
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         method="POST")
     req.add_header("Content-Type", "application/json")
-    opener = (urllib.request.build_opener(urllib.request.ProxyHandler({}))
-              if _is_loopback_url(endpoint) else urllib.request.build_opener())
+    started = time.monotonic()
+
+    def _meta(exception: str) -> dict:
+        return {"endpoint": authority, "endpoint_url": endpoint,
+                "path": path, "protocol": protocol,
+                "phase": phase, "exception": exception,
+                "elapsed_seconds": round(time.monotonic() - started, 3)}
+
     try:
         with opener.open(req, timeout=timeout_s) as response:
-            obj = json.loads(response.read().decode("utf-8"))
-            resp_text = str(obj.get("response") or obj.get("content") or "").strip()
-            return {"response": resp_text,
-                    "model": str(obj.get("model") or model),
-                    "elapsed_seconds": round(time.monotonic() - started, 3),
-                    "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
-                    "prompt_eval_count": obj.get("prompt_eval_count"),
-                    "eval_count": obj.get("eval_count"),
-                    "done_reason": obj.get("done_reason")}
+            body = response.read()
+        return json.loads(body.decode("utf-8"))
     except urllib.error.HTTPError as exc:
+        try:
+            raw = exc.read(4096)
+        finally:
+            exc.close()
+        detail = _safe_error_detail(raw)
         if exc.code == 404:
-            llama_payload = {
-                "prompt": prompt,
-                "temperature": 0.1,
-                "n_predict": num_predict,
-                "stream": False,
-                "reasoning_format": "none",
-                "json_schema": {"type": "object"}
-            }
-            llama_req = urllib.request.Request(
-                endpoint + "/completion",
-                data=json.dumps(llama_payload, ensure_ascii=False).encode("utf-8"),
-                method="POST")
-            llama_req.add_header("Content-Type", "application/json")
-            try:
-                with opener.open(llama_req, timeout=timeout_s) as response:
-                    obj = json.loads(response.read().decode("utf-8"))
-                    resp_text = str(obj.get("content") or obj.get("response") or "").strip()
-                    timings = obj.get("timings") or {}
-                    return {"response": resp_text,
-                            "model": str(obj.get("model") or model),
-                            "elapsed_seconds": round(time.monotonic() - started, 3),
-                            "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
-                            "prompt_eval_count": timings.get("prompt_n"),
-                            "eval_count": timings.get("predicted_n"),
-                            "done_reason": obj.get("stop_type") or obj.get("stop_reason")}
-            except urllib.error.HTTPError as exc2:
-                if exc2.code == 404:
-                    # 既非 Ollama 也非 llama.cpp 原生路由：尝试 OpenAI 兼容
-                    # /v1/chat/completions（本机加速推理框架 mlx-dspark 等采用此格式）。
-                    openai_payload = {
-                        "model": model,
-                        "messages": [{"role": "user", "content": prompt}],
-                        "temperature": 0.1,
-                        "max_tokens": num_predict,
-                        "stream": False,
-                        "response_format": {"type": "json_object"},
-                        # 关闭思维链：产品需要直接 JSON 结果，不是推理过程；否则 content
-                        # 可能为空（推理内容单独落在 reasoning_content 里）或被 token 预算截断。
-                        "chat_template_kwargs": {"enable_thinking": False},
-                    }
-                    openai_req = urllib.request.Request(
-                        endpoint + "/v1/chat/completions",
-                        data=json.dumps(openai_payload, ensure_ascii=False).encode("utf-8"),
-                        method="POST")
-                    openai_req.add_header("Content-Type", "application/json")
-                    try:
-                        with opener.open(openai_req, timeout=timeout_s) as response:
-                            obj = json.loads(response.read().decode("utf-8"))
-                            choices = obj.get("choices") or []
-                            message = (choices[0].get("message") or {}) if choices else {}
-                            resp_text = str(message.get("content") or "").strip()
-                            usage = obj.get("usage") or {}
-                            return {"response": resp_text,
-                                    "model": str(obj.get("model") or model),
-                                    "elapsed_seconds": round(time.monotonic() - started, 3),
-                                    "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
-                                    "prompt_eval_count": usage.get("prompt_tokens"),
-                                    "eval_count": usage.get("completion_tokens"),
-                                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
-                    except urllib.error.HTTPError as exc3:
-                        exc = exc3
-                    except urllib.error.URLError as exc3:
-                        reason = getattr(exc3, "reason", None)
-                        if isinstance(reason, (TimeoutError, socket.timeout)):
-                            raise SceneModelError(
-                                "MODEL.REQUEST_TIMEOUT",
-                                f"本机语义模型请求超过 {timeout_s} 秒超时预算。") from None
-                        reason_name = type(reason).__name__ if reason is not None else "URLError"
-                        raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                                              f"本机语义模型连接失败（{reason_name}）。") from None
-                else:
-                    exc = exc2
-            except urllib.error.URLError as exc2:
-                reason = getattr(exc2, "reason", None)
-                if isinstance(reason, (TimeoutError, socket.timeout)):
-                    raise SceneModelError(
-                        "MODEL.REQUEST_TIMEOUT",
-                        f"本机语义模型请求超过 {timeout_s} 秒超时预算。") from None
-                reason_name = type(reason).__name__ if reason is not None else "URLError"
-                raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                                      f"本机语义模型连接失败（{reason_name}）。") from None
-
-        detail = _safe_error_detail(exc.read(4096))
+            raise _ProtocolNotSupported(detail) from None
         lowered = detail.lower()
         if re.search(r"(?i)(quota|insufficient\s+(credits?|balance)|out of (credits?|budget)|"
                      r"payment required|resource exhausted)", detail):
@@ -333,23 +465,137 @@ def _call_endpoint_once(endpoint: str, model: str, prompt: str, timeout_s: int,
             code = "MODEL.TRANSPORT_ERROR"
         else:
             code = "MODEL.HTTP_ERROR"
-        raise SceneModelError(code, detail, exc.code) from None
+        raise SceneModelError(code, detail, exc.code, provider=provider,
+                              diagnostics=_meta("HTTPError")) from None
     except urllib.error.URLError as exc:
         reason = getattr(exc, "reason", None)
         if isinstance(reason, (TimeoutError, socket.timeout)):
             raise SceneModelError(
                 "MODEL.REQUEST_TIMEOUT",
-                f"本机语义模型请求超过 {timeout_s} 秒超时预算。") from None
+                f"{phase}请求超过 {timeout_s} 秒超时预算。",
+                provider=provider, diagnostics=_meta("URLError/Timeout")) from None
         reason_name = type(reason).__name__ if reason is not None else "URLError"
-        raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                              f"本机语义模型连接失败（{reason_name}）。") from None
+        raise SceneModelError(
+            "MODEL.TRANSPORT_ERROR",
+            f"{phase}连接失败（{reason_name}，端点 {authority} {path}）。",
+            provider=provider, diagnostics=_meta(reason_name)) from None
     except (TimeoutError, socket.timeout):
         raise SceneModelError(
             "MODEL.REQUEST_TIMEOUT",
-            f"本机语义模型请求超过 {timeout_s} 秒超时预算。") from None
-    except json.JSONDecodeError as exc:
-        raise SceneModelError("MODEL.RESPONSE_INVALID",
-                              f"本机语义模型响应不可用（{type(exc).__name__}）。") from None
+            f"{phase}请求超过 {timeout_s} 秒超时预算。",
+            provider=provider, diagnostics=_meta("TimeoutError")) from None
+    except (http.client.HTTPException, ConnectionError, ssl.SSLError) as exc:
+        name = type(exc).__name__
+        raise SceneModelError(
+            "MODEL.TRANSPORT_ERROR",
+            f"{phase}连接被中断（{name}，端点 {authority} {path}）。",
+            provider=provider, diagnostics=_meta(name)) from None
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        raise SceneModelError(
+            "MODEL.RESPONSE_INVALID",
+            f"{phase}响应不可用（{type(exc).__name__}）。",
+            provider=provider, diagnostics=_meta(type(exc).__name__)) from None
+
+
+def _protocol_payload(protocol: str, model: str, prompt: str, num_predict: int,
+                      keep_alive: str) -> dict:
+    if protocol == "ollama":
+        return {
+            "model": model,
+            "stream": False,
+            "prompt": prompt,
+            "format": "json",
+            "think": False,
+            "options": {"temperature": 0.1, "num_predict": num_predict,
+                        "num_ctx": 8192},
+            "keep_alive": keep_alive,
+        }
+    if protocol == "llama":
+        return {
+            "prompt": prompt,
+            "temperature": 0.1,
+            "n_predict": num_predict,
+            "stream": False,
+            "reasoning_format": "none",
+            "json_schema": {"type": "object"},
+        }
+    return {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.1,
+        "max_tokens": num_predict,
+        "stream": False,
+        "response_format": {"type": "json_object"},
+        # 关闭思维链：产品需要直接 JSON 结果，不是推理过程；否则 content
+        # 可能为空（推理内容单独落在 reasoning_content 里）或被 token 预算截断。
+        "chat_template_kwargs": {"enable_thinking": False},
+    }
+
+
+def _protocol_response(protocol: str, obj: dict, model: str, started: float) -> dict:
+    if protocol == "llama":
+        text = str(obj.get("content") or obj.get("response") or "").strip()
+        timings = obj.get("timings") or {}
+        prompt_eval = timings.get("prompt_n")
+        eval_count = timings.get("predicted_n")
+        done_reason = obj.get("stop_type") or obj.get("stop_reason")
+    elif protocol == "openai":
+        choices = obj.get("choices") or []
+        message = (choices[0].get("message") or {}) if choices else {}
+        text = str(message.get("content") or "").strip()
+        usage = obj.get("usage") or {}
+        prompt_eval = usage.get("prompt_tokens")
+        eval_count = usage.get("completion_tokens")
+        done_reason = choices[0].get("finish_reason") if choices else None
+    else:
+        text = str(obj.get("response") or obj.get("content") or "").strip()
+        prompt_eval = obj.get("prompt_eval_count")
+        eval_count = obj.get("eval_count")
+        done_reason = obj.get("done_reason")
+    return {"response": text,
+            "model": str(obj.get("model") or model),
+            "elapsed_seconds": round(time.monotonic() - started, 3),
+            "response_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "prompt_eval_count": prompt_eval,
+            "eval_count": eval_count,
+            "done_reason": done_reason}
+
+
+def _call_endpoint_once(endpoint: str, model: str, prompt: str, timeout_s: int,
+                        *, num_predict: int = 4096,
+                        keep_alive: str = "15m",
+                        phase: str = "本机语义模型") -> dict:
+    """按已缓存的协议调用本机端点，一次尝试只用一个协议。
+
+    首次调用按 ollama -> llama.cpp -> OpenAI 兼容的顺序探测（只有 404 才换下一种），
+    成功后记住该端点用的协议，之后不再重复撞两次 404。
+    """
+    started = time.monotonic()
+    opener = _opener_for(endpoint)
+    provider = _local_provider_label(endpoint)
+    authority = _endpoint_authority(endpoint)
+    tried = _protocol_order(endpoint)
+    for protocol in tried:
+        path = _PROTOCOL_PATHS[protocol]
+        payload = _protocol_payload(protocol, model, prompt, num_predict, keep_alive)
+        try:
+            obj = _post_json(opener, endpoint, path, payload, timeout_s,
+                             provider=provider, phase=phase, authority=authority,
+                             protocol=protocol)
+        except _ProtocolNotSupported:
+            # 端点换了服务、或缓存协议已失效：清缓存，继续试其余协议。
+            if _ENDPOINT_PROTOCOL.get(endpoint) == protocol:
+                _ENDPOINT_PROTOCOL.pop(endpoint, None)
+            continue
+        _ENDPOINT_PROTOCOL[endpoint] = protocol
+        return _protocol_response(protocol, obj, model, started)
+    raise SceneModelError(
+        "MODEL.HTTP_ERROR",
+        f"{phase}端点 {authority} 不接受已知的三种协议"
+        "（/api/generate、/completion、/v1/chat/completions 均返回 404）。",
+        404, provider=provider,
+        diagnostics={"endpoint": authority, "phase": phase,
+                     "protocols_tried": tried})
 
 
 def _scene_timeout_budget(timeout_s: int | None) -> int:
@@ -377,10 +623,48 @@ def _reasoning_effort_for(model: str) -> str:
     return "low" if "pro" in (model or "").lower() else "none"
 
 
+# 云端调用经系统代理（如 Clash）长时间连续发送时，偶发 TLS 连接被对端/代理
+# 中途掐断（2026-10-27 job-f51a976c5258：8 分钟内多次视觉复核后一次 SSLEOFError
+# 使整份任务失败）。复核/规划请求无副作用，可安全重发；仅对连接被掐断类错误
+# 有限重试，超时与 HTTP 状态错误仍立即失败。
+_CLOUD_TRANSIENT_ATTEMPTS = 3
+_CLOUD_TRANSIENT_BACKOFF_S = 1.5
+_CLOUD_TRANSIENT_ERRORS = (ssl.SSLError, ConnectionError, http.client.HTTPException)
+
+
+def _is_transient_cloud_transport(exc: BaseException) -> bool:
+    reason = getattr(exc, "reason", None) if isinstance(exc, urllib.error.URLError) else exc
+    if isinstance(reason, (TimeoutError, socket.timeout)):
+        return False
+    return isinstance(reason, _CLOUD_TRANSIENT_ERRORS)
+
+
+def _cloud_post_json(req: urllib.request.Request, timeout_s: int) -> dict:
+    """POST 到云端并解析 JSON；连接被掐断时有限重试。"""
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            with urllib.request.urlopen(req, timeout=timeout_s) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError:
+            raise
+        except (urllib.error.URLError, *_CLOUD_TRANSIENT_ERRORS) as exc:
+            if attempt >= _CLOUD_TRANSIENT_ATTEMPTS or not _is_transient_cloud_transport(exc):
+                raise
+            time.sleep(_CLOUD_TRANSIENT_BACKOFF_S * attempt)
+
+
+def _transport_reason_name(exc: BaseException) -> str:
+    reason = getattr(exc, "reason", None) if isinstance(exc, urllib.error.URLError) else exc
+    return type(reason).__name__
+
+
 def _call_cloud_text_once(target: dict, prompt: str, timeout_s: int,
                           *, num_predict: int) -> dict:
     """OpenAI 兼容云端端点（用户自备 key，显式启用）。原文片段会发往该端点。"""
     started = time.monotonic()
+    cloud_provider = _cloud_provider_label(target["endpoint"])
     payload = {
         "model": target["model"],
         "messages": [{"role": "user", "content": prompt}],
@@ -400,19 +684,18 @@ def _call_cloud_text_once(target: dict, prompt: str, timeout_s: int,
     req.add_header("Content-Type", "application/json")
     req.add_header("Authorization", "Bearer " + target["api_key"])
     try:
-        with urllib.request.urlopen(req, timeout=timeout_s) as response:
-            obj = json.loads(response.read().decode("utf-8"))
-            choices = obj.get("choices") or []
-            message = (choices[0].get("message") or {}) if choices else {}
-            resp_text = str(message.get("content") or "").strip()
-            usage = obj.get("usage") or {}
-            return {"response": resp_text,
-                    "model": str(obj.get("model") or target["model"]),
-                    "elapsed_seconds": round(time.monotonic() - started, 3),
-                    "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
-                    "prompt_eval_count": usage.get("prompt_tokens"),
-                    "eval_count": usage.get("completion_tokens"),
-                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
+        obj = _cloud_post_json(req, timeout_s)
+        choices = obj.get("choices") or []
+        message = (choices[0].get("message") or {}) if choices else {}
+        resp_text = str(message.get("content") or "").strip()
+        usage = obj.get("usage") or {}
+        return {"response": resp_text,
+                "model": str(obj.get("model") or target["model"]),
+                "elapsed_seconds": round(time.monotonic() - started, 3),
+                "response_sha256": hashlib.sha256(resp_text.encode("utf-8")).hexdigest(),
+                "prompt_eval_count": usage.get("prompt_tokens"),
+                "eval_count": usage.get("completion_tokens"),
+                "done_reason": (choices[0].get("finish_reason") if choices else None)}
     except urllib.error.HTTPError as exc:
         detail = _safe_error_detail(exc.read(4096))
         code = ("MODEL.AUTH_FAILED" if exc.code in (401, 403) else
@@ -420,17 +703,21 @@ def _call_cloud_text_once(target: dict, prompt: str, timeout_s: int,
                 "MODEL.QUOTA_EXCEEDED" if re.search(
                     r"(?i)(quota|insufficient\s+(credits?|balance)|payment required)", detail) else
                 "MODEL.CLOUD_HTTP_ERROR")
-        raise SceneModelError(code, f"云端模型调用失败：{detail}", exc.code) from None
-    except urllib.error.URLError as exc:
+        raise SceneModelError(code, f"云端模型调用失败：{detail}", exc.code,
+                              provider=cloud_provider) from None
+    except (urllib.error.URLError, *_CLOUD_TRANSIENT_ERRORS) as exc:
         reason = getattr(exc, "reason", None)
         if isinstance(reason, (TimeoutError, socket.timeout)):
             raise SceneModelError("MODEL.REQUEST_TIMEOUT",
-                                  f"云端模型请求超过 {timeout_s} 秒超时预算。") from None
+                                  f"云端模型请求超过 {timeout_s} 秒超时预算。",
+                                  provider=cloud_provider) from None
         raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                              f"云端模型连接失败（{type(reason).__name__}）。") from None
+                              f"云端模型连接失败（{_transport_reason_name(exc)}）。",
+                              provider=cloud_provider) from None
     except json.JSONDecodeError as exc:
         raise SceneModelError("MODEL.RESPONSE_INVALID",
-                              f"云端模型响应不可用（{type(exc).__name__}）。") from None
+                              f"云端模型响应不可用（{type(exc).__name__}）。",
+                              provider=cloud_provider) from None
 
 
 def call_local_model(model: str, prompt: str, *, timeout_s: int | None = None) -> dict:
@@ -605,6 +892,7 @@ def scene_image_review_prompt(scene: dict) -> str:
 def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout_s: int) -> dict:
     """OpenAI 兼容云端视觉端点（用户自备 key，显式启用）。候选图片会发往该端点。"""
     started = time.monotonic()
+    cloud_provider = _cloud_provider_label(target["endpoint"])
     payload = {
         "model": target["model"],
         "messages": [{"role": "user", "content": [
@@ -625,22 +913,21 @@ def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout
     req.add_header("Content-Type", "application/json")
     req.add_header("Authorization", "Bearer " + target["api_key"])
     try:
-        with urllib.request.urlopen(req, timeout=timeout_s) as response:
-            obj = json.loads(response.read().decode("utf-8"))
-            choices = obj.get("choices") or []
-            message = (choices[0].get("message") or {}) if choices else {}
-            text = str(message.get("content") or "").strip()
-            if not text:
-                raise SceneModelError("SCENE.VISION_RESPONSE_INVALID",
-                                      "云端视觉模型没有返回结构化复核结果。")
-            usage = obj.get("usage") or {}
-            return {"response": text,
-                    "model": str(obj.get("model") or target["model"]),
-                    "elapsed_seconds": round(time.monotonic() - started, 3),
-                    "response_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
-                    "prompt_eval_count": usage.get("prompt_tokens"),
-                    "eval_count": usage.get("completion_tokens"),
-                    "done_reason": (choices[0].get("finish_reason") if choices else None)}
+        obj = _cloud_post_json(req, timeout_s)
+        choices = obj.get("choices") or []
+        message = (choices[0].get("message") or {}) if choices else {}
+        text = str(message.get("content") or "").strip()
+        if not text:
+            raise SceneModelError("SCENE.VISION_RESPONSE_INVALID",
+                                  "云端视觉模型没有返回结构化复核结果。")
+        usage = obj.get("usage") or {}
+        return {"response": text,
+                "model": str(obj.get("model") or target["model"]),
+                "elapsed_seconds": round(time.monotonic() - started, 3),
+                "response_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "prompt_eval_count": usage.get("prompt_tokens"),
+                "eval_count": usage.get("completion_tokens"),
+                "done_reason": (choices[0].get("finish_reason") if choices else None)}
     except SceneModelError:
         raise
     except urllib.error.HTTPError as exc:
@@ -648,17 +935,22 @@ def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout
         code = ("MODEL.AUTH_FAILED" if exc.code in (401, 403) else
                 "MODEL.RATE_LIMITED" if exc.code == 429 else
                 "MODEL.VISION_HTTP_ERROR")
-        raise SceneModelError(code, f"云端视觉模型调用失败：{detail}", exc.code) from None
-    except urllib.error.URLError as exc:
+        raise SceneModelError(code, f"云端视觉模型调用失败：{detail}", exc.code,
+                              provider=cloud_provider) from None
+    except (urllib.error.URLError, *_CLOUD_TRANSIENT_ERRORS) as exc:
         reason = getattr(exc, "reason", None)
         if isinstance(reason, (TimeoutError, socket.timeout)):
             raise SceneModelError("MODEL.REQUEST_TIMEOUT",
-                                  f"云端图片语义复核超过 {timeout_s} 秒时限。") from None
+                                  f"云端图片语义复核超过 {timeout_s} 秒时限。",
+                                  provider=cloud_provider) from None
         raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                              f"云端图片语义复核连接失败（{type(reason).__name__}）。") from None
+                              f"云端图片语义复核连接失败（{_transport_reason_name(exc)}，"
+                              f"已重试 {_CLOUD_TRANSIENT_ATTEMPTS} 次）。",
+                              provider=cloud_provider) from None
     except (json.JSONDecodeError, UnicodeDecodeError):
         raise SceneModelError("MODEL.VISION_RESPONSE_INVALID",
-                              "云端视觉模型响应无法解析。") from None
+                              "云端视觉模型响应无法解析。",
+                              provider=cloud_provider) from None
 
 
 def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
@@ -671,6 +963,8 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
     if cloud_target:
         return _call_cloud_vision_once(cloud_target, prompt, image_b64, timeout_s)
     endpoint = _vision_loopback_endpoint()
+    vision_provider = _local_provider_label(endpoint)
+    vision_authority = _endpoint_authority(endpoint)
     payload = {
         "model": str(model), "stream": False, "prompt": prompt,
         "images": [image_b64],
@@ -724,7 +1018,8 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
                 # "Repo id must use alphanumeric..." 报错。
                 raise SceneModelError(
                     "MODEL.VISION_UNAVAILABLE",
-                    "图像语义复核端点当前没有已加载的模型（可能处于卸载/未就绪状态），场景图不放行。")
+                    "图像语义复核端点当前没有已加载的模型（可能处于卸载/未就绪状态），场景图不放行。",
+                    provider=vision_provider)
             openai_payload = {
                 "model": vision_model,
                 "messages": [{"role": "user", "content": [
@@ -767,11 +1062,22 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
                 reason = getattr(exc2, "reason", None)
                 if isinstance(reason, (TimeoutError, socket.timeout)):
                     raise SceneModelError("MODEL.REQUEST_TIMEOUT",
-                                          f"本机图片语义复核超过 {timeout_s} 秒时限。") from None
+                                          f"本机图片语义复核超过 {timeout_s} 秒时限。",
+                                          provider=vision_provider) from None
                 reason_name = type(reason).__name__ if reason is not None else "URLError"
                 raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                                      f"本机图片语义复核连接失败（{reason_name}）。") from None
-        detail = _safe_error_detail(exc.read(4096))
+                                      f"本机图片语义复核连接失败（{reason_name}）。",
+                                      provider=vision_provider) from None
+            except (http.client.HTTPException, ConnectionError, ssl.SSLError) as exc2:
+                raise SceneModelError(
+                    "MODEL.TRANSPORT_ERROR",
+                    f"本机图片语义复核连接被中断（{type(exc2).__name__}，"
+                    f"端点 {vision_authority} /v1/chat/completions）。",
+                    provider=vision_provider) from None
+        try:
+            detail = _safe_error_detail(exc.read(4096))
+        finally:
+            exc.close()
         if exc.code == 404 or "does not support images" in detail.lower():
             code = "MODEL.VISION_UNAVAILABLE"
             detail = "配置的本机模型端点不支持图像语义复核；场景图不放行。"
@@ -781,21 +1087,31 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
             code = "MODEL.RATE_LIMITED"
         else:
             code = "MODEL.VISION_HTTP_ERROR"
-        raise SceneModelError(code, detail, exc.code) from None
+        raise SceneModelError(code, detail, exc.code, provider=vision_provider) from None
     except urllib.error.URLError as exc:
         reason = getattr(exc, "reason", None)
         if isinstance(reason, (TimeoutError, socket.timeout)):
             raise SceneModelError("MODEL.REQUEST_TIMEOUT",
-                                  f"本机图片语义复核超过 {timeout_s} 秒时限。") from None
+                                  f"本机图片语义复核超过 {timeout_s} 秒时限。",
+                                  provider=vision_provider) from None
         reason_name = type(reason).__name__ if reason is not None else "URLError"
         raise SceneModelError("MODEL.TRANSPORT_ERROR",
-                              f"本机图片语义复核连接失败（{reason_name}）。") from None
+                              f"本机图片语义复核连接失败（{reason_name}）。",
+                              provider=vision_provider) from None
     except (TimeoutError, socket.timeout):
         raise SceneModelError("MODEL.REQUEST_TIMEOUT",
-                              f"本机图片语义复核超过 {timeout_s} 秒时限。") from None
+                              f"本机图片语义复核超过 {timeout_s} 秒时限。",
+                              provider=vision_provider) from None
+    except (http.client.HTTPException, ConnectionError, ssl.SSLError) as exc:
+        raise SceneModelError(
+            "MODEL.TRANSPORT_ERROR",
+            f"本机图片语义复核连接被中断（{type(exc).__name__}，"
+            f"端点 {vision_authority} /api/generate）。",
+            provider=vision_provider) from None
     except (json.JSONDecodeError, UnicodeDecodeError):
         raise SceneModelError("MODEL.VISION_RESPONSE_INVALID",
-                              "本机视觉模型响应无法解析。") from None
+                              "本机视觉模型响应无法解析。",
+                              provider=vision_provider) from None
 
 
 def review_semantic_scene_image(model: str, scene: dict, image_bytes: bytes, *,
@@ -1108,7 +1424,51 @@ def _response_payload(response, *, phase: str) -> tuple[dict, dict, str]:
     return obj, meta, clean_raw
 
 
-_MODEL_TRANSIENT_CODES = frozenset({"MODEL.TRANSPORT_ERROR", "MODEL.REQUEST_TIMEOUT"})
+# 只对"连接被掐断"重试。超时（默认 900 秒预算）不再重试：那说明请求本身过重，
+# 重试三遍只会让人白等 45 分钟，而不是提高成功率。
+_MODEL_TRANSIENT_CODES = frozenset({"MODEL.TRANSPORT_ERROR"})
+# 退避节奏：2 秒、4 秒的三次重试会全落进同一个内存高压窗口；改成长退避。
+_LOCAL_TRANSPORT_BACKOFF_S = (10.0, 30.0)
+# 每次重试前先等端点回到健康应答：每 5 秒探测一次，最多等 60 秒。
+_LOCAL_HEALTH_PROBE_INTERVAL_S = 5.0
+_LOCAL_HEALTH_WAIT_S = 60.0
+
+
+def _wait_for_endpoint_health(endpoint: str, *, wait_s: float | None = None,
+                              interval_s: float | None = None) -> bool:
+    """等到端点恢复健康应答；超过预算返回 False（不抛异常）。"""
+    wait = _LOCAL_HEALTH_WAIT_S if wait_s is None else max(0.0, float(wait_s))
+    interval = (_LOCAL_HEALTH_PROBE_INTERVAL_S if interval_s is None
+                else max(0.01, float(interval_s)))
+    deadline = time.monotonic() + wait
+    while True:
+        available, _health = _probe_endpoint_health(
+            endpoint, timeout_s=min(3.0, max(0.2, interval)))
+        if available:
+            return True
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            return False
+        time.sleep(min(interval, remaining))
+
+
+def _backoff_for(attempt: int) -> float:
+    if not _LOCAL_TRANSPORT_BACKOFF_S:
+        return 0.0
+    return float(_LOCAL_TRANSPORT_BACKOFF_S[min(attempt, len(_LOCAL_TRANSPORT_BACKOFF_S) - 1)])
+
+
+def _retry_exhausted_error(classified: SceneModelError, attempt_log: list[dict],
+                           *, phase: str, retries: int,
+                           reason: str | None = None) -> SceneModelError:
+    diagnostics = dict(classified.diagnostics or {})
+    diagnostics["phase"] = phase
+    diagnostics["attempts"] = attempt_log
+    diagnostics["retried"] = retries
+    detail = classified.detail if not reason else f"{reason}；{classified.detail}"
+    return SceneModelError(classified.code, f"{detail}（已重试 {retries} 次）",
+                           classified.status_code, diagnostics=diagnostics,
+                           provider=classified.provider)
 
 
 def _call_json_payload_with_transport_retry(model: str, prompt: str, call, *,
@@ -1116,23 +1476,64 @@ def _call_json_payload_with_transport_retry(model: str, prompt: str, call, *,
                                             attempts: int = 3) -> tuple[dict, dict, str]:
     """同一个模型、同一份提示词，遇传输抖动时的有界重试。
 
-    连接被上游掐断（RemoteDisconnected / SSL EOF / 读超时）不是"这个场景不成立"，
-    一次抖动就让整稿渲染失败属于误判。只重试传输类错误：格式错误仍由
-    ``_call_json_payload_once_on_format_error`` 自己的一次修复负责，配额/认证
-    等硬失败立即抛出，语义判否不受影响。
+    连接被上游掐断（RemoteDisconnected / SSL EOF / 连接重置）不是"这个场景不
+    成立"，一次抖动就让整稿渲染失败属于误判。只重试传输类错误，而且每次重试
+    之前都要等到端点恢复健康应答——本机 27B 在内存高压下会连续几次都断在同一
+    个窗口里，盲重试只会重复失败。超时、配额、认证等失败立即抛出，不换模型、
+    不换端点、不切云端。
     """
-    for attempt in range(max(1, int(attempts))):
+    budget = max(1, int(attempts))
+    attempt_log: list[dict] = []
+    for attempt in range(budget):
         try:
-            return _call_json_payload_once_on_format_error(model, prompt, call, phase=phase)
+            payload, meta, raw = _call_json_payload_once_on_format_error(
+                model, prompt, call, phase=phase)
+            if attempt_log:
+                # 重试成功也要留证据：否则事后只能看到"这次挺快"，看不出它其实
+                # 断过两次、断在哪个端点。
+                meta["transport_retry"] = {
+                    "attempts": len(attempt_log) + 1,
+                    "phase": phase,
+                    "failed_attempts": list(attempt_log),
+                }
+            return payload, meta, raw
         except Exception as exc:  # noqa: BLE001 — 先分类再决定是否重试
             classified = classify_external_model_failure(exc)
-            if (classified is None
-                    or classified.code not in _MODEL_TRANSIENT_CODES
-                    or attempt == max(1, int(attempts)) - 1):
+            endpoint = ""
+            endpoint_url = ""
+            if classified is not None:
+                endpoint = str((classified.diagnostics or {}).get("endpoint") or "")
+                endpoint_url = str((classified.diagnostics or {}).get("endpoint_url") or "")
+            attempt_log.append({
+                "attempt": attempt + 1,
+                "phase": phase,
+                "code": (classified.code if classified is not None
+                         else type(exc).__name__),
+                # 记录根因类名（RemoteDisconnected 等），而不是包装后的
+                # SceneModelError：事后排查要看到底是被掐断还是被拒连。
+                "exception": (str((classified.diagnostics or {}).get("exception") or "")
+                              if classified is not None else "") or type(exc).__name__,
+                "endpoint": endpoint or None,
+                "elapsed_seconds": ((classified.diagnostics or {}).get("elapsed_seconds")
+                                    if classified is not None else None),
+            })
+            retryable = (classified is not None
+                         and classified.code in _MODEL_TRANSIENT_CODES)
+            if not retryable:
                 if classified is not None and classified is not exc:
                     raise classified from None
                 raise
-            time.sleep(min(8.0, 2.0 * (attempt + 1)))
+            if attempt == budget - 1:
+                raise _retry_exhausted_error(classified, attempt_log, phase=phase,
+                                             retries=attempt + 1) from None
+            time.sleep(_backoff_for(attempt))
+            if endpoint_url and not _wait_for_endpoint_health(endpoint_url):
+                wait_s = _LOCAL_HEALTH_WAIT_S
+                reason = (f"本机模型服务 {wait_s:g} 秒内未恢复"
+                          f"（端点 {endpoint}），已停止重试")
+                raise _retry_exhausted_error(classified, attempt_log, phase=phase,
+                                             retries=attempt + 1,
+                                             reason=reason) from None
     raise SceneModelError("SCENE.MODEL_RESPONSE_INVALID",
                           f"语义场景{phase}响应无法读取。")
 

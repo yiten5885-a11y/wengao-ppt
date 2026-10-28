@@ -46,7 +46,7 @@ from .scene_images import (SceneImageError, ScenePhotoProvider, is_allowed_licen
                            is_valid_pexels_source_page)
 from .scene_model import (SceneModelError, classify_external_model_failure,
                           resolve_scene_semantics, scene_coverage_audit_prompt,
-                          call_local_model,
+                          call_local_model, preflight_scene_models,
                           _call_json_payload_once_on_format_error,
                           _validate_scene_coverage_audit, _coverage_plan_view,
                           scene_review_verdict_digest,
@@ -1444,7 +1444,17 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
     if len(layout.slides) != len(source_pages):
         raise SemanticSceneError("SCENE.PAGE_COUNT_MISMATCH", "场景规划来源与版式页数不一致。")
     model_generated = semantic_resolution is None
+    model_health = None
     if model_generated:
+        # 开跑前先确认端点真的在应答：否则要等几分钟文本规划后，才在最深处的
+        # 图片复核处以一个读不懂的连接错误失败。只对真实运行预检——注入了
+        # model_call 的调用（测试/夹具）根本不碰端点。是否需要视觉端点沿用现有
+        # 规则：真实模型规划 + 未注入复核器 + 真实 ScenePhotoProvider 才复核图片。
+        if model_call is None:
+            needs_vision_review = bool(
+                visual_review_call is None
+                and (provider is None or isinstance(provider, ScenePhotoProvider)))
+            model_health = preflight_scene_models(needs_vision=needs_vision_review)
         semantic_resolution, model_meta = resolve_scene_semantics(
             source_pages, model=model, model_call=model_call)
     else:
@@ -1911,6 +1921,8 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         "text_cards": text_cards,
         "photo_provider_errors": list(getattr(provider, "errors", []) or []),
     }
+    if model_health is not None:
+        plan["model_health"] = model_health
     plan["plan_sha256"] = _plan_hash(plan)
     return plan
 

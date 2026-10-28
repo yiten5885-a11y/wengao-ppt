@@ -29,8 +29,10 @@ class SceneModelTimeoutTests(unittest.TestCase):
         self.assertEqual(record["provider"], "semantic-scene-gate")
 
     def test_model_timeout_remains_attributed_to_local_model(self):
+        # 本机超时仍然是本机模型的错，但不再猜成 "ollama-local"：本机跑的可能是
+        # mlx-dspark / llama.cpp / mlx_vlm。没有调用点标注时只报 local:unknown。
         record = SceneModelError("MODEL.REQUEST_TIMEOUT", "slow").as_record()
-        self.assertEqual(record["provider"], "ollama-local")
+        self.assertEqual(record["provider"], "local:unknown")
 
     def test_direct_socket_timeout_has_request_timeout_code(self):
         opener = mock.Mock()
