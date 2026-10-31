@@ -3799,7 +3799,97 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
         verification_plan_view = copy.deepcopy(_coverage_plan_view(obj))
         audit_obj, audit_meta, _ = _call_json_payload_with_transport_retry(
             model, verification_prompt, call, phase="修复后全稿复核")
-        coverage_summary = _validate_scene_coverage_audit(audit_obj, pages, obj)
+        try:
+            coverage_summary = _validate_scene_coverage_audit(audit_obj, pages, obj)
+        except SceneModelError as verify_exc:
+            # 这是两次独立的模型判断（首轮审计 vs 修复后复核）；它们偶尔会对同一页
+            # 要不要配图给出不一致的结论——复核方若额外发现一项纯漏项（不含合并
+            # 冲突），之前没有任何补救通道，直接整单阻断。给它和首轮漏项完全同样
+            # 的修复机会，但只接受纯漏项：若复核同时报告了合并冲突，说明分歧比
+            # "是否该配图"更深，仍按契约整单阻断，不在这里自动吞掉。
+            if verify_exc.code != "SCENE.COVERAGE_AUDIT_GAPS":
+                raise
+            post_verify_summary = _validate_scene_coverage_audit(
+                audit_obj, pages, obj, allow_gaps=True)
+            if (post_verify_summary.get("merged_distinct_scenes", 0) > 0
+                    or not post_verify_summary.get("missing_scenes")):
+                raise
+            # 回放会先对第一轮修复结果做一次确定性富化（补充 visual_query
+            # 别名）再当作第二轮修复的"修复前"基准比对哈希；这里必须用同一份
+            # 富化后的快照，否则生成侧记的哈希和回放侧算出来的对不上。真正
+            # 流水线的 obj 本身仍保持未富化，统一留到末尾一次性富化。
+            first_repair_enriched = copy.deepcopy(obj)
+            _enrich_scene_image_prompts(first_repair_enriched, pages)
+            second_before_plan = _repair_binding_payload(first_repair_enriched)
+            second_audit_prompt_sha = hashlib.sha256(
+                verification_prompt.encode("utf-8")).hexdigest()
+            second_result_sha = hashlib.sha256(json.dumps(
+                audit_obj, ensure_ascii=False, sort_keys=True,
+                separators=(",", ":")).encode("utf-8")).hexdigest()
+            repair_audit = audit_obj
+            second_gap_repair_prompt_hash = None
+            second_gap_repair_response_hash = None
+            second_gap_repair_result_hash = None
+            second_gap_repair_result = None
+            second_gap_repair_model = None
+            second_gap_repair_elapsed = None
+            try:
+                applied2 = _apply_grounded_scene_gap_repairs(
+                    repair_audit, pages, second_before_plan)
+            except SceneModelError as exc2:
+                if exc2.code not in {"SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
+                                     "SCENE.COVERAGE_AUDIT_GAPS"}:
+                    raise
+                second_gap_repair_prompt_value = scene_gap_repair_prompt(
+                    pages, second_before_plan, audit_obj)
+                second_gap_repair_obj, second_gap_repair_meta, _ = (
+                    _call_json_payload_once_on_format_error(
+                        model, second_gap_repair_prompt_value, call,
+                        phase="复核后二次漏项检索锚点修复"))
+                second_gap_repair_result = _validate_scene_gap_repair_scope(
+                    audit_obj, second_gap_repair_obj)
+                repair_audit = copy.deepcopy(audit_obj)
+                repair_audit["missing_scenes"] = second_gap_repair_result["missing_scenes"]
+                applied2 = _apply_grounded_scene_gap_repairs(
+                    repair_audit, pages, second_before_plan)
+                second_gap_repair_prompt_hash = hashlib.sha256(
+                    second_gap_repair_prompt_value.encode("utf-8")).hexdigest()
+                second_gap_repair_response_hash = second_gap_repair_meta["response_sha256"]
+                second_gap_repair_result_hash = hashlib.sha256(json.dumps(
+                    second_gap_repair_result, ensure_ascii=False, sort_keys=True,
+                    separators=(",", ":")).encode("utf-8")).hexdigest()
+                second_gap_repair_model = second_gap_repair_meta.get("model")
+                second_gap_repair_elapsed = second_gap_repair_meta.get("elapsed_seconds")
+            obj = applied2["plan"]
+            second_gap_repair = {
+                "schema_version": "1.0.0", "kind": "post_verification_gap_repair",
+                "status": "APPLIED_PENDING_VERIFICATION",
+                "before_plan": second_before_plan,
+                "before_plan_sha256": _repair_binding_sha256(second_before_plan),
+                "response_sha256": audit_meta["response_sha256"],
+                "prompt_sha256": second_audit_prompt_sha,
+                "result_sha256": second_result_sha, "result": audit_obj,
+                "gap_repair_prompt_sha256": second_gap_repair_prompt_hash,
+                "gap_repair_response_sha256": second_gap_repair_response_hash,
+                "gap_repair_result_sha256": second_gap_repair_result_hash,
+                "gap_repair_result": second_gap_repair_result,
+                "gap_repair_model": second_gap_repair_model,
+                "gap_repair_elapsed_seconds": second_gap_repair_elapsed,
+                "repaired_plan_sha256": _repair_binding_sha256(obj),
+                "repaired_scene_keys": applied2["repaired_scene_keys"],
+                "repaired_scene_count": len(applied2["repaired_scene_keys"]),
+                "model": audit_meta.get("model"),
+                "elapsed_seconds": audit_meta.get("elapsed_seconds"),
+            }
+            # 二次修复后必须再做一次全新、独立的全稿复核；这一轮不再提供第三次
+            # 修复机会，避免无限循环——若独立复核仍不通过，整单按契约阻断。
+            verification_prompt = scene_coverage_audit_prompt(
+                pages, obj, phase="post_repair")
+            verification_plan_view = copy.deepcopy(_coverage_plan_view(obj))
+            audit_obj, audit_meta, _ = _call_json_payload_with_transport_retry(
+                model, verification_prompt, call, phase="二次修复后全稿复核")
+            coverage_summary = _validate_scene_coverage_audit(audit_obj, pages, obj)
+            gap_repair["second_gap_repair"] = second_gap_repair
         gap_repair["status"] = "APPLIED_AND_REVERIFIED"
         coverage_summary["phase"] = "post_repair"
         coverage_summary["gap_repair"] = gap_repair
@@ -3817,7 +3907,16 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
     if gap_repair is not None:
         # Include the deterministic query aliases added during enrichment in
         # the hash that the later production gate will independently replay.
-        gap_repair["repaired_plan_sha256"] = _repair_binding_sha256(obj)
+        second_repair_record = gap_repair.get("second_gap_repair")
+        if second_repair_record is not None:
+            # The first repair's own stamp is the already-enriched snapshot
+            # the second repair chained from (before_plan); the second
+            # repair's stamp is the true final plan, enriched just below.
+            gap_repair["repaired_plan_sha256"] = _repair_binding_sha256(
+                second_repair_record["before_plan"])
+            second_repair_record["repaired_plan_sha256"] = _repair_binding_sha256(obj)
+        else:
+            gap_repair["repaired_plan_sha256"] = _repair_binding_sha256(obj)
 
     empty_scene_recovery = None
     if initial_summary["status"] == "PASSED" and not (obj.get("scenes") or []):

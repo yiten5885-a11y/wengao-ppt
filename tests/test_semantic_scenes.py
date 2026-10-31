@@ -827,6 +827,153 @@ class SemanticSceneTests(unittest.TestCase):
         self.assertIn("SCENE.COVERAGE_AUDIT_REPAIR_PROOF_INVALID",
                       {row["code"] for row in tampered_result["findings"]})
 
+    def test_post_repair_verification_disagreement_gets_its_own_repair_and_replay(self):
+        """A second, independent audit finding its OWN missing page after the
+        first repair must get the same repair chance as the first finding —
+        and the whole chain must still replay deterministically at validate
+        time. Mirrors test_grounded_gap_repair_requires_and_binds_third_full_deck_verification
+        but the post-repair verification audit itself reports GAPS_FOUND for a
+        page the initial audit never flagged, forcing a second grounded gap
+        repair chained from the first repair's own output.
+        """
+        source = self.root / "three-page-second-opinion.pptx"
+        prs = Presentation()
+        for body in ("一只手拿着陶瓷杯喝水的场景。",
+                     "iPhone 与 Mac 用于工作沟通。",
+                     "一盆绿植摆在窗边安静生长。"):
+            slide = prs.slides.add_slide(prs.slide_layouts[6])
+            textbox = slide.shapes.add_textbox(Inches(.6), Inches(.55), Inches(4.4), Inches(.8))
+            textbox.text_frame.text = body
+        prs.save(source)
+        pages = semantic_scenes._source_pages(source)
+
+        cup_quote, device_quote, plant_quote = (
+            "一只手拿着陶瓷杯喝水的场景", "iPhone 与 Mac 用于工作沟通", "一盆绿植摆在窗边安静生长")
+        cup = dict(semantic_fixture()["scenes"][0])
+        cup["page_candidates"] = [{"page": 1, "relevance": .9, "evidence": [cup_quote]}]
+        resolution = {
+            "schema_version": "2.2.0",
+            "page_coverage": [
+                {"page": 1, "scene_keys": [cup["scene_key"]],
+                 "no_scene_reason": None, "evidence": [cup_quote]},
+                {"page": 2, "scene_keys": [],
+                 "no_scene_reason": "该页暂无已登记的具体场景，等待独立全稿复核。",
+                 "evidence": [device_quote]},
+                {"page": 3, "scene_keys": [],
+                 "no_scene_reason": "该页暂无已登记的具体场景，等待独立全稿复核。",
+                 "evidence": [plant_quote]},
+            ],
+            "scenes": [cup],
+        }
+
+        def gap_scene(page, scene_key, quote, subject, action, setting, label, visual_query):
+            return {
+                "page": page, "scene_key": scene_key, "canonical_scene_id": scene_key,
+                "topic": label, "depiction_type": "illustrative",
+                "illustration_rationale": f"{label}的代表画面能帮助理解该页主题，不表示原文事件真实发生。",
+                "subject": subject, "action": action, "setting": setting,
+                "label": label, "visual_query": visual_query,
+                "photo_search_terms": {"subject": subject, "action": action, "setting": setting},
+                "visual_query_alternatives": [],
+                "lighting": "柔和自然光", "composition_camera": "中近景",
+                "style": "生活纪实摄影", "quality": "清晰自然真实质感",
+                "evidence": quote,
+            }
+
+        device_gap = gap_scene(2, "iphone_mac_work_use", device_quote,
+                               "iPhone Mac", "work communication", "desk",
+                               "iPhone 与 Mac 办公", "iPhone Mac work communication desk")
+        plant_gap = gap_scene(3, "potted_plant_by_window", plant_quote,
+                              "potted plant", "growing quietly", "windowsill",
+                              "窗边绿植", "potted plant growing quietly windowsill")
+
+        initial_audit = {
+            "schema_version": "1.3.0", "review_status": "GAPS_FOUND",
+            "page_reviews": [
+                {"page": 1, "coverage_status": "SCENE_COVERED", "scene_keys": [cup["scene_key"]]},
+                {"page": 2, "coverage_status": "NO_SCENE", "scene_keys": []},
+                {"page": 3, "coverage_status": "NO_SCENE", "scene_keys": []},
+            ],
+            "missing_scenes": [device_gap], "merged_distinct_scenes": [],
+        }
+        # The post-repair verification is a fresh, independent audit call: it
+        # agrees page 2 is now covered but — unlike the first audit — also
+        # flags page 3 as needing a scene. This is the real disagreement this
+        # test exercises, not a second attempt at the same finding.
+        verification_audit_with_new_gap = {
+            "schema_version": "1.3.0", "review_status": "GAPS_FOUND",
+            "page_reviews": [
+                {"page": 1, "coverage_status": "SCENE_COVERED", "scene_keys": [cup["scene_key"]]},
+                {"page": 2, "coverage_status": "SCENE_COVERED", "scene_keys": [device_gap["scene_key"]]},
+                {"page": 3, "coverage_status": "NO_SCENE", "scene_keys": []},
+            ],
+            "missing_scenes": [plant_gap], "merged_distinct_scenes": [],
+        }
+        final_audit = {
+            "schema_version": "1.3.0", "review_status": "NO_GAPS",
+            "page_reviews": [
+                {"page": 1, "coverage_status": "SCENE_COVERED", "scene_keys": [cup["scene_key"]]},
+                {"page": 2, "coverage_status": "SCENE_COVERED", "scene_keys": [device_gap["scene_key"]]},
+                {"page": 3, "coverage_status": "SCENE_COVERED", "scene_keys": [plant_gap["scene_key"]]},
+            ],
+            "missing_scenes": [], "merged_distinct_scenes": [],
+        }
+        calls = []
+
+        def model_call(model, prompt):
+            calls.append(prompt)
+            payload = (resolution if len(calls) == 1 else
+                       initial_audit if len(calls) == 2 else
+                       verification_audit_with_new_gap if len(calls) == 3 else
+                       final_audit)
+            return {"response": json.dumps(payload, ensure_ascii=False),
+                    "model": "fixture-local-model", "elapsed_seconds": .01}
+
+        images = dict(self.images)
+        images["plant"] = {"file": self.images["device"]["file"], "title": "Potted plant windowsill"}
+        plan = semantic_scenes.build_plan(
+            source, provider=FakePhotoProvider(images), model_call=model_call,
+            visual_review_call=fixture_visual_review_call)
+        self.assertEqual(len(calls), 4)
+        self.assertIn("second-pass semantic coverage auditor", calls[1])
+        self.assertIn("post-repair semantic coverage verifier", calls[2])
+        self.assertIn("post-repair semantic coverage verifier", calls[3])
+
+        proof = plan["coverage_audit"]
+        self.assertEqual(proof["status"], "PASSED")
+        gap_repair = proof["gap_repair"]
+        self.assertEqual(gap_repair["status"], "APPLIED_AND_REVERIFIED")
+        self.assertEqual(gap_repair["repaired_scene_count"], 1)
+        second = gap_repair["second_gap_repair"]
+        self.assertEqual(second["kind"], "post_verification_gap_repair")
+        self.assertEqual(second["repaired_scene_count"], 1)
+        self.assertEqual(second["repaired_scene_keys"], ["potted_plant_by_window"])
+        self.assertRegex(second["prompt_sha256"], r"^[0-9a-f]{64}$")
+        self.assertRegex(second["result_sha256"], r"^[0-9a-f]{64}$")
+
+        scene_keys = {row["scene_key"] for row in plan["scenes"]}
+        self.assertEqual(scene_keys, {cup["scene_key"], "iphone_mac_work_use",
+                                      "potted_plant_by_window"})
+
+        plan_path = self.root / "three-page-second-opinion-plan.json"
+        plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+        result = semantic_scenes._validate_coverage_audit_proof(source, plan_path)
+        self.assertEqual(result["status"], "EXECUTED", result)
+
+        # Tampering the SECOND repair's own output must still be caught by replay.
+        tampered = json.loads(json.dumps(plan, ensure_ascii=False))
+        tampered["scenes"] = [
+            (dict(row, setting="unrelated supermarket checkout")
+             if row["scene_key"] == "potted_plant_by_window" else row)
+            for row in tampered["scenes"]
+        ]
+        tampered_path = self.root / "three-page-second-opinion-plan-tampered.json"
+        tampered_path.write_text(json.dumps(tampered, ensure_ascii=False), encoding="utf-8")
+        tampered_result = semantic_scenes._validate_coverage_audit_proof(source, tampered_path)
+        self.assertEqual(tampered_result["status"], "FAILED", tampered_result)
+        self.assertIn("SCENE.COVERAGE_AUDIT_REPAIR_PROOF_INVALID",
+                      {row["code"] for row in tampered_result["findings"]})
+
     def test_portrait_scene_blocks_an_ultrawide_slot_instead_of_cropping_or_using_a_card(self):
         portrait_path = self.assets / "portrait-factory-worker.png"
         portrait = Image.new("RGB", (600, 1000), (26, 80, 120))

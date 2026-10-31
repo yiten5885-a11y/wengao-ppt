@@ -2756,13 +2756,86 @@ def _validate_coverage_audit_proof(source_pptx: str | Path,
                     _enrich_scene_image_prompts(reconstructed, source_pages)
                     repaired_sha = _repair_binding_sha256(reconstructed)
                     if (repaired_sha != repair.get("repaired_plan_sha256")
-                            or repaired_sha != _repair_binding_sha256(plan)
                             or replayed_repair.get("repaired_scene_keys") != repair.get("repaired_scene_keys")):
                         raise ValueError("repaired scene ledger does not match frozen final plan")
                     if (repair.get("repaired_scene_count") != len(gap_result.get("missing_scenes") or [])
                             or not isinstance(repair.get("repaired_scene_keys"), list)
                             or len(repair["repaired_scene_keys"]) != repair.get("repaired_scene_count")):
                         raise ValueError("repair delta count mismatch")
+                    # The post-repair verification audit occasionally disagrees with
+                    # the first audit about one more purely-missing page; that gets
+                    # one more grounded gap repair, chained from this repair's own
+                    # output. Replay that chain too when it happened, continuing
+                    # from the same reconstructed/repaired_sha this leaves behind.
+                    second_repair = repair.get("second_gap_repair")
+                    if second_repair is not None:
+                        if not isinstance(second_repair, dict):
+                            raise ValueError("second gap-repair record is not an object")
+                        second_before = second_repair.get("before_plan")
+                        if (not isinstance(second_before, dict)
+                                or _repair_binding_sha256(second_before)
+                                != second_repair.get("before_plan_sha256")):
+                            raise ValueError("second gap-repair pre-repair plan hash mismatch")
+                        if _repair_binding_sha256(second_before) != repaired_sha:
+                            raise ValueError(
+                                "second gap-repair does not chain from the first repair's output")
+                        second_audit_result = second_repair.get("result")
+                        second_audit_result_sha = hashlib.sha256(json.dumps(
+                            second_audit_result, ensure_ascii=False, sort_keys=True,
+                            separators=(",", ":")).encode("utf-8")).hexdigest()
+                        if second_audit_result_sha != second_repair.get("result_sha256"):
+                            raise ValueError("post-verification audit result hash mismatch")
+                        second_verify_prompt = scene_coverage_audit_prompt(
+                            source_pages, second_before, phase="post_repair")
+                        if (hashlib.sha256(second_verify_prompt.encode("utf-8")).hexdigest()
+                                != second_repair.get("prompt_sha256")):
+                            raise ValueError("post-verification audit prompt hash mismatch")
+                        second_initial_summary = _validate_scene_coverage_audit(
+                            second_audit_result, source_pages, second_before, allow_gaps=True)
+                        if (second_initial_summary.get("status") != "GAPS_FOUND"
+                                or second_initial_summary.get("missing_scenes", 0) < 1
+                                or second_initial_summary.get("merged_distinct_scenes", 0) != 0):
+                            raise ValueError(
+                                "post-verification audit was not a repairable grounded gap")
+                        second_replay_result = second_audit_result
+                        second_payload = second_repair.get("gap_repair_result")
+                        if second_payload is not None:
+                            second_gap_prompt = scene_gap_repair_prompt(
+                                source_pages, second_before, second_audit_result)
+                            if (hashlib.sha256(second_gap_prompt.encode("utf-8")).hexdigest()
+                                    != second_repair.get("gap_repair_prompt_sha256")):
+                                raise ValueError(
+                                    "second gap-repair prompt is not bound to source pages and audit findings")
+                            if not hex64.fullmatch(
+                                    str(second_repair.get("gap_repair_response_sha256") or "")):
+                                raise ValueError("second gap-repair response hash missing")
+                            second_payload_sha = hashlib.sha256(json.dumps(
+                                second_payload, ensure_ascii=False, sort_keys=True,
+                                separators=(",", ":")).encode("utf-8")).hexdigest()
+                            if second_payload_sha != second_repair.get("gap_repair_result_sha256"):
+                                raise ValueError("second gap-repair result hash mismatch")
+                            second_normalized = _validate_scene_gap_repair_scope(
+                                second_audit_result, second_payload)
+                            second_replay_result = dict(second_audit_result)
+                            second_replay_result["missing_scenes"] = second_normalized["missing_scenes"]
+                        second_replayed = _apply_grounded_scene_gap_repairs(
+                            second_replay_result, source_pages, second_before)
+                        reconstructed = second_replayed["plan"]
+                        _enrich_scene_image_prompts(reconstructed, source_pages)
+                        repaired_sha = _repair_binding_sha256(reconstructed)
+                        if (repaired_sha != second_repair.get("repaired_plan_sha256")
+                                or second_replayed.get("repaired_scene_keys")
+                                != second_repair.get("repaired_scene_keys")):
+                            raise ValueError(
+                                "second repaired scene ledger does not match frozen final plan")
+                        if (second_repair.get("repaired_scene_count")
+                                != len(second_audit_result.get("missing_scenes") or [])
+                                or not isinstance(second_repair.get("repaired_scene_keys"), list)
+                                or len(second_repair["repaired_scene_keys"])
+                                != second_repair.get("repaired_scene_count")):
+                            raise ValueError("second repair delta count mismatch")
+                    if repaired_sha != _repair_binding_sha256(plan):
+                        raise ValueError("repaired scene ledger does not match frozen final plan")
                 elif repair_kind == "merge_replan_patches":
                     if (initial_summary.get("status") != "GAPS_FOUND"
                             or initial_summary.get("merged_distinct_scenes", 0) < 1):
