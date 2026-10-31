@@ -58,6 +58,61 @@ for _lp_k in ("no_proxy", "NO_PROXY"):
         os.environ[_lp_k] = (f"{_lp_v},{_lp_hosts}" if _lp_v else _lp_hosts)
 del _lp_k, _lp_v
 
+def _apply_runtime_network_env() -> None:
+    """只在真正启动工作台时调用（main），导入本模块（例如测试）不改环境。
+
+    1) 上面一旦写入 NO_PROXY，urllib 的 getproxies() 就只认环境变量、不再读取
+       macOS 系统代理（如 Clash），而工作台按惯例是去掉 HTTP(S)_PROXY 启动的——
+       结果外网图片检索（Openverse/Pexels）全部直连、握手超时（2026-10-28
+       job-3afdd5d88bd9）。环境里没有显式代理时，把系统代理补进环境变量；回环
+       仍由 NO_PROXY 豁免。Clash 切到 TUN 模式后不再监听该端口但系统设置仍指向
+       它，所以只采用端口确实在监听的代理（否则直连会被 TUN 接管、反而能通）。
+    2) Pexels 密钥：工作台常由 WorkBuddy 等外部进程启动，环境变量容易丢。进程
+       环境里没有时，从仅本人可读的 ~/.wengao_ppt/pexels_api_key 读入（不进任务
+       记录、不回显）。子进程（材料/run CLI）继承本进程环境，只需在这里补一次。
+    """
+    import socket
+    import urllib.parse
+    import urllib.request
+
+    def _port_open(url: str) -> bool:
+        try:
+            u = urllib.parse.urlparse(url if "://" in url else "http://" + url)
+            with socket.create_connection((u.hostname, u.port or 80), timeout=0.5):
+                return True
+        except OSError:
+            return False
+
+    if not any(os.environ.get(k) for k in ("HTTPS_PROXY", "https_proxy", "HTTP_PROXY", "http_proxy")):
+        try:
+            sys_proxies = (urllib.request.getproxies_macosx_sysconf()
+                           if hasattr(urllib.request, "getproxies_macosx_sysconf") else {})
+        except Exception:  # noqa: BLE001 — 读不到系统代理就保持直连
+            sys_proxies = {}
+        for scheme in ("http", "https"):
+            if sys_proxies.get(scheme) and _port_open(sys_proxies[scheme]):
+                os.environ[f"{scheme}_proxy"] = sys_proxies[scheme]
+
+    if not os.environ.get("PEXELS_API_KEY", "").strip():
+        key_path = Path.home() / ".wengao_ppt" / "pexels_api_key"
+        try:
+            if key_path.is_file() and (key_path.stat().st_mode & 0o077) == 0:
+                key = key_path.read_text(encoding="utf-8").strip()
+                if key and "\n" not in key and "\r" not in key:
+                    os.environ["PEXELS_API_KEY"] = key
+        except OSError:
+            pass
+
+    if not os.environ.get("PIXABAY_API_KEY", "").strip():
+        key_path = Path.home() / ".wengao_ppt" / "pixabay_api_key"
+        try:
+            if key_path.is_file() and (key_path.stat().st_mode & 0o077) == 0:
+                key = key_path.read_text(encoding="utf-8").strip()
+                if key and "\n" not in key and "\r" not in key:
+                    os.environ["PIXABAY_API_KEY"] = key
+        except OSError:
+            pass
+
 
 def load_json(p: Path):
     try:
@@ -949,6 +1004,7 @@ def _mt_retry(tid: str):
         "source": rec.get("source"),
         "replay_id": (rec.get("replay") or {}).get("pack"),
         "auto_advance": rec.get("auto_advance", True),
+        "allow_text_card_fallback": rec.get("allow_text_card_fallback", True),
     }
     return _mt_start(body)
 
@@ -975,8 +1031,12 @@ def _mt_advance(tid: str, job_id: str, cancel_file: Path):
         stamp("stop", state="stop", reason="已取消，未继续推进")
         return
     stamp("run", state="running")
+    task_rec = _mt_load(tid) or {}
+    run_args = ["run", "--job-id", job_id]
+    if task_rec.get("allow_text_card_fallback", True):
+        run_args.append("--allow-text-card-fallback")
     try:
-        rc, _obj, out, err = cli(ROOT, "run", "--job-id", job_id, timeout=3600)
+        rc, _obj, out, err = cli(ROOT, *run_args, timeout=3600)
     except subprocess.TimeoutExpired:
         rc = 124
         out, err = "", "CLI run 超时（超过 3600 秒）"
@@ -1145,6 +1205,7 @@ def _mt_start(body: dict):
         "outdir": str(outdir), "cancel_file": str(cancel_file),
         "job_id": None, "verdict": None, "generated_pptx": None,
         "auto_advance": bool(body.get("auto_advance")),
+        "allow_text_card_fallback": bool(body.get("allow_text_card_fallback", True)),
         "model_usage": _material_model_usage(mode),
         "advance": [],
         "model": "qwen3.8:27b-wb65536",
@@ -1821,6 +1882,9 @@ class Handler(BaseHTTPRequestHandler):
             m = re.fullmatch(r"/api/jobs/([A-Za-z0-9-]+)/download", path)
             if m:
                 return self._download(m.group(1), q)
+            m = re.fullmatch(r"/api/jobs/([A-Za-z0-9-]+)/download_all", path)
+            if m:
+                return self._download_all(m.group(1))
             # D10-C WP2：「开始制作」编排只读状态
             m = re.fullmatch(r"/api/make/([A-Za-z0-9-]+)", path)
             if m:
@@ -2797,6 +2861,61 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def _download_all(self, job_id):
+        """把导出清单登记过的全部文件打包成一个 zip 一次性下载。
+
+        复用与单文件下载完全相同的资格判断与逐字节哈希校验；任何一个登记文件
+        与清单哈希不符，整包拒绝，不打包"部分正确"的结果。
+        """
+        if WB.job_state(job_id) is None:
+            return self._err(404, "WB.JOB_NOT_FOUND", "任务不存在。")
+        base, index, code, msg = WB.export_index(job_id)
+        if code:
+            status = 409 if code in ("EXPORT.NOT_READY", "INCIDENT.BLOCKED",
+                                     "EVIDENCE.STALE", "GATE.NOT_VALIDATED",
+                                     "GATE.IN_PROGRESS", "GATE.RELEASE_BLOCKED",
+                                     "EVIDENCE.UNREADABLE") else 500
+            return self._send(status, {"error": {"code": code, "message": msg}})
+        if not index:
+            return self._send(409, {"error": {"code": "EXPORT.EMPTY",
+                                               "message": "导出清单为空，没有可打包的文件。"}})
+        import io
+        import zipfile
+        base_resolved = base.resolve()
+        buf = io.BytesIO()
+        try:
+            with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+                for name, meta in sorted(index.items()):
+                    target = (base / name).resolve()
+                    try:
+                        target.relative_to(base_resolved)
+                    except ValueError:
+                        return self._err(403, "WB.PATH_ESCAPE", "路径越界，已拒绝。")
+                    if not target.is_file():
+                        return self._err(404, "WB.FILE_MISSING", f"结果文件不存在：{name}")
+                    if not meta.get("expected"):
+                        return self._send(409, {"error": {
+                            "code": "EVIDENCE.STALE",
+                            "message": f"清单未登记 {name} 的预期哈希，无法完成下载绑定。"}})
+                    actual = sha256_file(target)
+                    if actual != meta["expected"]:
+                        return self._send(409, {"error": {
+                            "code": "EVIDENCE.STALE",
+                            "message": f"{name} 与导出清单登记的哈希不一致，已拒绝打包下载。",
+                            "expected": meta["expected"], "actual": actual}})
+                    zf.write(target, arcname=name)
+        except Exception as e:  # noqa: BLE001
+            return self._err(500, "WB.ZIP_FAILED", f"打包失败：{type(e).__name__}: {e}")
+        data = buf.getvalue()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/zip")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Disposition",
+                         f'attachment; filename="{job_id}-export.zip"')
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
     def _preview_file(self, q):
         job = (q.get("job") or [""])[0]
         side = (q.get("side") or [""])[0]
@@ -2856,6 +2975,7 @@ def main():
                     help="数据根（jobs/results/uploads）；默认=程序目录。"
                          "安装布局下由 wengao.install 指向共享数据根。")
     args = ap.parse_args()
+    _apply_runtime_network_env()
     # 数据根与程序目录分离：程序来自当前版本目录，运行数据落共享根（不写进版本目录）
     ROOT = Path(args.project_root).resolve()
     ROOT.mkdir(parents=True, exist_ok=True)

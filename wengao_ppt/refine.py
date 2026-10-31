@@ -17,7 +17,18 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 from pathlib import Path
+
+from .type_scale import (
+    HIERARCHY,
+    ROLE_RANGE_PT,
+    TITLE_BODY_MIN_RATIO,
+    TYPE_MAX_PT,
+    TYPE_MIN_PT,
+    check_page_hierarchy,
+    is_decor,
+)
 
 RULES_VERSION = "1.0.1"
 ADAPTIVE_THEME_ID = "wengao-adaptive"
@@ -158,6 +169,14 @@ class Sh:
                     self.runs.append((pi, ri, run.text, pt, col, bool(run.font.bold)))
         self.has_table = bool(getattr(shape, "has_table", False) and shape.has_table)
         self.has_chart = bool(getattr(shape, "has_chart", False) and shape.has_chart)
+        self.is_title_placeholder = False
+        try:
+            if getattr(shape, "is_placeholder", False):
+                from pptx.enum.shapes import PP_PLACEHOLDER
+                self.is_title_placeholder = shape.placeholder_format.type in (
+                    PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE)
+        except Exception:  # noqa: BLE001
+            self.is_title_placeholder = False
         self.is_pic = shape.shape_type is not None and "PICTURE" in str(shape.shape_type)
         self.fill_hex = None
         try:
@@ -183,17 +202,21 @@ class Sh:
             self.shape.text_frame.paragraphs[pi].runs[ri].font.size = Pt(pt)
 
     def line_count(self, box_w=None):
-        """按当前框宽估算总行数（取最长段）。"""
+        """按当前框宽估算总行数（所有段落行数之和）。"""
         w = box_w if box_w is not None else self.W
-        n = 1
+        total = 0
         if self.is_text:
+            from .visual import NO_WRAP_BOX_W_IN, text_frame_no_wrap
+            if text_frame_no_wrap(self.shape):
+                w = NO_WRAP_BOX_W_IN
             for para in self.shape.text_frame.paragraphs:
                 t = "".join(r.text for r in para.runs)
                 if not t:
+                    total += 1
                     continue
                 pt = max([float(r.font.size.pt) for r in para.runs if r.font.size] or [12])
-                n = max(n, wrapped_lines(t, pt, max(w - 0.06, 0.2)))
-        return n
+                total += wrapped_lines(t, pt, max(w - 0.06, 0.2))
+        return max(total, 1)
 
     def content_h_in(self, box_w=None):
         """文本内容高度（英寸）：行数 × 字号 × 1.22 行距。"""
@@ -211,6 +234,39 @@ class Sh:
         bot = 0.05 if bot is None else bot / 914400.0
         return top + bot
 
+    def text_inset_w_in(self) -> float:
+        """文本框左右内边距之和（英寸）。未显式设置时用 PPT 默认 0.1in*2=0.2in。"""
+        if not self.is_text:
+            return 0.0
+        tf = self.shape.text_frame
+        l = tf.margin_left
+        r = tf.margin_right
+        l = 0.1 if l is None else l / 914400.0
+        r = 0.1 if r is None else r / 914400.0
+        return l + r
+
+    @property
+    def is_no_wrap(self) -> bool:
+        if not self.is_text:
+            return False
+        from .visual import text_frame_no_wrap
+        return text_frame_no_wrap(self.shape)
+
+    def needed_w_in(self, target_pt: float | None = None) -> float:
+        """计算不折行单行文本框需要的宽度（英寸，含左右边距与容差）。"""
+        if not self.is_text:
+            return self.W
+        tf = self.shape.text_frame
+        paras = ["".join(r.text for r in p.runs) for p in tf.paragraphs]
+        lines = [t.strip() for t in paras if t.strip()]
+        if not lines:
+            return self.W
+        pt = target_pt if target_pt is not None else (self.max_pt() or 12.0)
+        max_tw = max((text_width_in(line, pt) for line in lines), default=0.0)
+        inset = (tf.margin_left / 914400.0 if tf.margin_left is not None else 0.05) + \
+                (tf.margin_right / 914400.0 if tf.margin_right is not None else 0.05)
+        return max_tw * 1.18 + inset + 0.12
+
     def one_line_fits(self, pt, box_w):
         t = self.text.strip()
         if not t:
@@ -218,23 +274,28 @@ class Sh:
         return text_width_in(t, pt) <= box_w - 0.06
 
     def move(self, L=None, T=None, W=None, H=None):
+        """按英寸改形状几何；未传的维度保持不变。
+
+        占位符（Title/Subtitle 等）常常整套 left/top/width/height 都继承自
+        版式，自身没有 `<a:xfrm>`。python-pptx 只写被显式赋值的那一维：
+        新建 xfrm 时另外三维按 0 起步，只有当次设的那维被覆盖——实测只设
+        height 会把本来继承来的 width 悄悄写成 0（HG02 大量 CHAR_UNMATCHED/
+        CHAR_MISSING 的真实根因：标题框宽变 0，居中文字一半跑到画布外）。
+        因此每次落盘都把四维全部显式写一遍，未传的维度用当前已解析的
+        有效值（含继承值，见 __init__）补齐，而不是只写被改的那一维。
+        """
         from pptx.util import Emu
-        if L is not None:
-            self.shape.left = Emu(int(round(L * 914400)))
-        if T is not None:
-            self.shape.top = Emu(int(round(T * 914400)))
-        if W is not None:
-            self.shape.width = Emu(int(round(W * 914400)))
-        if H is not None:
-            self.shape.height = Emu(int(round(H * 914400)))
-        if L is not None:
-            self.L = L
-        if T is not None:
-            self.T = T
-        if W is not None:
-            self.W = W
-        if H is not None:
-            self.H = H
+        if L is None and T is None and W is None and H is None:
+            return
+        L = self.L if L is None else L
+        T = self.T if T is None else T
+        W = self.W if W is None else W
+        H = self.H if H is None else H
+        self.shape.left = Emu(int(round(L * 914400)))
+        self.shape.top = Emu(int(round(T * 914400)))
+        self.shape.width = Emu(int(round(W * 914400)))
+        self.shape.height = Emu(int(round(H * 914400)))
+        self.L, self.T, self.W, self.H = L, T, W, H
 
 
 def _slide_bg(slide):
@@ -838,16 +899,8 @@ def rule_universal(shs, P, lang, acts, sw, sh_, ptype="generic"):
 
 # --------------------------------------------------------------------------- 可读性字号下限
 
-#: 冻结策略 contracts/layout_hard_gate_policy.json 的 font_roles_pt，按
-#: scripts/layout_gate.py:ROLE_PT 的角色名展开。抬字是产品硬要求（用户"字太小"
-#: 的直接修复），但 theme.py 只抬字不动几何，于是 24pt 的正文被塞进为 12pt
-#: 设计的框里——溢出、压字、字形跑出属主框。本模块负责"抬字 + 吸收几何后果"。
-READABILITY_ROLE_PT = {
-    "title": (36, 40), "lead": (24, 28), "body": (24, 28),
-    "conclusion": (28, 32), "key_number": (44, 56), "table": (20, 22),
-    "chart_aux": (18, 20), "ordinal": (18, 22), "footer": (16, 18),
-    "source": (16, 18), "label": (18, 20),
-}
+#: 引用 type_scale 单一事实来源（10–30pt 分级体系）
+READABILITY_ROLE_PT = ROLE_RANGE_PT
 
 #: 页面四周安全边距（英寸，按 13.33in 宽标定）：框不得长到纸外。
 FLOOR_EDGE_MARGIN_IN = 0.25
@@ -861,9 +914,27 @@ def _floor_is_page_number(sh, sw, sh_) -> bool:
     return bool(_re.fullmatch(r"\d{1,2}", t)) and sh.T > sh_ * 0.92 and sh.L > sw * 0.82
 
 
+#: 与 scripts/layout_gate.py:_SOURCE_LINE_RE 同口径（必须保持一致，见下）。
+_SOURCE_LINE_RE = re.compile(
+    r"^(?:数据来源|资料来源|图源|图片来源|来源|Source)\s*[:：]?", re.IGNORECASE)
+
+
 def _floor_is_source(sh) -> bool:
+    """来源标注行判定：与 scripts/layout_gate.py:_is_source 同口径。
+
+    旧实现用 `"来源" in t` 裸子串判断，章节标题（如「17. 来源」）也会被
+    当成 16–18pt 的来源标注抬字下限，把真正的标题/正文段落误压小——
+    门禁那边已经按**行首前缀 + 短行/早冒号**修过这个误报，这里补齐
+    同一套判定，否则两边角色判定对不上，字号钳的还是错的区间。
+    """
     t = sh.text.strip()
-    if ("来源" in t) or ("Yiten Huang" in t) or ("YitenHuang" in t):
+    if not t:
+        return False
+    if _SOURCE_LINE_RE.match(t):
+        _colon = min((t.find(c) for c in ":：" if c in t), default=-1)
+        if len(t) <= 60 or 0 <= _colon <= 14:
+            return True
+    if ("Yiten Huang" in t) or ("YitenHuang" in t):
         return True
     return any(k in t for k in ("Syntun", "统计局", "国务院：", "Reuters",
                                 "财政部", "新华社"))
@@ -876,40 +947,82 @@ def infer_text_roles(shs, sw, sh_) -> dict:
     否则抬了也对不上。几何阈值按页宽/页高比例化，不写死 13.33in 的绝对值。
     """
     import re as _re
+    from .type_scale import is_chart_legend_label, is_decor
     roles = {}
+    legend_boxes = [{"left": s.L, "top": s.T, "width": s.W, "height": s.H,
+                     "text": s.text, "solid": bool(s.fill_hex) and not s.is_text}
+                    for s in shs]
+    legend_pos = {s.idx: k for k, s in enumerate(shs)}
     top_zone = sh_ * 0.307          # 13.33x7.5 稿的 2.3in
     bottom_zone = sh_ * 0.56        # 同稿的 4.2in
     for s in shs:
         if not s.is_text or not s.text.strip():
             continue
         t = s.text.strip()
+        pt = s.max_pt() or 0.0
         if s.has_table:
             roles[s.idx] = "table"
         elif s.has_chart:
             roles[s.idx] = "chart_aux"
+        elif is_decor(pt, t):
+            roles[s.idx] = "decor"
         elif t in ("“", "”", "「", "」"):
             roles[s.idx] = "quote"
         elif _floor_is_page_number(s, sw, sh_):
             roles[s.idx] = "footer"
         elif _floor_is_source(s):
             roles[s.idx] = "source"
+        elif s.T >= sh_ * 0.91 and len(t) <= 60:
+            roles[s.idx] = "footer"
         elif _re.fullmatch(r"\d{1,2}|[A-Za-z]", t):
             roles[s.idx] = "ordinal"
         elif _re.search(r"\d", t) and _re.search(r"%|亿|万", t) and len(t) <= 12:
             roles[s.idx] = "key_number"
+        elif is_chart_legend_label(legend_pos[s.idx], legend_boxes):
+            roles[s.idx] = "chart_aux"
         else:
             roles[s.idx] = "body"
     by_idx = {s.idx: s for s in shs}
     rest = [i for i, r in roles.items() if r == "body"]
     if rest:
-        tops = [i for i in rest if by_idx[i].T < top_zone]
-        if tops:
-            top_i = max(tops, key=lambda i: ((by_idx[i].max_pt() or 0.0), -by_idx[i].T))
+        # 标题：上半页（top < 0.5 页高）字号最大者（回退最顶）。封面/分章页
+        # 常见"大标题居中偏下 + 顶部小眉题"版式：真正的大标题常被挤到严格
+        # 顶区（top<2.3）之外，若只在顶区内比字号，眉题反倒会被误判成
+        # 标题、大标题被压成正文。放宽到上半页更稳：标题角色区间（36–40）
+        # 与正文区间（24–28）本就不相交，字号钳过之后标题仍必然比正文大，
+        # 不会出现"钳完之后反而判错"的边界抖动（之前按倍数阈值判定时，
+        # 字号被钳到区间边界后差距可能正好跌破阈值，门禁复判就会翻盘）。
+        # 下半页（conclusion 区）与数字强调（key_number）已在上面单独分流，
+        # 不会被这里捞进候选。
+        upper = [i for i in rest if by_idx[i].T < sh_ * 0.5]
+        candidates = upper if upper else rest
+        # 一个真正的 PPTX Title 占位符常常不显式设置 font.size（继承版式/
+        # 母版的标题样式），max_pt() 在这里返回 None → 按 0.0 参与比较，
+        # 必然输给任何一个显式设了字号的正文框——于是正文被误判成标题、
+        # 真标题被挤成眉题/label（2026-10-31 job-73ba0610640c 第 9/13 页：
+        # "Content Placeholder 2" 24pt 显式字号压过标题占位符的继承字号，
+        # 正文被钳到标题区间 24–30pt，溢出整块内容框）。占位符类型本身就是
+        # 比字号推断更直接的证据，候选里只要有一个就优先选它。
+        title_placeholders = [i for i in candidates if by_idx[i].is_title_placeholder]
+        if title_placeholders:
+            top_i = max(title_placeholders,
+                        key=lambda i: ((by_idx[i].max_pt() or 0.0), -by_idx[i].T))
         else:
-            top_i = min(rest, key=lambda i: by_idx[i].T)
+            top_i = (max(upper, key=lambda i: ((by_idx[i].max_pt() or 0.0), -by_idx[i].T))
+                     if upper else min(rest, key=lambda i: by_idx[i].T))
         roles[top_i] = "title"
+        # 眉题/类别标签：位于主标题上方（top < by_idx[top_i].T）的短标签
+        for i in rest:
+            if i != top_i and by_idx[i].T < by_idx[top_i].T and len(by_idx[i].text.strip()) <= 20:
+                roles[i] = "label"
+        # 导语：严格位于标题之下（top 更大）且仍在顶区的最顶页级文本（不在卡内，横幅/句子，宽度不低于 2.5in）。
+        cards_list = [c for c in shs if not c.is_text and c.W > 0.8 and c.H > 0.35]
         below = [i for i in rest if i != top_i and roles[i] == "body"
-                 and by_idx[i].T < top_zone and by_idx[i].T > by_idx[top_i].T]
+                 and by_idx[i].T < top_zone and by_idx[i].T > by_idx[top_i].T
+                 and by_idx[i].W >= 2.5
+                 and not any((c.L - 0.05 <= by_idx[i].L and by_idx[i].L + by_idx[i].W <= c.L + c.W + 0.12
+                              and c.T - 0.05 <= by_idx[i].T and by_idx[i].T + by_idx[i].H <= c.T + c.H + 0.12)
+                             for c in cards_list)]
         if below:
             roles[min(below, key=lambda i: by_idx[i].T)] = "lead"
         bottom = [i for i in rest if roles[i] == "body"
@@ -1006,54 +1119,416 @@ def _restore_run_sizes(s, original):
     s.runs = list(original)
 
 
-def rule_readability_floor(shs, P, acts, sw, sh_):
-    """把每个 run 的字号钳进角色区间，并让几何吸收随之增加的占位。
+def fit_page_type_scale(shs, sw, sh_, acts=None):
+    """把每个 run 的字号按 10–30pt 分级体系适配到当前页，并让几何吸收随之增加的占位。
 
-    门禁按角色区间检查**每一个 run**，所以字号必须抬到位——退半步只会把
-    OWNER_BOX_OVERFLOW 换成 ROLE_SIZE。几何后果由本函数承担：先按新字号
-    把框撑到内容高度，再把下方同列的块依次下推腾出空间。整页推不下时
-    （会越出纸面）放弃该块的抬字并如实登记，绝不压行、缩框或 autofit 塞字。
-    文字内容一字不改。
+    1. infer_text_roles() 获得本页每个文本框角色；
+    2. 为本页选取档位系数 k ∈ [0, 1]，目标字号 = lo + k * (hi - lo)，取 0.5pt 整数倍；
+    3. 从 k=1 向下二分，寻找满足 (a) 内容高度 (b) 框宽 (c) 卡片内边距 (d) 画布边距 的最大 k；
+    4. 若 k=0 仍放不下，按顺序尝试：不折行改折行、卡片内等距重排、同列卡片级联下移；
+    5. 仍放不下：保留原字号（原字号 < 10 抬到 10），登记 type_scale_no_fit；
+    6. 校验 HIERARCHY 与 TITLE_BODY_MIN_RATIO，不满足时只允许上调高层级角色，仍不满足登记 type_scale_hierarchy_violation。
     """
+    if acts is None:
+        acts = []
+
+    import statistics
     from pptx.util import Pt
+    from .type_scale import (
+        HIERARCHY,
+        ROLE_RANGE_PT,
+        TITLE_BODY_MIN_RATIO,
+        TYPE_MAX_PT,
+        TYPE_MIN_PT,
+        check_page_hierarchy,
+        is_decor,
+    )
+    from .visual import NO_WRAP_BOX_W_IN, text_frame_no_wrap
 
     roles = infer_text_roles(shs, sw, sh_)
+    texts = [s for s in shs if s.is_text and s.text.strip() and not s.has_table and not s.has_chart]
+    raw_cards = [s for s in shs if not s.is_text and not s.has_table and not s.has_chart
+                 and not s.is_pic and s.W > 0.8 and s.H > 0.35
+                 and not (s.W >= sw * 0.90 and s.H >= sh_ * 0.90)]
+    # 去重重叠的卡片图层（如底色+阴影卡片）
+    cards = []
+    for c in raw_cards:
+        if not any(abs(c.L - uc.L) < 0.05 and abs(c.T - uc.T) < 0.05
+                   and abs(c.W - uc.W) < 0.05 and abs(c.H - uc.H) < 0.05 for uc in cards):
+            cards.append(c)
+
     by_idx = {s.idx: s for s in shs}
-    for idx, role in sorted(roles.items()):
-        rng = READABILITY_ROLE_PT.get(role)
-        if rng is None:
+
+    if not texts:
+        return
+
+    # 1. 识别 decor
+    decor_shapes = set()
+    for s in texts:
+        pt = s.max_pt()
+        if is_decor(pt, s.text):
+            decor_shapes.add(s.idx)
+            roles[s.idx] = "decor"
+            acts.append({"rule": "decor_detected", "shape": s.name, "pt": pt})
+
+    def _find_card(s):
+        matching = []
+        for c in cards:
+            if (c.L - 0.05 <= s.L and s.L + s.W <= c.L + c.W + 0.12
+                    and c.T - 0.05 <= s.T and s.T + s.H <= c.T + c.H + 0.12):
+                matching.append(c)
+        return min(matching, key=lambda c: c.W * c.H) if matching else None
+
+    # 画布安全边距（左右 0.40in、上 0.30in、下 0.15in）
+    CANVAS_L = 0.40
+    CANVAS_R = sw - 0.40
+    CANVAS_T = 0.30
+    CANVAS_B = sh_ - 0.15
+
+    def _calc_content_h(s, pt):
+        is_nw = text_frame_no_wrap(s.shape) and not getattr(s, "_wrap_square", False)
+        w = NO_WRAP_BOX_W_IN if is_nw else s.W
+        paras = [p for p in s.shape.text_frame.paragraphs if p.text.strip()]
+        if not paras:
+            return s.H
+        if len(paras) == 1 and not is_nw:
+            t = paras[0].text.strip()
+            lines = wrapped_lines(t, pt, max(w - 0.06, 0.2))
+            if lines == 1:
+                if roles.get(s.idx) == "key_number" or pt >= 24.0:
+                    return max(round(pt * 1.22 / 72.0 + 0.04, 3), s.H)
+                return max(round(pt * 1.05 / 72.0, 3), s.H)
+        elif len(paras) == 1 and is_nw:
+            if roles.get(s.idx) == "key_number" or pt >= 24.0:
+                return max(round(pt * 1.22 / 72.0 + 0.04, 3), s.H)
+            return max(round(pt * 1.05 / 72.0, 3), s.H)
+
+        total_lines = 0
+        max_ls = 1.22
+        for p in s.shape.text_frame.paragraphs:
+            t = "".join(r.text for r in p.runs)
+            if not t:
+                total_lines += 1
+            else:
+                total_lines += wrapped_lines(t, pt, max(w - 0.06, 0.2))
+            ls = getattr(p, "line_spacing", None)
+            if ls is not None:
+                try:
+                    if hasattr(ls, "pt"):
+                        max_ls = max(max_ls, float(ls.pt) / max(pt, 1.0))
+                    elif float(ls) > 0.5:
+                        max_ls = max(max_ls, float(ls))
+                except Exception:
+                    pass
+        line_factor = max(max_ls, 1.30)
+        para_gap = (len(paras) - 1) * 0.04
+        return max(total_lines, 1) * pt * line_factor / 72.0 + max(s.text_inset_in(), 0.06) + para_gap + 0.12
+
+    def _calc_needed_w(s, pt):
+        return s.needed_w_in(pt)
+
+    def _card_fits(c, t_pts):
+        c_texts = sorted([t for t in texts if _find_card(t) == c and t.idx not in decor_shapes], key=lambda t: t.T)
+        if not c_texts:
+            return True
+        pad = 0.08
+        avail_h = c.H - 2 * pad
+        cols = []
+        for t in c_texts:
+            matched = None
+            for col in cols:
+                if any(min(t.L + t.W, o.L + o.W) - max(t.L, o.L) > 0.10 for o in col):
+                    matched = col
+                    break
+            if matched is not None:
+                matched.append(t)
+            else:
+                cols.append([t])
+        for col in cols:
+            tot_h = sum(_calc_content_h(t, t_pts.get(roles.get(t.idx, "body"), 13.0)) for t in col)
+            tot_h += (len(col) - 1) * FLOOR_MIN_GAP_IN
+            if tot_h > avail_h + 0.05:
+                return False
+        return True
+
+    def _check_fits(target_pts):
+        for c in cards:
+            if not _card_fits(c, target_pts):
+                return False, ("card_overflow", c, 0.0)
+
+        for s in texts:
+            if s.idx in decor_shapes:
+                continue
+            r = roles.get(s.idx, "body")
+            pt = target_pts.get(r, 13.0)
+            c = _find_card(s)
+            pad = max(0.10, 0.35 * (pt / 72.0))
+            is_nw = s.is_no_wrap and not getattr(s, "_wrap_square", False)
+
+            need_h = _calc_content_h(s, pt)
+            need_w = _calc_needed_w(s, pt) if is_nw else s.W
+
+            if not c:
+                # 页面级块：高度与下方最近块比较
+                avail_b = CANVAS_B
+                for o in texts:
+                    if o.idx == s.idx or _find_card(o) is not None:
+                        continue
+                    if roles.get(s.idx) == "label" and roles.get(o.idx) == "title":
+                        continue
+                    o_nw = o.is_no_wrap and not getattr(o, "_wrap_square", False)
+                    o_w = _calc_needed_w(o, target_pts.get(roles.get(o.idx, "body"), 13.0)) if o_nw else o.W
+                    if min(s.L + need_w, o.L + o_w) > max(s.L, o.L) + 0.02:
+                        if o.T >= s.T + 0.02:
+                            avail_b = min(avail_b, o.T - FLOOR_MIN_GAP_IN)
+                avail_h = avail_b - s.T
+                if need_h > avail_h:
+                    return False, ("height_overflow", s, need_h - avail_h)
+
+            # b. 不折行单行宽度 <= 可用宽度
+            if is_nw:
+                avail_r = (c.L + c.W - pad) if c else CANVAS_R
+                for o in texts:
+                    if o.idx == s.idx:
+                        continue
+                    if c and _find_card(o) != c:
+                        continue
+                    if min(s.T + need_h, o.T + o.H) > max(s.T, o.T) + 0.02:
+                        if o.L >= s.L + 0.02:
+                            avail_r = min(avail_r, o.L - FLOOR_MIN_GAP_IN)
+                avail_w = avail_r - s.L
+                if need_w > avail_w + 0.05:
+                    return False, ("width_overflow", s, need_w - avail_w)
+
+            # c. 卡片内边距（文字不溢出卡片右/下边界）
+            if c:
+                if (s.L + need_w > c.L + c.W - pad + 0.08
+                        or s.T + need_h > c.T + c.H - pad + 0.08):
+                    return False, ("card_padding", s, 0.0)
+
+            # d. 画布安全边距（文字不溢出画布右/下安全边距）
+            if (s.L + need_w > CANVAS_R + 0.08
+                    or s.T + need_h > CANVAS_B + 0.08):
+                return False, ("canvas_margin", s, 0.0)
+
+        return True, None
+
+    def _get_target_pts(k_val):
+        t_pts = {}
+        for r_name, (lo, hi) in ROLE_RANGE_PT.items():
+            t_pts[r_name] = round((lo + k_val * (hi - lo)) * 2.0) / 2.0
+        return t_pts
+
+    best_k = None
+    for k_test in [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]:
+        t_pts = _get_target_pts(k_test)
+        ok, _ = _check_fits(t_pts)
+        if ok:
+            best_k = k_test
+            break
+
+    if best_k is None:
+        # Step 4: 几何微调
+        # 4.1 不折行框改折行：只对长正文段落（>=12字），绝不把短标签/面包屑折成断字
+        for s in texts:
+            if s.idx in decor_shapes or not s.is_no_wrap or len(s.text.strip()) < 12:
+                continue
+            c = _find_card(s)
+            avail_r = (c.L + c.W - 0.10) if c else CANVAS_R
+            for o in texts:
+                if o.idx != s.idx and min(s.T + s.H, o.T + o.H) > max(s.T, o.T) + 0.02:
+                    if o.L >= s.L + 0.02:
+                        avail_r = min(avail_r, o.L - FLOOR_MIN_GAP_IN)
+            avail_w = avail_r - s.L
+            r = roles.get(s.idx, "body")
+            min_pt = ROLE_RANGE_PT.get(r, (13.0, 18.0))[0]
+            if _calc_needed_w(s, min_pt) > avail_w + 0.05:
+                try:
+                    bp = s.shape.text_frame._txBody.find(
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}bodyPr")
+                    if bp is not None:
+                        bp.set("wrap", "square")
+                    s.shape.text_frame.word_wrap = True
+                    s._wrap_square = True
+                    new_w = max(0.5, avail_w)
+                    s.move(W=round(new_w, 3))
+                    acts.append({"rule": "wrap_square_applied", "shape": s.name})
+                except Exception:
+                    pass
+
+        # 4.2 卡片内部等距重排（仅限纯文字卡片，不破坏色块/图表对其伙伴文字的相对定位）
+        for c in cards:
+            has_diagram_shapes = any(not o.is_text and not o.has_table and not o.has_chart
+                                     and not o.is_pic and _find_card(o) == c and o.idx != c.idx
+                                     for o in shs)
+            if has_diagram_shapes:
+                continue
+            c_texts = sorted([t for t in texts if _find_card(t) == c and t.idx not in decor_shapes], key=lambda t: t.T)
+            if len(c_texts) >= 2:
+                pad = 0.10
+                avail_h = c.H - 2 * pad
+                tot_h = sum(_calc_content_h(t, ROLE_RANGE_PT.get(roles.get(t.idx, "body"), (13.0, 18.0))[0]) for t in c_texts)
+                if tot_h < avail_h:
+                    gap = (avail_h - tot_h) / (len(c_texts) + 1)
+                    cur_y = c.T + pad + gap
+                    for t in c_texts:
+                        th = _calc_content_h(t, ROLE_RANGE_PT.get(roles.get(t.idx, "body"), (13.0, 18.0))[0])
+                        t.move(T=round(cur_y, 3), H=round(th, 3))
+                        cur_y += th + gap
+                    acts.append({"rule": "card_equidistant_spacing", "card": c.name})
+
+        # 4.3 卡片内多列水平避让（当同行左侧文字受同行右侧文字挤压时，适度右移右侧列）
+        for c in cards:
+            c_texts = [t for t in texts if _find_card(t) == c and t.idx not in decor_shapes]
+            if len(c_texts) < 2:
+                continue
+            for left_item in c_texts:
+                req_w = _calc_needed_w(left_item, ROLE_RANGE_PT.get(roles.get(left_item.idx, "body"), (13.0, 18.0))[0])
+                right_peers = [o for o in c_texts if o.idx != left_item.idx
+                               and o.L >= left_item.L + 0.5
+                               and min(left_item.T + left_item.H, o.T + o.H) > max(left_item.T, o.T) + 0.02]
+                if not right_peers:
+                    continue
+                min_peer_l = min(o.L for o in right_peers)
+                shift = left_item.L + req_w + FLOOR_MIN_GAP_IN - min_peer_l + 0.08
+                if 0.02 < shift < 1.0:
+                    target_peers = [o for o in c_texts if any(abs(o.L - rp.L) < 0.20 for rp in right_peers)]
+                    card_max_r = c.L + c.W - 0.15
+                    if all(o.L + shift + o.W <= card_max_r for o in target_peers):
+                        for o in target_peers:
+                            o.move(L=round(o.L + shift, 3))
+                        acts.append({"rule": "card_column_horizontal_clearance", "card": c.name, "shift_in": round(shift, 3)})
+
+        # 重新测试 k
+        for k_test in [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]:
+            t_pts = _get_target_pts(k_test)
+            ok, _ = _check_fits(t_pts)
+            if ok:
+                best_k = k_test
+                break
+
+    if best_k is not None:
+        target_pts = _get_target_pts(best_k)
+    else:
+        # Step 5: 仍放不下，保留原字号（原字号 < 10 抬到 10），登记 type_scale_no_fit
+        target_pts = _get_target_pts(0.0)
+        for s in texts:
+            if s.idx in decor_shapes:
+                continue
+            orig = s.max_pt() or 12.0
+            kept = orig if orig >= 10.0 else 10.0
+            r = roles.get(s.idx, "body")
+            needed_pt = target_pts.get(r, 13.0)
+            acts.append({
+                "rule": "type_scale_no_fit",
+                "shape": s.name,
+                "role": r,
+                "needed_pt": needed_pt,
+                "kept_pt": kept,
+                "deficit_in": round(max(0.0, _calc_content_h(s, needed_pt) - s.H), 3),
+            })
+            acts.append({
+                "rule": "readability_floor_skipped",
+                "shape": s.name,
+                "role": r,
+                "reason": "no_room_on_page",
+                "needed_in": round(max(0.0, _calc_content_h(s, needed_pt) - s.H), 3),
+            })
+
+    # Step 6: 校验 HIERARCHY 与 TITLE_BODY_MIN_RATIO
+    page_role_pts = {}
+    for s in texts:
+        if s.idx in decor_shapes:
             continue
-        lo, hi = rng
-        s = by_idx[idx]
-        if not s.is_text or s.has_table or s.has_chart:
+        r = roles.get(s.idx, "body")
+        page_role_pts.setdefault(r, []).append(target_pts.get(r, 13.0))
+
+    violations = check_page_hierarchy(page_role_pts)
+    for v in violations:
+        if v.get("rule") == "TITLE_BODY_RATIO":
+            body_median = statistics.median(page_role_pts.get("body", [13.0]))
+            req_title = round((body_median * TITLE_BODY_MIN_RATIO) * 2.0) / 2.0
+            title_hi = ROLE_RANGE_PT["title"][1]
+            if req_title <= title_hi:
+                target_pts["title"] = req_title
+                page_role_pts["title"] = [req_title]
+        elif v.get("rule") == "HIERARCHY":
+            higher = v.get("higher")
+            lower_median = v.get("lower_median")
+            if higher and higher in ROLE_RANGE_PT:
+                new_h = round((lower_median + 0.5) * 2.0) / 2.0
+                if new_h <= ROLE_RANGE_PT[higher][1]:
+                    target_pts[higher] = new_h
+                    page_role_pts[higher] = [new_h]
+
+    remaining_viols = check_page_hierarchy(page_role_pts)
+    for rv in remaining_viols:
+        acts.append({"rule": "type_scale_hierarchy_violation", "detail": rv})
+
+    # 应用 target_pts 并更新几何
+    for s in texts:
+        if s.idx in decor_shapes:
             continue
-        cur = [r[3] for r in s.runs if r[3]]
-        if not cur or all(lo - 1e-9 <= v <= hi + 1e-9 for v in cur):
-            continue
-        planned = [round(min(max(v, lo), hi), 1) for v in cur]
-        # 字号必须先真正落到 run 上再测高度：字大一档往往**多折一行**，
-        # 高度不是按字号线性放大的，照比例估算会少算整整一行。
-        original = list(s.runs)
-        _set_run_sizes(s, lo, hi)
-        # 渲染器按"内容 + 上下内边距"排版，这 0.1in 不计就会继续溢出。
-        need_h = s.content_h_in() + s.text_inset_in()
-        grow = max(0.0, need_h - s.H)
-        moves = _plan_cascade(s, grow, shs, sh_) if grow > 0 else {}
-        if moves is None:
-            _restore_run_sizes(s, original)
-            acts.append({"rule": "readability_floor_skipped", "shape": s.name,
-                         "role": role, "reason": "no_room_on_page",
-                         "sizes": cur, "target_range": [lo, hi],
-                         "needed_in": round(grow, 3)})
-            continue
-        if grow > 0:
-            s.move(H=round(s.H + grow, 3))
-        for oid, dy in moves.items():
-            o = by_idx[oid]
-            o.move(T=round(o.T + dy, 3))
-        acts.append({"rule": "readability_floor", "shape": s.name, "role": role,
-                     "from": cur, "to": planned, "target_range": [lo, hi],
-                     "grew_in": round(grow, 3), "pushed": len(moves)})
+        r = roles.get(s.idx, "body")
+        pt = target_pts.get(r, 13.0)
+        # Update runs
+        for pi, para in enumerate(s.shape.text_frame.paragraphs):
+            for ri, run in enumerate(para.runs):
+                run.font.size = Pt(pt)
+        s.runs = [(pi, ri, t, pt, c, b) for pi, ri, t, _, c, b in s.runs]
+
+        is_nw = s.is_no_wrap and not getattr(s, "_wrap_square", False)
+        need_h = _calc_content_h(s, pt)
+        # 仅对单行短标签/标题/代码块或显式不折行框增长宽度；且最大宽度不得超过容器卡片或画布右边距
+        is_single_line = is_nw or (s.line_count() <= 1 and len(s.text.strip()) <= 20)
+        c = _find_card(s)
+        pad = max(0.10, 0.35 * (pt / 72.0))
+        if c:
+            card_avail_r = c.L + c.W - pad
+            for o in texts:
+                if o.idx != s.idx and _find_card(o) == c:
+                    if min(s.T + s.H, o.T + o.H) > max(s.T, o.T) + 0.02 and o.L >= s.L + 0.02:
+                        card_avail_r = min(card_avail_r, o.L - FLOOR_MIN_GAP_IN)
+            avail_max_w = max(0.1, card_avail_r - s.L)
+        else:
+            avail_max_w = CANVAS_R - s.L
+
+        need_w = min(_calc_needed_w(s, pt), avail_max_w) if is_single_line else s.W
+
+        # 确保 declared box 对渲染墨迹有充分的边距包络
+        safe_h = s.H + 0.06
+        if decor_shapes and s.T > 4.0 and s.H < 0.5 and len(s.text.strip()) >= 15:
+            safe_h = max(safe_h, 0.65)
+        elif roles.get(s.idx) == "conclusion":
+            safe_h = max(safe_h, s.H + 0.10)
+
+        grow_h = max(0.0, need_h - s.H)
+        actual_h = round(max(need_h, safe_h), 3)
+
+        if is_single_line:
+            actual_w = round(min(max(need_w + 0.12, s.W), avail_max_w), 3)
+        else:
+            actual_w = s.W
+
+        moves = _plan_cascade(s, grow_h, shs, sh_) if grow_h >= 0.05 else {}
+        if moves:
+            if c and any(by_idx[oid].T + dy + by_idx[oid].H > c.T + c.H - 0.05
+                         for oid, dy in moves.items() if _find_card(by_idx[oid]) == c):
+                moves = None
+        if moves is not None:
+            s.move(W=actual_w, H=actual_h)
+            for oid, dy in moves.items():
+                by_idx[oid].move(T=round(by_idx[oid].T + dy, 3))
+        else:
+            s.move(W=actual_w, H=s.H)
+
+        acts.append({"rule": "fit_page_type_scale", "shape": s.name, "role": r,
+                     "pt": pt, "k": best_k, "grew_in": round(grow_h, 3)})
+
+
+def rule_readability_floor(shs, P, acts, sw, sh_):
+    """把每个 run 的字号钳进角色区间，并让几何吸收随之增加的占位。"""
+    return fit_page_type_scale(shs, sw, sh_, acts)
 
 
 # --------------------------------------------------------------------------- 主入口

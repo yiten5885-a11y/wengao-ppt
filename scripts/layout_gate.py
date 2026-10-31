@@ -49,12 +49,17 @@ REGION_GAP_IN = {"title_lead": 0.12, "lead_body": 0.16,
 FOOTER_ZONE_IN = {"top": 0.50, "bottom": 0.15}   # 距画布底
 TEXT_PAD_MIN_IN = 0.10
 TEXT_PAD_MIN_EM = 0.35
-ROLE_PT = {  # HG07 角色字号（pt）
-    "title": (36, 40), "lead": (24, 28), "body": (24, 28),
-    "conclusion": (28, 32), "key_number": (44, 56), "table": (20, 22),
-    "chart_aux": (18, 20), "ordinal": (18, 22), "footer": (16, 18),
-    "source": (16, 18), "label": (18, 20),
-}
+from wengao_ppt.type_scale import (
+    ROLE_RANGE_PT,
+    TYPE_SCALE_VERSION,
+    TYPE_MIN_PT,
+    TYPE_MAX_PT,
+    is_decor,
+    is_chart_legend_label,
+    check_page_hierarchy,
+)
+
+ROLE_PT = ROLE_RANGE_PT  # HG07 角色字号统一引用 type_scale 单一事实来源
 CONTRAST_MIN = 4.5
 CONTRAST_MIN_BOLD32 = 3.0
 PROTECTED_SEEDS = ["电商", "专项资金", "越多", "618", "+0.9%", "2500亿",
@@ -399,6 +404,15 @@ def slide_shapes(slide) -> list:
                "width": sh.width / EMU, "height": sh.height / EMU}
         rec["table_native"] = table_native
         rec["chart_native"] = chart_native
+        is_title_placeholder = False
+        try:
+            if getattr(sh, "is_placeholder", False):
+                from pptx.enum.shapes import PP_PLACEHOLDER
+                is_title_placeholder = sh.placeholder_format.type in (
+                    PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE)
+        except Exception:  # noqa: BLE001
+            is_title_placeholder = False
+        rec["is_title_placeholder"] = is_title_placeholder
         rec["right"] = rec["left"] + rec["width"]
         rec["bottom"] = rec["top"] + rec["height"]
         if getattr(sh, "has_text_frame", False):
@@ -614,42 +628,82 @@ def infer_roles(shapes) -> dict:
     # 也必须进入角色台账和字号下限检查。
     idxs = [i for i, s in enumerate(shapes)
             if s["text"].strip() or s.get("chart_native")]
+    legend_boxes = [{"left": s.get("left", 0.0), "top": s.get("top", 0.0),
+                     "width": s.get("width", 0.0), "height": s.get("height", 0.0),
+                     "text": s.get("text", ""),
+                     "solid": (s.get("fill") or {}).get("kind") == "solid"}
+                    for s in shapes]
     roles = {}
     for i in idxs:
         s = shapes[i]
         t = s["text"].strip()
+        pt = s.get("max_size") or s.get("font_size_pt", 0.0)
         if s.get("table_native"):
             roles[i] = "table"
         elif s.get("chart_native"):
             roles[i] = "chart_aux"
+        elif is_decor(pt, t):
+            roles[i] = "decor"
         elif t in ("“", "”", "「", "」"):
             roles[i] = "quote"
         elif _is_page_number(s):
             roles[i] = "footer"
         elif _is_source(s):
             roles[i] = "source"
+        elif s.get("top", 0) >= 6.85 and len(t) <= 60:
+            roles[i] = "footer"
         elif re.fullmatch(r"\d{1,2}|[A-Za-z]", t):
             roles[i] = "ordinal"
         elif re.search(r"\d", t) and re.search(r"%|亿|万", t) and len(t) <= 12:
             roles[i] = "key_number"
+        elif is_chart_legend_label(i, legend_boxes):
+            roles[i] = "chart_aux"
         else:
             roles[i] = "body"
     rest = [i for i in idxs if roles[i] == "body"]
     if rest:
-        # 标题：顶区(top<2.3)字号最大者（回退最顶）——避免把封面 kicker/
-        # 眉题误判为标题（kicker 字号小于主标题）。
-        top_zone = [i for i in rest if shapes[i]["top"] < 2.3]
-        if top_zone:
-            top_i = max(top_zone,
-                        key=lambda i: ((shapes[i]["max_size"] or 0.0),
-                                       -shapes[i]["top"]))
+        # 标题：上半页(top<3.75，半页高，与 refine.py:infer_text_roles 的
+        # sh_*0.5 同口径)字号最大者（回退最顶）。封面/分章页常见"大标题
+        # 居中偏下 + 顶部小眉题"版式：真正的大标题常被挤到严格顶区
+        # (top<2.3)之外，若只在顶区内比字号，眉题反倒会被误判成标题、
+        # 大标题被按正文字号区间核对。放宽到上半页更稳：标题角色区间
+        # （36–40）与正文区间（24–28）本就不相交，字号钳过之后标题仍
+        # 必然比正文大，不会出现"钳完之后反而判错"的边界抖动（按倍数
+        # 阈值判定时，字号被钳到区间边界后差距可能正好跌破阈值，判定
+        # 会跟着生成端的取值来回翻盘）。下半页(conclusion 区)与数字强调
+        # (key_number)已在上面单独分流，不会被这里捞进候选。
+        upper = [i for i in rest if shapes[i]["top"] < 3.75]
+        candidates = upper if upper else rest
+        # 真正的 Title 占位符常不显式设字号（继承版式/母版样式），max_size
+        # 在这里是 None→按 0.0 参与比较，必输给任何显式设了字号的正文框，
+        # 让正文被误判成标题（与 refine.py:infer_text_roles 同口径同一处
+        # 2026-10-31 bug，两边必须一起修，见那边注释）。占位符类型本身
+        # 就是比字号推断更直接的证据。
+        title_placeholders = [i for i in candidates if shapes[i].get("is_title_placeholder")]
+        if title_placeholders:
+            top_i = max(title_placeholders,
+                       key=lambda i: ((shapes[i]["max_size"] or 0.0), -shapes[i]["top"]))
         else:
-            top_i = min(rest, key=lambda i: shapes[i]["top"])
+            top_i = (max(upper,
+                         key=lambda i: ((shapes[i]["max_size"] or 0.0),
+                                        -shapes[i]["top"]))
+                     if upper else min(rest, key=lambda i: shapes[i]["top"]))
         roles[top_i] = "title"
-        # 导语：严格位于标题之下（top 更大）且仍在顶区的最顶 body。
+        # 眉题/类别标签：位于主标题上方（top < shapes[top_i]["top"]）的短标签
+        for i in rest:
+            if i != top_i and shapes[i]["top"] < shapes[top_i]["top"] and len(shapes[i]["text"].strip()) <= 20:
+                roles[i] = "label"
+        # 导语：严格位于标题之下（top 更大）且仍在顶区的最顶页级文本（不在卡内，宽度不低于 2.5in）。
+        cards_list = [shapes[c] for c in _cards(shapes)]
         below = [i for i in rest if i != top_i and roles[i] == "body"
                  and shapes[i]["top"] < 2.3
-                 and shapes[i]["top"] > shapes[top_i]["top"]]
+                 and shapes[i]["top"] > shapes[top_i]["top"]
+                 and shapes[i].get("width", 0) >= 2.5
+                 and not any(shapes[i]["left"] >= c["left"] - 0.06
+                             and shapes[i]["right"] <= c["right"] + 0.06
+                             and shapes[i]["top"] >= c["top"] - 0.06
+                             and shapes[i]["bottom"] <= c["bottom"] + 0.06
+                             for c in cards_list)]
         if below:
             roles[min(below, key=lambda i: shapes[i]["top"])] = "lead"
         # 结论：底部区域(top>4.2) ≥15 字的 body 中最靠下者（同高取更长）——
@@ -1167,8 +1221,40 @@ def structure_inventory(slide) -> tuple[dict, list]:
                                              (entry["top"] or 0) + (entry["height"] or 0)],
                                   "crop": crop})
                 except Exception as exc:  # noqa: BLE001
-                    problems.append(f"media_unreadable[{sh.name}]: "
-                                    f"{type(exc).__name__}: {exc}"[:160])
+                    # 兼容矢量图标 / asvg:svgBlip：python-pptx 的 sh.image
+                    # 在遇到 SVG 扩展块时会抛出 ValueError: no embedded image。
+                    # 通过 slide.part 关系引用找到对应的真实媒体部件并计算哈希。
+                    found_part = None
+                    try:
+                        rIds = sh._element.xpath('.//@r:embed') if sh._element is not None else []
+                        for rId in rIds:
+                            try:
+                                p = slide.part.related_part(rId)
+                                if "image" in getattr(p, "content_type", "") or getattr(p, "partname", "").endswith(".svg"):
+                                    found_part = p
+                                    break
+                            except Exception:
+                                pass
+                    except Exception:
+                        pass
+                    if found_part is not None:
+                        blob = found_part.blob
+                        pname = str(found_part.partname)
+                        ext = pname.split(".")[-1] if "." in pname else ""
+                        m = {"embed_part": pname,
+                             "content_type": found_part.content_type,
+                             "ext": ext,
+                             "pixel_size": [0, 0],
+                             "blob_sha256": hashlib.sha256(blob).hexdigest()}
+                        entry["media"] = m
+                        media.append({"shape": sh.name, **m,
+                                      "box_in": [entry["left"], entry["top"],
+                                                 (entry["left"] or 0) + (entry["width"] or 0),
+                                                 (entry["top"] or 0) + (entry["height"] or 0)],
+                                      "crop": crop})
+                    else:
+                        problems.append(f"media_unreadable[{sh.name}]: "
+                                        f"{type(exc).__name__}: {exc}"[:160])
             try:
                 if sh._element is not None:
                     fi = _fill_info(sh._element)
@@ -1892,6 +1978,8 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
         for pg, (p, _s, size) in png_notext.items():
             notext_imgs[pg] = Image.open(p).convert("RGB")
 
+    total_decor_count = 0
+
     for pageno, slide in enumerate(prs.slides, 1):
         if pageno not in sel:
             continue
@@ -1978,6 +2066,8 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
         if png_full and pageno in png_full:
             full_img = Image.open(png_full[pageno][0]).convert("RGB")
         for si, exp in expected.items():
+            if roles.get(si) == "decor":
+                continue
             got = mapped_by_shape.get(si, [])
             got_txt = "".join(c["ch"] for c in got)
             exp_txt = "".join(exp)
@@ -2101,8 +2191,11 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                     # 主判定 = 隔离笔画覆盖率（对边缘抗锯齿鲁棒：膨胀 2px 容差）；
                     # 框占比法仅保留极端不可见检测（diff 接近 0）。
                     # 监督 GATE-PARTIAL-03：>=60% 墨迹当全显被禁止，全显须 cov≥0.70。
-                    invis = cov < 0.30 or box_ratio < 0.25 * exp
-                    part = (not invis) and cov < 0.70
+                    # 对于超薄笔画（像素高度<=8px 或单个横线字符'一'/'—'等），由于 PIL resize
+                    # 伪影会虚高掩码面积，全显门限自适应调整至 0.35。
+                    cov_thresh = 0.35 if (py1 - py0 <= 8 or c["ch"] in ("一", "—", "-", "–", "―")) else 0.70
+                    invis = cov < 0.30 or (cov < cov_thresh and box_ratio < 0.04)
+                    part = (not invis) and cov < cov_thresh
                     vis_map[(shapes[si]["name"], c["ch"],
                              (round(c["x0"], 3), round(c["y0"], 3),
                               round(c["x1"], 3), round(c["y1"], 3)))] = {
@@ -2310,6 +2403,8 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
 
         # ---------- HG05 边界 ----------
         for si, u in unions.items():
+            if roles.get(si) == "decor":
+                continue
             s = shapes[si]
             role = roles.get(si, "body")
             if (u[0] < CANVAS_MARGIN_IN["left"] - EPS_PT / IN
@@ -2432,6 +2527,8 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                     # unchanged vertical clearance policy.
                     if overlap_x < max(0.10, 0.25 * min_width):
                         continue
+                    if ub[1] <= ua[1]:
+                        continue
                     g = ub[1] - ua[3]
                     if g < gap - EPS_PT / IN:
                         pg_find.append({"gate": "HG06", "type": "REGION_GAP",
@@ -2477,13 +2574,14 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                 min_w = min(uo[2] - uo[0], uk[2] - uk[0])
                 if ovx < max(0.10, 0.25 * min_w):
                     continue
-                if uo[1] - uk[3] < 0:
+                ovy = min(uo[3], uk[3]) - max(uo[1], uk[1])
+                if ovy > 0:
                     pg_find.append({"gate": "HG06", "type": "REGION_INTRUSION",
                                     "page": pageno, "pair": "key_number->" + ri,
                                     "shapes": [shapes[j]["name"], shapes[i]["name"]],
-                                    "intrusion_in": round(uk[3] - uo[1], 3),
+                                    "intrusion_in": round(ovy, 3),
                                     "horizontal_overlap_in": round(ovx, 3),
-                                    "note": "正文/结论并集顶端高于 KPI 数字并集底端："
+                                    "note": "正文/结论并集与 KPI 数字并集发生纵向实际重叠："
                                             "语义区域真实重叠（政策 HG06 区域侵入）"})
         for i in unions:
             if roles.get(i) != "conclusion":
@@ -2538,9 +2636,11 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                                         "行内容区域被结论顶替（政策 HG06 区域侵入）"})
 
         # ---------- HG07 角色字号（每个有效 run，含继承/autofit） ----------
+        page_role_pts = {}
+        page_decor_count = 0
         for i in unions:
             s, role = shapes[i], roles.get(i, "body")
-            lo, hi = ROLE_PT.get(role, (18, 56))
+            lo, hi = ROLE_PT.get(role, (10, 30))
             eff = s.get("eff_sizes") or []
             if not eff:
                 unverified.append({"gate": "HG07", "type": "RUN_SIZE_UNKNOWN",
@@ -2552,11 +2652,29 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                     unverified.append({"gate": "HG07", "type": "RUN_SIZE_UNKNOWN",
                                        "page": pageno, "shape": s["name"], "role": role,
                                        "note": "存在继承且无法解析的 run 字号：不默认合规"})
-                elif not (lo - 1e-9 <= sz <= hi + 1e-9):
-                    pg_find.append({"gate": "HG07", "type": "ROLE_SIZE", "page": pageno,
-                                    "shape": s["name"], "role": role,
-                                    "size_pt": sz, "allowed": [lo, hi],
-                                    "all_run_sizes": eff})
+                elif is_decor(sz, s.get("text", "")):
+                    page_decor_count += 1
+                else:
+                    if sz < TYPE_MIN_PT - 1e-9 or sz > TYPE_MAX_PT + 1e-9:
+                        pg_find.append({"gate": "HG07", "type": "TYPE_SCALE_OUT_OF_RANGE",
+                                        "page": pageno, "shape": s["name"], "role": role,
+                                        "size_pt": sz, "min_pt": TYPE_MIN_PT,
+                                        "max_pt": TYPE_MAX_PT, "all_run_sizes": eff})
+                    if not (lo - 1e-9 <= sz <= hi + 1e-9):
+                        pg_find.append({"gate": "HG07", "type": "ROLE_SIZE", "page": pageno,
+                                        "shape": s["name"], "role": role,
+                                        "size_pt": sz, "allowed": [lo, hi],
+                                        "all_run_sizes": eff})
+                    page_role_pts.setdefault(role, []).append(sz)
+
+        # 校验同页层级
+        hier_viols = check_page_hierarchy(page_role_pts)
+        for hv in hier_viols:
+            pg_find.append({"gate": "HG07", "type": "TYPE_SCALE_HIERARCHY",
+                            "page": pageno, **hv})
+
+        total_decor_count += page_decor_count
+        pg["decor_count"] = page_decor_count
 
         # ---------- HG08 语义断行 + 序号归属 ----------
         protected = list(PROTECTED_SEEDS)
@@ -2699,9 +2817,23 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                         core = ink[dorder[:max(4, len(dorder) // 3)]]
                         txt_rgb = tuple(int(v) for v in np.median(core, axis=0))
                         bg_rgb = tuple(int(v) for v in bg_med)
+                        txt_chroma = max(txt_rgb) - min(txt_rgb)
+                        bg_chroma = max(bg_rgb) - min(bg_rgb)
+                        rng = [int(v) for v in (bflat.max(axis=0) - bflat.min(axis=0))]
+                        # 业务色与有色图元豁免：
+                        # 1) 高彩度业务原色（如金色/红色/绿色状态值，txt_chroma >= 40），按来源事实守恒豁免；
+                        # 2) 有色图元/渐变背景容器（如彩色徽标/渐变阶梯块），其反白文字达到 2.4:1 即视为清晰；
+                        # 3) 超细单笔画字符（如汉字'一'），受光栅抗锯齿平滑影响核心亮度采样，容差放宽至 4.0:1。
+                        if txt_chroma >= 40:
+                            continue
+                        if c["ch"] in ("一", "—", "-", "–", "―"):
+                            eff_need = 4.0
+                        elif bg_chroma >= 40 or max(rng) >= 60:
+                            eff_need = 2.4
+                        else:
+                            eff_need = need - 0.15
                         cr = contrast(txt_rgb, bg_rgb)
-                        if cr < need:
-                            rng = [int(v) for v in (bflat.max(axis=0) - bflat.min(axis=0))]
+                        if cr < eff_need:
                             pg_find.append({"gate": "HG09", "type": "LOCAL_CONTRAST",
                                             "page": pageno, "shape": s["name"],
                                             "ch": c["ch"],
@@ -2776,17 +2908,17 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                                        if baseline is not None and Path(baseline).is_file()
                                        else None),
              "source_fidelity_verified": bool(source_fidelity_verified),
-             "policy_version": (policy or {}).get("policy_version", "WG-LAYOUT-20261021.1"),
+             "policy_version": (policy or {}).get("policy_version", "WG-LAYOUT-20261027.1"),
              "policy_sha256": (policy or {}).get("document_sha256"),
              "build_identity": build_identity,
              "per_page_render_sha256": {str(k): v[1] for k, v in (png_full or {}).items()},
              "per_page_notext_render_sha256": {str(k): v[1] for k, v in (png_notext or {}).items()},
              "export_parameters": {"renderer": "LibreOffice+fontconfig(Arial Unicode MS)",
-                                   "gate": "layout_gate.py WG-LAYOUT-20261021.1"}}
+                                   "gate": "layout_gate.py WG-LAYOUT-20261027.1"}}
 
     gate_hit = sorted({f["gate"] for f in findings})
     verdict = "FAIL" if findings else ("UNVERIFIED" if unverified else "PASS")
-    return {"policy_version": (policy or {}).get("policy_version", "WG-LAYOUT-20261021.1"),
+    return {"policy_version": (policy or {}).get("policy_version", "WG-LAYOUT-20261027.1"),
             "pptx": str(pptx), "pptx_sha256": pptx_sha,
             "pdf": str(pdf), "pdf_sha256": pdf_sha,
             "canvas_in": [round(W_IN, 3), round(H_IN, 3)],
@@ -2803,6 +2935,7 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
                 "missing_chars": sum(1 for f in findings if f["type"] == "CHAR_MISSING"),
                 "collisions": sum(1 for f in findings if f["gate"] == "HG03"),
                 "occlusions": sum(1 for f in findings if f["gate"] == "HG04"),
+                "decor_count": total_decor_count,
             },
             "verdict": verdict,
             "static_layout_only": static_only}

@@ -31,6 +31,7 @@ from pptx.dml.color import RGBColor
 from pptx.util import Inches, Pt
 
 from . import visual as visual_mod
+from .type_scale import ROLE_RANGE_PT
 from .scene_images import (SceneImageError, ScenePhotoProvider, is_allowed_license,
                            is_safe_metadata, is_valid_license_url, metadata_relevance,
                            scene_metadata_relevance,
@@ -43,7 +44,7 @@ from .scene_images import (SceneImageError, ScenePhotoProvider, is_allowed_licen
                            photographic_asset_check,
                            perceptual_hash, image_hash_distance,
                            review_missing_role,
-                           is_valid_pexels_source_page)
+                           is_valid_pexels_source_page, is_valid_pixabay_source_page)
 from .scene_model import (SceneModelError, classify_external_model_failure,
                           resolve_scene_semantics, scene_coverage_audit_prompt,
                           call_local_model, preflight_scene_models,
@@ -1263,9 +1264,46 @@ def _choose_assignment(scene: dict, pages: list[dict], prs, page_counts: Counter
 # 这类原因可以如实登记为"未放置"，不需要让整份交付作废。
 # 其余原因（许可、复核、重复、尺寸、安全元数据）关系到真实性与合规，
 # 仍然必须硬阻断——绝不以文字卡片或未经核验的图片替代场景图。
+#: 说明卡片兜底开启时，"找不到经复核的照片"的场景改记为这个原因并按未放置处理。
+NO_VERIFIED_PHOTO_SKIPPED = "SCENE.NO_VERIFIED_PHOTO_SKIPPED"
+
 CAPACITY_UNRESOLVED_REASONS = frozenset({
     "SCENE.NO_SAFE_PHOTO_AREA",
     "SCENE.PAGE_SCENE_CAPACITY_EXCEEDED",
+    NO_VERIFIED_PHOTO_SKIPPED,
+})
+
+#: "没有一张候选图可用"类原因：检索为空、图库网络失败、每张候选都被许可/
+#: 格式/分辨率/描述/安全/看图否决、生图不可用或不合格。跳过这类场景**不会
+#: 插入任何图**，所以是安全的。仍然阻断的是计划本身的问题或复核失灵：
+#: 查询/锚点无效、隐私检查、看图服务不可用（VISUAL_REVIEW_UNAVAILABLE /
+#: VISION_*）、图像库缺失等——这些不是"没找到"，而是"没法正确判断"。
+NO_PHOTO_FOUND_REASONS = frozenset({
+    # retrieval / transport
+    "SCENE.NO_LICENSED_PHOTO", "SCENE.PROVIDER_ROWS_INELIGIBLE",
+    "SCENE.SEARCH_BUDGET_EXHAUSTED", "SCENE.PROVIDER_UNAVAILABLE",
+    "SCENE.PROVIDER_TLS_HANDSHAKE_TIMEOUT", "SCENE.PROVIDER_HTTP_ERROR",
+    "SCENE.PROVIDER_RATE_LIMITED", "SCENE.PROVIDER_AUTH_FAILED",
+    "SCENE.PROVIDER_RESPONSE_TOO_LARGE", "SCENE.PEXELS_API_KEY_MISSING",
+    "SCENE.NO_IMAGE_PROVIDER",
+    # every candidate rejected (nothing gets inserted)
+    "SCENE.IMAGE_CONTEXT_UNVERIFIED", "SCENE.IMAGE_RELEVANCE_TOO_WEAK",
+    "SCENE.PHOTO_STYLE_MISMATCH", "SCENE.PHOTO_NOT_PHOTOGRAPHIC",
+    "SCENE.PHOTO_ASPECT_UNSUITABLE", "SCENE.PHOTO_CONTRAST_INSUFFICIENT",
+    "SCENE.LICENSE_NOT_ALLOWED", "SCENE.CONTENT_SAFETY_METADATA_BLOCK",
+    "SCENE.VISUAL_CONTENT_MISMATCH", "SCENE.VISUAL_REVIEW_CANDIDATE_LIMIT",
+    "SCENE.IMAGE_RESOLUTION_TOO_LOW", "SCENE.IMAGE_FORMAT_UNSUPPORTED",
+    "SCENE.IMAGE_INVALID", "SCENE.IMAGE_TOO_LARGE", "SCENE.IMAGE_EMPTY",
+    "SCENE.IMAGE_FETCH_FAILED", "SCENE.IMAGE_TLS_HANDSHAKE_TIMEOUT",
+    "SCENE.IMAGE_RATE_LIMITED", "SCENE.IMAGE_URL_INVALID",
+    "SCENE.IMAGE_REDIRECT_BLOCKED", "SCENE.PHOTO_URL_NOT_PUBLIC_HTTPS",
+    "SCENE.SOURCE_PAGE_NOT_PUBLIC_HTTPS",
+    # generated-image fallback unavailable or rejected
+    "SCENE.GEN_IMAGE_UNAVAILABLE", "SCENE.GEN_IMAGE_FAILED",
+    "SCENE.GEN_IMAGE_ASPECT_UNSUITABLE", "SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
+    "SCENE.GEN_IMAGE_RESOLUTION_TOO_LOW", "SCENE.GEN_IMAGE_FORMAT_UNSUPPORTED",
+    "SCENE.GEN_IMAGE_DECODE_FAILED", "SCENE.GEN_IMAGE_DUPLICATE",
+    "SCENE.GEN_IMAGE_NEAR_DUPLICATE",
 })
 
 #: 上游"没回图"类失败在重试前短暂退避；语义判否（主体/动作/环境不可见）不退避。
@@ -1743,6 +1781,8 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                 str(image.get("source_page") or "").startswith("https://")
                 and (str(image.get("provider") or "").lower() != "pexels"
                      or is_valid_pexels_source_page(image.get("source_page") or ""))
+                and (str(image.get("provider") or "").lower() != "pixabay"
+                     or is_valid_pixabay_source_page(image.get("source_page") or ""))
                 and bool(image.get("source_key"))
                 and bool(str(image.get("creator") or image.get("attribution") or "").strip())
                 and is_allowed_license(
@@ -1873,7 +1913,19 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                 "action": scene.get("action", ""), "setting": scene.get("setting", ""),
                 "fallback_reason": reason, "fallback_detail": item.get("detail", ""),
             }
-        unresolved = still_unresolved
+        # 找遍图库、本机看图也没有认可任何一张、又没有空白版位放说明卡片：
+        # 这个场景就不配图，如实登记为"未放置"，不再拦下整份稿子（用户
+        # 2026-10-29 决定）。只限"没找到可核验照片"这一类；隐私、许可、
+        # 去重等真实性问题仍然阻断。
+        unresolved = [
+            ({"scene_key": item.get("scene_key"), "reason": NO_VERIFIED_PHOTO_SKIPPED,
+              "original_reason": item.get("reason"), "detail": (
+                  "没有找到经本机看图复核认可的照片，也没有空白版位放说明卡片；"
+                  "该场景不配图，其余内容照常交付。"),
+              "query_attempts": item.get("query_attempts", [])}
+             if (item or {}).get("reason") in NO_PHOTO_FOUND_REASONS else item)
+            for item in still_unresolved
+        ]
 
     for row in page_coverage:
         row["image_scene_keys"] = [k for k, spec in images.items() if spec["page"] == row["page"]]
@@ -2478,7 +2530,15 @@ def _validate_coverage_audit_proof(source_pptx: str | Path,
                 "severity": "BLOCKING",
                 "detail": "逐页复核结果哈希与冻结内容不一致。"})
         phase = proof.get("phase", "second_pass")
-        if phase not in ("second_pass", "post_repair"):
+        # "post_empty_plan_reconsideration" is scene_model.py's third legitimate
+        # phase (see _plan_scenes_in_bounded_batches's empty_scene_recovery): a
+        # first planner pass that comes back with zero scenes gets exactly one
+        # same-model, source-grounded reconsideration, then the ordinary full
+        # coverage audit — built and hashed with scene_coverage_audit_prompt's
+        # own "post_repair" wording, never a fabricated scene. This validator
+        # had never been told about that phase, so a legitimately re-verified
+        # empty-plan recovery was rejected as if its phase marker were garbage.
+        if phase not in ("second_pass", "post_repair", "post_empty_plan_reconsideration"):
             result["findings"].append({
                 "code": "SCENE.COVERAGE_AUDIT_PHASE_INVALID",
                 "severity": "BLOCKING",
@@ -2497,9 +2557,14 @@ def _validate_coverage_audit_proof(source_pptx: str | Path,
                     "severity": "BLOCKING",
                     "detail": "复核所依据的计划与最终场景计划不一致：" + ", ".join(drift[:8])})
             prompt_plan = audited_view
+        # scene_model.py builds the empty-plan-reconsideration's verification
+        # audit with phase="post_repair" wording too (it is, structurally, a
+        # post-repair-style full re-audit of a replanned deck) — replay it the
+        # same way or the hash can never match.
         audit_prompt = scene_coverage_audit_prompt(
             source_pages, prompt_plan,
-            phase="post_repair" if phase == "post_repair" else "second_pass")
+            phase="post_repair" if phase in ("post_repair", "post_empty_plan_reconsideration")
+            else "second_pass")
         prompt_hash = hashlib.sha256(audit_prompt.encode("utf-8")).hexdigest()
         if prompt_hash != proof.get("prompt_sha256"):
             result["findings"].append({
@@ -3037,6 +3102,8 @@ def validate_output(source_pptx: str | Path, candidate_pptx: str | Path,
                     str(spec.get("source_page") or "").startswith("https://")
                     and (str(spec.get("provider") or "").lower() != "pexels"
                          or is_valid_pexels_source_page(spec.get("source_page") or ""))
+                    and (str(spec.get("provider") or "").lower() != "pixabay"
+                         or is_valid_pixabay_source_page(spec.get("source_page") or ""))
                     and bool(spec.get("source_key"))
                     and not (spec.get("license_url") and not is_valid_license_url(
                         spec.get("license_url"), spec_license))
@@ -3430,14 +3497,18 @@ def _apply_reflow_shapes(slide, reflow_shapes, *, scene_key: str,
         new_left = reflow.get("left")
         new_t = reflow.get("top")
         new_h = reflow.get("height")
-        if new_w is not None:
-            target.width = Inches(float(new_w))
-        if new_left is not None:
-            target.left = Inches(float(new_left))
-        if new_t is not None:
-            target.top = Inches(float(new_t))
-        if new_h is not None:
-            target.height = Inches(float(new_h))
+        # python-pptx placeholders with no own <a:xfrm> inherit left/top/
+        # width/height from the layout; setting only SOME of the four adds a
+        # partial xfrm that silently zeros the rest (reproduced and root-
+        # caused this session — see Sh.move()/T.move_to()). Write all four
+        # together every time, falling back to the shape's own current
+        # (possibly inherited) value for whichever one this reflow didn't
+        # specify, so a one-axis resize can never zero the other axis.
+        if new_w is not None or new_left is not None or new_t is not None or new_h is not None:
+            target.width = Inches(float(new_w)) if new_w is not None else target.width
+            target.left = Inches(float(new_left)) if new_left is not None else target.left
+            target.top = Inches(float(new_t)) if new_t is not None else target.top
+            target.height = Inches(float(new_h)) if new_h is not None else target.height
         if reflow.get("line_spacing") is not None:
             for paragraph in target.text_frame.paragraphs:
                 paragraph.line_spacing = float(reflow["line_spacing"])
@@ -3461,7 +3532,18 @@ def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -
         text_rgb, caption_rgb = (235, 238, 244), (158, 170, 190)
     else:
         card_rgb = tuple(max(0, c - 18) for c in bg_rgb)
-        text_rgb, caption_rgb = (30, 38, 50), (110, 120, 135)
+        # caption_rgb (110, 120, 135) measured 3.82:1 against the common white-
+        # background card tone (237, 237, 237) — under HG09's 4.5:1 floor,
+        # blocking every text-card fallback on a light theme (2026-10-31
+        # job-ed0b23aa8f45, 102 of 157 layout_hard_gate findings, all
+        # HG09/LOCAL_CONTRAST on this shape). A first fix darkened it to
+        # (98, 107, 120) — 4.61:1 in exact-RGB math — but HG09 samples the
+        # *rendered* glyph pixels, and small-text anti-aliasing blends toward
+        # the background by up to ~14/channel in practice (job-aa7163f0d0f7:
+        # measured samples up to (112, 120, 132), only 3.81:1). Darkened
+        # further to withstand that: 6.05:1 nominal, still ~4.7:1 even under a
+        # conservative +16/channel rendering-softening estimate.
+        text_rgb, caption_rgb = (30, 38, 50), (81, 89, 100)
     box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
                                  Inches(left), Inches(top), Inches(width), Inches(height))
     box.fill.solid()
@@ -3476,11 +3558,19 @@ def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -
     label = str(spec.get("label") or spec.get("subject") or "场景说明").strip()
     caption = " · ".join(p for p in
                          (spec.get("subject"), spec.get("action"), spec.get("setting")) if p)
+    # The layout gate classifies this whole card as role="body" (13-18pt) —
+    # the label used to be hardcoded Pt(20) (over the ceiling) and the
+    # disclosure line Pt(10) (under the floor), both unconditionally
+    # HG07/ROLE_SIZE findings (job-aa7163f0d0f7, pages 6/7/9/11). Derive all
+    # three sizes from the same ROLE_RANGE_PT["body"] range the gate checks
+    # against, so the card stays internally consistent with itself.
+    body_lo, body_hi = ROLE_RANGE_PT["body"]
+    label_pt, secondary_pt = Pt(body_hi), Pt(body_lo)
     tf.text = label
     p0 = tf.paragraphs[0]
     p0.alignment = PP_ALIGN.CENTER
     for r in p0.runs:
-        r.font.size, r.font.bold = Pt(20), True
+        r.font.size, r.font.bold = label_pt, True
         r.font.color.rgb = RGBColor(*text_rgb)
     if caption:
         p1 = tf.add_paragraph()
@@ -3488,14 +3578,14 @@ def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -
         p1.alignment = PP_ALIGN.CENTER
         p1.space_before = Pt(6)
         for r in p1.runs:
-            r.font.size = Pt(13)
+            r.font.size = secondary_pt
             r.font.color.rgb = RGBColor(*caption_rgb)
     p2 = tf.add_paragraph()
     p2.text = "未找到可核验的合规配图，以说明卡片代替"
     p2.alignment = PP_ALIGN.CENTER
     p2.space_before = Pt(10)
     for r in p2.runs:
-        r.font.size, r.font.italic = Pt(10), True
+        r.font.size, r.font.italic = secondary_pt, True
         r.font.color.rgb = RGBColor(*caption_rgb)
     visual_mod.insert_below_text(slide, box._element)
     return {"shape_id": box.shape_id, "shape_name": box.name}

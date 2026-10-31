@@ -923,6 +923,12 @@ function cloudModelSectionHtml(st) {
     "<label class='field' style='display:flex;align-items:center;gap:8px;margin-top:10px'>" +
     "<input type='checkbox' id='cm-enabled'" + (on ? " checked" : "") + "> 启用云端模型" +
     "</label>" +
+    "<label class='field' style='display:flex;align-items:center;gap:8px;margin-top:6px'>" +
+    "<input type='checkbox' id='cm-vision-enabled'" + (st && st.vision_enabled ? " checked" : "") +
+    "> 只把图片语义复核交给云端（文本规划仍走本机）" +
+    "</label>" +
+    "<p class='hint'>仅云端视觉：只发出候选配图（公开图库图或生成图）与一句场景描述，原稿文字不出本机。" +
+    "本机没有能看图的模型服务时，配图复核需要它。</p>" +
     "<label class='field'>端点（OpenAI 兼容 base，例如 https://api.openai.com/v1）</label>" +
     "<input id='cm-endpoint' value=\"" + esc((st && st.endpoint) || "") + "\" placeholder='https://api.openai.com/v1'>" +
     "<label class='field'>API key（" + esc(keyNote) + "；留空表示保留原值）</label>" +
@@ -951,6 +957,7 @@ async function saveCloudModelConfig() {
   const apiKeyRaw = $("cm-apikey").value;
   const body = {
     enabled: $("cm-enabled").checked,
+    vision_enabled: $("cm-vision-enabled").checked,
     endpoint: $("cm-endpoint").value.trim(),
     text_model: $("cm-text-model").value.trim(),
     vision_model: $("cm-vision-model").value.trim(),
@@ -1742,7 +1749,13 @@ async function loadStudioResult(job) {
   if (res.ready) {
     $("statusline").innerHTML = chip("ok", "可以查看与下载") +
       "<span class='hint'>下载经过导出清单与整文件 SHA-256 绑定；仍是内部测试候选，不是 READY。</span>";
-    $("downloads").innerHTML = "<div class='dl'>" + (res.items || []).map((it) =>
+    const allBtn = (res.items || []).length > 1
+      ? "<div class='item'><span class='muted small'>ZIP</span>" +
+        "<div><div class='nm'>整套打包下载</div>" +
+        "<div class='meta'>" + (res.items || []).length + " 个文件，逐一校验哈希后打包</div></div>" +
+        "<a class='btn sm' href='" + esc("/api/jobs/" + enc(job) + "/download_all") + "'>下载全部</a></div>"
+      : "";
+    $("downloads").innerHTML = "<div class='dl'>" + allBtn + (res.items || []).map((it) =>
       "<div class='item'><span class='muted small'>" + esc((it.kind || "").toUpperCase()) + "</span>" +
       "<div><div class='nm'>" + esc(it.name) + "</div>" +
       "<div class='meta'>" + bytes(it.bytes) + " · 预期 sha " + esc(shortSha(it.expected_sha256)) + "…</div></div>" +
@@ -1914,7 +1927,7 @@ function syncMaterialButton() {
 
 $("btn-material").onclick = async () => {
   const body = { mode: S.material.mode, theme: $("mat-theme").value,
-                 auto_advance: true };
+                 auto_advance: true, allow_text_card_fallback: true };
   if (S.material.mode === "replay") {
     body.replay_id = S.material.pack && S.material.pack.id;
     body.pages = (S.material.pack && S.material.pack.pages) || 12;
@@ -2089,7 +2102,13 @@ async function renderMaterialResult(t) {
     const r = await api("/api/jobs/" + enc(t.job_id) + "/result");
     const res = r.json || {};
     if (res.ready) {
-      html += "<div class='dl'>" + (res.items || []).map((it) =>
+      const allBtn = (res.items || []).length > 1
+        ? "<div class='item'><span class='muted small'>ZIP</span>" +
+          "<div><div class='nm'>整套打包下载</div>" +
+          "<div class='meta'>" + (res.items || []).length + " 个文件，逐一校验哈希后打包</div></div>" +
+          "<a class='btn sm' href='" + esc("/api/jobs/" + enc(t.job_id) + "/download_all") + "'>下载全部</a></div>"
+        : "";
+      html += "<div class='dl'>" + allBtn + (res.items || []).map((it) =>
         "<div class='item'><span class='muted small'>" + esc((it.kind || "").toUpperCase()) + "</span>" +
         "<div><div class='nm'>" + esc(it.name) + "</div><div class='meta'>" + bytes(it.bytes) +
         " · sha " + esc(shortSha(it.expected_sha256)) + "…</div></div>" +

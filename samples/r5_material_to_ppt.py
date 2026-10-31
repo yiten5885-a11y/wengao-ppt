@@ -1674,6 +1674,51 @@ CATALOG_KEY_MAP = {
     "summary_action": "summary_action",
 }
 
+#: A must_state row is a literal Markdown table row (``| cell | cell |``) when
+#: it starts and ends with "|" and has at least one more "|" between them.
+#: Facts are frozen verbatim from the source (never rewritten — see
+#: complete_source_sentences's "必须是该事实【原句】的忠实表述"), so a source
+#: Markdown table survives into must_state exactly as written. Rendered as
+#: plain single_column body text it wraps like any other sentence: a lone
+#: "|" lands alone on a wrapped line (HG08 ORPHAN_CHAR_LINE/TITLE_ORPHAN_TAIL)
+#: and a dense multi-column row can overflow the fixed-height placeholder
+#: (HG05/HG02 — 2026-10-31 job-f04e1e2368a6 page 9). add_table's single-
+#: column renderer already measures each row's wrapped height from its exact
+#: character count and overflows extra rows to a continuation page instead of
+#: clipping (see add_table's "放不下的行交溢出续页" contract), so routing a
+#: Markdown-table-shaped page through it — without touching any must_state
+#: text — fixes the layout without weakening fact verbatim-fidelity.
+_MD_TABLE_ROW_RE = re.compile(r"^\s*\|.*\|.*\|\s*$")
+
+
+def _is_md_table_row(item: str) -> bool:
+    return bool(_MD_TABLE_ROW_RE.match(str(item or "")))
+
+
+def reclassify_markdown_table_pages(plan: dict) -> dict:
+    """Override page_type to "table" for any non-structured page whose
+    must_state contains at least one literal Markdown table row.
+
+    Must run before paginate_plan: pagination picks its per-page item
+    capacity from page_type's catalog entry (CATALOG_KEY_MAP), so a page_type
+    change made only at render time would leave pagination sized for the
+    wrong (text) capacity profile while rendering used the table one.
+    "cover"/"table"/"chart"/"metrics"/"image_caption" pages are left alone —
+    they already have their own dedicated renderer and, for image_caption,
+    a required image_asset binding this override must not disturb.
+    """
+    STRUCTURED = {"cover", "table", "chart", "metrics", "metric", "image_caption"}
+    reclassified = []
+    for sl in plan.get("slides") or []:
+        if sl.get("page_type") in STRUCTURED:
+            continue
+        items = sl.get("must_state") or []
+        if any(_is_md_table_row(it) for it in items):
+            reclassified.append({"page": sl.get("page"), "title": sl.get("title"),
+                                 "from_page_type": sl.get("page_type")})
+            sl["page_type"] = "table"
+    return {"reclassified_pages": reclassified}
+
 
 def expected_slide_count(plan: dict) -> int:
     """这份计划最终会建成多少页。
@@ -2062,11 +2107,23 @@ def build_pptx(plan: dict, facts: list[dict], out_path: Path, theme_mod):
 
     def _fill_bullets(tf, its):
         """把条目写进一个文本框架：24pt、1.25 行距、段后 10pt（显式值）。"""
+        from pptx.oxml.ns import qn
+        from lxml import etree
         tf.word_wrap = True
         tf.text = str(its[0])
         for it in its[1:]:
             p = tf.add_paragraph()
             p.text = str(it)
+        # 占位符继承母版的项目符号；条目原句若已自带编号（"1. "/"2) "等，
+        # 原句是冻结事实、不能改写去掉这个前缀），再叠一个继承的"•"就是
+        # 双重编号。换行恰好落在编号前时，这个多出来的"•"会单独占一行
+        # （2026-10-31 job-8227a4c941e4 第 13 页 HG08 ORPHAN_CHAR_LINE）。
+        # 只在条目本身已有编号前缀时关闭继承项目符号，未编号的条目外观不变。
+        numbered = re.compile(r"^\s*\d+[.\)、]\s")
+        for it, para in zip(its, tf.paragraphs):
+            if numbered.match(str(it)):
+                pPr = para._p.get_or_add_pPr()
+                etree.SubElement(pPr, qn("a:buNone"))
         for para in tf.paragraphs:
             para.line_spacing = 1.25
             para.space_after = Pt(10)
@@ -3040,6 +3097,7 @@ def main() -> int:
                "note": "回放已分页计划：未重新规划、未重新分页。"}
         pp.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     else:
+        run["markdown_table_reclassification"] = reclassify_markdown_table_pages(plan)
         plan, pag = paginate_plan(plan, facts)
         # 与回放路径同一口径：把构建期会前置的封面计入最终页数。
         pag["pages_after"] = expected_slide_count(plan)

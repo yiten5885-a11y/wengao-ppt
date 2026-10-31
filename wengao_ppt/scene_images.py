@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import http.client
 import io
 import ipaddress
 import json
@@ -17,6 +18,8 @@ import math
 import os
 import socket
 import re
+import ssl
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -76,12 +79,22 @@ SCENE_SEARCH_QUERY_TIMEOUT_S = 4.0
 #: query latency was about 5.0-5.3 s; a 4 s socket bound failed while 8 s
 #: returned candidates. Openverse cache hits can be quick, but uncached queries
 #: took 5-35 s. These are per-request client bounds, not global network changes.
+#: 2026-10-28 on the same host behind a slower proxy route: every new HTTPS
+#: connection to Pexels/Wikimedia spent 5-10 s in the TLS handshake alone
+#: (Google 0.35 s), so a request finished in 8-16 s. Connections are now reused
+#: per host (see _KeepAliveHTTPSHandler), so only the first request to each
+#: provider pays the handshake; these bounds leave room for that first one.
+#: Kept moderate on purpose: six scenes x three providers must still fit the
+#: workbench "run" stage, and a 30 s x 2-attempt Openverse stall per scene
+#: pushed a whole run past it.
 SCENE_SEARCH_QUERY_TIMEOUT_BY_PROVIDER = {"openverse": 20.0,
-                                          "wikimedia-commons": 8.0,
-                                          "pexels": 15.0}
+                                          "wikimedia-commons": 15.0,
+                                          "pexels": 20.0,
+                                          "pixabay": 20.0}
 SCENE_SEARCH_BUDGET_BY_PROVIDER = {"openverse": 45.0,
-                                   "wikimedia-commons": 24.0,
-                                   "pexels": 30.0}
+                                   "wikimedia-commons": 30.0,
+                                   "pexels": 45.0,
+                                   "pixabay": 45.0}
 
 # Provider search can return a licensed but misleading result. Do not insert
 # material whose own metadata signals explicit or graphic content. This is a
@@ -124,7 +137,7 @@ _CC_BY_4_LABELS = {"by", "cc by", "cc by 4 0", "cc by 4.0",
 def _is_allowed_license(value: str, *, version: str | None = None,
                         license_url: str | None = None) -> bool:
     key = _license_key(value)
-    if key == "pexels license":
+    if key in ("pexels license", "pixabay license", "pixabay content license"):
         return bool(license_url) and is_valid_license_url(license_url, value)
     if key in _ALLOWED_LICENSE_KEYS:
         return not license_url or is_valid_license_url(license_url, value)
@@ -341,6 +354,12 @@ def is_valid_license_url(value: str, license_name: str) -> bool:
                     and parsed.port in (None, 443)
                     and parsed.path.rstrip("/").lower() == "/license"
                     and not parsed.query and not parsed.fragment)
+        if key in ("pixabay license", "pixabay content license"):
+            return (parsed.scheme == "https"
+                    and parsed.hostname.lower() in {"pixabay.com", "www.pixabay.com"}
+                    and parsed.port in (None, 443)
+                    and parsed.path.rstrip("/").lower() == "/service/license-summary"
+                    and not parsed.query and not parsed.fragment)
         if key in _CC_BY_4_LABELS:
             return (parsed.scheme in {"https", "http"}
                     and parsed.hostname.lower() in {"creativecommons.org", "www.creativecommons.org"}
@@ -371,6 +390,21 @@ def is_valid_pexels_source_page(value: str) -> bool:
                 and parsed.hostname.lower() in {"pexels.com", "www.pexels.com"}
                 and parsed.port in (None, 443)
                 and parsed.path.lower().startswith("/photo/")
+                and not parsed.username and not parsed.password
+                and not parsed.query and not parsed.fragment)
+    except (TypeError, ValueError):
+        return False
+
+
+def is_valid_pixabay_source_page(value: str) -> bool:
+    """Accept only a first-party Pixabay photo page as source attribution."""
+    try:
+        parsed = urlparse(str(value or "").strip())
+        return (parsed.scheme == "https"
+                and parsed.hostname is not None
+                and parsed.hostname.lower() in {"pixabay.com", "www.pixabay.com"}
+                and parsed.port in (None, 443)
+                and parsed.path.lower().startswith("/photos/")
                 and not parsed.username and not parsed.password
                 and not parsed.query and not parsed.fragment)
     except (TypeError, ValueError):
@@ -422,6 +456,29 @@ _SETTING_ALIASES = {
     "site": {"site", "worksite", "workplace", "service center", "service counter", "building site"},
     "service": {"service", "service center", "service counter", "service desk", "customer service"},
     "workspace": {"workspace", "workplace", "workstation", "office", "desk"},
+    # Business/tech settings (2026-10-28, telecom strategy deck): Pexels titled a
+    # perfect match "executives discussing strategies in a modern boardroom", but
+    # "meeting room" had no aliases, so every such caption was discarded before
+    # the visual review could judge the pixels.
+    "meeting room": {"meeting room", "conference room", "boardroom", "board room",
+                     "meeting", "office"},
+    "conference room": {"conference room", "meeting room", "boardroom", "board room",
+                        "meeting"},
+    "boardroom": {"boardroom", "board room", "conference room", "meeting room"},
+    "corporate office": {"corporate office", "office", "workplace", "boardroom",
+                         "conference room"},
+    "data center": {"data center", "datacenter", "server room", "server rack",
+                    "server racks", "servers"},
+    "datacenter": {"datacenter", "data center", "server room", "server racks"},
+    "server room": {"server room", "data center", "datacenter", "server racks"},
+    "control room": {"control room", "operations center", "monitoring room",
+                     "command center"},
+    "living room": {"living room", "lounge", "sofa", "couch", "home"},
+    "retail store": {"retail store", "store", "shop", "retail", "supermarket",
+                     "boutique", "checkout"},
+    "store": {"store", "shop", "retail", "supermarket", "boutique"},
+    "shop": {"shop", "store", "retail", "boutique"},
+    "city": {"city", "urban", "downtown", "street", "skyline"},
 }
 
 # Provider captions often use a concrete equivalent rather than the exact words
@@ -442,7 +499,9 @@ _SUBJECT_ALIASES = {
     "production worker": {"production worker", "factory worker", "assembly worker",
                           "industrial worker"},
     "consumer": {"consumer", "customer", "shopper", "buyer", "parent"},
-    "customer": {"customer", "consumer", "shopper", "buyer"},
+    # A store caption rarely says "customer": it says who is shopping. The
+    # action and setting anchors still have to match in the same caption.
+    "customer": {"customer", "consumer", "shopper", "buyer", "person", "woman", "man"},
     "shopper": {"shopper", "customer", "consumer", "buyer", "parent"},
     "student": {"student", "pupil", "learner", "child"},
     "doctor": {"doctor", "physician", "clinician"},
@@ -465,6 +524,32 @@ _SUBJECT_ALIASES = {
     "mug": {"mug", "cup", "travel mug", "coffee mug"},
     "smartphone": {"smartphone", "mobile phone", "cell phone", "iphone"},
     "laptop": {"laptop", "notebook computer", "macbook"},
+    # Business/tech roles (2026-10-28): stock captions say "professionals",
+    # "businesswoman" or "team" far more often than the planner's exact noun.
+    "executive": {"executive", "executives", "business leader", "businessman",
+                  "businesswoman", "businesspeople", "business people", "manager",
+                  "director", "business professional", "business professionals"},
+    "executives": {"executives", "executive", "business leaders", "businessmen",
+                   "businesswomen", "businesspeople", "business people", "managers",
+                   "directors", "business professionals", "professionals"},
+    "manager": {"manager", "executive", "supervisor", "team leader", "businessman",
+                "businesswoman"},
+    "professional": {"professional", "professionals", "businessman", "businesswoman",
+                     "businessperson", "office worker", "employee"},
+    "professionals": {"professionals", "professional", "businesspeople",
+                      "business people", "colleagues", "coworkers", "team"},
+    "team": {"team", "colleagues", "coworkers", "professionals", "staff",
+             "group of people"},
+    "engineer": {"engineer", "technician", "it specialist", "it professional",
+                 "network engineer", "system administrator"},
+    "technician": {"technician", "engineer", "it specialist", "it professional",
+                   "repairman"},
+    "developer": {"developer", "programmer", "software engineer", "coder",
+                  "software developer"},
+    "programmer": {"programmer", "developer", "software engineer", "coder"},
+    "specialist": {"specialist", "expert", "analyst", "consultant", "professional"},
+    "analyst": {"analyst", "data analyst", "specialist", "professional"},
+    "user": {"user", "customer", "consumer", "person", "man", "woman"},
 }
 
 _SUBJECT_SEARCH_VARIANTS = {
@@ -544,6 +629,16 @@ _ACTION_PHRASE_ALIASES = {
     "boarding subway": (
         "boarding subway", "boarding metro", "boarding underground train",
         "taking subway", "commuting subway",
+    ),
+    # "out" is a stop word, so "checking out" could never satisfy the generic
+    # verb+object rule; stock captions describe it as paying at a counter.
+    "checking out": (
+        "checking out", "checkout", "contactless payment", "paying", "payment",
+        "cashier", "cash register", "pays",
+    ),
+    "paying bill": (
+        "paying bill", "paying bills", "pay bills", "online payment", "paying online",
+        "payment", "paying",
     ),
 }
 
@@ -904,13 +999,27 @@ def metadata_relevance(query: str, record: dict) -> float:
     return _metadata_relevance(query, record)
 
 
+# Reserved action anchor for a scene that is honestly a static/establishing
+# shot (a skyline, a landmark, a product on a table) with no human action to
+# verify. Must still pass normalize_photo_search_terms's own 2-4 word, non-
+# overlapping-token validation like any other action anchor.
+_ESTABLISHING_SHOT_ACTION = "establishing shot"
+
+
 def scene_metadata_matches_query(query: str, record: dict, *, scene_context: dict | None = None) -> bool:
     """Require ordered subject, action, and setting anchors in bounded metadata.
 
     Search phrases use the compact order ``subject action setting``.  Requiring
     an action token between the subject and final place token prevents a loose
     topic match such as a recording studio from satisfying a request to document
-    a completed task at an office.
+    a completed task at an office. The one carve-out is the reserved action
+    value ``"establishing shot"`` (see ``_ESTABLISHING_SHOT_ACTION``): a scene
+    that is honestly declared as a static/establishing shot (a skyline, a
+    landmark, a product on a table) has no action to verify in the first place,
+    and real provider captions for that kind of photo ("Beijing skyline at
+    dusk") describe subject and setting only — never an action verb. Every
+    scene that declares a real action anchor still needs all three roles
+    evidenced together, exactly as before.
     """
     anchors = (scene_context.get("photo_search_terms")
                if isinstance(scene_context, dict) else None)
@@ -921,11 +1030,13 @@ def scene_metadata_matches_query(query: str, record: dict, *, scene_context: dic
             return False
         if not query_preserves_photo_search_anchors(query, normalized):
             return False
+        is_establishing_shot = normalized["action"] == _ESTABLISHING_SHOT_ACTION
         # Do not assemble a scene from unrelated sentences in an archival
         # description. Each role must be evidenced in the same title/caption.
         for metadata_tokens in _metadata_evidence_units(record):
             if (_subject_supported(normalized["subject"], metadata_tokens)
-                    and _action_supported(normalized["action"], metadata_tokens)
+                    and (is_establishing_shot
+                         or _action_supported(normalized["action"], metadata_tokens))
                     and _setting_supported(normalized["setting"], metadata_tokens)):
                 return True
         return False
@@ -1021,6 +1132,149 @@ class _HostRedirectHandler(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+class _KeepAliveHTTPSHandler(urllib.request.HTTPSHandler):
+    """HTTPS handler that keeps connections open and reuses them per host.
+
+    urllib's stock handler sends ``Connection: close`` and drops the socket after
+    every response, so each search and each image download paid a full TCP+TLS
+    handshake — 5-10 s per request behind a slow proxy route. Here a connection
+    goes back to a small per-host idle pool once its response was read to the end
+    and the server did not ask to close. All callers issue idempotent GETs, so a
+    reused connection the server already dropped is retried once on a fresh one.
+    Proxy tunnels (CONNECT) are keyed by proxy and target host together.
+    """
+
+    _MAX_IDLE_PER_HOST = 4
+    _STALE_ERRORS = (http.client.RemoteDisconnected, http.client.CannotSendRequest,
+                     http.client.BadStatusLine, ConnectionResetError, BrokenPipeError)
+
+    def __init__(self, context: ssl.SSLContext | None = None):
+        super().__init__(context=context or ssl.create_default_context())
+        self._idle: dict[tuple, list] = {}
+        self._lock = threading.Lock()
+
+    def _take(self, key):
+        with self._lock:
+            conns = self._idle.get(key) or []
+            return conns.pop() if conns else None
+
+    def _give_back(self, key, conn):
+        with self._lock:
+            conns = self._idle.setdefault(key, [])
+            if len(conns) < self._MAX_IDLE_PER_HOST:
+                conns.append(conn)
+                return
+        conn.close()
+
+    def close_all(self):
+        with self._lock:
+            pools, self._idle = list(self._idle.values()), {}
+        for conns in pools:
+            for conn in conns:
+                conn.close()
+
+    def https_open(self, req):
+        host = req.host
+        if not host:
+            raise urllib.error.URLError("no host given")
+        tunnel_host = getattr(req, "_tunnel_host", None)
+        key = (host, tunnel_host)
+        headers = dict(req.unredirected_hdrs)
+        headers.update({k: v for k, v in req.headers.items() if k not in headers})
+        tunnel_headers = {}
+        if "Proxy-Authorization" in headers:
+            tunnel_headers["Proxy-Authorization"] = headers.pop("Proxy-Authorization")
+        headers = {name.title(): val for name, val in headers.items()}
+
+        conn = self._take(key)
+        reused = conn is not None
+        while True:
+            if conn is None:
+                conn = http.client.HTTPSConnection(host, timeout=req.timeout,
+                                                   context=self._context)
+                if tunnel_host:
+                    conn.set_tunnel(tunnel_host, headers=tunnel_headers)
+            else:
+                conn.timeout = req.timeout
+                if conn.sock is not None:
+                    conn.sock.settimeout(req.timeout)
+            try:
+                conn.request(req.get_method(), req.selector, req.data, headers)
+                resp = conn.getresponse()
+                break
+            except self._STALE_ERRORS as err:
+                conn.close()
+                if reused:
+                    conn, reused = None, False
+                    continue
+                raise urllib.error.URLError(err) from None
+            except OSError as err:
+                conn.close()
+                raise urllib.error.URLError(err) from None
+            except BaseException:
+                conn.close()
+                raise
+
+        handler = self
+        original_close = resp.close
+
+        def close_and_release():
+            fully_read = resp.isclosed()
+            original_close()
+            if fully_read and not resp.will_close:
+                handler._give_back(key, conn)
+            else:
+                conn.close()
+
+        resp.close = close_and_release
+        resp.url = req.get_full_url()
+        resp.msg = resp.reason
+        return resp
+
+
+#: One pool per process (each job's scene build runs in its own CLI process).
+_KEEPALIVE_HTTPS = _KeepAliveHTTPSHandler()
+
+_PROXY_CHOICE_TTL_S = 5.0
+_proxy_choice: tuple[float, dict] = (0.0, {})
+
+
+def _live_proxy_handler() -> urllib.request.ProxyHandler:
+    """Pick the HTTPS proxy per request instead of once per process.
+
+    A desktop proxy client (Clash) can flip between "system proxy" mode, where
+    it listens on a local port, and TUN mode, where that port closes and direct
+    connections are intercepted instead. A proxy chosen at process start then
+    makes every later request fail instantly with URLError (2026-10-28: four of
+    six scenes in one run). Use the configured proxy only while its port is
+    actually open; otherwise connect directly. Re-checked at most every 5 s.
+    """
+    global _proxy_choice
+    now = time.monotonic()
+    checked_at, chosen = _proxy_choice
+    if now - checked_at < _PROXY_CHOICE_TTL_S:
+        return urllib.request.ProxyHandler(dict(chosen))
+    configured = {}
+    try:
+        configured = urllib.request.getproxies_environment()
+        if not (configured.get("https") or configured.get("http")) and hasattr(
+                urllib.request, "getproxies_macosx_sysconf"):
+            configured = urllib.request.getproxies_macosx_sysconf()
+    except Exception:  # noqa: BLE001 — no readable proxy config means direct
+        configured = {}
+    chosen = {}
+    url = configured.get("https") or configured.get("http") or ""
+    if url:
+        parsed = urlparse(url if "://" in url else "http://" + url)
+        try:
+            with socket.create_connection((parsed.hostname, parsed.port or 80), timeout=0.5):
+                chosen = {"https": url}
+        except OSError:
+            chosen = {}
+    _proxy_choice = (now, chosen)
+    return urllib.request.ProxyHandler(dict(chosen))
+
+
 def _request_json(url: str, allowed_hosts: set[str], timeout_s: float = 18,
                   max_attempts: int = 2, headers: dict | None = None) -> dict:
     if not _url_is_allowed(url, allowed_hosts):
@@ -1032,7 +1286,8 @@ def _request_json(url: str, allowed_hosts: set[str], timeout_s: float = 18,
     if headers:
         request_headers.update({str(k): str(v) for k, v in headers.items()})
     req = urllib.request.Request(url, headers=request_headers)
-    opener = urllib.request.build_opener(_HostRedirectHandler(allowed_hosts))
+    opener = urllib.request.build_opener(_HostRedirectHandler(allowed_hosts),
+                                          _live_proxy_handler(), _KEEPALIVE_HTTPS)
     max_attempts = max(1, min(int(max_attempts), 2))
     for attempt in range(max_attempts):
         try:
@@ -1075,7 +1330,8 @@ def _download_image(url: str, allowed_hosts: set[str], timeout_s: int = 24) -> t
         "Accept": "image/jpeg,image/png",
         "User-Agent": "WengaoPPT/1.0 (https://wengao.local; team@wengao.local) urllib/3.13",
     })
-    opener = urllib.request.build_opener(_HostRedirectHandler(allowed_hosts))
+    opener = urllib.request.build_opener(_HostRedirectHandler(allowed_hosts),
+                                          _live_proxy_handler(), _KEEPALIVE_HTTPS)
     for attempt in range(2):
         try:
             with opener.open(req, timeout=timeout_s) as response:
@@ -1370,6 +1626,80 @@ class PexelsPhotoProvider:
         )
 
 
+class PixabayPhotoProvider:
+    """Opt-in Pixabay search; API credentials are read from process env only.
+
+    Downloads and the public photo page share a single host (pixabay.com),
+    unlike Pexels' separate images.pexels.com CDN, so one allowed_hosts entry
+    covers both the search API and the image fetch.
+    """
+    name = "pixabay"
+    allowed_hosts = {"pixabay.com"}
+    license_url = "https://pixabay.com/service/license-summary/"
+
+    def search(self, query: str, limit: int = 16, *, timeout_s: float = 18,
+               max_attempts: int = 2) -> list[dict]:
+        api_key = os.environ.get("PIXABAY_API_KEY", "").strip()
+        if not api_key or "\r" in api_key or "\n" in api_key:
+            raise SceneImageError(
+                "SCENE.PIXABAY_API_KEY_MISSING",
+                "Pixabay 搜图需要在启动工作台的进程环境中配置 PIXABAY_API_KEY；密钥不会写入任务记录。",
+            )
+        params = {
+            "key": api_key,
+            "q": _safe_query(query),
+            "image_type": "photo",
+            "orientation": "horizontal",
+            "safesearch": "true",
+            "per_page": str(max(3, min(limit, 20))),
+        }
+        url = "https://pixabay.com/api/?" + urllib.parse.urlencode(params)
+        result = _request_json(
+            url, self.allowed_hosts, timeout_s=timeout_s, max_attempts=max_attempts)
+        out = []
+        for item in result.get("hits") or []:
+            photo_id = str(item.get("id") or "").strip()
+            page_url = str(item.get("pageURL") or "").strip()
+            creator = _strip_html(item.get("user"))
+            # Pixabay repeats the same tag for weighting; dedupe before using
+            # it as a caption, and cap it like Pexels' alt/slug fallback.
+            tags = [t.strip() for t in str(item.get("tags") or "").split(",") if t.strip()]
+            caption = _strip_html(", ".join(dict.fromkeys(tags)))[:240]
+            download_url = next((str(item.get(key) or "").strip()
+                                 for key in ("largeImageURL", "webformatURL")
+                                 if _url_is_allowed(str(item.get(key) or ""),
+                                                    self.allowed_hosts)), "")
+            if (not photo_id or not caption or not creator
+                    or not is_valid_pixabay_source_page(page_url) or not download_url):
+                continue
+            out.append({
+                "provider": self.name,
+                "source_key": photo_id,
+                "title": caption,
+                "description": caption,
+                "creator": creator,
+                "attribution": f"Photo by {creator} on Pixabay",
+                "source_page": page_url,
+                "download_url": download_url,
+                "license": "Pixabay License",
+                "license_version": None,
+                "license_url": self.license_url,
+                "width": int(item.get("imageWidth") or 0),
+                "height": int(item.get("imageHeight") or 0),
+            })
+        return out
+
+    def search_scene(self, query: str, *, scene_context: dict, limit: int = 16) -> list[dict]:
+        return _bounded_scene_search(
+            lambda candidate, timeout_s: self.search(
+                candidate, limit=limit, timeout_s=timeout_s, max_attempts=2),
+            query, scene_context, limit=limit,
+            budget_s=SCENE_SEARCH_BUDGET_BY_PROVIDER["pixabay"],
+            query_timeout_s=SCENE_SEARCH_QUERY_TIMEOUT_BY_PROVIDER["pixabay"],
+            variants=keyword_search_variants(scene_context, query),
+        )
+
+
 class WikimediaCommonsPhotoProvider:
     """Commons fallback using machine-readable imageinfo license metadata."""
     name = "wikimedia-commons"
@@ -1528,18 +1858,22 @@ def review_missing_role(diagnostics: dict | None) -> str | None:
 class ScenePhotoProvider:
     """Search providers in order, cache verified bytes, and reject deck-wide reuse."""
     def __init__(self, cache_dir: str | Path, providers=None, *,
-                 visual_reviewer=None, max_visual_reviews_per_provider: int = 2):
+                 visual_reviewer=None, max_visual_reviews_per_provider: int = 4):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         if providers is None:
-            default_order = (["pexels", "wikimedia-commons", "openverse"]
-                             if os.environ.get("PEXELS_API_KEY", "").strip()
-                             else ["wikimedia-commons", "openverse"])
+            default_order = []
+            if os.environ.get("PEXELS_API_KEY", "").strip():
+                default_order.append("pexels")
+            if os.environ.get("PIXABAY_API_KEY", "").strip():
+                default_order.append("pixabay")
+            default_order += ["wikimedia-commons", "openverse"]
             setting = os.environ.get("WENGAO_SCENE_IMAGE_PROVIDERS",
                                      ",".join(default_order))
             registry = {"openverse": OpenversePhotoProvider,
                         "wikimedia-commons": WikimediaCommonsPhotoProvider,
-                        "pexels": PexelsPhotoProvider}
+                        "pexels": PexelsPhotoProvider,
+                        "pixabay": PixabayPhotoProvider}
             providers = [registry[x.strip()]() for x in setting.split(",")
                          if x.strip() in registry]
         self.providers = list(providers)
@@ -1553,8 +1887,11 @@ class ScenePhotoProvider:
             self.max_visual_reviews_per_provider = max(
                 1, int(max_visual_reviews_per_provider))
         except (TypeError, ValueError):
-            self.max_visual_reviews_per_provider = 2
+            self.max_visual_reviews_per_provider = 4
 
+    # 4 rather than 2 (2026-10-28): the local vision review is strict and a
+    # provider's first two metadata matches were both judged off-scene on a
+    # business deck; each review costs ~8 s on the local model.
     def fetch_one(self, query: str, *, excluded_sha256=None, excluded_source_keys=None,
                   excluded_perceptual_hashes=None, scene_context=None,
                   min_aspect: float | None = None) -> dict:
@@ -1590,10 +1927,15 @@ class ScenePhotoProvider:
                 row = {"provider": provider.name, **exc.as_record()}
                 failures.append(row)
                 # Generic timeouts stay query-scoped. An explicit TLS handshake
-                # timeout or HTTP 429 disables only this provider for this job;
-                # the loop still gives each other configured provider one attempt.
+                # timeout, HTTP 429, or HTTP 401/403 disables only this provider
+                # for this job; the loop still gives each other configured
+                # provider one attempt. Auth failure (bad/expired key) is a
+                # permanent fact for this job just like rate-limiting — without
+                # this, every remaining scene in the deck would re-hit the same
+                # provider, get the same 401, and only then fall through.
                 if exc.code in ("SCENE.PROVIDER_RATE_LIMITED",
-                                "SCENE.PROVIDER_TLS_HANDSHAKE_TIMEOUT"):
+                                "SCENE.PROVIDER_TLS_HANDSHAKE_TIMEOUT",
+                                "SCENE.PROVIDER_AUTH_FAILED"):
                     self.disabled_providers.add(provider.name)
                 continue
             ranked = sorted(records, key=lambda record: (
@@ -1628,8 +1970,21 @@ class ScenePhotoProvider:
                                      "code": "SCENE.PHOTO_STYLE_MISMATCH",
                                      "detail": "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。"})
                     continue
-                if scene_context and not scene_metadata_matches_query(
-                        metadata_query, record, scene_context=scene_context):
+                # With a pixel-level visual reviewer downstream, captions only
+                # pre-screen: 2 of the 3 anchors (subject/action/setting) in one
+                # caption unit is enough to earn a review, and the reviewer makes
+                # the call. Stock captions rarely name all three for abstract
+                # business scenes, so the strict 3-of-3 rule discarded 60-127
+                # candidates per scene before any were looked at (2026-10-29).
+                # Without a reviewer the strict rule still applies.
+                if scene_context and not (
+                        scene_metadata_matches_query(
+                            metadata_query, record, scene_context=scene_context)
+                        or (self.visual_reviewer is not None
+                            and scene_context.get("photo_search_terms") is not None
+                            and scene_metadata_relevance(
+                                metadata_query, record,
+                                scene_context=scene_context) >= 2 / 3 - 1e-9)):
                     failures.append({"provider": provider.name,
                                      "code": "SCENE.IMAGE_CONTEXT_UNVERIFIED",
                                      "detail": "标题/说明没有同时支持场景主体、动作和地点锚点。"})
@@ -1774,6 +2129,9 @@ class ScenePhotoProvider:
                         "metadata_relevance": round(relevance, 4),
                         "license_scope": ("Pexels License with source/creator link" if
                                            _license_key(record.get("license")) == "pexels license"
+                                           else "Pixabay Content License with source/creator link" if
+                                           _license_key(record.get("license")) in
+                                           ("pixabay license", "pixabay content license")
                                            else "CC BY 4.0 with attribution" if
                                            _license_key(record.get("license")) in _CC_BY_4_LABELS
                                            else "CC0/PDM/Public Domain"),
@@ -1832,12 +2190,20 @@ class ScenePhotoProvider:
         from .scene_model import scene_review_verdict_digest
         from wengao_ppt.media.genimg.comfyui import ComfyUIClient, sanitize_scene_prompt
         from wengao_ppt import cloud_model_config
-        from wengao_ppt.media.genimg.cloud_genimg import CloudImageClient
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageClient, CloudImageGenError
         excluded_sha256 = set(excluded_sha256 or ())
         excluded_source_keys = set(excluded_source_keys or ())
         excluded_perceptual_hashes = list(excluded_perceptual_hashes or ())
         cloud_target = cloud_model_config.active_image_gen_target()
         is_cloud = cloud_target is not None
+        if is_cloud and getattr(self, "_gen_permanently_broken", None) == cloud_target.get("endpoint"):
+            # 本次任务里这个云端生图端点已经被判定为永久失败（坏 key/额度耗尽/
+            # 请求体不被接受）：不再对后面每一个需要兜底生图的场景重复同一个
+            # 注定失败的请求，直接如实失败，省下的是真实的等待时间。
+            raise SceneImageError(
+                "SCENE.GEN_IMAGE_PERMANENT_FAILURE",
+                "云端生图服务本次任务内已判定为永久失败（认证/额度/请求参数问题），"
+                "本任务内不再重试该服务。")
         client = CloudImageClient(cloud_target) if is_cloud else ComfyUIClient()
         if not client.is_available():
             if is_cloud:
@@ -1877,7 +2243,16 @@ class ScenePhotoProvider:
                 scene_request["target_aspect_ratio"] = "16:9"
             elif min_aspect >= 1.2:
                 scene_request["target_aspect_ratio"] = "4:3"
-        result = client.generate_image(scene_request, timeout_s=180.0)
+        try:
+            result = client.generate_image(scene_request, timeout_s=180.0)
+        except CloudImageGenError as exc:
+            if exc.permanent:
+                self._gen_permanently_broken = cloud_target.get("endpoint")
+                raise SceneImageError(
+                    "SCENE.GEN_IMAGE_PERMANENT_FAILURE",
+                    f"云端生图服务返回了不会自行恢复的错误（{exc.detail}）；"
+                    "本任务内不再重试该服务。") from None
+            raise SceneImageError("SCENE.GEN_IMAGE_FAILED", exc.detail) from None
         if not result or not result.get("image_bytes"):
             raise SceneImageError("SCENE.GEN_IMAGE_FAILED",
                                   "生图服务没有在预算内返回可用图片。")
