@@ -2808,13 +2808,33 @@ def _replan_scene_merge_conflicts(pages: list[dict], plan: dict, audit: dict,
     traces = []
     for component in components:
         component_audit = {"merged_distinct_scenes": component["findings"]}
+        # prompt_sha256 绑定的是**基础提示词**（由冻结页面/计划/审计确定性推导），
+        # 不含下面的重试追加语句：回放校验会独立重算同一条基础提示词并比对
+        # 哈希，重试次数只是本机模型的内部可靠性机制，不改变这条绑定关系。
         prompt = scene_merge_replan_prompt(pages, working, component_audit)
         prompt_sha = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
         target_pages = component["pages"]
-        patch, meta, _ = _call_json_payload_once_on_format_error(
-            model, prompt, call,
-            phase=f"场景冲突补丁第{target_pages[0]}-{target_pages[-1]}页")
-        working = _merge_scene_conflict_patch(working, patch, pages, component)
+        # 本机模型偶尔在首次尝试上产出不满足严格页码/场景键校验的补丁；给第
+        # 二次独立尝试的机会，而不是第一次失手就整单阻断（与照片检索锚点定
+        # 向格式修复的重试节奏一致）。
+        merge_attempts = 2
+        last_error = None
+        for merge_attempt in range(merge_attempts):
+            attempt_prompt = prompt if merge_attempt == 0 else (
+                prompt + "\n\nYour previous attempt was rejected: "
+                f"{last_error}. Re-read the constraints above carefully and "
+                "return a corrected patch covering exactly the same target pages.")
+            patch, meta, _ = _call_json_payload_once_on_format_error(
+                model, attempt_prompt, call,
+                phase=f"场景冲突补丁第{target_pages[0]}-{target_pages[-1]}页"
+                      f"（第{merge_attempt + 1}次）")
+            try:
+                working = _merge_scene_conflict_patch(working, patch, pages, component)
+                break
+            except SceneModelError as exc:
+                last_error = exc.detail
+                if merge_attempt == merge_attempts - 1:
+                    raise
         patch_binding = copy.deepcopy(patch)
         patch_sha = hashlib.sha256(json.dumps(
             patch_binding, ensure_ascii=False, sort_keys=True,
