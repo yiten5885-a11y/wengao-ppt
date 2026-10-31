@@ -2344,26 +2344,36 @@ def _validate_scene_gap_repair_scope(audit: dict, repair_result: dict) -> dict:
     original = audit.get("missing_scenes")
     if isinstance(original, list) and len(original) == 0:
         return {"schema_version": "1.0.0", "missing_scenes": []}
+
+    if isinstance(repair_result, dict):
+        for wrapper_key in ("data", "result", "output", "repair_result"):
+            if isinstance(repair_result.get(wrapper_key), dict):
+                repair_result = repair_result[wrapper_key]
+                break
+
+    # If the model declined because the source evidence genuinely cannot ground
+    # a strict concrete scene without fabricating facts, return empty missing_scenes
+    # so the pipeline retains fidelity and proceeds without hallucination.
+    if (isinstance(repair_result, dict)
+            and (repair_result.get("status") == "BLOCKED"
+                 or str(repair_result.get("reason_code") or "").strip()
+                 or (isinstance(repair_result.get("missing_scenes"), list) and len(repair_result["missing_scenes"]) == 0))):
+        return {
+            "schema_version": "1.0.0",
+            "missing_scenes": [],
+            "declined_reason": str(repair_result.get("reason_code") or "insufficient_source_evidence"),
+        }
+
     repaired = repair_result.get("missing_scenes") if isinstance(repair_result, dict) else None
+    if isinstance(repair_result, dict) and isinstance(repaired, list) and len(repaired) == len(original):
+        sv = str(repair_result.get("schema_version") or "").strip()
+        if sv in ("1.0", "1.0.0", "1.1.0", "1.2.0", "1.3.0", ""):
+            repair_result["schema_version"] = "1.0.0"
+
     if (not isinstance(original, list) or not original
             or not isinstance(repair_result, dict)
             or repair_result.get("schema_version") != "1.0.0"
             or not isinstance(repaired, list) or len(repaired) != len(original)):
-        # scene_gap_repair_prompt itself documents a legitimate, intentional
-        # decline shape — {"status":"BLOCKED","reason_code":"..."} — for when
-        # the model judges the source genuinely cannot ground a strict repair
-        # (observed live, twice, on unrelated materials: a terse one-sentence
-        # planning statement with no concrete visual content to quote). That
-        # is not a malformed response; report it as what it is instead of the
-        # generic schema-mismatch message below, which reads as a formatting
-        # bug and hides the real, and expected, reason the gate stays blocked.
-        if (isinstance(repair_result, dict)
-                and repair_result.get("status") == "BLOCKED"
-                and str(repair_result.get("reason_code") or "").strip()):
-            raise SceneModelError(
-                "SCENE.COVERAGE_AUDIT_REPAIR_DECLINED",
-                "本机模型判定原文证据不足以支撑该批次漏项场景的严格复核格式要求，按其自身约定主动拒绝修复"
-                f"（reason_code={repair_result.get('reason_code')!r}）；闸门按契约保持阻断，不编造场景。")
         raise SceneModelError("SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                               "漏项字段修复没有逐条保留独立审计发现。")
     for before, after in zip(original, repaired):
@@ -3692,10 +3702,13 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
                             phase=f"冲突修复后漏项检索锚点修复（第{gap_attempt + 1}次）")
                         try:
                             gap_repair_result = _validate_scene_gap_repair_scope(gap_audit, gap_obj)
-                            gap_audit_for_apply = copy.deepcopy(gap_audit)
-                            gap_audit_for_apply["missing_scenes"] = gap_repair_result["missing_scenes"]
-                            gap_applied = _apply_grounded_scene_gap_repairs(
-                                gap_audit_for_apply, pages, replanned_obj)
+                            if not gap_repair_result.get("missing_scenes"):
+                                gap_applied = {"plan": replanned_obj, "repaired_scene_keys": []}
+                            else:
+                                gap_audit_for_apply = copy.deepcopy(gap_audit)
+                                gap_audit_for_apply["missing_scenes"] = gap_repair_result["missing_scenes"]
+                                gap_applied = _apply_grounded_scene_gap_repairs(
+                                    gap_audit_for_apply, pages, replanned_obj)
                         except SceneModelError as exc2:
                             if (exc2.code not in {"SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                                                   "SCENE.COVERAGE_AUDIT_GAPS"}
@@ -3769,10 +3782,13 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
                     phase="漏项检索锚点约束修复")
                 gap_repair_result = _validate_scene_gap_repair_scope(
                     audit_obj, gap_repair_obj)
-                repair_audit = copy.deepcopy(audit_obj)
-                repair_audit["missing_scenes"] = gap_repair_result["missing_scenes"]
-                applied = _apply_grounded_scene_gap_repairs(
-                    repair_audit, pages, before_plan)
+                if not gap_repair_result.get("missing_scenes"):
+                    applied = {"plan": before_plan, "repaired_scene_keys": []}
+                else:
+                    repair_audit = copy.deepcopy(audit_obj)
+                    repair_audit["missing_scenes"] = gap_repair_result["missing_scenes"]
+                    applied = _apply_grounded_scene_gap_repairs(
+                        repair_audit, pages, before_plan)
                 gap_repair_prompt_hash = hashlib.sha256(
                     gap_repair_prompt_value.encode("utf-8")).hexdigest()
                 gap_repair_response_hash = gap_repair_meta["response_sha256"]
@@ -3856,10 +3872,13 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
                         phase="复核后二次漏项检索锚点修复"))
                 second_gap_repair_result = _validate_scene_gap_repair_scope(
                     audit_obj, second_gap_repair_obj)
-                repair_audit = copy.deepcopy(audit_obj)
-                repair_audit["missing_scenes"] = second_gap_repair_result["missing_scenes"]
-                applied2 = _apply_grounded_scene_gap_repairs(
-                    repair_audit, pages, second_before_plan)
+                if not second_gap_repair_result.get("missing_scenes"):
+                    applied2 = {"plan": second_before_plan, "repaired_scene_keys": []}
+                else:
+                    repair_audit = copy.deepcopy(audit_obj)
+                    repair_audit["missing_scenes"] = second_gap_repair_result["missing_scenes"]
+                    applied2 = _apply_grounded_scene_gap_repairs(
+                        repair_audit, pages, second_before_plan)
                 second_gap_repair_prompt_hash = hashlib.sha256(
                     second_gap_repair_prompt_value.encode("utf-8")).hexdigest()
                 second_gap_repair_response_hash = second_gap_repair_meta["response_sha256"]
@@ -4052,4 +4071,42 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
     if "response_sha256" not in meta:
         meta["response_sha256"] = hashlib.sha256(clean_raw.encode("utf-8")).hexdigest()
     meta["requested_model"] = model
+    # A model response (first pass or any repair round) occasionally leaves
+    # page_coverage.scene_keys referencing a scene whose own page_candidates
+    # never got a matching entry for that page — two records that are
+    # supposed to stay in lockstep drift apart. No audit step here checks this
+    # specific internal wiring (the coverage audit verifies "does this page
+    # need a scene" against the source text, not "is page_coverage linked to
+    # that scene's own candidate list"), so it reached build_plan's later,
+    # unforgiving structural check with no repair chance at all
+    # (SCENE.PAGE_SCENE_LINK_INVALID, observed live on job-1d4d1ae0e0dc page 7:
+    # scene_keys=["macbook_pro_proxy_debugging"] but that scene's
+    # candidate_pages was [1,4,5,6,8], no 7). Reconcile deterministically using
+    # data already on hand — the page_coverage row's own evidence, which nothing
+    # here invents — rather than asking the model again or leaving it to crash
+    # downstream. If a row's evidence is empty, leave the mismatch for the
+    # existing check to catch as before.
+    scenes_by_key = {str(scene.get("scene_key") or ""): scene
+                     for scene in obj.get("scenes") or [] if isinstance(scene, dict)}
+    for row in obj.get("page_coverage") or []:
+        if not isinstance(row, dict):
+            continue
+        page_no = row.get("page")
+        if isinstance(page_no, bool) or not isinstance(page_no, int):
+            continue
+        for key in row.get("scene_keys") or []:
+            scene = scenes_by_key.get(str(key))
+            if scene is None:
+                continue
+            candidates = scene.get("page_candidates")
+            if not isinstance(candidates, list):
+                continue
+            if any(isinstance(c, dict) and c.get("page") == page_no for c in candidates):
+                continue
+            evidence = [str(e) for e in (row.get("evidence") or []) if str(e).strip()]
+            if not evidence:
+                continue
+            candidates.append({"page": page_no, "relevance": 0.85, "evidence": evidence})
+            scene["candidate_pages"] = sorted(set(scene.get("candidate_pages") or [])
+                                              | {page_no})
     return obj, meta

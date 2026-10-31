@@ -382,6 +382,62 @@ class SemanticSceneTests(unittest.TestCase):
         self.assertEqual(semantic_scenes._validate_coverage_audit_proof(
             self.source, plan_path)["status"], "EXECUTED")
 
+    def test_dangling_page_coverage_scene_link_is_reconciled_from_its_own_evidence(self):
+        """page_coverage.scene_keys can reference a scene whose own
+        page_candidates never got a matching entry for that page — the model
+        wrote the two redundant records inconsistently on the very first pass,
+        with no merge/gap repair involved at all. resolve_scene_semantics must
+        close that gap using the page_coverage row's own (already-grounded)
+        evidence, not leave it for build_plan's unforgiving structural check
+        to crash on with zero repair chance.
+        """
+        pages = semantic_scenes._source_pages(self.source)
+        resolution = semantic_fixture()
+        cup_key = resolution["scenes"][0]["scene_key"]
+        self.assertEqual(cup_key, "hand_drinking_from_ceramic_cup")
+        # page_coverage still claims the cup scene for page 2, but strip page 2
+        # out of that scene's own page_candidates — the exact mismatch shape
+        # captured live.
+        resolution["scenes"][0]["page_candidates"] = [
+            c for c in resolution["scenes"][0]["page_candidates"] if c["page"] != 2]
+        audit = {
+            "schema_version": "1.0.0", "review_status": "NO_GAPS",
+            "page_reviews": [
+                {"page": row["page"], "coverage_status": "SCENE_COVERED",
+                 "scene_keys": row["scene_keys"],
+                 "reason": "已逐页复核并覆盖该页所有具体场景语义。",
+                 "evidence": [pages[row["page"] - 1]["text"].split("\n")[0]]}
+                for row in resolution["page_coverage"]
+            ],
+            "missing_scenes": [], "merged_distinct_scenes": [],
+        }
+        calls = []
+
+        def model_call(model, prompt):
+            calls.append(prompt)
+            payload = resolution if len(calls) == 1 else audit
+            return {"response": json.dumps(payload, ensure_ascii=False),
+                    "model": "fixture-local-model", "elapsed_seconds": 0.01}
+
+        resolved, meta = resolve_scene_semantics(pages, model_call=model_call)
+        self.assertEqual(meta["coverage_audit"]["status"], "PASSED")
+        cup = next(s for s in resolved["scenes"] if s["scene_key"] == cup_key)
+        self.assertIn(2, cup["candidate_pages"])
+        self.assertIn(2, [c["page"] for c in cup["page_candidates"]])
+        reconciled = next(c for c in cup["page_candidates"] if c["page"] == 2)
+        # The copied evidence must be exactly the page_coverage row's own
+        # (already-grounded) evidence — never invented.
+        self.assertEqual(reconciled["evidence"],
+                         resolution["page_coverage"][1]["evidence"])
+
+        calls.clear()
+        generated_plan = semantic_scenes.build_plan(
+            self.source, provider=FakePhotoProvider(self.images), model_call=model_call,
+            visual_review_call=fixture_visual_review_call)
+        plan_path = self.root / "reconciled-link-plan.json"
+        plan_path.write_text(json.dumps(generated_plan, ensure_ascii=False), encoding="utf-8")
+        self.assertEqual(generated_plan["coverage_audit"]["status"], "PASSED")
+
     def test_invalid_photo_anchors_get_one_same_model_grounded_format_repair(self):
         pages = semantic_scenes._source_pages(self.source)
         resolution = semantic_fixture()
