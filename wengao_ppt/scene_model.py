@@ -3633,6 +3633,47 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
     _enrich_scene_image_prompts(
         obj, pages, model=model, model_call=call,
         anchor_repair_records=anchor_repair_records)
+    # The planner's raw response occasionally leaves page_coverage.scene_keys
+    # referencing a scene whose own page_candidates never got a matching
+    # entry for that page — two records meant to stay in lockstep drift apart
+    # on the very first pass. No audit step checks this specific internal
+    # wiring (the coverage audit verifies "does this page need a scene"
+    # against the source text, never "is page_coverage linked to that scene's
+    # own candidate list"), so unrepaired it reaches build_plan's later,
+    # unforgiving structural check with zero repair chance at all
+    # (SCENE.PAGE_SCENE_LINK_INVALID, observed live on job-1d4d1ae0e0dc page 7:
+    # scene_keys=["macbook_pro_proxy_debugging"] but that scene's
+    # candidate_pages was [1,4,5,6,8], no 7). Reconcile deterministically using
+    # data already on hand — the page_coverage row's own evidence, which
+    # nothing here invents — rather than asking the model again. This must run
+    # before the first audit_plan_view snapshot below, not after: every
+    # frozen plan-view snapshot this function takes is later diffed against
+    # the true final plan (SCENE.COVERAGE_AUDIT_PLAN_DRIFT), so reconciling
+    # late — once, after the last audit already ran — showed up as
+    # unexplained drift instead of fixing anything.
+    scenes_by_key = {str(scene.get("scene_key") or ""): scene
+                     for scene in obj.get("scenes") or [] if isinstance(scene, dict)}
+    for row in obj.get("page_coverage") or []:
+        if not isinstance(row, dict):
+            continue
+        page_no = row.get("page")
+        if isinstance(page_no, bool) or not isinstance(page_no, int):
+            continue
+        for key in row.get("scene_keys") or []:
+            scene = scenes_by_key.get(str(key))
+            if scene is None:
+                continue
+            candidates = scene.get("page_candidates")
+            if not isinstance(candidates, list):
+                continue
+            if any(isinstance(c, dict) and c.get("page") == page_no for c in candidates):
+                continue
+            evidence = [str(e) for e in (row.get("evidence") or []) if str(e).strip()]
+            if not evidence:
+                continue
+            candidates.append({"page": page_no, "relevance": 0.85, "evidence": evidence})
+            scene["candidate_pages"] = sorted(set(scene.get("candidate_pages") or [])
+                                              | {page_no})
     audit_prompt = scene_coverage_audit_prompt(pages, obj)
     # 冻结提示词所依据的计划视图：之后的计划改写不能让复核凭据失去可重放的绑定。
     audit_plan_view = copy.deepcopy(_coverage_plan_view(obj))
@@ -4071,42 +4112,4 @@ def resolve_scene_semantics(pages: list[dict], *, model: str | None = None,
     if "response_sha256" not in meta:
         meta["response_sha256"] = hashlib.sha256(clean_raw.encode("utf-8")).hexdigest()
     meta["requested_model"] = model
-    # A model response (first pass or any repair round) occasionally leaves
-    # page_coverage.scene_keys referencing a scene whose own page_candidates
-    # never got a matching entry for that page — two records that are
-    # supposed to stay in lockstep drift apart. No audit step here checks this
-    # specific internal wiring (the coverage audit verifies "does this page
-    # need a scene" against the source text, not "is page_coverage linked to
-    # that scene's own candidate list"), so it reached build_plan's later,
-    # unforgiving structural check with no repair chance at all
-    # (SCENE.PAGE_SCENE_LINK_INVALID, observed live on job-1d4d1ae0e0dc page 7:
-    # scene_keys=["macbook_pro_proxy_debugging"] but that scene's
-    # candidate_pages was [1,4,5,6,8], no 7). Reconcile deterministically using
-    # data already on hand — the page_coverage row's own evidence, which nothing
-    # here invents — rather than asking the model again or leaving it to crash
-    # downstream. If a row's evidence is empty, leave the mismatch for the
-    # existing check to catch as before.
-    scenes_by_key = {str(scene.get("scene_key") or ""): scene
-                     for scene in obj.get("scenes") or [] if isinstance(scene, dict)}
-    for row in obj.get("page_coverage") or []:
-        if not isinstance(row, dict):
-            continue
-        page_no = row.get("page")
-        if isinstance(page_no, bool) or not isinstance(page_no, int):
-            continue
-        for key in row.get("scene_keys") or []:
-            scene = scenes_by_key.get(str(key))
-            if scene is None:
-                continue
-            candidates = scene.get("page_candidates")
-            if not isinstance(candidates, list):
-                continue
-            if any(isinstance(c, dict) and c.get("page") == page_no for c in candidates):
-                continue
-            evidence = [str(e) for e in (row.get("evidence") or []) if str(e).strip()]
-            if not evidence:
-                continue
-            candidates.append({"page": page_no, "relevance": 0.85, "evidence": evidence})
-            scene["candidate_pages"] = sorted(set(scene.get("candidate_pages") or [])
-                                              | {page_no})
     return obj, meta

@@ -437,6 +437,13 @@ class SemanticSceneTests(unittest.TestCase):
         plan_path = self.root / "reconciled-link-plan.json"
         plan_path.write_text(json.dumps(generated_plan, ensure_ascii=False), encoding="utf-8")
         self.assertEqual(generated_plan["coverage_audit"]["status"], "PASSED")
+        # The reconciliation must happen before the audit's own frozen
+        # plan-view snapshot, not after — otherwise this independent replay
+        # check flags it as unexplained drift (SCENE.COVERAGE_AUDIT_PLAN_DRIFT)
+        # instead of the link actually being fixed. This is the exact check
+        # that caught the reconciliation running too late in production.
+        proof = semantic_scenes._validate_coverage_audit_proof(self.source, plan_path)
+        self.assertEqual(proof["status"], "EXECUTED", proof)
 
     def test_invalid_photo_anchors_get_one_same_model_grounded_format_repair(self):
         pages = semantic_scenes._source_pages(self.source)
