@@ -2481,8 +2481,10 @@ def scene_merge_replan_prompt(pages: list[dict], plan: dict, audit: dict, *,
         "and setting as \"skyline\" or \"landmark\", only when the source page names a specific city and calls for that "
         "kind of representative shot. Each page "
         "must map to at least one replacement scene from this conflict component. Do not alter source excerpts or "
-        "include unrelated scene definitions. Return JSON only with schema_version=1.0.0, "
-        "page_scene_replacements (exactly one row per target page, with page and replacement scene_keys), and "
+        "include unrelated scene definitions. Return JSON only with schema_version=1.0.0, page_scene_replacements "
+        "(exactly one row per target page; each row is exactly "
+        "{\"page\": <int>, \"scene_keys\": [\"...\"]} — the field holding the replacement keys for that page must "
+        "be named exactly \"scene_keys\", never \"replacement_scene_keys\" or any other name), and "
         "scenes (definitions for those keys with source-grounded page_candidates). The independent third full-deck "
         "audit will reject any remaining gap or merge.\nConflict patch payload:\n" + payload
     )
@@ -2511,7 +2513,13 @@ def _merge_scene_conflict_patch(plan: dict, patch: dict, pages: list[dict],
         if not isinstance(row, dict):
             raise fail("场景冲突补丁逐页替换账本含无效记录。")
         page_no = row.get("page")
+        # 本机模型偶尔把这个字段写成 replacement_scene_keys（提示词原先的散文
+        # 措辞"page and replacement scene_keys"读起来确实像是字段名，已改成
+        # 显式 JSON 字段名示例）；只在权威字段 scene_keys 缺失时才认这个别名，
+        # 不放宽其余任何校验——scene_keys 本身存在但不合法时仍然按原规则拒绝。
         keys = row.get("scene_keys")
+        if keys is None and "scene_keys" not in row:
+            keys = row.get("replacement_scene_keys")
         if (isinstance(page_no, bool) or not isinstance(page_no, int)
                 or page_no not in target_pages or page_no in replacement_keys_by_page
                 or not isinstance(keys, list) or not keys
