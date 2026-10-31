@@ -1434,11 +1434,40 @@ def _repair_scene_evidence_grounding(semantic_resolution: dict, pages: list[dict
                       and _excerpt_matches(page_text, str(x).strip())]
     if valid_evidence:
         candidate["evidence"] = valid_evidence
-    else:
-        # Repair could not ground this page either; drop only this one
-        # candidate page rather than inventing evidence. If the scene has no
-        # other candidate, normal validation below will reject it cleanly.
-        candidates.remove(candidate)
+        return True
+    # Repair could not ground this page either; drop only this one candidate
+    # page rather than inventing evidence.
+    candidates.remove(candidate)
+    if candidates:
+        return True
+    # That was the scene's only candidate: nothing about it can be
+    # substantiated anywhere in the source, so it cannot be kept at all
+    # (SCENE.CANDIDATES_MISSING would otherwise hard-fail the whole deck on
+    # the very next validation pass over a scene that is, at this point,
+    # indistinguishable from one that was never proposed). Drop the scene
+    # and fall any page_coverage row that only pointed at it back to an
+    # explicit, audited no_scene_reason, exactly like a page the model
+    # itself decided had no supportable scene.
+    scenes_list.remove(scene_item)
+    raw = semantic_resolution
+    for k in ("scene_plan", "plan", "data", "result", "output", "semantic_scenes"):
+        if isinstance(raw.get(k), dict) and any(sk in raw[k] for sk in ("scenes", "scene", "page_coverage")):
+            raw = raw[k]
+            break
+    cov_list = raw.get("page_coverage")
+    if isinstance(cov_list, list):
+        for row in cov_list:
+            if not isinstance(row, dict):
+                continue
+            keys = row.get("scene_keys")
+            if not isinstance(keys, list) or scene_key not in keys:
+                continue
+            row["scene_keys"] = [k for k in keys if k != scene_key]
+            if not row["scene_keys"]:
+                row["no_scene_reason"] = (
+                    row.get("no_scene_reason")
+                    or f"场景 {scene_key} 的证据重新定位两次均未能在原文中找到可核验的连续片段，"
+                       "按规则移除该场景，本页改记无场景原因。")
     return True
 
 
