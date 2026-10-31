@@ -1442,6 +1442,75 @@ def _repair_scene_evidence_grounding(semantic_resolution: dict, pages: list[dict
     return True
 
 
+_PAGE_EVIDENCE_NOT_GROUNDED_RE = re.compile(
+    r"真实模型第\s*(\d+)\s*页的(?:场景账本|no_scene)证据不在该页原文中")
+
+
+def _repair_page_coverage_evidence(semantic_resolution: dict, pages: list[dict],
+                                   exc: SemanticSceneError, *, model, call) -> bool:
+    """One bounded, same-model repair for a page_coverage row whose cited
+    evidence is not a literal excerpt of its claimed page.
+
+    This is the page_coverage ledger's own evidence field — a distinct piece
+    of data from any scene's page_candidates evidence, which
+    _repair_scene_evidence_grounding already covers. Both failure modes share
+    the same root cause (the model paraphrasing instead of quoting verbatim),
+    but only the scene-level one previously had a repair path; a page-coverage
+    mismatch hard-failed the whole deck with zero retry, even for a page whose
+    scattered dashboard/table text makes an exact contiguous quote genuinely
+    hard to produce on the first try.
+    """
+    match = _PAGE_EVIDENCE_NOT_GROUNDED_RE.search(exc.detail or "")
+    if not match:
+        return False
+    page_no = int(match.group(1))
+    source_by_page = {int(p["page"]): p for p in pages}
+    page_text = source_by_page.get(page_no, {}).get("text", "")
+    if not page_text:
+        return False
+    raw = semantic_resolution
+    for k in ("scene_plan", "plan", "data", "result", "output", "semantic_scenes"):
+        if isinstance(raw.get(k), dict) and any(sk in raw[k] for sk in ("scenes", "scene", "page_coverage")):
+            raw = raw[k]
+            break
+    cov_list = raw.get("page_coverage")
+    if not isinstance(cov_list, list):
+        return False
+    row = next((r for r in cov_list if isinstance(r, dict)
+               and not isinstance(r.get("page"), bool)
+               and isinstance(r.get("page"), (int, str))
+               and str(r.get("page")).strip().lstrip("-").isdigit()
+               and int(r.get("page")) == page_no), None)
+    if row is None:
+        return False
+    keys = row.get("scene_keys") or row.get("scene_key") or []
+    reason = row.get("no_scene_reason")
+    repair_prompt = (
+        "一次性证据重新定位：下面给出第 " + str(page_no) + " 页的完整原文，以及该页在逐页场景账本中"
+        "已登记的场景键/无场景原因。该页之前给出的证据片段经核实并不是该页原文中的连续片段。"
+        "现在只允许你从下面这段原文中逐字复制一个或多个连续片段作为证据（每条 4-60 字，不得改写、"
+        "翻译、总结、拼接跨行内容或添加任何原文之外的文字）；如果这页原文确实不能支持已登记的场景/"
+        "原因，按 schema 明确返回空证据，不得编造。只返回 JSON，不要输出 Markdown 或解释。\n"
+        f"该页已登记场景键：{keys or '（无，已登记 no_scene_reason）'}；"
+        f"no_scene_reason：{reason or '（无）'}。\n"
+        f"第 {page_no} 页原文：\n{page_text}\n"
+        "严格只返回：{\"evidence\":[\"...逐字复制的连续原文片段...\"]} 或 {\"evidence\":[]}。"
+    )
+    try:
+        payload, _meta, _raw = _call_json_payload_once_on_format_error(
+            model, repair_prompt, call,
+            phase=f"逐页账本证据重新定位（第 {page_no} 页）")
+    except SceneModelError:
+        return True
+    new_evidence = payload.get("evidence")
+    if not isinstance(new_evidence, list):
+        return True
+    valid_evidence = [str(x).strip() for x in new_evidence if str(x).strip()
+                      and _excerpt_matches(page_text, str(x).strip())]
+    row["evidence"] = valid_evidence
+    return True
+
+
 def _accepts_keyword(func, name: str) -> bool:
     """Whether an injected provider's generate_one can take an optional hint."""
     try:
@@ -1505,13 +1574,17 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
             require_canonical_scene_id=model_generated,
             dedupe_audit=dedupe_audit)
     except SemanticSceneError as exc:
-        if not model_generated or exc.code != "SCENE.EVIDENCE_NOT_GROUNDED":
+        repairable_codes = ("SCENE.EVIDENCE_NOT_GROUNDED", "SCENE.PAGE_EVIDENCE_NOT_GROUNDED")
+        if not model_generated or exc.code not in repairable_codes:
             raise
         call = model_call or call_local_model
-        repaired = _repair_scene_evidence_grounding(
-            semantic_resolution, source_pages, exc,
-            model=model or os.environ.get("WENGAO_SCENE_MODEL", "qwen3.8:27b-wb65536"),
-            call=call)
+        repair_model = model or os.environ.get("WENGAO_SCENE_MODEL", "qwen3.8:27b-wb65536")
+        if exc.code == "SCENE.EVIDENCE_NOT_GROUNDED":
+            repaired = _repair_scene_evidence_grounding(
+                semantic_resolution, source_pages, exc, model=repair_model, call=call)
+        else:
+            repaired = _repair_page_coverage_evidence(
+                semantic_resolution, source_pages, exc, model=repair_model, call=call)
         if not repaired:
             raise
         dedupe_audit = []
