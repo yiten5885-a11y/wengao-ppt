@@ -736,7 +736,20 @@ def budget_must_teach_facts(facts: list[dict],
         # → n ≈ target - 4；夹在 [6, 15] 保证分页后落在 10—20 冻结区间内。
         n_sel = min(n_subjects, max(6, min(_MAX_CONTENT_PAGES,
                                            int(target_pages) - 4)))
-        quota = 1
+        agenda_pages = -(-n_sel // _AGENDA_ITEMS_PER_PAGE)
+        quota = max(1, round((int(target_pages) - _STRUCTURE_PAGES - agenda_pages)
+                             / max(1, n_sel)))
+        # 配额=1 时估算页数常年贴着冻结下限 10 走（零余量）：全局结构模型
+        # 自行决定目录/结论是否各占独立页，真实产出常比估算少 1-2 页，一贴
+        # 下限就会在分页后跌破区间、整单判 PAGE_RANGE_UNSATISFIED（材料本身
+        # 并非真的不够长，只是本函数把预算卡得太死，白白省略了本可放进来
+        # 的候选原句）。配额逐步上调，直到估算页数相对下限留出 2 页余量，
+        # 或再加一档就会超出冻结上限 20 为止；同一台账来源只会让更多候选
+        # 原句入选，不会凭空产生新事实。
+        est = 1 + agenda_pages + n_sel * quota + 1
+        while est < PAGE_RANGE[0] + 2 and est + n_sel <= PAGE_RANGE[1]:
+            quota += 1
+            est += n_sel
     else:
         n_sel = n_subjects
         quota = max(1, round((int(target_pages) - _STRUCTURE_PAGES) / max(1, n_sel)))
