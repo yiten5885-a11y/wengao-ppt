@@ -309,7 +309,7 @@ def _vision_loopback_endpoint() -> str:
 
 # 本机视觉不可用时给用户的两条可操作建议（页面与阶段 detail 共用）。
 _VISION_UNAVAILABLE_NEXT_ACTIONS = (
-    "启用云端视觉：在工作台「云端模型」设置里打开视觉模型（原稿图片会发往该云端服务商，需你显式同意）",
+    "启用云端视觉：在工作台「技术详情 → 云端模型」勾选「只把图片语义复核交给云端」（只发出候选配图与场景描述，原稿文字不出本机，需你显式同意）",
     "启动本机视觉服务（mlx_vlm，端口 8080）",
 )
 
@@ -932,7 +932,12 @@ def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout
         raise
     except urllib.error.HTTPError as exc:
         detail = _safe_error_detail(exc.read(4096))
+        # 402 / RESOURCE_EXHAUSTED（如 Gemini 预付额度用尽）与文本路径同口径归为
+        # 配额问题，页面才能直接告诉用户"去充值"，而不是笼统的 HTTP 错误。
         code = ("MODEL.AUTH_FAILED" if exc.code in (401, 403) else
+                "MODEL.QUOTA_EXCEEDED" if exc.code == 402 or re.search(
+                    r"(?i)(quota|insufficient\s+(credits?|balance)|credits? (are )?depleted|"
+                    r"payment required|resource.?exhausted)", detail) else
                 "MODEL.RATE_LIMITED" if exc.code == 429 else
                 "MODEL.VISION_HTTP_ERROR")
         raise SceneModelError(code, f"云端视觉模型调用失败：{detail}", exc.code,
@@ -1114,6 +1119,31 @@ def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
                               provider=vision_provider) from None
 
 
+#: Waits before re-sending a vision review the local model refused with a GPU
+#: out-of-memory error. On a 32 GB machine sharing one 27B model, a review that
+#: lands during another generation or a swap spike fails with "[METAL] ...
+#: Insufficient Memory" and used to end a ten-minute job (2026-10-29 10:31).
+_VISION_OOM_BACKOFF_S = (20.0, 45.0)
+
+
+def _is_model_oom(exc: BaseException) -> bool:
+    text = f"{getattr(exc, 'detail', '')} {exc}".lower()
+    return "insufficient memory" in text or "outofmemory" in text
+
+
+def _call_vision_with_oom_backoff(model: str, prompt: str, image_bytes: bytes,
+                                  timeout_s) -> dict:
+    """Same call, re-sent after a pause only when the model ran out of GPU memory."""
+    for wait_s in (*_VISION_OOM_BACKOFF_S, None):
+        try:
+            return call_local_vision_model(model, prompt, image_bytes, timeout_s=timeout_s)
+        except SceneModelError as exc:
+            if wait_s is None or not _is_model_oom(exc):
+                raise
+            time.sleep(wait_s)
+    raise AssertionError("unreachable")
+
+
 def review_semantic_scene_image(model: str, scene: dict, image_bytes: bytes, *,
                                 timeout_s: int | None = None) -> dict:
     """Review one actual photo against the exact source-grounded scene identity."""
@@ -1128,7 +1158,7 @@ def review_semantic_scene_image(model: str, scene: dict, image_bytes: bytes, *,
     # 格式修复要求，而不是原样重发同一提示词寄望于随机性。
     review_attempts = 2
     for review_attempt in range(review_attempts):
-        raw = call_local_vision_model(model, prompt, image_bytes, timeout_s=timeout_s)
+        raw = _call_vision_with_oom_backoff(model, prompt, image_bytes, timeout_s)
         try:
             result = json.loads(_strip_model_json_fence(str(raw.get("response") or "")))
         except (TypeError, ValueError):
@@ -1323,6 +1353,11 @@ def scene_prompt(pages: list[dict], *, batch_context: dict | None = None,
         "照片标题/说明必须分别支持原始权威锚点中的主体、动作词、动作对象/结果和地点；仅仅命中宽泛词（如 recording）不能算场景匹配。"
         "备选只能改写检索措辞，不能换画面、添加原文中没有的事实或绕过原始锚点校验。"
         "查询只写可见主体和动作/环境，不得包含原文长句、数字、私人指标、URL、文字海报或无关装饰。一个 canonical_scene_id / scene_key 只配一张照片。\n"
+        "4a. 城市地标特例：若某页原文点名具体城市或地区（如无锡、北京、广州、青岛），且该页主题适合用该城市的天际线/地标外观作代表画面（如区域布局、城市案例、分支机构所在地），"
+        "可以把 photo_search_terms.action 固定写成英文短语 \"establishing shot\"（逐字照抄，不翻译、不改写），表示这是没有人物动作需要核实的静态建立镜头；"
+        "此时 subject 填该城市的英文名（如 \"Wuxi\"、\"Beijing\"、\"Guangzhou\"、\"Qingdao\"），setting 填 \"skyline\" 或 \"landmark\" 等描述性词。"
+        "例如 photo_search_terms={\"subject\":\"Wuxi\",\"action\":\"establishing shot\",\"setting\":\"skyline\"}，visual_query='Wuxi establishing shot skyline'。"
+        "三组用词仍需互不重复、合计 4-7 词；action 使用这个固定值时不再要求动词和宾语。原文没有点名具体城市、或该页主题与城市地标无关时，不要为了凑图硬插入城市场景。\n"
         "5. 所有图库照片均为说明性配图，不是原文事件、人物、企业或结果发生过的证据；每个 scene 必须写 depiction_type='illustrative'，"
         "并用原文语言写 illustration_rationale，简短说明这张代表性画面如何帮助理解对应页的主题。"
         "evidence 只证明原文讨论了该主题，不要求逐字描述照片中的具体人物或地点；rationale 必须区分‘说明该主题’与‘声称该事件真实发生’，"
@@ -2256,7 +2291,11 @@ def scene_gap_repair_prompt(pages: list[dict], plan: dict, audit: dict) -> str:
         "action, setting, label, lighting, composition_camera, style, quality, neutral English visual_query, up to "
         "two neutral English visual_query_alternatives, and photo_search_terms with disjoint role-separated English "
         "anchors: subject 1-2 words, action 2-4 words including an action and its object/result, setting 1-2 concrete "
-        "place words; 4-7 distinct words total, in that order in visual_query. Keep scene descriptions and rationale in the source "
+        "place words; 4-7 distinct words total, in that order in visual_query. The one exception: a city/landmark "
+        "establishing shot (a named city's skyline or landmark, with no action to verify) may use the literal English "
+        "action value \"establishing shot\" verbatim, with subject as the city's English name (e.g. \"Wuxi\") and "
+        "setting as \"skyline\" or \"landmark\" — only when the missing-scene record itself names a specific city and "
+        "calls for that kind of representative shot. Keep scene descriptions and rationale in the source "
         "language and evidence exact on the original page. If any field cannot be grounded, return "
         "{\"status\":\"BLOCKED\",\"reason_code\":\"insufficient_source_evidence\"}; the gate will remain blocked. "
         "Do not change page coverage or remove an audited finding. Return JSON only with schema_version=1.0.0 and "
@@ -2436,7 +2475,11 @@ def scene_merge_replan_prompt(pages: list[dict], plan: dict, audit: dict, *,
         "illustration_rationale, subject, action, setting, "
         "label, lighting, composition_camera, style, quality, photo_search_terms, visual_query, "
         "visual_query_alternatives, and page_candidates. Use short neutral English photo anchors: subject 1-2 words, "
-        "action 2-4 words with object/result, setting 1-2 concrete place words, 4-7 ordered words total. Each page "
+        "action 2-4 words with object/result, setting 1-2 concrete place words, 4-7 ordered words total. The one "
+        "exception: a city/landmark establishing shot (a named city's skyline or landmark, no action to verify) may "
+        "use the literal English action value \"establishing shot\" verbatim, with subject as the city's English name "
+        "and setting as \"skyline\" or \"landmark\", only when the source page names a specific city and calls for that "
+        "kind of representative shot. Each page "
         "must map to at least one replacement scene from this conflict component. Do not alter source excerpts or "
         "include unrelated scene definitions. Return JSON only with schema_version=1.0.0, "
         "page_scene_replacements (exactly one row per target page, with page and replacement scene_keys), and "
