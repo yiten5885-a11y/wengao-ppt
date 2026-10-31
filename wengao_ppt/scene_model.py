@@ -2792,7 +2792,16 @@ def _validate_scene_merge_replan_scope(before_plan: dict, replanned_plan: dict,
                     != {page: new_candidates.get(page) for page in outside_pages}):
                 raise SceneModelError("SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                                       "场景重规划改变了未标记页面仍在使用的场景身份或原文证据。")
-        if revised is not None:
+        # A mutable key that the patch left byte-for-byte untouched (revised ==
+        # original) is not an "alteration" at all — it's the model correctly
+        # declining to touch a broad scene that legitimately serves other,
+        # unrelated pages outside this conflict's affected_pages (that breadth
+        # is exactly what the merge-conflict audit is reporting as wrong in
+        # the first place, so its old candidates routinely won't intersect
+        # affected_pages). Only a genuine modification needs this guard
+        # against reusing an existing key for a definition that has nothing
+        # to do with any audited page.
+        if revised is not None and revised != original:
             if not (set(old_candidates) & affected_pages):
                 raise SceneModelError("SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                                       "场景重规划改动了没有出现在审计页面上的场景。")

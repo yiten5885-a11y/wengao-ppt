@@ -1568,30 +1568,39 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         model_meta = {"provider": "injected-test-or-caller", "response_sha256":
                       _canonical_sha(semantic_resolution)}
     dedupe_audit: list[dict] = []
-    try:
-        scenes, page_coverage = _normalize_semantics(
-            semantic_resolution, source_pages,
-            require_canonical_scene_id=model_generated,
-            dedupe_audit=dedupe_audit)
-    except SemanticSceneError as exc:
-        repairable_codes = ("SCENE.EVIDENCE_NOT_GROUNDED", "SCENE.PAGE_EVIDENCE_NOT_GROUNDED")
-        if not model_generated or exc.code not in repairable_codes:
-            raise
-        call = model_call or call_local_model
-        repair_model = model or os.environ.get("WENGAO_SCENE_MODEL", "qwen3.8:27b-wb65536")
-        if exc.code == "SCENE.EVIDENCE_NOT_GROUNDED":
-            repaired = _repair_scene_evidence_grounding(
-                semantic_resolution, source_pages, exc, model=repair_model, call=call)
-        else:
-            repaired = _repair_page_coverage_evidence(
-                semantic_resolution, source_pages, exc, model=repair_model, call=call)
-        if not repaired:
-            raise
-        dedupe_audit = []
-        scenes, page_coverage = _normalize_semantics(
-            semantic_resolution, source_pages,
-            require_canonical_scene_id=model_generated,
-            dedupe_audit=dedupe_audit)
+    repairable_codes = ("SCENE.EVIDENCE_NOT_GROUNDED", "SCENE.PAGE_EVIDENCE_NOT_GROUNDED")
+    # Scene-candidate evidence and page_coverage-ledger evidence are two
+    # independent fields a real model response can each separately
+    # mis-ground. A single response can hit both (or the same kind twice for
+    # two different scenes/pages). The retried _normalize_semantics call used
+    # to run with no exception handling at all, so fixing the first failure
+    # only to hit a second, equally repairable one on the retry hard-failed
+    # the whole deck with zero protection on that second failure. Loop with a
+    # bound of one retry per repairable failure kind instead of a single
+    # fixed retry.
+    max_normalize_attempts = 1 + len(repairable_codes)
+    for attempt in range(max_normalize_attempts):
+        try:
+            scenes, page_coverage = _normalize_semantics(
+                semantic_resolution, source_pages,
+                require_canonical_scene_id=model_generated,
+                dedupe_audit=dedupe_audit)
+            break
+        except SemanticSceneError as exc:
+            if (not model_generated or exc.code not in repairable_codes
+                    or attempt == max_normalize_attempts - 1):
+                raise
+            call = model_call or call_local_model
+            repair_model = model or os.environ.get("WENGAO_SCENE_MODEL", "qwen3.8:27b-wb65536")
+            if exc.code == "SCENE.EVIDENCE_NOT_GROUNDED":
+                repaired = _repair_scene_evidence_grounding(
+                    semantic_resolution, source_pages, exc, model=repair_model, call=call)
+            else:
+                repaired = _repair_page_coverage_evidence(
+                    semantic_resolution, source_pages, exc, model=repair_model, call=call)
+            if not repaired:
+                raise
+            dedupe_audit = []
     if not scenes:
         unresolved = [{"scene_key": None, "reason": "SCENE.NO_SCENES_PLANNED",
                        "detail": "整套稿件没有一个有原文依据的具体场景；场景图硬规则不允许纯文字通过。"}]
