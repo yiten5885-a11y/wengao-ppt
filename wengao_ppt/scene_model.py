@@ -2045,7 +2045,29 @@ def _apply_grounded_scene_gap_repairs(audit: dict, pages: list[dict],
     bounded model-authored repair and must be followed by a third full-deck
     verification before its plan can pass.
     """
-    from .scene_images import is_neutral_photo_search_query
+    from .scene_images import (_ESTABLISHING_SHOT_ACTION, _safe_query,
+                               is_neutral_photo_search_query, SceneImageError)
+
+    def _valid_query_alternative(value: str, *, is_establishing_shot: bool) -> bool:
+        if not is_establishing_shot:
+            return is_neutral_photo_search_query(value)
+        # A city/landmark establishing-shot alternative is naturally shorter
+        # (no action verb+object to describe) and its real vocabulary —
+        # "landscape", "wide", "aerial" — overlaps with the global quality/
+        # filler stop-word list that is_neutral_photo_search_query's 4-7-word
+        # floor is tuned against for action scenes. "guangzhou urban
+        # landscape wide angle" (5 raw words, a legitimate skyline-photo
+        # phrasing) counts as only 3 after that filter ("landscape"/"wide"
+        # dropped as stop words), hard-failing every real landmark gap
+        # repair. Use the same format checks without reusing that
+        # action-scene-tuned floor.
+        try:
+            q = _safe_query(value)
+        except SceneImageError:
+            return False
+        if not re.fullmatch(r"[A-Za-z][A-Za-z '\\-]*", q):
+            return False
+        return 2 <= len(q.split()) <= 7
 
     summary = _validate_scene_coverage_audit(audit, pages, plan, allow_gaps=True)
     if summary["status"] != "GAPS_FOUND":
@@ -2117,10 +2139,12 @@ def _apply_grounded_scene_gap_repairs(audit: dict, pages: list[dict],
                                   "修复场景的备选中性查询格式无效。")
         primary_query = str(details["visual_query"] or "").strip()
         alternatives = list(dict.fromkeys(value.strip() for value in alternatives))
+        is_establishing_shot = details["action"].strip().casefold() == _ESTABLISHING_SHOT_ACTION
         if (not primary_query or len(primary_query) > 180
                 or re.search(r"\d|[\u3400-\u9fff]|https?://|www\.", primary_query, re.I)
                 or not re.search(r"[A-Za-z]", primary_query)
-                or any(not is_neutral_photo_search_query(value) for value in alternatives)):
+                or any(not _valid_query_alternative(value, is_establishing_shot=is_establishing_shot)
+                       for value in alternatives)):
             raise SceneModelError("SCENE.QUERY_INVALID",
                                   "修复场景只能使用短中性英文照片查询；同义备选必须为4-7个有效词，且不得包含源文字符、数字、链接或来源摘录。")
 
@@ -2311,6 +2335,19 @@ def _validate_scene_gap_repair_scope(audit: dict, repair_result: dict) -> dict:
             or not isinstance(repair_result, dict)
             or repair_result.get("schema_version") != "1.0.0"
             or not isinstance(repaired, list) or len(repaired) != len(original)):
+        if os.environ.get("WENGAO_DEBUG_GAP_SCOPE_DUMP"):
+            import json as _json
+            with open(os.environ["WENGAO_DEBUG_GAP_SCOPE_DUMP"], "a") as _f:
+                _f.write(_json.dumps({
+                    "original_len": len(original) if isinstance(original, list) else None,
+                    "original_is_list": isinstance(original, list),
+                    "repair_result_is_dict": isinstance(repair_result, dict),
+                    "schema_version": repair_result.get("schema_version") if isinstance(repair_result, dict) else None,
+                    "repaired_is_list": isinstance(repaired, list),
+                    "repaired_len": len(repaired) if isinstance(repaired, list) else None,
+                    "original": original,
+                    "repair_result": repair_result,
+                }, ensure_ascii=False, indent=2) + "\n---\n")
         raise SceneModelError("SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED",
                               "漏项字段修复没有逐条保留独立审计发现。")
     for before, after in zip(original, repaired):
