@@ -684,7 +684,14 @@ def infer_roles(shapes) -> dict:
             roles[i] = "source"
         elif s.get("top", 0) >= 6.85 and len(t) <= 60:
             roles[i] = "footer"
-        elif re.fullmatch(r"\d{1,2}|[A-Za-z]", t):
+        # Roman numeral badges (Ⅰ Ⅱ Ⅲ ...) are the same kind of standalone
+        # ordinal label as "1"/"A" — U+2160-217B is the whole Unicode Roman
+        # Numerals block, upper- and lower-case. Without this, a lone "Ⅰ"/
+        # "Ⅱ"/"Ⅲ" badge fell through to "body" and tripped HG08
+        # ORPHAN_CHAR_LINE as if a sentence had awkwardly wrapped down to one
+        # stray character, when it is an intentional single-character badge
+        # (job-d239567879df page 8).
+        elif re.fullmatch(r"\d{1,2}|[A-Za-z]|[Ⅰ-ⅻ]", t):
             roles[i] = "ordinal"
         elif re.search(r"\d", t) and re.search(r"%|亿|万", t) and len(t) <= 12:
             roles[i] = "key_number"
@@ -2757,7 +2764,12 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
             # The generic text-line rule applies to editable text shapes only.
             if s.get("chart_native"):
                 continue
-            if roles.get(i) == "ordinal" or txt in ("“", "”", "「"):
+            # "decor" is a large (>=60pt) standalone background digit/char by
+            # definition (is_decor) — a lone character on its own line is not
+            # an accident there, it's the whole point. Without this, a 69pt
+            # decorative "3" tripped ORPHAN_CHAR_LINE as if a sentence had
+            # wrapped down to one stray character (job-d239567879df page 8).
+            if roles.get(i) in ("ordinal", "decor") or txt in ("“", "”", "「"):
                 continue
             rows = _baseline_rows(mapped_by_shape.get(i, []))
             for row in rows:

@@ -974,7 +974,11 @@ def infer_text_roles(shs, sw, sh_) -> dict:
             roles[s.idx] = "source"
         elif s.T >= sh_ * 0.91 and len(t) <= 60:
             roles[s.idx] = "footer"
-        elif _re.fullmatch(r"\d{1,2}|[A-Za-z]", t):
+        # Keep in sync with scripts/layout_gate.py:infer_roles (see this
+        # function's docstring) — Roman numeral badges (Ⅰ Ⅱ Ⅲ ...) are the
+        # same kind of standalone ordinal label as "1"/"A"; U+2160-217B is
+        # the whole Unicode Roman Numerals block, upper- and lower-case.
+        elif _re.fullmatch(r"\d{1,2}|[A-Za-z]|[Ⅰ-ⅻ]", t):
             roles[s.idx] = "ordinal"
         elif _re.search(r"\d", t) and _re.search(r"%|亿|万", t) and len(t) <= 12:
             roles[s.idx] = "key_number"
