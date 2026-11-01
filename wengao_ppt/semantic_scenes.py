@@ -3173,7 +3173,19 @@ def _candidate_blockers(candidate_pptx: str | Path, spec: dict) -> tuple[float, 
                     continue
         if _rect_intersection_area(rect, _shape_rect(shape)) <= 0:
             continue
-        if spec.get("placement_mode") == "replace_visual_image" and _is_background_shape(shape, slide_area, slide_height=slide_h):
+        if _is_background_shape(shape, slide_area, slide_height=slide_h):
+            # A near-full-slide or full-width/height backdrop shape sits
+            # behind everything regardless of how this photo was placed —
+            # replace_visual_image always draws its picture above such a
+            # backdrop, and so does empty_area (insert_below_text only
+            # tucks a picture below *text* shapes, never behind the slide's
+            # own background panel). Restricting this skip to
+            # replace_visual_image left empty_area placements with no such
+            # exemption, so a themed full-slide background rect was flagged
+            # as "obscuring" a photo it structurally cannot cover.
+            # Reproduced live on job-d239567879df, scene pension_equity_concept
+            # (page 15): shape 134, a full-slide solid-fill backdrop drawn
+            # first (and so behind) everything else, including the photo.
             continue
         if getattr(shape, "has_text_frame", False) and (shape.text_frame.text or "").strip():
             # A background scene may sit behind transparent live text, but never under an opaque text card.
