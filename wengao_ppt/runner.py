@@ -1731,6 +1731,21 @@ class Runner:
                 raise GateError("VISUAL.SCENE_PLAN_FAILED",
                                 f"语义场景插图阶段失败：{detail}") from None
 
+            # 3c) 角色字号兜底钳位：无论主题/内容构建阶段是谁、在哪一步给某段
+            # 文字定的字号，只要超出该角色（如 chart_aux 10-12pt）的上限，这里
+            # 统一收口夹到上限，不改任何几何；只在 visual_upgrade 分支内调用
+            # 夹不住非 visual_upgrade 主题生成的超限文字（2026-11-01
+            # job-d239567879df 页 4/13："7,400 元"等对比条注记被判定为
+            # chart_aux 角色，实际字号 13-13.5pt，超出 10-12pt 上限，
+            # 该主题未启用 visual_upgrade，夹位从未被调用过）。
+            from pptx import Presentation as _ClampPrs
+            _clamp_prs = _ClampPrs(str(themed))
+            post_scene_type_scale_clamps = theme_mod.clamp_oversized_to_role_max(_clamp_prs)
+            if post_scene_type_scale_clamps:
+                _clamp_prs.save(str(themed))
+                self._stage(job_id, "type_scale_clamp", "DONE",
+                            {"changes": post_scene_type_scale_clamps})
+
             # 4) 独立重读候选
             out_doc = extract_any(themed)
             save_json_atomic(out_doc.to_dict(), stage / "extracted_output.json")
