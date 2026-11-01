@@ -540,7 +540,7 @@ def assign_chars(chars, shapes) -> tuple:
         if not c["ch"].strip():
             continue
         cx, cy = (c["x0"] + c["x1"]) / 2, (c["y0"] + c["y1"]) / 2
-        best, best_area = None, 0.0
+        best, best_key = None, None
         for si in text_shapes:
             s = shapes[si]
             ox = min(c["x1"], s["right"]) - max(c["x0"], s["left"])
@@ -549,13 +549,26 @@ def assign_chars(chars, shapes) -> tuple:
                 area = ox * oy
                 inside = (s["left"] - 1e-6 <= cx <= s["right"] + 1e-6
                           and s["top"] - 1e-6 <= cy <= s["bottom"] + 1e-6)
-                if inside:
-                    score = area + (1e9 if c["ch"] in shapes[si]["text"] else 0.0)
-                    if best is None or score > best_area:
-                        best, best_area = si, score
-                elif area > best_area:
-                    best, best_area = si, area
-        if best is None or best_area <= 0:
+                has_char = c["ch"] in shapes[si]["text"]
+                # 两类邻近形状易产生"包围盒重叠但墨迹从不相交"的假性候选：
+                # (a) 圆角卡片/装饰形状的矩形包围盒比它的可见轮廓大（圆角
+                #     会"削掉"四角），邻近形状的字符中心即使从不与它的墨迹
+                #     真正重叠，也可能恰好落进这个更大的矩形包围盒里；
+                # (b) 两个形状的声明框边缘重合（如都紧贴画布安全边距），
+                #     字形框与两者的重叠面积可以完全相等，不落入 inside 分支。
+                # 原实现按遍历顺序先到先得，稳定但任意——改成在候选之间优先
+                # 看该字符是否真的出现在这个形状自己的文本里（强证据，不论
+                # 是否判定 inside），再优先挑包围盒更小（更贴合、更可能是
+                # 真正主体）的形状。真实案例：job-d239567879df 第1页，
+                # "2026 年 11 月"的"年"被一张跨大半页的圆角说明卡片（本身
+                # 也含"年"字）抢走（情形 a）；同一字符串的"月"因声明框与
+                # 该卡片共享同一条画布右边距，字形框与两者重叠面积恰好相等
+                # 而被抢走（情形 b）。
+                shape_area = max(0.0, s["right"] - s["left"]) * max(0.0, s["bottom"] - s["top"])
+                key = (1 if inside else 0, 1 if has_char else 0, -shape_area, area)
+                if best is None or key > best_key:
+                    best, best_key = si, key
+        if best is None or best_key[3] <= 0:
             unmatched.append(ci)
         else:
             mapping[ci] = best
