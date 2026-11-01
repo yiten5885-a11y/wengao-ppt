@@ -3744,6 +3744,17 @@ def _ensure_notes_text_frame(notes_slide, prs: Presentation):
             "SCENE.NOTES_PLACEHOLDER_MISSING",
             "该页备注版式缺少正文占位符，无法写入必需的照片署名信息，"
             "且无法从母版或内置模板自动恢复。")
+    # The donor is python-pptx's own NOTES MASTER placeholder (not a slide
+    # instance), so its text frame is the master's own literal style-prompt
+    # content ("Click to edit Master text styles\nSecond level\n..."). That
+    # is appropriate on a master, not on a notes slide — left in place, it
+    # prefixed every photo credit block, made notes_text_frame.text never
+    # start with the expected "[WENGAO PHOTO CREDIT]" header, and defeated
+    # _notes_photo_credit_sanctioned (layout_gate.py's HG01 exemption for
+    # exactly this disclosed addition), so the credit got flagged as an
+    # unexplained NOTES_CHANGED instead of being recognized as sanctioned.
+    # Reproduced live on job-d239567879df, page 15.
+    notes_frame.text = ""
     return notes_frame
 
 

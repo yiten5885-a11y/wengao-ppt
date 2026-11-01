@@ -65,6 +65,15 @@ class TestEnsureNotesTextFrame(unittest.TestCase):
         frame = _ensure_notes_text_frame(notes_slide, prs)
 
         self.assertIsNotNone(frame)
+        # The donor is python-pptx's own NOTES MASTER placeholder, whose text
+        # frame carries the master's own literal style-prompt content
+        # ("Click to edit Master text styles..."). Left in place, that text
+        # prefixed every photo credit block apply_plan writes (it reads
+        # notes_text_frame.text first, then appends), so the credit never
+        # started with "[WENGAO PHOTO CREDIT]" and the sanctioned-addition
+        # exemption in scripts/layout_gate.py never matched — reproduced
+        # live on job-d239567879df, page 15.
+        self.assertEqual(frame.text, "")
         frame.text = "recovered via donor template"
         self.assertEqual(notes_slide.notes_text_frame.text, "recovered via donor template")
 
