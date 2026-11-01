@@ -1361,20 +1361,56 @@ def _plan_hash(plan: dict) -> str:
     return _canonical_sha({k: v for k, v in plan.items() if k != "plan_sha256"})
 
 
-def _audited_plan_view_drift(audited_view: dict, plan: dict) -> list[str]:
+def _audited_plan_view_drift(audited_view: dict, plan: dict,
+                             source_pages: list[dict] | None = None) -> list[str]:
     """List where the frozen audited view departs from the final plan.
 
-    The only accepted difference is the deterministic canonical_scene_id
-    normalization applied after the audit; anything else is a real drift.
+    Two differences are accepted, everything else is a real drift:
+    1. The deterministic canonical_scene_id normalization applied after
+       the audit.
+    2. A page_coverage row whose *only* change is its evidence excerpts,
+       with scene_keys/no_scene_reason unchanged, and every new excerpt
+       independently re-verified (via _excerpt_matches, not merely trusted)
+       as a verbatim quote from that page's own real source text. This is
+       _normalize_semantics's own evidence-grounding repair
+       (_repair_page_coverage_evidence in build_plan) — it runs after the
+       audit already signed off on *that page's scene/no-scene conclusion*
+       and only replaces an ungrounded citation with a grounded one for the
+       same conclusion; it never changes what the audit actually decided.
+       Re-deriving groundedness here from the frozen source, rather than
+       trusting a self-reported repair record, keeps this an honest replay
+       check instead of a rubber stamp. Any other page_coverage change
+       (different scene_keys, a changed no_scene_reason, or an evidence
+       string that doesn't actually ground) is still real drift.
     """
     final_view = _coverage_plan_view(plan)
     audited = _coverage_plan_view(audited_view)  # fresh dicts; safe to rewrite
     for scene in audited["scenes"]:
         raw = str(scene.get("canonical_scene_id") or "").strip().casefold()
         scene["canonical_scene_id"] = _normalize_canonical_scene_token(raw) or raw
+    page_text_by_no = {int(p["page"]): str(p.get("text") or "")
+                       for p in (source_pages or []) if isinstance(p, dict)}
     drift = []
-    if audited["page_coverage"] != final_view["page_coverage"]:
+    audited_by_page = {row["page"]: row for row in audited["page_coverage"]}
+    final_by_page = {row["page"]: row for row in final_view["page_coverage"]}
+    if set(audited_by_page) != set(final_by_page):
         drift.append("page_coverage")
+    else:
+        for page, a_row in audited_by_page.items():
+            b_row = final_by_page[page]
+            if a_row == b_row:
+                continue
+            only_evidence_changed = (
+                a_row["scene_keys"] == b_row["scene_keys"]
+                and a_row["no_scene_reason"] == b_row["no_scene_reason"]
+                and a_row["evidence"] != b_row["evidence"])
+            page_text = page_text_by_no.get(page)
+            regrounded = (only_evidence_changed and page_text is not None
+                         and bool(b_row["evidence"])
+                         and all(_excerpt_matches(page_text, excerpt)
+                                 for excerpt in b_row["evidence"]))
+            if not regrounded:
+                drift.append(f"page_coverage[{page}]")
     if len(audited["scenes"]) != len(final_view["scenes"]):
         drift.append("scenes")
     else:
@@ -2700,7 +2736,7 @@ def _validate_coverage_audit_proof(source_pptx: str | Path,
         audited_view = proof.get("audited_plan_view")
         prompt_plan = plan
         if isinstance(audited_view, dict):
-            drift = _audited_plan_view_drift(audited_view, plan)
+            drift = _audited_plan_view_drift(audited_view, plan, source_pages)
             if drift:
                 result["findings"].append({
                     "code": "SCENE.COVERAGE_AUDIT_PLAN_DRIFT",
