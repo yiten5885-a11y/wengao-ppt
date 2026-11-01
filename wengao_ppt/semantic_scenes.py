@@ -8,6 +8,7 @@ an existing generic image slot; a missing photo or safe placement blocks output.
 """
 from __future__ import annotations
 
+import copy
 import hashlib
 import inspect
 import io
@@ -25,7 +26,7 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageStat
 from lxml import etree
 from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE, MSO_SHAPE_TYPE
+from pptx.enum.shapes import MSO_SHAPE, MSO_SHAPE_TYPE, PP_PLACEHOLDER
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.dml.color import RGBColor
 from pptx.util import Inches, Pt
@@ -3653,6 +3654,63 @@ def _photo_changes_text(crop) -> str:
     return "Embedded without crop or raster edits; scaled and positioned in slide frame."
 
 
+_DONOR_NOTES_BODY_PLACEHOLDER_XML: bytes | None = None
+
+
+def _donor_notes_body_placeholder_element():
+    """A standalone, schema-valid "Notes Placeholder" (type=body) <p:sp>
+    element, cloned once from python-pptx's own bundled default template.
+
+    Used only as a last-resort fallback when a user-uploaded deck's own
+    notes master has no body placeholder to clone from (clone_master_
+    placeholders is then a no-op) — reproduced live on job-d239567879df,
+    whose notes master has zero placeholders at all. Caching the serialized
+    XML (not a live element — every call must return an unshared copy) means
+    opening python-pptx's bundled default.pptx only once per process rather
+    than once per scene photo.
+    """
+    global _DONOR_NOTES_BODY_PLACEHOLDER_XML
+    if _DONOR_NOTES_BODY_PLACEHOLDER_XML is None:
+        donor = Presentation()
+        donor_placeholder = next(
+            ph for ph in donor.notes_master.placeholders
+            if ph.placeholder_format.type == PP_PLACEHOLDER.BODY)
+        _DONOR_NOTES_BODY_PLACEHOLDER_XML = etree.tostring(donor_placeholder.element)
+    return etree.fromstring(_DONOR_NOTES_BODY_PLACEHOLDER_XML)
+
+
+def _ensure_notes_text_frame(notes_slide, prs: Presentation):
+    """Return notes_slide.notes_text_frame, repairing a missing placeholder.
+
+    python-pptx returns None "if the notes master does not have a body
+    placeholder, or if the notes placeholder has been deleted from the
+    notes slide" (pptx.slide.NotesSlide.notes_placeholder docstring) — a
+    real structure a user-uploaded file can have, not something this
+    pipeline creates. A scene photo's licensed-use attribution is a hard
+    requirement (SCENE.ATTRIBUTION_NOTES_MISSING checks the notes text
+    verbatim), so the placeholder must be restored, never silently skipped.
+    """
+    notes_frame = notes_slide.notes_text_frame
+    if notes_frame is not None:
+        return notes_frame
+    notes_slide.clone_master_placeholders(prs.notes_master)
+    notes_frame = notes_slide.notes_text_frame
+    if notes_frame is not None:
+        return notes_frame
+    # The master itself has no body placeholder to clone (confirmed live on
+    # job-d239567879df: prs.notes_master.placeholders is empty) — fall back
+    # to a known-good, schema-valid placeholder borrowed from python-pptx's
+    # own bundled template rather than giving up.
+    notes_slide.shapes._spTree.append(_donor_notes_body_placeholder_element())
+    notes_frame = notes_slide.notes_text_frame
+    if notes_frame is None:
+        raise SemanticSceneError(
+            "SCENE.NOTES_PLACEHOLDER_MISSING",
+            "该页备注版式缺少正文占位符，无法写入必需的照片署名信息，"
+            "且无法从母版或内置模板自动恢复。")
+    return notes_frame
+
+
 def _photo_credit_block(spec: dict, crop) -> str:
     title = re.sub(r"\s+", " ", str(spec.get("title") or spec.get("label") or "Scene photo")).strip()
     creator = re.sub(r"\s+", " ", str(spec.get("attribution") or spec.get("creator") or "")).strip()
@@ -3964,7 +4022,7 @@ def apply_plan(pptx_path: str | Path, plan: dict, output_path: str | Path, *, al
                       float(pic.crop_right), float(pic.crop_bottom)]
         credit_block = _photo_credit_block(spec, photo_crop)
         c_nv.set("descr", " | ".join(credit_block.splitlines())[:1024])
-        notes_frame = slide.notes_slide.notes_text_frame
+        notes_frame = _ensure_notes_text_frame(slide.notes_slide, prs)
         existing_notes = notes_frame.text.rstrip()
         if credit_block not in existing_notes:
             notes_frame.text = (existing_notes + "\n\n" + credit_block).strip()
