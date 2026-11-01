@@ -1342,7 +1342,7 @@ def scene_prompt(pages: list[dict], *, batch_context: dict | None = None,
         "3. 同一宽泛主题可以有多个不同具体场景，各自用不同 canonical_scene_id 并各选一张不同照片；例如消费可有商超购物、查看发票、结算台，"
         "阅读可有图书馆、读书、查看新闻页/报纸。任何示例都不限制其他题材。\n"
         "4. 不能把文字堆叠卡片当作场景图。每个 scene 必须输出 photo_search_terms 对象，分开填写英文 subject、action、setting："
-        "subject 为 1-2 词，action 为 2-4 词（必须含动作词和对象/结果词），setting 为 1-3 个具体地点词；合计 4-7 词。"
+        "subject 为 1-2 词，action 为 2-4 词（必须含动作词和对象/结果词），setting 为 1-3 个具体地点词；合计 4-9 词。"
         "校验按去重后的有意义英文词计数；每组至少一个词，三组之间不能重复词。"
         "以地点为核心的主题（仓库、工厂、门店、诊所）容易把动作写成重复地点名词的空话，"
         "例如 subject=\"workers\"、action=\"expanding warehouse\"、setting=\"warehouse interior\" 里 action 和 setting "
@@ -1361,7 +1361,7 @@ def scene_prompt(pages: list[dict], *, batch_context: dict | None = None,
         "可以把 photo_search_terms.action 固定写成英文短语 \"establishing shot\"（逐字照抄，不翻译、不改写），表示这是没有人物动作需要核实的静态建立镜头；"
         "此时 subject 填该城市的英文名（如 \"Wuxi\"、\"Beijing\"、\"Guangzhou\"、\"Qingdao\"），setting 填 \"skyline\" 或 \"landmark\" 等描述性词。"
         "例如 photo_search_terms={\"subject\":\"Wuxi\",\"action\":\"establishing shot\",\"setting\":\"skyline\"}，visual_query='Wuxi establishing shot skyline'。"
-        "三组用词仍需互不重复、合计 4-7 词；action 使用这个固定值时不再要求动词和宾语。原文没有点名具体城市、或该页主题与城市地标无关时，不要为了凑图硬插入城市场景。\n"
+        "三组用词仍需互不重复、合计 4-9 词；action 使用这个固定值时不再要求动词和宾语。原文没有点名具体城市、或该页主题与城市地标无关时，不要为了凑图硬插入城市场景。\n"
         "5. 所有图库照片均为说明性配图，不是原文事件、人物、企业或结果发生过的证据；每个 scene 必须写 depiction_type='illustrative'，"
         "并用原文语言写 illustration_rationale，简短说明这张代表性画面如何帮助理解对应页的主题。"
         "evidence 只证明原文讨论了该主题，不要求逐字描述照片中的具体人物或地点；rationale 必须区分‘说明该主题’与‘声称该事件真实发生’，"
@@ -1830,10 +1830,10 @@ def scene_coverage_audit_prompt(pages: list[dict], plan: dict, *,
         "no edits or insertions, no stitching across distant sentences); an excerpt that does not appear "
         "verbatim in the page text is rejected and the whole audit fails. The evidence excerpt grounds the source topic, not the literal occurrence "
         "of the pictured event; the rationale must describe a helpful representative image without claiming it happened. "
-        "Each English visual_query must use 4-7 useful words ordered subject first, "
+        "Each English visual_query must use 4-9 useful words ordered subject first, "
         "action/use next, and one concrete setting as the final word, for example 'worker assembling vehicle factory'. "
         "photo_search_terms subject must be 1-2 words, action 2-4 words including an action and its object/result, setting 1-3 concrete place words; "
-        "their 4-7 words must appear in the same order in visual_query."
+        "their 4-9 words must appear in the same order in visual_query."
         "Alternative queries may use concise English synonyms to improve retrieval, but must describe the same scene and never replace the original structured anchors used by the photo metadata gate."
         "merged_distinct_scenes lists each incorrect merge with pages, scene_keys, "
         "and a short reason. The missing-scene fields must be complete enough for a real photo search and placement; "
@@ -2062,7 +2062,7 @@ def _apply_grounded_scene_gap_repairs(audit: dict, pages: list[dict],
         # A city/landmark establishing-shot alternative is naturally shorter
         # (no action verb+object to describe) and its real vocabulary —
         # "landscape", "wide", "aerial" — overlaps with the global quality/
-        # filler stop-word list that is_neutral_photo_search_query's 4-7-word
+        # filler stop-word list that is_neutral_photo_search_query's 4-9-word
         # floor is tuned against for action scenes. "guangzhou urban
         # landscape wide angle" (5 raw words, a legitimate skyline-photo
         # phrasing) counts as only 3 after that filter ("landscape"/"wide"
@@ -2154,7 +2154,7 @@ def _apply_grounded_scene_gap_repairs(audit: dict, pages: list[dict],
                 or any(not _valid_query_alternative(value, is_establishing_shot=is_establishing_shot)
                        for value in alternatives)):
             raise SceneModelError("SCENE.QUERY_INVALID",
-                                  "修复场景只能使用短中性英文照片查询；同义备选必须为4-7个有效词，且不得包含源文字符、数字、链接或来源摘录。")
+                                  "修复场景只能使用短中性英文照片查询；同义备选必须为4-9个有效词，且不得包含源文字符、数字、链接或来源摘录。")
 
         candidate = {"page": page_no, "relevance": 0.9, "evidence": [evidence]}
         identity = (details["subject"].casefold(), details["action"].casefold(),
@@ -2323,7 +2323,7 @@ def scene_gap_repair_prompt(pages: list[dict], plan: dict, audit: dict) -> str:
         "action, setting, label, lighting, composition_camera, style, quality, neutral English visual_query, up to "
         "two neutral English visual_query_alternatives, and photo_search_terms with disjoint role-separated English "
         "anchors: subject 1-2 words, action 2-4 words including an action and its object/result, setting 1-3 concrete "
-        "place words; 4-7 distinct words total, in that order in visual_query. A place-centric topic (warehouse, "
+        "place words; 4-9 distinct words total, in that order in visual_query. A place-centric topic (warehouse, "
         "factory, store, clinic) tempts an action that just restates the setting noun — e.g. subject \"workers\", "
         "action \"expanding warehouse\", setting \"warehouse interior\" repeats \"warehouse\" and is INVALID; pick an "
         "action naming what the subject is concretely doing there instead (e.g. \"stacking pallets\", \"unloading "
@@ -2538,7 +2538,7 @@ def scene_merge_replan_prompt(pages: list[dict], plan: dict, audit: dict, *,
         "illustration_rationale, subject, action, setting, "
         "label, lighting, composition_camera, style, quality, photo_search_terms, visual_query, "
         "visual_query_alternatives, and page_candidates. Use short neutral English photo anchors: subject 1-2 words, "
-        "action 2-4 words with object/result, setting 1-3 concrete place words, 4-7 ordered words total; no word may "
+        "action 2-4 words with object/result, setting 1-3 concrete place words, 4-9 ordered words total; no word may "
         "repeat across the three groups. A place-centric topic (warehouse, factory, store, clinic) tempts an action "
         "that just restates the setting noun — e.g. subject \"workers\", action \"expanding warehouse\", setting "
         "\"warehouse interior\" repeats \"warehouse\" and is invalid; pick an action naming what the subject is "
@@ -3095,7 +3095,7 @@ def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
         "no exact useful token may appear in more than one field after stop-word removal. "
         "For example, subject=worker and action=worker assembling products is invalid; "
         "action=assembling products is the valid non-repeating form. The three groups must "
-        "contain 4-7 useful words total, and describe the same visible subject, action/object, "
+        "contain 4-9 useful words total, and describe the same visible subject, action/object, "
         "and place supported by that scene's source evidence. Do not use source-language words, "
         "numbers, generic setting words, quality/style terms, clauses, or extra fields. If the "
         "source does not support a concrete imageable scene, return an empty repairs array; the "
@@ -3263,7 +3263,7 @@ def _enrich_scene_image_prompts(plan: dict, pages: list[dict], *, model: str | N
         except ValueError as exc:
             raise SceneModelError(
                 "SCENE.PHOTO_SEARCH_ANCHORS_INVALID",
-                "场景图检索必须提供4-7个按主体、动作对象、地点分组的英文锚点。",
+                "场景图检索必须提供4-9个按主体、动作对象、地点分组的英文锚点。",
                 diagnostics={"invalid_field": "photo_search_terms",
                              "validation_reason": str(exc)[:120]}) from exc
         if any(len(value) > 320 or "\n" in value or "\r" in value

@@ -173,7 +173,7 @@ def is_neutral_photo_search_query(query: object) -> bool:
     if not re.fullmatch(r"[A-Za-z][A-Za-z '\\-]*", q):
         return False
     terms = _query_tokens(q)
-    return 4 <= len(terms) <= 7
+    return 4 <= len(terms) <= 9
 
 
 def _url_is_allowed(url: str, allowed_hosts: set[str]) -> bool:
@@ -707,8 +707,10 @@ def normalize_photo_search_terms(value: object) -> dict[str, str]:
     # setting allows up to 3 words (not 2): a concrete administrative/service
     # location can need a genuine 3-word English phrase to stay unambiguous
     # (e.g. "social security hall" for 社保大厅 — 2 words either drops the
-    # qualifier or the place noun). The combined 4-7 total below still caps
-    # overall length regardless of this per-field widening.
+    # qualifier or the place noun). The per-field bounds can sum to as much
+    # as 2+4+3=9 (e.g. "family member" + "processing survivor benefits" +
+    # "social security counter"), so the combined-total cap below is 4-9,
+    # not the narrower 4-7 range the fields summed to before setting widened.
     bounds = {"subject": (1, 2), "action": (2, 4), "setting": (1, 3)}
     for key, (minimum, maximum) in bounds.items():
         raw = value.get(key)
@@ -720,8 +722,8 @@ def normalize_photo_search_terms(value: object) -> dict[str, str]:
             raise ValueError(f"{key} must contain {minimum}-{maximum} useful English words")
         result[key] = " ".join(tokens)
     total = sum(len(_query_tokens(result[key])) for key in bounds)
-    if not 4 <= total <= 7:
-        raise ValueError("photo search anchors must total 4-7 useful words")
+    if not 4 <= total <= 9:
+        raise ValueError("photo search anchors must total 4-9 useful words")
     groups = [set(_query_tokens(result[key])) for key in bounds]
     if any(groups[i] & groups[j] for i in range(len(groups)) for j in range(i + 1, len(groups))):
         raise ValueError("subject, action, and setting anchors must be distinct")
@@ -736,7 +738,7 @@ def canonicalize_duplicate_photo_search_terms(value: object) -> dict[str, str] |
 
     This is a formatting-only repair: each token is kept in its first semantic
     role and later copies are dropped. Return a value only if the unchanged
-    strict validator accepts every field and the final 4-7 word query.
+    strict validator accepts every field and the final 4-9 word query.
     """
     if not isinstance(value, dict):
         return None
@@ -776,7 +778,7 @@ def query_preserves_photo_search_anchors(query: str, anchors: object) -> bool:
     subject = _query_tokens(normalized["subject"])
     action = _query_tokens(normalized["action"])
     setting = _query_tokens(normalized["setting"])
-    if not 4 <= len(actual) <= 7 or len(actual) < len(expected):
+    if not 4 <= len(actual) <= 9 or len(actual) < len(expected):
         return False
     if actual[:len(subject) + len(action)] != subject + action:
         return False
@@ -959,7 +961,7 @@ def scene_search_query_variants(query: str, scene_context: dict | None = None,
         except SceneImageError:
             return None
         tokens = _query_tokens(value)
-        return value if 4 <= len(tokens) <= 7 else None
+        return value if 4 <= len(tokens) <= 9 else None
 
     candidates = [base]
     candidates.extend(value for value in validated_queries if value != base)
