@@ -2799,8 +2799,15 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
             for j, o in enumerate(shapes):
                 if j == i or roles.get(j) not in ("body", "label", "conclusion"):
                     continue
-                if (o["left"] >= s["left"] - 0.05
-                        and abs(o["top"] - s["top"]) < 1.2):
+                # Same-row proximity (<1.2in vertical) is the actual "is
+                # this ordinal attached to something" signal; direction
+                # was never meant to matter, but only "to the right" was
+                # checked. A table-of-contents page-number column — the
+                # ordinal at the row's far right, its chapter title to the
+                # *left* of it — always failed this: nothing exists further
+                # right than the rightmost column (job-d239567879df page 2,
+                # the "03"/"07"/"12" page numbers next to 落差/机制/出路).
+                if abs(o["top"] - s["top"]) < 1.2:
                     bound = True
                     break
             if not bound:
