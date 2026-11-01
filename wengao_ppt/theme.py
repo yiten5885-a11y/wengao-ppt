@@ -65,16 +65,22 @@ THEMES: dict[str, dict] = {
     # ------------------------------------------------------------------ 商务清晰
     "wengao-business": {
         "name": "商务清晰",
-        "version": "1.0.0",
+        # 1.0.0 的 primary/accent（1F3864/C00000）跟 wengao-basic 逐字相同，只有
+        # muted/border/chart_grid 等次要字段有细微差别——两个主题在卡片预览和
+        # 实际生成的 PPT 里几乎看不出区别（user 2026-11-01："6个主题都要分开"）。
+        # 1.1.0 换成独立的钢蓝+琥珀配色；每个颜色都按 WCAG 相对亮度公式核验过
+        # 对白底的对比度（最低 4.87:1，高于本项目 HG09 的 4.5:1 门槛，留出渲染
+        # 抗锯齿软化的余量）。
+        "version": "1.1.0",
         "slide_bg": "FFFFFF",
         "colors": {
-            "primary": "1F3864", "accent": "C00000", "text": "1A1A1A", "muted": "595959",
-            "heading": "1F3864", "subtitle": "595959",
-            "surface": "FFFFFF", "border": "BFBFBF",
-            "table_header_bg": "1F3864", "table_header_text": "FFFFFF",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "EDF1F7",
-            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D0D7E2",
-            "chart_series": ["1F3864", "C00000", "2E75B6", "8C8C8C"],
+            "primary": "2F5B7C", "accent": "9C5A0A", "text": "1A1A1A", "muted": "5B6B7A",
+            "heading": "2F5B7C", "subtitle": "5B6B7A",
+            "surface": "FFFFFF", "border": "C7D2DC",
+            "table_header_bg": "2F5B7C", "table_header_text": "FFFFFF",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "EAF0F5",
+            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D7E1EA",
+            "chart_series": ["2F5B7C", "9C5A0A", "3F7A5A", "8C8C8C"],
         },
         "fonts": {"heading_ea": "Songti", "body_ea": "Songti",
                   "heading_latin": "Arial", "body_latin": "Arial"},

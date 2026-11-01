@@ -1054,8 +1054,24 @@ async function applyDeepLink() {
 
 /* ---------------- 工作室：主题 / 来源 / 范围 ---------------- */
 function themeCard(t, on) {
-  const c = t.colors || {}, bg = "#" + (t.slide_bg || "FFFFFF");
+  const bg = "#" + (t.slide_bg || "FFFFFF");
   const dark = String(t.slide_bg || "").toUpperCase() === "0A192F";
+  if (t.adaptive) {
+    // No fixed palette — it keeps the source document's own colors. Falling
+    // back to the same hardcoded navy/red swatch as every other theme made
+    // this card visually indistinguishable from wengao-basic even though it
+    // is a fundamentally different kind of theme (user 2026-11-01).
+    return "<button class='theme' data-theme='" + esc(t.id) + "' aria-pressed='" + (on ? "true" : "false") + "'>" +
+      "<div class='sw' style='background:repeating-linear-gradient(135deg,#C9CDD4 0 6px,#E9ECEF 6px 12px)'>" +
+        "<span style='position:absolute;left:9%;top:38%;right:9%;font-size:calc(11px * var(--font-scale, 1));" +
+        "color:#595959;font-weight:600'>跟随原稿配色</span>" +
+        "<span style='position:absolute;right:8px;top:6px;font-size:calc(9px * var(--font-scale, 1));color:#595959;opacity:.7'>示例</span>" +
+      "</div>" +
+      "<div class='tname'>" + esc(t.name) + (t.legacy_default ? "<span class='tag'>旧默认</span>" : "") + "</div>" +
+      "<div class='tid'>" + esc(t.id) + " · v" + esc(t.version) + "</div>" +
+    "</button>";
+  }
+  const c = t.colors || {};
   const txt = "#" + (c.text || "1A1A1A");
   return "<button class='theme' data-theme='" + esc(t.id) + "' aria-pressed='" + (on ? "true" : "false") + "'>" +
     "<div class='sw' style='background:" + bg + "'>" +
