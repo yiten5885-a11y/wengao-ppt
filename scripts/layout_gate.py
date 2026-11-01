@@ -154,7 +154,7 @@ def strip_text_pptx(pptx: Path, out: Path) -> Path:
                         ppr.insert(insert_at, bu_none)
                     data = etree.tostring(root, encoding="UTF-8", xml_declaration=True,
                                           standalone=True)
-                elif re.fullmatch(r"ppt/charts/chart\d+\.xml", info.filename):
+                elif re.fullmatch(r"ppt/(?:slides/)?charts/chart\d+\.xml", info.filename):
                     root = etree.fromstring(data)
                     for parent in list(root.iter()):
                         for child in list(parent):
