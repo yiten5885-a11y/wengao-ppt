@@ -516,6 +516,7 @@ def list_themes() -> list[dict]:
                 "font_fallback_note": t["font_fallback_note"],
                 "refine_rules_version": t.get("refine_rules_version"),
                 "note": "识别并保留原稿设计语言，只做结构/度量精修；不换肤。",
+                "visual_upgrade": bool(t.get("visual_upgrade")),
             })
             continue
         out.append({
@@ -528,6 +529,13 @@ def list_themes() -> list[dict]:
             "fonts": {"heading_ea": t["fonts"]["heading_ea"], "body_ea": t["fonts"]["body_ea"],
                       "latin": t["fonts"]["heading_latin"]},
             "font_fallback_note": t["font_fallback_note"],
+            # Surfaced to the workbench UI so it can present this theme as a
+            # distinct kind of choice, not a peer color swatch: enabling it
+            # runs the visual_upgrade generation branch (keyword imagery +
+            # transition/particle animation), not just a different palette
+            # (user, 2026-11-01: wengao-visual-dark must not share the same
+            # picker entry as the 5 plain-color themes).
+            "visual_upgrade": bool(t.get("visual_upgrade")),
         })
     out.sort(key=lambda x: (not x["legacy_default"], x["id"]))
     return out

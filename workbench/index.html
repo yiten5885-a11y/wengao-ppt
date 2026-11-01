@@ -390,8 +390,13 @@
 
             <div class="card">
               <h2><span class="idx">2</span>选择主题<span class="aside" id="theme-state">—</span></h2>
-              <div class="themes" id="themes" role="group" aria-label="主题"></div>
+              <div class="themes" id="themes" role="group" aria-label="配色主题"></div>
               <p class="hint" style="margin-top:10px">主题在预检时冻结进任务身份，制作过程中不可更改。卡片配色来自主题注册表，属<b>配色示例</b>，不是本次原稿预览。</p>
+              <div id="themes-visual-upgrade-section" class="hidden" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+                <label class="field" style="margin-bottom:6px">视觉升级主题（不是配色选项）</label>
+                <p class="hint" style="margin-bottom:10px">选中会额外运行关键词配图与转场/粒子动效生成，耗时更长、调用图库与本机模型；不是单纯换个颜色。</p>
+                <div class="themes" id="themes-visual-upgrade" role="group" aria-label="视觉升级主题"></div>
+              </div>
             </div>
 
             <div class="card">
@@ -1067,14 +1072,25 @@ function themeCard(t, on) {
 function renderThemes(themes, defId) {
   if (!themes.length) { $("themes").innerHTML = "<div class='hint'>主题注册表为空。</div>"; return; }
   S.studio.theme = S.studio.theme || defId || themes[0].id;
-  $("themes").innerHTML = themes.map((t) => themeCard(t, t.id === S.studio.theme)).join("");
-  $("themes").querySelectorAll(".theme").forEach((b) => (b.onclick = () => {
-    S.studio.theme = b.dataset.theme;
-    $("themes").querySelectorAll(".theme").forEach((x) =>
-      x.setAttribute("aria-pressed", String(x.dataset.theme === S.studio.theme)));
+  // 视觉升级主题（params.visual_upgrade）会额外跑关键词配图+转场/粒子动效
+  // 这条独立生成分支，不是单纯换一套配色；不能跟普通配色主题混在同一组
+  // 卡片里挑选，否则用户会把它当成"换个颜色"而不知道会多跑什么。
+  const plain = themes.filter((t) => !t.visual_upgrade);
+  const upgrade = themes.filter((t) => t.visual_upgrade);
+  const groups = [["themes", plain]];
+  if (upgrade.length) groups.push(["themes-visual-upgrade", upgrade]);
+  $("themes-visual-upgrade-section").classList.toggle("hidden", !upgrade.length);
+  const selectTheme = (id) => {
+    S.studio.theme = id;
+    groups.forEach(([elId]) => $(elId).querySelectorAll(".theme").forEach((x) =>
+      x.setAttribute("aria-pressed", String(x.dataset.theme === S.studio.theme))));
     $("theme-state").textContent = (themes.find((t) => t.id === S.studio.theme) || {}).name || "";
     syncMakeButton();
-  }));
+  };
+  groups.forEach(([elId, list]) => {
+    $(elId).innerHTML = list.map((t) => themeCard(t, t.id === S.studio.theme)).join("");
+    $(elId).querySelectorAll(".theme").forEach((b) => (b.onclick = () => selectTheme(b.dataset.theme)));
+  });
   const cur = themes.find((t) => t.id === S.studio.theme) || {};
   $("theme-state").textContent = cur.name || "";
 }
