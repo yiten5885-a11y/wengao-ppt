@@ -3772,6 +3772,11 @@ def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -
         r.font.size, r.font.italic = secondary_pt, True
         r.font.color.rgb = RGBColor(*caption_rgb)
     visual_mod.insert_below_text(slide, box._element)
+    # Named so the layout hard gate's HG01 content-conservation check (which
+    # otherwise flags any added text-bearing shape as TEXT_CONTENT_CHANGED)
+    # can recognize and sanction this specific, disclosed fallback shape —
+    # see _text_card_sanctioned in scripts/layout_gate.py.
+    box.name = f"WENGAO_TEXTCARD|{spec['scene_key']}"
     return {"shape_id": box.shape_id, "shape_name": box.name}
 
 

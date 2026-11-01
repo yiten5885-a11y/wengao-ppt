@@ -622,6 +622,25 @@ def _notes_photo_credit_sanctioned(slide, nb: str, nc: str) -> bool:
     return False
 
 
+_TEXT_CARD_DISCLOSURE = "未找到可核验的合规配图，以说明卡片代替"
+
+
+def _text_card_sanctioned(shape, text: str) -> bool:
+    """场景文字兜底卡片豁免（HG01 内容守恒）。
+
+    场景阶段在找不到可核验合规照片时，用固定格式的说明卡片代替
+    （allow_text_card_fallback，显式用户选择），这是**受控的兜底新增**，
+    不是内容篡改。两条件同时成立才豁免：1) 形状名以 WENGAO_TEXTCARD|
+    开头（场景阶段专用命名，见 semantic_scenes._draw_text_card）；
+    2) 卡片文本以固定的免责声明行结尾（字面文案，不可被篡改为别的内容）。
+    其余新增/变化的文字形状仍然照报。
+    """
+    name = str(getattr(shape, "name", "") or "")
+    if not name.startswith("WENGAO_TEXTCARD|"):
+        return False
+    return text.rstrip().endswith(_TEXT_CARD_DISCLOSURE)
+
+
 def infer_roles(shapes) -> dict:
     """按几何+文本语义推断角色（不按页码硬编码）。返回 {shape_idx: role}。"""
     # 原生图表显示的文字来自 chart part，而不在 slide a:t 中；即便 text 为空，
@@ -1997,19 +2016,24 @@ def check(pptx: Path, pdf: Path, pages=None, baseline: Path | None = None,
         # ---------- HG01 内容守恒（形状级拼接文本，兼容 a:br） ----------
         if pageno in base_texts:
             cur = {}
+            sanctioned_ids = set()
             for sh in slide.shapes:
                 if not (getattr(sh, "has_text_frame", False)
                         or getattr(sh, "has_table", False)):
                     continue
                 text = _concat_shape_text(sh)
                 if text.strip():
-                    cur[str(sh.shape_id)] = text
-            if cur != base_texts[pageno]:
-                missing_ids = sorted(set(base_texts[pageno]) - set(cur), key=int)
-                added_ids = sorted(set(cur) - set(base_texts[pageno]), key=int)
+                    sid = str(sh.shape_id)
+                    cur[sid] = text
+                    if sid not in base_texts[pageno] and _text_card_sanctioned(sh, text):
+                        sanctioned_ids.add(sid)
+            cur_checked = {k: v for k, v in cur.items() if k not in sanctioned_ids}
+            if cur_checked != base_texts[pageno]:
+                missing_ids = sorted(set(base_texts[pageno]) - set(cur_checked), key=int)
+                added_ids = sorted(set(cur_checked) - set(base_texts[pageno]), key=int)
                 changed = sorted(
-                    (k for k in set(cur) & set(base_texts[pageno])
-                     if cur[k] != base_texts[pageno][k]), key=int)
+                    (k for k in set(cur_checked) & set(base_texts[pageno])
+                     if cur_checked[k] != base_texts[pageno][k]), key=int)
                 pg_find.append({"gate": "HG01", "type": "TEXT_CONTENT_CHANGED",
                                 "page": pageno, "missing_shapes": missing_ids,
                                 "added_shapes": added_ids,
