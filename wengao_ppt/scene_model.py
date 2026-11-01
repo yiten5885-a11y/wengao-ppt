@@ -1438,6 +1438,8 @@ def _response_payload(response, *, phase: str) -> tuple[dict, dict, str]:
                                   diagnostics=diagnostics) from None
         repaired = _repair_truncated_json(clean_raw)
         if repaired is None:
+            repaired = _repair_premature_scene_object_close(clean_raw)
+        if repaired is None:
             raise SceneModelError("SCENE.MODEL_JSON_INVALID",
                                   f"语义场景{phase}未返回合法 JSON；未生成候选。",
                                   diagnostics=diagnostics) from None
@@ -2951,6 +2953,49 @@ def _replan_scene_merge_conflicts(pages: list[dict], plan: dict, audit: dict,
         "eval_count": sum(int(row.get("eval_count") or 0) for row in traces),
     }
     return working, summary
+
+# Real failure observed live on job-mt-2c018d86 / job-719ddcfdc576 (2026-11-01,
+# two independent batch samples, both reproduced with WENGAO_DEBUG_SCENE_JSON_INVALID_DUMP):
+# for the LAST scene object in a batch, the model closes the object with a stray
+# `}` right after the top-level "setting" field — the same key name as the nested
+# photo_search_terms.{subject,action,setting} triplet a few lines later, which the
+# model appears to pattern-complete reflexively — skipping label/lighting/
+# composition_camera/style/quality/photo_search_terms entirely and leaving
+# visual_query/visual_query_alternatives/page_candidates stranded as invalid bare
+# array elements instead of the same object's remaining fields. The scene's own
+# true closing brace (the one that should have closed it after page_candidates)
+# is still present and well-formed, so dropping the stray early `}` and continuing
+# the object straight into the next field repairs the structure exactly.
+_SCENE_CONTINUATION_KEYS = ("photo_search_terms", "label", "lighting", "composition_camera",
+                           "style", "quality", "visual_query", "visual_query_alternatives",
+                           "page_candidates")
+_PREMATURE_SCENE_CLOSE_RE = re.compile(
+    # The stray `}` must sit at the SAME indentation as "setting" itself —
+    # a legitimate close of the nested photo_search_terms sub-object sits one
+    # level shallower than its own "setting" field, so requiring an exact
+    # indentation match (via the (?P=indent) backreference) is what tells the
+    # two cases apart without needing a real nesting-depth parse.
+    r'^(?P<indent>[ \t]*)("setting"[ \t]*:[ \t]*"(?:[^"\\]|\\.)*")[ \t]*\n'
+    r'(?P=indent)\}[ \t]*,?[ \t]*\n(?P=indent)(?=\"(?:%s)\"[ \t]*:)'
+    % "|".join(_SCENE_CONTINUATION_KEYS), re.MULTILINE)
+
+
+def _repair_premature_scene_object_close(text: str) -> dict | None:
+    """Drop a stray `}` that closed a scene object right after "setting",
+    reconnecting the fields the model left dangling after it. See the
+    real-failure note above this function for why this exact shape is safe
+    to repair mechanically rather than guessed at generically."""
+    patched, n = _PREMATURE_SCENE_CLOSE_RE.subn(r"\g<indent>\2,\n\g<indent>", text)
+    if n == 0:
+        return None
+    try:
+        obj = json.loads(patched)
+    except (TypeError, ValueError):
+        return None
+    if isinstance(obj, dict) and ("scenes" in obj or "page_coverage" in obj):
+        return obj
+    return None
+
 
 def _repair_truncated_json(text: str) -> dict | None:
     t = text.strip()
