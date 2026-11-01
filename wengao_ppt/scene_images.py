@@ -704,7 +704,12 @@ def normalize_photo_search_terms(value: object) -> dict[str, str]:
     if not isinstance(value, dict):
         raise ValueError("photo_search_terms must be an object")
     result = {}
-    bounds = {"subject": (1, 2), "action": (2, 4), "setting": (1, 2)}
+    # setting allows up to 3 words (not 2): a concrete administrative/service
+    # location can need a genuine 3-word English phrase to stay unambiguous
+    # (e.g. "social security hall" for 社保大厅 — 2 words either drops the
+    # qualifier or the place noun). The combined 4-7 total below still caps
+    # overall length regardless of this per-field widening.
+    bounds = {"subject": (1, 2), "action": (2, 4), "setting": (1, 3)}
     for key, (minimum, maximum) in bounds.items():
         raw = value.get(key)
         if (not isinstance(raw, str) or not raw.strip() or len(raw) > 100
