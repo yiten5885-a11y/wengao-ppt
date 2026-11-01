@@ -56,6 +56,7 @@ from wengao_ppt.type_scale import (
     TYPE_MAX_PT,
     is_decor,
     is_chart_legend_label,
+    is_decor_unit_suffix,
     check_page_hierarchy,
 )
 
@@ -663,7 +664,9 @@ def infer_roles(shapes) -> dict:
     legend_boxes = [{"left": s.get("left", 0.0), "top": s.get("top", 0.0),
                      "width": s.get("width", 0.0), "height": s.get("height", 0.0),
                      "text": s.get("text", ""),
-                     "solid": (s.get("fill") or {}).get("kind") == "solid"}
+                     "solid": (s.get("fill") or {}).get("kind") == "solid",
+                     "decor": is_decor(s.get("max_size") or s.get("font_size_pt", 0.0),
+                                       s.get("text", ""))}
                     for s in shapes]
     roles = {}
     for i in idxs:
@@ -675,6 +678,14 @@ def infer_roles(shapes) -> dict:
         elif s.get("chart_native"):
             roles[i] = "chart_aux"
         elif is_decor(pt, t):
+            roles[i] = "decor"
+        # A short unit/suffix word (e.g. "倍") beside a large decorative
+        # stat number ("30") is part of that decorative display, not body
+        # text — alone it's too small to pass is_decor's own 60pt floor.
+        # Left as "body" it can out-score an already-shrunk real page
+        # title in the "largest font in the upper half" title selection
+        # below (job-d239567879df page 4).
+        elif is_decor_unit_suffix(i, legend_boxes):
             roles[i] = "decor"
         elif t in ("“", "”", "「", "」"):
             roles[i] = "quote"

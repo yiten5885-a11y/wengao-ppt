@@ -947,10 +947,11 @@ def infer_text_roles(shs, sw, sh_) -> dict:
     否则抬了也对不上。几何阈值按页宽/页高比例化，不写死 13.33in 的绝对值。
     """
     import re as _re
-    from .type_scale import is_chart_legend_label, is_decor
+    from .type_scale import is_chart_legend_label, is_decor, is_decor_unit_suffix
     roles = {}
     legend_boxes = [{"left": s.L, "top": s.T, "width": s.W, "height": s.H,
-                     "text": s.text, "solid": bool(s.fill_hex) and not s.is_text}
+                     "text": s.text, "solid": bool(s.fill_hex) and not s.is_text,
+                     "decor": is_decor(s.max_pt() or 0.0, s.text)}
                     for s in shs]
     legend_pos = {s.idx: k for k, s in enumerate(shs)}
     top_zone = sh_ * 0.307          # 13.33x7.5 稿的 2.3in
@@ -965,6 +966,12 @@ def infer_text_roles(shs, sw, sh_) -> dict:
         elif s.has_chart:
             roles[s.idx] = "chart_aux"
         elif is_decor(pt, t):
+            roles[s.idx] = "decor"
+        # Keep in sync with scripts/layout_gate.py:infer_roles — a short
+        # unit/suffix word beside a large decorative stat number is part
+        # of that decorative display, not body text (see is_decor_unit_
+        # suffix's own docstring).
+        elif is_decor_unit_suffix(legend_pos[s.idx], legend_boxes):
             roles[s.idx] = "decor"
         elif t in ("“", "”", "「", "」"):
             roles[s.idx] = "quote"
