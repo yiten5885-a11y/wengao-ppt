@@ -3359,6 +3359,19 @@ def _repair_batch_scene_evidence(scene_item: dict, page_no: int, source_text: st
     return valid_evidence or None
 
 
+def _scene_keys_are_word_order_permutation(a: str, b: str) -> bool:
+    """True iff `a` and `b` are the exact same underscore-separated tokens,
+    only reordered — the model re-deriving the same scene_key slug for the
+    same canonical_scene_id in an independent later batch, with no memory of
+    the exact string it used before. A genuinely different scene would not
+    share every one of its tokens with the earlier one, so this cannot
+    accidentally merge two distinct scenes — only a true word-order echo of
+    the same identity (verified live on job-f884adc96492: "worker_factory_
+    production" vs a later batch's "factory_worker_production").
+    """
+    return bool(a) and bool(b) and set(a.split("_")) == set(b.split("_"))
+
+
 def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
                                    reconsider_empty_plan: bool = False):
     """Plan long decks in small page batches and bind them into one scene ledger.
@@ -3377,6 +3390,7 @@ def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
     coverage_by_page = {}
     planner_batches = []
     truncation_splits = []
+    scene_key_normalizations = []
 
     while queue:
         batch = queue.pop(0)
@@ -3532,9 +3546,19 @@ def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
             existing_by_id = scenes_by_id.get(canonical)
             existing_by_key = scenes_by_key.get(key)
             if existing_by_id is not None:
-                if str(existing_by_id.get("scene_key") or "").strip().casefold() != key:
-                    raise SceneModelError("SCENE.CANONICAL_SCENE_CONFLICT",
-                                          "跨批次相同画面的 canonical_scene_id 未复用同一 scene_key。")
+                earlier_key = str(existing_by_id.get("scene_key") or "").strip().casefold()
+                if earlier_key != key:
+                    if _scene_keys_are_word_order_permutation(key, earlier_key):
+                        scene_key_normalizations.append({
+                            "canonical_scene_id": canonical,
+                            "catalog_scene_key": earlier_key,
+                            "batch_scene_key": key,
+                            "page_numbers": expected_pages,
+                        })
+                        key = earlier_key
+                    else:
+                        raise SceneModelError("SCENE.CANONICAL_SCENE_CONFLICT",
+                                              "跨批次相同画面的 canonical_scene_id 未复用同一 scene_key。")
                 target = existing_by_id
                 prior_pages = {int(candidate["page"])
                                for candidate in target.get("page_candidates") or []}
@@ -3583,6 +3607,7 @@ def _plan_scenes_in_bounded_batches(pages: list[dict], model: str, call, *,
         "planner_batch_page_limit": _SCENE_PLAN_BATCH_PAGE_LIMIT,
         "planner_batches": planner_batches,
         "truncation_splits": truncation_splits,
+        "scene_key_normalizations": scene_key_normalizations,
         "elapsed_seconds": sum(float(row.get("elapsed_seconds") or 0)
                                 for row in planner_batches),
         "eval_count": sum(int(row.get("eval_count") or 0)
