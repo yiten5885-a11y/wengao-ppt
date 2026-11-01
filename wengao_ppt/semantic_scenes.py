@@ -121,6 +121,33 @@ def _norm(value: str) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
 
 
+# CJK Unified Ideographs, CJK punctuation/symbols, and fullwidth forms. Used
+# only to collapse an artificial space _excerpt_matches would otherwise
+# require between two CJK runs (see _collapse_cjk_whitespace).
+_CJK_RE = r"[　-〿㐀-鿿豈-﫿＀-￯]"
+_CJK_ADJACENT_SPACE_RE = re.compile(rf"(?<={_CJK_RE}) (?={_CJK_RE})")
+
+
+def _collapse_cjk_whitespace(value: str) -> str:
+    """Like _norm, but also drops a single space between two CJK runs.
+
+    _source_pages joins separately positioned on-slide text shapes/lines with
+    "\\n" to preserve them as distinct chunks; _norm then collapses that
+    newline to a literal space. Chinese text has no real inter-word spaces,
+    so that collapsed newline is a storage artifact, not content a verbatim
+    quote must reproduce — a model reading the rendered slide sees the text
+    flow continuously across the line break and quotes it that way. Only CJK
+    boundaries are collapsed; a space between Latin words stays a real word
+    boundary and still blocks the match.
+    """
+    text = _norm(value)
+    prev = None
+    while prev != text:
+        prev = text
+        text = _CJK_ADJACENT_SPACE_RE.sub("", text)
+    return text
+
+
 def _source_pages(pptx_path: str | Path) -> list[dict]:
     prs = Presentation(str(pptx_path))
     pages = []
@@ -151,7 +178,10 @@ def _source_pages(pptx_path: str | Path) -> list[dict]:
 
 def _excerpt_matches(source_text: str, excerpt: str) -> bool:
     e = _norm(excerpt)
-    return bool(e) and e in _norm(source_text)
+    if e and e in _norm(source_text):
+        return True
+    ce = _collapse_cjk_whitespace(excerpt)
+    return bool(ce) and ce in _collapse_cjk_whitespace(source_text)
 
 
 def _normalize_canonical_scene_token(value: object) -> str:
@@ -1472,7 +1502,15 @@ def _repair_scene_evidence_grounding(semantic_resolution: dict, pages: list[dict
 
 
 _PAGE_EVIDENCE_NOT_GROUNDED_RE = re.compile(
-    r"真实模型第\s*(\d+)\s*页的(?:场景账本|no_scene)证据不在该页原文中")
+    # The no_scene branch's message has a literal space on each side of
+    # "no_scene" ("...页的 no_scene 证据...", from the f-string at the
+    # SCENE.PAGE_EVIDENCE_NOT_GROUNDED raise above) while the scene-ledger
+    # branch's has none ("...页的场景账本证据..."). The pattern used to omit
+    # \s* around the alternation, so it never matched the no_scene case and
+    # this repair silently no-op'd (returned False, re-raising the original
+    # error unrepaired) every time a no_scene page's evidence failed to
+    # ground — reproduced live on job-0634b837b776, page 7.
+    r"真实模型第\s*(\d+)\s*页的\s*(?:场景账本|no_scene)\s*证据不在该页原文中")
 
 
 def _repair_page_coverage_evidence(semantic_resolution: dict, pages: list[dict],
