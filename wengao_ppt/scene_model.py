@@ -3020,12 +3020,12 @@ def _repair_truncated_json(text: str) -> dict | None:
     return None
 
 
-_IMAGE_PROMPT_REPAIR_FIELDS = ("composition_camera", "style", "quality")
+_IMAGE_PROMPT_REPAIR_FIELDS = ("label", "composition_camera", "style", "quality")
 
 
 def _repair_missing_image_prompt_fields(plan: dict, *, model: str, call) -> dict | None:
     """Make one same-model, source-scoped repair for scenes missing their
-    camera/style/quality image-prompt descriptors.
+    label/camera/style/quality image-prompt descriptors.
 
     Real failure on job-mt-91a41bab/job-8bc4208b778f (2026-11-02): the same
     scene affected by the stray-brace defect (fixed in
@@ -3034,13 +3034,30 @@ def _repair_missing_image_prompt_fields(plan: dict, *, model: str, call) -> dict
     model's reconnected output either, since the model skipped them entirely
     for this one scene. Unlike photo_search_terms, there is no existing
     same-model repair for this gap, so SCENE.IMAGE_PROMPT_SCHEMA_MISSING hard-
-    failed the whole deck. These three fields are purely aesthetic rendering
-    descriptors (camera framing, rendering style, quality level) rather than
-    factual claims about the scene's content, so — mirroring the existing
-    photo-search-anchor repair's pattern exactly — a bounded, same-model,
-    strictly-validated repair call is appropriate; "lighting" is excluded
-    here because resolve_scene_lighting() already derives it deterministically
-    without any model call (see _enrich_scene_image_prompts).
+    failed the whole deck.
+
+    A second, real failure on job-mt-f7e70608/job-20b57848df6d (2026-11-02),
+    hit only after this repair and the lighting-gate fix let the job progress
+    much further into rendering: the SAME scene also lacked "label" (a short
+    display caption, not a search anchor — semantic_scenes.py's
+    _normalize_semantics requires it separately from this file's own
+    SCENE.IMAGE_PROMPT_SCHEMA_MISSING gate, and nothing had repaired it).
+    "label" was folded into this same repair rather than given its own,
+    since it is architecturally identical: a short descriptive field the
+    model skipped for this one scene, not a factual claim.
+
+    These four fields are rendering/display preferences, not factual claims
+    about the scene's content, so — mirroring the existing photo-search-anchor
+    repair's pattern exactly — a bounded, same-model, strictly-validated
+    repair call is appropriate. Every real captured well-formed scene in this
+    codebase has written label/composition_camera/style/quality in the
+    source language (e.g. "智能运维监控"/"中景"/"写实摄影"/"高清真实质感"),
+    unlike photo_search_terms and visual_query which must stay neutral
+    English search anchors — so this repair asks for the source language too,
+    matching the scene's own subject field, rather than English.
+    "lighting" is excluded here because resolve_scene_lighting() already
+    derives it deterministically without any model call (see
+    _enrich_scene_image_prompts).
     """
     invalid = []
     for scene in plan.get("scenes", []):
@@ -3061,16 +3078,19 @@ def _repair_missing_image_prompt_fields(plan: dict, *, model: str, call) -> dict
 
     prompt_payload = json.dumps(invalid, ensure_ascii=False, separators=(",", ":"))
     base_prompt = (
-        "You are completing only the missing camera/style/quality descriptor fields for "
-        "already-planned, source-grounded image scenes. Do not change scene identity, "
-        "subject, action, or setting; do not propose images or add facts; these three "
-        "fields are rendering preferences, not content claims.\n"
+        "You are completing only the missing label/camera/style/quality descriptor "
+        "fields for already-planned, source-grounded image scenes. Do not change scene "
+        "identity, subject, action, or setting; do not propose images or add facts; "
+        "these four fields are display captions and rendering preferences, not content "
+        "claims. Write them in the same language as each scene's own \"subject\" field "
+        "(a short source-language phrase), not English — English belongs only in a "
+        "separate photo-search-anchor field this repair does not touch.\n"
         "Return exactly one JSON object: {\"repairs\":[{\"scene_key\":\"existing_key\","
-        "\"composition_camera\":\"short camera framing phrase, e.g. medium shot\","
-        "\"style\":\"short rendering style phrase, e.g. realistic photography\","
-        "\"quality\":\"short quality descriptor phrase, e.g. high-definition realistic "
-        "texture\"}]}.\n"
-        "Every supplied scene_key must occur exactly once, with exactly these four keys per "
+        "\"label\":\"short display caption naming the scene, in the scene's own language\","
+        "\"composition_camera\":\"short camera framing phrase, e.g. 中景\","
+        "\"style\":\"short rendering style phrase, e.g. 写实摄影\","
+        "\"quality\":\"short quality descriptor phrase, e.g. 高清真实质感\"}]}.\n"
+        "Every supplied scene_key must occur exactly once, with exactly these five keys per "
         "repair row. Each value must be non-empty, under 200 characters, with no newlines.\n"
         "Existing scenes needing these fields (local inference only):\n" + prompt_payload
     )

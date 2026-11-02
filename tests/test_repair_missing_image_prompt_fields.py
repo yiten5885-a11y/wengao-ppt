@@ -28,6 +28,20 @@ Two real fixes landed for this:
    composition_camera="medium shot, eye-level angle",
    style="realistic photography, natural lighting",
    quality="high-definition, sharp focus, 8k").
+
+A third real failure followed on job-mt-f7e70608/job-20b57848df6d: with both
+fixes above in place, the job progressed much further (well into rendering)
+before hard-failing with SCENE.MODEL_SCHEMA_INVALID ("场景
+developer_coding_community 缺少主体、动作/关系、环境、标签或照片查询。") — a
+SEPARATE validation in semantic_scenes.py's _normalize_semantics that also
+requires "label" (a short display caption, not a search anchor), which
+_repair_missing_image_prompt_fields never covered. "label" was folded into
+the same repair, since every real well-formed scene in this codebase writes
+label/composition_camera/style/quality in the source language (e.g.
+"智能运维监控"/"中景"/"写实摄影"/"高清真实质感"), unlike photo_search_terms
+and visual_query which must stay neutral English search anchors — so the
+repair prompt now asks for source-language values, matching the scene's own
+subject field, instead of the English wording used by the first two fixes.
 """
 import unittest
 
@@ -63,8 +77,8 @@ class TestResolveSceneLightingNeedsNoModelCall(unittest.TestCase):
 class TestRepairMissingImagePromptFields(unittest.TestCase):
 
     def test_no_repair_needed_when_fields_already_present(self):
-        complete_scene = dict(REAL_AFFECTED_SCENE,
-                              composition_camera="medium shot", style="photo", quality="hd")
+        complete_scene = dict(REAL_AFFECTED_SCENE, label="开发者编程",
+                              composition_camera="中景", style="写实摄影", quality="高清真实质感")
         result = _repair_missing_image_prompt_fields(
             _plan_with(complete_scene), model="test-model",
             call=lambda model, prompt: self.fail("should not call the model"))
@@ -73,18 +87,20 @@ class TestRepairMissingImagePromptFields(unittest.TestCase):
     def test_valid_repair_response_is_accepted_and_applied(self):
         def stub_call(model, prompt):
             return {"response": '{"repairs":[{"scene_key":"developer_coding_community",'
-                                 '"composition_camera":"medium shot, eye-level angle",'
-                                 '"style":"realistic photography, natural lighting",'
-                                 '"quality":"high-definition, sharp focus, 8k"}]}',
+                                 '"label":"开发者编程",'
+                                 '"composition_camera":"中景",'
+                                 '"style":"写实摄影",'
+                                 '"quality":"高清真实质感"}]}',
                    "model": model, "done_reason": "stop"}
 
         plan = _plan_with(REAL_AFFECTED_SCENE)
         result = _repair_missing_image_prompt_fields(plan, model="test-model", call=stub_call)
         self.assertEqual(result["status"], "APPLIED_AND_VALIDATED")
         scene = plan["scenes"][0]
-        self.assertEqual(scene["composition_camera"], "medium shot, eye-level angle")
-        self.assertEqual(scene["style"], "realistic photography, natural lighting")
-        self.assertEqual(scene["quality"], "high-definition, sharp focus, 8k")
+        self.assertEqual(scene["label"], "开发者编程")
+        self.assertEqual(scene["composition_camera"], "中景")
+        self.assertEqual(scene["style"], "写实摄影")
+        self.assertEqual(scene["quality"], "高清真实质感")
 
     def test_two_consecutive_empty_repairs_raises(self):
         def stub_call(model, prompt):
@@ -101,6 +117,46 @@ class TestRepairMissingImagePromptFields(unittest.TestCase):
         # no model call at all.
         from wengao_ppt.scene_model import _IMAGE_PROMPT_REPAIR_FIELDS
         self.assertNotIn("lighting", _IMAGE_PROMPT_REPAIR_FIELDS)
+
+    def test_label_is_in_the_repair_scope(self):
+        # Real failure on job-mt-f7e70608/job-20b57848df6d: semantic_scenes.py
+        # separately requires "label", which composition_camera/style/quality
+        # alone never covered.
+        from wengao_ppt.scene_model import _IMAGE_PROMPT_REPAIR_FIELDS
+        self.assertIn("label", _IMAGE_PROMPT_REPAIR_FIELDS)
+
+    def test_label_only_missing_still_triggers_repair(self):
+        scene_missing_only_label = dict(
+            REAL_AFFECTED_SCENE, composition_camera="中景", style="写实摄影",
+            quality="高清真实质感")
+
+        def stub_call(model, prompt):
+            self.assertIn("label", prompt)
+            return {"response": '{"repairs":[{"scene_key":"developer_coding_community",'
+                                 '"label":"开发者编程",'
+                                 '"composition_camera":"中景",'
+                                 '"style":"写实摄影",'
+                                 '"quality":"高清真实质感"}]}',
+                   "model": model, "done_reason": "stop"}
+
+        plan = _plan_with(scene_missing_only_label)
+        result = _repair_missing_image_prompt_fields(plan, model="test-model", call=stub_call)
+        self.assertEqual(result["status"], "APPLIED_AND_VALIDATED")
+        self.assertEqual(plan["scenes"][0]["label"], "开发者编程")
+
+    def test_prompt_asks_for_source_language_not_english(self):
+        captured = {}
+
+        def stub_call(model, prompt):
+            captured["prompt"] = prompt
+            return {"response": '{"repairs":[{"scene_key":"developer_coding_community",'
+                                 '"label":"开发者编程","composition_camera":"中景",'
+                                 '"style":"写实摄影","quality":"高清真实质感"}]}',
+                   "model": model, "done_reason": "stop"}
+
+        _repair_missing_image_prompt_fields(
+            _plan_with(REAL_AFFECTED_SCENE), model="test-model", call=stub_call)
+        self.assertIn("not English", captured["prompt"])
 
 
 if __name__ == "__main__":
