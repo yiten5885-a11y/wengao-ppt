@@ -2553,11 +2553,22 @@ def build_pptx(plan: dict, facts: list[dict], out_path: Path, theme_mod):
             pass
         # 数值轴：**0 起点**（柱高不夸大差异）；百分比量纲固定 0–100%。
         # 实测 LibreOffice 自动轴从 ~68 起，74 与 85 的差距被视觉放大。
+        # 非百分比量纲此前从不设 maximum_scale：chart XML 不带 <c:max>，
+        # scripts/layout_gate.py 的 HG02 轴范围检查读不到范围只能判
+        # UNVERIFIED（证据/检查异常不算通过，下载与正式放行保持阻断），
+        # 即便图表本身渲染完全正常（2026-11-02 job-mt-60a2dcd8/
+        # job-57ce106e5450 实测：3 个非百分比图表全部命中）。用原生构建器
+        # （wengao_ppt/builders/chart.py）同一套"必然包住数据"算法补上限，
+        # 不需要和 LibreOffice 自己的自动轴选择完全一致，只需要包住它。
         try:
             va = chart.value_axis
             va.minimum_scale = 0.0
             if re.search(r"%|百分", plot_unit or ""):
                 va.maximum_scale = 100.0
+            else:
+                from wengao_ppt.builders.chart import _nice_axis_bounds
+                _, hi = _nice_axis_bounds(vals)
+                va.maximum_scale = hi
         except Exception:  # noqa: BLE001
             pass
         # 关系证据：逐点记录 类别/系列/值/单位/来源 fact_id，并记录量纲分组
