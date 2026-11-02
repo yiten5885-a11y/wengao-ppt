@@ -3027,6 +3027,20 @@ def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
     This repairs only the search-anchor representation of already planned,
     source-grounded scenes. It cannot add scenes, pages, evidence, or images;
     repaired terms must still pass the unchanged strict validator.
+
+    Real failure on job-mt-89d6a0de/job-ece7d5fc87fb (2026-11-02): a scene
+    whose own subject/action/setting were a model-generated mix of Chinese
+    and already-English text (subject="开发者", action="writing code on
+    laptop", setting="office desk" — itself a symptom of the stray-brace
+    defect fixed in _repair_premature_scene_object_close, which dropped this
+    scene's photo_search_terms) got an empty {"repairs": []} from this same
+    prompt on both of its attempts, for a plain office-desk scene with no
+    safety concern. Reproduced directly against the live model: the base
+    prompt's "translate the subject/action/place" instruction had no guidance
+    for a field that is already short English, and feeding it that exact
+    mixed-language input reliably reproduced the refusal; adding explicit
+    handling for already-English fields (plus stating these are ordinary,
+    non-sensitive scenes) reliably produced a valid repair instead.
     """
     from .scene_images import (canonicalize_duplicate_photo_search_terms,
                                normalize_photo_search_terms)
@@ -3130,8 +3144,17 @@ def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
         "You are correcting only the English photo-search anchor formatting for existing "
         "source-grounded scenes. Do not create, remove, merge, or rename a scene; do not "
         "change page candidates or evidence; do not propose images. Interpret each source "
-        "evidence excerpt in its supplied language. Translate only the already specified "
-        "subject/action/place into short neutral English search anchors, without adding facts.\n"
+        "evidence excerpt in its supplied language. The source_subject/source_action/"
+        "source_setting fields below may already be a mix of source-language and English "
+        "text — some scenes carry an already-short, already-neutral English phrase in one "
+        "or more of these fields from an earlier planning step. Keep any field that is "
+        "already a short neutral English phrase as-is; translate only the fields that are "
+        "not yet English, into short neutral English search anchors, without adding facts. "
+        "These are ordinary, mundane scenes with no safety concern (an office worker typing "
+        "at a desk, a technician checking a dashboard, and similarly plain business imagery); "
+        "only return an empty repairs array for a scene_key when its source truly describes "
+        "nothing visually concrete at all, not merely because part of its input is already "
+        "in English.\n"
         "Return exactly one JSON object: {\"repairs\":[{\"scene_key\":\"existing_key\","
         "\"photo_search_terms\":{\"subject\":\"1-2 useful English words\","
         "\"action\":\"2-4 useful English words including a verb and its object/result\","
