@@ -9,6 +9,8 @@
 """
 from __future__ import annotations
 
+import math
+
 from pptx.chart.data import CategoryChartData
 from pptx.dml.color import RGBColor
 from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION
@@ -17,6 +19,35 @@ from pptx.util import Emu, Pt
 from ..layout import tokens
 
 _AUX_PT = int(tokens.TYPE_ROLES["chart_aux"].pt)
+
+
+def _nice_axis_bounds(values: list[float]) -> tuple[float, float]:
+    """Pick an explicit (minimum, maximum) that comfortably bounds `values`.
+
+    Real finding on job-mt-a1fde38e/job-99c401749423 (2026-11-02): with no
+    explicit minimum/maximum, the chart XML never carries a <c:min>/<c:max>,
+    so scripts/layout_gate.py's HG02 chart-axis check (which compares every
+    rendered numeric token — axis ticks and data labels both — against the
+    chart's declared axis range) can't resolve a range at all and reports
+    CHART_AXIS_RANGE_UNRESOLVED (UNVERIFIED, blocks download/release) even
+    though the chart itself rendered fine. Once minimum/maximum are set
+    explicitly, the renderer draws its ticks strictly within that range by
+    construction, so any bound that is >= the data's own range with some
+    headroom is safe — this never needs to match PowerPoint's own
+    auto-scale choice, only to contain it.
+    """
+    if not values:
+        return 0.0, 1.0
+    lo_data = min(0.0, min(values))
+    hi_data = max(values)
+    if hi_data <= 0.0:
+        hi_data = 1.0
+    magnitude = 10 ** math.floor(math.log10(hi_data))
+    for mult in (1, 2, 2.5, 5, 10):
+        candidate = magnitude * mult
+        if candidate >= hi_data - 1e-6:
+            return float(lo_data), float(candidate)
+    return float(lo_data), float(magnitude * 10)
 
 
 def _hex(theme: tokens.Theme, key: str) -> RGBColor:
@@ -38,7 +69,7 @@ def _set_chart_font(chart, theme: tokens.Theme):
     tokens.apply_font_slots(chart.font, "cjk_zh")
 
 
-def _style_axes(chart, theme: tokens.Theme):
+def _style_axes(chart, theme: tokens.Theme, series: dict):
     ca = chart.category_axis
     va = chart.value_axis
     for ax in (ca, va):
@@ -52,6 +83,13 @@ def _style_axes(chart, theme: tokens.Theme):
         va.has_major_gridlines = True
         va.major_gridlines.format.line.color.rgb = _hex(theme, "hairline")
         va.major_gridlines.format.line.width = Pt(0.5)
+    except Exception:  # noqa: BLE001
+        pass
+    all_values = [float(v) for values in series.values() for v in values]
+    lo, hi = _nice_axis_bounds(all_values)
+    try:
+        va.minimum_scale = lo
+        va.maximum_scale = hi
     except Exception:  # noqa: BLE001
         pass
 
@@ -125,7 +163,7 @@ def add_native_chart(slide, rect, chart_kind: str, categories: list[str],
             dl.position = XL_LABEL_POSITION.OUTSIDE_END
         except Exception:  # noqa: BLE001
             pass
-    _style_axes(chart, theme)
+    _style_axes(chart, theme, series)
     _style_series(chart, theme, highlight_series, names, semantic)
     _set_chart_font(chart, theme)
     return gf, chart
