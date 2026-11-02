@@ -3020,6 +3020,134 @@ def _repair_truncated_json(text: str) -> dict | None:
     return None
 
 
+_IMAGE_PROMPT_REPAIR_FIELDS = ("composition_camera", "style", "quality")
+
+
+def _repair_missing_image_prompt_fields(plan: dict, *, model: str, call) -> dict | None:
+    """Make one same-model, source-scoped repair for scenes missing their
+    camera/style/quality image-prompt descriptors.
+
+    Real failure on job-mt-91a41bab/job-8bc4208b778f (2026-11-02): the same
+    scene affected by the stray-brace defect (fixed in
+    _repair_premature_scene_object_close) is also missing
+    composition_camera/style/quality — those fields were never part of the
+    model's reconnected output either, since the model skipped them entirely
+    for this one scene. Unlike photo_search_terms, there is no existing
+    same-model repair for this gap, so SCENE.IMAGE_PROMPT_SCHEMA_MISSING hard-
+    failed the whole deck. These three fields are purely aesthetic rendering
+    descriptors (camera framing, rendering style, quality level) rather than
+    factual claims about the scene's content, so — mirroring the existing
+    photo-search-anchor repair's pattern exactly — a bounded, same-model,
+    strictly-validated repair call is appropriate; "lighting" is excluded
+    here because resolve_scene_lighting() already derives it deterministically
+    without any model call (see _enrich_scene_image_prompts).
+    """
+    invalid = []
+    for scene in plan.get("scenes", []):
+        if not isinstance(scene, dict):
+            continue
+        missing_fields = [field for field in _IMAGE_PROMPT_REPAIR_FIELDS
+                          if not str(scene.get(field) or "").strip()]
+        if missing_fields:
+            invalid.append({
+                "scene_key": str(scene.get("scene_key") or ""),
+                "subject": str(scene.get("subject") or ""),
+                "action": str(scene.get("action_state") or scene.get("action") or ""),
+                "setting": str(scene.get("environment") or scene.get("setting") or ""),
+                "missing_fields": missing_fields,
+            })
+    if not invalid:
+        return None
+
+    prompt_payload = json.dumps(invalid, ensure_ascii=False, separators=(",", ":"))
+    base_prompt = (
+        "You are completing only the missing camera/style/quality descriptor fields for "
+        "already-planned, source-grounded image scenes. Do not change scene identity, "
+        "subject, action, or setting; do not propose images or add facts; these three "
+        "fields are rendering preferences, not content claims.\n"
+        "Return exactly one JSON object: {\"repairs\":[{\"scene_key\":\"existing_key\","
+        "\"composition_camera\":\"short camera framing phrase, e.g. medium shot\","
+        "\"style\":\"short rendering style phrase, e.g. realistic photography\","
+        "\"quality\":\"short quality descriptor phrase, e.g. high-definition realistic "
+        "texture\"}]}.\n"
+        "Every supplied scene_key must occur exactly once, with exactly these four keys per "
+        "repair row. Each value must be non-empty, under 200 characters, with no newlines.\n"
+        "Existing scenes needing these fields (local inference only):\n" + prompt_payload
+    )
+    repair_total_attempts = 2
+    for repair_attempt in range(repair_total_attempts):
+        prompt = base_prompt if repair_attempt == 0 else (
+            base_prompt + "\n\nYour previous attempt did not pass validation. Re-read the "
+            "constraints above carefully and return corrected fields for every scene_key.")
+        prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        try:
+            repaired, meta, _ = _call_json_payload_once_on_format_error(
+                model, prompt, call,
+                phase=f"场景图提示字段定向补全（第{repair_attempt + 1}次）")
+        except SceneModelError as exc:
+            if repair_attempt < repair_total_attempts - 1:
+                continue
+            diagnostics = dict(exc.diagnostics or {})
+            diagnostics.update({"repair_attempts": repair_attempt + 1, "same_model": True,
+                                "invalid_scene_count": len(invalid),
+                                "repair_prompt_sha256": prompt_sha256})
+            raise SceneModelError(exc.code, exc.detail, exc.status_code,
+                                  diagnostics=diagnostics) from exc
+
+        repair_rows = repaired.get("repairs")
+        expected_keys = [row["scene_key"] for row in invalid]
+        expected_set = set(expected_keys)
+        schema_error = (set(repaired.keys()) != {"repairs"}
+                        or not isinstance(repair_rows, list)
+                        or len(repair_rows) != len(expected_keys))
+        repair_by_key = {}
+        if not schema_error:
+            expected_row_keys = {"scene_key", *_IMAGE_PROMPT_REPAIR_FIELDS}
+            for row in repair_rows:
+                if not isinstance(row, dict) or set(row.keys()) != expected_row_keys:
+                    schema_error = True
+                    break
+                key = str(row.get("scene_key") or "")
+                fields = {field: str(row.get(field) or "").strip()
+                         for field in _IMAGE_PROMPT_REPAIR_FIELDS}
+                if (key not in expected_set or key in repair_by_key
+                        or any(not value or len(value) > 200 or "\n" in value or "\r" in value
+                               for value in fields.values())):
+                    schema_error = True
+                    break
+                repair_by_key[key] = fields
+            if not schema_error and set(repair_by_key) != expected_set:
+                schema_error = True
+        if not schema_error:
+            by_scene_key = {str(scene.get("scene_key") or ""): scene
+                           for scene in plan.get("scenes", []) if isinstance(scene, dict)}
+            for key, fields in repair_by_key.items():
+                by_scene_key[key].update(fields)
+            result_sha256 = hashlib.sha256(json.dumps(
+                repair_by_key, ensure_ascii=False, sort_keys=True,
+                separators=(",", ":")).encode("utf-8")).hexdigest()
+            return {
+                "status": "APPLIED_AND_VALIDATED",
+                "scenes_repaired": len(repair_by_key),
+                "repair_attempts": repair_attempt + 1,
+                "same_model": True,
+                "repair_method": "same_model_source_scoped_image_prompt_field_repair",
+                "prompt_sha256": prompt_sha256,
+                "response_sha256": meta.get("response_sha256"),
+                "result_sha256": result_sha256,
+                "model": meta.get("model") or model,
+            }
+        if repair_attempt == repair_total_attempts - 1:
+            raise SceneModelError(
+                "SCENE.IMAGE_PROMPT_SCHEMA_MISSING",
+                "连续两次同一模型的场景图提示字段补全都未通过校验。",
+                diagnostics={"invalid_scene_count": len(invalid),
+                             "repair_attempts": repair_attempt + 1, "same_model": True,
+                             "repair_prompt_sha256": prompt_sha256,
+                             "repair_response_sha256": meta.get("response_sha256")})
+    return None
+
+
 def _repair_invalid_photo_search_terms(plan: dict, pages: list[dict], *,
                                       model: str, call) -> dict | None:
     """Make one same-model, source-scoped repair for malformed English photo anchors.
@@ -3306,6 +3434,9 @@ def _enrich_scene_image_prompts(plan: dict, pages: list[dict], *, model: str | N
     repair = _repair_invalid_photo_search_terms(plan, pages, model=model, call=call)
     if repair and anchor_repair_records is not None:
         anchor_repair_records.append(repair)
+    field_repair = _repair_missing_image_prompt_fields(plan, model=model, call=call)
+    if field_repair and anchor_repair_records is not None:
+        anchor_repair_records.append(field_repair)
     page_by_no = {int(page["page"]): page for page in pages}
     for scene in plan.get("scenes", []):
         if not isinstance(scene, dict):
@@ -3314,13 +3445,19 @@ def _enrich_scene_image_prompts(plan: dict, pages: list[dict], *, model: str | N
         environment = str(scene.get("environment") or scene.get("setting") or "").strip()
         action = str(scene.get("action_state") or scene.get("action") or "").strip()
         stage = str(scene.get("process_stage") or "").strip()
+        # "lighting" is deliberately NOT a hard-required input here:
+        # resolve_scene_lighting() below derives a scene-accurate value from
+        # environment/action alone (with a safe "balanced ambient room
+        # lighting" default) even when lighting_input is empty, so gating on
+        # it being pre-populated was blocking scenes the system can already
+        # light correctly on its own (real failure on job-mt-91a41bab).
         lighting_input = str(scene.get("lighting") or "").strip()
         composition = str(scene.get("composition_camera") or scene.get("composition") or "").strip()
         style = str(scene.get("style") or "").strip()
         quality = str(scene.get("quality") or "").strip()
         missing = [name for name, value in (
             ("subject", subject), ("environment", environment), ("action_state", action),
-            ("lighting", lighting_input), ("composition_camera", composition),
+            ("composition_camera", composition),
             ("style", style), ("quality", quality)) if not value]
         if missing:
             raise SceneModelError(

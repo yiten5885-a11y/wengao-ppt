@@ -721,6 +721,13 @@ class SemanticSceneTests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
 
     def test_real_scene_prompt_rejects_missing_structured_image_prompt_fields(self):
+        # composition_camera/style/quality now get one same-model repair
+        # attempt (_repair_missing_image_prompt_fields) before this gate
+        # raises — mirroring the existing photo_search_terms repair — so a
+        # model_call stub that cannot produce a valid {"repairs": [...]}
+        # shape (as here) still correctly blocks, just with the repair's own
+        # "both attempts failed validation" message and the extra repair
+        # calls counted in.
         pages = semantic_scenes._source_pages(self.source)
         resolution = semantic_fixture()
         resolution["scenes"][0].pop("composition_camera")
@@ -728,14 +735,17 @@ class SemanticSceneTests(unittest.TestCase):
 
         def model_call(model, prompt):
             calls.append(prompt)
+            if '"repairs"' in prompt:
+                return {"response": '{"repairs":[]}',
+                        "model": "fixture-local-model", "elapsed_seconds": 0.01}
             return {"response": json.dumps(resolution, ensure_ascii=False),
                     "model": "fixture-local-model", "elapsed_seconds": 0.01}
 
         with self.assertRaises(SceneModelError) as caught:
             resolve_scene_semantics(pages, model_call=model_call)
         self.assertEqual(caught.exception.code, "SCENE.IMAGE_PROMPT_SCHEMA_MISSING")
-        self.assertIn("composition_camera", caught.exception.detail)
-        self.assertEqual(len(calls), 1, "invalid first-pass prompt schema must block before audit")
+        self.assertEqual(len(calls), 3,
+                         "one plan call plus two same-model repair attempts, then block")
 
     def test_second_pass_blocks_omitted_consumer_scene_not_present_in_plan(self):
         source = Presentation(str(self.source))
