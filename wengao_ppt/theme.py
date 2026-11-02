@@ -274,6 +274,62 @@ def fit_type_scale_in_place(prs) -> tuple[list, list]:
     return pages, warnings
 
 
+def _clamp_chart_role_fonts(chart, hi) -> list[dict]:
+    """Shrink a native chart's own label fonts (data labels, axis tick
+    labels, legend) above `hi` points down to `hi`.
+
+    clamp_oversized_to_role_max shrinks text_frame runs; a chart's own
+    labels live in separate chart-part XML a text_frame walk never reaches.
+    Real failure on job-mt-56ebac59/job-51d167cddbc1 (2026-11-02): a
+    COLUMN_CLUSTERED chart's plot-level data_labels.font.size was set to
+    18pt against the chart_aux role's 10-12pt max (confirmed directly via
+    python-pptx: chart.plots[0].data_labels.font.size == 228600 EMU ==
+    18.0pt, while the axis tick-label fonts were already correctly at 12pt)
+    — the first HG07 finding this session's material-generation fixes
+    actually reached. Only an explicitly-set font.size is touched; an
+    inherited/theme-default None is left alone, matching the shrink-only,
+    geometry-untouched contract of the rest of this module.
+
+    Called unconditionally for every chart shape, not gated on
+    refine_mod.infer_text_roles: that classifier only ever assigns a role to
+    is_text shapes (confirmed directly — a real chart shape's index never
+    appears in its returned role map at all), while scripts/layout_gate.py's
+    independent, render-based role inference assigns "chart_aux" to a
+    chart's own rendered label text by geometric position. chart_aux is the
+    only role that classifier ever assigns to a chart's own text, so this
+    function targets that role's max directly rather than trying to recover
+    a per-shape role for charts that was never computed for them.
+    """
+    from pptx.util import Pt
+
+    changes = []
+    targets = []
+    for plot in chart.plots:
+        try:
+            targets.append(("data_labels", plot.data_labels.font))
+        except Exception:
+            pass
+    for attr in ("category_axis", "value_axis"):
+        try:
+            targets.append((f"{attr}.tick_labels", getattr(chart, attr).tick_labels.font))
+        except Exception:
+            pass
+    try:
+        if chart.has_legend:
+            targets.append(("legend", chart.legend.font))
+    except Exception:
+        pass
+    for target, font in targets:
+        size = font.size
+        if size is None:
+            continue
+        pt = size.pt
+        if pt > hi + 1e-9:
+            font.size = Pt(hi)
+            changes.append({"target": target, "from": pt, "to": hi})
+    return changes
+
+
 def clamp_oversized_to_role_max(prs) -> list[dict]:
     """Shrink runs above their gate role's maximum to that maximum. Nothing else.
 
@@ -291,6 +347,7 @@ def clamp_oversized_to_role_max(prs) -> list[dict]:
     sw_in = prs.slide_width / 914400.0
     sh_in = prs.slide_height / 914400.0
     changes = []
+    chart_aux_hi = ROLE_RANGE_PT.get("chart_aux", (None, None))[1]
     for idx, slide in enumerate(prs.slides, start=1):
         shs = [refine_mod.Sh(slide, sp, j, sw_in, sh_in) for j, sp in enumerate(slide.shapes)]
         for shape_idx, role in refine_mod.infer_text_roles(shs, sw_in, sh_in).items():
@@ -304,6 +361,13 @@ def clamp_oversized_to_role_max(prs) -> list[dict]:
                     s.shape.text_frame.paragraphs[pi].runs[ri].font.size = Pt(hi)
                     changes.append({"slide": idx, "shape": s.name, "role": role,
                                     "from": pt, "to": hi})
+        if chart_aux_hi is not None:
+            for s in shs:
+                if not s.has_chart:
+                    continue
+                for change in _clamp_chart_role_fonts(s.shape.chart, chart_aux_hi):
+                    changes.append({"slide": idx, "shape": s.name, "role": "chart_aux",
+                                    **change})
         changes.extend(_shrink_for_hierarchy_and_row_fit(slide, idx, sw_in, sh_in))
     return changes
 
