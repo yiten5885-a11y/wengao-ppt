@@ -71,11 +71,19 @@ THEMES: dict[str, dict] = {
         # 1.1.0 换成独立的钢蓝+琥珀配色；每个颜色都按 WCAG 相对亮度公式核验过
         # 对白底的对比度（最低 4.87:1，高于本项目 HG09 的 4.5:1 门槛，留出渲染
         # 抗锯齿软化的余量）。
-        "version": "1.1.0",
+        # 1.1.1：真实渲染暴露出 4.87:1 的余量不够——job-mt-56ebac59/
+        # job-51d167cddbc1（2026-11-02）实测 muted/subtitle（5B6B7A，名义
+        # 5.48:1）在 11pt「来源与限定」说明文字上，窄体全角标点（（）等）实测
+        # 对比度低至 3.17:1，远低于 4.5 门槛——抗锯齿在小字号细笔画上的损耗比
+        # 名义公式预估的大得多。muted/subtitle 换成 3A4855（名义 9.38:1，约
+        # 1.7 倍原余量），不是猜测：按实测 5.48→3.17（约 58%）的衰减比例外推，
+        # 9.38:1 名义值衰减后仍有约 5.4:1，留出安全冗余；真正的确认仍是重新
+        # 生成后 layout_gate 复核零 HG09 命中。
+        "version": "1.1.1",
         "slide_bg": "FFFFFF",
         "colors": {
-            "primary": "2F5B7C", "accent": "9C5A0A", "text": "1A1A1A", "muted": "5B6B7A",
-            "heading": "2F5B7C", "subtitle": "5B6B7A",
+            "primary": "2F5B7C", "accent": "9C5A0A", "text": "1A1A1A", "muted": "3A4855",
+            "heading": "2F5B7C", "subtitle": "3A4855",
             "surface": "FFFFFF", "border": "C7D2DC",
             "table_header_bg": "2F5B7C", "table_header_text": "FFFFFF",
             "table_row_bg": "FFFFFF", "table_row_alt_bg": "EAF0F5",
