@@ -587,6 +587,9 @@ def do_doctor(root: Path, as_json: bool = False) -> int:
       * `prerequisite`：一次真实 `run` 的外部前置（LibreOffice、文本端点、视觉端点）。
         缺失只报 `run_ready=false` 并给下一步动作，不以非零退出码冒充"安装坏了"——
         安装是好的，是环境没就绪。这两件事过去被混为一谈。
+      * `info`：**某项能力在本安装上不可用**，但不影响普通任务（例如载荷按许可政策
+        不含视觉主题的示意素材）。既不算装坏也不算环境没就绪，所以不影响 `run_ready`，
+        只是不能装作"什么都能跑"。
     """
     checks: list[dict] = []
 
@@ -660,6 +663,24 @@ def do_doctor(root: Path, as_json: bool = False) -> int:
             next_actions=["重新生成安装载荷（需含 samples/r5_material_to_ppt.py）",
                           "或设置 $WENGAO_MATERIAL_FLOW"])
 
+    # 视觉升级主题的示意素材：载荷按许可政策**故意**不带 assets/visual_img/。
+    # 这既不是"装坏了"也不是"环境没就绪"，而是**某项能力在本安装上不可用**：
+    # 选到声明 visual_upgrade 的主题会直接失败（VISUAL.ASSETS_MISSING）。用 info 报出，
+    # 不把 run_ready 压成 false（普通主题照样能跑）。
+    if prog is not None:
+        try:
+            from wengao_ppt import visual_plan
+            src = visual_plan.missing_assets(Path(prog) / "assets" / "visual_img")
+            add("visual_theme_assets", not src,
+                f"missing={src[:4]} total={len(visual_plan.LIBRARY)}",
+                severity="info",
+                next_actions=["视觉升级主题不可用：改用非视觉主题",
+                              "或 build_install_payload.py --include-unverified-assets 重打包"
+                              "（许可责任随载荷转移）"])
+        except Exception as exc:  # noqa: BLE001
+            add("visual_theme_assets", False, f"{type(exc).__name__}: {exc}",
+                severity="info")
+
     # 模型端点：文本与视觉分开报，视觉缺失是最常见的一次运行阻断
     try:
         from wengao_ppt import scene_model
@@ -692,8 +713,9 @@ def do_doctor(root: Path, as_json: bool = False) -> int:
         print(f"安装完整 : {'OK' if out['install_ok'] else 'FAIL'}")
         print(f"可跑任务 : {'OK' if out['run_ready'] else 'NO'}")
         for c in checks:
-            print(f"  [{'OK' if c['ok'] else ('缺' if c['severity'] == 'blocking' else '前置')}] "
-                  f"{c['name']}: {c['detail']}")
+            label = ("OK" if c["ok"] else
+                     {"blocking": "缺", "prerequisite": "前置"}.get(c["severity"], "信息"))
+            print(f"  [{label}] {c['name']}: {c['detail']}")
             for act in c.get("next_actions") or []:
                 print(f"        → {act}")
     return 0 if out["install_ok"] else 2

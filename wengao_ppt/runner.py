@@ -1627,6 +1627,12 @@ class Runner:
                                  "plan_sha256": vplan.get("plan_sha256", "")})
                 except GateError:
                     raise
+                except vplan_mod.VisualAssetsMissing as e:
+                    # 载荷按许可政策不含 assets/visual_img/：这是**能力缺失**，不是运行时
+                    # 意外。用专门的错误码，并把"换主题 / 重新打包"写进 detail。
+                    self._stage(job_id, "visual_upgrade", "FAILED",
+                                {"code": "VISUAL.ASSETS_MISSING", "detail": str(e)})
+                    raise GateError("VISUAL.ASSETS_MISSING", str(e))
                 except Exception as e:  # noqa: BLE001
                     self._stage(job_id, "visual_upgrade", "FAILED",
                                 {"detail": f"{type(e).__name__}: {e}"})

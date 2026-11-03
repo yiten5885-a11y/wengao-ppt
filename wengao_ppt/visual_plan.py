@@ -25,6 +25,32 @@ from .language_support import detect_language_hint, language_support_record
 
 ASSETS = Path(__file__).resolve().parents[1] / "assets" / "visual_img"
 
+
+class VisualAssetsMissing(RuntimeError):
+    """示意素材不在本安装里。
+
+    载荷政策**故意**不带 `assets/visual_img/`（12 MB，许可结论未定）。后果不是"降级"：
+    选到声明 `visual_upgrade` 的主题时整轮会失败。所以这里在**读素材之前**就说清楚
+    缺什么、为什么缺、该怎么办，而不是让 `read_bytes()` 抛一个 `FileNotFoundError`。
+    """
+
+
+def missing_assets(assets_dir: Path | None = None) -> list[str]:
+    """素材库里当前**不存在**的文件名（相对 `assets_dir`，默认程序根下的素材目录）。"""
+    base = Path(assets_dir) if assets_dir is not None else ASSETS
+    return [Path(v["file"]).name for v in LIBRARY.values()
+            if not (base / Path(v["file"]).name).is_file()]
+
+
+def require_assets(assets_dir: Path | None = None) -> None:
+    miss = missing_assets(assets_dir)
+    if miss:
+        raise VisualAssetsMissing(
+            f"视觉升级主题需要 {len(LIBRARY)} 份示意素材，当前安装缺 {len(miss)} 份"
+            f"（如 {', '.join(miss[:3])}）。发布载荷按许可政策不含 assets/visual_img/，"
+            "因此视觉升级主题在此安装上不可用：请改用非视觉主题；"
+            "或以 --include-unverified-assets 重新打包载荷（许可责任随载荷转移）。")
+
 #: 素材库：语义标签 + 来源记录（全部为图像生成的**示意素材**，非现场照片）
 LIBRARY = {
     "promo_ecom": {
@@ -179,9 +205,12 @@ def build_plan(pptx_path: str) -> dict:
     泛词治理：在 >35% 页面出现的标签视为文档级泛词，不参与该篇选图打分
     （仍记录在关键词列表里），避免"消费/宏观"这类词页页命中。
     """
+    # 先确认素材在位：缺素材时连选图都没意义，且错误必须说得清（见 require_assets）。
+    require_assets()
     prs = Presentation(pptx_path)
     pw, ph = Emu(prs.slide_width).inches, Emu(prs.slide_height).inches
     slides = list(prs.slides)
+
     all_tags = sorted({tg for lib in LIBRARY.values() for tg in lib["tags"]})
     page_texts = []
     language_pages = []

@@ -104,6 +104,32 @@ class FontCheckTests(unittest.TestCase):
             shutil.rmtree(root, ignore_errors=True)
 
 
+class VisualAssetCapabilityTests(unittest.TestCase):
+    """载荷按许可政策不含视觉主题素材：这不该把 run_ready 压成 false，但也不能装作能跑。"""
+
+    def test_reported_as_info_not_as_run_blocker(self):
+        root = Path(tempfile.mkdtemp(prefix="doctor-visual-"))
+        try:
+            import contextlib
+            import io
+            fake_prog = root / "versions" / "v1"   # 没有 assets/visual_img
+            with mock.patch.object(install, "current_prog", return_value=fake_prog):
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    install.do_doctor(root, as_json=True)
+            out = json.loads(buf.getvalue())
+            rec = {c["name"]: c for c in out["checks"]}["visual_theme_assets"]
+            self.assertEqual(rec["severity"], "info")
+            self.assertFalse(rec["ok"])
+            self.assertTrue(rec.get("next_actions"))
+            # info 不等于"跑不了"：不得出现在 blocking/prerequisite 名单里
+            self.assertNotIn("visual_theme_assets", out["blocking_missing"])
+            self.assertNotIn("visual_theme_assets", out["prerequisites_missing"])
+        finally:
+            import shutil
+            shutil.rmtree(root, ignore_errors=True)
+
+
 class VisionProbeTests(unittest.TestCase):
     def test_unavailable_probe_carries_candidates_and_actions(self):
         with mock.patch.object(scene_model, "_probe_endpoint_health",
