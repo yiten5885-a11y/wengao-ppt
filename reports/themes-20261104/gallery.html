@@ -1,0 +1,103 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<title>稳稿 PPT · 6 主题 6 风格（真实渲染对照）</title>
+<style>
+:root{--ink:#1a1a1a;--muted:#5a5a5a;--line:#e2e2e2;--bg:#faf8f5;--surface:#fff}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.65 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif}
+header{padding:28px 32px 8px} h1{margin:0 0 6px;font-size:22px}
+.meta{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;padding:18px 32px 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0;font-size:17px} .card h3 small{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px}
+.tag{color:var(--muted);font-size:13px;margin:6px 0 10px}
+.sw{display:flex;gap:6px;margin-bottom:10px} .sw i{width:26px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.08)}
+.shot{display:grid;gap:6px} .shot img{width:100%;border:1px solid var(--line);border-radius:6px;display:block}
+dl{display:grid;grid-template-columns:56px 1fr;gap:2px 8px;font-size:12px;color:var(--muted);margin:10px 0 0}
+dd{margin:0} .mono{font-family:Menlo,monospace;font-size:11px}
+table{border-collapse:collapse;margin:8px 32px 32px;font-size:13px;background:var(--surface)}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left} th{background:#f2efe9}
+.note{margin:0 32px 12px;color:var(--muted);font-size:13px}
+</style>
+<header>
+  <h1>6 个主题 · 6 种风格（同一原稿真实渲染）</h1>
+  <div class="meta">原稿 source-neutral.pptx（sha256 a0430a8a782c…） ·
+    渲染器 LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1 · dpi 96 ·
+    最接近的一对（按内容像素差）：wengao-basic vs wengao-minimal
+    （ink_diff 0.1277）</div>
+</header>
+<p class="note">同一原稿 × 6 主题的真实渲染对照；LibreOffice 渲染 ≠ PowerPoint 兼容性</p>
+<section class="grid">
+    <article class="card">
+      <h3>藏蓝公文 <small>公文 / 汇报</small></h3>
+      <p class="tag">宋体密排、藏蓝压顶、正红落款，最接近传统红头文件</p>
+      <div class="sw"><i style='background:#FFFFFF'></i><i style='background:#1F3864'></i><i style='background:#C00000'></i><i style='background:#FFFFFF'></i></div>
+      <div class="shot"><img src='render/wengao-basic/png/page-01.png' alt='wengao-basic 第 1 页' loading='lazy'><img src='render/wengao-basic/png/page-02.png' alt='wengao-basic 第 2 页' loading='lazy'><img src='render/wengao-basic/png/page-03.png' alt='wengao-basic 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-basic · v1.0.0</dd>
+        <dt>应用</dt><dd>APPLIED · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">67d8542980ee4a16…</dd>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>钢青商务 <small>商务 / 汇报</small></h3>
+      <p class="tag">黑体骨架、钢青主色、琥珀强调，信息密度高的汇报稿</p>
+      <div class="sw"><i style='background:#FFFFFF'></i><i style='background:#175A63'></i><i style='background:#8A5200'></i><i style='background:#FFFFFF'></i></div>
+      <div class="shot"><img src='render/wengao-business/png/page-01.png' alt='wengao-business 第 1 页' loading='lazy'><img src='render/wengao-business/png/page-02.png' alt='wengao-business 第 2 页' loading='lazy'><img src='render/wengao-business/png/page-03.png' alt='wengao-business 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-business · v1.2.0</dd>
+        <dt>应用</dt><dd>APPLIED · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">a4ecbe05d097e643…</dd>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>深海霓虹 <small>科技 / 产品发布</small></h3>
+      <p class="tag">深底霓虹青、品红强调、等宽数字，适合技术路线与发布稿</p>
+      <div class="sw"><i style='background:#0B1220'></i><i style='background:#3DDCFF'></i><i style='background:#FF6FA5'></i><i style='background:#121C2E'></i></div>
+      <div class="shot"><img src='render/wengao-dark/png/page-01.png' alt='wengao-dark 第 1 页' loading='lazy'><img src='render/wengao-dark/png/page-02.png' alt='wengao-dark 第 2 页' loading='lazy'><img src='render/wengao-dark/png/page-03.png' alt='wengao-dark 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-dark · v1.1.0</dd>
+        <dt>应用</dt><dd>APPLIED · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">a9a7dd857958c4b6…</dd>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>暖白静读 <small>阅读 / 长文</small></h3>
+      <p class="tag">暖白纸底、Georgia 配宋体、几乎不用色块，长文阅读最省力</p>
+      <div class="sw"><i style='background:#FAF8F3'></i><i style='background:#2B2A26'></i><i style='background:#7F4E32'></i><i style='background:#FFFFFF'></i></div>
+      <div class="shot"><img src='render/wengao-minimal/png/page-01.png' alt='wengao-minimal 第 1 页' loading='lazy'><img src='render/wengao-minimal/png/page-02.png' alt='wengao-minimal 第 2 页' loading='lazy'><img src='render/wengao-minimal/png/page-03.png' alt='wengao-minimal 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-minimal · v1.1.0</dd>
+        <dt>应用</dt><dd>APPLIED · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">3dea3c26e010a000…</dd>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>原稿本色 <small>原稿 / 精修</small></h3>
+      <p class="tag">不换肤：识别并保留原稿配色与字体，只做结构、度量与对齐精修</p>
+      <div class="sw"></div>
+      <div class="shot"><img src='render/wengao-adaptive/png/page-01.png' alt='wengao-adaptive 第 1 页' loading='lazy'><img src='render/wengao-adaptive/png/page-02.png' alt='wengao-adaptive 第 2 页' loading='lazy'><img src='render/wengao-adaptive/png/page-03.png' alt='wengao-adaptive 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-adaptive · v1.0.0</dd>
+        <dt>应用</dt><dd>REFINED_ORIGINAL · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">0b0518c3d82003cf…</dd>
+      </dl>
+    </article>
+    <article class="card">
+      <h3>炭黑剧场 <small>视觉 / 发布</small></h3>
+      <p class="tag">炭黑舞台、金铜与珊瑚、Avenir 大字，配图裁切与转场动效</p>
+      <div class="sw"><i style='background:#101014'></i><i style='background:#E8C877'></i><i style='background:#E06C5A'></i><i style='background:#1A1A20'></i></div>
+      <div class="shot"><img src='render/wengao-visual-dark/png/page-01.png' alt='wengao-visual-dark 第 1 页' loading='lazy'><img src='render/wengao-visual-dark/png/page-02.png' alt='wengao-visual-dark 第 2 页' loading='lazy'><img src='render/wengao-visual-dark/png/page-03.png' alt='wengao-visual-dark 第 3 页' loading='lazy'></div>
+      <dl>
+        <dt>主题</dt><dd>wengao-visual-dark · v1.0.0</dd>
+        <dt>应用</dt><dd>APPLIED · 6 页</dd>
+        <dt>摘要</dt><dd class="mono">b834d6ba2be15119…</dd>
+      </dl>
+    </article></section>
+<h2 style="padding:0 32px;font-size:16px">两两页面对比（15 页平均）</h2>
+<p class="note">ink_diff = 只在内容像素上算的平均差（不被留白稀释，才是"风格差"）；
+hist_dist = 4×4×4 色彩直方图距离（配色构成）；
+page_diff = 整页平均差（按面积加权，浅色主题之间会偏小）；
+内容占比 = 两页合并后的内容像素比例，用来判断这个 ink_diff 有多少样本支撑。</p>
+<table><thead><tr><th>主题对</th><th>ink_diff</th><th>hist_dist</th><th>page_diff</th><th>内容占比</th></tr></thead>
+<tbody><tr><td class='mono'>wengao-basic vs wengao-minimal</td><td>0.1277</td><td>0.0204</td><td>0.0411</td><td>6.9%</td></tr><tr><td class='mono'>wengao-business vs wengao-adaptive</td><td>0.1550</td><td>0.0235</td><td>0.0200</td><td>16.0%</td></tr><tr><td class='mono'>wengao-minimal vs wengao-adaptive</td><td>0.1914</td><td>0.0056</td><td>0.0418</td><td>16.4%</td></tr><tr><td class='mono'>wengao-basic vs wengao-adaptive</td><td>0.2344</td><td>0.0231</td><td>0.0257</td><td>16.4%</td></tr><tr><td class='mono'>wengao-basic vs wengao-business</td><td>0.2623</td><td>0.0219</td><td>0.0132</td><td>7.7%</td></tr><tr><td class='mono'>wengao-dark vs wengao-visual-dark</td><td>0.2814</td><td>0.0294</td><td>0.0423</td><td>9.6%</td></tr><tr><td class='mono'>wengao-business vs wengao-minimal</td><td>0.3032</td><td>0.0243</td><td>0.0496</td><td>7.8%</td></tr><tr><td class='mono'>wengao-basic vs wengao-visual-dark</td><td>0.4570</td><td>0.9806</td><td>0.8990</td><td>7.8%</td></tr><tr><td class='mono'>wengao-minimal vs wengao-visual-dark</td><td>0.4746</td><td>0.9764</td><td>0.8781</td><td>7.8%</td></tr><tr><td class='mono'>wengao-dark vs wengao-minimal</td><td>0.4793</td><td>0.9860</td><td>0.8599</td><td>10.3%</td></tr><tr><td class='mono'>wengao-basic vs wengao-dark</td><td>0.4930</td><td>0.9840</td><td>0.8907</td><td>10.3%</td></tr><tr><td class='mono'>wengao-business vs wengao-visual-dark</td><td>0.4958</td><td>0.9796</td><td>0.9014</td><td>7.6%</td></tr><tr><td class='mono'>wengao-business vs wengao-dark</td><td>0.5115</td><td>0.9836</td><td>0.8929</td><td>9.8%</td></tr><tr><td class='mono'>wengao-dark vs wengao-adaptive</td><td>0.6410</td><td>0.9824</td><td>0.8857</td><td>18.5%</td></tr><tr><td class='mono'>wengao-adaptive vs wengao-visual-dark</td><td>0.6520</td><td>0.9736</td><td>0.9037</td><td>16.3%</td></tr></tbody></table>
+</html>

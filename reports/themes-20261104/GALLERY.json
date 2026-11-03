@@ -1,0 +1,923 @@
+{
+  "schema": "wengao.theme_gallery.v1",
+  "scope": "同一原稿 × 6 主题的真实渲染对照；LibreOffice 渲染 ≠ PowerPoint 兼容性",
+  "source": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/themes-20261104/source-neutral.pptx",
+  "source_sha256": "a0430a8a782c2a867b4d088dc9c99e522ae623d78537de13b421a42978231c69",
+  "dpi": 96,
+  "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+  "themes": [
+    {
+      "theme": "wengao-basic",
+      "name": "稳稿基础主题（旧默认）",
+      "style": {
+        "style_id": "S1",
+        "style_name": "藏蓝公文",
+        "genre": "公文 / 汇报",
+        "tagline": "宋体密排、藏蓝压顶、正红落款，最接近传统红头文件",
+        "tags": [
+          "宋体",
+          "藏蓝",
+          "正红",
+          "密排"
+        ],
+        "preview": "official"
+      },
+      "version": "1.0.0",
+      "config_digest": "67d8542980ee4a169cbb6a1eb3724581dbacd9f6e4f68cf0ff13911b07ae7ded",
+      "application": "APPLIED",
+      "pptx": "pptx/wengao-basic.pptx",
+      "pptx_sha256": "b4c15ffa9bf5cbf0e587a88572d3799fdb2287319ff3df74b0d7a31496611d78",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-basic/png/page-01.png",
+        "render/wengao-basic/png/page-02.png",
+        "render/wengao-basic/png/page-03.png",
+        "render/wengao-basic/png/page-04.png",
+        "render/wengao-basic/png/page-05.png",
+        "render/wengao-basic/png/page-06.png"
+      ],
+      "contrast_claim": "ASSERTED",
+      "min_ratio": 6.9,
+      "swatches": [
+        "FFFFFF",
+        "1F3864",
+        "C00000",
+        "FFFFFF"
+      ]
+    },
+    {
+      "theme": "wengao-business",
+      "name": "商务清晰",
+      "style": {
+        "style_id": "S2",
+        "style_name": "钢青商务",
+        "genre": "商务 / 汇报",
+        "tagline": "黑体骨架、钢青主色、琥珀强调，信息密度高的汇报稿",
+        "tags": [
+          "黑体",
+          "钢青",
+          "琥珀",
+          "紧凑"
+        ],
+        "preview": "grid"
+      },
+      "version": "1.2.0",
+      "config_digest": "a4ecbe05d097e64383d1fa85f5cc861ec04686abe42684da66d1f7325495eac0",
+      "application": "APPLIED",
+      "pptx": "pptx/wengao-business.pptx",
+      "pptx_sha256": "2e0d354a7fb247628828146782799878ee7965b6450267ab16e22dcf1e6362f5",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-business/png/page-01.png",
+        "render/wengao-business/png/page-02.png",
+        "render/wengao-business/png/page-03.png",
+        "render/wengao-business/png/page-04.png",
+        "render/wengao-business/png/page-05.png",
+        "render/wengao-business/png/page-06.png"
+      ],
+      "contrast_claim": "ASSERTED",
+      "min_ratio": 7.84,
+      "swatches": [
+        "FFFFFF",
+        "175A63",
+        "8A5200",
+        "FFFFFF"
+      ]
+    },
+    {
+      "theme": "wengao-dark",
+      "name": "深色科技",
+      "style": {
+        "style_id": "S3",
+        "style_name": "深海霓虹",
+        "genre": "科技 / 产品发布",
+        "tagline": "深底霓虹青、品红强调、等宽数字，适合技术路线与发布稿",
+        "tags": [
+          "深底",
+          "霓虹青",
+          "等宽",
+          "品红"
+        ],
+        "preview": "neon"
+      },
+      "version": "1.1.0",
+      "config_digest": "a9a7dd857958c4b620ec2d85ec6b1db78cfebe90563e91ab0114980cf6286792",
+      "application": "APPLIED",
+      "pptx": "pptx/wengao-dark.pptx",
+      "pptx_sha256": "df2924b57c36735afbba878eb3b3518e5ba33fcacb555a7d445bfa9cb16952e3",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-dark/png/page-01.png",
+        "render/wengao-dark/png/page-02.png",
+        "render/wengao-dark/png/page-03.png",
+        "render/wengao-dark/png/page-04.png",
+        "render/wengao-dark/png/page-05.png",
+        "render/wengao-dark/png/page-06.png"
+      ],
+      "contrast_claim": "ASSERTED",
+      "min_ratio": 9.89,
+      "swatches": [
+        "0B1220",
+        "3DDCFF",
+        "FF6FA5",
+        "121C2E"
+      ]
+    },
+    {
+      "theme": "wengao-minimal",
+      "name": "极简阅读",
+      "style": {
+        "style_id": "S4",
+        "style_name": "暖白静读",
+        "genre": "阅读 / 长文",
+        "tagline": "暖白纸底、Georgia 配宋体、几乎不用色块，长文阅读最省力",
+        "tags": [
+          "暖白",
+          "宋体",
+          "留白",
+          "陶土"
+        ],
+        "preview": "quiet"
+      },
+      "version": "1.1.0",
+      "config_digest": "3dea3c26e010a000390f2d9a14659b9a8353ad5adef59cf2aa84e4f19221c279",
+      "application": "APPLIED",
+      "pptx": "pptx/wengao-minimal.pptx",
+      "pptx_sha256": "c579706b5b778c371fc05d157c6176c90d5d706f7d8ce0d6caedda0a5a8843dd",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-minimal/png/page-01.png",
+        "render/wengao-minimal/png/page-02.png",
+        "render/wengao-minimal/png/page-03.png",
+        "render/wengao-minimal/png/page-04.png",
+        "render/wengao-minimal/png/page-05.png",
+        "render/wengao-minimal/png/page-06.png"
+      ],
+      "contrast_claim": "ASSERTED",
+      "min_ratio": 11.03,
+      "swatches": [
+        "FAF8F3",
+        "2B2A26",
+        "7F4E32",
+        "FFFFFF"
+      ]
+    },
+    {
+      "theme": "wengao-adaptive",
+      "name": "原稿适配精修",
+      "style": {
+        "style_id": "S5",
+        "style_name": "原稿本色",
+        "genre": "原稿 / 精修",
+        "tagline": "不换肤：识别并保留原稿配色与字体，只做结构、度量与对齐精修",
+        "tags": [
+          "不换肤",
+          "保留原稿",
+          "结构精修"
+        ],
+        "preview": "source"
+      },
+      "version": "1.0.0",
+      "config_digest": "0b0518c3d82003cfa45046d349991bb0edabf8b3fc16369115bef111530c9b19",
+      "application": "REFINED_ORIGINAL",
+      "pptx": "pptx/wengao-adaptive.pptx",
+      "pptx_sha256": "e2557a1a7e15ec38b96317e765377cadbc4649203b154f283a4ffc8f218aa4f4",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-adaptive/png/page-01.png",
+        "render/wengao-adaptive/png/page-02.png",
+        "render/wengao-adaptive/png/page-03.png",
+        "render/wengao-adaptive/png/page-04.png",
+        "render/wengao-adaptive/png/page-05.png",
+        "render/wengao-adaptive/png/page-06.png"
+      ],
+      "contrast_claim": null,
+      "min_ratio": null,
+      "swatches": []
+    },
+    {
+      "theme": "wengao-visual-dark",
+      "name": "深色视觉升级（关键词配图+动效）",
+      "style": {
+        "style_id": "S6",
+        "style_name": "炭黑剧场",
+        "genre": "视觉 / 发布",
+        "tagline": "炭黑舞台、金铜与珊瑚、Avenir 大字，配图裁切与转场动效",
+        "tags": [
+          "炭黑",
+          "金铜",
+          "配图",
+          "动效"
+        ],
+        "preview": "cinema"
+      },
+      "version": "1.0.0",
+      "config_digest": "b834d6ba2be15119b862d215d64fe234fde4368a7c2d57ea723c709043a690c3",
+      "application": "APPLIED",
+      "pptx": "pptx/wengao-visual-dark.pptx",
+      "pptx_sha256": "9167ffbd5680c34120f56fe8626878c3cc163c011ebe27ae023c20ebd61422af",
+      "pages_rendered": 6,
+      "page_pngs": [
+        "render/wengao-visual-dark/png/page-01.png",
+        "render/wengao-visual-dark/png/page-02.png",
+        "render/wengao-visual-dark/png/page-03.png",
+        "render/wengao-visual-dark/png/page-04.png",
+        "render/wengao-visual-dark/png/page-05.png",
+        "render/wengao-visual-dark/png/page-06.png"
+      ],
+      "contrast_claim": "ASSERTED",
+      "min_ratio": 6.77,
+      "swatches": [
+        "101014",
+        "E8C877",
+        "E06C5A",
+        "1A1A20"
+      ]
+    }
+  ],
+  "pairwise_page_diff": {
+    "wengao-basic|wengao-business": {
+      "page_diff": 0.0132,
+      "ink_diff": 0.2623,
+      "hist_dist": 0.0219,
+      "ink_area": 0.0774,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0056,
+          "ink_diff": 0.3766,
+          "hist_dist": 0.0039,
+          "ink_area": 0.0147
+        },
+        {
+          "page_diff": 0.0309,
+          "ink_diff": 0.3294,
+          "hist_dist": 0.0297,
+          "ink_area": 0.0934
+        },
+        {
+          "page_diff": 0.0192,
+          "ink_diff": 0.0739,
+          "hist_dist": 0.0807,
+          "ink_area": 0.2596
+        },
+        {
+          "page_diff": 0.0052,
+          "ink_diff": 0.1295,
+          "hist_dist": 0.0036,
+          "ink_area": 0.0399
+        },
+        {
+          "page_diff": 0.0151,
+          "ink_diff": 0.3105,
+          "hist_dist": 0.0103,
+          "ink_area": 0.0485
+        },
+        {
+          "page_diff": 0.003,
+          "ink_diff": 0.3541,
+          "hist_dist": 0.0033,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-basic|wengao-dark": {
+      "page_diff": 0.8907,
+      "ink_diff": 0.493,
+      "hist_dist": 0.984,
+      "ink_area": 0.1034,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9124,
+          "ink_diff": 0.4106,
+          "hist_dist": 0.9926,
+          "ink_area": 0.0154
+        },
+        {
+          "page_diff": 0.8751,
+          "ink_diff": 0.4486,
+          "hist_dist": 0.9794,
+          "ink_area": 0.0952
+        },
+        {
+          "page_diff": 0.8427,
+          "ink_diff": 0.7296,
+          "hist_dist": 0.9779,
+          "ink_area": 0.4067
+        },
+        {
+          "page_diff": 0.9019,
+          "ink_diff": 0.5089,
+          "hist_dist": 0.984,
+          "ink_area": 0.0442
+        },
+        {
+          "page_diff": 0.8963,
+          "ink_diff": 0.4497,
+          "hist_dist": 0.9729,
+          "ink_area": 0.0507
+        },
+        {
+          "page_diff": 0.916,
+          "ink_diff": 0.4105,
+          "hist_dist": 0.9972,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-basic|wengao-minimal": {
+      "page_diff": 0.0411,
+      "ink_diff": 0.1277,
+      "hist_dist": 0.0204,
+      "ink_area": 0.0685,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0329,
+          "ink_diff": 0.1694,
+          "hist_dist": 0.0023,
+          "ink_area": 0.0111
+        },
+        {
+          "page_diff": 0.0376,
+          "ink_diff": 0.1233,
+          "hist_dist": 0.0285,
+          "ink_area": 0.0682
+        },
+        {
+          "page_diff": 0.0771,
+          "ink_diff": 0.2306,
+          "hist_dist": 0.0811,
+          "ink_area": 0.2524
+        },
+        {
+          "page_diff": 0.0352,
+          "ink_diff": 0.1311,
+          "hist_dist": 0.004,
+          "ink_area": 0.0384
+        },
+        {
+          "page_diff": 0.0321,
+          "ink_diff": 0.0523,
+          "hist_dist": 0.0043,
+          "ink_area": 0.0356
+        },
+        {
+          "page_diff": 0.0315,
+          "ink_diff": 0.0596,
+          "hist_dist": 0.0025,
+          "ink_area": 0.0054
+        }
+      ]
+    },
+    "wengao-basic|wengao-adaptive": {
+      "page_diff": 0.0257,
+      "ink_diff": 0.2344,
+      "hist_dist": 0.0231,
+      "ink_area": 0.1639,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0062,
+          "ink_diff": 0.3782,
+          "hist_dist": 0.0036,
+          "ink_area": 0.0162
+        },
+        {
+          "page_diff": 0.0394,
+          "ink_diff": 0.2036,
+          "hist_dist": 0.0382,
+          "ink_area": 0.1931
+        },
+        {
+          "page_diff": 0.0613,
+          "ink_diff": 0.2361,
+          "hist_dist": 0.0805,
+          "ink_area": 0.2593
+        },
+        {
+          "page_diff": 0.0217,
+          "ink_diff": 0.0602,
+          "hist_dist": 0.0032,
+          "ink_area": 0.3593
+        },
+        {
+          "page_diff": 0.0223,
+          "ink_diff": 0.151,
+          "hist_dist": 0.0093,
+          "ink_area": 0.1474
+        },
+        {
+          "page_diff": 0.0031,
+          "ink_diff": 0.3772,
+          "hist_dist": 0.0037,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-basic|wengao-visual-dark": {
+      "page_diff": 0.899,
+      "ink_diff": 0.457,
+      "hist_dist": 0.9806,
+      "ink_area": 0.078,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9242,
+          "ink_diff": 0.3875,
+          "hist_dist": 0.9928,
+          "ink_area": 0.0143
+        },
+        {
+          "page_diff": 0.8836,
+          "ink_diff": 0.4111,
+          "hist_dist": 0.9556,
+          "ink_area": 0.0925
+        },
+        {
+          "page_diff": 0.8368,
+          "ink_diff": 0.5795,
+          "hist_dist": 0.9848,
+          "ink_area": 0.2596
+        },
+        {
+          "page_diff": 0.9133,
+          "ink_diff": 0.5117,
+          "hist_dist": 0.9811,
+          "ink_area": 0.0442
+        },
+        {
+          "page_diff": 0.9081,
+          "ink_diff": 0.4494,
+          "hist_dist": 0.9715,
+          "ink_area": 0.0494
+        },
+        {
+          "page_diff": 0.9278,
+          "ink_diff": 0.4027,
+          "hist_dist": 0.998,
+          "ink_area": 0.0079
+        }
+      ]
+    },
+    "wengao-business|wengao-dark": {
+      "page_diff": 0.8929,
+      "ink_diff": 0.5115,
+      "hist_dist": 0.9836,
+      "ink_area": 0.0985,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9129,
+          "ink_diff": 0.4132,
+          "hist_dist": 0.9921,
+          "ink_area": 0.0144
+        },
+        {
+          "page_diff": 0.8823,
+          "ink_diff": 0.4518,
+          "hist_dist": 0.9787,
+          "ink_area": 0.0805
+        },
+        {
+          "page_diff": 0.8389,
+          "ink_diff": 0.7181,
+          "hist_dist": 0.9827,
+          "ink_area": 0.4023
+        },
+        {
+          "page_diff": 0.9033,
+          "ink_diff": 0.527,
+          "hist_dist": 0.9826,
+          "ink_area": 0.0428
+        },
+        {
+          "page_diff": 0.9029,
+          "ink_diff": 0.531,
+          "hist_dist": 0.9685,
+          "ink_area": 0.0441
+        },
+        {
+          "page_diff": 0.9168,
+          "ink_diff": 0.4281,
+          "hist_dist": 0.9972,
+          "ink_area": 0.007
+        }
+      ]
+    },
+    "wengao-business|wengao-minimal": {
+      "page_diff": 0.0496,
+      "ink_diff": 0.3032,
+      "hist_dist": 0.0243,
+      "ink_area": 0.0781,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.036,
+          "ink_diff": 0.3529,
+          "hist_dist": 0.004,
+          "ink_area": 0.0143
+        },
+        {
+          "page_diff": 0.0613,
+          "ink_diff": 0.3468,
+          "hist_dist": 0.0399,
+          "ink_area": 0.0948
+        },
+        {
+          "page_diff": 0.0825,
+          "ink_diff": 0.2454,
+          "hist_dist": 0.0841,
+          "ink_area": 0.2602
+        },
+        {
+          "page_diff": 0.0386,
+          "ink_diff": 0.2032,
+          "hist_dist": 0.0038,
+          "ink_area": 0.042
+        },
+        {
+          "page_diff": 0.0452,
+          "ink_diff": 0.3146,
+          "hist_dist": 0.0105,
+          "ink_area": 0.0488
+        },
+        {
+          "page_diff": 0.0341,
+          "ink_diff": 0.3564,
+          "hist_dist": 0.0038,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-business|wengao-adaptive": {
+      "page_diff": 0.02,
+      "ink_diff": 0.155,
+      "hist_dist": 0.0235,
+      "ink_area": 0.16,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0045,
+          "ink_diff": 0.2926,
+          "hist_dist": 0.0034,
+          "ink_area": 0.0154
+        },
+        {
+          "page_diff": 0.0212,
+          "ink_diff": 0.1171,
+          "hist_dist": 0.0399,
+          "ink_area": 0.1807
+        },
+        {
+          "page_diff": 0.0557,
+          "ink_diff": 0.2173,
+          "hist_dist": 0.0835,
+          "ink_area": 0.2559
+        },
+        {
+          "page_diff": 0.0211,
+          "ink_diff": 0.0587,
+          "hist_dist": 0.0026,
+          "ink_area": 0.3589
+        },
+        {
+          "page_diff": 0.0164,
+          "ink_diff": 0.1154,
+          "hist_dist": 0.0078,
+          "ink_area": 0.142
+        },
+        {
+          "page_diff": 0.0009,
+          "ink_diff": 0.1286,
+          "hist_dist": 0.0038,
+          "ink_area": 0.007
+        }
+      ]
+    },
+    "wengao-business|wengao-visual-dark": {
+      "page_diff": 0.9014,
+      "ink_diff": 0.4958,
+      "hist_dist": 0.9796,
+      "ink_area": 0.0765,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9254,
+          "ink_diff": 0.4359,
+          "hist_dist": 0.9918,
+          "ink_area": 0.0134
+        },
+        {
+          "page_diff": 0.8918,
+          "ink_diff": 0.4773,
+          "hist_dist": 0.9559,
+          "ink_area": 0.088
+        },
+        {
+          "page_diff": 0.837,
+          "ink_diff": 0.5794,
+          "hist_dist": 0.9843,
+          "ink_area": 0.2587
+        },
+        {
+          "page_diff": 0.9141,
+          "ink_diff": 0.5251,
+          "hist_dist": 0.9799,
+          "ink_area": 0.0437
+        },
+        {
+          "page_diff": 0.9121,
+          "ink_diff": 0.5172,
+          "hist_dist": 0.9682,
+          "ink_area": 0.0477
+        },
+        {
+          "page_diff": 0.9283,
+          "ink_diff": 0.4401,
+          "hist_dist": 0.9977,
+          "ink_area": 0.0076
+        }
+      ]
+    },
+    "wengao-dark|wengao-minimal": {
+      "page_diff": 0.8599,
+      "ink_diff": 0.4793,
+      "hist_dist": 0.986,
+      "ink_area": 0.1034,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.8814,
+          "ink_diff": 0.405,
+          "hist_dist": 0.9941,
+          "ink_area": 0.0155
+        },
+        {
+          "page_diff": 0.8458,
+          "ink_diff": 0.4385,
+          "hist_dist": 0.9793,
+          "ink_area": 0.0953
+        },
+        {
+          "page_diff": 0.8107,
+          "ink_diff": 0.6965,
+          "hist_dist": 0.9852,
+          "ink_area": 0.4063
+        },
+        {
+          "page_diff": 0.8708,
+          "ink_diff": 0.4859,
+          "hist_dist": 0.9843,
+          "ink_area": 0.0444
+        },
+        {
+          "page_diff": 0.8659,
+          "ink_diff": 0.4384,
+          "hist_dist": 0.9756,
+          "ink_area": 0.0508
+        },
+        {
+          "page_diff": 0.8849,
+          "ink_diff": 0.4114,
+          "hist_dist": 0.9975,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-dark|wengao-adaptive": {
+      "page_diff": 0.8857,
+      "ink_diff": 0.641,
+      "hist_dist": 0.9824,
+      "ink_area": 0.1854,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9128,
+          "ink_diff": 0.4646,
+          "hist_dist": 0.993,
+          "ink_area": 0.0162
+        },
+        {
+          "page_diff": 0.8749,
+          "ink_diff": 0.6742,
+          "hist_dist": 0.9679,
+          "ink_area": 0.1836
+        },
+        {
+          "page_diff": 0.8329,
+          "ink_diff": 0.7034,
+          "hist_dist": 0.9823,
+          "ink_area": 0.4027
+        },
+        {
+          "page_diff": 0.8849,
+          "ink_diff": 0.8227,
+          "hist_dist": 0.9821,
+          "ink_area": 0.3609
+        },
+        {
+          "page_diff": 0.8915,
+          "ink_diff": 0.7189,
+          "hist_dist": 0.9728,
+          "ink_area": 0.1421
+        },
+        {
+          "page_diff": 0.917,
+          "ink_diff": 0.4619,
+          "hist_dist": 0.9961,
+          "ink_area": 0.007
+        }
+      ]
+    },
+    "wengao-dark|wengao-visual-dark": {
+      "page_diff": 0.0423,
+      "ink_diff": 0.2814,
+      "hist_dist": 0.0294,
+      "ink_area": 0.0964,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0302,
+          "ink_diff": 0.3783,
+          "hist_dist": 0.0058,
+          "ink_area": 0.0151
+        },
+        {
+          "page_diff": 0.0513,
+          "ink_diff": 0.354,
+          "hist_dist": 0.051,
+          "ink_area": 0.0803
+        },
+        {
+          "page_diff": 0.0804,
+          "ink_diff": 0.1621,
+          "hist_dist": 0.0942,
+          "ink_area": 0.4051
+        },
+        {
+          "page_diff": 0.0307,
+          "ink_diff": 0.2269,
+          "hist_dist": 0.007,
+          "ink_area": 0.0295
+        },
+        {
+          "page_diff": 0.0341,
+          "ink_diff": 0.2498,
+          "hist_dist": 0.0131,
+          "ink_area": 0.041
+        },
+        {
+          "page_diff": 0.0271,
+          "ink_diff": 0.3174,
+          "hist_dist": 0.0051,
+          "ink_area": 0.0076
+        }
+      ]
+    },
+    "wengao-minimal|wengao-adaptive": {
+      "page_diff": 0.0418,
+      "ink_diff": 0.1914,
+      "hist_dist": 0.0056,
+      "ink_area": 0.1643,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.0368,
+          "ink_diff": 0.3628,
+          "hist_dist": 0.0022,
+          "ink_area": 0.0165
+        },
+        {
+          "page_diff": 0.0627,
+          "ink_diff": 0.1921,
+          "hist_dist": 0.0137,
+          "ink_area": 0.1949
+        },
+        {
+          "page_diff": 0.0362,
+          "ink_diff": 0.0675,
+          "hist_dist": 0.0058,
+          "ink_area": 0.2595
+        },
+        {
+          "page_diff": 0.0354,
+          "ink_diff": 0.0425,
+          "hist_dist": 0.0032,
+          "ink_area": 0.3593
+        },
+        {
+          "page_diff": 0.0453,
+          "ink_diff": 0.1261,
+          "hist_dist": 0.0071,
+          "ink_area": 0.1474
+        },
+        {
+          "page_diff": 0.0341,
+          "ink_diff": 0.3572,
+          "hist_dist": 0.0018,
+          "ink_area": 0.0083
+        }
+      ]
+    },
+    "wengao-minimal|wengao-visual-dark": {
+      "page_diff": 0.8781,
+      "ink_diff": 0.4746,
+      "hist_dist": 0.9764,
+      "ink_area": 0.0777,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.8934,
+          "ink_diff": 0.3763,
+          "hist_dist": 0.9919,
+          "ink_area": 0.0139
+        },
+        {
+          "page_diff": 0.8544,
+          "ink_diff": 0.4005,
+          "hist_dist": 0.9381,
+          "ink_area": 0.092
+        },
+        {
+          "page_diff": 0.8638,
+          "ink_diff": 0.7553,
+          "hist_dist": 0.9814,
+          "ink_area": 0.2593
+        },
+        {
+          "page_diff": 0.8829,
+          "ink_diff": 0.4983,
+          "hist_dist": 0.9803,
+          "ink_area": 0.0437
+        },
+        {
+          "page_diff": 0.8773,
+          "ink_diff": 0.4322,
+          "hist_dist": 0.9699,
+          "ink_area": 0.0495
+        },
+        {
+          "page_diff": 0.8966,
+          "ink_diff": 0.3849,
+          "hist_dist": 0.9966,
+          "ink_area": 0.0079
+        }
+      ]
+    },
+    "wengao-adaptive|wengao-visual-dark": {
+      "page_diff": 0.9037,
+      "ink_diff": 0.652,
+      "hist_dist": 0.9736,
+      "ink_area": 0.1628,
+      "identical_pages": 0,
+      "per_page": [
+        {
+          "page_diff": 0.9244,
+          "ink_diff": 0.4541,
+          "hist_dist": 0.9914,
+          "ink_area": 0.0158
+        },
+        {
+          "page_diff": 0.8856,
+          "ink_diff": 0.6861,
+          "hist_dist": 0.9284,
+          "ink_area": 0.1884
+        },
+        {
+          "page_diff": 0.8869,
+          "ink_diff": 0.7716,
+          "hist_dist": 0.9794,
+          "ink_area": 0.2584
+        },
+        {
+          "page_diff": 0.896,
+          "ink_diff": 0.8326,
+          "hist_dist": 0.9783,
+          "ink_area": 0.3613
+        },
+        {
+          "page_diff": 0.9009,
+          "ink_diff": 0.7189,
+          "hist_dist": 0.9684,
+          "ink_area": 0.1454
+        },
+        {
+          "page_diff": 0.9283,
+          "ink_diff": 0.4487,
+          "hist_dist": 0.9955,
+          "ink_area": 0.0076
+        }
+      ]
+    }
+  },
+  "weakest_pair": {
+    "pair": "wengao-basic|wengao-minimal",
+    "ink_diff": 0.1277,
+    "page_diff": 0.0411,
+    "hist_dist": 0.0204
+  },
+  "failures": [],
+  "verdict": "PASS"
+}
