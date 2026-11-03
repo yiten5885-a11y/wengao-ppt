@@ -24,11 +24,19 @@ C7  关系里不得出现 `file:///` 本机绝对路径目标（既不可移植�
 用法
 ----
     python3 scripts/ooxml_conform.py --pptx dist/x.pptx [--json-out out.json]
-退出码：0 = 全部 PASS；2 = 存在 FAIL 项；4 = 文件不可读。
+    python3 scripts/ooxml_conform.py --sweep reports/ [--json-out sweep.json]
+退出码：0 = 全部 PASS；2 = 存在 FAIL 项；4 = 文件/目录不可读。
+
+批量模式（`--sweep`）存在的理由
+------------------------------
+单文件模式只能回答"这一个文件好不好"。真实要做的是回归：每次改动后把**所有**历史
+导出件重扫一遍，看有没有把原本合格的结构弄坏。逐个人工跑既不可复现也容易漏件，
+所以把聚合放进同一个脚本，输出一份可直接归档的汇总（按检查项归类失败）。
 """
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import json
 import posixpath
 import re
@@ -298,11 +306,88 @@ class Checker:
         }
 
 
+def sweep(root: Path, exclude: list[str] | None = None) -> dict:
+    """对目录下所有 .pptx 逐个跑检查并聚合。
+
+    失败按检查项归类：一眼能看出"是 C2 内容类型普遍缺失"还是"某一页 shape id 撞了"，
+    而不是只有一串文件名。
+
+    `exclude` 是 fnmatch 通配（对**相对 root 的路径**匹配）。它存在的理由不是"把
+    失败藏起来"：仓库里确实有**故意退化**的合成夹具（例如 838 字节、只有 4 个部件、
+    没有任何 rels 的 `demo-deck-001.pptx`，其清单里自己标着 `is_synthetic_fixture`），
+    它们被门禁判 FAIL 是**正确**的。混进回归汇总只会淹没真实回归，所以按通配显式
+    排除，并把排除计数与模式一起写进结果——排除是**可见的**，不是静默跳过。
+    """
+    files = []
+    excluded = []
+    for p in sorted(root.rglob("*.pptx")):
+        if not p.is_file() or p.name.startswith("~$"):
+            continue
+        rel = p.relative_to(root).as_posix()
+        if any(fnmatch.fnmatch(rel, pat) for pat in (exclude or [])):
+            excluded.append(rel)
+            continue
+        files.append(p)
+    reports, failures, by_code = [], [], {}
+    for p in files:
+        rep = Checker(p).run()
+        reports.append({"pptx": str(p), "verdict": rep["verdict"],
+                        "bytes": rep["bytes"], "failed": rep["failed"]})
+        for c in rep["checks"]:
+            if c["ok"]:
+                continue
+            by_code[c["code"]] = by_code.get(c["code"], 0) + 1
+            failures.append({"pptx": str(p), "code": c["code"],
+                             "detail": c["detail"],
+                             "findings": c["findings"][:5]})
+    failed_files = [r["pptx"] for r in reports if r["verdict"] != "PASS"]
+    return {
+        "schema": "wengao.ooxml_conform_sweep.v1",
+        "root": str(root),
+        "scope": "OPC/OOXML 结构自洽性；**不是** PowerPoint 兼容性验收",
+        "exclude_patterns": list(exclude or []),
+        "excluded_count": len(excluded),
+        "excluded": excluded,
+        "files": len(reports),
+        "passed": len(reports) - len(failed_files),
+        "failed": len(failed_files),
+        "failed_files": failed_files,
+        "failed_checks_by_code": dict(sorted(by_code.items())),
+        "failures": failures,
+        "files_detail": reports,
+        "verdict": "PASS" if not failed_files else "FAIL",
+    }
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="PPTX 的 OPC/OOXML 结构合格性检查")
-    ap.add_argument("--pptx", required=True)
+    g = ap.add_mutually_exclusive_group(required=True)
+    g.add_argument("--pptx", help="单个文件")
+    g.add_argument("--sweep", help="目录：递归扫描其中所有 .pptx 并聚合")
+    ap.add_argument("--exclude", action="append", default=None, metavar="GLOB",
+                    help="批量模式的排除通配（可重复；相对扫描根的路径）")
     ap.add_argument("--json-out", default=None)
     a = ap.parse_args(argv)
+    if a.sweep:
+        root = Path(a.sweep).expanduser().resolve()
+        if not root.is_dir():
+            print(json.dumps({"ok": False, "detail": f"目录不存在：{root}"},
+                             ensure_ascii=False, indent=2))
+            return 4
+        rep = sweep(root, a.exclude)
+        if a.json_out:
+            out = Path(a.json_out).expanduser()
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(json.dumps(rep, ensure_ascii=False, indent=2),
+                           encoding="utf-8")
+        print(json.dumps({k: rep[k] for k in
+                          ("root", "verdict", "files", "passed", "failed",
+                           "excluded_count", "failed_checks_by_code")},
+                         ensure_ascii=False, indent=2))
+        for f in rep["failures"][:40]:
+            print(f"[FAIL] {f['code']} — {f['pptx']}\n    {f['detail']}",
+                  file=sys.stderr)
+        return 0 if rep["verdict"] == "PASS" else 2
     p = Path(a.pptx).expanduser().resolve()
     if not p.is_file():
         print(json.dumps({"ok": False, "detail": f"文件不存在：{p}"},

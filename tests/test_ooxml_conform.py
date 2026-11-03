@@ -133,6 +133,53 @@ class NegativeCases(unittest.TestCase):
         self.assertIn("C7_NO_LOCAL_FILE_URIS", bad, rep)
 
 
+class SweepTests(unittest.TestCase):
+    """批量模式：回归扫描必须在**可复现的一条命令**里完成并如实归类失败。"""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="ooxml-sweep-"))
+        (self.tmp / "good").mkdir()
+        (self.tmp / "fixture").mkdir()
+        build_pptx(self.tmp / "good" / "a.pptx", slides=2)
+        build_pptx(self.tmp / "good" / "b.pptx", slides=1)
+        # 故意退化件：删掉全部 rels 与 layout —— 门禁判 FAIL 是对的
+        build_pptx(self.tmp / "fixture" / "degraded.pptx", slides=1)
+        rewrite(self.tmp / "fixture" / "degraded.pptx",
+                self.tmp / "fixture" / "degraded.pptx",
+                lambda n, d: None if n.endswith(".rels") else d)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_aggregates_counts_and_groups_failures_by_code(self):
+        rep = oc.sweep(self.tmp)
+        self.assertEqual(rep["files"], 3)
+        self.assertEqual(rep["passed"], 2)
+        self.assertEqual(rep["failed"], 1)
+        self.assertEqual(rep["verdict"], "FAIL")
+        self.assertTrue(rep["failed_checks_by_code"])
+        # 归类的是检查项，不是文件名：能一眼看出坏在哪类结构
+        self.assertIn("C6_LAYOUT_MASTER_CHAIN", rep["failed_checks_by_code"])
+        self.assertIn("degraded.pptx", rep["failed_files"][0])
+
+    def test_exclude_is_visible_not_silent(self):
+        rep = oc.sweep(self.tmp, ["fixture/*"])
+        self.assertEqual(rep["verdict"], "PASS")
+        self.assertEqual(rep["files"], 2)
+        self.assertEqual(rep["excluded_count"], 1)
+        self.assertEqual(rep["excluded"], ["fixture/degraded.pptx"])
+        self.assertEqual(rep["exclude_patterns"], ["fixture/*"])
+
+    def test_cli_exit_codes(self):
+        rep_path = self.tmp / "out.json"
+        self.assertEqual(oc.main(["--sweep", str(self.tmp), "--json-out", str(rep_path)]), 2)
+        self.assertEqual(oc.main(["--sweep", str(self.tmp), "--exclude", "fixture/*"]), 0)
+        self.assertEqual(oc.main(["--sweep", str(self.tmp / "nope")]), 4)
+        import json
+        self.assertEqual(json.loads(rep_path.read_text("utf-8"))["schema"],
+                         "wengao.ooxml_conform_sweep.v1")
+
+
 class ExtensionHelperTests(unittest.TestCase):
     def test_dotfile_parts_keep_their_extension(self):
         # 回归：splitext 会把 `_rels/.rels` 当无扩展名，误报内容类型缺失

@@ -1,0 +1,719 @@
+{
+  "schema": "wengao.ooxml_conform_sweep.v1",
+  "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports",
+  "scope": "OPC/OOXML 结构自洽性；**不是** PowerPoint 兼容性验收",
+  "exclude_patterns": [
+    "wp9-prepublication-50-decks-20261023/demo/*",
+    "install-cleanroom-*/cwd-neutral/*"
+  ],
+  "excluded_count": 2,
+  "excluded": [
+    "wp9-prepublication-50-decks-20261023/demo/download/demo-deck-001.pptx",
+    "wp9-prepublication-50-decks-20261023/demo/out/demo-deck-001.pptx"
+  ],
+  "files": 116,
+  "passed": 116,
+  "failed": 0,
+  "failed_files": [],
+  "failed_checks_by_code": {},
+  "failures": [],
+  "files_detail": [
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-13p-20261021/notext/v14-readable-13p-dedicated.pptx",
+      "verdict": "PASS",
+      "bytes": 7962929,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-13p-20261021/v14-readable-13p-dedicated.pptx",
+      "verdict": "PASS",
+      "bytes": 7971295,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-13p-20261023-fresh-acceptance/notext/fc829139_v25-readable-13p-dedicated.themed-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 8062955,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/dc135f-recheck/notext/dc135f-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 7962986,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/final-acceptance/notext/frozen-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 8062955,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC06-单对象文字遮挡/notext/NC06-单对象文字遮挡-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28510,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC07-部分遮挡/notext/NC07-部分遮挡-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28513,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC08-alpha遮挡/notext/NC08-alpha遮挡-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28507,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC08b-alpha透见/notext/NC08b-alpha透见-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28510,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC09-图片遮挡/notext/NC09-图片遮挡-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28722,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC10-继承字号/notext/NC10-继承字号-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28288,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC11a-小数点同基线/notext/NC11a-小数点同基线-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28298,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/case-NC11b-token真跨行/notext/NC11b-token真跨行-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 28298,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC06-单对象文字遮挡.pptx",
+      "verdict": "PASS",
+      "bytes": 28545,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC07-部分遮挡.pptx",
+      "verdict": "PASS",
+      "bytes": 28540,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC08-alpha遮挡.pptx",
+      "verdict": "PASS",
+      "bytes": 28541,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC08b-alpha透见.pptx",
+      "verdict": "PASS",
+      "bytes": 28544,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC09-图片遮挡.pptx",
+      "verdict": "PASS",
+      "bytes": 28765,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC10-继承字号.pptx",
+      "verdict": "PASS",
+      "bytes": 28332,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC11a-小数点同基线.pptx",
+      "verdict": "PASS",
+      "bytes": 28341,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/fixtures/NC11b-token真跨行.pptx",
+      "verdict": "PASS",
+      "bytes": 28331,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/gate-p0-final-20261023/negative-cases/render-candidate/notext/cand-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 8062955,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104/first-task/cleanroom_3p.pptx",
+      "verdict": "PASS",
+      "bytes": 30338,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-final/first-task/cleanroom_3p.pptx",
+      "verdict": "PASS",
+      "bytes": 30338,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r2/first-task/cleanroom_3p.pptx",
+      "verdict": "PASS",
+      "bytes": 30338,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-5a6/notext/failed-5a6bcb2d-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 7962791,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-6133/notext/frozen-6133ad5d-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 7962939,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-P268-final/notext/p268-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 7962844,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/negative-regression-20261021/gate-P268-final-rerun-20261023/notext/p268-notext.pptx",
+      "verdict": "PASS",
+      "bytes": 7962844,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D0-exact.pptx",
+      "verdict": "PASS",
+      "bytes": 7970858,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D1-lang-zhCN.pptx",
+      "verdict": "PASS",
+      "bytes": 7970873,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D2-no-charset.pptx",
+      "verdict": "PASS",
+      "bytes": 7970230,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D3-cs-hiragino.pptx",
+      "verdict": "PASS",
+      "bytes": 7970745,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D4-latin-hiragino.pptx",
+      "verdict": "PASS",
+      "bytes": 7970739,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/diag/D5-latin-songti.pptx",
+      "verdict": "PASS",
+      "bytes": 7970840,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p0-native-glyph-20261020/evidence/exact_v12.pptx",
+      "verdict": "PASS",
+      "bytes": 7970858,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261020T045639_065179Z-ad6f0f09--wengao-dark/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 46842,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261028T021428_182635Z-4aeece31--wengao-visual-dark/28911bf3__Token_.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 5773683,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261031T115524_796366Z-d0235a24--wengao-basic/c445c7d7__-_.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 3675759,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261031T133746_004312Z-91872ea2--wengao-basic/c445c7d7__-_.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 3645109,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261102T055159_929423Z-558f5576--wengao-business/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 285771,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_4768f2da____UI_..._mt-18a50973/4768f2da____UI_....generated.pptx",
+      "verdict": "PASS",
+      "bytes": 41958,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_4bc6cccc___20261028_mt-84fc7b40/4bc6cccc___20261028.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 49702,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_58c98f2a_08___mt-9bad20fa/58c98f2a_08__.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 39336,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-0124615b/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54486,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-05c4ca19/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 55459,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-1ee0230d/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54493,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-24bfcbe8/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66052,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-26568abe/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 55455,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-2c018d86/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66020,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-2df0288e/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54493,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-44f5156d/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 55454,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-47826010/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 55460,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-56ebac59/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66027,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-60a2dcd8/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66029,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-89d6a0de/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66028,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-91a41bab/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66028,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-9a6a64c3/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54489,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-9e7b9708/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54489,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-a1fde38e/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66024,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-ae4de0f4/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54473,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-ccd59172/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54485,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-f7e70608/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 66026,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_annual_review_synthetic_mt-fda9fd1b/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 54485,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_b9d2c95a_PPT_Product_Development_Plan_v3_mt-7e8cd7e7/b9d2c95a_PPT_Product_Development_Plan_v3.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 43424,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_b9d2c95a_PPT_Product_Development_Plan_v3_mt-a443dce0/b9d2c95a_PPT_Product_Development_Plan_v3.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 41506,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c338526b___20261028_mt-1c017360/c338526b___20261028.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 49747,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c338526b___20261028_mt-d0167871/c338526b___20261028.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 49745,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-02c71be5/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 45146,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-406fdefb/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 43662,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-6c52cfd2/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 43623,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-7387c3ad/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 45146,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-d5b797a5/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 43662,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-dee4d693/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 43623,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_c445c7d7__-__mt-fa1c7001/c445c7d7__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 45146,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_cc748849_____V5.0_mt-409037d0/cc748849_____V5.0.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 50713,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_cc748849_____V5.0_mt-76244dad/cc748849_____V5.0.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 49666,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_cc748849_____V5.0_mt-774c52ae/cc748849_____V5.0.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 50420,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_cc748849_____V5.0_mt-7de44903/cc748849_____V5.0.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 50495,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_cc748849_____V5.0_mt-f8d2c620/cc748849_____V5.0.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 50686,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_db5251d2_city_landmark_test_v2_mt-cfb6b18c/db5251d2_city_landmark_test_v2.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 47194,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-406507b4/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 60458,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-4d0bac5d/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 60470,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-5d71ad61/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 60468,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-6d063d77/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 60463,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-be822f74/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 60460,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5/wb_f1a1e53c__-__mt-e1f5bf5b/f1a1e53c__-_.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 45146,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/replay_readable/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 46700,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/replay_semantic_fix/annual_review_synthetic.replay.pptx",
+      "verdict": "PASS",
+      "bytes": 50021,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix1/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 45272,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/r5-fix/wb_annual_review_synthetic_mfix3/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 48995,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/readability-20261021/v13-readable-13p-glyphfit.pptx",
+      "verdict": "PASS",
+      "bytes": 7971339,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/readability-20261021/v13-readable-P268-13p.pptx",
+      "verdict": "PASS",
+      "bytes": 7971204,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w1/run_rs1_13page/deck_with_transitions.pptx",
+      "verdict": "PASS",
+      "bytes": 42787,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/e2e_deck.pptx",
+      "verdict": "PASS",
+      "bytes": 33938,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/image_slots.pptx",
+      "verdict": "PASS",
+      "bytes": 51866,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/insert_out.pptx",
+      "verdict": "PASS",
+      "bytes": 31727,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/page_types.pptx",
+      "verdict": "PASS",
+      "bytes": 78579,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/recompose_out.pptx",
+      "verdict": "PASS",
+      "bytes": 30492,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/recompose_src.pptx",
+      "verdict": "PASS",
+      "bytes": 30322,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/replay_deck.pptx",
+      "verdict": "PASS",
+      "bytes": 41201,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_conflict.pptx",
+      "verdict": "PASS",
+      "bytes": 41509,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_empty.pptx",
+      "verdict": "PASS",
+      "bytes": 31134,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_en.pptx",
+      "verdict": "PASS",
+      "bytes": 41185,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/research_views/bundle_zh.pptx",
+      "verdict": "PASS",
+      "bytes": 49440,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/rs-w2/scripts_6.pptx",
+      "verdict": "PASS",
+      "bytes": 34446,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/gen/annual_review_synthetic.generated.pptx",
+      "verdict": "PASS",
+      "bytes": 49209,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-adaptive/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 49616,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-adaptive.bak-c912a2d4/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 49664,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-basic/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 50770,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-business/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 50767,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-dark/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 50816,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-dark.bak-5efe12d7/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 50857,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-minimal/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 50703,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-visual-dark/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 3071168,
+      "failed": 0
+    },
+    {
+      "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/source-completeness-20261020/themes/wengao-visual-dark.bak-573c9677/annual_review_synthetic.generated.wengao.pptx",
+      "verdict": "PASS",
+      "bytes": 3071200,
+      "failed": 0
+    }
+  ],
+  "verdict": "PASS"
+}
