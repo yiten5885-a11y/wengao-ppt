@@ -187,6 +187,9 @@ def main(argv=None) -> int:
             "pptx_sha256": sha256(dst),
             "pages_rendered": len(pngs),
             "page_pngs": [str(p.relative_to(out)) for p in pngs],
+            # 页面构件：这是"换色"与"换风格"的分界，必须进证据而不是只写在文档里。
+            # count 为实际画上去的图元数，skipped 为被避让规则挡下的（挡住内容就不画）。
+            "furniture": stats.get("furniture") or {},
             "contrast_claim": stats.get("contrast_claim"),
             "min_ratio": (stats.get("contrast") or {}).get("min_ratio"),
             # 色卡直接取注册表里的真实取值（不在这里另编一份）；自适应主题为空

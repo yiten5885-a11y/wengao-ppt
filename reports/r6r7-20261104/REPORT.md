@@ -12,8 +12,9 @@
 | 材料生成模块定位（U8） | **PASS**（6 项测试，死分支消除） |
 | 干净安装根实测（U3/U4） | **安装器语义 12/12 PASS；首任务 run 外部阻断** |
 | 工作台移除「局部编辑」页（§1.8） | **已完成**（DOM 0 节点，CLI 能力保留） |
-| 6 个主题 → 6 个风格（§1.9） | **已完成**（15 对组合渲染差异均非 0） |
-| 完整测试套件 | **771 passed / 0 failed**（540 subtests） |
+| 6 个主题 → 6 个风格：配色/字体层（§1.9） | **已完成**（15 对组合渲染差异均非 0） |
+| 6 个主题 → 6 个风格：页面构成层（§1.10） | **已完成**（五套构件 + 真门禁 0 findings） |
+| 完整测试套件 | **790 passed / 0 failed**（583 subtests） |
 
 ---
 
@@ -369,19 +370,123 @@ def _table_body_fg(bg_hex: str) -> str:
 
 ---
 
+> **本节只做到「配色 / 字体 / 字号」这一层。** 六套主题的**页面构成**此时仍然相同
+> （都是"标题 + 留白"），所以用户第二次提了同一句要求。补齐页面构件的那一层见 §1.10。
+
+## 1.10 「6 个主题 6 个风格」只做到一半：换色不是换风格
+
+用户第二次提出同一句要求时，我去把六套成品逐页看了一遍。**六张首页长得一模一样**：
+白（或深）底、一行标题、一行副题、大字留白，唯一的差别是宋体藏蓝 vs 黑体钢青。
+§1.9 做到的是"6 套配色 + 6 组字体"，而用户要的是**6 种版式语言**。
+
+根因一句话：`apply_theme()` 只改样式，**从不画任何页面构件**。注册表里
+`wengao-basic` 的 tagline 写着"藏蓝压顶、正红落款，最接近传统红头文件"，
+渲染器却从来没有画过那条红线——文案在描述一个不存在的东西。
+
+### 修法：给每个换肤主题一份页面构件（furniture）
+
+新增 `wengao_ppt/furniture.py`，主题声明一组图元，`apply_theme` 在样式改完后
+把它们画到每一页并压到最底层：
+
+| 主题 | 构件 id | 图元（边 / 跨度 / 粗细 in / 颜色） | 读起来像 |
+| --- | --- | --- | --- |
+| basic | `headband` | 顶通栏 0.085 藏蓝 + 其下 0.022 与 0.010 正红双线 | 红头文件 |
+| business | `grid` | 左竖轨通高 0.10 钢青 + 左上 0–34% 0.075 + 右下 66–100% 0.075 琥珀 + 右缘 32–36% 刻度 | 网格 / 角标 |
+| dark | `neonframe` | 上下通栏 0.035 霓虹青 + 左右 10–90% 0.035 品红 | 霓虹边框 |
+| minimal | `quiet` | 只有一条：顶部 0.24in 处、横向 7.5–20% 的 0.012 陶土细线 | 克制 |
+| visual-dark | `stage` | 底通栏 0.055 金铜 + 左下 0–30% 0.09 金铜轨 + 右上 86–100% 0.05 珊瑚 | 舞台压边 |
+| adaptive | —（不声明） | 不画任何构件 | 它的风格就是"不换肤" |
+
+### 三条硬约束，每条都有实测依据
+
+1. **细长**（`thickness_in < 0.15`）：`scripts/layout_gate.py` 的 HG09
+   EMPTY_CONTAINER 会把"不承载文字的实底形状"判缺陷，但显式豁免
+   `width < 0.15 or height < 0.15` 的细长条（"色带/引条是设计用途"）。
+   超过阈值不是"不好看"，是**会被判缺陷**——所以 `validate()` 在上限处失败关闭。
+2. **只落留白**：每个图元先与页面上所有既有形状的包围盒相交检查，相交就跳过并
+   记账（页面/图元/命中框）。这样既不挡字，也不会改变 HG09"文字对底色"的取值
+   （门禁用 notext 渲染取底色，色带跑到文字下面就会被当成底色）。
+3. **压到最底层**：插入后立即移到 `spTree` 索引 2，内容永远在上面。
+
+### 落地时踩到的两个坑
+
+* **家具被自己挡住**：第一版把"新画的构件"也加进避让清单，于是 business 的
+  左上角标与左竖轨互相判对方为"压住内容"，6 页全部被跳过——页面上只剩一根
+  光秃秃的竖条。改为**只避让页面原有内容**：角标与竖轨本来就是一套图形。
+* **`resolve_theme` 的 params 是白名单**：新增 `furniture` 字段后 `apply_theme`
+  拿不到它（`params` 只挑了 colors/fonts/sizes/slide_bg/visual_upgrade），
+  表现为"声明写好了但一条都不画"。白名单已补。
+
+### 身份：构件进摘要，风格名仍不进
+
+`furniture` 加入 `_DIGEST_FIELDS`——它真的改变每页的输出字节，"同一主题不同构件"
+必须是不同身份。`style`（风格名/一句话/标签）仍然不进：它只改界面的说法。
+`REGISTRY_VERSION` `1.2.0 → 1.3.0`；五套主题版本各加一级
+（basic 1.1.0 / business 1.3.0 / dark 1.2.0 / minimal 1.2.0 / visual-dark 1.1.0）。
+历史任务不受影响：`resolve_theme` 的冻结身份在任务创建时就存进 `job.json`。
+
+### 判据：19 测试 / 43 子测试（`tests/test_theme_furniture.py`）
+
+* 注册表：每个换肤主题都声明构件；`adaptive` 必须为空；声明合法；`list_themes`
+  暴露 `furniture`；改一条粗细必须改 `config_digest`，还原必须回到原值；
+  四类非法声明（粗细 ≥0.15 / 边名非法 / 区间倒挂 / 颜色非调色板令牌）必须判错；
+* 构成互异：15 对签名两两不同；每对在**条数 / 边分布 / 粗细集合 / 跨度**四项里
+  至少差两项。加"跨度"这条轴是因为 business 与 dark 前两项完全相同（都是 4 条、
+  都用齐四条边），差别只在"L 形短带"还是"通栏 + 半高"；
+* 安全：所有落位图元都满足 HG09 豁免条件；与内容零相交；构件在内容之下；
+  可复现（两次套用字节相同）；整页铺满时**放弃**并逐条记账；
+  `preserve` 与 `adaptive` 两条路径不出现 `furniture` 键。
+
+### 真门禁复核（不是只跑单测）
+
+五套换肤结果各跑一次真 `layout_gate.check()`（真 LibreOffice 渲染 + 无字渲染 +
+冻结策略）：**findings = 0**，五个主题全部零命中——没有一条色带被误判成
+空容器，也没有一处对比度被拉低。证据 `reports/themes-20261104/FURNITURE_GATE.json`。
+
+### 真渲染量化（同稿 × 6 主题，重跑）
+
+`GALLERY.json`：`verdict=PASS`、6 主题 × 6 页、`failures=[]`，每条记录新增
+`furniture` 字段（id / 实际画上去的图元数 / 被跳过的图元数）。15 对组合
+**无一对为 0**，而且差距普遍变大：
+
+```
+                        §1.9（只有配色/字体）   §1.10（加页面构件）
+basic vs business       0.19                  0.3524
+basic vs minimal        0.128                 0.3086
+最接近的一对            basic|minimal 0.128   minimal|adaptive 0.1884
+深 ↔ 浅                 0.457–0.653           0.4345 起
+```
+
+剩下最近的一对是 `minimal|adaptive`（0.188）——这是**应该的**：极简的刻意克制
+与"不换肤、只精修"原本就最接近；再把它拉开就等于破坏极简本身。两条风格不同的
+判据（注册表互异 + 真渲染差异非 0）都满足，不强求这一对变大。
+
+### 前端：卡片与成品对齐
+
+主题卡原先只按 `style.preview` 画"内容示意"，构件一加，卡片就和拿到的成品不是
+一回事。新增 `furnitureMarks(t)` 按 `furniture.id` 一比一复刻那几条（只占卡片
+边缘，不碰中间内容示意），并把 basic 卡原先自绘的顶部横杠换成真实构件。
+真 Chrome 走查（8901，Playwright `channel=chrome`）：5 张卡、`page_errors=[]`、
+每张卡构件条数 6/0/13/7/5（含内容示意），截图 `theme-cards.png`。
+
+---
+
 ## 2. 阻断与未完成（不得据此声明完成）
 
 1. **首任务 run/validate/export 未在干净安装根上跑通**：外部依赖（视觉端点 8080/11434）缺失，
-   本机无多模态权重、且按边界不下载，见 §1.4。本轮重建载荷后复跑：安装器语义 12/12 PASS，
-   `first_task_run` 仍是唯一 `blocked_external`，`run_ready=False`。
+   本机无多模态权重、且按边界不下载，见 §1.4。§1.10 改完注册表后重建载荷（`e651c281`，
+   212 成员）并复跑：安装器语义 **12/12 PASS**，`first_task_run` 仍是唯一
+   `blocked_external`，`run_ready=False`。
 2. **U1 监督方 UI 全链复验**（8823，Cua）：仍未做。§1.8 只覆盖工作台三视图的**界面走查**
    （真 Chrome，8899 回环），不含"材料 → 生成 → 校验 → 导出"在 UI 上的端到端。
 3. **U2 原生实播 + 关闭重开录像**：本机 GUI 缺字与截图超时问题未解，未做。
 4. **U5 发布**：未做。授权闸门（全部真实验收通过）尚未满足。
 5. **U6 许可证**：仍待用户决定；本轮不写任何许可证文件。
 6. **U7 的 PowerPoint 兼容性**：本机无 PowerPoint，只有结构门禁，不构成兼容性结论。
-   §1.9 的六主题画廊同样是 **LibreOffice 渲染**，不能替代 PowerPoint 实测。
+   §1.9 / §1.10 的六主题画廊同样是 **LibreOffice 渲染**，不能替代 PowerPoint 实测；
+   新加的页面构件（色带/细线）在 PowerPoint 里的观感**未验证**。
 7. **载荷缺少 `assets/visual_img/`**：视觉升级主题无示意配图；许可未定，不擅自打包。
+   §1.10 的 `stage` 构件只画色带，不需要配图，所以这一条不影响构件层。
 8. **历史证据未入库**：`reports/browser_experience`、`reports/install-cleanroom-20261104*`、
    `reports/r5`、`reports/p1-candidates` 等（合计约 60 MB）仍是未跟踪状态，本轮未替用户
    决定是否入库。
@@ -411,9 +516,9 @@ env -u CODEBUDDY_SAFE_DELETE_BULK_STATE_DIR -u CODEBUDDY_TOOL_CALL_ID \
 
 # 3) 干净安装根实测（安装根须不存在或为空）
 .venv/bin/python scripts/cleanroom_install_check.py \
-  --payload dist/wengao-ppt-0.1.0-c323d7b3 \
-  --root "work/cleanroom/安装 根 K" \
-  --report reports/install-cleanroom-20261104-r3 \
+  --payload dist/wengao-ppt-0.1.0-e651c281 \
+  --root "work/cleanroom/安装 根 L" \
+  --report reports/install-cleanroom-20261104-r4 \
   --python "$PWD/.venv/bin/python"
 
 # 4) 六主题真渲染画廊（先造中性原稿，再逐主题套用 + 渲染 + 量化）
@@ -423,8 +528,12 @@ env -u CODEBUDDY_SAFE_DELETE_BULK_STATE_DIR -u CODEBUDDY_TOOL_CALL_ID \
   --source reports/themes-20261104/source-neutral.pptx \
   --out reports/themes-20261104 --dpi 96
 
-# 5) 只跑主题风格判据
-.venv/bin/python -m pytest tests/test_theme_six_styles.py -q
+# 5) 主题判据：风格（配色/字体）与页面构成（构件）两组
+.venv/bin/python -m pytest tests/test_theme_six_styles.py tests/test_theme_furniture.py -q
+
+# 6) 构件成品的真门禁复核（五套各跑一次 layout_gate.check，期望 findings=0）
+#    见 reports/themes-20261104/FURNITURE_GATE.json；命令与 §1.10 描述的流程一致：
+#    套用 → render_pdf → render_pngs(full) → strip_text_pptx → 无字渲染 → check(policy)
 ```
 
 > 画廊脚本会先 `rmtree` 目标渲染目录再出图——**不要**去掉这一步，否则上一轮多页原稿的
@@ -435,11 +544,13 @@ env -u CODEBUDDY_SAFE_DELETE_BULK_STATE_DIR -u CODEBUDDY_TOOL_CALL_ID \
 ## 4. 本轮交付物 SHA256
 
 ```
-24cb769e3beeb7ee5145a2742c1e7fbd2a5d96c068ea24608ed6dd6780c10618  wengao_ppt/theme.py
-3ec536f0e466d81a5af1355750e48a10962a9e8be5bde0f5b0e6d74f509fd0be  workbench/index.html
+5032cad98880977bb268bfe898b4a4998b264cf048362d4cf9e405dbada925fb  wengao_ppt/furniture.py
+d502bb0798012dc8cc2ddfc5f3d526aae4095721a8ec85d090ac021839d9ef3b  wengao_ppt/theme.py
+b9d4e9d39d46aae41073fa2d9d0f914f991081f063988cb62b74ecfddd404ff1  tests/test_theme_furniture.py
+7e94b472f9e89101cb6a4c8ec54bf3dc26b4971ed36fa1bb5c4d13458a5f413c  tests/test_wengao_business_muted_contrast_margin.py
+c678c485aa8b390451d87b037bb7233dea0858a01cac19dc05fdc7273a2b6544  workbench/index.html
+d4ab431dacedeec453b7433aa4cc9d986d278ddd6fb158b9dbde11ef3c0fec16  scripts/theme_gallery.py
 3ad46ade93fbaf52fc7b91c249738cef5864fb67d70d81fd7d92454d6ea69a43  tests/test_theme_six_styles.py
-2737452f745fbfb3d97f2057fc5cc9c1393171f5822e22fc1fbc408b59ab0775  tests/test_wengao_business_muted_contrast_margin.py
-41a55410b4cf25af99ea02ad2a06f693e076d7233292753c087b1023b2fc356b  scripts/theme_gallery.py
 f5b7429a9644f432654af89dda611bc549cd9f46af2357d610db97bd0fad074e  scripts/make_theme_source_deck.py
 3fbe7a5d7368944d1cbf142ba0eda56b6850d63d3ad93cb627b9bdd2e83235b6  SKILL.md
 cd0a0e2825563a12e5008040fd6481b0f39c2a802bc03ea781bb125f37850a54  scripts/browser_experience.py
@@ -460,14 +571,17 @@ cbc58f7ccfdd49e4503a5f9be318ad00596fec3ea1740faadf50f305870123f3  tests/test_ins
 相关证据文件：
 
 ```
-reports/install-cleanroom-20261104-r3/CLEANROOM_INSTALL.json     干净安装根实测全记录（本轮，载荷 c323d7b3）
-reports/install-cleanroom-20261104-final/CLEANROOM_INSTALL.json   上一轮对照（载荷 07e04962）
+reports/install-cleanroom-20261104-r4/CLEANROOM_INSTALL.json     干净安装根实测全记录（本轮，载荷 e651c281）
+reports/install-cleanroom-20261104-r3/CLEANROOM_INSTALL.json     上一轮（载荷 c323d7b3）
+reports/install-cleanroom-20261104-final/CLEANROOM_INSTALL.json   再上一轮对照（载荷 07e04962）
 reports/install-cleanroom-20261104-final/first-task/              首任务输入（3 页，脚本自建）
-reports/themes-20261104/GALLERY.json                              六主题 × 6 页真渲染与两两量化
+reports/themes-20261104/GALLERY.json                              六主题 × 6 页真渲染、构件记账与两两量化
+reports/themes-20261104/FURNITURE_GATE.json                       五套构件成品的真门禁结果（findings=0）
 reports/themes-20261104/gallery.html                              同一份数据的可浏览版
 reports/themes-20261104/pptx/                                     6 个主题各自的成品 pptx
 reports/themes-20261104/render/                                   逐页 PNG（pdf + png + thumb 两档）
-reports/themes-20261104/theme-cards.png                           工作台主题卡实拍
+reports/themes-20261104/theme-cards.png                           工作台主题卡实拍（构件已画上去）
+reports/themes-20261104/CARD_SMOKE.json                           卡片走查记录（5 张卡 / page_errors=[]）
 reports/workbench-remove-edit-20261104/SMOKE.json                 工作台三视图 + 旧深链走查结果
 reports/ooxml-sweep-20261104/SWEEP.json                           116 件历史导出件结构回归结果
 work/ooxml/latest.json                                            15 页真实导出件结构门禁结果

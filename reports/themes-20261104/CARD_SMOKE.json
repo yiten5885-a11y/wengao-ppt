@@ -1,0 +1,20 @@
+{
+ "url": "http://127.0.0.1:8901/",
+ "errors": [],
+ "theme_cards": 5,
+ "card_labels": [
+  "稳稿基础主题（旧默认） | 藏蓝公文 | 公文 / 汇报 | wengao-basic · v1.1.0",
+  "跟随原稿配色 | 原稿适配精修 | 原稿本色 | 原稿 / 精修 | wengao-adaptive · v1.0.0",
+  "商务清晰 | 钢青商务 | 商务 / 汇报 | wengao-business · v1.3.0",
+  "01 | 深色科技 | 深海霓虹 | 科技 / 产品发布 | wengao-dark · v1.2.0",
+  "极简阅读 | 暖白静读 | 阅读 / 长文 | wengao-minimal · v1.2.0"
+ ],
+ "furniture_marks_per_card": [
+  6,
+  0,
+  13,
+  7,
+  5
+ ],
+ "page_errors": []
+}

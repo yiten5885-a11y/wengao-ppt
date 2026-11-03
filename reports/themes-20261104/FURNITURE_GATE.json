@@ -1,0 +1,32 @@
+{
+ "wengao-basic": {
+  "findings": 0,
+  "by_type": {},
+  "hg09": [],
+  "pages": 6
+ },
+ "wengao-business": {
+  "findings": 0,
+  "by_type": {},
+  "hg09": [],
+  "pages": 6
+ },
+ "wengao-dark": {
+  "findings": 0,
+  "by_type": {},
+  "hg09": [],
+  "pages": 6
+ },
+ "wengao-minimal": {
+  "findings": 0,
+  "by_type": {},
+  "hg09": [],
+  "pages": 6
+ },
+ "wengao-visual-dark": {
+  "findings": 0,
+  "by_type": {},
+  "hg09": [],
+  "pages": 6
+ }
+}

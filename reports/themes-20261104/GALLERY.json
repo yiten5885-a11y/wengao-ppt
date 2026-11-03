@@ -22,11 +22,11 @@
         ],
         "preview": "official"
       },
-      "version": "1.0.0",
-      "config_digest": "67d8542980ee4a169cbb6a1eb3724581dbacd9f6e4f68cf0ff13911b07ae7ded",
+      "version": "1.1.0",
+      "config_digest": "c9c563ccc0feb8b5ec465bd2ddcdab1e94ba588e36766281814f147b83bc56b5",
       "application": "APPLIED",
       "pptx": "pptx/wengao-basic.pptx",
-      "pptx_sha256": "b4c15ffa9bf5cbf0e587a88572d3799fdb2287319ff3df74b0d7a31496611d78",
+      "pptx_sha256": "ddd9ae67cba13b81b9b096386b68a948f5f0a7abedf871e9a338b2f1737a0dd1",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-basic/png/page-01.png",
@@ -36,6 +36,16 @@
         "render/wengao-basic/png/page-05.png",
         "render/wengao-basic/png/page-06.png"
       ],
+      "furniture": {
+        "id": "headband",
+        "parts": 3,
+        "declared": 3,
+        "pages": 6,
+        "added": 18,
+        "pages_with_furniture": 6,
+        "skipped": [],
+        "skipped_count": 0
+      },
       "contrast_claim": "ASSERTED",
       "min_ratio": 6.9,
       "swatches": [
@@ -61,11 +71,11 @@
         ],
         "preview": "grid"
       },
-      "version": "1.2.0",
-      "config_digest": "a4ecbe05d097e64383d1fa85f5cc861ec04686abe42684da66d1f7325495eac0",
+      "version": "1.3.0",
+      "config_digest": "cdcfb9c094cd2913edd1ee13273851c49be945546d8af53db2deac05cfc6e112",
       "application": "APPLIED",
       "pptx": "pptx/wengao-business.pptx",
-      "pptx_sha256": "2e0d354a7fb247628828146782799878ee7965b6450267ab16e22dcf1e6362f5",
+      "pptx_sha256": "7e6ae35fb4b4fcc29883151136d72d4cc6565e05337aaa2c320bcc7889ff5924",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-business/png/page-01.png",
@@ -75,6 +85,16 @@
         "render/wengao-business/png/page-05.png",
         "render/wengao-business/png/page-06.png"
       ],
+      "furniture": {
+        "id": "grid",
+        "parts": 4,
+        "declared": 4,
+        "pages": 6,
+        "added": 24,
+        "pages_with_furniture": 6,
+        "skipped": [],
+        "skipped_count": 0
+      },
       "contrast_claim": "ASSERTED",
       "min_ratio": 7.84,
       "swatches": [
@@ -100,11 +120,11 @@
         ],
         "preview": "neon"
       },
-      "version": "1.1.0",
-      "config_digest": "a9a7dd857958c4b620ec2d85ec6b1db78cfebe90563e91ab0114980cf6286792",
+      "version": "1.2.0",
+      "config_digest": "0b0ef9100685461169fd378c876237fd29f0b7eced8f1dd7ff93f25f6800f535",
       "application": "APPLIED",
       "pptx": "pptx/wengao-dark.pptx",
-      "pptx_sha256": "df2924b57c36735afbba878eb3b3518e5ba33fcacb555a7d445bfa9cb16952e3",
+      "pptx_sha256": "fc9ae3e873d5e3f63a64730fdf250ec040b3e0d986a012aad51b0c4aa3abd998",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-dark/png/page-01.png",
@@ -114,6 +134,16 @@
         "render/wengao-dark/png/page-05.png",
         "render/wengao-dark/png/page-06.png"
       ],
+      "furniture": {
+        "id": "neonframe",
+        "parts": 4,
+        "declared": 4,
+        "pages": 6,
+        "added": 24,
+        "pages_with_furniture": 6,
+        "skipped": [],
+        "skipped_count": 0
+      },
       "contrast_claim": "ASSERTED",
       "min_ratio": 9.89,
       "swatches": [
@@ -139,11 +169,11 @@
         ],
         "preview": "quiet"
       },
-      "version": "1.1.0",
-      "config_digest": "3dea3c26e010a000390f2d9a14659b9a8353ad5adef59cf2aa84e4f19221c279",
+      "version": "1.2.0",
+      "config_digest": "08f497c42b95b78ff65496afd6fe0f7b464040f5133d14b118da7eac8ca29fe0",
       "application": "APPLIED",
       "pptx": "pptx/wengao-minimal.pptx",
-      "pptx_sha256": "c579706b5b778c371fc05d157c6176c90d5d706f7d8ce0d6caedda0a5a8843dd",
+      "pptx_sha256": "0ee62ba43e1dd42ebd79b8971dcfc1cec7410bfbc4180d3fdd463616e9bd0a20",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-minimal/png/page-01.png",
@@ -153,6 +183,16 @@
         "render/wengao-minimal/png/page-05.png",
         "render/wengao-minimal/png/page-06.png"
       ],
+      "furniture": {
+        "id": "quiet",
+        "parts": 1,
+        "declared": 1,
+        "pages": 6,
+        "added": 6,
+        "pages_with_furniture": 6,
+        "skipped": [],
+        "skipped_count": 0
+      },
       "contrast_claim": "ASSERTED",
       "min_ratio": 11.03,
       "swatches": [
@@ -181,7 +221,7 @@
       "config_digest": "0b0518c3d82003cfa45046d349991bb0edabf8b3fc16369115bef111530c9b19",
       "application": "REFINED_ORIGINAL",
       "pptx": "pptx/wengao-adaptive.pptx",
-      "pptx_sha256": "e2557a1a7e15ec38b96317e765377cadbc4649203b154f283a4ffc8f218aa4f4",
+      "pptx_sha256": "1295707f18b5f941933d1aa0045287ecf55eff72d99ff55febe6697d416a1967",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-adaptive/png/page-01.png",
@@ -191,6 +231,7 @@
         "render/wengao-adaptive/png/page-05.png",
         "render/wengao-adaptive/png/page-06.png"
       ],
+      "furniture": {},
       "contrast_claim": null,
       "min_ratio": null,
       "swatches": []
@@ -211,11 +252,11 @@
         ],
         "preview": "cinema"
       },
-      "version": "1.0.0",
-      "config_digest": "b834d6ba2be15119b862d215d64fe234fde4368a7c2d57ea723c709043a690c3",
+      "version": "1.1.0",
+      "config_digest": "efd6988c1fec17ca4d5cbe0dc74d435728bc782347ad6784b711a97dfd41d006",
       "application": "APPLIED",
       "pptx": "pptx/wengao-visual-dark.pptx",
-      "pptx_sha256": "9167ffbd5680c34120f56fe8626878c3cc163c011ebe27ae023c20ebd61422af",
+      "pptx_sha256": "3a276e127f7066045b635cc57ea307b131d441449d3885fb859ec235dd192ceb",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-visual-dark/png/page-01.png",
@@ -225,6 +266,16 @@
         "render/wengao-visual-dark/png/page-05.png",
         "render/wengao-visual-dark/png/page-06.png"
       ],
+      "furniture": {
+        "id": "stage",
+        "parts": 3,
+        "declared": 3,
+        "pages": 6,
+        "added": 18,
+        "pages_with_furniture": 6,
+        "skipped": [],
+        "skipped_count": 0
+      },
       "contrast_claim": "ASSERTED",
       "min_ratio": 6.77,
       "swatches": [
@@ -237,686 +288,686 @@
   ],
   "pairwise_page_diff": {
     "wengao-basic|wengao-business": {
-      "page_diff": 0.0132,
-      "ink_diff": 0.2623,
-      "hist_dist": 0.0219,
-      "ink_area": 0.0774,
+      "page_diff": 0.0322,
+      "ink_diff": 0.3524,
+      "hist_dist": 0.0374,
+      "ink_area": 0.1165,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0056,
-          "ink_diff": 0.3766,
-          "hist_dist": 0.0039,
-          "ink_area": 0.0147
+          "page_diff": 0.0246,
+          "ink_diff": 0.4554,
+          "hist_dist": 0.0201,
+          "ink_area": 0.0538
         },
         {
-          "page_diff": 0.0309,
-          "ink_diff": 0.3294,
-          "hist_dist": 0.0297,
-          "ink_area": 0.0934
+          "page_diff": 0.0499,
+          "ink_diff": 0.3753,
+          "hist_dist": 0.044,
+          "ink_area": 0.1325
         },
         {
-          "page_diff": 0.0192,
-          "ink_diff": 0.0739,
-          "hist_dist": 0.0807,
-          "ink_area": 0.2596
+          "page_diff": 0.0383,
+          "ink_diff": 0.1277,
+          "hist_dist": 0.0954,
+          "ink_area": 0.2986
         },
         {
-          "page_diff": 0.0052,
-          "ink_diff": 0.1295,
-          "hist_dist": 0.0036,
-          "ink_area": 0.0399
+          "page_diff": 0.0242,
+          "ink_diff": 0.3054,
+          "hist_dist": 0.02,
+          "ink_area": 0.079
         },
         {
-          "page_diff": 0.0151,
-          "ink_diff": 0.3105,
-          "hist_dist": 0.0103,
-          "ink_area": 0.0485
+          "page_diff": 0.0342,
+          "ink_diff": 0.3884,
+          "hist_dist": 0.0246,
+          "ink_area": 0.0876
         },
         {
-          "page_diff": 0.003,
-          "ink_diff": 0.3541,
-          "hist_dist": 0.0033,
-          "ink_area": 0.0083
+          "page_diff": 0.022,
+          "ink_diff": 0.4622,
+          "hist_dist": 0.0201,
+          "ink_area": 0.0474
         }
       ]
     },
     "wengao-basic|wengao-dark": {
-      "page_diff": 0.8907,
-      "ink_diff": 0.493,
+      "page_diff": 0.873,
+      "ink_diff": 0.4824,
       "hist_dist": 0.984,
-      "ink_area": 0.1034,
+      "ink_area": 0.139,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9124,
-          "ink_diff": 0.4106,
+          "page_diff": 0.8946,
+          "ink_diff": 0.4189,
           "hist_dist": 0.9926,
-          "ink_area": 0.0154
+          "ink_area": 0.051
         },
         {
-          "page_diff": 0.8751,
-          "ink_diff": 0.4486,
+          "page_diff": 0.8574,
+          "ink_diff": 0.4415,
           "hist_dist": 0.9794,
-          "ink_area": 0.0952
+          "ink_area": 0.1308
         },
         {
-          "page_diff": 0.8427,
-          "ink_diff": 0.7296,
+          "page_diff": 0.825,
+          "ink_diff": 0.7049,
           "hist_dist": 0.9779,
-          "ink_area": 0.4067
+          "ink_area": 0.4422
         },
         {
-          "page_diff": 0.9019,
-          "ink_diff": 0.5089,
+          "page_diff": 0.8842,
+          "ink_diff": 0.4704,
           "hist_dist": 0.984,
-          "ink_area": 0.0442
+          "ink_area": 0.0798
         },
         {
-          "page_diff": 0.8963,
-          "ink_diff": 0.4497,
+          "page_diff": 0.8785,
+          "ink_diff": 0.4385,
           "hist_dist": 0.9729,
-          "ink_area": 0.0507
+          "ink_area": 0.0863
         },
         {
-          "page_diff": 0.916,
-          "ink_diff": 0.4105,
+          "page_diff": 0.8983,
+          "ink_diff": 0.4202,
           "hist_dist": 0.9972,
-          "ink_area": 0.0083
+          "ink_area": 0.0439
         }
       ]
     },
     "wengao-basic|wengao-minimal": {
-      "page_diff": 0.0411,
-      "ink_diff": 0.1277,
-      "hist_dist": 0.0204,
-      "ink_area": 0.0685,
+      "page_diff": 0.0534,
+      "ink_diff": 0.3086,
+      "hist_dist": 0.0382,
+      "ink_area": 0.0944,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0329,
-          "ink_diff": 0.1694,
-          "hist_dist": 0.0023,
-          "ink_area": 0.0111
+          "page_diff": 0.0452,
+          "ink_diff": 0.407,
+          "hist_dist": 0.0213,
+          "ink_area": 0.0369
         },
         {
-          "page_diff": 0.0376,
-          "ink_diff": 0.1233,
-          "hist_dist": 0.0285,
-          "ink_area": 0.0682
+          "page_diff": 0.05,
+          "ink_diff": 0.2294,
+          "hist_dist": 0.0427,
+          "ink_area": 0.094
         },
         {
-          "page_diff": 0.0771,
-          "ink_diff": 0.2306,
-          "hist_dist": 0.0811,
-          "ink_area": 0.2524
+          "page_diff": 0.0894,
+          "ink_diff": 0.2565,
+          "hist_dist": 0.1005,
+          "ink_area": 0.2782
         },
         {
-          "page_diff": 0.0352,
-          "ink_diff": 0.1311,
-          "hist_dist": 0.004,
-          "ink_area": 0.0384
+          "page_diff": 0.0475,
+          "ink_diff": 0.2832,
+          "hist_dist": 0.0209,
+          "ink_area": 0.0643
         },
         {
-          "page_diff": 0.0321,
-          "ink_diff": 0.0523,
-          "hist_dist": 0.0043,
-          "ink_area": 0.0356
+          "page_diff": 0.0444,
+          "ink_diff": 0.2443,
+          "hist_dist": 0.0227,
+          "ink_area": 0.0615
         },
         {
-          "page_diff": 0.0315,
-          "ink_diff": 0.0596,
-          "hist_dist": 0.0025,
-          "ink_area": 0.0054
+          "page_diff": 0.0439,
+          "ink_diff": 0.4315,
+          "hist_dist": 0.0214,
+          "ink_area": 0.0312
         }
       ]
     },
     "wengao-basic|wengao-adaptive": {
-      "page_diff": 0.0257,
-      "ink_diff": 0.2344,
-      "hist_dist": 0.0231,
-      "ink_area": 0.1639,
+      "page_diff": 0.0395,
+      "ink_diff": 0.2996,
+      "hist_dist": 0.0378,
+      "ink_area": 0.1889,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0062,
-          "ink_diff": 0.3782,
-          "hist_dist": 0.0036,
-          "ink_area": 0.0162
+          "page_diff": 0.02,
+          "ink_diff": 0.4825,
+          "hist_dist": 0.0207,
+          "ink_area": 0.0412
         },
         {
-          "page_diff": 0.0394,
-          "ink_diff": 0.2036,
-          "hist_dist": 0.0382,
-          "ink_area": 0.1931
+          "page_diff": 0.0532,
+          "ink_diff": 0.2434,
+          "hist_dist": 0.0427,
+          "ink_area": 0.2181
         },
         {
-          "page_diff": 0.0613,
-          "ink_diff": 0.2361,
-          "hist_dist": 0.0805,
-          "ink_area": 0.2593
+          "page_diff": 0.0751,
+          "ink_diff": 0.2637,
+          "hist_dist": 0.1,
+          "ink_area": 0.2843
         },
         {
-          "page_diff": 0.0217,
-          "ink_diff": 0.0602,
-          "hist_dist": 0.0032,
-          "ink_area": 0.3593
+          "page_diff": 0.0355,
+          "ink_diff": 0.0921,
+          "hist_dist": 0.0206,
+          "ink_area": 0.3843
         },
         {
-          "page_diff": 0.0223,
-          "ink_diff": 0.151,
-          "hist_dist": 0.0093,
-          "ink_area": 0.1474
+          "page_diff": 0.0361,
+          "ink_diff": 0.2089,
+          "hist_dist": 0.0212,
+          "ink_area": 0.1724
         },
         {
-          "page_diff": 0.0031,
-          "ink_diff": 0.3772,
-          "hist_dist": 0.0037,
-          "ink_area": 0.0083
+          "page_diff": 0.0169,
+          "ink_diff": 0.5071,
+          "hist_dist": 0.0214,
+          "ink_area": 0.0333
         }
       ]
     },
     "wengao-basic|wengao-visual-dark": {
-      "page_diff": 0.899,
-      "ink_diff": 0.457,
+      "page_diff": 0.8796,
+      "ink_diff": 0.4345,
       "hist_dist": 0.9806,
-      "ink_area": 0.078,
+      "ink_area": 0.1133,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9242,
-          "ink_diff": 0.3875,
+          "page_diff": 0.9048,
+          "ink_diff": 0.3845,
           "hist_dist": 0.9928,
-          "ink_area": 0.0143
+          "ink_area": 0.0496
         },
         {
-          "page_diff": 0.8836,
-          "ink_diff": 0.4111,
+          "page_diff": 0.8642,
+          "ink_diff": 0.4034,
           "hist_dist": 0.9556,
-          "ink_area": 0.0925
+          "ink_area": 0.1277
         },
         {
-          "page_diff": 0.8368,
-          "ink_diff": 0.5795,
+          "page_diff": 0.8174,
+          "ink_diff": 0.556,
           "hist_dist": 0.9848,
-          "ink_area": 0.2596
+          "ink_area": 0.2948
         },
         {
-          "page_diff": 0.9133,
-          "ink_diff": 0.5117,
+          "page_diff": 0.8939,
+          "ink_diff": 0.4547,
           "hist_dist": 0.9811,
-          "ink_area": 0.0442
+          "ink_area": 0.0795
         },
         {
-          "page_diff": 0.9081,
-          "ink_diff": 0.4494,
-          "hist_dist": 0.9715,
-          "ink_area": 0.0494
+          "page_diff": 0.8887,
+          "ink_diff": 0.4218,
+          "hist_dist": 0.9714,
+          "ink_area": 0.0847
         },
         {
-          "page_diff": 0.9278,
-          "ink_diff": 0.4027,
+          "page_diff": 0.9084,
+          "ink_diff": 0.3868,
           "hist_dist": 0.998,
-          "ink_area": 0.0079
+          "ink_area": 0.0432
         }
       ]
     },
     "wengao-business|wengao-dark": {
-      "page_diff": 0.8929,
-      "ink_diff": 0.5115,
-      "hist_dist": 0.9836,
-      "ink_area": 0.0985,
+      "page_diff": 0.8782,
+      "ink_diff": 0.4936,
+      "hist_dist": 0.9807,
+      "ink_area": 0.1281,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9129,
-          "ink_diff": 0.4132,
-          "hist_dist": 0.9921,
-          "ink_area": 0.0144
+          "page_diff": 0.8983,
+          "ink_diff": 0.4208,
+          "hist_dist": 0.9893,
+          "ink_area": 0.044
         },
         {
-          "page_diff": 0.8823,
-          "ink_diff": 0.4518,
-          "hist_dist": 0.9787,
-          "ink_area": 0.0805
+          "page_diff": 0.8676,
+          "ink_diff": 0.4444,
+          "hist_dist": 0.9759,
+          "ink_area": 0.1101
         },
         {
-          "page_diff": 0.8389,
-          "ink_diff": 0.7181,
-          "hist_dist": 0.9827,
-          "ink_area": 0.4023
+          "page_diff": 0.8242,
+          "ink_diff": 0.698,
+          "hist_dist": 0.9799,
+          "ink_area": 0.4319
         },
         {
-          "page_diff": 0.9033,
-          "ink_diff": 0.527,
-          "hist_dist": 0.9826,
-          "ink_area": 0.0428
+          "page_diff": 0.8886,
+          "ink_diff": 0.4851,
+          "hist_dist": 0.979,
+          "ink_area": 0.0724
         },
         {
-          "page_diff": 0.9029,
-          "ink_diff": 0.531,
-          "hist_dist": 0.9685,
-          "ink_area": 0.0441
+          "page_diff": 0.8882,
+          "ink_diff": 0.4883,
+          "hist_dist": 0.9657,
+          "ink_area": 0.0737
         },
         {
-          "page_diff": 0.9168,
-          "ink_diff": 0.4281,
-          "hist_dist": 0.9972,
-          "ink_area": 0.007
+          "page_diff": 0.9021,
+          "ink_diff": 0.4252,
+          "hist_dist": 0.9944,
+          "ink_area": 0.0366
         }
       ]
     },
     "wengao-business|wengao-minimal": {
-      "page_diff": 0.0496,
-      "ink_diff": 0.3032,
-      "hist_dist": 0.0243,
-      "ink_area": 0.0781,
+      "page_diff": 0.0596,
+      "ink_diff": 0.3731,
+      "hist_dist": 0.0389,
+      "ink_area": 0.0988,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.036,
-          "ink_diff": 0.3529,
-          "hist_dist": 0.004,
-          "ink_area": 0.0143
+          "page_diff": 0.046,
+          "ink_diff": 0.448,
+          "hist_dist": 0.0185,
+          "ink_area": 0.035
         },
         {
-          "page_diff": 0.0613,
-          "ink_diff": 0.3468,
-          "hist_dist": 0.0399,
-          "ink_area": 0.0948
+          "page_diff": 0.0712,
+          "ink_diff": 0.3767,
+          "hist_dist": 0.0541,
+          "ink_area": 0.1155
         },
         {
-          "page_diff": 0.0825,
-          "ink_diff": 0.2454,
-          "hist_dist": 0.0841,
-          "ink_area": 0.2602
+          "page_diff": 0.0925,
+          "ink_diff": 0.2652,
+          "hist_dist": 0.0992,
+          "ink_area": 0.2809
         },
         {
-          "page_diff": 0.0386,
-          "ink_diff": 0.2032,
-          "hist_dist": 0.0038,
-          "ink_area": 0.042
+          "page_diff": 0.0486,
+          "ink_diff": 0.3057,
+          "hist_dist": 0.0181,
+          "ink_area": 0.0627
         },
         {
-          "page_diff": 0.0452,
-          "ink_diff": 0.3146,
-          "hist_dist": 0.0105,
-          "ink_area": 0.0488
+          "page_diff": 0.0551,
+          "ink_diff": 0.374,
+          "hist_dist": 0.025,
+          "ink_area": 0.0695
         },
         {
-          "page_diff": 0.0341,
-          "ink_diff": 0.3564,
-          "hist_dist": 0.0038,
-          "ink_area": 0.0083
+          "page_diff": 0.044,
+          "ink_diff": 0.4687,
+          "hist_dist": 0.0184,
+          "ink_area": 0.029
         }
       ]
     },
     "wengao-business|wengao-adaptive": {
-      "page_diff": 0.02,
-      "ink_diff": 0.155,
-      "hist_dist": 0.0235,
-      "ink_area": 0.16,
+      "page_diff": 0.0311,
+      "ink_diff": 0.2575,
+      "hist_dist": 0.0381,
+      "ink_area": 0.1798,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0045,
-          "ink_diff": 0.2926,
-          "hist_dist": 0.0034,
-          "ink_area": 0.0154
+          "page_diff": 0.0156,
+          "ink_diff": 0.442,
+          "hist_dist": 0.0177,
+          "ink_area": 0.0352
         },
         {
-          "page_diff": 0.0212,
-          "ink_diff": 0.1171,
-          "hist_dist": 0.0399,
-          "ink_area": 0.1807
+          "page_diff": 0.0323,
+          "ink_diff": 0.1608,
+          "hist_dist": 0.0542,
+          "ink_area": 0.2005
         },
         {
-          "page_diff": 0.0557,
-          "ink_diff": 0.2173,
-          "hist_dist": 0.0835,
-          "ink_area": 0.2559
+          "page_diff": 0.0668,
+          "ink_diff": 0.2418,
+          "hist_dist": 0.0988,
+          "ink_area": 0.2758
         },
         {
-          "page_diff": 0.0211,
-          "ink_diff": 0.0587,
-          "hist_dist": 0.0026,
-          "ink_area": 0.3589
+          "page_diff": 0.0322,
+          "ink_diff": 0.0849,
+          "hist_dist": 0.0173,
+          "ink_area": 0.3788
         },
         {
-          "page_diff": 0.0164,
-          "ink_diff": 0.1154,
-          "hist_dist": 0.0078,
-          "ink_area": 0.142
+          "page_diff": 0.0275,
+          "ink_diff": 0.1696,
+          "hist_dist": 0.0221,
+          "ink_area": 0.1619
         },
         {
-          "page_diff": 0.0009,
-          "ink_diff": 0.1286,
-          "hist_dist": 0.0038,
-          "ink_area": 0.007
+          "page_diff": 0.012,
+          "ink_diff": 0.446,
+          "hist_dist": 0.0185,
+          "ink_area": 0.0268
         }
       ]
     },
     "wengao-business|wengao-visual-dark": {
-      "page_diff": 0.9014,
-      "ink_diff": 0.4958,
+      "page_diff": 0.8877,
+      "ink_diff": 0.4704,
       "hist_dist": 0.9796,
-      "ink_area": 0.0765,
+      "ink_area": 0.1027,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9254,
-          "ink_diff": 0.4359,
+          "page_diff": 0.9116,
+          "ink_diff": 0.4189,
           "hist_dist": 0.9918,
-          "ink_area": 0.0134
+          "ink_area": 0.0396
         },
         {
-          "page_diff": 0.8918,
-          "ink_diff": 0.4773,
+          "page_diff": 0.8781,
+          "ink_diff": 0.4619,
           "hist_dist": 0.9559,
-          "ink_area": 0.088
+          "ink_area": 0.1142
         },
         {
-          "page_diff": 0.837,
-          "ink_diff": 0.5794,
-          "hist_dist": 0.9843,
-          "ink_area": 0.2587
+          "page_diff": 0.8233,
+          "ink_diff": 0.5638,
+          "hist_dist": 0.9842,
+          "ink_area": 0.285
         },
         {
-          "page_diff": 0.9141,
-          "ink_diff": 0.5251,
+          "page_diff": 0.9004,
+          "ink_diff": 0.482,
           "hist_dist": 0.9799,
-          "ink_area": 0.0437
+          "ink_area": 0.0699
         },
         {
-          "page_diff": 0.9121,
-          "ink_diff": 0.5172,
-          "hist_dist": 0.9682,
-          "ink_area": 0.0477
+          "page_diff": 0.8984,
+          "ink_diff": 0.4792,
+          "hist_dist": 0.9679,
+          "ink_area": 0.0739
         },
         {
-          "page_diff": 0.9283,
-          "ink_diff": 0.4401,
+          "page_diff": 0.9145,
+          "ink_diff": 0.4169,
           "hist_dist": 0.9977,
-          "ink_area": 0.0076
+          "ink_area": 0.0339
         }
       ]
     },
     "wengao-dark|wengao-minimal": {
-      "page_diff": 0.8599,
-      "ink_diff": 0.4793,
+      "page_diff": 0.8519,
+      "ink_diff": 0.4718,
       "hist_dist": 0.986,
-      "ink_area": 0.1034,
+      "ink_area": 0.1204,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.8814,
-          "ink_diff": 0.405,
+          "page_diff": 0.8733,
+          "ink_diff": 0.4068,
           "hist_dist": 0.9941,
-          "ink_area": 0.0155
+          "ink_area": 0.0325
         },
         {
-          "page_diff": 0.8458,
-          "ink_diff": 0.4385,
+          "page_diff": 0.8377,
+          "ink_diff": 0.434,
           "hist_dist": 0.9793,
-          "ink_area": 0.0953
+          "ink_area": 0.1123
         },
         {
-          "page_diff": 0.8107,
-          "ink_diff": 0.6965,
+          "page_diff": 0.8026,
+          "ink_diff": 0.685,
           "hist_dist": 0.9852,
-          "ink_area": 0.4063
+          "ink_area": 0.4233
         },
         {
-          "page_diff": 0.8708,
-          "ink_diff": 0.4859,
+          "page_diff": 0.8628,
+          "ink_diff": 0.4645,
           "hist_dist": 0.9843,
-          "ink_area": 0.0444
+          "ink_area": 0.0614
         },
         {
-          "page_diff": 0.8659,
-          "ink_diff": 0.4384,
+          "page_diff": 0.8578,
+          "ink_diff": 0.4309,
           "hist_dist": 0.9756,
-          "ink_area": 0.0508
+          "ink_area": 0.0678
         },
         {
-          "page_diff": 0.8849,
-          "ink_diff": 0.4114,
+          "page_diff": 0.8769,
+          "ink_diff": 0.4094,
           "hist_dist": 0.9975,
-          "ink_area": 0.0083
+          "ink_area": 0.0253
         }
       ]
     },
     "wengao-dark|wengao-adaptive": {
-      "page_diff": 0.8857,
-      "ink_diff": 0.641,
+      "page_diff": 0.8775,
+      "ink_diff": 0.6162,
       "hist_dist": 0.9824,
-      "ink_area": 0.1854,
+      "ink_area": 0.2015,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9128,
-          "ink_diff": 0.4646,
+          "page_diff": 0.9047,
+          "ink_diff": 0.4362,
           "hist_dist": 0.993,
-          "ink_area": 0.0162
+          "ink_area": 0.0323
         },
         {
-          "page_diff": 0.8749,
-          "ink_diff": 0.6742,
+          "page_diff": 0.8667,
+          "ink_diff": 0.6527,
           "hist_dist": 0.9679,
-          "ink_area": 0.1836
+          "ink_area": 0.1997
         },
         {
-          "page_diff": 0.8329,
-          "ink_diff": 0.7034,
+          "page_diff": 0.8247,
+          "ink_diff": 0.692,
           "hist_dist": 0.9823,
-          "ink_area": 0.4027
+          "ink_area": 0.4188
         },
         {
-          "page_diff": 0.8849,
-          "ink_diff": 0.8227,
+          "page_diff": 0.8768,
+          "ink_diff": 0.805,
           "hist_dist": 0.9821,
-          "ink_area": 0.3609
+          "ink_area": 0.3771
         },
         {
-          "page_diff": 0.8915,
-          "ink_diff": 0.7189,
+          "page_diff": 0.8834,
+          "ink_diff": 0.6872,
           "hist_dist": 0.9728,
-          "ink_area": 0.1421
+          "ink_area": 0.1582
         },
         {
-          "page_diff": 0.917,
-          "ink_diff": 0.4619,
+          "page_diff": 0.9089,
+          "ink_diff": 0.4239,
           "hist_dist": 0.9961,
-          "ink_area": 0.007
+          "ink_area": 0.0231
         }
       ]
     },
     "wengao-dark|wengao-visual-dark": {
-      "page_diff": 0.0423,
-      "ink_diff": 0.2814,
-      "hist_dist": 0.0294,
-      "ink_area": 0.0964,
+      "page_diff": 0.0515,
+      "ink_diff": 0.3472,
+      "hist_dist": 0.0454,
+      "ink_area": 0.117,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0302,
-          "ink_diff": 0.3783,
-          "hist_dist": 0.0058,
-          "ink_area": 0.0151
+          "page_diff": 0.0394,
+          "ink_diff": 0.4359,
+          "hist_dist": 0.0219,
+          "ink_area": 0.0356
         },
         {
-          "page_diff": 0.0513,
-          "ink_diff": 0.354,
-          "hist_dist": 0.051,
-          "ink_area": 0.0803
+          "page_diff": 0.0605,
+          "ink_diff": 0.3793,
+          "hist_dist": 0.0671,
+          "ink_area": 0.1009
         },
         {
-          "page_diff": 0.0804,
-          "ink_diff": 0.1621,
-          "hist_dist": 0.0942,
-          "ink_area": 0.4051
+          "page_diff": 0.0897,
+          "ink_diff": 0.1773,
+          "hist_dist": 0.1103,
+          "ink_area": 0.4256
         },
         {
-          "page_diff": 0.0307,
-          "ink_diff": 0.2269,
-          "hist_dist": 0.007,
-          "ink_area": 0.0295
+          "page_diff": 0.04,
+          "ink_diff": 0.3301,
+          "hist_dist": 0.023,
+          "ink_area": 0.05
         },
         {
-          "page_diff": 0.0341,
-          "ink_diff": 0.2498,
-          "hist_dist": 0.0131,
-          "ink_area": 0.041
+          "page_diff": 0.0433,
+          "ink_diff": 0.326,
+          "hist_dist": 0.0292,
+          "ink_area": 0.0615
         },
         {
-          "page_diff": 0.0271,
-          "ink_diff": 0.3174,
-          "hist_dist": 0.0051,
-          "ink_area": 0.0076
+          "page_diff": 0.0363,
+          "ink_diff": 0.4346,
+          "hist_dist": 0.0212,
+          "ink_area": 0.0282
         }
       ]
     },
     "wengao-minimal|wengao-adaptive": {
-      "page_diff": 0.0418,
-      "ink_diff": 0.1914,
+      "page_diff": 0.0419,
+      "ink_diff": 0.1884,
       "hist_dist": 0.0056,
-      "ink_area": 0.1643,
+      "ink_area": 0.1651,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.0368,
-          "ink_diff": 0.3628,
+          "page_diff": 0.037,
+          "ink_diff": 0.3558,
           "hist_dist": 0.0022,
-          "ink_area": 0.0165
+          "ink_area": 0.0173
         },
         {
-          "page_diff": 0.0627,
-          "ink_diff": 0.1921,
+          "page_diff": 0.0629,
+          "ink_diff": 0.1922,
           "hist_dist": 0.0137,
-          "ink_area": 0.1949
+          "ink_area": 0.1957
         },
         {
-          "page_diff": 0.0362,
-          "ink_diff": 0.0675,
+          "page_diff": 0.0364,
+          "ink_diff": 0.068,
           "hist_dist": 0.0058,
-          "ink_area": 0.2595
+          "ink_area": 0.2603
         },
         {
-          "page_diff": 0.0354,
-          "ink_diff": 0.0425,
-          "hist_dist": 0.0032,
-          "ink_area": 0.3593
+          "page_diff": 0.0356,
+          "ink_diff": 0.043,
+          "hist_dist": 0.0033,
+          "ink_area": 0.3602
         },
         {
-          "page_diff": 0.0453,
-          "ink_diff": 0.1261,
+          "page_diff": 0.0455,
+          "ink_diff": 0.1267,
           "hist_dist": 0.0071,
-          "ink_area": 0.1474
+          "ink_area": 0.1483
         },
         {
-          "page_diff": 0.0341,
-          "ink_diff": 0.3572,
+          "page_diff": 0.0343,
+          "ink_diff": 0.3446,
           "hist_dist": 0.0018,
-          "ink_area": 0.0083
+          "ink_area": 0.0091
         }
       ]
     },
     "wengao-minimal|wengao-visual-dark": {
-      "page_diff": 0.8781,
-      "ink_diff": 0.4746,
-      "hist_dist": 0.9764,
-      "ink_area": 0.0777,
+      "page_diff": 0.8714,
+      "ink_diff": 0.4587,
+      "hist_dist": 0.9762,
+      "ink_area": 0.09,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.8934,
-          "ink_diff": 0.3763,
+          "page_diff": 0.8867,
+          "ink_diff": 0.3671,
           "hist_dist": 0.9919,
-          "ink_area": 0.0139
+          "ink_area": 0.0261
         },
         {
-          "page_diff": 0.8544,
-          "ink_diff": 0.4005,
-          "hist_dist": 0.9381,
-          "ink_area": 0.092
+          "page_diff": 0.8478,
+          "ink_diff": 0.3954,
+          "hist_dist": 0.9377,
+          "ink_area": 0.1043
         },
         {
-          "page_diff": 0.8638,
-          "ink_diff": 0.7553,
+          "page_diff": 0.8571,
+          "ink_diff": 0.7373,
           "hist_dist": 0.9814,
-          "ink_area": 0.2593
+          "ink_area": 0.2716
         },
         {
-          "page_diff": 0.8829,
-          "ink_diff": 0.4983,
-          "hist_dist": 0.9803,
-          "ink_area": 0.0437
+          "page_diff": 0.8762,
+          "ink_diff": 0.4672,
+          "hist_dist": 0.98,
+          "ink_area": 0.056
         },
         {
-          "page_diff": 0.8773,
-          "ink_diff": 0.4322,
-          "hist_dist": 0.9699,
-          "ink_area": 0.0495
+          "page_diff": 0.8707,
+          "ink_diff": 0.4172,
+          "hist_dist": 0.9698,
+          "ink_area": 0.0618
         },
         {
-          "page_diff": 0.8966,
-          "ink_diff": 0.3849,
+          "page_diff": 0.8899,
+          "ink_diff": 0.3677,
           "hist_dist": 0.9966,
-          "ink_area": 0.0079
+          "ink_area": 0.0202
         }
       ]
     },
     "wengao-adaptive|wengao-visual-dark": {
-      "page_diff": 0.9037,
-      "ink_diff": 0.652,
+      "page_diff": 0.8972,
+      "ink_diff": 0.6241,
       "hist_dist": 0.9736,
-      "ink_area": 0.1628,
+      "ink_area": 0.1742,
       "identical_pages": 0,
       "per_page": [
         {
-          "page_diff": 0.9244,
-          "ink_diff": 0.4541,
+          "page_diff": 0.918,
+          "ink_diff": 0.4153,
           "hist_dist": 0.9914,
-          "ink_area": 0.0158
+          "ink_area": 0.0272
         },
         {
-          "page_diff": 0.8856,
-          "ink_diff": 0.6861,
+          "page_diff": 0.8791,
+          "ink_diff": 0.6675,
           "hist_dist": 0.9284,
-          "ink_area": 0.1884
+          "ink_area": 0.1998
         },
         {
-          "page_diff": 0.8869,
-          "ink_diff": 0.7716,
+          "page_diff": 0.8804,
+          "ink_diff": 0.7543,
           "hist_dist": 0.9794,
-          "ink_area": 0.2584
+          "ink_area": 0.2698
         },
         {
-          "page_diff": 0.896,
-          "ink_diff": 0.8326,
+          "page_diff": 0.8895,
+          "ink_diff": 0.8181,
           "hist_dist": 0.9783,
-          "ink_area": 0.3613
+          "ink_area": 0.3727
         },
         {
-          "page_diff": 0.9009,
-          "ink_diff": 0.7189,
+          "page_diff": 0.8944,
+          "ink_diff": 0.6928,
           "hist_dist": 0.9684,
-          "ink_area": 0.1454
+          "ink_area": 0.1568
         },
         {
-          "page_diff": 0.9283,
-          "ink_diff": 0.4487,
+          "page_diff": 0.9218,
+          "ink_diff": 0.3964,
           "hist_dist": 0.9955,
-          "ink_area": 0.0076
+          "ink_area": 0.019
         }
       ]
     }
   },
   "weakest_pair": {
-    "pair": "wengao-basic|wengao-minimal",
-    "ink_diff": 0.1277,
-    "page_diff": 0.0411,
-    "hist_dist": 0.0204
+    "pair": "wengao-minimal|wengao-adaptive",
+    "ink_diff": 0.1884,
+    "page_diff": 0.0419,
+    "hist_dist": 0.0056
   },
   "failures": [],
   "verdict": "PASS"
