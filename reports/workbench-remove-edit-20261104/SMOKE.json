@@ -1,0 +1,40 @@
+{
+  "nav": [
+    [
+      "studio",
+      "演示工作室"
+    ],
+    [
+      "material",
+      "从材料生成"
+    ],
+    [
+      "history",
+      "版本与历史"
+    ]
+  ],
+  "edit_dom_nodes": 0,
+  "titles": {
+    "studio": "演示工作室",
+    "material": "从材料生成",
+    "history": "版本与历史",
+    "deeplink_edit": "稳稿 PPT"
+  },
+  "history_cards": 34,
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "deeplink_after_fix": {
+    "deeplink_edit_title": "演示工作室",
+    "visible_views": [
+      "studio"
+    ],
+    "nav": [
+      "studio",
+      "material",
+      "history"
+    ],
+    "page_errors": []
+  }
+}

@@ -209,32 +209,11 @@
          animation:slide 1.4s ease-in-out infinite}
   @keyframes slide{0%{margin-left:-30%}100%{margin-left:100%}}
 
-  /* ---------- 编辑 ---------- */
-  .edit{display:grid;grid-template-columns:150px minmax(0,1fr) 336px;gap:16px;align-items:start}
-  .rail{display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 130px);overflow:auto;padding-right:2px}
-  .rail .rt{font-size:calc(11.5px * var(--font-scale, 1));color:var(--muted);padding:2px 2px 4px}
-  .edit-canvas{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-               box-shadow:var(--shadow);padding:16px;min-width:0}
-  .page-wrap{position:relative;background:var(--surface3);border-radius:var(--r-md);padding:14px;
-             display:grid;place-items:center;min-height:420px}
-  .page-inner{position:relative;max-width:100%;display:inline-block;line-height:0}
-  .page-inner img{max-width:100%;max-height:620px;border-radius:5px;box-shadow:0 4px 18px rgba(21,37,61,.14);background:var(--surface)}
   .box{position:absolute;border:1.5px solid rgba(49,92,206,.45);border-radius:3px;cursor:pointer;
        transition:background .12s ease,border-color .12s ease}
   .box:hover{background:rgba(49,92,206,.10);border-color:var(--primary)}
   .box[aria-selected="true"]{background:rgba(49,92,206,.14);border-color:var(--primary);
                              box-shadow:0 0 0 2px rgba(49,92,206,.18)}
-  .props{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-         box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:4px;
-         max-height:calc(100vh - 130px);overflow:auto}
-  .props h3{font-size:calc(13px * var(--font-scale, 1));margin-bottom:6px}
-  .props .sec{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
-  .objlist{display:flex;flex-direction:column;gap:4px;max-height:180px;overflow:auto}
-  .objlist button{display:flex;gap:8px;align-items:center;text-align:left;border:1px solid transparent;
-                  background:transparent;border-radius:6px;padding:5px 7px;font-size:calc(12px * var(--font-scale, 1));color:var(--ink)}
-  .objlist button:hover{background:var(--surface2)}
-  .objlist button[aria-selected="true"]{background:var(--primary-weak);border-color:var(--primary)}
-  .objlist .ty{font-size:calc(10px * var(--font-scale, 1));color:var(--muted)}
   .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
   .compare figure{margin:0}
   .compare img{width:100%;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
@@ -282,14 +261,11 @@
 
   @media (max-width:1200px){
     .studio{grid-template-columns:320px minmax(0,1fr)}
-    .edit{grid-template-columns:126px minmax(0,1fr) 300px}
     .history{grid-template-columns:minmax(0,1fr) 340px}
   }
   @media (max-width:1024px){
     .studio,.material{grid-template-columns:minmax(0,1fr)}
     .studio-left,.material-left{position:static}
-    .edit{grid-template-columns:110px minmax(0,1fr)}
-    .props{grid-column:1 / -1;max-height:none}
     .history{grid-template-columns:minmax(0,1fr)}
   }
   @media (max-width:820px){
@@ -303,9 +279,6 @@
     .side-foot{display:none}
     .topbar{height:auto;padding:12px 16px;flex-direction:column;align-items:flex-start;gap:8px}
     .content{padding:16px 16px 40px}
-    .edit{grid-template-columns:minmax(0,1fr)}
-    .rail{flex-direction:row;max-height:none;overflow-x:auto}
-    .rail .rt{display:none}
     .themes{grid-template-columns:1fr}
     .grid2{grid-template-columns:1fr}
   }
@@ -333,9 +306,6 @@
       <button data-view="material">
         <svg viewBox="0 0 24 24"><path d="M4 5h10l4 4v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="M14 5v4h4M7 12h8M7 16h5"/></svg>
         从材料生成</button>
-      <button data-view="edit">
-        <svg viewBox="0 0 24 24"><path d="M4 20h4l10-10a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="M13 6l3 3"/></svg>
-        局部编辑</button>
       <button data-view="history">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
         版本与历史</button>
@@ -538,67 +508,6 @@
         </div>
       </section>
 
-      <!-- ============ 局部编辑 ============ -->
-      <section class="view" id="view-edit" data-view="edit" hidden>
-        <div class="card" style="margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <div style="min-width:280px">
-            <label class="field" style="margin:0 0 6px">选择作品（需已有可编辑基线）</label>
-            <select id="edit-job"><option value="">加载中…</option></select>
-          </div>
-          <div class="hint" id="edit-job-note" style="flex:1;min-width:220px"></div>
-          <button class="btn ghost sm" id="edit-refresh">刷新</button>
-        </div>
-
-        <div id="edit-blocked" class="card hidden">
-          <div class="empty">
-            <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h4l10-10a2.1 2.1 0 0 0-3-3L5 17v3Z"/></svg></div>
-            <b id="edit-blocked-title">没有可编辑的基线</b>
-            <p id="edit-blocked-text">该作品还没有完成运行/验收/导出，暂时没有可安全修改的固定版本。</p>
-            <button class="btn primary" id="edit-goto-make">去演示工作室制作</button>
-          </div>
-        </div>
-
-        <div class="edit" id="edit-grid">
-          <aside class="rail card" style="padding:10px" id="edit-rail">
-            <div class="rt">页面</div>
-          </aside>
-          <div class="edit-canvas">
-            <div class="page-wrap" id="page-wrap">
-              <div class="page-inner" id="page-inner">
-                <img id="page-img" alt="基线页面" class="hidden">
-                <div id="boxes"></div>
-              </div>
-              <div class="empty" id="page-empty">
-                <b>正在读取基线页面…</b>
-                <p>页面图来自基线 PPTX 的真实渲染。</p>
-              </div>
-            </div>
-            <div class="hint" id="page-note" style="margin-top:10px"></div>
-          </div>
-          <aside class="props" id="props">
-            <h3>对象属性</h3>
-            <div class="hint" id="props-empty">先在画布或列表中选择一个对象。</div>
-            <div id="props-body" class="hidden">
-              <div class="grid2" id="props-meta"></div>
-              <div class="objlist" id="objlist" style="margin-top:10px"></div>
-              <div class="sec">
-                <label class="field">修改类型</label>
-                <select id="edit-field"></select>
-                <div id="edit-extra"></div>
-                <label class="field">新值</label>
-                <textarea id="edit-value" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font:inherit;resize:vertical" placeholder="输入要写入的新值（支持换行）"></textarea>
-                <div class="hint" id="edit-hint" style="margin-top:6px"></div>
-                <button class="btn primary block" id="edit-apply" style="margin-top:10px">生成修改候选</button>
-              </div>
-              <div class="sec hidden" id="edit-result">
-                <div id="edit-result-body"></div>
-                <div id="edit-compare"></div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
       <!-- ============ 版本与历史 ============ -->
       <section class="view" id="view-history" data-view="history" hidden>
         <div class="card" style="margin-bottom:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
@@ -670,8 +579,6 @@ const S = {
             flowState: null },
   material: { mode: "replay", pack: null, source: null, fileMeta: null, pages: 12,
               theme: null, task: null, timer: null },
-  edit: { job: null, objects: null, page: 1, objIdx: null, baselinePages: null,
-          rec: null, sides: null },
   history: { jobs: [], sel: null, filter: "all" },
 };
 
@@ -797,7 +704,6 @@ $("modal").addEventListener("click", (e) => { if (e.target.id === "modal") close
 const PAGE_META = {
   studio: ["演示工作室", "选一份 PPTX，选主题，一次完成制作与核对"],
   material: ["从材料生成", "TXT / Markdown / DOCX 先冻结事实，再生成原生 PPT"],
-  edit: ["局部编辑", "在真实页面上选对象，改一处、生成独立候选"],
   history: ["版本与历史", "作品卡片与真实版本轨迹，恢复后仍需重新核对"],
 };
 function setView(name) {
@@ -809,7 +715,6 @@ function setView(name) {
   $("page-title").textContent = m[0];
   $("page-sub").textContent = m[1];
   if (name === "history") loadHistory();
-  if (name === "edit") initEdit();
   if (name === "material" && !S.material.task) resumeMaterial();
 }
 document.querySelectorAll("#nav button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));
@@ -1021,7 +926,7 @@ async function boot() {
   applyDeepLink();
 }
 
-/* 深链只做只读定位：?view=studio|material|edit|history&job=&task=&side=
+/* 深链只做只读定位：&job=&task=&side=
    不会自动创建任务、不会调用模型、不会触发制作。 */
 async function applyDeepLink() {
   const q = new URLSearchParams(location.search);
@@ -1043,8 +948,11 @@ async function applyDeepLink() {
     const r = await api("/api/material/tasks/" + enc(task));
     if (r.ok && r.json && r.json.task) { S.material.task = r.json.task; renderMaterialTask(r.json.task); }
   }
-  if (view === "edit" && job) S.edit.job = job;
-  if (view) setView(view);
+  /* 视图名必须先在注册表里存在才切：删掉「局部编辑」后，旧书签 / 旧链接里的
+     ?view=edit 不会再命中任何 section。直接 setView("edit") 会把所有 view 都藏起来、
+     页面变成空白（setView 只按 data-view 匹配）。这类旧链接应该落到默认的演示工作室，
+     而不是给一个空页面。 */
+  if (view && PAGE_META[view]) setView(view);
   if (view === "history" && job) {
     await loadHistory();
     const j = S.history.jobs.find((x) => x.job_id === job);
@@ -2149,7 +2057,7 @@ async function renderMaterialResult(t) {
       html += "<div class='note'>导出清单暂不可用：" + esc(res.message || "") + "</div>";
     }
   } else {
-    html += "<div class='note'>已生成候选，但尚未形成可下载交付。到「局部编辑」或「版本与历史」查看这个任务。</div>";
+    html += "<div class='note'>已生成候选，但尚未形成可下载交付。到「版本与历史」查看这个任务。</div>";
   }
   box.innerHTML = html;
 }
@@ -2182,323 +2090,6 @@ async function resumeMaterial() {
   S.material.task = pick;
   renderMaterialTask(pick);
   if (pick.state === "running") pollMaterial(pick.task_id);
-}
-
-/* ---------------- 局部编辑 ---------------- */
-function editJobCandidates() {
-  return (S.boot && S.boot.jobs) || [];
-}
-async function initEdit() {
-  const fresh = await api("/api/jobs");
-  if (fresh.ok && fresh.json && Array.isArray(fresh.json.jobs)) {
-    S.boot = S.boot || {};
-    S.boot.jobs = fresh.json.jobs;
-    if (S.boot.instance) renderInstance(Object.assign({}, S.boot.instance,
-      { jobs: fresh.json.total == null ? fresh.json.jobs.length : fresh.json.total }));
-  }
-  const jobs = editJobCandidates();
-  const sel = $("edit-job");
-  if (!jobs.length) {
-    sel.innerHTML = "<option value=''>（当前实例没有任务）</option>";
-    showEditBlocked("当前实例还没有任务", "先在「演示工作室」制作一份 PPT，再回来做局部修改。");
-    return;
-  }
-  const prev = S.edit.job || sel.value;
-  sel.innerHTML = jobs.map((j) =>
-    "<option value='" + esc(j.job_id) + "'>" + esc(j.job_id) + " · " + esc(j.theme_name || j.theme || "") +
-    " · " + esc((j.input_path || "").split("/").pop()) + "</option>").join("");
-  const usable = jobs.find((j) => j.job_id === prev) || jobs[0];
-  sel.value = usable.job_id;
-  sel.onchange = () => loadEditJob(sel.value);
-  await loadEditJob(sel.value);
-  $("edit-goto-make").onclick = () => setView("studio");
-  $("edit-refresh").onclick = () => loadEditJob($("edit-job").value);
-}
-
-function showEditBlocked(title, text) {
-  $("edit-grid").classList.add("hidden");
-  $("edit-blocked").classList.remove("hidden");
-  $("edit-blocked-title").textContent = title;
-  $("edit-blocked-text").textContent = text;
-}
-
-async function loadEditJob(job) {
-  if (!job) return;
-  S.edit.job = job;
-  S.edit.rec = null; S.edit.sides = null; S.edit.objIdx = null; S.edit.page = 1;
-  $("edit-result").classList.add("hidden");
-  $("edit-result-body").innerHTML = ""; $("edit-compare").innerHTML = "";
-  $("edit-job-note").textContent = "正在读取对象清单…";
-  const r = await api("/api/jobs/" + enc(job) + "/objects");
-  if (S.edit.job !== job) return;
-  const j = r.json || {};
-  if (!r.ok) {
-    $("edit-job-note").textContent = "";
-    showEditBlocked("任务读取失败", errText(r));
-    return;
-  }
-  if (!j.editable) {
-    $("edit-job-note").textContent = "";
-    showEditBlocked("没有可编辑的基线", j.reason || "该任务还没有可复核的固定版本。");
-    return;
-  }
-  S.edit.objects = j;
-  $("edit-blocked").classList.add("hidden");
-  $("edit-grid").classList.remove("hidden");
-  $("edit-job-note").innerHTML = "基线来源 <b>" + esc(j.objects_source) + "</b> · sha " +
-    esc(shortSha(j.baseline_sha256)) + "… · " + (j.pages || []).length + " 页";
-  renderEditRail();
-  loadBaselinePages(job);
-  selectEditPage(1);
-}
-
-async function loadBaselinePages(job) {
-  const r = await api("/api/jobs/" + enc(job) + "/pages?side=baseline");
-  if (S.edit.job !== job) return;
-  const j = r.json || {};
-  S.edit.baselinePages = j.available ? Object.fromEntries(j.pages.map((name, i) =>
-    [((j.page_numbers || [])[i] || i + 1), name])) : null;
-  S.edit.hiddenPages = j.hidden_slides || [];
-  if (!j.available) {
-    $("page-empty").classList.remove("hidden");
-    $("page-empty").innerHTML = "<b>页面预览不可用</b><p>" + esc(j.reason || "") +
-      "</p><p>仍可修改，但画布不显示页面；这不是成功状态。</p>";
-    $("page-img").classList.add("hidden");
-    $("boxes").innerHTML = "";
-  } else {
-    $("page-empty").classList.add("hidden");
-    $("page-img").classList.remove("hidden");
-    renderEditPage();
-  }
-  renderEditRail();
-}
-
-function renderEditRail() {
-  const objs = S.edit.objects;
-  const pages = (objs && objs.pages) || [];
-  const thumbs = S.edit.baselinePages;
-  $("edit-rail").innerHTML = "<div class='rt'>页面</div>" + pages.map((p) => {
-    const img = thumbs && thumbs[p.page];
-    return "<button class='thumb' data-page='" + p.page + "' aria-pressed='" + (p.page === S.edit.page) + "'>" +
-      (img ? "<img src='" + pageFileUrl(S.edit.job, "baseline", img) + "' alt='第 " + p.page + " 页' loading='lazy'>"
-           : "<div style='height:46px;display:grid;place-items:center;background:var(--surface3);border-radius:4px;color:var(--muted);font-size:calc(10px * var(--font-scale, 1))'>无预览</div>") +
-      "<div class='n'>" + p.page + "</div></button>";
-  }).join("");
-  $("edit-rail").querySelectorAll(".thumb").forEach((b) => (b.onclick = () => selectEditPage(parseInt(b.dataset.page, 10))));
-}
-
-function selectEditPage(page) {
-  S.edit.page = page;
-  S.edit.objIdx = null;
-  renderEditRail();
-  renderEditPage();
-  renderObjectList();
-  $("props-body").classList.add("hidden");
-  $("props-empty").classList.remove("hidden");
-  $("props-empty").textContent = "先在画布或列表中选择一个对象。";
-}
-
-function currentPageObjects() {
-  const pages = (S.edit.objects && S.edit.objects.pages) || [];
-  return (pages.find((p) => p.page === S.edit.page) || {}).objects || [];
-}
-
-function renderEditPage() {
-  const thumbs = S.edit.baselinePages;
-  if (!thumbs) return;
-  const name = thumbs[S.edit.page];
-  if (!name) {
-    $("page-img").classList.add("hidden");
-    $("page-empty").classList.remove("hidden");
-    $("page-empty").textContent = (S.edit.hiddenPages || []).includes(S.edit.page)
-      ? "第 " + S.edit.page + " 页为隐藏页，不包含在放映与静态预览中。"
-      : "第 " + S.edit.page + " 页预览不可用。";
-    $("boxes").innerHTML = "";
-    return;
-  }
-  $("page-empty").classList.add("hidden");
-  $("page-img").classList.remove("hidden");
-  $("page-img").src = pageFileUrl(S.edit.job, "baseline", name);
-  $("page-img").alt = "第 " + S.edit.page + " 页基线";
-  const objs = currentPageObjects();
-  $("boxes").innerHTML = objs.map((o, i) => {
-    if (!o.box) return "";
-    return "<div class='box' data-i='" + i + "' role='button' tabindex='0' aria-selected='" + (i === S.edit.objIdx) +
-      "' style='left:" + (o.box.x * 100).toFixed(3) + "%;top:" + (o.box.y * 100).toFixed(3) +
-      "%;width:" + (o.box.w * 100).toFixed(3) + "%;height:" + (o.box.h * 100).toFixed(3) +
-      "%' title='" + esc(o.name) + "'></div>";
-  }).join("");
-  $("boxes").querySelectorAll(".box").forEach((b) => {
-    b.onclick = () => selectObject(parseInt(b.dataset.i, 10));
-    b.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectObject(parseInt(b.dataset.i, 10)); } };
-  });
-  $("page-note").textContent = "选区来自基线 PPTX 的真实几何（按页比例换算），不是手绘框。";
-}
-
-function renderObjectList() {
-  const objs = currentPageObjects();
-  $("objlist").innerHTML = objs.length ? objs.map((o, i) =>
-    "<button data-i='" + i + "' aria-selected='" + (i === S.edit.objIdx) + "'>" +
-    "<span style='flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>" + esc(o.name) + "</span>" +
-    "<span class='ty'>" + esc((o.fields || []).join("/") || "不可编辑") + "</span></button>").join("")
-    : "<div class='hint'>本页没有可解析对象。</div>";
-  $("objlist").querySelectorAll("button").forEach((b) =>
-    (b.onclick = () => selectObject(parseInt(b.dataset.i, 10))));
-}
-
-function selectObject(i) {
-  S.edit.objIdx = i;
-  const o = currentPageObjects()[i];
-  renderEditPage();
-  renderObjectList();
-  if (!o) return;
-  $("props-empty").classList.add("hidden");
-  $("props-body").classList.remove("hidden");
-  const rows = [
-    ["对象", o.name], ["类型", o.type], ["可改字段", (o.fields || []).join(" / ") || "无"],
-  ];
-  if (o.table) rows.push(["表格", o.table.rows + " 行 × " + o.table.cols + " 列"]);
-  if (o.chart) rows.push(["图表", o.chart.series + " 系列 · " + (o.chart.points == null ? "?" : o.chart.points) + " 点"]);
-  $("props-meta").innerHTML = rows.map(([k, v]) =>
-    "<div class='kv'><b>" + esc(k) + "</b><span>" + esc(v) + "</span></div>").join("");
-  $("edit-field").innerHTML = (o.fields || []).map((f) =>
-    "<option value='" + esc(f) + "'>" + ({ text: "文字", cell: "表格单元格", chart_value: "图表数据点", image: "图片" }[f] || f) +
-    "</option>").join("") || "<option value=''>（该对象不支持修改）</option>";
-  $("edit-apply").disabled = !(o.fields || []).length;
-  renderEditExtra();
-  $("edit-field").onchange = renderEditExtra;
-  $("edit-value").value = "";
-}
-
-function renderEditExtra() {
-  const o = currentPageObjects()[S.edit.objIdx];
-  const f = $("edit-field").value;
-  if (!o) { $("edit-extra").innerHTML = ""; return; }
-  let html = "";
-  if (f === "text") {
-    html = "<div class='hint' style='margin-top:8px'>当前文本：<span class='mono'>" +
-      esc((o.text || "").slice(0, 200)) + "</span></div>";
-  } else if (f === "cell") {
-    const t = o.table || {};
-    html = "<div class='hint' style='margin-top:8px'>表头：" + esc((t.header || []).join(" / ")) + "</div>" +
-      "<label class='field'>行（0 = 表头，共 " + esc(t.rows || "?") + " 行）</label><input type='number' id='edit-row' value='1' min='0'>" +
-      "<label class='field'>列（共 " + esc(t.cols || "?") + " 列）</label><input type='number' id='edit-col' value='1' min='0'>";
-  } else if (f === "chart_value") {
-    const c = o.chart || {};
-    const vals = (c.values || []).map((s) => s.name + "=" + (s.values || []).join(",")).join(" | ");
-    html = "<div class='hint' style='margin-top:8px'>系列：" + esc((c.series_names || []).join(" / ")) +
-      "<br>类别：" + esc((c.categories || []).join(" / ")) +
-      "<br>当前值：" + esc(vals || "—") + "</div>" +
-      "<label class='field'>系列序号（0 起）</label><input type='number' id='edit-series' value='0' min='0'>" +
-      "<label class='field'>数据点序号（0 起）</label><input type='number' id='edit-index' value='0' min='0'>";
-  } else if (f === "image") {
-    html = "<div class='hint' style='margin-top:8px'>图片只接受受控上传的资产（png/jpg，≤ 8 MiB），不接受任意本机路径。</div>" +
-      "<input type='file' id='edit-asset' accept='.png,.jpg,.jpeg' style='margin-top:8px'>";
-  }
-  $("edit-extra").innerHTML = html;
-}
-
-$("edit-apply").onclick = async () => {
-  const o = currentPageObjects()[S.edit.objIdx];
-  if (!o || !S.edit.job) return;
-  const field = $("edit-field").value;
-  if (!field) return;
-  const body = { page: S.edit.page, shape: o.name, field: field, new_value: $("edit-value").value };
-  if (field === "cell") {
-    body.row = parseInt(($("edit-row") || {}).value, 10);
-    body.col = parseInt(($("edit-col") || {}).value, 10);
-  }
-  if (field === "chart_value") {
-    body.series = parseInt(($("edit-series") || {}).value, 10);
-    body.index = parseInt(($("edit-index") || {}).value, 10);
-  }
-  if (field === "image") {
-    const f = $("edit-asset") && $("edit-asset").files[0];
-    if (!f) { $("edit-hint").textContent = "请先选择替换图片。"; return; }
-    const up = await fetch("/api/assets", { method: "POST",
-      headers: { "X-Filename": encodeURIComponent(f.name) }, body: f });
-    let uj = null; try { uj = await up.json(); } catch (e) { uj = null; }
-    if (!up.ok || !uj || !uj.uploaded) {
-      $("edit-hint").innerHTML = "<span style='color:var(--bad)'>资产上传失败：" + esc(errText({ json: uj })) + "</span>";
-      return;
-    }
-    body.asset = uj.path;
-    body.new_value = uj.name;
-  }
-  if (field !== "image" && !String(body.new_value || "").trim()) {
-    $("edit-hint").textContent = "请填写新值。"; return;
-  }
-  $("edit-hint").textContent = "正在生成独立候选…";
-  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edit", { method: "POST",
-    headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  if (!r.ok) {
-    $("edit-hint").innerHTML = "<span style='color:var(--bad)'>修改被拒绝：" + esc(errText(r)) + "</span>";
-    return;
-  }
-  S.edit.rec = r.json;
-  S.edit.sides = null;
-  $("edit-hint").textContent = "";
-  $("edit-result").classList.remove("hidden");
-  $("edit-result-body").innerHTML =
-    "<div class='okbox'><b>已生成独立候选</b> " + esc(r.json.version_id) + "：<br>" +
-    esc(r.json.old_value) + " → <b>" + esc(r.json.new_value) + "</b><br>" +
-    "非目标对象核对 " + esc(r.json.untouched_objects_verified) + " 个；未覆盖有效版本。</div>" +
-    "<button class='btn primary block' id='edit-render' style='margin-top:10px'>渲染修改前后</button>" +
-    "<button class='btn ghost block' id='edit-adopt' style='margin-top:8px'>接纳为新任务（重新核对）</button>";
-  $("edit-render").onclick = renderEditCompare;
-  $("edit-adopt").onclick = adoptEdit;
-};
-
-async function renderEditCompare() {
-  if (!S.edit.rec || !S.edit.job) return;
-  const vid = S.edit.rec.version_id;
-  $("edit-compare").innerHTML = "<div class='hint'>正在渲染修改前后（真实 PPTX）…</div>";
-  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) + "/render", { method: "POST" });
-  if (!r.ok) {
-    $("edit-compare").innerHTML = "<div class='err'>渲染不可用：" + esc(errText(r)) + "</div>";
-    return;
-  }
-  const s = r.json.sides || {};
-  S.edit.sides = s;
-  const page = Number((S.edit.rec.edit || {}).page || S.edit.page);
-  const editedPage = (side) => {
-    const preview = s[side] || {};
-    const numbers = preview.page_numbers || [];
-    const index = numbers.length ? numbers.indexOf(page) : page - 1;
-    return index >= 0 ? (preview.pages || [])[index] : null;
-  };
-  const before = editedPage("before");
-  const after = editedPage("after");
-  if (!before || !after) {
-    $("edit-compare").textContent = "第 " + page + " 页没有静态预览（可能为隐藏页），不显示其他页面冒充对照。";
-    return;
-  }
-  const url = (side, name) => "/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) +
-    "/preview?side=" + side + "&name=" + enc(name) + "&v=" + Date.now();
-  $("edit-compare").innerHTML =
-    "<div class='compare'>" +
-    "<figure><img src='" + (before ? url("before", before) : "") + "' alt='修改前'>" +
-      "<figcaption>第 " + esc(page) + " 页修改前 · sha " + esc(shortSha((s.before || {}).sha256)) + "…</figcaption></figure>" +
-    "<figure><img src='" + (after ? url("after", after) : "") + "' alt='修改后'>" +
-      "<figcaption>第 " + esc(page) + " 页修改后 · sha " + esc(shortSha((s.after || {}).sha256)) + "…</figcaption></figure></div>" +
-    "<p class='hint' style='margin-top:6px'>两侧都是真实渲染；候选未接纳前不覆盖任何有效版本，导出仍走原有门禁。</p>";
-}
-
-async function adoptEdit() {
-  if (!S.edit.rec || !S.edit.job) return;
-  const vid = S.edit.rec.version_id;
-  const r = await api("/api/jobs/" + enc(S.edit.job) + "/edits/" + enc(vid) + "/adopt", { method: "POST" });
-  const j = r.json || {};
-  if (!j.adopted) {
-    $("edit-result-body").innerHTML += "<div class='err' style='margin-top:8px'>接纳被拒绝：" +
-      esc(j.detail || errText(r)) + "</div>";
-    return;
-  }
-  toast("已作为新任务接纳：" + j.job_id);
-  $("edit-result-body").innerHTML += "<div class='okbox' style='margin-top:8px'>已创建新任务 <span class='mono'>" +
-    esc(j.job_id) + "</span>；到「演示工作室」查看它的真实核对结果。</div>";
-  await boot();
-  initEdit();
 }
 
 /* ---------------- 历史与恢复 ---------------- */
