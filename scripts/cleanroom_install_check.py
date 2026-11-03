@@ -184,6 +184,30 @@ def main(argv=None) -> int:
     version_dir = root / "versions" / str(st.get("current") or installed_label or "")
     ev["version_dir"] = str(version_dir)
 
+    # ---- 2c 运行期门禁实现必须**装进去且真的能跑** ----
+    # 只查文件在不在不够：`layout_gate.py` 缺件时 validate 会永久 NOT_EVALUABLE，
+    # 而原生实播证据校验会退化成静默跳过（见 reports/r6r7-20261104/REPORT.md §1.5）。
+    # 这里用**安装实例自己的副本**把它加载起来并调用一个纯函数，证明校验真的在跑。
+    gate_probe = (
+        "import importlib.util,json,os,sys,tempfile\n"
+        "from pathlib import Path\n"
+        "p=Path(sys.argv[1])/'scripts'/'layout_gate.py'\n"
+        "spec=importlib.util.spec_from_file_location('gate_probe',p)\n"
+        "m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\n"
+        "fd,tmp=tempfile.mkstemp(suffix='.mp4'); os.write(fd,b'\\x00'*64); os.close(fd)\n"
+        "info=m._inspect_mp4(Path(tmp)); os.unlink(tmp)\n"
+        "has=lambda n: hasattr(m,n)\n"
+        "ok=(info.get('ok') is False and has('_inspect_mp4')\n"
+        "    and has('_validate_native_review_record'))\n"
+        "print(json.dumps({'bytes':p.stat().st_size,'fake_mp4':info,\n"
+        "                  'validators':[n for n in ('_inspect_mp4',\n"
+        "                     '_validate_native_review_record') if has(n)],'ok':ok}))\n"
+        "sys.exit(0 if ok else 3)\n")
+    r = run([a.python, "-c", gate_probe, str(version_dir)], neutral)
+    step("runtime_gate_loadable", r, ok=(r["rc"] == 0))
+    ev["runtime_gate"] = r["json"] or {"rc": r["rc"],
+                                       "stderr_head": r["stderr_head"]}
+
     # ---- 3 首任务：precheck → run → validate → publish → export ----
     scratch = report / "first-task"
     scratch.mkdir(parents=True, exist_ok=True)
