@@ -34,7 +34,10 @@ from .type_scale import ROLE_RANGE_PT
 FALLBACK_FONTS = ["Songti SC", "STHeiti", "Arial Unicode MS"]
 
 # 注册表/令牌结构版本（与单个主题的 theme_version 分开记录）
-REGISTRY_VERSION = "1.1.0"
+# 1.2.0（2026-11-04）：每个主题增加 style 块（风格名/体裁/一句话/标签/缩略图类型），
+# 并把 basic 之外的 4 套浅色/深色主题拉开成互不相同的字体配对与字号层级。
+# style 不进 config_digest —— 它能改界面的说法，但不能改历史任务冻结的身份。
+REGISTRY_VERSION = "1.2.0"
 
 # 不带 theme 的旧调用使用的默认主题（保持 D10-A 合法默认行为）
 DEFAULT_THEME_ID = "wengao-basic"
@@ -43,6 +46,16 @@ THEMES: dict[str, dict] = {
     # ------------------------------------------------------------------ 旧默认
     "wengao-basic": {
         "name": "稳稿基础主题（旧默认）",
+        # style 块只描述"这是什么风格"，**不参与**身份摘要（_DIGEST_FIELDS 不含它）。
+        # 因此给旧主题补风格标签不会改变其 config_digest，历史任务的身份仍然对得上。
+        "style": {
+            "style_id": "S1",
+            "style_name": "藏蓝公文",
+            "genre": "公文 / 汇报",
+            "tagline": "宋体密排、藏蓝压顶、正红落款，最接近传统红头文件",
+            "tags": ["宋体", "藏蓝", "正红", "密排"],
+            "preview": "official",
+        },
         "version": "1.0.0",
         "legacy_default": True,
         "slide_bg": "FFFFFF",
@@ -65,6 +78,19 @@ THEMES: dict[str, dict] = {
     # ------------------------------------------------------------------ 商务清晰
     "wengao-business": {
         "name": "商务清晰",
+        # 1.2.0（2026-11-04）：用户要求"6 个主题 6 个风格"。此前 basic 与 business
+        # 除了主色相差 12° 色相外**完全相同**——同一底色、同一 Songti/Arial 配对、
+        # 字号只差 1pt，实际输出几乎是"同一个风格换个蓝"。1.2.0 把 business 变成
+        # 独立的"无衬线汇报体"：主色移到钢青（H≈193，与藏蓝 H≈218 明确分开），
+        # 中文字体改 STHeiti（黑体骨架），拉丁字体改 Helvetica Neue，正文 17pt。
+        "style": {
+            "style_id": "S2",
+            "style_name": "钢青商务",
+            "genre": "商务 / 汇报",
+            "tagline": "黑体骨架、钢青主色、琥珀强调，信息密度高的汇报稿",
+            "tags": ["黑体", "钢青", "琥珀", "紧凑"],
+            "preview": "grid",
+        },
         # 1.0.0 的 primary/accent（1F3864/C00000）跟 wengao-basic 逐字相同，只有
         # muted/border/chart_grid 等次要字段有细微差别——两个主题在卡片预览和
         # 实际生成的 PPT 里几乎看不出区别（user 2026-11-01："6个主题都要分开"）。
@@ -79,20 +105,20 @@ THEMES: dict[str, dict] = {
         # 1.7 倍原余量），不是猜测：按实测 5.48→3.17（约 58%）的衰减比例外推，
         # 9.38:1 名义值衰减后仍有约 5.4:1，留出安全冗余；真正的确认仍是重新
         # 生成后 layout_gate 复核零 HG09 命中。
-        "version": "1.1.1",
+        "version": "1.2.0",
         "slide_bg": "FFFFFF",
         "colors": {
-            "primary": "2F5B7C", "accent": "9C5A0A", "text": "1A1A1A", "muted": "3A4855",
-            "heading": "2F5B7C", "subtitle": "3A4855",
-            "surface": "FFFFFF", "border": "C7D2DC",
-            "table_header_bg": "2F5B7C", "table_header_text": "FFFFFF",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "EAF0F5",
-            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D7E1EA",
-            "chart_series": ["2F5B7C", "9C5A0A", "3F7A5A", "8C8C8C"],
+            "primary": "175A63", "accent": "8A5200", "text": "1A1A1A", "muted": "3A4855",
+            "heading": "175A63", "subtitle": "3A4855",
+            "surface": "FFFFFF", "border": "C0D0D2",
+            "table_header_bg": "175A63", "table_header_text": "FFFFFF",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "E6EFF0",
+            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D2E0E2",
+            "chart_series": ["175A63", "8A5200", "3F7A5A", "8C8C8C"],
         },
-        "fonts": {"heading_ea": "Songti", "body_ea": "Songti",
-                  "heading_latin": "Arial", "body_latin": "Arial"},
-        "sizes": {"title": 30, "subtitle": 18, "heading": 22, "body": 16, "note": 11,
+        "fonts": {"heading_ea": "STHeiti", "body_ea": "STHeiti",
+                  "heading_latin": "Helvetica Neue", "body_latin": "Helvetica Neue"},
+        "sizes": {"title": 30, "subtitle": 19, "heading": 22, "body": 17, "note": 11,
                   "chart_text": 12},
         "font_fallback_note": "Microsoft YaHei 本机缺失，按已核验可用字体显式替换为 Songti（标题/正文）；"
                              "替换是计划动作并写入主题配置与证据。",
@@ -100,20 +126,32 @@ THEMES: dict[str, dict] = {
     # ------------------------------------------------------------------ 深色科技
     "wengao-dark": {
         "name": "深色科技",
-        "version": "1.0.0",
-        "slide_bg": "0A192F",
+        # 1.1.0（2026-11-04）：accent 原先与 primary 同为 00F2FF（同一个青色，
+        # 等于没有强调色）；拉丁字体是 Arial，和两个浅色主题撞在一起。改为
+        # 霓虹青主色 + 品红强调，拉丁槽换等宽 Menlo，与炭黑视觉主题的
+        # 金铜/Avenir 组合明确分开。
+        "style": {
+            "style_id": "S3",
+            "style_name": "深海霓虹",
+            "genre": "科技 / 产品发布",
+            "tagline": "深底霓虹青、品红强调、等宽数字，适合技术路线与发布稿",
+            "tags": ["深底", "霓虹青", "等宽", "品红"],
+            "preview": "neon",
+        },
+        "version": "1.1.0",
+        "slide_bg": "0B1220",
         "colors": {
-            "primary": "00F2FF", "accent": "00F2FF", "text": "E6F1FF", "muted": "9FB3C8",
-            "heading": "00F2FF", "subtitle": "9FB3C8",
+            "primary": "3DDCFF", "accent": "FF6FA5", "text": "E8F4FF", "muted": "A9BFD4",
+            "heading": "3DDCFF", "subtitle": "A9BFD4",
             # 深色下不用纯白绘图区（避免突兀白块），用略亮于背景的深蓝
-            "surface": "112240", "border": "1F3A5F",
-            "table_header_bg": "00F2FF", "table_header_text": "0A192F",
-            "table_row_bg": "112240", "table_row_alt_bg": "172C4A",
-            "chart_bg": "112240", "chart_text": "E6F1FF", "chart_grid": "24405F",
-            "chart_series": ["00F2FF", "FFB86C", "7BD88F", "C792EA"],
+            "surface": "121C2E", "border": "22314A",
+            "table_header_bg": "3DDCFF", "table_header_text": "0B1220",
+            "table_row_bg": "121C2E", "table_row_alt_bg": "18253A",
+            "chart_bg": "121C2E", "chart_text": "E8F4FF", "chart_grid": "26364F",
+            "chart_series": ["3DDCFF", "FF6FA5", "9BE86B", "C792EA"],
         },
         "fonts": {"heading_ea": "STHeiti", "body_ea": "STHeiti",
-                  "heading_latin": "Arial", "body_latin": "Arial"},
+                  "heading_latin": "Menlo", "body_latin": "Menlo"},
         "sizes": {"title": 30, "subtitle": 20, "heading": 22, "body": 18, "note": 11,
                   "chart_text": 12},
         "sizes_note": ("2026-10-20 可读性基线（用户要求“字不要太小”）：主标题 32–40、"
@@ -126,21 +164,33 @@ THEMES: dict[str, dict] = {
     # ------------------------------------------------------------------ 极简阅读
     "wengao-minimal": {
         "name": "极简阅读",
-        "version": "1.0.0",
-        "slide_bg": "F5F5F5",
+        # 1.1.0（2026-11-04）：原先底色 F5F5F5 冷灰 + 全灰配色 + Songti/Arial，
+        # 与 basic 只差"没有蓝"——灰度不是风格，只是缺色。改为暖白纸底
+        # （FAF8F3）+ 暖墨字（2B2A26）+ 陶土单点强调 + Georgia/宋体的阅读体，
+        # 靠留白与行距而不是靠色块区分。
+        "style": {
+            "style_id": "S4",
+            "style_name": "暖白静读",
+            "genre": "阅读 / 长文",
+            "tagline": "暖白纸底、Georgia 配宋体、几乎不用色块，长文阅读最省力",
+            "tags": ["暖白", "宋体", "留白", "陶土"],
+            "preview": "quiet",
+        },
+        "version": "1.1.0",
+        "slide_bg": "FAF8F3",
         "colors": {
-            "primary": "333333", "accent": "888888", "text": "333333", "muted": "333333",
-            "heading": "333333", "subtitle": "333333",
-            "surface": "FFFFFF", "border": "DDDDDD",
-            "table_header_bg": "EFEFEF", "table_header_text": "333333",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "FAFAFA",
-            "chart_bg": "FFFFFF", "chart_text": "333333", "chart_grid": "E4E4E4",
-            "chart_series": ["5A5A5A", "9AB0C4", "C9A227", "7F9A6E"],
+            "primary": "2B2A26", "accent": "7F4E32", "text": "2B2A26", "muted": "3B3830",
+            "heading": "2B2A26", "subtitle": "3B3830",
+            "surface": "FFFFFF", "border": "E2DDD2",
+            "table_header_bg": "EFEAE0", "table_header_text": "2B2A26",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F5F1E8",
+            "chart_bg": "FFFFFF", "chart_text": "2B2A26", "chart_grid": "E6E0D4",
+            "chart_series": ["5A6B7A", "7F4E32", "7F8C6E", "9A7B3F"],
         },
         "fonts": {"heading_ea": "Songti", "body_ea": "Songti",
-                  "heading_latin": "Arial", "body_latin": "Arial"},
-        "sizes": {"title": 30, "subtitle": 17, "heading": 22, "body": 15, "note": 11,
-                  "chart_text": 12},
+                  "heading_latin": "Georgia", "body_latin": "Georgia"},
+        "sizes": {"title": 30, "subtitle": 18, "heading": 22, "body": 16, "note": 10,
+                  "chart_text": 11},
         "font_fallback_note": "极简主题使用 Songti 与低饱和配色；Microsoft YaHei 缺失的替换为计划动作。",
     },
     # ------------------------------------------------------- 原稿适配精修（自适应）
@@ -150,6 +200,14 @@ THEMES: dict[str, dict] = {
     # （实现见 wengao_ppt/refine.py，规则版本与参数进入同一身份摘要）。
     "wengao-adaptive": {
         "name": "原稿适配精修",
+        "style": {
+            "style_id": "S5",
+            "style_name": "原稿本色",
+            "genre": "原稿 / 精修",
+            "tagline": "不换肤：识别并保留原稿配色与字体，只做结构、度量与对齐精修",
+            "tags": ["不换肤", "保留原稿", "结构精修"],
+            "preview": "source",
+        },
         "version": "1.0.0",
         "adaptive": True,
         "refine_rules_version": "1.0.0",
@@ -166,6 +224,14 @@ THEMES: dict[str, dict] = {
     # 语义生成并冻结（visual_plan.json），媒体校验按计划放行。
     "wengao-visual-dark": {
         "name": "深色视觉升级（关键词配图+动效）",
+        "style": {
+            "style_id": "S6",
+            "style_name": "炭黑剧场",
+            "genre": "视觉 / 发布",
+            "tagline": "炭黑舞台、金铜与珊瑚、Avenir 大字，配图裁切与转场动效",
+            "tags": ["炭黑", "金铜", "配图", "动效"],
+            "preview": "cinema",
+        },
         "version": "1.0.0",
         "slide_bg": "101014",
         "visual_upgrade": True,
@@ -595,6 +661,7 @@ def list_themes() -> list[dict]:
                 "refine_rules_version": t.get("refine_rules_version"),
                 "note": "识别并保留原稿设计语言，只做结构/度量精修；不换肤。",
                 "visual_upgrade": bool(t.get("visual_upgrade")),
+                "style": copy.deepcopy(t.get("style") or {}),
             })
             continue
         out.append({
@@ -614,6 +681,7 @@ def list_themes() -> list[dict]:
             # (user, 2026-11-01: wengao-visual-dark must not share the same
             # picker entry as the 5 plain-color themes).
             "visual_upgrade": bool(t.get("visual_upgrade")),
+            "style": copy.deepcopy(t.get("style") or {}),
         })
     out.sort(key=lambda x: (not x["legacy_default"], x["id"]))
     return out
@@ -1190,6 +1258,17 @@ def _capped(theme_size, run, floor: float | None = None, raise_to_floor: bool = 
     return Pt(pt) if pt < cap else Pt(cap)
 
 
+def _table_body_fg(bg_hex: str) -> str:
+    """表格数据行文字色：在该行底色上对比度更高的那一端（纯黑 / 纯白）。
+
+    保留"最大化墨/底差"的原意（抗锯齿会让细笔画的核心像素向底色靠拢，余量越大越稳），
+    同时不再是"只对浅色主题成立"的硬编码。
+    """
+    from .backdrop import contrast_ratio, hex_to_rgb
+    rgb = hex_to_rgb(bg_hex)
+    return "000000" if contrast_ratio((0, 0, 0), rgb) >= contrast_ratio((255, 255, 255), rgb) else "FFFFFF"
+
+
 def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None):
     from pptx.util import Pt
 
@@ -1214,15 +1293,17 @@ def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None):
         header = (ri == 0)
         bg = colors["table_header_bg"] if header else (
             colors["table_row_alt_bg"] if (ri % 2 == 0) else colors["table_row_bg"])
-        # Body rows: pure black, not the theme's near-black colors["text"]
-        # (1A1A1A for wengao-basic). HG09 already special-cases thin single-
-        # stroke glyphs ("一" etc) with a relaxed 4.0:1 floor because raster
-        # anti-aliasing softens their core-pixel sample toward the
-        # background — but at 1A1A1A on a white cell that still measured
-        # 3.69:1 (2026-10-31 job-8227a4c941e4 page 5). Maximizing the ink/
-        # background delta gives the anti-aliased edge sample the most
-        # margin this renderer can offer without touching that gate floor.
-        fg = colors["table_header_text"] if header else "000000"
+        # Body rows: 取**对该行实际底色**对比度更高的纯黑或纯白，而不是写死黑色。
+        #
+        # 写死 "000000" 的理由曾是抗锯齿余量：1A1A1A 在白格上实测只到 3.69:1
+        # （2026-10-31 job-8227a4c941e4 第 5 页，HG09 对细笔画已放宽到 4.0 仍没够），
+        # 于是干脆用纯黑把墨/底差拉到最大。
+        #
+        # 但深色主题的行底色是 121C2E / 18253A：纯黑文字在上面只有 1.2:1，
+        # 整张表等于不可读（2026-11-04 六主题对照渲染发现，深色主题表格数据行
+        # 全黑压深底）。所以规则改为按底色选极值：浅底用纯黑、深底用纯白，
+        # 两者都保留"把墨/底差拉到最大"的原意，只是方向跟着底色走。
+        fg = colors["table_header_text"] if header else _table_body_fg(bg)
         for cell in row.cells:
             try:
                 cell.fill.solid()
