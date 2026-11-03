@@ -30,3 +30,7 @@ jobs/
 material_tasks/
 build/test-tmp/
 .claude/
+# 干净安装实测的中间副本（可重建；只保留 CLEANROOM_INSTALL.json 与首任务输入）
+reports/install-cleanroom-*/upgrade-payload*/
+reports/install-cleanroom-*/upgrade-payload-old-*/
+reports/install-cleanroom-*/first-task/export/
