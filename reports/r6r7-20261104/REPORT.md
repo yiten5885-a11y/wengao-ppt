@@ -4,13 +4,14 @@
 
 | 项 | 结果 |
 | --- | --- |
-| 安装载荷可复现构建 | **PASS**（212 成员，6/6 自检，扫描 0 阻断） |
+| 安装载荷可复现构建 | **PASS**（211 成员，6/6 自检，扫描 0 阻断） |
 | 载荷漏带 HG01–HG12 门禁实现（**真实缺陷**） | **已修**（并把"缺实现"从静默跳过改为失败关闭） |
+| 视觉主题素材缺失的报法（同源缺陷） | **已修**（`VISUAL.ASSETS_MISSING` + doctor `info` 级） |
 | OOXML 结构合格性门禁 | **PASS**（新门禁 7/7；对 15 页真实导出件 PASS） |
 | 结构门禁批量回归（新增） | **PASS**（116/116 历史导出件结构自洽） |
 | 材料生成模块定位（U8） | **PASS**（6 项测试，死分支消除） |
 | 干净安装根实测（U3/U4） | **安装器语义 11/11 PASS；首任务 run 外部阻断** |
-| 完整测试套件 | **749 passed / 0 failed**（364 subtests） |
+| 完整测试套件 | **756 passed / 0 failed**（364 subtests） |
 
 ---
 
@@ -36,15 +37,15 @@
 - **自检 6/6**：必需成员在位、无阻断扫描命中、无未复核人工项、无运行期成员混入、
   成员数一致、复制后 build_id 可计算。
 
-实测产物（本轮最终构建，含 §1.5 的 `scripts/layout_gate.py`）：
+实测产物（本轮最终构建，含 §1.5 的 `scripts/layout_gate.py` 与 §1.7 的视觉素材守卫）：
 
 ```
-载荷目录   dist/wengao-ppt-0.1.0-e46ac2da/
-成员       212（含 PAYLOAD-POLICY.md）
-build_id   015326047d9bbee2689f8443c45b0e8c
-tar.gz     dist/wengao-ppt-0.1.0-e46ac2da.tar.gz
-           sha256 4d4d86d13e50deb6ad44fd8dfa1ede6335e4d52c4782d47cd07e638040bf550d
-           4,610,935 bytes
+载荷目录   dist/wengao-ppt-0.1.0-07e04962/
+成员       211（+ BUILD_MANIFEST.json；cleanroom 按目录内文件计 212）
+build_id   ec59b15d3ae0ecbd820cecd16a4655a5
+tar.gz     dist/wengao-ppt-0.1.0-07e04962.tar.gz
+           sha256 fa6f479e4844f35cb4d7434c45467495dbafed6317f119412431dcd73c0a0
+           4,612,282 bytes
 ```
 
 > 未带 `assets/visual_img/`（12 MB，许可结论未定）。因此载荷里的视觉升级主题**没有
@@ -85,11 +86,11 @@ shape id 唯一且为正、C6 slide→layout→master 链完整、C7 分包内�
 入口** `<安装根>/bin/wengao`，且从中性 cwd 调用（避免"必须 cd 到载荷目录才成功"的假通过）。
 
 证据：`reports/install-cleanroom-20261104-final/CLEANROOM_INSTALL.json`
-安装根：`work/cleanroom/安装 根 H`（路径含中文与空格；`non_ascii_root=true`）
+安装根：`work/cleanroom/安装 根 J`（路径含中文与空格；`non_ascii_root=true`）
 
 | 步骤 | 结果 |
 | --- | --- |
-| install（`--activate`，载荷 212 成员，含中文渲染自测） | rc=0 |
+| install（`--activate`，载荷 211 成员，含中文渲染自测） | rc=0 |
 | status（经稳定入口，中性 cwd） | rc=0 |
 | doctor（安装完整性 / 运行前置分级） | install_ok=true，`blocking_missing=[]`，`prerequisites_missing=['vision_endpoint']` |
 | **runtime_gate_loadable**（用安装实例自己的副本实载 HG01–HG12） | rc=0，`{"bytes":160106,"fake_mp4":{"ok":false,"error":"missing_ftyp"},"validators":["_inspect_mp4","_validate_native_review_record"]}` |
@@ -200,6 +201,39 @@ doctor      install_ok=true  blocking_missing=[]
 > 会得到成百上千条 FAIL（例如某份已被接受的候选 414 条），因为它的字号口径
 > （`body_hard_min=24`）是给排版合成路径用的。**不要**把它当通用稿子门禁复用。
 
+## 1.7 视觉主题素材缺失：从"崩一个 FileNotFoundError"到"说清楚"
+
+载荷按许可政策**故意**不带 `assets/visual_img/`（12 MB，许可结论未定）。`visual_plan.build_plan`
+原本直接 `Path(lib["file"]).read_bytes()`，于是安装实例上选到声明 `visual_upgrade` 的主题时，
+用户只看到：
+
+```
+VISUAL.UPGRADE_FAILED: FileNotFoundError: [Errno 2] No such file or directory: '.../promo_ecom.png'
+```
+
+三件事都没说：缺什么、为什么缺、能怎么办。这和 §1.5 是同一类缺陷——**载荷政策与运行期
+依赖不一致**，只是这次的后果是"报错不可读"而不是"永不通过"。
+
+修法：
+
+* `visual_plan.missing_assets()` / `require_assets()`：在**读素材之前**查，缺就抛
+  `VisualAssetsMissing`，文案写明"缺几份 / 因载荷政策不含 / 改用非视觉主题或
+  `--include-unverified-assets` 重打包"；`build_plan` 第一句就调用它（守卫先于读稿，
+  错误不会被伪装成"文件打不开"）。
+* runner 映射为专门错误码 `VISUAL.ASSETS_MISSING`，不再混进通用 `VISUAL.UPGRADE_FAILED`。
+* doctor 新增 `visual_theme_assets`，severity 用**新增的第三级 `info`**：这是"某项能力在本
+  安装上不可用"，不是装坏了（blocking）、也不是环境没就绪（prerequisite），所以**不把
+  `run_ready` 压成 false**，但也绝不装作什么都能跑。
+
+安装实例实测（`安装 根 J`）：
+
+```
+info  --  visual_theme_assets  missing=['promo_ecom.png','factory_night.png',
+        'aisle_supermarket.png','desk_planning.png','skyline_city.png'] total=5
+blocking_missing=[]            ← 没被污染
+prerequisites_missing=['vision_endpoint']   ← 没被污染，仍是唯一的运行前置缺口
+```
+
 ---
 
 ## 2. 阻断与未完成（不得据此声明完成）
@@ -237,8 +271,8 @@ env -u CODEBUDDY_SAFE_DELETE_BULK_STATE_DIR -u CODEBUDDY_TOOL_CALL_ID \
 
 # 3) 干净安装根实测（安装根须不存在或为空）
 .venv/bin/python scripts/cleanroom_install_check.py \
-  --payload dist/wengao-ppt-0.1.0-e46ac2da \
-  --root "work/cleanroom/安装 根 H" \
+  --payload dist/wengao-ppt-0.1.0-07e04962 \
+  --root "work/cleanroom/安装 根 J" \
   --report reports/install-cleanroom-20261104-final \
   --python "$PWD/.venv/bin/python"
 ```
@@ -252,10 +286,13 @@ b75c3ab21298dfd4d22bf05bef27d230186f26e809823d88beb43ac53938877e  scripts/build_
 f4f64ddef465601c3fbf7772f5b1918f5d016a1bcdb68bac0f8fd854d3888cdf  scripts/ooxml_conform.py
 e9fc1e334df5bf0a49302c4c53f897c866b1fc30b3745f3462cf7572b324aa8d  scripts/cleanroom_install_check.py
 fe36b6d6ba3bced39637a419bcf0817eeb7e794449f274ce6ec707e292b2c225  wengao_ppt/material_flow.py
-b6b216c36597a4dea5c5ac4b2a336e8afa02421609591a702eab382f8afc3c84  wengao_ppt/install.py
-14c04320e5d9e9154245d5bbc813d1faefe78aa9f1ff22aea4fd3f86ee895d7c  wengao_ppt/runner.py
 ea6ac36af11580fbc63e8b0189ee900a859c91e55d119e8cbdd85da0d862dc66  tests/test_material_flow_locator.py
 cf9f211d9ff595f6e18d712fc468c52db83c097b5847a83bf592549708146a30  tests/test_ooxml_conform.py
+471a82113ec4543b50af52f1261b0451ad3635691683fed3050389ac20e1ebe1  wengao_ppt/visual_plan.py
+39d49d8cf845b51042f32aa577da0ec720d4848f6bb752e1c220abc74f6083d9  wengao_ppt/install.py
+25d7a8c6a42fb23495a84f9368cc99ba502bc7277c2413c5081bcee75fbae00f  wengao_ppt/runner.py
+a375de5424ba7066b9757f7901a46c338c1c6b538fc2bccf3802c9bc64c52368  tests/test_visual_plan_assets.py
+cbc58f7ccfdd49e4503a5f9be318ad00596fec3ea1740faadf50f305870123f3  tests/test_install_doctor.py
 82a0e7cd21b6cd76f05e7d9cfdea7ac4e6a767269310ae65b17fa5d7bde5f15b  tests/test_payload_runtime_deps.py
 ```
 
