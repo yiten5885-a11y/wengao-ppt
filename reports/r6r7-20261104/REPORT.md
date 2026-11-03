@@ -1,6 +1,6 @@
 # R6/R7·安装载荷、结构门禁与干净安装实测（2026-11-04）
 
-状态：**交付 6 项、1 项外部阻断**。本文件不宣告项目完成；`release_ready` 仍为 `false`。
+状态：**交付 8 项、1 项外部阻断**。本文件不宣告项目完成；`release_ready` 仍为 `false`。
 
 | 项 | 结果 |
 | --- | --- |
@@ -10,8 +10,10 @@
 | OOXML 结构合格性门禁 | **PASS**（新门禁 7/7；对 15 页真实导出件 PASS） |
 | 结构门禁批量回归（新增） | **PASS**（116/116 历史导出件结构自洽） |
 | 材料生成模块定位（U8） | **PASS**（6 项测试，死分支消除） |
-| 干净安装根实测（U3/U4） | **安装器语义 11/11 PASS；首任务 run 外部阻断** |
-| 完整测试套件 | **756 passed / 0 failed**（364 subtests） |
+| 干净安装根实测（U3/U4） | **安装器语义 12/12 PASS；首任务 run 外部阻断** |
+| 工作台移除「局部编辑」页（§1.8） | **已完成**（DOM 0 节点，CLI 能力保留） |
+| 6 个主题 → 6 个风格（§1.9） | **已完成**（15 对组合渲染差异均非 0） |
+| 完整测试套件 | **771 passed / 0 failed**（540 subtests） |
 
 ---
 
@@ -236,15 +238,153 @@ prerequisites_missing=['vision_endpoint']   ← 没被污染，仍是唯一的�
 
 ---
 
+## 1.8 工作台移除「局部编辑」页
+
+用户要求：「把局部编辑从工作台删除」。这不是修 bug，是一次**产品面收窄**，所以要同时守住
+两件事：入口真的消失，能力不能顺手丢掉。
+
+拆除范围（`workbench/index.html`，净减 19,711 字符）：
+
+* 侧栏 nav 按钮、`#view-edit` 整段 section、`PAGE_META.edit`、`setView()` 里的 `initEdit()` 钩子；
+* 整段前端逻辑（约 14,124 字符）：`initEdit` / `loadEditJob` / `loadBaselinePages` /
+  `renderEditRail` / `selectEditPage` / `renderEditExtra` / 提交与对照；
+* 深链 `S.edit.job`、`S.edit` 状态、以及 `.edit` / `.rail` / `.edit-canvas` / `.page-wrap` /
+  `.page-inner` / `.props` / `.objlist` 与它们的响应式规则。
+
+**保留**：`.box`（弹窗复用）、`.compare`（历史页复用）、`.thumb`（工作室复用）；
+CLI `wengao-ppt edit` 与 `/api/jobs/<id>/edit*` 端点**未下线**——授权的局部修改仍是产品能力，
+只是工作台不再提供入口。`SKILL.md` 的四条流程因此改为三条，并注明这一点。
+
+拆除时踩出的缺陷（自己造成的，已修）：`setView()` 只按 `data-view` 匹配 section，遇到未知视图
+会把**所有** section 都藏掉。旧书签 `?view=edit` 于是得到一个整页空白的窗口。改为先查
+`PAGE_META`：`if (view && PAGE_META[view]) setView(view)`，未知视图回落到默认页。
+
+真机走查（Playwright `channel="chrome"`，不是模拟 DOM）：
+
+```
+导航项            3（演示工作室 / 材料生稿 / 版本与历史）
+[data-view='edit'],#view-edit   DOM 节点 0
+三视图标题        正确切换
+page_errors       []
+历史页            34 张卡渲染正常
+?view=edit        落到「演示工作室」，不再空白
+```
+
+证据：`reports/workbench-remove-edit-20261104/`（4 张截图 + `SMOKE.json` + `server.log`）。
+
+---
+
+## 1.9 6 个主题变成 6 个风格
+
+用户要求：「6 个主题 6 个风格，由你完成」。这句话原本是**文案**，不是事实——6 个主题里只有
+3 个算得上风格差异，另外 3 个是"同一个风格换个颜色"：
+
+| 主题 | 改前的真实差异 | 为什么不算风格 |
+| --- | --- | --- |
+| `wengao-business` | 与 basic 主色相差 **12° 色相**（H≈206 vs H≈218） | 同底色、同 Songti/Arial、字号只差 1pt，成品几乎一样 |
+| `wengao-dark` | accent **与 primary 同为 `00F2FF`** | 等于没有强调色；拉丁 Arial 又与两个浅色主题撞车 |
+| `wengao-minimal` | `F5F5F5` 冷灰 + 全灰配色 | 灰度不是风格，只是"basic 去掉蓝色" |
+
+改法：给每套主题补一个 `style` 块（风格名 / 体裁 / 一句话 / 标签 / 缩略图类型），并把它真正
+拉开——**配色、字体配对、字号层级三条轴同时动**：
+
+| id | 风格 | 体裁 | 关键改动 |
+| --- | --- | --- | --- |
+| S1 `wengao-basic` | 藏蓝公文 | 公文 / 汇报 | 不动（旧默认，身份必须冻结） |
+| S2 `wengao-business` | 钢青商务 | 商务 / 汇报 | 主色 `2F5B7C`→`175A63`（H≈193）、中文 Songti→**STHeiti**、拉丁 Arial→**Helvetica Neue**、正文 16→17pt |
+| S3 `wengao-dark` | 深海霓虹 | 科技 / 产品发布 | 底 `0A192F`→`0B1220`、主色→`3DDCFF`、accent **改为品红 `FF6FA5`**、拉丁→**Menlo**（等宽） |
+| S4 `wengao-minimal` | 暖白静读 | 阅读 / 长文 | 底 `F5F5F5`→暖白 `FAF8F3`、字 `333333`→暖墨 `2B2A26`、accent→陶土 `7F4E32`、拉丁→**Georgia** |
+| S5 `wengao-adaptive` | 原稿本色 | 原稿 / 精修 | 策略型：不换肤，只做结构精修（`REFINED_ORIGINAL`） |
+| S6 `wengao-visual-dark` | 炭黑剧场 | 视觉 / 发布 | 炭黑 `101014` + 金铜 `E8C877` + 珊瑚 `E06C5A`，配图裁切与动效 |
+
+`style` 块**不进 `config_digest`**（`_DIGEST_FIELDS` 不含 `style`），所以给历史主题补风格标签
+不会改变身份摘要——实测 `wengao-basic` 的 digest 在改动前后同为 `67d85429…`，老任务仍然对得上。
+`REGISTRY_VERSION` 由 `1.1.0` 升到 `1.2.0`。
+
+### 顺带修掉的真缺陷：深色主题表格数据行不可读
+
+`_style_table` 的数据行文字**硬编码 `"000000"`**。旧深色主题行底 `112240` 上对比度只有 1.6:1，
+本次加深到 `121C2E` 后降到 **1.2:1**——渲染出来的数据行近乎全黑，读不出来。这不是配色偏好问题，
+是硬编码只对浅色主题成立。改为按行底色在黑/白之间挑对比度更高的一侧：
+
+```python
+def _table_body_fg(bg_hex: str) -> str:
+    rgb = hex_to_rgb(bg_hex)
+    black = contrast_ratio((0, 0, 0), rgb)
+    return "000000" if black >= contrast_ratio((255, 255, 255), rgb) else "FFFFFF"
+```
+
+保留了"最大化墨/底差"的原意（抗锯齿会让细笔画核心像素向底色靠拢，余量越大越稳），
+但不再只对浅色主题成立。目检：`2026 Q1 / 3.20 / +12.5%` 已为白字压 `121C2E`。
+
+### 前端主题卡同步重写
+
+原先按 `slide_bg === "0A192F"` **写死**判深色——换肤后（`0B1220`）判断直接失效，深色主题会被
+画成浅色卡；且 6 张缩略图共用同一模板，看起来一模一样。改为按 WCAG 相对亮度判深浅
+（`relLum`），并按 `style.preview` 分支画 6 种互不相同的构图（红头双线 / 斜纹 / 四宫格 /
+深色发光 / 大留白 / 配图块），卡片增加风格名与体裁行。
+
+### 把「6 个风格」写成可执行判据
+
+`tests/test_theme_six_styles.py`（15 测试 / 176 subtests）：
+
+* 注册表：恰好 6 个主题、每个有完整 `style` 块、`style_id`/`style_name`/`preview` 唯一、
+  **`style` 不进 `config_digest`**、`list_themes()` 必须暴露 `style`；
+* 六风格互异：**任取两主题至少在 3 条轴不同**（色相 ≥25°、底色亮度比 ≥1.5×、中文字体、
+  拉丁字体、字号层级之一），`adaptive` 必须是策略而非配色，且至少一深一浅；
+* 可读性：文字在 `slide_bg`/`surface`/`table_row_bg`/`table_row_alt_bg` 上 ≥4.5（note ≥6.0）、
+  表头与 `chart_text` ≥4.5、`chart_series` ≥3.0、字号在 `ROLE_RANGE_PT`（10–30pt）内、
+  标题/正文 ≥1.4；
+* 表格数据行：对每个主题**真跑 `apply_theme`**，量数据行文字对其自身 fill 的对比度，
+  并反向断言深色主题必须选白字。
+
+### 真渲染量化（不是看色值猜）
+
+`scripts/make_theme_source_deck.py` 生成 6 页**中性原稿**（白底 / 深灰字 / 灰面板 / 表格 /
+数字卡 / 流程 / 结尾）；`scripts/theme_gallery.py` 对每个主题真跑 `apply_theme()`，再用项目
+自己的 `render_pages()`（真 LibreOffice）转 PDF 逐页 PNG，两两量化。
+
+`reports/themes-20261104/GALLERY.json`：`verdict=PASS`、6 主题 × 6 页、`failures=[]`、
+渲染器 `LibreOffice 26.8.1.1`、dpi 96。15 对组合**无一对为 0**：
+
+```
+最接近的一对  wengao-basic vs wengao-minimal   ink 0.128 / hist 0.020 / page 0.041
+深色 ↔ 浅色   wengao-dark vs 各浅色主题        ink 0.457–0.653 / hist 0.974–0.987
+```
+
+三个指标是互补的，单一指标会骗人：`page_diff` 按面积加权，而两套浅色主题的差异几乎全在
+文字与细线上（面积占比个位数），basic vs adaptive 这种"字体排版全不同"的组合能算出 0.004，
+看起来像没差别；所以另给 `ink_diff`（只在内容像素上算，不被留白稀释）与 `hist_dist`
+（4×4×4 色彩直方图 L1/2，衡量配色构成而非改动面积）。
+
+**过程中的两个错误结论（已排掉，写在这里防止重犯）**：
+
+1. 第一版直接拿 `wengao-basic` 的成品 draft 当对照源，结果 `wengao-adaptive` 与
+   `wengao-basic` 的 13 页 PNG **逐页字节相同**、`ink_diff=0`，看起来像"自适应主题没实现"。
+   真相是源本身已经被 basic 染过色，adaptive 忠实地保留了它——必须用中性原稿。
+2. `render_pages()` 只往目录写 PNG、不清旧文件，上一份 13 页原稿留下的 `page-07..13`
+   会混进新结果，让"6 页原稿"报出 13 页。现在渲染前 `rmtree` 目标目录，并用
+   `pdf_page_count()` 与 PNG 张数交叉核对（该函数返回 `(页数, 错误)` 元组，直接当整数用
+   会打印出 `PDF (6, None) 页`）。
+
+---
+
 ## 2. 阻断与未完成（不得据此声明完成）
 
-1. **首任务 run/validate/export 未在干净安装根上跑通**：外部依赖（视觉端点）缺失，见 §1.4。
-2. **U1 监督方 UI 全链复验**（8823，Cua）：本轮未做；本轮的干净安装证据只覆盖 CLI 与安装器。
+1. **首任务 run/validate/export 未在干净安装根上跑通**：外部依赖（视觉端点 8080/11434）缺失，
+   本机无多模态权重、且按边界不下载，见 §1.4。本轮重建载荷后复跑：安装器语义 12/12 PASS，
+   `first_task_run` 仍是唯一 `blocked_external`，`run_ready=False`。
+2. **U1 监督方 UI 全链复验**（8823，Cua）：仍未做。§1.8 只覆盖工作台三视图的**界面走查**
+   （真 Chrome，8899 回环），不含"材料 → 生成 → 校验 → 导出"在 UI 上的端到端。
 3. **U2 原生实播 + 关闭重开录像**：本机 GUI 缺字与截图超时问题未解，未做。
 4. **U5 发布**：未做。授权闸门（全部真实验收通过）尚未满足。
 5. **U6 许可证**：仍待用户决定；本轮不写任何许可证文件。
 6. **U7 的 PowerPoint 兼容性**：本机无 PowerPoint，只有结构门禁，不构成兼容性结论。
+   §1.9 的六主题画廊同样是 **LibreOffice 渲染**，不能替代 PowerPoint 实测。
 7. **载荷缺少 `assets/visual_img/`**：视觉升级主题无示意配图；许可未定，不擅自打包。
+8. **历史证据未入库**：`reports/browser_experience`、`reports/install-cleanroom-20261104*`、
+   `reports/r5`、`reports/p1-candidates` 等（合计约 60 MB）仍是未跟踪状态，本轮未替用户
+   决定是否入库。
 
 ---
 
@@ -271,17 +411,38 @@ env -u CODEBUDDY_SAFE_DELETE_BULK_STATE_DIR -u CODEBUDDY_TOOL_CALL_ID \
 
 # 3) 干净安装根实测（安装根须不存在或为空）
 .venv/bin/python scripts/cleanroom_install_check.py \
-  --payload dist/wengao-ppt-0.1.0-07e04962 \
-  --root "work/cleanroom/安装 根 J" \
-  --report reports/install-cleanroom-20261104-final \
+  --payload dist/wengao-ppt-0.1.0-c323d7b3 \
+  --root "work/cleanroom/安装 根 K" \
+  --report reports/install-cleanroom-20261104-r3 \
   --python "$PWD/.venv/bin/python"
+
+# 4) 六主题真渲染画廊（先造中性原稿，再逐主题套用 + 渲染 + 量化）
+.venv/bin/python scripts/make_theme_source_deck.py \
+  --out reports/themes-20261104/source-neutral.pptx
+.venv/bin/python scripts/theme_gallery.py \
+  --source reports/themes-20261104/source-neutral.pptx \
+  --out reports/themes-20261104 --dpi 96
+
+# 5) 只跑主题风格判据
+.venv/bin/python -m pytest tests/test_theme_six_styles.py -q
 ```
+
+> 画廊脚本会先 `rmtree` 目标渲染目录再出图——**不要**去掉这一步，否则上一轮多页原稿的
+> `page-NN.png` 会混进本轮结果（见 §1.9 的错误结论 2）。
 
 ---
 
 ## 4. 本轮交付物 SHA256
 
 ```
+24cb769e3beeb7ee5145a2742c1e7fbd2a5d96c068ea24608ed6dd6780c10618  wengao_ppt/theme.py
+3ec536f0e466d81a5af1355750e48a10962a9e8be5bde0f5b0e6d74f509fd0be  workbench/index.html
+3ad46ade93fbaf52fc7b91c249738cef5864fb67d70d81fd7d92454d6ea69a43  tests/test_theme_six_styles.py
+2737452f745fbfb3d97f2057fc5cc9c1393171f5822e22fc1fbc408b59ab0775  tests/test_wengao_business_muted_contrast_margin.py
+41a55410b4cf25af99ea02ad2a06f693e076d7233292753c087b1023b2fc356b  scripts/theme_gallery.py
+f5b7429a9644f432654af89dda611bc549cd9f46af2357d610db97bd0fad074e  scripts/make_theme_source_deck.py
+3fbe7a5d7368944d1cbf142ba0eda56b6850d63d3ad93cb627b9bdd2e83235b6  SKILL.md
+cd0a0e2825563a12e5008040fd6481b0f39c2a802bc03ea781bb125f37850a54  scripts/browser_experience.py
 b75c3ab21298dfd4d22bf05bef27d230186f26e809823d88beb43ac53938877e  scripts/build_install_payload.py
 f4f64ddef465601c3fbf7772f5b1918f5d016a1bcdb68bac0f8fd854d3888cdf  scripts/ooxml_conform.py
 e9fc1e334df5bf0a49302c4c53f897c866b1fc30b3745f3462cf7572b324aa8d  scripts/cleanroom_install_check.py
@@ -299,8 +460,15 @@ cbc58f7ccfdd49e4503a5f9be318ad00596fec3ea1740faadf50f305870123f3  tests/test_ins
 相关证据文件：
 
 ```
-reports/install-cleanroom-20261104-final/CLEANROOM_INSTALL.json   干净安装根实测全记录
+reports/install-cleanroom-20261104-r3/CLEANROOM_INSTALL.json     干净安装根实测全记录（本轮，载荷 c323d7b3）
+reports/install-cleanroom-20261104-final/CLEANROOM_INSTALL.json   上一轮对照（载荷 07e04962）
 reports/install-cleanroom-20261104-final/first-task/              首任务输入（3 页，脚本自建）
+reports/themes-20261104/GALLERY.json                              六主题 × 6 页真渲染与两两量化
+reports/themes-20261104/gallery.html                              同一份数据的可浏览版
+reports/themes-20261104/pptx/                                     6 个主题各自的成品 pptx
+reports/themes-20261104/render/                                   逐页 PNG（pdf + png + thumb 两档）
+reports/themes-20261104/theme-cards.png                           工作台主题卡实拍
+reports/workbench-remove-edit-20261104/SMOKE.json                 工作台三视图 + 旧深链走查结果
 reports/ooxml-sweep-20261104/SWEEP.json                           116 件历史导出件结构回归结果
 work/ooxml/latest.json                                            15 页真实导出件结构门禁结果
 dist/BUILD_MANIFEST.json                                          载荷逐成员哈希与自检
