@@ -23,3 +23,10 @@ workbench_previews/
 .lo-profile/
 .DS_Store
 .locks/
+# 安装载荷产物（可重建，不入库；清单与校验和随报告存档）
+dist/
+# 真实任务数据：含用户上传的原稿与运行产物，**绝不入库**
+jobs/
+material_tasks/
+build/test-tmp/
+.claude/
