@@ -47,6 +47,13 @@ REQUIRED = (
     # 渲染字体配置：缺它时安装实例仍能启动、仍能"渲染成功"，但中文全变方框。
     # 这是发布载荷的必需资源，必须由安装核验与自测共同把关。
     "assets/fontconfig/fonts.conf",
+    # 排版硬门禁 HG01–HG12 的**运行期实现**，以及它读取的冻结政策文件。
+    # 二者都由 `wengao_ppt/runner.py` 以 `program_root/...` 打开：缺政策 → 门禁
+    # 记 NOT_EVALUABLE（validate 永久阻断）；缺实现 → 同一文件还承担原生实播
+    # 录像/复核记录的证据校验，会退化成**静默跳过**（已改为失败关闭）。
+    # 换句话说：这两个成员不在载荷里，安装实例不可能跑通一个完整任务。
+    "scripts/layout_gate.py",
+    "contracts/layout_hard_gate_policy.json",
 )
 
 

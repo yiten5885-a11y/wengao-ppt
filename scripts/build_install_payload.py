@@ -59,6 +59,11 @@ INCLUDE_FILES = (
     "VERSIONS.md",
     "samples/r5_material_to_ppt.py",
     "assets/fontconfig/fonts.conf",
+    # HG01–HG12 排版硬门禁的**运行期实现**（`wengao_ppt/runner.py` 以
+    # `program_root/scripts/layout_gate.py` 打开）。它不属于"开发脚本"：
+    # 少了它，安装实例的 layout.hard_gate 恒为 NOT_EVALUABLE，且原生实播录像/
+    # 复核记录的证据校验会失效。`scripts/` 其余脚本仍不进载荷。
+    "scripts/layout_gate.py",
 )
 
 #: 许可未取得明确结论、默认不进载荷的资产（`--include-unverified-assets` 才带）。
@@ -100,7 +105,7 @@ POLICY_DOC = """# 安装载荷政策（PAYLOAD-POLICY）
 | --- | --- | --- |
 | `jobs/`、`reports/`、`workbench_uploads/`、`workbench_previews/`、`wb_loopback_data/` | 用户私有材料与运行期数据 | 载荷不含任何用户稿件；安装后为空白实例 |
 | `.venv/`、字节码、`*.log`、`*.pid` | 本机运行期产物 | 需在目标机按 `requirements.txt` 建环境 |
-| `tests/`、`scripts/`、`fixtures/`、`calibration/` | 开发期自检与门禁工具 | 载荷不能跑仓库内测试；验收须回到源码仓 |
+| `tests/`、`scripts/`（**除 `scripts/layout_gate.py`**）、`fixtures/`、`calibration/` | 开发期自检与门禁工具 | 载荷不能跑仓库内测试；验收须回到源码仓。`scripts/layout_gate.py` 例外：它是运行期门禁实现，必须随载荷安装 |
 | `fonts/` | 22 MB 开发期字体样本，运行时不引用 | 渲染使用系统字体（见 `assets/fontconfig/fonts.conf`） |
 | `assets/visual_img/` | 资产许可结论未定 | 视觉升级主题的示意配图缺失；`--include-unverified-assets` 可带上，但那时许可责任随载荷转移 |
 | `vendor/luobo-ppt/.git` | 上游仓库元数据 | `precheck` 的上游提交校验会记 `VENDOR_DIR_MISSING`，不阻断生成 |

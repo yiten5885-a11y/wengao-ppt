@@ -451,6 +451,18 @@ class Runner:
                             raise GateError("EVIDENCE.NATIVE_REVIEW_INVALID", f"复核记录校验未通过：{err_msg}")
                     finally:
                         rtf_path.unlink(missing_ok=True)
+                else:
+                    # 文件在但加载不了，同样不能当作"没有证据校验"。
+                    raise GateError("EVIDENCE.GATE_IMPLEMENTATION_UNLOADABLE",
+                                    f"布局门禁实现无法加载：{gate_path}")
+            else:
+                # 失败关闭：`scripts/layout_gate.py` 同时承担原生实播录像与复核记录的
+                # 证据校验。缺它时静默跳过，等于让**未校验**的录像进门。
+                # 实际发生过：安装载荷漏带 scripts/，于是安装实例的这段校验整体消失。
+                raise GateError(
+                    "EVIDENCE.GATE_IMPLEMENTATION_MISSING",
+                    f"布局门禁实现缺失：{gate_path}；安装载荷必须包含 "
+                    "scripts/layout_gate.py，否则原生实播证据无法被校验。")
 
             evidence_dir = d / "layout_gate_evidence" / actual_candidate_sha
             evidence_dir.mkdir(parents=True, exist_ok=True)
