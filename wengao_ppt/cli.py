@@ -70,19 +70,22 @@ def cmd_from_material(a):
     precheck/run/validate/export，避免绕过验收门禁。
     """
     import importlib.util
-    # 材料生成模块的查找顺序：
-    # ① 与包同目录的 `material_flow.py`（pip 安装后的自包含布局）；
-    # ② 项目源码布局 `samples/r5_material_to_ppt.py`（开发/发布副本布局）。
-    here = Path(__file__).resolve().parent
-    mod_path = None
-    for cand in (here / "material_flow.py", here.parent / "samples" / "r5_material_to_ppt.py"):
-        if cand.is_file():
-            mod_path = cand
-            break
-    if mod_path is None:
+    # 材料生成模块的定位集中在 `wengao_ppt.material_flow`：显式搜索顺序 +
+    # 可覆盖（$WENGAO_MATERIAL_FLOW）+ 缺件时输出**实际尝试过的路径**。
+    # 旧实现在这里手写两条候选，其中 `wengao_ppt/material_flow.py` 是从未
+    # 发布过的死分支，缺件报错也不说明找过哪里（U8）。
+    from . import material_flow
+    search_extra = []
+    if getattr(a, "project_root", None):
+        search_extra.append(Path(a.project_root))
+    try:
+        mod_path = material_flow.resolve(search_extra)
+    except material_flow.MaterialFlowMissing as exc:
         print(json.dumps({"gate": "GATE.MATERIAL_PATH_MISSING",
-                          "detail": "材料生成模块缺失（既无 wengao_ppt/material_flow.py，"
-                                    "也无 samples/r5_material_to_ppt.py）"},
+                          "detail": "材料生成模块缺失（samples/r5_material_to_ppt.py）；"
+                                    "已尝试的路径见 searched。载荷若被裁剪掉 samples/，"
+                                    "请重新生成安装载荷或设置 $WENGAO_MATERIAL_FLOW。",
+                          "searched": exc.searched},
                          ensure_ascii=False, indent=2))
         return 4
     spec = importlib.util.spec_from_file_location("r5_material_to_ppt", mod_path)
