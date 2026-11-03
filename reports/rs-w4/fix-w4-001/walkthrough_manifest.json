@@ -1,0 +1,62 @@
+[
+  {
+    "name": "01_legacy_home",
+    "file": "01_legacy_home.png",
+    "description": "旧工作台首页：演示工作室"
+  },
+  {
+    "name": "02_legacy_material_uploaded",
+    "file": "02_legacy_material_uploaded.png",
+    "description": "旧工作台：上传 .md 材料成功，显示文件元数据与 SHA"
+  },
+  {
+    "name": "03_legacy_pptx_uploaded",
+    "file": "03_legacy_pptx_uploaded.png",
+    "description": "旧工作台：上传 .pptx 原稿成功，主题与制作按钮已就绪"
+  },
+  {
+    "name": "04_legacy_make_started",
+    "file": "04_legacy_make_started.png",
+    "description": "旧工作台：已点击开始制作，取消制作按钮亮起（任务运行中）"
+  },
+  {
+    "name": "05_legacy_make_cancelled",
+    "file": "05_legacy_make_cancelled.png",
+    "description": "旧工作台：已点击取消制作，状态行显示取消态"
+  },
+  {
+    "name": "06_legacy_export_tested",
+    "file": "06_legacy_export_tested.png",
+    "description": "旧工作台：POST /api/jobs/<id>/export → HTTP 200，旧契约响应（exported=False, gate=EVIDENCE.STALE）"
+  },
+  {
+    "name": "11_ui_home",
+    "file": "11_ui_home.png",
+    "description": "新工作台首页：空态与输入框"
+  },
+  {
+    "name": "12_ui_material_uploaded",
+    "file": "12_ui_material_uploaded.png",
+    "description": "新工作台：上传 .md 材料（toast：已导入 fixw4_walkthrough_test.md）"
+  },
+  {
+    "name": "13_ui_pptx_uploaded",
+    "file": "13_ui_pptx_uploaded.png",
+    "description": "新工作台：上传 .pptx 原稿并创建制作任务（左栏 4→4 个任务，当前：a3b53d99_fixw4_walkthrough_tes）"
+  },
+  {
+    "name": "14_ui_make_running",
+    "file": "14_ui_make_running.png",
+    "description": "新工作台：任务状态 稳稿基础主题（旧默认）（取消按钮未亮）"
+  },
+  {
+    "name": "15_ui_cancelled",
+    "file": "15_ui_cancelled.png",
+    "description": "新工作台：点击取消制作，状态：已取消 · 稳稿基础主题（旧默认）"
+  },
+  {
+    "name": "16_ui_exported",
+    "file": "16_ui_exported.png",
+    "description": "新工作台：点击导出按钮，触发 /api/ui/jobs/<id>/export（反馈：已导出：annual_review_synthetic.generated.wengao.pdf、annual_revi）"
+  }
+]

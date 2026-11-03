@@ -218,6 +218,164 @@ class GenerateOnePromptTests(unittest.TestCase):
         self.assertEqual(review_missing_role(ctx.exception.diagnostics), "setting")
 
 
+class CloudImageGenErrorClassificationTests(unittest.TestCase):
+    """401/403/400/402 不会自己变好；429/5xx/网络抖动值得按原节奏重试。
+
+    2026-10-31：云端生图客户端原先把所有异常（包括坏 key/额度耗尽）都吞成
+    None，调用方只能看到"生图服务没有在预算内返回可用图片"，分不清是服务
+    抖动还是配置错误，于是对接下来每一个需要兜底生图的场景重复同一个注定
+    失败的请求。"""
+
+    def _client(self):
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageClient
+        return CloudImageClient({"endpoint": "https://example.invalid/v1",
+                                 "api_key": "k", "model": "fake-image",
+                                 "provider": "openai-images"})
+
+    def _raise_http_error(self, status: int):
+        import urllib.error
+        from unittest import mock
+        err = urllib.error.HTTPError(
+            "https://example.invalid/v1/images/generations", status, "err",
+            hdrs=None, fp=None)
+        return mock.patch("urllib.request.urlopen", side_effect=err)
+
+    def test_401_is_permanent(self):
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+        with self._raise_http_error(401):
+            with self.assertRaises(CloudImageGenError) as ctx:
+                self._client().generate_image({"visual_query": "x", "anchors": {}})
+        self.assertTrue(ctx.exception.permanent)
+        self.assertEqual(ctx.exception.status, 401)
+
+    def test_400_is_permanent(self):
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+        with self._raise_http_error(400):
+            with self.assertRaises(CloudImageGenError) as ctx:
+                self._client().generate_image({"visual_query": "x", "anchors": {}})
+        self.assertTrue(ctx.exception.permanent)
+
+    def test_429_is_not_permanent(self):
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+        with self._raise_http_error(429):
+            with self.assertRaises(CloudImageGenError) as ctx:
+                self._client().generate_image({"visual_query": "x", "anchors": {}})
+        self.assertFalse(ctx.exception.permanent)
+
+    def test_500_is_not_permanent(self):
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+        with self._raise_http_error(500):
+            with self.assertRaises(CloudImageGenError) as ctx:
+                self._client().generate_image({"visual_query": "x", "anchors": {}})
+        self.assertFalse(ctx.exception.permanent)
+
+    def test_generic_network_error_still_returns_none(self):
+        """未分类的传输异常保持原行为（吞成 None），不在本次改动范围内收紧。"""
+        from unittest import mock
+        with mock.patch("urllib.request.urlopen", side_effect=OSError("boom")):
+            result = self._client().generate_image({"visual_query": "x", "anchors": {}})
+        self.assertIsNone(result)
+
+
+class GenerateOnePermanentFailureTests(unittest.TestCase):
+    """一次 401 之后，本任务内其余场景不再重复同一个注定失败的云端请求。"""
+
+    def _provider_with_client(self, client_cls, tmp):
+        return ScenePhotoProvider(tmp, providers=[], visual_reviewer=_passing_review)
+
+    def test_permanent_failure_is_reported_and_remembered(self):
+        from wengao_ppt.media.genimg import cloud_genimg
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+
+        calls = {"n": 0}
+
+        class _PermanentlyBrokenClient:
+            def __init__(self, target):
+                self.target = target
+
+            def is_available(self):
+                return True
+
+            def generate_image(self, scene_request, timeout_s=60.0):
+                calls["n"] += 1
+                raise CloudImageGenError("HTTP 401", permanent=True, status=401)
+
+        with mock.patch.object(cloud_model_config, "active_image_gen_target",
+                               return_value=CLOUD_TARGET), \
+                mock.patch.object(cloud_genimg, "CloudImageClient",
+                                  _PermanentlyBrokenClient), \
+                tempfile.TemporaryDirectory() as tmp:
+            provider = self._provider_with_client(_PermanentlyBrokenClient, tmp)
+            with self.assertRaises(SceneImageError) as ctx:
+                provider.generate_one(scene_context=dict(WAR_ROOM_SCENE))
+            self.assertEqual(ctx.exception.code, "SCENE.GEN_IMAGE_PERMANENT_FAILURE")
+            self.assertEqual(calls["n"], 1)
+            # Second scene in the same job: short-circuits without another
+            # doomed network call.
+            with self.assertRaises(SceneImageError) as ctx2:
+                provider.generate_one(scene_context=dict(WAR_ROOM_SCENE))
+            self.assertEqual(ctx2.exception.code, "SCENE.GEN_IMAGE_PERMANENT_FAILURE")
+            self.assertEqual(calls["n"], 1, "second call must not hit the network again")
+
+    def test_rate_limit_is_not_remembered_across_calls(self):
+        from wengao_ppt.media.genimg import cloud_genimg
+        from wengao_ppt.media.genimg.cloud_genimg import CloudImageGenError
+
+        calls = {"n": 0}
+
+        class _FlakyClient:
+            def __init__(self, target):
+                self.target = target
+
+            def is_available(self):
+                return True
+
+            def generate_image(self, scene_request, timeout_s=60.0):
+                calls["n"] += 1
+                if calls["n"] == 1:
+                    raise CloudImageGenError("HTTP 429", permanent=False, status=429)
+                return {"image_bytes": _noise_png(), "generator": "cloud:fake",
+                        "model": "fake-image", "seed": None, "prompt_digest": "x"}
+
+        with mock.patch.object(cloud_model_config, "active_image_gen_target",
+                               return_value=CLOUD_TARGET), \
+                mock.patch.object(cloud_genimg, "CloudImageClient", _FlakyClient), \
+                tempfile.TemporaryDirectory() as tmp:
+            provider = self._provider_with_client(_FlakyClient, tmp)
+            with self.assertRaises(SceneImageError) as ctx:
+                provider.generate_one(scene_context=dict(WAR_ROOM_SCENE))
+            self.assertEqual(ctx.exception.code, "SCENE.GEN_IMAGE_FAILED")
+            # A transient 429 must not disable the service for later scenes.
+            image = provider.generate_one(scene_context=dict(WAR_ROOM_SCENE))
+            self.assertEqual(image["sha256"], hashlib.sha256(_noise_png()).hexdigest())
+
+
+class ProviderAuthFailureDisablesForJobTests(unittest.TestCase):
+    """坏/过期 key 的 401/403 是本次任务内的永久事实，跟限流一样整任务只认一次。"""
+
+    def test_auth_failure_disables_the_provider_for_the_rest_of_the_job(self):
+        calls = {"n": 0}
+
+        class _AuthFailingProvider:
+            name = "fake-auth-fail"
+            allowed_hosts = {"example.invalid"}
+
+            def search(self, query):
+                calls["n"] += 1
+                raise SceneImageError("SCENE.PROVIDER_AUTH_FAILED",
+                                      "图片检索服务返回 HTTP 401。")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            provider = ScenePhotoProvider(tmp, providers=[_AuthFailingProvider()])
+            with self.assertRaises(SceneImageError):
+                provider.fetch_one("scene one query a")
+            with self.assertRaises(SceneImageError):
+                provider.fetch_one("scene two query b")
+        self.assertEqual(calls["n"], 1,
+                         "the provider must be disabled after the first 401, "
+                         "not re-queried for every later scene")
+
+
 class AcceptsKeywordTests(unittest.TestCase):
     def test_detects_optional_hint_and_var_keyword(self):
         from wengao_ppt.semantic_scenes import _accepts_keyword

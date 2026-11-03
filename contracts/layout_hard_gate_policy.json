@@ -1,6 +1,7 @@
 {
   "schema": "wengao.layout_hard_gate_policy.v1",
-  "policy_version": "WG-LAYOUT-20261021.1",
+  "policy_version": "WG-LAYOUT-20261027.1",
+  "type_scale_version": "WG-TYPE-20261027.1",
   "created_at": "2026-10-21T00:41:26.570979+00:00",
   "status": "SPECIFICATION_FROZEN_IMPLEMENTATION_NOT_VERIFIED",
   "product_pass": false,
@@ -183,7 +184,7 @@
     "group_transform_and_rotation_required": true,
     "z_order_alpha_clip_images_lines_animation_required": true
   },
-  "font_roles_pt": {
+  "material_font_roles_pt": {
     "title": [
       36,
       40
@@ -226,6 +227,60 @@
     "cover_title": {
       "min": 36,
       "may_exceed": 40,
+      "must_dominate_auxiliary_copy": true
+    }
+  },
+  "font_roles_pt": {
+    "title": [
+      24,
+      30
+    ],
+    "lead": [
+      16,
+      22
+    ],
+    "conclusion": [
+      16,
+      22
+    ],
+    "key_number": [
+      24,
+      30
+    ],
+    "body": [
+      13,
+      18
+    ],
+    "body_preferred": [
+      16,
+      18
+    ],
+    "body_hard_min": 13,
+    "table": [
+      11,
+      14
+    ],
+    "label": [
+      11,
+      14
+    ],
+    "chart_auxiliary": [
+      10,
+      12
+    ],
+    "content_ordinal_allowed_ranges": [
+      [
+        12,
+        16
+      ]
+    ],
+    "source_footer": [
+      10,
+      11
+    ],
+    "cover_title": {
+      "min": 24,
+      "may_exceed": 30,
       "must_dominate_auxiliary_copy": true
     }
   },
@@ -423,7 +478,7 @@
   },
   "implementation_owner": "WorkBuddy",
   "supervisor_product_source_changes": false,
-  "document_sha256": "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96",
+  "document_sha256": "cb18f4ec7f88b195e0d7cd74f50c5abaad3f0f27009310c647ef3a35f002094c",
   "required_report_fields": [
     "policy_version",
     "policy_sha256",

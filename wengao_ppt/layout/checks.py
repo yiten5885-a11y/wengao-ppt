@@ -68,7 +68,7 @@ def size_rules() -> tuple[dict, str]:
     p = _policy_path()
     try:
         raw = json.loads(p.read_text(encoding="utf-8"))
-        fp = raw.get("font_roles_pt") or {}
+        fp = raw.get("material_font_roles_pt") or raw.get("font_roles_pt") or {}
         rules = {
             "title": tuple(fp["title"]),
             "body_preferred": tuple(fp["body_preferred"]),

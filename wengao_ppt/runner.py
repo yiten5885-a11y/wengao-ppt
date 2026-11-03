@@ -80,9 +80,9 @@ ALWAYS_REQUIRED_CHECKS = ["object.actual_geometry", "content_fidelity.hidden_sta
 
 LAYOUT_GATE_POLICY_FILE = "layout_hard_gate_policy.json"
 LAYOUT_GATE_POLICY_BUNDLE_SHA256 = (
-    "0009870f902fe7c4035ab5b74c8dd3f3b08b63e33c9fbb786e7de07ea613a809")
+    "dfb9f3289e9aacafe00088f55a2b9c567e02332a4555eae2f00edb1774899974")
 LAYOUT_GATE_POLICY_DOCUMENT_SHA256 = (
-    "3a1e4498bf2b5ec49bce8e6c1042a7625454de561607c47c548096c840645d96")
+    "cb18f4ec7f88b195e0d7cd74f50c5abaad3f0f27009310c647ef3a35f002094c")
 
 # 当前实际可执行的检查全集。W01：预期必需集合 = profile 侧 ∪（内容侧 ∩ 本集合）。
 # 内容侧推导出但仍未实现的项不混入必需集合，而是登记为 scope_gaps 并如实暴露，
@@ -542,7 +542,7 @@ class Runner:
             if policy_sha != LAYOUT_GATE_POLICY_BUNDLE_SHA256:
                 raise RuntimeError("布局硬门禁政策文件哈希与冻结身份不符")
             policy = json.loads(policy_bytes.decode("utf-8"))
-            if (policy.get("policy_version") != "WG-LAYOUT-20261021.1"
+            if (policy.get("policy_version") != "WG-LAYOUT-20261027.1"
                     or policy.get("document_sha256") != LAYOUT_GATE_POLICY_DOCUMENT_SHA256):
                 raise RuntimeError("布局硬门禁政策版本/源文档身份不符")
             if not pdf or not pdf.is_file():
@@ -1599,11 +1599,19 @@ class Runner:
                         images={int(k): v for k, v in vplan["images"].items()},
                         particle_pages={int(k): v for k, v in vplan["particles"].items()},
                         fixes=dict(vfix_mod.PAGE_FIXES))
+                    # The visual upgrade writes its own font sizes (eyebrow text at
+                    # 16 pt). Shrink anything above its gate role's maximum; no
+                    # geometry changes, so the visual layout stays as laid out.
+                    from pptx import Presentation as _Prs
+                    _vprs = _Prs(str(themed))
+                    type_scale_clamps = theme_mod.clamp_oversized_to_role_max(_vprs)
+                    _vprs.save(str(themed))
                     save_json_atomic(vplan, stage / "visual_plan.json")
                     self._stage(job_id, "visual_upgrade", "DONE",
                                 {"image_pages": sorted(int(k) for k in vplan["images"]),
                                  "particle_pages": sorted(int(k) for k in vplan["particles"]),
                                  "layout_fixes": sorted(vfix_mod.PAGE_FIXES),
+                                 "type_scale_clamps": type_scale_clamps,
                                  "plan_sha256": vplan.get("plan_sha256", "")})
                 except GateError:
                     raise
@@ -2291,13 +2299,26 @@ class Runner:
                     }
                     findings.extend(scene_gate_report["findings"])
                 elif capacity_only:
-                    scene_gate_status = "NOT_EVALUABLE"
+                    # Every planned scene has a recorded, allowed outcome and
+                    # nothing was embedded: that is a determined result, not a
+                    # missing one. It used to be NOT_EVALUABLE, which handed a
+                    # "please check" item to the user for nothing they could
+                    # check (2026-10-29 user: checks must not land on the user).
+                    unplaced = plan_data.get("unplaced_scenes") or []
+                    planned_keys = {str(s.get("scene_key")) for s in plan_data.get("scenes") or []}
+                    unplaced_keys = {str(u.get("scene_key")) for u in unplaced}
+                    accounted = (bool(planned_keys) and planned_keys <= unplaced_keys and all(
+                        u.get("reason") in scene_mod.CAPACITY_UNRESOLVED_REASONS for u in unplaced))
+                    scene_gate_status = "EXECUTED" if accounted else "NOT_EVALUABLE"
                     scene_gate_report = {
                         "schema_version": "WG-COMPLETE-SEMANTIC-SCENE-GATE/1",
                         "gate_id": "HG13_SEMANTIC_SCENE_COVERAGE",
-                        "status": "NOT_EVALUABLE", "blocking": False,
+                        "status": scene_gate_status, "blocking": False,
                         "findings": [],
-                        "unverified": [{"code": "SCENE.CAPACITY_NO_SAFE_AREA",
+                        "all_scenes_accounted": accounted,
+                        "embedded_scene_picture_count": 0,
+                        "unplaced_scenes": unplaced,
+                        "unverified": [] if accounted else [{"code": "SCENE.CAPACITY_NO_SAFE_AREA",
                                         "detail": ("所有规划场景都有原文依据，但稿面没有空间可安全放置照片"
                                                    "（已逐一记录在 unplaced_scenes，不是找不到/不合规）；"
                                                    "本稿未嵌入场景照片，按容量限制如实交付，未伪造或替代任何内容。"),

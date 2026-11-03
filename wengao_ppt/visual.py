@@ -95,6 +95,25 @@ def need_h_in(text: str, pt: float, box_w: float, line_gap: float = 1.32) -> flo
     return n_lines(text, pt, box_w) * pt * line_gap / 72.0
 
 
+#: 不折行文本框的"有效折行宽度"：足够宽，任何一段都只算一行。
+NO_WRAP_BOX_W_IN = 1000.0
+
+
+def text_frame_no_wrap(shape) -> bool:
+    """`<a:bodyPr wrap="none">`：渲染器不在框宽处折行，每段只占一行。
+
+    导出类原稿里这类单行文本框很常见（框宽只是文字的包络），按框宽去估
+    折行会把一行小标签算成好几行，进而把下方整列文字推出页面
+    （2026-10-27 job-f51a976c5258 第 3/4/6/7 页）。
+    """
+    try:
+        bp = shape.text_frame._txBody.find(
+            "{http://schemas.openxmlformats.org/drawingml/2006/main}bodyPr")
+        return bp is not None and bp.get("wrap") == "none"
+    except Exception:  # noqa: BLE001
+        return False
+
+
 class T:
     """文本形状包装（只读几何 + 可改字号/字重）。"""
 
@@ -108,6 +127,12 @@ class T:
         self.H = _in(shape.height)
         self.text = shape.text_frame.text if shape.has_text_frame else ""
         self.paras = shape.text_frame.paragraphs if shape.has_text_frame else []
+        self.no_wrap = bool(shape.has_text_frame) and text_frame_no_wrap(shape)
+
+    @property
+    def wrap_w(self) -> float:
+        """估算折行用的宽度：不折行的框按"无限宽"算。"""
+        return NO_WRAP_BOX_W_IN if self.no_wrap else self.W
 
     # -- 读取 -----------------------------------------------------------------
     def sizes(self) -> list[float]:
@@ -149,15 +174,26 @@ class T:
 
     def move_to(self, top: float | None = None, left: float | None = None,
                 height: float | None = None) -> None:
-        if top is not None:
-            self.shape.top = Inches(round(top, 3))
-            self.T = top
-        if left is not None:
-            self.shape.left = Inches(round(left, 3))
-            self.L = left
-        if height is not None:
-            self.shape.height = Inches(round(height, 3))
-            self.H = height
+        """挪位/改高；未传的维度保持不变。
+
+        占位符（Title/Subtitle 等）的 left/top/width/height 可能整套继承自
+        版式，自身没有 `<a:xfrm>`。python-pptx 只写被显式赋值的那一维：
+        新建 xfrm 时其余维度按 0 起步——只设 height 会把继承来的 width
+        悄悄写成 0（真实故障：标题框宽变 0，居中文字一半跑出画布，HG02
+        报一整页 CHAR_UNMATCHED/CHAR_MISSING）。因此只要动了任意一维，
+        四维全部显式写一遍，未传的用当前已解析的有效值（含继承值，见
+        __init__）补齐，而不是只写被改的那一维。
+        """
+        if top is None and left is None and height is None:
+            return
+        top = self.T if top is None else top
+        left = self.L if left is None else left
+        height = self.H if height is None else height
+        self.shape.top = Inches(round(top, 3))
+        self.shape.left = Inches(round(left, 3))
+        self.shape.width = Inches(round(self.W, 3))
+        self.shape.height = Inches(round(height, 3))
+        self.T, self.L, self.H = top, left, height
 
 
 class Box:
@@ -276,6 +312,22 @@ def classify(slide, texts: list[T], boxes: list[Box], sw: float = 13.333,
 
 # --------------------------------------------------------------------------- 排版
 
+def _chart_legend_names(slide) -> set:
+    """Shape ids of chart legend text on this slide (shared rule in type_scale)."""
+    from .type_scale import is_chart_legend_label
+    shapes = list(slide.shapes)
+    boxes = []
+    for sh in shapes:
+        has_text = bool(getattr(sh, "has_text_frame", False) and sh.has_text_frame
+                        and sh.text_frame.text.strip())
+        boxes.append({"left": _in(sh.left), "top": _in(sh.top),
+                      "width": _in(sh.width), "height": _in(sh.height),
+                      "text": sh.text_frame.text if has_text else "",
+                      "solid": (not has_text) and _shape_has_opaque_fill(sh)})
+    return {shapes[i].shape_id for i in range(len(shapes))
+            if boxes[i]["text"] and is_chart_legend_label(i, boxes)}
+
+
 def apply_type_scale(slide, texts, boxes, roles, acts) -> None:
     """按角色字号阶梯写入，带容量检查与卡片内垂直重排。"""
     for t in texts:
@@ -332,6 +384,10 @@ def apply_type_scale(slide, texts, boxes, roles, acts) -> None:
                          "T": new_t, "H": new_h})
     # 卡片内重排：先按 x 重叠聚簇，只有**上下叠放**的一簇才做垂直堆叠；
     # 左右并排（如"标签 + 说明"）各自垂直居中，互不干扰。
+    # 图表图例（紧贴一列长短不一的色条）与色条一一对位；只挪文字不挪色条
+    # 会让每条图例落到下一根色条上（2026-10-29 job-3afdd5d88bd9 第 6 页）。
+    # 这类簇不重排，判定与门禁共用 type_scale.is_chart_legend_label。
+    legend_names = _chart_legend_names(slide)
     for b in boxes:
         if b.area <= 0.6 or b.area >= 0.45 * 13.333 * 7.5 or b.H > 3.4:
             continue
@@ -353,6 +409,8 @@ def apply_type_scale(slide, texts, boxes, roles, acts) -> None:
             if not placed:
                 clusters.append([t])
         for cl in clusters:
+            if any(t.shape.shape_id in legend_names for t in cl):
+                continue                      # 与图表色条对位的图例：不重排
             if len(cl) == 1:
                 continue                      # 单元素不做垂直居中：会与同排文字重叠
             cl.sort(key=lambda x: x.T)
@@ -996,7 +1054,7 @@ def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
                 a.move_to(top=new_top)
                 changed.append({"shape": a.name, "before": [old_top, a.H],
                                 "after": [a.T, a.H], "pulled_up_into_canvas": True})
-        real_h = real_text_h_in(a.text, pt, a.W)
+        real_h = real_text_h_in(a.text, pt, a.wrap_w)
         # real_text_h_in's line-wrap model is passed the shape's full width;
         # it does not know about a bullet's indent eating into the usable
         # width, nor about inter-paragraph spacing — both make it under-
@@ -1008,7 +1066,7 @@ def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
         # here only costs a slightly taller box or a slightly smaller font,
         # while an optimistic one leaves text cut off past the slide edge,
         # which is the defect being fixed.
-        margin_w = max(0.2, a.W - 0.5)
+        margin_w = max(0.2, a.wrap_w - 0.5)
         spacing_in = sum(
             (float(p.space_before.pt) if p.space_before is not None else 0.0)
             + (float(p.space_after.pt) if p.space_after is not None else 0.0)
@@ -1050,10 +1108,10 @@ def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
             # never pull the real content's bottom edge up off the canvas
             # edge. Shrinking the font is NOT a safe second lever here: a
             # placeholder's role (e.g. "body") has an enforced pt range
-            # (scripts/layout_gate.py ROLE_PT), and body text is laid out at
-            # that range's floor already, so shrinking it trades a canvas-
-            # margin violation for a role-size violation instead of fixing
-            # anything. Reducing inter-paragraph spacing does move the real
+            # (wengao_ppt.type_scale ROLE_RANGE_PT), and text is laid out
+            # within that role's [floor, cap] range per page adaptation,
+            # so arbitrary shrinking trades a canvas-margin violation for a
+            # role-size violation instead of fixing anything. Reducing inter-paragraph spacing does move the real
             # bottom edge up (every paragraph after the first renders higher)
             # without touching font size, so try that instead.
             new_h = min(needed_h, max(a.H, cap)) if cap else needed_h
@@ -1101,7 +1159,7 @@ def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
         # never past the canvas margin or a neighboring shape) pulls that
         # character back onto the line above without touching font size or
         # text content, so try it whenever such a widow is detected.
-        if slide_w_in is not None:
+        if slide_w_in is not None and not a.no_wrap:
             # A lone trailing punctuation mark (a line ending in "。" etc.)
             # is not a widow — the gate itself excludes these — so testing
             # against that same exclusion set here keeps this check from
@@ -1176,6 +1234,17 @@ def fix_stacked_text_overlap(slide, acts=None, page: int = 0,
                 continue  # different column — leave side-by-side shapes alone
             if b.T >= real_bottom - 0.02:
                 continue  # already clear
+            # Never push a shape past the canvas bottom: an off-page block is
+            # clipped required content, which is strictly worse than the
+            # overlap being fixed. Leave it in place and let the gate report
+            # the overlap honestly.
+            if (slide_h_in is not None
+                    and real_bottom + gap + b.H > slide_h_in - bottom_margin + 0.01):
+                changed.append({"shape": b.name, "before": [b.T, b.H],
+                                "after": [b.T, b.H], "pushed_by": a.name,
+                                "push_blocked_off_canvas": True,
+                                "real_h": round(real_h, 3)})
+                continue
             old = [b.T, b.H]
             delta = (real_bottom + gap) - b.T
             backdrops = _backdrop_shapes_for(slide, (b.L, b.T, b.W, b.H),

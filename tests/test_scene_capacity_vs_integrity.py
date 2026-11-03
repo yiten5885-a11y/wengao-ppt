@@ -49,10 +49,20 @@ class SplitUnresolvedScenesTests(unittest.TestCase):
         self.assertEqual(split_unresolved_scenes(None), ([], []))
         self.assertEqual(split_unresolved_scenes([]), ([], []))
 
-    def test_capacity_set_is_limited_to_geometry(self):
+    def test_capacity_set_is_geometry_plus_explicit_photo_skip(self):
+        # 2026-10-29 user decision: with the text-card fallback on, a scene for
+        # which no photo passed visual review is skipped (recorded, not faked).
+        # Only that one explicit reason joins the geometry reasons; raw "no
+        # photo" reasons still block on their own.
         self.assertEqual(CAPACITY_UNRESOLVED_REASONS,
                          {"SCENE.NO_SAFE_PHOTO_AREA",
-                          "SCENE.PAGE_SCENE_CAPACITY_EXCEEDED"})
+                          "SCENE.PAGE_SCENE_CAPACITY_EXCEEDED",
+                          "SCENE.NO_VERIFIED_PHOTO_SKIPPED"})
+        for raw in ("SCENE.NO_LICENSED_PHOTO", "SCENE.PROVIDER_ROWS_INELIGIBLE",
+                    "SCENE.GEN_IMAGE_UNAVAILABLE"):
+            with self.subTest(raw=raw):
+                blocking, capacity = split_unresolved_scenes([{"reason": raw}])
+                self.assertEqual((len(blocking), capacity), (1, []))
 
 
 if __name__ == "__main__":

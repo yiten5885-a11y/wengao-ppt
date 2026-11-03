@@ -727,6 +727,14 @@ class SceneCoverageGapDiagnosticsTests(unittest.TestCase):
             _validate_scene_gap_repair_scope(audit, changed)
         self.assertEqual(caught.exception.code, "SCENE.COVERAGE_AUDIT_REPAIR_BLOCKED")
 
+    def test_gap_repair_declined_returns_empty_missing_scenes_without_raising(self):
+        pages, plan, audit = self._complete_gap_audit()
+        declined_response = {"status": "BLOCKED", "reason_code": "insufficient_source_evidence"}
+        result = _validate_scene_gap_repair_scope(audit, declined_response)
+        self.assertEqual(result["schema_version"], "1.0.0")
+        self.assertEqual(result["missing_scenes"], [])
+        self.assertEqual(result["declined_reason"], "insufficient_source_evidence")
+
     def test_same_canonical_scene_on_a_new_page_reuses_existing_scene_record(self):
         pages = [
             {"page": 1, "text": "消费者在商超选购商品。"},

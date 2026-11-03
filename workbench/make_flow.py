@@ -53,7 +53,9 @@ CANCELLED_MARK = ".cancelled"
 # 每阶段的真实超时（秒）。渲染/验收较慢，单独给足。
 STAGE_TIMEOUT = {
     "precheck": 300,
-    "run": 1200,
+    # 本机 27B 模型规划约 5 分钟，之后每个场景要检索、下载并逐张本机看图复核；
+    # 6 个场景的视觉主题在 20 分钟处被整段杀掉（2026-10-28 job-3afdd5d88bd9）。
+    "run": 1800,
     "validate": 1800,
     "publish": 600,
     "export": 600,

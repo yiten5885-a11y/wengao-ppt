@@ -86,11 +86,11 @@ class ReadabilityFloorTests(unittest.TestCase):
 
     def test_text_already_in_range_is_left_alone(self):
         _stats, shapes = self._refine([
-            (0.7, 0.2, 11.9, 0.9, 38.0, "标题在区间内"),
-            (0.7, 3.0, 11.9, 0.6, 26.0, "正文也在区间内，不应被改动。"),
+            (0.7, 0.2, 11.9, 0.9, 30.0, "标题在区间内"),
+            (0.7, 3.0, 11.9, 0.6, 18.0, "正文也在区间内，不应被改动。"),
         ])
         body = [s for s in shapes if "正文" in s["text"]][0]
-        self.assertEqual(body["sizes"], [26.0])
+        self.assertEqual(body["sizes"], [18.0])
 
     def test_refine_never_rewrites_the_text(self):
         boxes = [(0.7, 0.2, 11.9, 0.9, 25.5, "英语作文班级报告"),

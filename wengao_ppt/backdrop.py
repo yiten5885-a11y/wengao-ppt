@@ -172,11 +172,40 @@ def scan_slide(slide, slide_w: int, slide_h: int, idx: int = 0) -> dict:
                 for run in para.runs:
                     if run.font.size:
                         sizes.append(run.font.size.pt)
-        shapes.append(ShapeInfo(shape=sh, name=getattr(sh, "name", f"shape{z}"), z=z,
-                                left=int(sh.left or 0), top=int(sh.top or 0),
-                                width=int(sh.width or 0), height=int(sh.height or 0),
+        sh_name = (getattr(sh, "name", None) or "").strip() or f"shape_{z}"
+        sh_left = int(sh.left or 0)
+        sh_top = int(sh.top or 0)
+        sh_w = int(sh.width or 0)
+        sh_h = int(sh.height or 0)
+        # 针对自定义路径（custGeom）且实际几何极细的装饰线条/顶边高光，计算真实路径范围
+        # 避免 declared box 虚高导致被误判为覆盖下方所有文本的实底背景色板
+        try:
+            path_node = sh._element.find(".//{http://schemas.openxmlformats.org/drawingml/2006/main}path")
+            if path_node is not None and "h" in path_node.attrib and "w" in path_node.attrib:
+                pw, ph = float(path_node.attrib["w"]), float(path_node.attrib["h"])
+                pts = sh._element.findall(".//{http://schemas.openxmlformats.org/drawingml/2006/main}pt")
+                if pts and ph > 0 and pw > 0:
+                    ys = [float(p.attrib["y"]) for p in pts if "y" in p.attrib]
+                    xs = [float(p.attrib["x"]) for p in pts if "x" in p.attrib]
+                    if ys and xs:
+                        min_y, max_y = min(ys), max(ys)
+                        min_x, max_x = min(xs), max(xs)
+                        h_span = (max_y - min_y) / ph
+                        w_span = (max_x - min_x) / pw
+                        if h_span < 0.25:
+                            sh_top = int(sh_top + sh_h * (min_y / ph))
+                            sh_h = max(int(sh_h * h_span), 1)
+                        if w_span < 0.25:
+                            sh_left = int(sh_left + sh_w * (min_x / pw))
+                            sh_w = max(int(sh_w * w_span), 1)
+        except Exception:
+            pass
+
+        shapes.append(ShapeInfo(shape=sh, name=sh_name, z=z,
+                                left=sh_left, top=sh_top,
+                                width=sh_w, height=sh_h,
                                 has_text=has_text, kind=kind, rgb=rgb, alpha=alpha,
-                                area_ratio=((sh.width or 0) * (sh.height or 0)) / page_area,
+                                area_ratio=(sh_w * sh_h) / page_area,
                                 font_sizes=sizes))
     return {"idx": idx, "shapes": shapes, "slide_w": slide_w, "slide_h": slide_h,
             "page": (0, 0, slide_w, slide_h)}
@@ -355,7 +384,7 @@ def plan_slide(info: dict, theme_bg, theme_colors: dict, role_of,
                          for run in para.runs]
             except Exception:  # noqa: BLE001
                 bolds = []
-            row = {"shape": t.name, "role": role, "backdrop": b["source"],
+            row = {"shape": t.name, "z": t.z, "role": role, "backdrop": b["source"],
                    "panel_z": b["panel_z"], "required": need, "ratio": None,
                    "orig_ratio": None, "status": "UNKNOWN",
                    # 门槛依据必须可核对：字号、是否粗体、以及据此选的门槛
@@ -383,7 +412,13 @@ def plan_slide(info: dict, theme_bg, theme_colors: dict, role_of,
             elif r["orig_ratio"] is not None and r["orig_ratio"] >= r["required"]:
                 r["status"] = "KEEP_ORIGINAL_OK"
             elif r["orig_ratio"] is not None and r["ratio"] is not None:
-                r["status"] = "PREEXISTING_LOW" if r["orig_ratio"] >= r["ratio"] else "UNSAFE"
+                # Both below the bar. If the theme color is no better, keep the
+                # original. If it is better, apply it: it is still not enough,
+                # but keeping the worse original and then blaming the
+                # conversion was backwards (2026-10-29: theme 3.14 vs original
+                # 3.04 was reported "UNSAFE: conversion makes it worse").
+                r["status"] = ("PREEXISTING_LOW" if r["orig_ratio"] >= r["ratio"]
+                               else "IMPROVED_BELOW")
             else:
                 r["status"] = "UNKNOWN"
         return rows

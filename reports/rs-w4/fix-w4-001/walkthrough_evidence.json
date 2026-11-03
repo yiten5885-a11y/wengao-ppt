@@ -1,0 +1,81 @@
+[
+  {
+    "url": "/",
+    "load_s": 2.97,
+    "title": "稳稿 PPT · 演示工作台",
+    "step": "01_legacy_home",
+    "at": "15:15:40"
+  },
+  {
+    "route": "/api/material/upload",
+    "meta": "fixw4_walkthrough_test.md\n209 B · sha 2a60bea50244…",
+    "step": "02_legacy_material_uploaded",
+    "at": "15:15:43"
+  },
+  {
+    "route": "/api/upload",
+    "meta": "fixw4_walkthrough_test.pptx\n77 KB · 本次上传（数据根） · sha ea4807007c5a…",
+    "step": "03_legacy_pptx_uploaded",
+    "at": "15:15:45"
+  },
+  {
+    "route": "/api/make",
+    "cancel_button_visible": true,
+    "step": "04_legacy_make_started",
+    "at": "15:15:46"
+  },
+  {
+    "route": "/api/make/<id>/cancel",
+    "statusline": "已取消\n取消后不显示成功，也不提供下载。",
+    "step": "05_legacy_make_cancelled",
+    "at": "15:15:48"
+  },
+  {
+    "route": "/api/jobs/job-967aa0388260/export",
+    "http_status": 200,
+    "elapsed_s": 0.13,
+    "old_contract": true,
+    "response": "{\"exported\": false, \"rc\": 4, \"gate\": \"EVIDENCE.STALE\", \"detail\": \"验证记录缺少 layout.hard_gate 身份；验收记录契约版本 contracts/1.0.0 与当前 contracts/1.1.0 不一致（规则可能已变，需重新验收）；当前 profile 的必需检查未被验收记录覆盖：['layout.hard_gate', 'visual.semantic_scene_coverage']\"}",
+    "step": "06_legacy_export_tested",
+    "at": "15:15:48"
+  },
+  {
+    "url": "/ui",
+    "load_s": 3.66,
+    "title": "稳稿 · 工作台",
+    "step": "11_ui_home",
+    "at": "15:15:52"
+  },
+  {
+    "route": "/api/material/upload",
+    "toast": "已导入 fixw4_walkthrough_test.md",
+    "step": "12_ui_material_uploaded",
+    "at": "15:15:53"
+  },
+  {
+    "route": "/api/upload + /api/make",
+    "jobs_before": 4,
+    "job_items": 4,
+    "job_title": "a3b53d99_fixw4_walkthrough_test.pptx",
+    "step": "13_ui_pptx_uploaded",
+    "at": "15:16:23"
+  },
+  {
+    "cancel_button_visible": false,
+    "job_sub": "稳稿基础主题（旧默认）",
+    "step": "14_ui_make_running",
+    "at": "15:16:50"
+  },
+  {
+    "route": "/api/ui/jobs/<id>/cancel",
+    "job_sub": "已取消 · 稳稿基础主题（旧默认）",
+    "step": "15_ui_cancelled",
+    "at": "15:16:51"
+  },
+  {
+    "route": "/api/ui/jobs/job-967aa0388260/export",
+    "toast": "已导出：annual_review_synthetic.generated.wengao.pdf、annual_review_synthetic.generated.wengao.pptx（含来源与署名清单）",
+    "step": "16_ui_exported",
+    "at": "15:16:54"
+  }
+]

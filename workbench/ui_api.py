@@ -165,10 +165,12 @@ def probe_localrun(root: Path) -> dict:
         pass
     rows.append(vision)
 
-    # 6. Pexels 密钥：只报是否配置
+    # 6. Pexels / Pixabay 密钥：只报是否配置
     import os
     rows.append({"key": "pexels", "label": "Pexels 检索", "ok": bool(os.environ.get("PEXELS_API_KEY")),
                  "detail": "密钥已配置" if os.environ.get("PEXELS_API_KEY") else "密钥未配置（先用备用图源与降级）"})
+    rows.append({"key": "pixabay", "label": "Pixabay 检索", "ok": bool(os.environ.get("PIXABAY_API_KEY")),
+                 "detail": "密钥已配置" if os.environ.get("PIXABAY_API_KEY") else "密钥未配置（先用备用图源与降级）"})
 
     return {"schema": "rs.localrun.v1", "probed_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
             "rows": rows,
@@ -488,6 +490,9 @@ def dispatch_post(handler, path: str) -> bool:
     if path == "/api/env/cloud-model/config":
         from wengao_ppt import cloud_model_config as cmc
         enabled = bool(body.get("enabled"))
+        vision_enabled = body.get("vision_enabled")
+        if vision_enabled is not None:
+            vision_enabled = bool(vision_enabled)
         endpoint = str(body.get("endpoint") or "")
         text_model = str(body.get("text_model") or "")
         vision_model = str(body.get("vision_model") or "")
@@ -498,12 +503,16 @@ def dispatch_post(handler, path: str) -> bool:
         if enabled and (not endpoint or not text_model):
             return handler._send(400, {"error": {"code": "CLOUD_MODEL.CONFIG_INCOMPLETE",
                                                   "message": "启用云端模型需要填写端点与文本模型名。"}})
-        if enabled and not (cmc.load()["api_key"] or (api_key or "").strip()):
+        if vision_enabled and not enabled and (not endpoint or not (vision_model or text_model)):
+            return handler._send(400, {"error": {"code": "CLOUD_MODEL.CONFIG_INCOMPLETE",
+                                                  "message": "启用云端视觉需要填写端点与图片复核模型名。"}})
+        if (enabled or vision_enabled) and not (cmc.load()["api_key"] or (api_key or "").strip()):
             return handler._send(400, {"error": {"code": "CLOUD_MODEL.API_KEY_MISSING",
                                                   "message": "启用云端模型需要提供 API key。"}})
         result = cmc.save(enabled=enabled, endpoint=endpoint, api_key=api_key,
                           text_model=text_model, vision_model=vision_model,
-                          image_gen_model=image_gen_model)
+                          image_gen_model=image_gen_model,
+                          vision_enabled=vision_enabled)
         return handler._send(200, result)
     return False
 

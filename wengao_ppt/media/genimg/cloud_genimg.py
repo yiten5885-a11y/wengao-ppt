@@ -25,6 +25,29 @@ from typing import Any, Dict, Optional
 
 from .comfyui import sanitize_scene_prompt
 
+#: HTTP 状态码 → 是否"永久失败"（重试不会自己变好，换一次 key/配置才会）。
+#: 401/403 是凭据失效，402/400 常见于额度耗尽或模型名/请求体不被接受
+#: （硅基流动等中转商把配额耗尽报成 400 而不是 402），429/5xx 是限流或
+#: 服务端抖动，值得按原有退避重试。未在表里的状态码保守按"非永久"处理，
+#: 不升级一个没见过的新错误码。
+_PERMANENT_HTTP_STATUS = frozenset({400, 401, 402, 403})
+
+
+class CloudImageGenError(Exception):
+    """云端生图传输失败，带上"重试还有没有意义"的判定。
+
+    `permanent=True`：凭据/配额/请求体问题，这一局再重试 3 次也是同样的
+    400/401/402/403——调用方应立即放弃本场景的重试循环，并记住"本次任务
+    里这个云端生图服务已经坏了"，不要在后面每一个场景上重复同一个注定
+    失败的请求。`permanent=False`：限流或网络抖动，维持原有退避重试。
+    """
+
+    def __init__(self, detail: str, *, permanent: bool, status: int | None = None):
+        super().__init__(detail)
+        self.detail = detail
+        self.permanent = permanent
+        self.status = status
+
 
 class CloudImageClient:
     """HTTP client for a user-configured cloud image-generation endpoint."""
@@ -59,6 +82,16 @@ class CloudImageClient:
                 image_bytes = self._generate_gemini(prompt_text, timeout_s, aspect)
             else:
                 image_bytes = self._generate_openai_images(prompt_text, timeout_s, aspect)
+        except urllib.error.HTTPError as exc:
+            # 永久失败（凭据/配额/请求体）不吞成普通 None：吞掉等于让调用方
+            # 把"key 失效"当成"服务器这次没回图"，对接下来稿子里每一个需要
+            # 兜底生图的场景都重复同一个注定失败的请求。
+            permanent = exc.code in _PERMANENT_HTTP_STATUS
+            raise CloudImageGenError(
+                f"云端生图服务返回 HTTP {exc.code}。", permanent=permanent,
+                status=exc.code) from None
+        except CloudImageGenError:
+            raise
         except Exception:
             return None
         if not image_bytes:

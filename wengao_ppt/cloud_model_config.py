@@ -25,6 +25,11 @@ CONFIG_PATH = CONFIG_DIR / "cloud_model.json"
 
 _DEFAULTS = {
     "enabled": False,
+    # 只把图片语义复核交给云端（文本规划仍走本机）。这台机器只有一份 27B 本机
+    # 模型且服务端不收图片，本机没有可用的看图服务；而复核只发出候选配图
+    # （公开图库图或生成图）与一句场景描述，原稿文字不出本机。
+    # enabled=true 时它不起额外作用（全量云端已包含视觉）。
+    "vision_enabled": False,
     "endpoint": "",       # OpenAI 兼容 base，例如 https://api.openai.com/v1
     "api_key": "",
     "text_model": "",     # 文本/语义规划用的模型名
@@ -46,18 +51,23 @@ def load() -> dict:
         if k in raw:
             cfg[k] = raw[k]
     cfg["enabled"] = bool(cfg["enabled"])
+    cfg["vision_enabled"] = bool(cfg["vision_enabled"])
     for k in ("endpoint", "api_key", "text_model", "vision_model", "image_gen_model"):
         cfg[k] = str(cfg.get(k) or "").strip()
     return cfg
 
 
 def save(*, enabled: bool, endpoint: str, api_key: Optional[str] = None,
-         text_model: str = "", vision_model: str = "", image_gen_model: str = "") -> dict:
+         text_model: str = "", vision_model: str = "", image_gen_model: str = "",
+         vision_enabled: Optional[bool] = None) -> dict:
     """写入配置。api_key=None 表示"保留已存的 key 不变"（界面重新提交其他字段时
-    不强制用户重新粘贴 key）；传空字符串才是真正清空。"""
+    不强制用户重新粘贴 key）；传空字符串才是真正清空。vision_enabled=None 同理
+    保留原值。"""
     current = load()
     cfg = {
         "enabled": bool(enabled),
+        "vision_enabled": (current["vision_enabled"] if vision_enabled is None
+                           else bool(vision_enabled)),
         "endpoint": (endpoint or "").strip(),
         "api_key": current["api_key"] if api_key is None else str(api_key).strip(),
         "text_model": (text_model or "").strip(),
@@ -78,6 +88,7 @@ def status(cfg: Optional[dict] = None) -> dict:
     cfg = cfg or load()
     return {
         "enabled": cfg["enabled"],
+        "vision_enabled": cfg["vision_enabled"],
         "endpoint": cfg["endpoint"],
         "api_key_configured": bool(cfg["api_key"]),
         "text_model": cfg["text_model"],
@@ -96,8 +107,11 @@ def active_text_target() -> Optional[dict]:
 
 
 def active_vision_target() -> Optional[dict]:
+    """全量云端（enabled）或"仅云端视觉"（vision_enabled）任一打开且配置齐全时
+    返回视觉目标；否则 None（走本机视觉端点）。"""
     cfg = load()
-    if not cfg["enabled"] or not cfg["endpoint"] or not cfg["api_key"]:
+    if (not (cfg["enabled"] or cfg["vision_enabled"])
+            or not cfg["endpoint"] or not cfg["api_key"]):
         return None
     model = cfg["vision_model"] or cfg["text_model"]
     if not model:
