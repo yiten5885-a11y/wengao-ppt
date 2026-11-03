@@ -306,6 +306,54 @@ def _vision_loopback_endpoint() -> str:
     return "http://127.0.0.1:8080"
 
 
+#: 视觉端点候选（与 `_vision_loopback_endpoint` 的探测顺序一致，供诊断复用）。
+VISION_ENDPOINT_CANDIDATES = ("http://127.0.0.1:8080", "http://127.0.0.1:11434")
+
+
+def probe_text_endpoint(timeout_s: float = 2.0) -> dict:
+    """**不抛异常**地报告文本端点状态（诊断/`wengao doctor` 用）。
+
+    与 `preflight_scene_models` 的区别：预检要在不可用时阻断开跑，这里只回答
+    "现在能不能用、用的是哪个地址"，好让用户在一次运行前就看清环境。
+    """
+    endpoint = _loopback_endpoint()
+    available, health = _probe_endpoint_health(endpoint, timeout_s=timeout_s)
+    rec = {"role": "text", "endpoint": _endpoint_authority(endpoint),
+           "available": bool(available),
+           "provider": _local_provider_label(endpoint),
+           "health_path": _endpoint_health_path(endpoint)}
+    if health:
+        rec["model_health"] = _model_health_record(endpoint, health)
+    else:
+        rec["next_actions"] = ["启动本机语义模型服务", "或在云端设置里启用云端文本模型"]
+    return rec
+
+
+def probe_vision_endpoint(timeout_s: float = 2.0) -> dict:
+    """**不抛异常**地报告视觉端点状态。
+
+    视觉缺失是本机最常见的一次运行阻断（`run` 的语义场景阶段对所有稿件无条件
+    执行），所以它必须能被单独诊断，而不是等到跑完几分钟文本规划才在深处失败。
+    """
+    if cloud_model_config.active_vision_target():
+        return {"role": "vision", "mode": "cloud", "available": True,
+                "provider": _cloud_provider_label(
+                    cloud_model_config.active_vision_target()["endpoint"])}
+    endpoint = _vision_loopback_endpoint()
+    available, health = _probe_endpoint_health(endpoint, timeout_s=timeout_s)
+    rec = {"role": "vision", "mode": "local",
+           "endpoint": _endpoint_authority(endpoint),
+           "available": bool(available),
+           "provider": _local_provider_label(endpoint),
+           "candidates": [_endpoint_authority(c)
+                          for c in VISION_ENDPOINT_CANDIDATES],
+           "note": "文本端点（如 18088）不得用于图片复核：它可能静默忽略图像输入。"}
+    if available and health:
+        rec["model_health"] = _model_health_record(endpoint, health)
+    if not available:
+        rec["next_actions"] = list(_VISION_UNAVAILABLE_NEXT_ACTIONS)
+    return rec
+
 
 # 本机视觉不可用时给用户的两条可操作建议（页面与阶段 detail 共用）。
 _VISION_UNAVAILABLE_NEXT_ACTIONS = (

@@ -570,6 +570,128 @@ def do_uninstall(root: Path, apply: bool) -> int:
     return 0
 
 
+# ----------------------------------------------------------------- 诊断
+def do_doctor(root: Path, as_json: bool = False) -> int:
+    """一次把"为什么现在跑不了"说清楚（安装完整性 / 渲染 / 模型端点）。
+
+    分级刻意分开：
+      * `blocking`：安装完整性（版本可解析、必需资源齐全、依赖可导入）。任一失败 →
+        退出码 2，因为这时任何任务都不该开始。
+      * `prerequisite`：一次真实 `run` 的外部前置（LibreOffice、文本端点、视觉端点）。
+        缺失只报 `run_ready=false` 并给下一步动作，不以非零退出码冒充"安装坏了"——
+        安装是好的，是环境没就绪。这两件事过去被混为一谈。
+    """
+    checks: list[dict] = []
+
+    def add(name, ok, detail, severity="blocking", next_actions=None):
+        rec = {"name": name, "ok": bool(ok), "detail": str(detail)[:400],
+               "severity": severity}
+        if not ok and next_actions:
+            rec["next_actions"] = list(next_actions)
+        checks.append(rec)
+        return rec
+
+    prog = current_prog(root)
+    add("version_resolved", prog is not None,
+        f"current={read_pointer(root)} program={prog}",
+        next_actions=["先执行 install --package <包目录> --activate"])
+    if prog is not None:
+        ver = verify_package(prog)
+        add("required_members", ver["ok"],
+            f"missing={ver['missing']} members={ver['member_count']} build={ver['build_id']}")
+        add("data_root_separate", Path(prog).resolve() != paths(root)["data"].resolve(),
+            f"program={prog} data={paths(root)['data']}")
+
+    # 依赖可导入（装错环境时最先坏的一环）
+    try:
+        import pptx  # noqa: F401
+        import lxml  # noqa: F401
+        import pypdfium2  # noqa: F401
+        add("python_deps", True, f"python={sys.version.split()[0]}")
+    except Exception as exc:  # noqa: BLE001
+        add("python_deps", False, f"{type(exc).__name__}: {exc}",
+            next_actions=["按 requirements.txt 在当前解释器安装依赖"])
+
+    # 渲染与字体（外部前置）
+    try:
+        from wengao_ppt import render as render_mod
+        ok = bool(render_mod.real_render_available())
+        add("libreoffice", ok,
+            f"real_render_available={ok}",
+            severity="prerequisite",
+            next_actions=["安装 LibreOffice 7.6+ / 24.x"])
+    except Exception as exc:  # noqa: BLE001
+        add("libreoffice", False, f"{type(exc).__name__}: {exc}", severity="prerequisite")
+
+    # 只在**已安装**时检查字体：字体配置来自程序目录的 assets/，未安装时无从检查；
+    # 且 fontenv.build_env() 会在数据根下建缓存目录——对未安装的根跑这一步就等于
+    # 悄悄写盘，与 doctor 的"只读"契约冲突（由 test_does_not_create_data_dir 守住）。
+    if prog is not None:
+        try:
+            from wengao_ppt import fontenv
+            # 用**本安装根的数据根**构造：真实 CLI 也是以 --project-root <data> 运行的，
+            # 不传 root 时 fontenv 会退回 ~/.cache 并让 doctor 误报"缓存不在数据根"。
+            env, rec = fontenv.build_env(paths(root)["data"])
+            cache = str(rec.get("cache_dir") or "")
+            ok = bool(rec.get("ok")) and cache.startswith(str(paths(root)["data"]))
+            add("font_config", ok,
+                f"ok={rec.get('ok')} mode={rec.get('mode')} cache={cache}",
+                severity="prerequisite",
+                next_actions=["检查 assets/fontconfig/fonts.conf 是否随载荷安装"])
+        except Exception as exc:  # noqa: BLE001
+            add("font_config", False, f"{type(exc).__name__}: {exc}",
+                severity="prerequisite")
+
+    # 材料生成链路（from-material 依赖）
+    try:
+        from wengao_ppt import material_flow
+        p = material_flow.resolve([paths(root)["data"]])
+        add("material_flow", True, str(p))
+    except Exception as exc:  # noqa: BLE001
+        add("material_flow", False, f"{type(exc).__name__}: {exc}",
+            severity="prerequisite",
+            next_actions=["重新生成安装载荷（需含 samples/r5_material_to_ppt.py）",
+                          "或设置 $WENGAO_MATERIAL_FLOW"])
+
+    # 模型端点：文本与视觉分开报，视觉缺失是最常见的一次运行阻断
+    try:
+        from wengao_ppt import scene_model
+        t = scene_model.probe_text_endpoint()
+        add("text_endpoint", t.get("available"),
+            f"{t.get('endpoint')} available={t.get('available')}",
+            severity="prerequisite", next_actions=t.get("next_actions"))
+        v = scene_model.probe_vision_endpoint()
+        add("vision_endpoint", v.get("available"),
+            f"{v.get('endpoint')} available={v.get('available')} "
+            f"candidates={v.get('candidates')}",
+            severity="prerequisite", next_actions=v.get("next_actions"))
+    except Exception as exc:  # noqa: BLE001
+        add("endpoints", False, f"{type(exc).__name__}: {exc}", severity="prerequisite")
+
+    blocking = [c for c in checks if not c["ok"] and c["severity"] == "blocking"]
+    prereq = [c for c in checks if not c["ok"] and c["severity"] == "prerequisite"]
+    out = {"schema_version": SCHEMA, "root": str(root),
+           "current": read_pointer(root),
+           "install_ok": not blocking,
+           "run_ready": not blocking and not prereq,
+           "blocking_missing": [c["name"] for c in blocking],
+           "prerequisites_missing": [c["name"] for c in prereq],
+           "checks": checks}
+    if as_json:
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+    else:
+        print(f"安装根   : {out['root']}")
+        print(f"当前版本 : {out['current']}")
+        print(f"安装完整 : {'OK' if out['install_ok'] else 'FAIL'}")
+        print(f"可跑任务 : {'OK' if out['run_ready'] else 'NO'}")
+        for c in checks:
+            print(f"  [{'OK' if c['ok'] else ('缺' if c['severity'] == 'blocking' else '前置')}] "
+                  f"{c['name']}: {c['detail']}")
+            for act in c.get("next_actions") or []:
+                print(f"        → {act}")
+    return 0 if out["install_ok"] else 2
+
+
 # ----------------------------------------------------------------- 运行
 def do_status(root: Path, as_json: bool) -> int:
     prog = current_prog(root)
@@ -856,6 +978,9 @@ def main(argv=None) -> int:
     p = sub.add_parser("status", help="查看当前安装状态")
     p.add_argument("--json", action="store_true")
 
+    p = sub.add_parser("doctor", help="诊断：安装完整性 / 渲染 / 模型端点，缺什么直接说")
+    p.add_argument("--json", action="store_true")
+
     sub.add_parser("versions", help="列出版本")
 
     p = sub.add_parser("start", help="用当前版本启动工作台（仅回环）")
@@ -874,6 +999,11 @@ def main(argv=None) -> int:
 
     a = ap.parse_args(argv)
     root = root_dir(a)
+
+    # 诊断是**只读**操作：不得因为跑一次 doctor 就在目标根下建 data/。
+    # 早前所有子命令共用同一段 mkdir，doctor 会把"什么都没装"变成"留下一个空壳"。
+    if a.cmd == "doctor":
+        return do_doctor(root, getattr(a, "json", False))
 
     # 写入前核对 0：声明了预期根就必须在**建任何目录之前**核对。
     # 早前这里无条件 `paths(root)["data"].mkdir(...)`，导致"根不匹配"的拒绝
@@ -901,6 +1031,8 @@ def main(argv=None) -> int:
         return do_rollback(root, a.to)
     if a.cmd == "status":
         return do_status(root, a.json)
+    if a.cmd == "doctor":
+        return do_doctor(root, a.json)
     if a.cmd == "versions":
         print(json.dumps({"root": str(root), "current": read_pointer(root),
                           "versions": installed_versions(root)},

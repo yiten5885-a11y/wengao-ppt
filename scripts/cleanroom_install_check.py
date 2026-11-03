@@ -165,6 +165,19 @@ def main(argv=None) -> int:
     # ---- 2 安装后状态（经稳定入口、从中性 cwd 调用） ----
     r = run([str(entry), "status", "--json"], neutral)
     step("status_after_install", r, ok=(r["rc"] == 0) if entry_ok else False)
+
+    # ---- 2b 诊断：安装完整性 / 渲染 / 模型端点（缺什么就直接写进证据） ----
+    r = run([str(entry), "doctor", "--json"], neutral)
+    step("doctor_after_install", r, ok=(r["rc"] == 0) if entry_ok else False)
+    doc = r["json"] or {}
+    ev["doctor"] = {k: doc.get(k) for k in
+                    ("install_ok", "run_ready", "blocking_missing",
+                     "prerequisites_missing")}
+    if doc.get("checks"):
+        ev["doctor"]["checks"] = [
+            {"name": c.get("name"), "ok": c.get("ok"),
+             "severity": c.get("severity"), "detail": c.get("detail")}
+            for c in doc["checks"]]
     st = r["json"] or {}
     ev["status_after_install"] = {k: st.get(k) for k in
                                   ("root", "current", "versions", "data") if k in st}
