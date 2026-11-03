@@ -37,7 +37,9 @@ FALLBACK_FONTS = ["Songti SC", "STHeiti", "Arial Unicode MS"]
 # 1.2.0（2026-11-04）：每个主题增加 style 块（风格名/体裁/一句话/标签/缩略图类型），
 # 并把 basic 之外的 4 套浅色/深色主题拉开成互不相同的字体配对与字号层级。
 # style 不进 config_digest —— 它能改界面的说法，但不能改历史任务冻结的身份。
-REGISTRY_VERSION = "1.2.0"
+# 1.3.0（2026-11-04）：增加 furniture（页面构件：色带/细线/角标）。它**进**摘要，
+# 因为它真的改输出——"藏蓝公文"从此有红头，不再只是一张白纸。
+REGISTRY_VERSION = "1.3.0"
 
 # 不带 theme 的旧调用使用的默认主题（保持 D10-A 合法默认行为）
 DEFAULT_THEME_ID = "wengao-basic"
@@ -56,7 +58,18 @@ THEMES: dict[str, dict] = {
             "tags": ["宋体", "藏蓝", "正红", "密排"],
             "preview": "official",
         },
-        "version": "1.0.0",
+        # 1.1.0（2026-11-04）：加上"红头"——顶部藏蓝通栏 + 其下正红双细线。
+        # 名字叫"藏蓝公文"却渲染出一张纯白纸，是 6 个主题看着一样的直接原因之一。
+        # 家具只画在页边留白带内（内容从 0.7in 起），细长色带见 furniture.py。
+        "furniture": {
+            "id": "headband",
+            "parts": [
+                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.085, "color": "primary"},
+                {"edge": "top", "offset_in": 0.105, "thickness_in": 0.022, "color": "accent"},
+                {"edge": "top", "offset_in": 0.135, "thickness_in": 0.010, "color": "accent"},
+            ],
+        },
+        "version": "1.1.0",
         "legacy_default": True,
         "slide_bg": "FFFFFF",
         "colors": {
@@ -91,6 +104,17 @@ THEMES: dict[str, dict] = {
             "tags": ["黑体", "钢青", "琥珀", "紧凑"],
             "preview": "grid",
         },
+        # 1.3.0（2026-11-04）：加"网格角标"——左竖轨 + 左上/右下 L 形短带 +
+        # 右缘一枚小刻度。与 S1 的"顶部通栏"在结构上就不同，不靠颜色区分。
+        "furniture": {
+            "id": "grid",
+            "parts": [
+                {"edge": "left", "offset_in": 0.0, "span": [0.0, 1.0], "thickness_in": 0.10, "color": "primary"},
+                {"edge": "top", "offset_in": 0.0, "span": [0.0, 0.34], "thickness_in": 0.075, "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.0, "span": [0.66, 1.0], "thickness_in": 0.075, "color": "accent"},
+                {"edge": "right", "offset_in": 0.30, "span": [0.32, 0.36], "thickness_in": 0.06, "color": "border"},
+            ],
+        },
         # 1.0.0 的 primary/accent（1F3864/C00000）跟 wengao-basic 逐字相同，只有
         # muted/border/chart_grid 等次要字段有细微差别——两个主题在卡片预览和
         # 实际生成的 PPT 里几乎看不出区别（user 2026-11-01："6个主题都要分开"）。
@@ -105,7 +129,7 @@ THEMES: dict[str, dict] = {
         # 1.7 倍原余量），不是猜测：按实测 5.48→3.17（约 58%）的衰减比例外推，
         # 9.38:1 名义值衰减后仍有约 5.4:1，留出安全冗余；真正的确认仍是重新
         # 生成后 layout_gate 复核零 HG09 命中。
-        "version": "1.2.0",
+        "version": "1.3.0",
         "slide_bg": "FFFFFF",
         "colors": {
             "primary": "175A63", "accent": "8A5200", "text": "1A1A1A", "muted": "3A4855",
@@ -138,7 +162,18 @@ THEMES: dict[str, dict] = {
             "tags": ["深底", "霓虹青", "等宽", "品红"],
             "preview": "neon",
         },
-        "version": "1.1.0",
+        # 1.2.0（2026-11-04）：加"霓虹边框"——上下通栏霓虹青 + 左右品红竖线
+        # （只占中间 80% 高度，不闭合，避免看起来像相框）。
+        "furniture": {
+            "id": "neonframe",
+            "parts": [
+                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.035, "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.035, "color": "primary"},
+                {"edge": "left", "offset_in": 0.0, "span": [0.10, 0.90], "thickness_in": 0.035, "color": "accent"},
+                {"edge": "right", "offset_in": 0.0, "span": [0.10, 0.90], "thickness_in": 0.035, "color": "accent"},
+            ],
+        },
+        "version": "1.2.0",
         "slide_bg": "0B1220",
         "colors": {
             "primary": "3DDCFF", "accent": "FF6FA5", "text": "E8F4FF", "muted": "A9BFD4",
@@ -176,7 +211,15 @@ THEMES: dict[str, dict] = {
             "tags": ["暖白", "宋体", "留白", "陶土"],
             "preview": "quiet",
         },
-        "version": "1.1.0",
+        # 1.2.0（2026-11-04）：极简的"构件"就是**只有一条**短细线（陶土色），
+        # 位于标题上方的留白里；别的一概没有。用"少"把它的风格与另外五套分开。
+        "furniture": {
+            "id": "quiet",
+            "parts": [
+                {"edge": "top", "offset_in": 0.24, "span": [0.075, 0.20], "thickness_in": 0.012, "color": "accent"},
+            ],
+        },
+        "version": "1.2.0",
         "slide_bg": "FAF8F3",
         "colors": {
             "primary": "2B2A26", "accent": "7F4E32", "text": "2B2A26", "muted": "3B3830",
@@ -232,7 +275,17 @@ THEMES: dict[str, dict] = {
             "tags": ["炭黑", "金铜", "配图", "动效"],
             "preview": "cinema",
         },
-        "version": "1.0.0",
+        # 1.1.0（2026-11-04）：加"舞台"——底部金铜通栏 + 左下金铜短轨 + 右上珊瑚角标。
+        # 与 S3 的"闭合霓虹框"不同：这里是不对称的舞台压边。
+        "furniture": {
+            "id": "stage",
+            "parts": [
+                {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.055, "color": "primary"},
+                {"edge": "left", "offset_in": 0.0, "span": [0.0, 0.30], "thickness_in": 0.09, "color": "primary"},
+                {"edge": "top", "offset_in": 0.0, "span": [0.86, 1.0], "thickness_in": 0.05, "color": "accent"},
+            ],
+        },
+        "version": "1.1.0",
         "slide_bg": "101014",
         "visual_upgrade": True,
         "colors": {
@@ -259,7 +312,9 @@ THEMES: dict[str, dict] = {
 }
 
 # 参与配置摘要的字段（只含影响输出的参数；不含展示名与说明）
-_DIGEST_FIELDS = ("slide_bg", "colors", "fonts", "sizes", "visual_upgrade")
+# furniture 进摘要：它改变导出的字节（每页多出几条色带），不影响输出的字段才有资格
+# 待在摘要外面。style 仍然不进（纯展示说法）。
+_DIGEST_FIELDS = ("slide_bg", "colors", "fonts", "sizes", "visual_upgrade", "furniture")
 
 # 字号规则：主题字号只作为**上限**，不放大来源字号。
 # 依据（2026-10-14 D10-B 实测）：高密度原稿正文 11pt，若按主题 body 16pt 放大，
@@ -639,6 +694,10 @@ def resolve_theme(theme_id: str | None) -> dict:
             "sizes": copy.deepcopy(t["sizes"]),
             "font_fallback_note": t["font_fallback_note"],
             "visual_upgrade": bool(t.get("visual_upgrade")),
+            # 家具（页面构件）必须进 params：apply_theme 拿到的就是这个包，
+            # 它同时进了 config_digest（_DIGEST_FIELDS 含 furniture），
+            # 所以"同一主题、不同构件"必然是不同身份。
+            "furniture": copy.deepcopy(t.get("furniture") or {}),
         },
     }
 
@@ -662,6 +721,8 @@ def list_themes() -> list[dict]:
                 "note": "识别并保留原稿设计语言，只做结构/度量精修；不换肤。",
                 "visual_upgrade": bool(t.get("visual_upgrade")),
                 "style": copy.deepcopy(t.get("style") or {}),
+                # 自适应主题**不声明**家具：它的风格就是"不换肤"，加构件与定义矛盾。
+                "furniture": {"id": None, "parts": 0},
             })
             continue
         out.append({
@@ -682,6 +743,12 @@ def list_themes() -> list[dict]:
             # picker entry as the 5 plain-color themes).
             "visual_upgrade": bool(t.get("visual_upgrade")),
             "style": copy.deepcopy(t.get("style") or {}),
+            # 家具摘要：界面要能说明"这套风格在页面上会画什么"，
+            # 而不是只能给一个色卡。parts=0 表示这套主题不加任何构件。
+            "furniture": {
+                "id": (t.get("furniture") or {}).get("id"),
+                "parts": len((t.get("furniture") or {}).get("parts") or []),
+            },
         })
     out.sort(key=lambda x: (not x["legacy_default"], x["id"]))
     return out
@@ -1050,6 +1117,17 @@ def apply_theme(pptx_path, out_path, theme_name: str | None = None,
     readability_pages, fit_warnings = fit_type_scale_in_place(prs)
     changed["warnings"].extend(fit_warnings)
     changed["readability_floor_actions"] = readability_pages
+
+    # 页面构件（家具）：换色 vs 换风格的差别就在这里。
+    # 必须在所有配色/字体/字号/重排都落定之后、保存之前画——它要与既有形状的
+    # 最终包围盒做相交检查，早画会拿旧几何去避让。自适应主题在函数开头就
+    # return 了（不换肤），preserve 也在开头就 return（一字节不改）。
+    from . import furniture as fur_mod
+    try:
+        changed["furniture"] = fur_mod.apply_to(prs, ident)
+    except fur_mod.FurnitureError as exc:
+        # 声明不合法属于代码缺陷，不静默降级成"没画"——宁可整单失败也别悄悄换风格
+        raise ThemeError(f"THEME.FURNITURE_INVALID: {exc}") from exc
 
     prs.save(str(out))
     changed["font_substitution"] = p["font_fallback_note"]

@@ -50,9 +50,11 @@ class TestWengaoBusinessMutedContrastMargin(unittest.TestCase):
     def test_version_bumped_for_the_palette_change(self):
         # 1.2.0：主色由 2F5B7C 移到钢青 175A63、中文字体 Songti→STHeiti、
         # 拉丁字体 Arial→Helvetica Neue、正文 16→17pt（用户"6个主题6个风格"）。
-        # 配色一改就必须动版本号，否则同一 theme_id 的两个不同外观会共享同一个
-        # 版本标识，历史任务里冻结的身份就说不清自己对的是哪一版。
-        self.assertEqual(theme_mod.THEMES["wengao-business"]["version"], "1.2.0")
+        # 1.3.0：再加 furniture=grid（左竖轨 + 左上/右下短带 + 右缘刻度）——
+        # 构件真的改变了每页的输出字节，所以同样必须动版本号。
+        # 配色或构件一改就必须动版本号，否则同一 theme_id 的两个不同外观会共享
+        # 同一个版本标识，历史任务里冻结的身份就说不清自己对的是哪一版。
+        self.assertEqual(theme_mod.THEMES["wengao-business"]["version"], "1.3.0")
 
 
 if __name__ == "__main__":

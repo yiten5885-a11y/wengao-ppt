@@ -974,6 +974,42 @@ function relLum(hex) {
   return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
 }
 
+/* 页面构件（furniture）在卡片上如实画出来。
+   后端 theme.py 给每个换肤主题声明了色带/细线/角标，apply_theme 会把它画到每一页；
+   卡片如果还只画"三条横杠"，用户看到的样板就和拿到的成品不是一回事。
+   这里按 furniture.id 一比一复刻那几条：只占卡片边缘，不碰中间的内容示意。 */
+function furnitureMarks(t) {
+  const f = (t && t.furniture) || {};
+  const c = t.colors || {};
+  const P = "#" + (c.primary || "1F3864");
+  const A = "#" + (c.accent || "C00000");
+  const m = (css) => "<i style='position:absolute;" + css + "'></i>";
+  switch (f.id) {
+    case "headband":   // 藏蓝公文：顶部藏蓝通栏 + 正红双细线
+      return m("left:0;top:0;right:0;height:7px;background:" + P) +
+             m("left:0;top:9px;right:0;height:2px;background:" + A) +
+             m("left:0;top:12px;right:0;height:1px;background:" + A);
+    case "grid":       // 钢青商务：左竖轨 + 左上/右下短带 + 右缘刻度
+      return m("left:0;top:0;bottom:0;width:6px;background:" + P) +
+             m("left:0;top:0;width:34%;height:5px;background:" + P) +
+             m("right:0;bottom:0;width:34%;height:5px;background:" + A) +
+             m("right:0;top:32%;width:4px;height:8%;background:" + P + ";opacity:.35");
+    case "neonframe":  // 深海霓虹：上下通栏霓虹青 + 左右半高品红
+      return m("left:0;top:0;right:0;height:3px;background:" + P) +
+             m("left:0;bottom:0;right:0;height:3px;background:" + P) +
+             m("left:0;top:10%;height:80%;width:3px;background:" + A) +
+             m("right:0;top:10%;height:80%;width:3px;background:" + A);
+    case "quiet":      // 暖白静读：只有一条短细线
+      return m("left:7.5%;top:16%;width:12.5%;height:1px;background:" + A);
+    case "stage":      // 炭黑剧场：底部金铜通栏 + 左下导轨 + 右上珊瑚角标
+      return m("left:0;bottom:0;right:0;height:4px;background:" + P) +
+             m("left:0;top:0;height:30%;width:6px;background:" + P) +
+             m("right:0;top:0;width:14%;height:4px;background:" + A);
+    default:
+      return "";       // 自适应（原稿本色）：不画任何构件，这正是它的风格
+  }
+}
+
 /* 每套风格画一张**结构不同**的缩略图。用户 2026-11-04 要求"6 个主题 6 个风格"，
    而 6 张缩略图原先共用一个模板（三条横杠 + 右下色块），只换颜色——卡片本身就在
    告诉用户"这些主题是一样的"。现按 style.preview 分支：公文的红头双线、商务的
@@ -985,6 +1021,7 @@ function themeThumb(t) {
   const A = "#" + (c.accent || "C00000");
   const M = "#" + (c.muted || "595959");
   const T = "#" + (c.text || "1A1A1A");
+  const FUR = furnitureMarks(t);   // 先画构件，内容示意盖在上面
   const kind = (t.style && t.style.preview) || "official";
   const bar = (css) => "<i style='" + css + "'></i>";
   const label = (txt, css) =>
@@ -995,8 +1032,7 @@ function themeThumb(t) {
       bar("left:" + left + ";top:" + top + ";width:38%;height:15px;background:" + P + ";opacity:.10") +
       bar("left:" + (parseFloat(left) + 3) + "%;top:" + (parseFloat(top) + 6) +
           ";width:26%;height:2px;background:" + M + ";opacity:.55");
-    return "<div class='sw' style='background:" + bg + "'>" +
-      bar("left:0;top:0;right:0;height:9px;background:" + P) +
+    return "<div class='sw' style='background:" + bg + "'>" + FUR +
       cell("8%", "28%") + cell("54%", "28%") + cell("8%", "60%") + cell("54%", "60%") +
       bar("left:54%;bottom:7%;width:14%;height:3px;background:" + A) +
       "</div>";
@@ -1004,7 +1040,7 @@ function themeThumb(t) {
   if (kind === "neon") {   // 深海霓虹：网格底 + 发光主条 + 等宽编号
     return "<div class='sw' style='background:" + bg + ";background-image:" +
       "linear-gradient(90deg,rgba(61,220,255,.09) 1px,transparent 1px)," +
-      "linear-gradient(rgba(61,220,255,.09) 1px,transparent 1px);background-size:14px 14px'>" +
+      "linear-gradient(rgba(61,220,255,.09) 1px,transparent 1px);background-size:14px 14px'>" + FUR +
       bar("left:9%;top:24%;width:50%;height:4px;background:" + P + ";box-shadow:0 0 8px " + P) +
       bar("left:9%;top:40%;width:28%;height:2px;background:" + M + ";opacity:.75") +
       bar("left:9%;bottom:16%;width:10%;height:6px;background:" + A) +
@@ -1012,7 +1048,7 @@ function themeThumb(t) {
       "</div>";
   }
   if (kind === "quiet") {  // 暖白静读：只有细线和大片留白
-    return "<div class='sw' style='background:" + bg + "'>" +
+    return "<div class='sw' style='background:" + bg + "'>" + FUR +
       bar("left:12%;top:32%;width:54%;height:2px;background:" + T) +
       bar("left:12%;top:44%;width:42%;height:1px;background:" + M + ";opacity:.45") +
       bar("left:12%;top:54%;width:48%;height:1px;background:" + M + ";opacity:.30") +
@@ -1020,7 +1056,7 @@ function themeThumb(t) {
       "</div>";
   }
   if (kind === "cinema") { // 炭黑剧场：右侧配图块 + 左对齐大字
-    return "<div class='sw' style='background:" + bg + "'>" +
+    return "<div class='sw' style='background:" + bg + "'>" + FUR +
       "<span style='position:absolute;right:0;top:0;bottom:0;width:42%;background:linear-gradient(160deg," +
       P + "55," + A + "33)'></span>" +
       bar("left:8%;top:28%;width:44%;height:6px;background:" + P) +
@@ -1029,15 +1065,13 @@ function themeThumb(t) {
       "</div>";
   }
   if (kind === "source") { // 原稿本色：斜纹表示"沿用原稿"
-    return "<div class='sw' style='background:repeating-linear-gradient(135deg,#C9CDD4 0 6px,#E9ECEF 6px 12px)'>" +
+    return "<div class='sw' style='background:repeating-linear-gradient(135deg,#C9CDD4 0 6px,#E9ECEF 6px 12px)'>" + FUR +
       "<span style='position:absolute;left:9%;top:36%;right:9%;padding:3px 5px;background:rgba(255,255,255,.82);" +
       "font-size:calc(11px * var(--font-scale, 1));color:#3A3A3A;font-weight:600'>跟随原稿配色</span>" +
       "</div>";
   }
   if (kind === "official") { // 藏蓝公文：红头双线 + 通栏标题 + 右下印章
-    return "<div class='sw' style='background:" + bg + "'>" +
-      bar("left:0;top:12px;right:0;height:3px;background:" + P) +
-      bar("left:0;top:16px;right:0;height:1px;background:" + P + ";opacity:.42") +
+    return "<div class='sw' style='background:" + bg + "'>" + FUR +
       bar("left:9%;top:36%;width:56%;height:4px;background:" + P) +
       bar("left:9%;top:50%;width:38%;height:2px;background:" + M + ";opacity:.5") +
       bar("left:9%;bottom:15%;width:12%;height:2px;background:" + M + ";opacity:.32") +
@@ -1045,7 +1079,7 @@ function themeThumb(t) {
       "</div>";
   }
   // 未知 preview：纯色底 + 主色条兜底（不假装属于某一种风格）
-  return "<div class='sw' style='background:" + bg + "'>" +
+  return "<div class='sw' style='background:" + bg + "'>" + FUR +
     bar("left:9%;top:24%;width:50%;height:4px;background:" + P) +
     bar("left:9%;bottom:16%;width:14%;height:3px;background:" + A) +
     "</div>";
