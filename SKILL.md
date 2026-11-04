@@ -33,6 +33,13 @@ pip install -r requirements.txt
 
 另需本机安装 **LibreOffice**（真实 PDF/PNG 渲染依赖）。
 
+> **不需要 WPS，也不需要 PowerPoint**：产品对二者零依赖。导出交付物是标准
+> OOXML 的 `.pptx`，用你**已有的任何 Office** 打开即可（PowerPoint / WPS /
+> Keynote / LibreOffice）。LibreOffice 只服务于**产品内的预览渲染与渲染类
+> 验收门禁**——没有它，交付的 PPTX 照常生成（渲染只影响预览，不影响交付
+> 文件），工作台会给出「一键安装 LibreOffice」引导。未装云端视觉时配图
+> 走本机模型；用户机器上是否装有某个 Office 与本产品运行无关。
+
 > 开发期另可用 `runner/validate_contracts.py` 校验契约与上游基线，
 > 该脚本需要 `vendor/luobo-ppt` 的 git 检出，纯安装包内跑不通（非产品缺陷）。
 
