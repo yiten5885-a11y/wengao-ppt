@@ -1,0 +1,32 @@
+{
+ "schema": "wengao.hg10.native-playback.v1",
+ "gate": "HG10 原生实播与重开核验",
+ "date": "2026-11-04",
+ "played_file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+ "played_file_note": "验收导出原件（复制到 /tmp 播放，字节一致；原件不动）",
+ "sha256_before": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+ "sha256_after": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+ "sha256_match": true,
+ "recording_seconds": 45,
+ "recording_meets_30s_floor": true,
+ "video_file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/hg10-native-playback-20261104/hg10-native-playback.mov",
+ "video_bytes": 320462,
+ "page_advance": "static（翻页自动化被系统拒绝，如实登记）",
+ "frontmost_detection": "unavailable（录制起点见 log）",
+ "reopen_reparse_ok": true,
+ "player": "LibreOffice Impress（soffice）",
+ "log": [
+  "13:44:27 播放对象：cleanroom_first.wengao.pptx（导出原件副本，字节一致）sha256=20f0ad21e89a1547…",
+  "13:44:29 启动 LibreOffice Impress 原生放映（soffice --show --norestore）…",
+  "13:44:32 AppleScript 前台检测被系统拒绝（rc=1）：退化为固定等待 35s 后开始录制（启动等待期可能入镜，如实登记）。",
+  "13:45:07 开始连续录像 45s（screencapture -V）…",
+  "13:45:16 AppleScript 翻页被系统拒绝（rc=1）：登记为静态放映，不伪造翻页。",
+  "13:45:53 录像结束。",
+  "13:45:53 结束放映并退出 LibreOffice…",
+  "13:45:56 从磁盘重新打开（headless 转档重解析）…",
+  "13:45:56 重开解析：成功 rc=0",
+  "13:45:56 SHA 核对：一致（20f0ad21e89a1547…）"
+ ],
+ "verdict": "PASS",
+ "note": "本机无 PowerPoint/WPS；原生实播以 LibreOffice Impress 执行。Cua 点击翻页与 PowerPoint 本体的放映另列外部阻断登记。"
+}

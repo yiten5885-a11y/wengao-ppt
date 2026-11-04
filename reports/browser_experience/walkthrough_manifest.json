@@ -1,0 +1,42 @@
+{
+  "walkthrough": "稳稿 PPT Chrome 浏览器真实体验走查",
+  "steps": [
+    {
+      "step": "01_workbench_home",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/01_workbench_home.png",
+      "note": "旧版工作台首页：演示工作室与主题配置",
+      "time": "00:19:29"
+    },
+    {
+      "step": "02_material_generator_view",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/02_material_generator_view.png",
+      "note": "从材料生成：事实冻结台账与内容规划模式",
+      "time": "00:19:30"
+    },
+    {
+      "step": "03_material_task_live",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/03_material_task_live.png",
+      "note": "材料任务步进：回放冻结计划构建与渲染核对",
+      "time": "00:19:33"
+    },
+    {
+      "step": "04_studio_theme_selection",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/04_studio_theme_selection.png",
+      "note": "演示工作室：原稿适配与主题切换控制台",
+      "time": "00:19:34"
+    },
+    {
+      "step": "05_modern_ui_overview",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/05_modern_ui_overview.png",
+      "note": "RS-9 现代化工作台：空状态引导与左侧任务/环境看板",
+      "time": "00:19:40"
+    },
+    {
+      "step": "06_modern_ui_probes",
+      "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/browser_experience/06_modern_ui_probes.png",
+      "note": "RS-9 本机运行环境看板：mlx-dspark、LibreOffice、真实渲染器状态",
+      "time": "00:19:40"
+    }
+  ],
+  "completed_at": "2026-10-28T00:19:40"
+}

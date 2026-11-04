@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-24T07:10:25.135102+00:00",
+  "frozen_before_model_call": true,
+  "count": 18,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "营收",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "Q3 营收 4.82 亿元，同比增长 12.3%，环比增长 5.1%。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "营收",
+      "raw_value_text": "4.82 亿元",
+      "value": "4.82",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "Q3 营收 4.82 亿元，同比增长 12.3%，环比增长 5.1%。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "营收",
+      "raw_value_text": "12.3%",
+      "value": "12.3",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "Q3 营收 4.82 亿元，同比增长 12.3%，环比增长 5.1%。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "营收",
+      "raw_value_text": "5.1%",
+      "value": "5.1",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "Q3 营收 4.82 亿元，同比增长 12.3%，环比增长 5.1%。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "营收",
+      "raw_value_text": "38%",
+      "value": "38",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "线上渠道占比 38%，去年同期为 29%。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "营收",
+      "raw_value_text": "29%",
+      "value": "29",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "营收",
+        "locator": "line 3-6 / 营收",
+        "unit_id": "b2_p0",
+        "sentence": "线上渠道占比 38%，去年同期为 29%。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "门店",
+      "raw_value_text": "412 家",
+      "value": "412",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 7,
+        "line_end": 9,
+        "heading": "门店",
+        "locator": "line 7-9 / 门店",
+        "unit_id": "b3_p2",
+        "sentence": "期末门店 412 家，净增 23 家。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "门店",
+      "raw_value_text": "23 家",
+      "value": "23",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 7,
+        "line_end": 9,
+        "heading": "门店",
+        "locator": "line 7-9 / 门店",
+        "unit_id": "b3_p2",
+        "sentence": "期末门店 412 家，净增 23 家。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "门店",
+      "raw_value_text": "11.7 万元",
+      "value": "11.7",
+      "unit_class": "万元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 7,
+        "line_end": 9,
+        "heading": "门店",
+        "locator": "line 7-9 / 门店",
+        "unit_id": "b3_p2",
+        "sentence": "单店月均销售 11.7 万元，同比下降 2.4%。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "门店",
+      "raw_value_text": "2.4%",
+      "value": "2.4",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 7,
+        "line_end": 9,
+        "heading": "门店",
+        "locator": "line 7-9 / 门店",
+        "unit_id": "b3_p2",
+        "sentence": "单店月均销售 11.7 万元，同比下降 2.4%。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "库存",
+      "raw_value_text": "58 天",
+      "value": "58",
+      "unit_class": "天",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 10,
+        "line_end": 12,
+        "heading": "库存",
+        "locator": "line 10-12 / 库存",
+        "unit_id": "b4_p3",
+        "sentence": "库存周转天数 58 天，较 Q2 的 64 天改善 6 天。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "库存",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 10,
+        "line_end": 12,
+        "heading": "库存",
+        "locator": "line 10-12 / 库存",
+        "unit_id": "b4_p3",
+        "sentence": "库存周转天数 58 天，较 Q2 的 64 天改善 6 天。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "库存",
+      "raw_value_text": "64 天",
+      "value": "64",
+      "unit_class": "天",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 10,
+        "line_end": 12,
+        "heading": "库存",
+        "locator": "line 10-12 / 库存",
+        "unit_id": "b4_p3",
+        "sentence": "库存周转天数 58 天，较 Q2 的 64 天改善 6 天。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "库存",
+      "raw_value_text": "6 天",
+      "value": "6",
+      "unit_class": "天",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 10,
+        "line_end": 12,
+        "heading": "库存",
+        "locator": "line 10-12 / 库存",
+        "unit_id": "b4_p3",
+        "sentence": "库存周转天数 58 天，较 Q2 的 64 天改善 6 天。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "毛利",
+      "raw_value_text": "31.2%",
+      "value": "31.2",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 13,
+        "line_end": 15,
+        "heading": "毛利",
+        "locator": "line 13-15 / 毛利",
+        "unit_id": "b5_p4",
+        "sentence": "综合毛利率 31.2%，同比提升 1.8 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "毛利",
+      "raw_value_text": "1.8 个百分点",
+      "value": "1.8",
+      "unit_class": "个百分点",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 13,
+        "line_end": 15,
+        "heading": "毛利",
+        "locator": "line 13-15 / 毛利",
+        "unit_id": "b5_p4",
+        "sentence": "综合毛利率 31.2%，同比提升 1.8 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "毛利",
+      "raw_value_text": "24%",
+      "value": "24",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 13,
+        "line_end": 15,
+        "heading": "毛利",
+        "locator": "line 13-15 / 毛利",
+        "unit_id": "b5_p4",
+        "sentence": "自有品牌贡献毛利占比 24%。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "下季重点",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/fee1102d_yunfan_q3.md",
+        "line_start": 16,
+        "line_end": 17,
+        "heading": "下季重点",
+        "locator": "line 16-17 / 下季重点",
+        "unit_id": "b6_p5",
+        "sentence": "扩大自有品牌 SKU，优化华东仓配网络，推进会员复购。"
+      }
+    }
+  ]
+}

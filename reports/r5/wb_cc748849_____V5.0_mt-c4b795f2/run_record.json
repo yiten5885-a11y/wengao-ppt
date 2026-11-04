@@ -1,0 +1,1637 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-27T00:44:51.648942+00:00",
+  "material": "workbench_uploads/cc748849_____V5.0.docx",
+  "material_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+    "pages": 90,
+    "units": 266,
+    "tables": 23,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 23 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-c4b795f2/fact_ledger.json",
+    "count": 562,
+    "frozen_before_model_call": true
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-c4b795f2/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 89,
+    "chunk_calls": 0,
+    "source_assignment_count": 89,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 91,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 4.74,
+        "done_reason": "stop",
+        "eval_count": 585,
+        "raw_response": "{\n  \"deck_title\": \"师序完整开发计划与产品架构规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"本轮需要达成的结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"执行原则\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"comparison\",\n      \"title\": \"02 市场变化与产品定位\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"process\",\n      \"title\": \"06 教师主工作流\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"10 架构与技术选型\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"table\",\n      \"title\": \"14 模型路由与质量工程\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"chart\",\n      \"title\": \"24 商业实验与成本约束\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"20 量化验收与质量门禁\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"23 六十个工作日执行清单\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"仍需负责人决策的事项\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "师序完整开发计划",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "本轮需要达成的结果",
+        "assigned_fact_ids": [
+          "F006",
+          "F007",
+          "F008"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "执行原则",
+        "assigned_fact_ids": [
+          "F009",
+          "F010",
+          "F011",
+          "F012",
+          "F013",
+          "F014",
+          "F015",
+          "F016",
+          "F017",
+          "F018",
+          "F019",
+          "F020",
+          "F021"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "01 证据与当前项目基线",
+        "assigned_fact_ids": [
+          "F022",
+          "F023",
+          "F024",
+          "F025"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "D01 至 D05 必须补齐的基线证据",
+        "assigned_fact_ids": [
+          "F026",
+          "F027",
+          "F028",
+          "F029",
+          "F030",
+          "F031",
+          "F032",
+          "F033",
+          "F034",
+          "F035",
+          "F036",
+          "F037"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "02 市场变化与产品定位",
+        "assigned_fact_ids": [
+          "F038"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "首个明确人群",
+        "assigned_fact_ids": [
+          "F039",
+          "F040",
+          "F041"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "价值主张与可持续优势",
+        "assigned_fact_ids": [
+          "F042",
+          "F043",
+          "F044",
+          "F045"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "03 原需求继承与范围调整",
+        "assigned_fact_ids": [
+          "F046",
+          "F047",
+          "F048",
+          "F049",
+          "F050",
+          "F051",
+          "F052",
+          "F053"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "04 能力边界与人工责任",
+        "assigned_fact_ids": [
+          "F054"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "权限用代码表达",
+        "assigned_fact_ids": [
+          "F055",
+          "F056",
+          "F057",
+          "F058",
+          "F059",
+          "F060"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "05 四类门槛与准入条件",
+        "assigned_fact_ids": [
+          "F061"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "输入范围与失败语义",
+        "assigned_fact_ids": [
+          "F062",
+          "F063",
+          "F064",
+          "F065",
+          "F066"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "06 教师主工作流",
+        "assigned_fact_ids": [
+          "F067"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "失败与恢复必须同样好用",
+        "assigned_fact_ids": [
+          "F068",
+          "F069",
+          "F070",
+          "F071"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "07 工作台信息架构与视觉规范",
+        "assigned_fact_ids": [
+          "F072"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "专业高级的具体标准",
+        "assigned_fact_ids": [
+          "F073",
+          "F074",
+          "F075",
+          "F076",
+          "F077",
+          "F078",
+          "F079",
+          "F080",
+          "F081",
+          "F082",
+          "F083",
+          "F084",
+          "F085",
+          "F086",
+          "F087",
+          "F088",
+          "F089"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "交互与可及性",
+        "assigned_fact_ids": [
+          "F090",
+          "F091",
+          "F092",
+          "F093",
+          "F094"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "08 工作台首页设计样张",
+        "assigned_fact_ids": [
+          "F095",
+          "F096"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "可直接落地的组件",
+        "assigned_fact_ids": [
+          "F097",
+          "F098",
+          "F099",
+          "F100",
+          "F101",
+          "F102"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "09 复核操作页设计样张",
+        "assigned_fact_ids": [
+          "F103",
+          "F104"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "审核效率与控制权",
+        "assigned_fact_ids": [
+          "F105",
+          "F106",
+          "F107",
+          "F108",
+          "F109",
+          "F110",
+          "F111",
+          "F112",
+          "F113",
+          "F114",
+          "F115",
+          "F116"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "10 架构与技术选型",
+        "assigned_fact_ids": [
+          "F117",
+          "F118",
+          "F119"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "项目组织与依赖控制",
+        "assigned_fact_ids": [
+          "F120",
+          "F121",
+          "F122",
+          "F123",
+          "F124"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11 数据模型与证据链",
+        "assigned_fact_ids": [
+          "F125"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "不可变版本与派生失效",
+        "assigned_fact_ids": [
+          "F126",
+          "F127",
+          "F128",
+          "F129",
+          "F130",
+          "F131"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "12 接口与任务状态细节",
+        "assigned_fact_ids": [
+          "F132",
+          "F133",
+          "F134",
+          "F135",
+          "F136",
+          "F137",
+          "F138",
+          "F139"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "13 英语课标与评分规则实现",
+        "assigned_fact_ids": [
+          "F140"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "规则注册与适用性",
+        "assigned_fact_ids": [
+          "F141",
+          "F142",
+          "F143",
+          "F144",
+          "F145",
+          "F146",
+          "F147",
+          "F148",
+          "F149"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "确定性评分与模型证据",
+        "assigned_fact_ids": [
+          "F150",
+          "F151",
+          "F152",
+          "F153",
+          "F154",
+          "F155"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "14 模型路由与质量工程",
+        "assigned_fact_ids": [
+          "F156"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "Provider合约",
+        "assigned_fact_ids": [
+          "F157",
+          "F158",
+          "F159",
+          "F160"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "本地与云端",
+        "assigned_fact_ids": [
+          "F161",
+          "F162"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "评测集与路由选择",
+        "assigned_fact_ids": [
+          "F163",
+          "F164",
+          "F165",
+          "F166",
+          "F167",
+          "F168",
+          "F169",
+          "F170",
+          "F171",
+          "F172",
+          "F173"
+        ],
+        "source_statement_count": 9,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "抗注入与安全降级",
+        "assigned_fact_ids": [
+          "F174",
+          "F175",
+          "F176"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "15 分析与文件交付",
+        "assigned_fact_ids": [
+          "F177"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "班级分析口径",
+        "assigned_fact_ids": [
+          "F178",
+          "F179",
+          "F180",
+          "F181",
+          "F182",
+          "F183"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "讲评文件的固定结构",
+        "assigned_fact_ids": [
+          "F184",
+          "F185",
+          "F186",
+          "F187",
+          "F188",
+          "F189"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "交付验收",
+        "assigned_fact_ids": [
+          "F190",
+          "F191",
+          "F192",
+          "F193"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "16 教师成长与受控记忆",
+        "assigned_fact_ids": [
+          "F194"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "首期必须采集但不滥用",
+        "assigned_fact_ids": [
+          "F195",
+          "F196",
+          "F197",
+          "F198",
+          "F199"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "改进链路",
+        "assigned_fact_ids": [
+          "F200",
+          "F201",
+          "F202",
+          "F203",
+          "F204",
+          "F205",
+          "F206"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "长期价值验证",
+        "assigned_fact_ids": [
+          "F207",
+          "F208",
+          "F209",
+          "F210",
+          "F211",
+          "F212"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "17 考试仓库与组织看板",
+        "assigned_fact_ids": [
+          "F213"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "试卷能力 R1",
+        "assigned_fact_ids": [
+          "F214",
+          "F215",
+          "F216",
+          "F217",
+          "F218"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "校内看板 R1",
+        "assigned_fact_ids": [
+          "F219",
+          "F220"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "跨校跨区 R2",
+        "assigned_fact_ids": [
+          "F221",
+          "F222",
+          "F223",
+          "F224",
+          "F225",
+          "F226"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "题目长期记忆",
+        "assigned_fact_ids": [
+          "F227",
+          "F228",
+          "F229"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "18 趋势能力与明确停止条件",
+        "assigned_fact_ids": [
+          "F230"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "默认开放的范围",
+        "assigned_fact_ids": [
+          "F231",
+          "F232"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "进入研究的先决条件",
+        "assigned_fact_ids": [
+          "F233",
+          "F234",
+          "F235",
+          "F236",
+          "F237",
+          "F238",
+          "F239",
+          "F240",
+          "F241",
+          "F242",
+          "F243",
+          "F244",
+          "F245"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "19 数据保护与安全设计",
+        "assigned_fact_ids": [
+          "F246"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "身份与权限",
+        "assigned_fact_ids": [
+          "F247",
+          "F248",
+          "F249",
+          "F250",
+          "F251"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "未成年人资料与第三方模型",
+        "assigned_fact_ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "留存与删除",
+        "assigned_fact_ids": [
+          "F256",
+          "F257",
+          "F258",
+          "F259"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "上线审查与事件响应",
+        "assigned_fact_ids": [
+          "F260",
+          "F261",
+          "F262",
+          "F263"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "20 量化验收与质量门禁",
+        "assigned_fact_ids": [
+          "F264",
+          "F265",
+          "F266",
+          "F267",
+          "F268",
+          "F269",
+          "F270",
+          "F271"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "21 发布运营与故障处理",
+        "assigned_fact_ids": [
+          "F272"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "从开发到上线",
+        "assigned_fact_ids": [
+          "F273",
+          "F274"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "可观测指标与告警",
+        "assigned_fact_ids": [
+          "F275",
+          "F276",
+          "F277",
+          "F278"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "回滚分层",
+        "assigned_fact_ids": [
+          "F279",
+          "F280",
+          "F281",
+          "F282"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "22 资源与阶段交付",
+        "assigned_fact_ids": [
+          "F283"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "人员与容量假设",
+        "assigned_fact_ids": [
+          "F284",
+          "F285",
+          "F286",
+          "F287",
+          "F288",
+          "F289",
+          "F290",
+          "F291",
+          "F292",
+          "F293",
+          "F294",
+          "F295",
+          "F296",
+          "F297",
+          "F298",
+          "F299",
+          "F300",
+          "F301",
+          "F302"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "关键路径和缓冲",
+        "assigned_fact_ids": [
+          "F303",
+          "F304",
+          "F305",
+          "F306",
+          "F307",
+          "F308",
+          "F309",
+          "F310",
+          "F311",
+          "F312",
+          "F313",
+          "F314",
+          "F315",
+          "F316",
+          "F317"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "23 六十个工作日执行清单",
+        "assigned_fact_ids": [
+          "F318",
+          "F319",
+          "F320"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "24 商业实验与成本约束",
+        "assigned_fact_ids": [
+          "F321"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "权益与价格假设",
+        "assigned_fact_ids": [
+          "F322",
+          "F323",
+          "F324",
+          "F325",
+          "F326",
+          "F327",
+          "F328",
+          "F329",
+          "F330"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "单位经济模型",
+        "assigned_fact_ids": [
+          "F331",
+          "F332",
+          "F333",
+          "F334",
+          "F335",
+          "F336",
+          "F337",
+          "F338",
+          "F339",
+          "F340",
+          "F341",
+          "F342",
+          "F343",
+          "F344",
+          "F345",
+          "F346",
+          "F347",
+          "F348",
+          "F349",
+          "F350",
+          "F351",
+          "F352"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "30位教师试点口径",
+        "assigned_fact_ids": [
+          "F353",
+          "F354",
+          "F355",
+          "F356",
+          "F357",
+          "F358",
+          "F359",
+          "F360",
+          "F361",
+          "F362",
+          "F363",
+          "F364"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "25 智能开发协作与任务模板",
+        "assigned_fact_ids": [
+          "F365"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "协作角色",
+        "assigned_fact_ids": [
+          "F366",
+          "F367",
+          "F368"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "示例任务 复核确认接口",
+        "assigned_fact_ids": [
+          "F369",
+          "F370",
+          "F371",
+          "F372",
+          "F373"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "工作节奏与完成记录",
+        "assigned_fact_ids": [
+          "F374",
+          "F375",
+          "F376"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "26 已知缺陷与修复优先级",
+        "assigned_fact_ids": [
+          "F377"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "仍需负责人决策的事项",
+        "assigned_fact_ids": [
+          "F378",
+          "F379",
+          "F380",
+          "F381",
+          "F382",
+          "F383",
+          "F384",
+          "F385"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "27 来源与发布决策记录",
+        "assigned_fact_ids": [
+          "F386",
+          "F387",
+          "F388",
+          "F389",
+          "F390",
+          "F391",
+          "F392",
+          "F393",
+          "F394",
+          "F395",
+          "F396",
+          "F397",
+          "F398",
+          "F399",
+          "F400",
+          "F401",
+          "F402",
+          "F403",
+          "F404",
+          "F405",
+          "F406",
+          "F407",
+          "F408",
+          "F409",
+          "F410",
+          "F411",
+          "F412",
+          "F413",
+          "F414",
+          "F415",
+          "F416",
+          "F417",
+          "F418",
+          "F419",
+          "F420",
+          "F421",
+          "F422",
+          "F423",
+          "F424",
+          "F425",
+          "F426",
+          "F427",
+          "F428",
+          "F429",
+          "F430",
+          "F431",
+          "F432",
+          "F433",
+          "F434",
+          "F435",
+          "F436",
+          "F437",
+          "F438",
+          "F439",
+          "F440",
+          "F441",
+          "F442",
+          "F443",
+          "F444",
+          "F445",
+          "F446",
+          "F447",
+          "F448",
+          "F449",
+          "F450",
+          "F451",
+          "F452",
+          "F453",
+          "F454",
+          "F455",
+          "F456",
+          "F457",
+          "F458",
+          "F459",
+          "F460"
+        ],
+        "source_statement_count": 23,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "28 后续发布与全功能路线",
+        "assigned_fact_ids": [
+          "F461",
+          "F462"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "九类原看板的去向",
+        "assigned_fact_ids": [
+          "F463",
+          "F464",
+          "F465",
+          "F466",
+          "F467",
+          "F468",
+          "F469"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "29 原模块追踪与合并一",
+        "assigned_fact_ids": [
+          "F470"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "30 原模块追踪与合并二",
+        "assigned_fact_ids": [
+          "F471"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "与市场监控的长期连接",
+        "assigned_fact_ids": [
+          "F472",
+          "F473",
+          "F474",
+          "F475",
+          "F476"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "完整性核对",
+        "assigned_fact_ids": [
+          "F477",
+          "F478",
+          "F479",
+          "F480",
+          "F481"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "31 补充来源与适用版本门禁",
+        "assigned_fact_ids": [
+          "F482",
+          "F483",
+          "F484",
+          "F485",
+          "F486",
+          "F487",
+          "F488",
+          "F489",
+          "F490",
+          "F491",
+          "F492",
+          "F493",
+          "F494",
+          "F495",
+          "F496",
+          "F497",
+          "F498",
+          "F499",
+          "F500",
+          "F501",
+          "F502",
+          "F503",
+          "F504",
+          "F505",
+          "F506",
+          "F507",
+          "F508",
+          "F509",
+          "F510",
+          "F511",
+          "F512",
+          "F513",
+          "F514",
+          "F515",
+          "F516",
+          "F517",
+          "F518",
+          "F519",
+          "F520",
+          "F521",
+          "F522",
+          "F523",
+          "F524",
+          "F525",
+          "F526",
+          "F527",
+          "F528",
+          "F529"
+        ],
+        "source_statement_count": 11,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "来源能证明什么",
+        "assigned_fact_ids": [
+          "F530",
+          "F531",
+          "F532",
+          "F533",
+          "F534"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "任务必须冻结的适用字段",
+        "assigned_fact_ids": [
+          "F535",
+          "F536",
+          "F537",
+          "F538"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "32 收费工程与后续验收补充",
+        "assigned_fact_ids": [
+          "F539"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "最小收费链路",
+        "assigned_fact_ids": [
+          "F540",
+          "F541",
+          "F542",
+          "F543",
+          "F544",
+          "F545",
+          "F546",
+          "F547",
+          "F548",
+          "F549",
+          "F550"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "R1成长验收补充",
+        "assigned_fact_ids": [
+          "F551",
+          "F552",
+          "F553",
+          "F554",
+          "F555",
+          "F556",
+          "F557"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "交付总检查",
+        "assigned_fact_ids": [
+          "F558",
+          "F559",
+          "F560",
+          "F561",
+          "F562"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 91,
+    "pages_after": 152,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 89,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 18
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "summary_action",
+        "original_units": 6,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 5,
+        "catalog_mid": 3,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 23,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 8
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 11,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 4
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 152,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 152 超过冻结上限 20"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-27T00:44:56.517523+00:00"
+}

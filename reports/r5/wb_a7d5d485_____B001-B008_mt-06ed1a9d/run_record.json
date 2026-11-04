@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-27T06:59:49.753451+00:00",
+  "material": "workbench_uploads/a7d5d485_____B001-B008.md",
+  "material_sha256": "9a628307daef2bbfb9e13538cb8ca1c9353b378d91763188f8724d908751014c",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "9a628307daef2bbfb9e13538cb8ca1c9353b378d91763188f8724d908751014c",
+    "pages": 27,
+    "units": 214,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_a7d5d485_____B001-B008_mt-06ed1a9d/fact_ledger.json",
+    "count": 205,
+    "selected": 27,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 205,
+    "selected": 27,
+    "omitted": 178,
+    "subjects_total": 24,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 76,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "师序｜已跳过问题解决方案（B001–B008）",
+      "1.2 路径 A：恢复 SSH（机主在 MacBook 上操作）",
+      "1.5a 独立原型的并入策略（现在就能做，避免返工）",
+      "3.1 判断",
+      "3.4 冲突与恢复规则",
+      "4.2 需要的输入与字段",
+      "5 已修复项的产品侧后续",
+      "8 需要你提供或决定"
+    ],
+    "omitted_facts_path": "reports/r5/wb_a7d5d485_____B001-B008_mt-06ed1a9d/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": true,
+      "error": "must_state 条目是冻结原句的截断半句（以标点中断）：「|---|---|---|…」；完整原句须整句进入覆盖。"
+    },
+    "final_problems": [
+      "must_state 条目是冻结原句的截断半句（以标点中断）：「|---|---|---|…」；完整原句须整句进入覆盖。"
+    ],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_a7d5d485_____B001-B008_mt-06ed1a9d/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 10,
+    "failed": true,
+    "error": "must_state 条目是冻结原句的截断半句（以标点中断）：「|---|---|---|…」；完整原句须整句进入覆盖。",
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 5.54,
+        "done_reason": "stop",
+        "eval_count": 576,
+        "raw_response": "{\n  \"deck_title\": \"项目进展与后续推进规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"项目进展与后续推进规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"table\",\n      \"title\": \"师序｜已跳过问题解决方案\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"1.2 路径 A：恢复 SSH\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"1.5a 独立原型的并入策略\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"3.1 判断\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"3.4 冲突与恢复规则\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"4.2 需要的输入与字段\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"5 已修复项的产品侧后续\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"summary_action\",\n      \"title\": \"8 需要你提供或决定\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"metrics\",\n      \"title\": \"关键进展指标\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结与下一步\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "师序｜已跳过问题解决方案（B001–B008）",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "1.2 路径 A：恢复 SSH（机主在 MacBook 上操作）",
+        "assigned_fact_ids": [
+          "F026",
+          "F027",
+          "F032"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "1.5a 独立原型的并入策略（现在就能做，避免返工）",
+        "assigned_fact_ids": [
+          "F053",
+          "F054",
+          "F055"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "3.1 判断",
+        "assigned_fact_ids": [
+          "F066",
+          "F067",
+          "F068"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "3.4 冲突与恢复规则",
+        "assigned_fact_ids": [
+          "F095",
+          "F096",
+          "F097"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.2 需要的输入与字段",
+        "assigned_fact_ids": [
+          "F133",
+          "F134",
+          "F135",
+          "F137"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "5 已修复项的产品侧后续",
+        "assigned_fact_ids": [
+          "F179",
+          "F180",
+          "F182"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "8 需要你提供或决定",
+        "assigned_fact_ids": [
+          "F197",
+          "F198",
+          "F199",
+          "F200"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      }
+    ]
+  },
+  "verdict": "PLAN_FAILED",
+  "finished_at": "2026-10-27T06:59:55.297386+00:00"
+}

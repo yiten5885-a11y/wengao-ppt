@@ -1,0 +1,555 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-24T10:53:27.765688+00:00",
+  "material": "workbench_uploads/9b1efd7e_00__Codex__.md",
+  "material_sha256": "9c97237355b758d9acada58b410031228f5b3637a77716efa8a3b87cba92dbd3",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "9c97237355b758d9acada58b410031228f5b3637a77716efa8a3b87cba92dbd3",
+    "pages": 21,
+    "units": 142,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_9b1efd7e_00__Codex___mt-a8ee78c0/fact_ledger.json",
+    "count": 198,
+    "frozen_before_model_call": true
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [
+      {
+        "page": 21,
+        "item": "4",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 16,
+        "item": "3",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 6
+      }
+    ],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": true,
+      "error": "must_state 存在完全重复条目（共同覆盖不得重复整句）：「3」×2; 「4」×2"
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": true
+  },
+  "plan": {
+    "path": "reports/r5/wb_9b1efd7e_00__Codex___mt-a8ee78c0/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 19,
+    "chunk_calls": 0,
+    "source_assignment_count": 19,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 21,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 51.78,
+        "done_reason": "stop",
+        "eval_count": 552,
+        "raw_response": "{\n  \"deck_title\": \"稳稿 PPT 开发补充包\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"稳稿 PPT · 开发补充包\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"三句话说清楚现状\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"代码在哪、现在是什么状态\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"文件归属\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"硬约束\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"P0-1 compose.py\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"P0-2 measure.py\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"P1-1 ResearchBundle\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"comparison\",\n      \"title\": \"P1-2 table·b 变体\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"single_column\",\n      \"title\": \"P1-3 全出血带蒙版\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"P1-4 阿拉伯语字形\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "0. 三句话说清楚现状",
+        "assigned_fact_ids": [
+          "F007",
+          "F008",
+          "F009",
+          "F010",
+          "F011",
+          "F012",
+          "F013",
+          "F014",
+          "F015",
+          "F016",
+          "F017",
+          "F018"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "1. 代码在哪、现在是什么状态",
+        "assigned_fact_ids": [
+          "F019",
+          "F020",
+          "F021",
+          "F022",
+          "F023",
+          "F024",
+          "F025",
+          "F026",
+          "F027",
+          "F028",
+          "F029",
+          "F030",
+          "F031",
+          "F032",
+          "F033",
+          "F034",
+          "F035",
+          "F036",
+          "F037",
+          "F038",
+          "F039",
+          "F040",
+          "F041",
+          "F042",
+          "F043",
+          "F044",
+          "F045",
+          "F046",
+          "F047",
+          "F048",
+          "F049",
+          "F050"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "assigned_fact_ids": [
+          "F051",
+          "F052",
+          "F053",
+          "F054",
+          "F055",
+          "F056",
+          "F057",
+          "F058",
+          "F059",
+          "F060"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+        "assigned_fact_ids": [
+          "F061",
+          "F062"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+        "assigned_fact_ids": [
+          "F063",
+          "F064",
+          "F065",
+          "F066",
+          "F067",
+          "F068",
+          "F069",
+          "F070"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+        "assigned_fact_ids": [
+          "F071",
+          "F072",
+          "F073",
+          "F074",
+          "F075",
+          "F076",
+          "F077",
+          "F078",
+          "F079",
+          "F080"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+        "assigned_fact_ids": [
+          "F081",
+          "F082",
+          "F083",
+          "F084",
+          "F085",
+          "F086"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结",
+        "assigned_fact_ids": [
+          "F087",
+          "F088"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "assigned_fact_ids": [
+          "F089",
+          "F090",
+          "F091",
+          "F092",
+          "F093"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode ",
+        "assigned_fact_ids": [
+          "F094",
+          "F095"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+        "assigned_fact_ids": [
+          "F096",
+          "F097",
+          "F098",
+          "F099",
+          "F100"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "assigned_fact_ids": [
+          "F101",
+          "F102",
+          "F103",
+          "F104",
+          "F105",
+          "F106",
+          "F107"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+        "assigned_fact_ids": [
+          "F108",
+          "F109",
+          "F110",
+          "F111",
+          "F112",
+          "F113"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "assigned_fact_ids": [
+          "F114",
+          "F115",
+          "F116",
+          "F117",
+          "F118",
+          "F119",
+          "F120",
+          "F121",
+          "F122",
+          "F123",
+          "F124",
+          "F125",
+          "F126",
+          "F127",
+          "F128",
+          "F129",
+          "F130",
+          "F131",
+          "F132",
+          "F133",
+          "F134",
+          "F135"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "assigned_fact_ids": [
+          "F136",
+          "F137",
+          "F138",
+          "F139",
+          "F140",
+          "F141",
+          "F142",
+          "F143",
+          "F144"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+        "assigned_fact_ids": [
+          "F145",
+          "F146",
+          "F147",
+          "F148",
+          "F149",
+          "F150",
+          "F151",
+          "F152",
+          "F153",
+          "F154",
+          "F155",
+          "F156",
+          "F157",
+          "F158",
+          "F159",
+          "F160",
+          "F161"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "assigned_fact_ids": [
+          "F162",
+          "F163",
+          "F164",
+          "F165",
+          "F166",
+          "F167",
+          "F168",
+          "F169",
+          "F170",
+          "F171"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "assigned_fact_ids": [
+          "F172",
+          "F173",
+          "F174",
+          "F175",
+          "F176",
+          "F177",
+          "F178",
+          "F179",
+          "F180",
+          "F181",
+          "F182",
+          "F183",
+          "F184",
+          "F185",
+          "F186",
+          "F187",
+          "F188",
+          "F189",
+          "F190",
+          "F191",
+          "F192",
+          "F193",
+          "F194",
+          "F195",
+          "F196",
+          "F197",
+          "F198"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 21,
+    "pages_after": 59,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 19,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 5
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 8,
+        "catalog_mid": 4,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 8
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "process",
+        "original_units": 7,
+        "catalog_mid": 5,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "chart",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 3,
+        "catalog_mid": 4,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 4,
+        "catalog_mid": 3,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 5
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 59,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 59 超过冻结上限 20"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-24T10:54:19.603941+00:00"
+}

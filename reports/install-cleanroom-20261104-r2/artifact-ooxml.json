@@ -1,0 +1,53 @@
+{
+  "schema": "wengao.ooxml_conform.v1",
+  "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 B/data/jobs/job-5266561f2ea3/staging/134ccffd/cleanroom_3p.themed.pptx",
+  "bytes": 30809,
+  "scope": "OPC/OOXML 结构自洽性；**不是** PowerPoint 兼容性验收",
+  "checks": [
+    {
+      "code": "C1_ZIP_READABLE",
+      "ok": true,
+      "detail": "42 条目；损坏成员=None；重复条目=[]",
+      "findings": []
+    },
+    {
+      "code": "C2_CONTENT_TYPES",
+      "ok": true,
+      "detail": "Default=4 Override=22；问题 0 项",
+      "findings": []
+    },
+    {
+      "code": "C3_RELATIONSHIPS",
+      "ok": true,
+      "detail": "检查 17 个 rels；问题 0 项",
+      "findings": []
+    },
+    {
+      "code": "C4_SLIDE_LIST",
+      "ok": true,
+      "detail": "sldIdLst=3 slides=3；问题 0 项",
+      "findings": []
+    },
+    {
+      "code": "C5_SHAPE_IDS",
+      "ok": true,
+      "detail": "检查 3 页；问题 0 项",
+      "findings": []
+    },
+    {
+      "code": "C6_LAYOUT_MASTER_CHAIN",
+      "ok": true,
+      "detail": "layout=11；问题 0 项",
+      "findings": []
+    },
+    {
+      "code": "C7_NO_LOCAL_FILE_URIS",
+      "ok": true,
+      "detail": "问题 0 项",
+      "findings": []
+    }
+  ],
+  "passed": 7,
+  "failed": 0,
+  "verdict": "PASS"
+}

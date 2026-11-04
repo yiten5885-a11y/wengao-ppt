@@ -1,0 +1,198 @@
+{
+  "deck_title": "区域中心年度规划",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "区域中心年度规划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "一、总体概况",
+        "二、无锡：华东区域中心",
+        "三、北京：华北区域中心",
+        "四、广州：华南区域中心",
+        "五、青岛：华中区域中心",
+        "六、下一年度规划"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "single_column",
+      "title": "一、总体概况",
+      "must_state": [
+        "四城营收合计 8.6 亿元，同比增长 14%。",
+        "本年度公司业务覆盖华东、华北、华南、华中四个核心区域，区域中心城市分别为无锡、北京、广州、青岛。"
+      ]
+    },
+    {
+      "page": 4,
+      "page_type": "metrics",
+      "title": "二、无锡：华东区域中心",
+      "must_state": [
+        "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。",
+        "无锡太湖新城的办公区已投入使用，可容纳 300 名员工。",
+        "无锡作为华东区域总部所在地，承担长三角一体化业务枢纽职能。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "metrics",
+      "title": "三、北京：华北区域中心",
+      "must_state": [
+        "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。",
+        "北京分公司覆盖华北六省业务，是公司政企合作的主要窗口。",
+        "北京总部大楼位于朝阳区，毗邻 CBD 核心商圈。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "四、广州：华南区域中心",
+      "must_state": [
+        "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。",
+        "广州依托珠江新城的区位优势，重点服务跨境电商与制造业客户。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "metrics",
+      "title": "五、青岛：华中区域中心",
+      "must_state": [
+        "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。",
+        "青岛凭借港口物流优势，在海洋经济相关业务上形成差异化竞争力。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "comparison",
+      "title": "六、下一年度规划",
+      "must_state": [
+        "四城将继续深化区域协同，计划新增两个区域服务中心，目标全年营收突破 10 亿元。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 31.27,
+      "done_reason": "stop",
+      "eval_count": 519,
+      "raw_response": "```json\n{\n  \"deck_title\": \"区域中心年度规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"区域中心年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"总体概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"metrics\",\n      \"title\": \"无锡：华东区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"北京：华北区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"metrics\",\n      \"title\": \"广州：华南区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"metrics\",\n      \"title\": \"青岛：华中区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"comparison\",\n      \"title\": \"区域中心对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"下一年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"summary_action\",\n      \"title\": \"总结与行动\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"single_column\",\n      \"title\": \"附录\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "一、总体概况",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "二、无锡：华东区域中心",
+      "assigned_fact_ids": [
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "三、北京：华北区域中心",
+      "assigned_fact_ids": [
+        "F009",
+        "F010",
+        "F011",
+        "F012"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "四、广州：华南区域中心",
+      "assigned_fact_ids": [
+        "F013",
+        "F014",
+        "F015"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "五、青岛：华中区域中心",
+      "assigned_fact_ids": [
+        "F016",
+        "F017",
+        "F018"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "六、下一年度规划",
+      "assigned_fact_ids": [
+        "F019"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 9,
+      "title": "下一年度规划",
+      "page_type": "timeline",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "总结与行动",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 11,
+      "title": "结论",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "附录",
+      "page_type": "single_column",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 8,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

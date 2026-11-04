@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-27T05:15:18.905370+00:00",
+  "material": "workbench_uploads/6a48c2cc__.docx",
+  "material_sha256": "cbb55b4d7cc6dd77b82edf8c68cdba7f96abc2ac632229188554d30d9b312390",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "cbb55b4d7cc6dd77b82edf8c68cdba7f96abc2ac632229188554d30d9b312390",
+    "pages": 5,
+    "units": 15,
+    "tables": 2,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 2 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_6a48c2cc___mt-ea2a6c7d/fact_ledger.json",
+    "count": 14,
+    "selected": 14,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 14,
+    "selected": 14,
+    "omitted": 0,
+    "subjects_total": 4,
+    "subjects_selected": 4,
+    "estimated_pages_unbudgeted": 7
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_6a48c2cc___mt-ea2a6c7d/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 4,
+    "chunk_calls": 0,
+    "source_assignment_count": 4,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 6,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 4.85,
+        "done_reason": "stop",
+        "eval_count": 551,
+        "raw_response": "{\n  \"deck_title\": \"英语作文班级报告\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"英语作文班级报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"英语作文班级报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"英语作文班级报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"英语作文班级报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"评分概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"评分概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"table\",\n      \"title\": \"评分概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"comparison\",\n      \"title\": \"错因与数据覆盖\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"错因与数据覆盖\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"统计口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"table\",\n      \"title\": \"统计口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"summary_action\",\n      \"title\": \"英语作文班级报告\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "英语作文班级报告",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "评分概况",
+        "assigned_fact_ids": [
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "错因与数据覆盖",
+        "assigned_fact_ids": [
+          "F009",
+          "F010"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "统计口径",
+        "assigned_fact_ids": [
+          "F011",
+          "F012",
+          "F013",
+          "F014"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 6,
+    "pages_after": 6,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 6,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 6 少于冻结下限 10（区间 10—20）；不得以'内容决定页数'替代原任务页数要求。"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-27T05:15:23.775166+00:00"
+}

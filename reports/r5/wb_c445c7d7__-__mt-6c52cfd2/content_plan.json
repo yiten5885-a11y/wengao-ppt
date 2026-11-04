@@ -1,0 +1,305 @@
+{
+  "deck_title": "工作流开发指令 v1.0",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "工作流开发指令 v1.0",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "热点原文拓展补充材料 · 工作流",
+        "2. 数据契约",
+        "4. 双门襟",
+        "4.2 G2 图卡门襟",
+        "P3 · 文案生成（S4）"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "P5 · 视觉简报（S5）",
+        "P7 · 排版规范（S7，写进渲",
+        "8. 待确认项（影响实现细节，不"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "热点原文拓展补充材料 · 工作流",
+      "must_state": [
+        "> 结构：§1 指令卡（可直接粘贴） → §2 数据契约 → §3 节点规格 → §4 双门襟 → §5 提示词全文 → §6 工程约束 → §7 验收 → §8 待确认项。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "table",
+      "title": "2. 数据契约",
+      "must_state": [
+        "全链路用单一 JSON 对象在节点间传递，禁止隐式字段。",
+        "核心 schema：```json",
+        "\"run_id\": \"uuid\",\"topic\": { \"topic_id\": \"\", \"title\": \"\", \"rank\": 0, \"source\": \"\", \"url\": \"\", \"captured_at\": \"\" },\"keywords\": {"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "4. 双门襟",
+      "must_state": [
+        "门襟是本工作流唯一的质量强制点，必须由**确定性代码 + 独立模型评审**双层构成。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "4.2 G2 图卡门襟",
+      "must_state": [
+        "在**渲染完成之后**执行，检查真实像素，而不是检查设计意图。",
+        "| 检查项    | 阈值                        | 判定方式                                                                 |",
+        "| ------ | ------------------------- | -------------------------------------------------------------------- |"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "4.2 G2 图卡门襟…",
+      "must_state": [
+        "| 文字密度   | 文本占画布 ≤ 45%               | 文本 union bbox 面积 / 画布面积                                              |"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 9,
+      "page_type": "process",
+      "title": "P3 · 文案生成（S4）",
+      "must_state": [
+        "你是一个写民生观察的专栏作者。",
+        "你用第一人称\"我\"写作，只写这一种结构，不允许变形，不允许加小标题排版符号。",
+        "第一段·现象（1 句，可 2 句）：句式参照：\"这两天，'______'这件事，让很多人心里堵了一下。",
+        "\" / \"'______'这四个字，反复出现在我眼前。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "metrics",
+      "title": "P5 · 视觉简报（S5）",
+      "must_state": [
+        "把一篇已成稿的文章拆成 3–5 张图卡，每张只讲一件事。",
+        "规则：1. 第 1 张是封面：headline ≤16 字，sub ≤24 字，必须是全文最能立住的一句判断。",
+        "2. 后续每张对应文章的一个段落组，只取一个意思。",
+        "数字类内容单独成卡（type=data）。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "metrics",
+      "title": "P5 · 视觉简报（S5）…",
+      "must_state": [
+        "4. emphasis 最多 2 个词，必须是 headline 里最扎眼的词。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 12,
+      "page_type": "table",
+      "title": "P7 · 排版规范（S7，写进渲",
+      "must_state": [
+        "| 项    | 规格                                                                                               |",
+        "| ---- | ------------------------------------------------------------------------------------------------ |",
+        "| 画布   | 1080×1440，`deviceScaleFactor: 2` 导出                                                              |"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "timeline",
+      "title": "8. 待确认项（影响实现细节，不",
+      "must_state": [
+        "1. **编排平台**：Dify（推荐，节点与条件分支原生支持）／Coze／n8n／纯代码（FastAPI + Playwright）。",
+        "本规格与平台无关，选定后可直接映射为节点图。",
+        "2. **公众号类型**：是否为已认证的服务号或组织类订阅号？",
+        "个人主体订阅号无法使用草稿箱接口，需改为\"本地生成 + 手动发布\"模式。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 23.9,
+      "done_reason": "stop",
+      "eval_count": 524,
+      "raw_response": "```json\n{\n  \"deck_title\": \"工作流开发指令 v1.0\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"工作流开发指令 v1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"热点原文拓展补充材料\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"数据契约\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"双门襟\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"G2 图卡门襟\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"文案生成\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"metrics\",\n      \"title\": \"视觉简报\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"排版规范\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"待确认项\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"行动项\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "热点原文拓展补充材料 · 工作流开发指令 v1.0",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "2. 数据契约",
+      "assigned_fact_ids": [
+        "F033",
+        "F034",
+        "F035"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4. 双门襟",
+      "assigned_fact_ids": [
+        "F105"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.2 G2 图卡门襟",
+      "assigned_fact_ids": [
+        "F143",
+        "F144",
+        "F145",
+        "F149"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P3 · 文案生成（S4）",
+      "assigned_fact_ids": [
+        "F202",
+        "F203",
+        "F204",
+        "F205",
+        "F206"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P5 · 视觉简报（S5）",
+      "assigned_fact_ids": [
+        "F252",
+        "F253",
+        "F254",
+        "F255",
+        "F256",
+        "F257",
+        "F258",
+        "F259",
+        "F261",
+        "F262"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P7 · 排版规范（S7，写进渲染模板，不靠模型自由发挥）",
+      "assigned_fact_ids": [
+        "F271",
+        "F272",
+        "F273",
+        "F274",
+        "F275"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "8. 待确认项（影响实现细节，不阻塞开工）",
+      "assigned_fact_ids": [
+        "F323",
+        "F324",
+        "F325",
+        "F326"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "行动项",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "总结",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "table",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}

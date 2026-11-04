@@ -1,0 +1,231 @@
+{
+  "deck_title": "项目进展与后续推进规划",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "项目进展与后续推进规划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "师序｜已跳过问题解决方案（B00",
+        "1.2 路径 A：恢复 SSH（",
+        "1.5a 独立原型的并入策略（现",
+        "3.1 判断",
+        "3.4 冲突与恢复规则",
+        "4.2 需要的输入与字段",
+        "5 已修复项的产品侧后续",
+        "8 需要你提供或决定"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "table",
+      "title": "师序｜已跳过问题解决方案（B00",
+      "must_state": [
+        "> **使用说明**：本文只依据你提供的记录，没有执行任何远程或本机诊断；根因是按日志证据做的判断，须以实际诊断为准。",
+        "涉及 MacBook 设备设置、电源、网络、账号的步骤由机主操作。",
+        "时限与工时均为拟定估算。",
+        "随本文另附 `collect_baseline.sh`（只读基线采集脚本）。"
+      ]
+    },
+    {
+      "page": 4,
+      "page_type": "process",
+      "title": "1.2 路径 A：恢复 SSH（",
+      "must_state": [
+        "按顺序，每步通过再进下一步：1. 确认 MacBook 已开机、未合盖休眠、已连同一 Wi-Fi 或网线。",
+        "2. 在 MacBook 上取当前地址与名称：`ipconfig getifaddr en0`（Wi-Fi 通常是 en0，有线可能是其他接口）、`scutil --get LocalHostName`。",
+        "6. 防再次休眠：接电源时避免自动休眠（合盖仍会休眠，除非外接显示器）。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "comparison",
+      "title": "1.5a 独立原型的并入策略（现",
+      "must_state": [
+        "原型不宜假定“代码可直接合并”，应把可移植的资产显式化：- 以 OpenAPI 契约、状态机表、迁移 SQL（避免 SQLite 专有写法）为主交付；",
+        "- 把现有测试沉淀为“黄金测试向量”：每个用例＝请求、期望响应、期望数据库终态的 JSON，任何实现（Python 或 TypeScript）都必须通过；",
+        "- 在记录里维护“集成债务清单”：将来必须与产品仓库对齐的点。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "single_column",
+      "title": "3.1 判断",
+      "must_state": [
+        "V5.0 第9章要求“修改即时保存草稿，确认时生成不可变审核记录”，并设有“稍后处理”。",
+        "当前服务把“保存”和“确认”套用同一套完整性校验，所以未打完分的暂缓被 422 拒绝。",
+        "另外，现在的 422 错误码 `SCORE_CRITERIA_MISMATCH` 把“没填完”和“与量表不符”混在一起，需要拆开。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "process",
+      "title": "3.4 冲突与恢复规则",
+      "must_state": [
+        "| 场景 | 规则 |",
+        "| 两台设备先后保存 | 乐观锁 draft_version；落后者收到 409 及服务端当前草稿；按分项合并，同一分项冲突由教师选择 |",
+        "| OCR 或量表在草稿之后变更 | 草稿保留并标 STALE_SOURCE；恢复时展示差异；确认被拒，需重新核对后再确认 |"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "4.2 需要的输入与字段",
+      "must_state": [
+        "| 输入 | 内容 | 批准者 |",
+        "|---|---|---|",
+        "| 达标规则 | 挂在量表版本上：basis（总分或得分率）、阈值、比较符、批准人与时间 | 教研负责人 |",
+        "| 确认版错因 | 每份确认记录含 issues[]：error_code、rule_id、原文位置、教师是否采纳 | 教师确认（沿用现有流程） |"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "timeline",
+      "title": "5 已修复项的产品侧后续",
+      "must_state": [
+        "| ID | 现状 | 进入产品仓库时要做的事 | 验收 |",
+        "|---|---|---|---|",
+        "| B006 | 改为按原始 JSON 请求体算指纹 | 取舍：按原始字节最严格，但客户端重序列化（键序或空白不同）的重试会得到 409。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "summary_action",
+      "title": "8 需要你提供或决定",
+      "must_state": [
+        "1. 谁是机主、何时能在 MacBook 上操作（B001、B002）。",
+        "2. 仓库线索：路径、Git URL，或 GitHub 账号／组织（B002）。",
+        "3. 教研负责人、合规责任人、招募责任人是谁（B003）。",
+        "4. 试点范围与量表的选择，以及达标阈值的批准人（B003、B007）。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 5.54,
+      "done_reason": "stop",
+      "eval_count": 576,
+      "raw_response": "{\n  \"deck_title\": \"项目进展与后续推进规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"项目进展与后续推进规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"table\",\n      \"title\": \"师序｜已跳过问题解决方案\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"1.2 路径 A：恢复 SSH\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"1.5a 独立原型的并入策略\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"3.1 判断\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"3.4 冲突与恢复规则\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"4.2 需要的输入与字段\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"5 已修复项的产品侧后续\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"summary_action\",\n      \"title\": \"8 需要你提供或决定\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"metrics\",\n      \"title\": \"关键进展指标\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结与下一步\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "师序｜已跳过问题解决方案（B001–B008）",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "1.2 路径 A：恢复 SSH（机主在 MacBook 上操作）",
+      "assigned_fact_ids": [
+        "F026",
+        "F027",
+        "F032"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "1.5a 独立原型的并入策略（现在就能做，避免返工）",
+      "assigned_fact_ids": [
+        "F053",
+        "F054",
+        "F055"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "3.1 判断",
+      "assigned_fact_ids": [
+        "F066",
+        "F067",
+        "F068"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "3.4 冲突与恢复规则",
+      "assigned_fact_ids": [
+        "F095",
+        "F096",
+        "F097"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.2 需要的输入与字段",
+      "assigned_fact_ids": [
+        "F133",
+        "F134",
+        "F135",
+        "F137"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "5 已修复项的产品侧后续",
+      "assigned_fact_ids": [
+        "F179",
+        "F180",
+        "F182"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "8 需要你提供或决定",
+      "assigned_fact_ids": [
+        "F197",
+        "F198",
+        "F199",
+        "F200"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "关键进展指标",
+      "page_type": "metrics",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "总结与下一步",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_failed": true,
+  "error": "must_state 条目是冻结原句的截断半句（以标点中断）：「|---|---|---|…」；完整原句须整句进入覆盖。"
+}

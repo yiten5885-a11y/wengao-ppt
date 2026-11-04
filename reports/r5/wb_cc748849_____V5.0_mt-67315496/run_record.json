@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-27T02:24:27.777734+00:00",
+  "material": "workbench_uploads/cc748849_____V5.0.docx",
+  "material_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+    "pages": 90,
+    "units": 266,
+    "tables": 23,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 23 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-67315496/fact_ledger.json",
+    "count": 430,
+    "selected": 29,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 430,
+    "selected": 29,
+    "omitted": 401,
+    "subjects_total": 88,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 176,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "师序完整开发计划",
+      "输入范围与失败语义",
+      "不可变版本与派生失效",
+      "讲评文件的固定结构",
+      "19 数据保护与安全设计",
+      "关键路径和缓冲",
+      "28 后续发布与全功能路线",
+      "交付总检查"
+    ],
+    "omitted_facts_path": "reports/r5/wb_cc748849_____V5.0_mt-67315496/fact_ledger.json#budget_omitted_facts"
+  },
+  "model_error": {
+    "code": "MODEL.HTTP_ERROR",
+    "provider": "ollama-local",
+    "status_code": 400,
+    "detail": "[{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Budget 0 is invalid. This model only works in thinking mode.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n]"
+  },
+  "plan": {
+    "mode": "chunked",
+    "failed": true,
+    "error": "MODEL.HTTP_ERROR",
+    "trace": []
+  },
+  "finished_at": "2026-10-27T02:24:28.717715+00:00",
+  "verdict": "PLAN_FAILED"
+}

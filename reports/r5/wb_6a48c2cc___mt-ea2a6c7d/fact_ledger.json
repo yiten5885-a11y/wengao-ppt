@@ -1,0 +1,600 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-27T05:15:18.913053+00:00",
+  "frozen_before_model_call": true,
+  "count": 14,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "40 人",
+      "value": "40",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p1",
+        "sentence": "本地服务快照 · 40 人仿真数据"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "本报告取自本地 HTTP 服务已批准任务的冻结快照，用于演示教师讲评材料的导出与复核。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "所有数据均为仿真，不对应真实学生。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "评分概况",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p5",
+        "sentence": "达标率：未知（未批准达标阈值）"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "评分概况",
+      "raw_value_text": "9",
+      "value": "9",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "评分概况",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "评分概况",
+      "raw_value_text": "8.54",
+      "value": "8.54",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "评分概况",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "错因与数据覆盖",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p8",
+        "sentence": "结构化错因覆盖：未知；频次状态：未知。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "错因与数据覆盖",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p9",
+        "sentence": "结构化错因代码与覆盖口径尚未获批准，暂不统计错因频次。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p11",
+        "sentence": "评分统计只纳入教师已确认作文；缺交不记零分。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "服务快照尚无经批准的达标阈值，达标率显示未知。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "服务快照尚无结构化错因覆盖与代码，错因频次显示未知。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p14",
+        "sentence": "班级文件只呈现汇总指标，不包含姓名、学生别名、审核 ID 或个人分数。"
+      }
+    }
+  ],
+  "budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 14,
+    "selected": 14,
+    "omitted": 0,
+    "subjects_total": 4,
+    "subjects_selected": 4,
+    "estimated_pages_unbudgeted": 7
+  },
+  "candidate_count": 14,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "40 人",
+      "value": "40",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p1",
+        "sentence": "本地服务快照 · 40 人仿真数据"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "本报告取自本地 HTTP 服务已批准任务的冻结快照，用于演示教师讲评材料的导出与复核。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "英语作文班级报告",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "所有数据均为仿真，不对应真实学生。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "评分概况",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p5",
+        "sentence": "达标率：未知（未批准达标阈值）"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "评分概况",
+      "raw_value_text": "9",
+      "value": "9",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "评分概况",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "评分概况",
+      "raw_value_text": "8.54",
+      "value": "8.54",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "评分概况",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "分项均分：内容 9/10；语言 8.54/10"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "错因与数据覆盖",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p8",
+        "sentence": "结构化错因覆盖：未知；频次状态：未知。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "错因与数据覆盖",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p9",
+        "sentence": "结构化错因代码与覆盖口径尚未获批准，暂不统计错因频次。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p11",
+        "sentence": "评分统计只纳入教师已确认作文；缺交不记零分。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "服务快照尚无经批准的达标阈值，达标率显示未知。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "服务快照尚无结构化错因覆盖与代码，错因频次显示未知。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "统计口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/6a48c2cc__.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p14",
+        "sentence": "班级文件只呈现汇总指标，不包含姓名、学生别名、审核 ID 或个人分数。"
+      }
+    }
+  ],
+  "budget_omitted_facts": []
+}

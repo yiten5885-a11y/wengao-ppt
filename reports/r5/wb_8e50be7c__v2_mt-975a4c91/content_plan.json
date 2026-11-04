@@ -1,0 +1,2436 @@
+{
+  "deck_title": "立卡贴图台 开发方案 v2",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "立卡贴图台 开发方案 v2",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么",
+      "must_state": [
+        "立卡贴图台 开发方案 v2",
+        "0. 这版改了什么",
+        "0.1 v1 问题与 v2 解法",
+        "1. 门（硬规则）",
+        "2. 总体架构"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "3. 每一步",
+        "4.1 打分 v2",
+        "4.2 事实卡与原文核对",
+        "4.3 文案 v2",
+        "4.4 画面 v2"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "4.5 通道选择",
+        "4.6 通道 B：后台会话",
+        "4.7 守卫 v2",
+        "4.8 读回核查",
+        "4.9 账本与幂等"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 5,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "4.10 通知与发表截止",
+        "4.11 模型分工",
+        "4.12 配置项（新增与变化）",
+        "P0 修补契约（规模 S）",
+        "P0.5 信源接入（开机前置，规"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 6,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "P1 影子内容线（规模 M）",
+        "P2 通道可行性与接入（规模 M",
+        "P3 画面线（规模 M）",
+        "P4 联调、通知、定时（规模 S",
+        "P5 灰度放量（规模 S，按周推"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 7,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "P6 本地运维台（规模 S，可选",
+        "6. 故障表",
+        "7. 验收清单",
+        "8. 人的清单",
+        "9. 不在范围内"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 8,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "10. 待你拍板的默认值",
+        "11. 信源接入：开机前置与使用",
+        "11.1 你需要提供什么",
+        "11.2 接入向导：开机前置",
+        "11.3 统一条目与体检标准"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 9,
+      "page_type": "agenda",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "11.4 安全与运行期监控",
+        "11.5 目录、配置与验收"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 10,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法",
+      "must_state": [
+        "| # | v1 问题 | v2 解法 | 阶段 || --- | --- | --- | --- || 1 | 打分与信源政策矛盾：tier 3 月度清单在 6 小时内得 60 分被收下 | tier 3 不进整点候选池，只进周回顾；打分参数与信源表同源读取 | P0 || 2 | 兜底话术（「日期以原文为准」「原文没写限制，不要自行补充」）被原样拼进正文，校验还通过 | 事实卡缺失字段一律 n",
+        "17"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "30",
+        "8"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 12,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "0600",
+        "0700"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 13,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "9",
+        "10"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 14,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "11",
+        "12"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 15,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "72 小时",
+        "24 小时"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 16,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "13",
+        "14"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 17,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "15",
+        "16"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 18,
+      "page_type": "comparison",
+      "title": "0.1 v1 问题与 v2 解法…",
+      "must_state": [
+        "0.5"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 19,
+      "page_type": "single_column",
+      "title": "1. 门（硬规则）",
+      "must_state": [
+        "v1 只规定了不处理，没有代码保证前缀。",
+        "- 没有通过体检的信源，流水线不启动：信源为空或健康信源不足时，run 直接拒绝启动（见第 11 节）。",
+        "- 账号是操作者自己的公众号。",
+        "Agent 不注册号、不改密码、不碰别人的号。",
+        "- 代理只转公众号相关域名。"
+      ]
+    },
+    {
+      "page": 20,
+      "page_type": "single_column",
+      "title": "1. 门（硬规则）…",
+      "must_state": [
+        "本地转发没在听，任何通道动作都不做。",
+        "其它网站不与后台会话混用。",
+        "- 二维码不截图外传。",
+        "页面关了码就废了，人当场扫。",
+        "- 没有 publish 的成功路径：DraftChannel 接口里不存在这个方法，兜底函数调用即抛 BoundaryError，传输层对发表类路径和字段再拒绝一次。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 21,
+      "page_type": "single_column",
+      "title": "1. 门（硬规则）…",
+      "must_state": [
+        "- Agent 不删任何草稿，包括自己存的。",
+        "- 测试稿的标题由代码强制加「【测试】」前缀；自动化不删不发，人在手机或浏览器里处理。",
+        "- 演练样本（rehearsal）只用于自检和 shadow 模式，禁止进入 test 或 live。",
+        "- saveDraft 不自动重试。",
+        "结果不明时先读回，再决定。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 22,
+      "page_type": "single_column",
+      "title": "1. 门（硬规则）…",
+      "must_state": [
+        "- 模型输出进入文案前必须通过原文核对。",
+        "核对失败就跳过该小时，不用空话补。",
+        "- 密钥不入仓库、不进命令行、不进日志，日志统一掩码。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 23,
+      "page_type": "single_column",
+      "title": "2. 总体架构",
+      "must_state": [
+        "流水线分四块，共用一份账本。",
+        "- 内容线：抓取、去重、溯源、打分、事实卡、原文核对、文案。",
+        "- 画面线：任务书、生图、程序叠字、视觉验收。",
+        "- 通道线：上传、存草稿、读回核查。",
+        "通道可换（官方接口或后台会话），换通道不改上游。",
+        "- 提醒线：推送、日报、发表截止。"
+      ]
+    },
+    {
+      "page": 24,
+      "page_type": "single_column",
+      "title": "2. 总体架构…",
+      "must_state": [
+        "运行模式有三档：shadow（只写本地）、test（真实通道，标题带【测试】）、live。",
+        "切到 test 或 live，需要配置里 live 为 true，且命令行带 --live，缺一不可。",
+        "目录：```tietu-agent/workflow.json        步骤、负责人、失败策略（唯一事实源）config/agent.example.json 本机配置模板（真实配置不提交）sources.json       信源、tier、官方域名白名单rules.json         禁词、结构规则、元话术、单位别名、打分参数prompts/             facts.m",
+        "接口里没有发表方法，这是类型层面的保证：```tsinterface DraftChannel {probe(): Promise<{ ok: boolean; detail: string }>;uploadImage(file: Buffer, name: string): Promise<{ fileId: string; cdnUrl: string }>;saveStickerDraft"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 25,
+      "page_type": "process",
+      "title": "3. 每一步",
+      "must_state": [
+        "| 步 | 做什么 | 成功 | 失败就 || --- | --- | --- | --- || 1 窗口 | 北京时间 07–21 点的整点槽；该槽已有账本则直接退出 | 槽空闲 | 跳过，不补做 || 2 配额 | 当天已存草稿数小于 dailyCap，且距上一条不少于 minGapMinutes | 有额度 | 跳过并写原因 || 3 自检 | 本机转发在听；channel.probe 通过",
+        "4.1"
+      ]
+    },
+    {
+      "page": 26,
+      "page_type": "process",
+      "title": "3. 每一步…",
+      "must_state": [
+        "60",
+        "4.2"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 27,
+      "page_type": "process",
+      "title": "3. 每一步…",
+      "must_state": [
+        "4.3",
+        "4.4"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 28,
+      "page_type": "process",
+      "title": "3. 每一步…",
+      "must_state": [
+        "1536",
+        "2048"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 29,
+      "page_type": "process",
+      "title": "3. 每一步…",
+      "must_state": [
+        "2 次",
+        "4.8"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 30,
+      "page_type": "process",
+      "title": "3. 每一步…",
+      "must_state": [
+        "18"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 31,
+      "page_type": "table",
+      "title": "4.11 模型分工",
+      "must_state": [
+        "- 抽取（事实卡）：小模型或本地模型，temperature 为 0，输出过 JSON schema 校验。",
+        "- 文案：较强的模型，句式自然度主要取决于这一步。",
+        "- 视觉验收：多模态模型。",
+        "- 各自独立适配器，密钥只放环境变量。",
+        "任一步模型调用失败，该槽跳过并记原因，不降级成模板拼接。"
+      ]
+    },
+    {
+      "page": 32,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置",
+      "must_state": [
+        "由 AI 助手代你操作仓库时，助手开工的第一步就是按 11.1 向你索取信源，拿到后自己运行向导；它不会用猜出来的仓库地址或网页，顶替你没提供的信源。",
+        "1. 索取：你粘贴填写模板，或只给 URL 或命令，向导补问缺的项。"
+      ]
+    },
+    {
+      "page": 33,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "2. 识别类型：只给 URL 时，先判断内容是 feed、OPML 还是 JSON；是网页就找它声明的 feed 链接；是 GitHub 仓库就找 releases 与 commits 的 Atom 地址，以及仓库里的数据文件候选；都没有，就提示改走 cli 或 inbox。",
+        "3. 抽样与映射：拉 3 条原始记录。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 34,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "feed 与 OPML 自动映射；http-json、github-file、cli 由模型给出字段映射建议（哪个字段是 title、url、publishedAt），连同 3 条归一化后的样例给你看，你确认一次。",
+        "4. 体检：按 11.3 逐项测试，每个信源给出通过、警告或失败，失败时写明具体修法。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 35,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "5. 落盘：写入 `config/sources.d/信源id.json`，不含密钥；认证只记环境变量名，向导只检查变量存在，不打印值。",
+        "6. 放行检查：至少 1 个 tier 1 且共至少 2 个信源体检通过，才允许进入 shadow 模式；不够就停在这里，列出还缺什么。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 36,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "要求 2 个，是因为多源佐证加分需要独立来源。",
+        "7. 追加与更换：以后加信源重复 1 到 6，不影响正在运行的槽；换源时旧源标记停用，不删历史。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 37,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "向导在首次运行、或信源为空时自动启动，命令是 `npm run sources:init`，之后可重复运行来追加信源。",
+        "例如条目缺发布时间，就换成 feed 的发布时间字段，或在 cli 输出里补上。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 38,
+      "page_type": "process",
+      "title": "11.2 接入向导：开机前置…",
+      "must_state": [
+        "向导没通过之前，`run` 命令直接拒绝启动并打印缺项。",
+        "这是代码里的硬门，不靠自觉。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 39,
+      "page_type": "timeline",
+      "title": "P5 灰度放量（规模 S，按周推",
+      "must_state": [
+        "- 第 1 周每天最多 3 条，第 2 周最多 5 条，之后按你每天愿意预览和发表的条数、跳过率、过期未发率决定，最高 15。",
+        "- 每一档的退出标准：每天需要人处理的异常不超过 1 件（扫码除外）；过期未发的草稿不超过 20%。"
+      ]
+    },
+    {
+      "page": 40,
+      "page_type": "table",
+      "title": "6. 故障表",
+      "must_state": [
+        "|| 返回 200002 | 用了 JSON。",
+        "|| 信源体检失败，或连续 3 次抓取失败 | 自动停用该源并推送「信源失效」，附失败原因；健康信源少于 2 个时该槽跳过。",
+        "| 现象 | 处理 || --- | --- || 转发没在听 | 停并推送。",
+        "重启转发后再继续，不直连。",
+        "|| 会话探测失败（通道 B） | 回到 need\\_scan，推送，人当场扫码。",
+        "改回表单编码，不重试 JSON。"
+      ]
+    },
+    {
+      "page": 41,
+      "page_type": "table",
+      "title": "6. 故障表…",
+      "must_state": [
+        "|| 只有临时 file\\_id | 改走素材库参数，不把临时 id 写进草稿。",
+        "|| 读回与存入不一致 | 停，标 needs\\_human，不自动删。",
+        "|| 存草稿后进程崩溃 | 重启后按 contentHash 匹配，不重复存。",
+        "|| 模型返回非 JSON 或缺字段 | 该槽跳过并记原因，不套模板。",
+        "|| 原文核对失败 | 跳过，记下哪一项没对上。",
+        "|| 某张图三次验收不过 | 整个小时跳过，不存不全的图。"
+      ],
+      "_continued_from": 10
+    },
+    {
+      "page": 42,
+      "page_type": "table",
+      "title": "6. 故障表…",
+      "must_state": [
+        "|| 推送失败 | 重试推送；仍失败写日志，下次推送带上漏发的。",
+        "|| 草稿过期未发 | 日报标记，人处理，Agent 不删。",
+        "|| 草稿总数与预期不符 | 只告警，以读回结果为准，排查是否与人的操作并发。",
+        "|| 信源格式漂移（解析率或必填字段率下降） | 同上，附一条样例；回到接入向导重新映射字段。",
+        "|| cli 信源超时或输出超限 | 只算该源本次失败，不重试；连续失败按上一条停用。"
+      ],
+      "_continued_from": 10
+    },
+    {
+      "page": 43,
+      "page_type": "summary_action",
+      "title": "7. 验收清单",
+      "must_state": [
+        "- npm run check 通过，含 0.1 表对应的新增用例。",
+        "- shadow 模式：`--hour=3` 跳过；`--hour=21` 写出本地证据，且演练稿带「演练，不可发表」。",
+        "- 打分边界：tier 3 任何新鲜度都不入池；刚好 60 分入选；刚好 30 小时入选，31 小时剔除。",
+        "- 把保存地址换成其它域名、换成 http、换成含 masssend 的路径，传输层均拒绝。"
+      ]
+    },
+    {
+      "page": 44,
+      "page_type": "summary_action",
+      "title": "7. 验收清单…",
+      "must_state": [
+        "- 调用发表路径得到 BoundaryError；DraftChannel 接口里不存在发表方法。",
+        "- 事实卡里放一个原文没有的数字，核对必须失败。",
+        "- 事实卡的 when、caution 为 null 时，成稿里没有任何兜底话术。",
+        "- 四张任务书都是正向描述，禁止项只出现在验收清单里。"
+      ],
+      "_continued_from": 11
+    },
+    {
+      "page": 45,
+      "page_type": "summary_action",
+      "title": "7. 验收清单…",
+      "must_state": [
+        "- 真会话（或官方接口）上：测试稿读回核查全过，手机上能打开，发表仍要人点。",
+        "- 杀进程演练：存草稿中途终止并重启，草稿箱里没有重复。"
+      ],
+      "_continued_from": 11
+    },
+    {
+      "page": 46,
+      "page_type": "conclusion",
+      "title": "10. 待你拍板的默认值",
+      "must_state": [
+        "| 事项 | v2 默认 | 说明 || --- | --- | --- || 通道 | 先核对官方接口权限，不可用走后台会话 | P2 决定；官方接口是否开放，需要你在后台核对 || 每日上限 | 灰度 3，再 5，最高 15 | 取决于你每天愿意预览与发表的条数 || 发表截止 | 草稿后 6 小时，且不晚于原文后 30 小时 | 过期的整点新闻意义不大 || 标题上限 | 20 字 | 待"
+      ]
+    },
+    {
+      "page": 47,
+      "page_type": "single_column",
+      "title": "立卡贴图台 开发方案 v2",
+      "must_state": [
+        "v2 · 2026-10-17 · 基于 v1 开发包（P0）的评审与实测 · 对应目录 tietu-agent"
+      ]
+    },
+    {
+      "page": 48,
+      "page_type": "single_column",
+      "title": "0. 这版改了什么",
+      "must_state": [
+        "v1 把护栏做完了：整点窗口、禁词、四图任务书、拒绝发表、域名限制。",
+        "v2 做三件事。",
+        "- 修掉 v1 实测出的缺陷：打分与信源政策矛盾、兜底话术漏进正文、核查自证、护栏只比对域名等。",
+        "- 补上 v1 没有的环节：运行账本、去重、溯源、原文核对、读回核查、画面验收、通知、定时。"
+      ]
+    },
+    {
+      "page": 49,
+      "page_type": "single_column",
+      "title": "0. 这版改了什么…",
+      "must_state": [
+        "公众号里的 AI 生成声明由人在发表时手动选择，不属于流水线，v2 不处理。",
+        "本次修订新增：信源接入成为开机前置，没有通过体检的信源，流水线不启动，见第 11 节。",
+        "- 调整落地顺序：先只存本地，把内容质量跑出来；再接微信；最后才放量。",
+        "不变的部分：账号归操作者自己；扫码和发表只由人完成；Agent 没有发表函数；宁缺毋滥；不补做漏掉的小时。"
+      ],
+      "_continued_from": 14
+    },
+    {
+      "page": 50,
+      "page_type": "single_column",
+      "title": "4.1 打分 v2",
+      "must_state": [
+        "- 硬门槛，任一不满足直接剔除：没有一手 URL；像传闻；超过 30 小时；tier 3；seen 里已有；同一事件 24 小时内已发过。",
+        "新鲜度：6 小时内 50，18 小时内 35，30 小时内 20。",
+        "层级：tier 1 为 40，tier 2 为 25。",
+        "佐证：每多一个独立的一手或权威来源加 10，最多加 20。",
+        "- 阈值 60。"
+      ]
+    },
+    {
+      "page": 51,
+      "page_type": "single_column",
+      "title": "4.1 打分 v2…",
+      "must_state": [
+        "- 传闻判定不交给模型自由发挥：来源不在 sources.json、没有 URL、标题含「传闻」「爆料」「据称」「疑似」等词，词表放 rules.json。",
+        "- 得分等于新鲜度加层级加佐证。",
+        "候选池里取最高分，同分取更新鲜的。",
+        "- 参数全部在 rules.json，测试覆盖每个边界。"
+      ],
+      "_continued_from": 15
+    },
+    {
+      "page": 52,
+      "page_type": "single_column",
+      "title": "4.2 事实卡与原文核对",
+      "must_state": [
+        "- 核对规则由代码执行，不靠模型自觉：1. sourceUrl 必须等于输入链接（规范化后比较）。",
+        "2. what 与 anchor 里的每个数字串和英文专名，都要出现在原文文本里。",
+        "比较前先规范化：全半角、千分位、空格、单位别名（例如 816B 与 8160 亿，别名表放 rules.json）。",
+        "3. evidence 必须是原文的逐字子串。"
+      ]
+    },
+    {
+      "page": 53,
+      "page_type": "single_column",
+      "title": "4.2 事实卡与原文核对…",
+      "must_state": [
+        "4. when 非空时，必须能在原文或来源元数据的发布时间里找到。",
+        "- 必填：who、what、why、anchor、sourceName、sourceUrl，以及 what 的依据原句 evidence。",
+        "可空：when、caution。",
+        "空则文案省略对应句，不写任何兜底话术。"
+      ],
+      "_continued_from": 16
+    },
+    {
+      "page": 54,
+      "page_type": "single_column",
+      "title": "4.2 事实卡与原文核对…",
+      "must_state": [
+        "caution 非空时同样要带原文依据句。",
+        "- 任一失败，该小时跳过，原因写进账本。"
+      ],
+      "_continued_from": 16
+    },
+    {
+      "page": 55,
+      "page_type": "single_column",
+      "title": "4.3 文案 v2",
+      "must_state": [
+        "- 校验器强制：正文含末行不超过 250 字；含 anchor；无感叹号；禁词命中 0；结构规则命中 0；元话术命中 0（「以原文为准」「不要自行补充」「演练」等，演练稿除外）。",
+        "- 标题单独生成，不超过 titleMaxChars（默认 20，P2 用后台真实输入测出上限后固定），在句读处断开，不截半句。",
+        "- 模型输入事实卡和原文关键段，输出 title 与 body。",
+        "不再有固定骨架，只固定末行「来源：来源名」。"
+      ]
+    },
+    {
+      "page": 56,
+      "page_type": "single_column",
+      "title": "4.3 文案 v2…",
+      "must_state": [
+        "- 结构规则：「不是……而是……」「不仅……更……」「不只是……」「……的背后」「让……成为可能」「一场……革命」；破折号；连续三句同一句式的排比。",
+        "规则放 rules.json，可增减。",
+        "- 违规时把清单原样回灌，只重写一次；再失败就跳过。",
+        "- 风格 print 与 wry 保留，由 rules.json 轮换，避免连续同一风格。"
+      ],
+      "_continued_from": 17
+    },
+    {
+      "page": 57,
+      "page_type": "single_column",
+      "title": "4.4 画面 v2",
+      "must_state": [
+        "- 规格不变：4 张，3:4，1536×2048，同一光线、同一张桌子。",
+        "- 生成顺序：先出首图（物件），再以首图为参考图出第 2、3 张。",
+        "若生图接口不支持参考图，则一次出 2×2 联系表再裁切放大。",
+        "两种做法在 P3 对比后固定一种。",
+        "- 第 4 张生成空白纸，由程序叠字：字体文件随仓库，需确认可商用；不超过 6 字；位置固定在纸角。"
+      ]
+    },
+    {
+      "page": 58,
+      "page_type": "single_column",
+      "title": "4.4 画面 v2…",
+      "must_state": [
+        "- 第 2 张可用数字卡：把 anchor 排成卡片（HTML 转 PNG 或 SVG），结果完全确定。",
+        "- 规则修订：模型生成的图一律无字；程序叠加的字只出现在第 4 张（不超过 6 字）和数字卡（不超过 8 个字符）。",
+        "- 每张最多重做 2 次，每个槽的生图调用总数不超过 maxImageCalls（配置项）。",
+        "- 任务书改成正向描述，只写要有什么，不写「不要机器人」这类否定句，否定描述容易反向诱导。",
+        "禁止项只放进验收清单，不进生图提示词。"
+      ],
+      "_continued_from": 18
+    },
+    {
+      "page": 59,
+      "page_type": "single_column",
+      "title": "4.4 画面 v2…",
+      "must_state": [
+        "anchor 是数字时默认用数字卡，否则用物件对照。",
+        "- 视觉验收：视觉模型对每张图回答固定问题，输出 JSON。",
+        "检查项：有无机器人、霓虹电路、大脑连线、紫色渐变、悬浮界面、大标题；有无乱码或多余文字；手指是否畸形；与另外三张的光线、桌面是否一致。",
+        "任一项不过，重做该张。"
+      ],
+      "_continued_from": 18
+    },
+    {
+      "page": 60,
+      "page_type": "single_column",
+      "title": "4.5 通道选择",
+      "must_state": [
+        "- 通道 B，后台会话：沿用 v1 路线，见 4.6。",
+        "- 通道 A，官方接口：据我所知，公众号官方的新建草稿接口支持图片消息（贴图）类型，素材上传、读取草稿、草稿计数也都有接口。",
+        "是否向你的账号开放，取决于主体类型和认证状态，要在公众平台后台核对接口权限，这一点我没有替你验证。",
+        "它需要 appid 与 secret，并要求把调用方 IP 加入白名单，固定的中国出口 IP 刚好可以用。"
+      ]
+    },
+    {
+      "page": 61,
+      "page_type": "single_column",
+      "title": "4.5 通道选择…",
+      "must_state": [
+        "不需要扫码、cookie、token。",
+        "- 选择规则：A 可用就用 A，B 做备选。",
+        "两者都实现 DraftChannel，上游、核查、账本都不变。",
+        "- 无论哪条通道，发表函数都不存在。"
+      ],
+      "_continued_from": 19
+    },
+    {
+      "page": 62,
+      "page_type": "single_column",
+      "title": "4.5 通道选择…",
+      "must_state": [
+        "A 的 secret 技术上能调发表接口，所以守卫对 A 同样做 host、path、方法白名单。"
+      ],
+      "_continued_from": 19
+    },
+    {
+      "page": 63,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话",
+      "must_state": [
+        "- 沿用 v1 的四个硬条件：表单编码而不是 JSON；图片先走素材库（scene=1、writetype=doublewrite、groupid=1），取成对的 file\\_id 与 cdn\\_url；type=77 且 share\\_page\\_type0=8；存完读回核查。"
+      ]
+    },
+    {
+      "page": 64,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "- 持久化浏览器 profile：目录 secrets/browser-profile，权限 0700；浏览器带 --proxy-server=127.0.0.1:1080 启动；人在可见窗口里当场扫码；之后请求都在这个浏览器上下文里发出，cookie 与 token 由浏览器自带，不手工复制。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 65,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "若后台拒绝浏览器自动化，退路是从文件读会话（权限 0600，含 token 字段），仍不走命令行。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 66,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "会话龄超过 18 小时只做预警，以探测结果为准，不再用固定 20 小时拒绝。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 67,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "- 取消 WECHAT\\_COOKIE 环境变量这条路径。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 68,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "- 健康探测：每个槽开始时请求一次草稿列表。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 69,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "失败就回到 need\\_scan 并通知人，不涉及密码。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 70,
+      "page_type": "single_column",
+      "title": "4.6 通道 B：后台会话…",
+      "must_state": [
+        "- 记录的 verifiedAt 取最近一次探测成功的时间。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 71,
+      "page_type": "single_column",
+      "title": "4.7 守卫 v2",
+      "must_state": [
+        "- 传输层用标准 fetch，经本机转发的代理发出，自动处理 chunked；连接超时 5 秒，总超时 30 秒。",
+        "- 重试：只对 uploadImage 与 draftList 重试，最多 2 次，指数退避。",
+        "返回 200002（用了 JSON）不重试，直接报错。",
+        "- 只允许 https。"
+      ]
+    },
+    {
+      "page": 72,
+      "page_type": "single_column",
+      "title": "4.7 守卫 v2…",
+      "must_state": [
+        "host 由通道决定：通道 A 为官方接口域名，通道 B 为 mp.weixin.qq.com。",
+        "- path 白名单：uploadImage、saveDraft、draftList、draftDetail 四个端点，精确匹配。",
+        "地址由配置填入（通道 B 来自你自己的一次抓包），代码里不写死，也不猜。",
+        "- 黑名单兜底：路径或表单键里含 publish、freepublish、masssend、sendall、mass 一律硬拒绝。"
+      ],
+      "_continued_from": 21
+    },
+    {
+      "page": 73,
+      "page_type": "single_column",
+      "title": "4.7 守卫 v2…",
+      "must_state": [
+        "黑名单只是第二道，白名单才是第一道。",
+        "saveDraft 永不自动重试。",
+        "- 日志中的 cookie、secret、token 一律掩码。"
+      ],
+      "_continued_from": 21
+    },
+    {
+      "page": 74,
+      "page_type": "single_column",
+      "title": "4.8 读回核查",
+      "must_state": [
+        "全部通过才算成功：1. 返回码为 0 且拿到 draftId。",
+        "2. readDraft 返回的类型是贴图。",
+        "3. title 与 body 经空白规范化后，哈希与存入时一致。",
+        "4. 图片数为 4，cdn\\_url 的顺序与上传顺序一致。",
+        "5. 演练稿不进正式号（沿用 v1）。"
+      ]
+    },
+    {
+      "page": 75,
+      "page_type": "single_column",
+      "title": "4.8 读回核查…",
+      "must_state": [
+        "草稿总数 +1、贴图 +1、图文不变，改为告警信号，不作为通过条件：人同时在后台操作时它们会误报。",
+        "失败时停下，不删稿，账本标 needs\\_human，立即推送。"
+      ],
+      "_continued_from": 22
+    },
+    {
+      "page": 76,
+      "page_type": "single_column",
+      "title": "4.9 账本与幂等",
+      "must_state": [
+        "| 字段 | 含义 || --- | --- || slot | 槽标识，例如 2026-10-17-1400 || mode | shadow、test、live || status | running、skipped、saving、drafted、needs\\_human || steps | 每一步的状态与耗时 || candidate | 入选条目的 URL、tier、分数、独立来源数 |"
+      ]
+    },
+    {
+      "page": 77,
+      "page_type": "single_column",
+      "title": "4.9 账本与幂等…",
+      "must_state": [
+        "- seen.json 保留 72 小时：URL 规范化、标题指纹、事件聚类 id、所属槽。"
+      ],
+      "_continued_from": 23
+    },
+    {
+      "page": 78,
+      "page_type": "single_column",
+      "title": "4.9 账本与幂等…",
+      "must_state": [
+        "- 日志保留 30 天，日报从账本生成。"
+      ],
+      "_continued_from": 23
+    },
+    {
+      "page": 79,
+      "page_type": "single_column",
+      "title": "4.9 账本与幂等…",
+      "must_state": [
+        "每个槽一个目录 drafts/日期-小时/，里面有 state.json 和中间产物。"
+      ],
+      "_continued_from": 23
+    },
+    {
+      "page": 80,
+      "page_type": "single_column",
+      "title": "4.9 账本与幂等…",
+      "must_state": [
+        "- status 为 saving，说明崩溃在存草稿中途：先用 contentHash 到草稿列表里匹配，找到就补记为 drafted；确认没有才允许重存一次；仍不明确就标 needs\\_human。"
+      ],
+      "_continued_from": 23
+    },
+    {
+      "page": 81,
+      "page_type": "single_column",
+      "title": "4.10 通知与发表截止",
+      "must_state": [
+        "- 发表截止取两者中较早的：原文发布时间加 30 小时，草稿生成时间加 publishDeadlineHours（默认 6）。",
+        "- 日报在 21:30：当天各槽状态、跳过原因分布、needs\\_human 清单、待发表队列。",
+        "- 渠道三选一：Bark、PushDeer、企业微信机器人，推到手机，密钥放环境变量。"
+      ]
+    },
+    {
+      "page": 82,
+      "page_type": "single_column",
+      "title": "4.10 通知与发表截止…",
+      "must_state": [
+        "- 单条内容：标题、一句话要点、来源、发表截止、draftId、核查结果。",
+        "过期草稿在日报里标「过期，建议人工处理」，Agent 不删。",
+        "- 需要人的事件立即推送：转发断了、会话失效、核查失败、needs\\_human。"
+      ],
+      "_continued_from": 24
+    },
+    {
+      "page": 83,
+      "page_type": "single_column",
+      "title": "4.12 配置项（新增与变化）",
+      "must_state": [
+        "| 配置项 | 默认 | 说明 || --- | --- | --- || mode | shadow | shadow、test、live；切换需配置与 --live 同时满足 || quota.dailyCap | 3 | 每天最多存几条草稿；灰度期逐步提高，上限 15 || quota.minGapMinutes | 45 | 两条草稿之间的最小间隔 || quota.publishDead",
+        "6"
+      ]
+    },
+    {
+      "page": 84,
+      "page_type": "single_column",
+      "title": "4.12 配置项（新增与变化）…",
+      "must_state": [
+        "20"
+      ],
+      "_continued_from": 25
+    },
+    {
+      "page": 85,
+      "page_type": "single_column",
+      "title": "P0 修补契约（规模 S）",
+      "must_state": [
+        "- 修复 0.1 表中第 1、2、3、6、9、16 条；把 selfcheck 迁到 node:test，改成表驱动。",
+        "- 退出标准：npm run check 全绿，并新增这些用例：tier 3 不入池；null 字段对应的句子被省略；元话术被拦截；http 与发表路径被拒；标题不截半句；readDraft 的 stub 返回不一致时核查失败。"
+      ]
+    },
+    {
+      "page": 86,
+      "page_type": "single_column",
+      "title": "P0 修补契约（规模 S）…",
+      "must_state": [
+        "- 新增 workflow.json，PLAN、README 步骤表、desk 页面由脚本生成；zip 在构建时打包。",
+        "- 清理工作区：`.grok/skills` 下与本项目无关的内容不进仓库；`.vercel/output` 加入忽略；重复截图去重。"
+      ],
+      "_continued_from": 26
+    },
+    {
+      "page": 87,
+      "page_type": "single_column",
+      "title": "P0.5 信源接入（开机前置，规",
+      "must_state": [
+        "- 实现六种连接器、统一条目 RawItem、接入向导、体检、放行检查和运行期健康监控（见第 11 节）。",
+        "- 你需要先准备好信源清单：至少 1 个 tier 1 和 1 个其它信源，用 11.1 的模板填写。",
+        "- 退出标准：向导对你给的全部信源跑完体检；至少 2 个通过且含 1 个 tier 1；信源目录为空时 run 被拒绝；11.5 的验收项全部通过。"
+      ]
+    },
+    {
+      "page": 88,
+      "page_type": "single_column",
+      "title": "P1 影子内容线（规模 M）",
+      "must_state": [
+        "- 信源取数（用 P0.5 接入的信源，不再解析公开网页）、去重、溯源、打分 v2、事实卡与原文核对、文案生成。",
+        "- 连续跑 7 天。",
+        "- 退出标准：人工抽检全部稿件，编造的数字与专名为 0；重复主题为 0；平均每天至少 3 条可用稿；每个跳过的槽都有原因记录。",
+        "全程 shadow，只写本地。"
+      ]
+    },
+    {
+      "page": 89,
+      "page_type": "single_column",
+      "title": "P2 通道可行性与接入（规模 M",
+      "must_state": [
+        "- 先做可行性：核对官方接口权限。",
+        "- 产出：选定的通道；端点配置；后台真实的标题上限；一条【测试】草稿的读回样例。",
+        "- 退出标准：测试稿读回核查全部通过；类型是贴图；手机公众号助手里能打开，四图顺序对、正文完整，发表按钮仍要人点；存草稿中途杀掉进程再重启，不产生重复草稿。"
+      ]
+    },
+    {
+      "page": 90,
+      "page_type": "single_column",
+      "title": "P3 画面线（规模 M）",
+      "must_state": [
+        "- 正向任务书、首图锚定与参考图、第 4 张程序叠字、数字卡、视觉验收。",
+        "- 退出标准：连续 30 套图，一次通过率不低于 70%（初始目标，可按实际调整）；无乱码；人工抽检四张一致性合格。",
+        "对比参考图法与联系表裁切法，固定一种。"
+      ]
+    },
+    {
+      "page": 91,
+      "page_type": "single_column",
+      "title": "P4 联调、通知、定时（规模 S",
+      "must_state": [
+        "- 系统 cron 每小时第 2 分钟跑当前槽；推送与日报；故障注入演练（转发断、会话失效、模型返回非 JSON、进程被杀）。",
+        "- 退出标准：连续 7 天 test 模式运行，除通道 B 的扫码外无需人工介入；故障注入的每一项都落到故障表里写的处理。"
+      ]
+    },
+    {
+      "page": 92,
+      "page_type": "single_column",
+      "title": "P6 本地运维台（规模 S，可选",
+      "must_state": [
+        "- desk 页面改为读取 `drafts/*/state.json`：今天各槽状态、跳过原因、待发表队列、needs\\_human 清单。",
+        "只在本机预览，不上公网。"
+      ]
+    },
+    {
+      "page": 93,
+      "page_type": "single_column",
+      "title": "8. 人的清单",
+      "must_state": [
+        "- 每天：看日报；在发表截止前逐条预览并发表；处理 needs\\_human；通道 B 探测失败时当场扫码。",
+        "- 每周：看跳过原因分布，必要时调整 rules.json 的阈值与规则；清理过期草稿和测试稿（Agent 不删）。",
+        "- 放量前：确认自己每天愿意处理的条数，必要时下调 dailyCap。"
+      ]
+    },
+    {
+      "page": 94,
+      "page_type": "single_column",
+      "title": "9. 不在范围内",
+      "must_state": [
+        "代发；自动回复评论；流量主结算；多账号矩阵；把图文文章同步成贴图；自动删除草稿；发表页里的 AI 生成声明（由人手动选择）。",
+        "这些另开任务，不塞进这条流水线。"
+      ]
+    },
+    {
+      "page": 95,
+      "page_type": "single_column",
+      "title": "11. 信源接入：开机前置与使用",
+      "must_state": [
+        "v1 的信源只是一串 GitHub 仓库名，没有接口，抓取这一步无法自动化。",
+        "v2 把信源接入做成开机前置：先由你提供每个信源的订阅地址、API 或命令，系统在你正常使用前自动接入并体检，通过后才允许进入 shadow 模式。"
+      ]
+    },
+    {
+      "page": 96,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么",
+      "must_state": [
+        "| 方式 | 你提供 | 系统怎么做 | 适合 || --- | --- | --- | --- || feed | 一个 RSS、Atom 或 JSON Feed 地址 | 自动识别格式，字段天然齐全 | 官方博客；据我所知 GitHub 仓库的 releases 和 commits 也有 Atom 地址，向导会实测；RSSHub 路由生成的也是 feed || opml | 一个 OPML 文"
+      ]
+    },
+    {
+      "page": 97,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "2. 找 RSSHub 路由：有现成路由就当 feed 接入，只订你点过名的路由。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 98,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "3. 找数据出口：站点或项目是否把数据放在 GitHub 文件或 JSON 接口里。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 99,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "4. 写或找一个 cli：把取数逻辑放进一条命令，输出 jsonl。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 100,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "5. 用 inbox 投喂：半自动，但永远可行。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 101,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "v1 列出的那几个 GitHub 仓库，我没有核实它们各自的数据格式，向导会在接入时实测，而不是靠我猜。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 102,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "每个信源填下面这些项，可以直接粘贴给向导，缺什么向导会追问：```yaml- id: example-blogtype: feedurl: https://example.com/feed.xmltier: 1official_domains: [example.com]expect_every: 1d- id: my-radartype: cliargv: [/usr/local/bin/my-"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 103,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "每个信源提供一条记录，下面六种方式任选其一。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 104,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "系统不内置通用网页爬取，因为页面结构一改就失效。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 105,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "必须抓网页时，请写成 cli 连接器，并自行确认站点的使用条款。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 106,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "- official\\_domains：这个信源涉及机构的官方站点域名，用来做溯源白名单。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 107,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "- auth\\_env：只填环境变量名，不填密钥本身。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 108,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "- expect\\_every：你预期它多久更新一次，用来判断它是不是停更了。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 109,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "- 上面的 my-radar 只是格式示例，不是真实命令。"
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 110,
+      "page_type": "single_column",
+      "title": "11.1 你需要提供什么…",
+      "must_state": [
+        "1."
+      ],
+      "_continued_from": 36
+    },
+    {
+      "page": 111,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准",
+      "must_state": [
+        "无论哪种接入方式，进入流水线前都归一成同一种条目：```tstype RawItem = {id: string; sourceId: string; title: string; url: string;publishedAt: string; // ISO 8601，带时区；信源没给时区则按 config 里声明的时区summary?: string; content?: string; or"
+      ]
+    },
+    {
+      "page": 112,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "| 体检项 | 通过标准 | 不过的处理 || --- | --- | --- || 可达 | 网络类 5 秒内连通；cli 30 秒内以退出码 0 结束 | 失败 || 解析 | 抽样条目解析成功率不低于 95% | 失败 || 必填字段 | title、url、publishedAt 齐全的条目不低于 90% | 失败 || id 稳定 | 连续抓两次，同一条目的 id 或规范化 URL 一致"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 113,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "以上阈值都是默认值，放在 config 里可调。"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 114,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "3 倍"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 115,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "80%"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 116,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "500"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 117,
+      "page_type": "single_column",
+      "title": "11.3 统一条目与体检标准…",
+      "must_state": [
+        "429"
+      ],
+      "_continued_from": 37
+    },
+    {
+      "page": 118,
+      "page_type": "single_column",
+      "title": "11.4 安全与运行期监控",
+      "must_state": [
+        "- 运行限制：60 秒超时，标准输出上限 5 MB，固定工作目录，只传白名单环境变量（含你声明的 auth\\_env）。",
+        "- 信源请求与公众号请求走不同出口：信源请求不进公众号那条本机转发，两类流量不混用（沿用第 1 节的门）。",
+        "- 连续 3 次失败，自动停用该源并推送「信源失效」，附失败原因。",
+        "- 沉默检测：超过 expect\\_every 的 3 倍没有新条目，警告。"
+      ]
+    },
+    {
+      "page": 119,
+      "page_type": "single_column",
+      "title": "11.4 安全与运行期监控…",
+      "must_state": [
+        "- 健康信源少于 2 个时，该槽跳过，并推送需要人处理。",
+        "命令与密钥：- cli 只接受参数数组，不经过 shell；可执行文件必须写绝对路径。",
+        "向导把完整命令展示给你，你确认后才落盘；运行时不会根据抓到的内容改动命令。",
+        "超时或超限都算该源本次失败，不重试。"
+      ],
+      "_continued_from": 38
+    },
+    {
+      "page": 120,
+      "page_type": "single_column",
+      "title": "11.4 安全与运行期监控…",
+      "must_state": [
+        "- 密钥只放环境变量，config 与日志里只出现变量名，日志统一掩码。",
+        "- 抓到的文字一律当数据：交给模型抽取时放在数据区，里面即使写着让模型忽略规则，也不当指令；抽取结果仍要过原文核对与文案校验，何况 Agent 本来就没有发表能力。",
+        "- 只接入你有权使用的信源，遵守站点条款，这是你的责任。",
+        "运行期监控：- 每个槽抓取时记录每个信源的状态：成功与否、条数、耗时，写进账本。"
+      ],
+      "_continued_from": 38
+    },
+    {
+      "page": 121,
+      "page_type": "single_column",
+      "title": "11.4 安全与运行期监控…",
+      "must_state": [
+        "- 格式漂移：解析率或必填字段率跌破体检线，处理同上，并附一条样例；回到向导重新映射字段。",
+        "- 每周一份信源周报：各源产出条数、入选条数、被原文核对拒绝的条数，供你决定留谁换谁。"
+      ],
+      "_continued_from": 38
+    },
+    {
+      "page": 122,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收",
+      "must_state": [
+        "新增目录与文件：```tietu-agent/config/sources.d/    每个信源一份，由向导生成，不含密钥inbox/               jsonl 或 URL 列表的投喂目录（已忽略）src/sources/         connectors（feed opml http-json github-file cli inbox）、wizard、probe、health"
+      ]
+    },
+    {
+      "page": 123,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 声明 tier 1 但条目大多指向第三方域名的信源，层级校验发出警告。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 124,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 连续 3 次失败的信源被自动停用并推送。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 125,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 给一个只有网页地址的 URL，向导能找到它声明的 feed；找不到时明确提示改走 cli 或 inbox。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 126,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 给一个缺发布时间的 cli 输出，体检判失败并给出修法。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 127,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- cli 信源超时、输出超限，都只算该源失败，流水线不卡死。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 128,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 把一个 URL 写进 inbox，系统补出标题与时间并进入候选池；补不出发布时间则丢弃。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 129,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "- 密钥变量缺失时，向导报缺哪个变量名，不打印任何值。"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 130,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "2"
+      ],
+      "_continued_from": 39
+    },
+    {
+      "page": 131,
+      "page_type": "single_column",
+      "title": "11.5 目录、配置与验收…",
+      "must_state": [
+        "5"
+      ],
+      "_continued_from": 39
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 5.75,
+      "done_reason": "stop",
+      "eval_count": 607,
+      "raw_response": "{\n  \"deck_title\": \"立卡贴图台 开发方案 v2\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"立卡贴图台 开发方案 v2\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"0. 这版改了什么\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"comparison\",\n      \"title\": \"0.1 v1 问题与 v2 解法\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"1. 门（硬规则）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"single_column\",\n      \"title\": \"2. 总体架构\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"process\",\n      \"title\": \"3. 每一步\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"table\",\n      \"title\": \"4.11 模型分工\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"11.2 接入向导：开机前置\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"P5 灰度放量（规模 S，按周推进）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"table\",\n      \"title\": \"6. 故障表\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"7. 验收清单\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"10. 待你拍板的默认值\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "立卡贴图台 开发方案 v2",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "0. 这版改了什么",
+      "assigned_fact_ids": [
+        "F007",
+        "F008",
+        "F009",
+        "F010",
+        "F011",
+        "F012",
+        "F013",
+        "F014"
+      ],
+      "source_statement_count": 8,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "0.1 v1 问题与 v2 解法",
+      "assigned_fact_ids": [
+        "F015",
+        "F016",
+        "F017",
+        "F018",
+        "F019",
+        "F020",
+        "F021",
+        "F022",
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027",
+        "F028",
+        "F029",
+        "F030",
+        "F031",
+        "F032",
+        "F033",
+        "F034",
+        "F035",
+        "F036",
+        "F037",
+        "F038",
+        "F039",
+        "F040",
+        "F041",
+        "F042",
+        "F043",
+        "F044",
+        "F045",
+        "F046",
+        "F047",
+        "F048",
+        "F049",
+        "F050",
+        "F051",
+        "F052",
+        "F053",
+        "F054",
+        "F055",
+        "F056",
+        "F057",
+        "F058",
+        "F059",
+        "F060",
+        "F061",
+        "F062",
+        "F063",
+        "F064",
+        "F065",
+        "F066",
+        "F067",
+        "F068",
+        "F069",
+        "F070",
+        "F071"
+      ],
+      "source_statement_count": 19,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "1. 门（硬规则）",
+      "assigned_fact_ids": [
+        "F072",
+        "F073",
+        "F074",
+        "F075",
+        "F076",
+        "F077",
+        "F078",
+        "F079",
+        "F080",
+        "F081",
+        "F082",
+        "F083",
+        "F084",
+        "F085",
+        "F086",
+        "F087",
+        "F088",
+        "F089"
+      ],
+      "source_statement_count": 18,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "2. 总体架构",
+      "assigned_fact_ids": [
+        "F090",
+        "F091",
+        "F092",
+        "F093",
+        "F094",
+        "F095",
+        "F096",
+        "F097",
+        "F098",
+        "F099"
+      ],
+      "source_statement_count": 10,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "3. 每一步",
+      "assigned_fact_ids": [
+        "F100",
+        "F101",
+        "F102",
+        "F103",
+        "F104",
+        "F105",
+        "F106",
+        "F107",
+        "F108",
+        "F109",
+        "F110",
+        "F111",
+        "F112",
+        "F113",
+        "F114",
+        "F115",
+        "F116",
+        "F117",
+        "F118",
+        "F119",
+        "F120",
+        "F121",
+        "F122",
+        "F123",
+        "F124",
+        "F125",
+        "F126",
+        "F127",
+        "F128",
+        "F129",
+        "F130",
+        "F131",
+        "F132",
+        "F133",
+        "F134",
+        "F135",
+        "F136",
+        "F137"
+      ],
+      "source_statement_count": 23,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.1 打分 v2",
+      "assigned_fact_ids": [
+        "F138",
+        "F139",
+        "F140",
+        "F141",
+        "F142",
+        "F143",
+        "F144",
+        "F145",
+        "F146",
+        "F147",
+        "F148",
+        "F149",
+        "F150",
+        "F151",
+        "F152",
+        "F153",
+        "F154",
+        "F155",
+        "F156",
+        "F157"
+      ],
+      "source_statement_count": 9,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.2 事实卡与原文核对",
+      "assigned_fact_ids": [
+        "F158",
+        "F159",
+        "F160",
+        "F161",
+        "F162",
+        "F163",
+        "F164",
+        "F165",
+        "F166",
+        "F167",
+        "F168"
+      ],
+      "source_statement_count": 10,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.3 文案 v2",
+      "assigned_fact_ids": [
+        "F169",
+        "F170",
+        "F171",
+        "F172",
+        "F173",
+        "F174",
+        "F175",
+        "F176",
+        "F177",
+        "F178",
+        "F179",
+        "F180"
+      ],
+      "source_statement_count": 8,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.4 画面 v2",
+      "assigned_fact_ids": [
+        "F181",
+        "F182",
+        "F183",
+        "F184",
+        "F185",
+        "F186",
+        "F187",
+        "F188",
+        "F189",
+        "F190",
+        "F191",
+        "F192",
+        "F193",
+        "F194",
+        "F195",
+        "F196",
+        "F197",
+        "F198",
+        "F199",
+        "F200",
+        "F201",
+        "F202",
+        "F203"
+      ],
+      "source_statement_count": 14,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.5 通道选择",
+      "assigned_fact_ids": [
+        "F204",
+        "F205",
+        "F206",
+        "F207",
+        "F208",
+        "F209",
+        "F210",
+        "F211",
+        "F212",
+        "F213"
+      ],
+      "source_statement_count": 9,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.6 通道 B：后台会话",
+      "assigned_fact_ids": [
+        "F214",
+        "F215",
+        "F216",
+        "F217",
+        "F218",
+        "F219",
+        "F220",
+        "F221",
+        "F222",
+        "F223",
+        "F224",
+        "F225",
+        "F226",
+        "F227",
+        "F228",
+        "F229",
+        "F230"
+      ],
+      "source_statement_count": 8,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.7 守卫 v2",
+      "assigned_fact_ids": [
+        "F231",
+        "F232",
+        "F233",
+        "F234",
+        "F235",
+        "F236",
+        "F237",
+        "F238",
+        "F239",
+        "F240",
+        "F241",
+        "F242"
+      ],
+      "source_statement_count": 11,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.8 读回核查",
+      "assigned_fact_ids": [
+        "F243",
+        "F244",
+        "F245",
+        "F246",
+        "F247",
+        "F248",
+        "F249",
+        "F250",
+        "F251",
+        "F252",
+        "F253"
+      ],
+      "source_statement_count": 7,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.9 账本与幂等",
+      "assigned_fact_ids": [
+        "F254",
+        "F255",
+        "F256",
+        "F257",
+        "F258",
+        "F259",
+        "F260",
+        "F261"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.10 通知与发表截止",
+      "assigned_fact_ids": [
+        "F262",
+        "F263",
+        "F264",
+        "F265",
+        "F266",
+        "F267",
+        "F268",
+        "F269"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.11 模型分工",
+      "assigned_fact_ids": [
+        "F270",
+        "F271",
+        "F272",
+        "F273",
+        "F274"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.12 配置项（新增与变化）",
+      "assigned_fact_ids": [
+        "F275",
+        "F276",
+        "F277",
+        "F278",
+        "F279",
+        "F280",
+        "F281",
+        "F282",
+        "F283",
+        "F284"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P0 修补契约（规模 S）",
+      "assigned_fact_ids": [
+        "F285",
+        "F286",
+        "F287",
+        "F288",
+        "F289",
+        "F290",
+        "F291",
+        "F292",
+        "F293",
+        "F294"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P0.5 信源接入（开机前置，规模 S）",
+      "assigned_fact_ids": [
+        "F295",
+        "F296",
+        "F297",
+        "F298",
+        "F299",
+        "F300",
+        "F301",
+        "F302",
+        "F303"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1 影子内容线（规模 M）",
+      "assigned_fact_ids": [
+        "F304",
+        "F305",
+        "F306",
+        "F307",
+        "F308",
+        "F309",
+        "F310"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P2 通道可行性与接入（规模 M，可与 P1 并行）",
+      "assigned_fact_ids": [
+        "F311",
+        "F312",
+        "F313"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P3 画面线（规模 M）",
+      "assigned_fact_ids": [
+        "F314",
+        "F315",
+        "F316",
+        "F317"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P4 联调、通知、定时（规模 S）",
+      "assigned_fact_ids": [
+        "F318",
+        "F319"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P5 灰度放量（规模 S，按周推进）",
+      "assigned_fact_ids": [
+        "F320",
+        "F321",
+        "F322",
+        "F323",
+        "F324",
+        "F325",
+        "F326"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P6 本地运维台（规模 S，可选）",
+      "assigned_fact_ids": [
+        "F327",
+        "F328"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "6. 故障表",
+      "assigned_fact_ids": [
+        "F329",
+        "F330",
+        "F331",
+        "F332",
+        "F333",
+        "F334",
+        "F335",
+        "F336",
+        "F337",
+        "F338",
+        "F339",
+        "F340",
+        "F341",
+        "F342",
+        "F343",
+        "F344",
+        "F345",
+        "F346"
+      ],
+      "source_statement_count": 17,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "7. 验收清单",
+      "assigned_fact_ids": [
+        "F347",
+        "F348",
+        "F349",
+        "F350",
+        "F351",
+        "F352",
+        "F353",
+        "F354",
+        "F355",
+        "F356",
+        "F357",
+        "F358",
+        "F359",
+        "F360"
+      ],
+      "source_statement_count": 10,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "8. 人的清单",
+      "assigned_fact_ids": [
+        "F361",
+        "F362",
+        "F363"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "9. 不在范围内",
+      "assigned_fact_ids": [
+        "F364",
+        "F365"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "10. 待你拍板的默认值",
+      "assigned_fact_ids": [
+        "F366",
+        "F367",
+        "F368",
+        "F369",
+        "F370",
+        "F371",
+        "F372",
+        "F373",
+        "F374",
+        "F375"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11. 信源接入：开机前置与使用说明",
+      "assigned_fact_ids": [
+        "F376",
+        "F377"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.1 你需要提供什么",
+      "assigned_fact_ids": [
+        "F378",
+        "F379",
+        "F380",
+        "F381",
+        "F382",
+        "F383",
+        "F384",
+        "F385",
+        "F386",
+        "F387",
+        "F388",
+        "F389",
+        "F390",
+        "F391",
+        "F392",
+        "F393",
+        "F394",
+        "F395",
+        "F396",
+        "F397",
+        "F398",
+        "F399"
+      ],
+      "source_statement_count": 16,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.2 接入向导：开机前置",
+      "assigned_fact_ids": [
+        "F400",
+        "F401",
+        "F402",
+        "F403",
+        "F404",
+        "F405",
+        "F406",
+        "F407",
+        "F408",
+        "F409",
+        "F410",
+        "F411",
+        "F412",
+        "F413",
+        "F414",
+        "F415",
+        "F416",
+        "F417",
+        "F418",
+        "F419",
+        "F420"
+      ],
+      "source_statement_count": 14,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.3 统一条目与体检标准",
+      "assigned_fact_ids": [
+        "F421",
+        "F422",
+        "F423",
+        "F424",
+        "F425",
+        "F426",
+        "F427",
+        "F428",
+        "F429",
+        "F430",
+        "F431",
+        "F432",
+        "F433",
+        "F434",
+        "F435",
+        "F436",
+        "F437"
+      ],
+      "source_statement_count": 8,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.4 安全与运行期监控",
+      "assigned_fact_ids": [
+        "F438",
+        "F439",
+        "F440",
+        "F441",
+        "F442",
+        "F443",
+        "F444",
+        "F445",
+        "F446",
+        "F447",
+        "F448",
+        "F449",
+        "F450",
+        "F451",
+        "F452"
+      ],
+      "source_statement_count": 14,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.5 目录、配置与验收",
+      "assigned_fact_ids": [
+        "F453",
+        "F454",
+        "F455",
+        "F456",
+        "F457",
+        "F458",
+        "F459",
+        "F460",
+        "F461",
+        "F462",
+        "F463",
+        "F464",
+        "F465",
+        "F466",
+        "F467",
+        "F468"
+      ],
+      "source_statement_count": 12,
+      "model_calls": 0
+    }
+  ],
+  "_added_skeleton_slides": [
+    {
+      "title": "立卡贴图台 开发方案 v2",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "0. 这版改了什么",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.1 打分 v2",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.2 事实卡与原文核对",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.3 文案 v2",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.4 画面 v2",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.5 通道选择",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.6 通道 B：后台会话",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.7 守卫 v2",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.8 读回核查",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.9 账本与幂等",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.10 通知与发表截止",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "4.12 配置项（新增与变化）",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P0 修补契约（规模 S）",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P0.5 信源接入（开机前置，规",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P1 影子内容线（规模 M）",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P2 通道可行性与接入（规模 M",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P3 画面线（规模 M）",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P4 联调、通知、定时（规模 S",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P6 本地运维台（规模 S，可选",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "8. 人的清单",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "9. 不在范围内",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11. 信源接入：开机前置与使用",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11.1 你需要提供什么",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11.3 统一条目与体检标准",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11.4 安全与运行期监控",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11.5 目录、配置与验收",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 39,
+    "pages_after": 131,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 37,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 8
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 17,
+        "catalog_mid": 4,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 9
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 18,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 4
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "process",
+        "original_units": 11,
+        "catalog_mid": 5,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 6
+      },
+      {
+        "page_type": "process",
+        "original_units": 14,
+        "catalog_mid": 5,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 7
+      },
+      {
+        "page_type": "table",
+        "original_units": 17,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 3
+      },
+      {
+        "page_type": "summary_action",
+        "original_units": 10,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 14,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 8
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 11,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 5
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 15,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 15
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 14,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 4
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 10
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

@@ -1,0 +1,1204 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-31T19:28:02.866680+00:00",
+  "frozen_before_model_call": true,
+  "count": 29,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p1",
+        "sentence": "立卡贴图台项目状态与进度报告"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "当前代码、测试证据、功能完整性、交付位置与后续闭环"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "28",
+      "value": "28",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "开发层面已有可复核的规则、来源绑定、状态摘要和回归结果；业务交付层面仍停在“代码可走到多个门、真实整套图片未产生”。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "测试环境也并非一个可直接重启就完成闭环的干净副本：桌面目录缺 README、动态问题总表、多个 docs/modules 与运行证据；外接盘副本虽有这些文件，但提交较早、仍有本地改动。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p7",
+        "sentence": "因此，本报告把“已完成”限定为本地代码或定向测试证据，不把历史 HTTP 读取、隔离夹具、模拟接口或旧冻结报告写成当前真实交付通过。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "总体判断",
+      "raw_value_text": "01",
+      "value": "01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p8",
+        "sentence": "01 / COMPLETED WORK AND EVIDENCE"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "以下结果来自 10 月 25 日工作台账、WorkBuddy 交付目录中的 TAP 日志或外接盘保存的 QA 报告。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "25",
+      "value": "25",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "以下结果来自 10 月 25 日工作台账、WorkBuddy 交付目录中的 TAP 日志或外接盘保存的 QA 报告。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "它们证明各自测试范围，不等于 10 月 28 日当前工作树的全量 clean。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "28",
+      "value": "28",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "它们证明各自测试范围，不等于 10 月 28 日当前工作树的全量 clean。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "测试口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "这些测试组彼此重叠，不能相加成“总通过数”。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "测试口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "每个数字只代表对应日志的范围。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "测试口径",
+      "raw_value_text": "151",
+      "value": "151",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "151/151 的委外交付自报，以及旧提交上的 T01–T30 / 冻结 clean，不代表当前 b7160e9 + dirty 工作树已经全量通过。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "测试口径",
+      "raw_value_text": "151",
+      "value": "151",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "151/151 的委外交付自报，以及旧提交上的 T01–T30 / 冻结 clean，不代表当前 b7160e9 + dirty 工作树已经全量通过。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "测试口径",
+      "raw_value_text": "02",
+      "value": "02",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p15",
+        "sentence": "02 / TEST BLOCKERS"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "真实闭环的零计数",
+      "raw_value_text": "03",
+      "value": "03",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d7_p18",
+        "sentence": "03 / FUNCTIONAL COMPLETENESS REVIEW"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "功能完整性审核",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d8_p20",
+        "sentence": "“本地关闭”仅指对应规则/代码回归通过，不代表相关外部账号写入或真实图片流程也完成。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "功能完整性审核",
+      "raw_value_text": "04",
+      "value": "04",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d8_p21",
+        "sentence": "04 / DELIVERABLES AND RECOVERY LOCATIONS"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "105",
+      "value": "105",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p24",
+        "sentence": "不要执行 git clean、git reset --hard 或覆盖式复制；桌面工作树有未提交修改，外接盘也有 105 个状态项。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "9",
+      "value": "9",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p25",
+        "sentence": "先保留桌面现状快照，再按 Desktop HEAD 的 Git 对象或已核 SHA 清单恢复被删跟踪文件；只恢复确认缺失项，保留 9 个修改与 5 个未跟踪文件。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "5",
+      "value": "5",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p25",
+        "sentence": "先保留桌面现状快照，再按 Desktop HEAD 的 Git 对象或已核 SHA 清单恢复被删跟踪文件；只恢复确认缺失项，保留 9 个修改与 5 个未跟踪文件。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p26",
+        "sentence": "随后比对外接盘 delivery/source manifests；只有哈希一致的文件才标为同步恢复。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p26",
+        "sentence": "当前 GitHub 远端需在具备登录凭据后确认分支/提交号。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "05",
+      "value": "05",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p27",
+        "sentence": "05 / NEXT STEPS AND ACCEPTANCE GATES"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "本报告依据",
+      "raw_value_text": "43119",
+      "value": "43119",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d13_p31",
+        "sentence": "报告生成时 43119 无监听；未执行生图、文本模型、微信写入、Bark 推送或手机操作。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "本报告依据",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d13_p31",
+        "sentence": "当前工作树：data/workbench.json、data/supervision.json、git HEAD / status、WorkBuddy 交付目录中的 TAP 与 failure-map。"
+      }
+    }
+  ],
+  "budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 29,
+    "selected": 29,
+    "omitted": 0,
+    "subjects_total": 8,
+    "subjects_selected": 8,
+    "estimated_pages_unbudgeted": 15
+  },
+  "candidate_count": 29,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p1",
+        "sentence": "立卡贴图台项目状态与进度报告"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p2",
+        "sentence": "当前代码、测试证据、功能完整性、交付位置与后续闭环"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "raw_value_text": "28",
+      "value": "28",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d1_p3",
+        "sentence": "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "开发层面已有可复核的规则、来源绑定、状态摘要和回归结果；业务交付层面仍停在“代码可走到多个门、真实整套图片未产生”。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p6",
+        "sentence": "测试环境也并非一个可直接重启就完成闭环的干净副本：桌面目录缺 README、动态问题总表、多个 docs/modules 与运行证据；外接盘副本虽有这些文件，但提交较早、仍有本地改动。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "总体判断",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p7",
+        "sentence": "因此，本报告把“已完成”限定为本地代码或定向测试证据，不把历史 HTTP 读取、隔离夹具、模拟接口或旧冻结报告写成当前真实交付通过。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "总体判断",
+      "raw_value_text": "01",
+      "value": "01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d3_p8",
+        "sentence": "01 / COMPLETED WORK AND EVIDENCE"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "以下结果来自 10 月 25 日工作台账、WorkBuddy 交付目录中的 TAP 日志或外接盘保存的 QA 报告。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "25",
+      "value": "25",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "以下结果来自 10 月 25 日工作台账、WorkBuddy 交付目录中的 TAP 日志或外接盘保存的 QA 报告。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "10",
+      "value": "10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "它们证明各自测试范围，不等于 10 月 28 日当前工作树的全量 clean。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "已有完成项与本地回归证据",
+      "raw_value_text": "28",
+      "value": "28",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d4_p10",
+        "sentence": "它们证明各自测试范围，不等于 10 月 28 日当前工作树的全量 clean。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "测试口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "这些测试组彼此重叠，不能相加成“总通过数”。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "测试口径",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p12",
+        "sentence": "每个数字只代表对应日志的范围。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "测试口径",
+      "raw_value_text": "151",
+      "value": "151",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "151/151 的委外交付自报，以及旧提交上的 T01–T30 / 冻结 clean，不代表当前 b7160e9 + dirty 工作树已经全量通过。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "测试口径",
+      "raw_value_text": "151",
+      "value": "151",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p13",
+        "sentence": "151/151 的委外交付自报，以及旧提交上的 T01–T30 / 冻结 clean，不代表当前 b7160e9 + dirty 工作树已经全量通过。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "测试口径",
+      "raw_value_text": "02",
+      "value": "02",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d5_p15",
+        "sentence": "02 / TEST BLOCKERS"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "真实闭环的零计数",
+      "raw_value_text": "03",
+      "value": "03",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d7_p18",
+        "sentence": "03 / FUNCTIONAL COMPLETENESS REVIEW"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "功能完整性审核",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d8_p20",
+        "sentence": "“本地关闭”仅指对应规则/代码回归通过，不代表相关外部账号写入或真实图片流程也完成。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "功能完整性审核",
+      "raw_value_text": "04",
+      "value": "04",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d8_p21",
+        "sentence": "04 / DELIVERABLES AND RECOVERY LOCATIONS"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "105",
+      "value": "105",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p24",
+        "sentence": "不要执行 git clean、git reset --hard 或覆盖式复制；桌面工作树有未提交修改，外接盘也有 105 个状态项。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "9",
+      "value": "9",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p25",
+        "sentence": "先保留桌面现状快照，再按 Desktop HEAD 的 Git 对象或已核 SHA 清单恢复被删跟踪文件；只恢复确认缺失项，保留 9 个修改与 5 个未跟踪文件。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "5",
+      "value": "5",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p25",
+        "sentence": "先保留桌面现状快照，再按 Desktop HEAD 的 Git 对象或已核 SHA 清单恢复被删跟踪文件；只恢复确认缺失项，保留 9 个修改与 5 个未跟踪文件。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p26",
+        "sentence": "随后比对外接盘 delivery/source manifests；只有哈希一致的文件才标为同步恢复。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p26",
+        "sentence": "当前 GitHub 远端需在具备登录凭据后确认分支/提交号。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "恢复与保护建议",
+      "raw_value_text": "05",
+      "value": "05",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d10_p27",
+        "sentence": "05 / NEXT STEPS AND ACCEPTANCE GATES"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "本报告依据",
+      "raw_value_text": "43119",
+      "value": "43119",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d13_p31",
+        "sentence": "报告生成时 43119 无监听；未执行生图、文本模型、微信写入、Bark 推送或手机操作。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "本报告依据",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/c338526b___20261028.docx",
+        "line_start": null,
+        "line_end": null,
+        "heading": null,
+        "locator": "line None-None",
+        "unit_id": "d13_p31",
+        "sentence": "当前工作树：data/workbench.json、data/supervision.json、git HEAD / status、WorkBuddy 交付目录中的 TAP 与 failure-map。"
+      }
+    }
+  ],
+  "budget_omitted_facts": []
+}

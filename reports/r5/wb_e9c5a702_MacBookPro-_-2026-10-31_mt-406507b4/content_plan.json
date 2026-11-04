@@ -1,0 +1,520 @@
+{
+  "deck_title": "MacBook Pro 代理卡顿修复记录",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "MacBook Pro 代理卡顿修复记录",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "MacBook Pro 代理卡顿",
+        "当前结论",
+        "已保留的修复",
+        "定位证据及试验结果",
+        "剩余工作及继续条件"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "证据与恢复"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "MacBook Pro 代理卡顿",
+      "must_state": [
+        "目标为 `yitenhuadeMacBook-Pro.local`。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "conclusion",
+      "title": "当前结论",
+      "must_state": [
+        "**国内访问已修正；国外代理的慢响应和 TLS 超时仍在，本轮未能彻底解决。",
+        "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "conclusion",
+      "title": "当前结论…",
+      "must_state": [
+        "DNS 和连到本机代理端口都在 0.001 秒内，延迟主要出现在代理上游 TLS 阶段；这是依据 curl 分段计时作出的判断。",
+        "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 7,
+      "page_type": "conclusion",
+      "title": "当前结论…",
+      "must_state": [
+        "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。",
+        "没有改动登录启动项，也没有反复强退。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "已保留的修复",
+      "must_state": [
+        "- 为国内域名增加 `geosite:cn` DNS 策略，使用国内解析器。",
+        "- 在 IP 地理分流前加入 `GEOSITE,CN,DIRECT`，避免国内网站因海外解析结果绕行自建美国节点。",
+        "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。",
+        "- 原有三个节点的凭据和传输参数完整保留，继续使用原生自动选择，没有固定节点。",
+        "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。",
+        "重载后的即时检查曾超时，后续百度与 Apple 中国均复测成功；所有失败证据保留。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "title": "定位证据及试验结果",
+      "must_state": [
+        "1. MacBook 为 8 GB 内存。",
+        "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。",
+        "微信开发者工具共有 138 个进程。",
+        "路由器 ping 平均 3.383 ms、无丢包。",
+        "初始阶段没有关闭应用或重启电脑；得到用户明确授权后，才正常退出 WorkBuddy 和微信开发者工具，且没有重启电脑。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "定位证据及试验结果…",
+      "must_state": [
+        "初始阶段没有关闭应用或重启电脑；得到用户明确授权后，才正常退出 WorkBuddy 和微信开发者工具，且没有重启电脑。",
+        "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。",
+        "微信开发者工具共有 138 个进程。",
+        "路由器 ping 平均 3.383 ms、无丢包。",
+        "来源与限定（原句）：1. MacBook 为 8 GB 内存。"
+      ],
+      "_continued_from": 9,
+      "_builder_generated_continuation": {
+        "source_planned_page": 9,
+        "source_actual_page": 9,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 6
+      }
+    },
+    {
+      "page": 11,
+      "page_type": "table",
+      "title": "定位证据及试验结果…",
+      "must_state": [
+        "来源与限定（原句）：初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      ],
+      "_continued_from": 9,
+      "_builder_generated_continuation": {
+        "source_planned_page": 9,
+        "source_actual_page": 9,
+        "source_page_type": "chart",
+        "sequence": 2,
+        "source_items": 6
+      }
+    },
+    {
+      "page": 12,
+      "page_type": "chart",
+      "title": "定位证据及试验结果…",
+      "must_state": [
+        "2. 原有 Cloudflare 入口有数秒延迟和超时，同一局域网的 Mac mini 也能复现。",
+        "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。",
+        "3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。",
+        "4. **已撤回西雅图备用入口及该阶段测速方式的变更。"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 13,
+      "page_type": "table",
+      "title": "定位证据及试验结果……",
+      "must_state": [
+        "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。",
+        "来源与限定（原句）：2. 原有 Cloudflare 入口有数秒延迟和超时，同一局域网的 Mac mini 也能复现。",
+        "来源与限定（原句）：3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。",
+        "来源与限定（原句）：4. **已撤回西雅图备用入口及该阶段测速方式的变更。"
+      ],
+      "_continued_from": 12,
+      "_builder_generated_continuation": {
+        "source_planned_page": 10,
+        "source_actual_page": 12,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 4
+      }
+    },
+    {
+      "page": 14,
+      "page_type": "process",
+      "title": "剩余工作及继续条件",
+      "must_state": [
+        "Mac mini 和 MacBook 的密钥认证都被服务器拒绝；用户回复已重新登录后，预期控制套接字仍不存在，服务器只读审计没有执行，也没有改动服务器。",
+        "本轮按用户要求不再重复弹出登录/授权请求。",
+        "服务器端状态和 Cloudflare 回源仍待已认证的管理通道可用后检查。"
+      ]
+    },
+    {
+      "page": 15,
+      "page_type": "timeline",
+      "title": "证据与恢复",
+      "must_state": [
+        "- [当前状态与后续复测](macbook-current-repair-state.json)",
+        "- [国内修正后的测试](macbook-after-domestic-split.json)",
+        "- [试验变更撤回记录](macbook-experimental-route-rollback.json)"
+      ]
+    },
+    {
+      "page": 16,
+      "page_type": "timeline",
+      "title": "证据与恢复…",
+      "must_state": [
+        "- [系统与配置基线](macbook-baseline-state.json)",
+        "MacBook 私有证据目录：`/Users/yitenhua/Library/Application Support/CodexProxyMigration/20261031/`。",
+        "`before-dns-split/` 保存本次修改前配置，`before-seattle/` 保存保留国内修正后的配置。"
+      ],
+      "_continued_from": 8
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 23.09,
+      "done_reason": "stop",
+      "eval_count": 528,
+      "raw_response": "```json\n{\n  \"deck_title\": \"MacBook Pro 代理卡顿修复记录\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"conclusion\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"剩余工作及继续条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"timeline\",\n      \"title\": \"证据与恢复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"关键指标\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"comparison\",\n      \"title\": \"修复前后对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"下一步行动\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "MacBook Pro 代理卡顿修复记录",
+      "assigned_fact_ids": [
+        "F001"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "当前结论",
+      "assigned_fact_ids": [
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008",
+        "F009",
+        "F010",
+        "F011",
+        "F012",
+        "F013",
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018",
+        "F022"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "已保留的修复",
+      "assigned_fact_ids": [
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027",
+        "F028",
+        "F029",
+        "F030",
+        "F031",
+        "F032",
+        "F033"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "定位证据及试验结果",
+      "assigned_fact_ids": [
+        "F034",
+        "F035",
+        "F036",
+        "F037",
+        "F038",
+        "F039",
+        "F040",
+        "F041",
+        "F042",
+        "F043",
+        "F044",
+        "F045",
+        "F046",
+        "F047",
+        "F052"
+      ],
+      "source_statement_count": 9,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "剩余工作及继续条件",
+      "assigned_fact_ids": [
+        "F058",
+        "F059",
+        "F060"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "证据与恢复",
+      "assigned_fact_ids": [
+        "F061",
+        "F062",
+        "F063",
+        "F064",
+        "F065",
+        "F066"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 9,
+      "title": "关键指标",
+      "page_type": "metrics",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "修复前后对比",
+      "page_type": "comparison",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 11,
+      "title": "下一步行动",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "总结",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 16,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 6,
+        "catalog_mid": 3,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 3
+      },
+      {
+        "page_type": "chart",
+        "original_units": 9,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "timeline",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 3,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "_planner_slides_before_build": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "MacBook Pro 代理卡顿修复记录",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "MacBook Pro 代理卡顿",
+        "当前结论",
+        "已保留的修复",
+        "定位证据及试验结果",
+        "剩余工作及继续条件"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "证据与恢复"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "MacBook Pro 代理卡顿",
+      "must_state": [
+        "目标为 `yitenhuadeMacBook-Pro.local`。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "conclusion",
+      "title": "当前结论",
+      "must_state": [
+        "**国内访问已修正；国外代理的慢响应和 TLS 超时仍在，本轮未能彻底解决。",
+        "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "conclusion",
+      "title": "当前结论…",
+      "must_state": [
+        "DNS 和连到本机代理端口都在 0.001 秒内，延迟主要出现在代理上游 TLS 阶段；这是依据 curl 分段计时作出的判断。",
+        "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 7,
+      "page_type": "conclusion",
+      "title": "当前结论…",
+      "must_state": [
+        "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。",
+        "没有改动登录启动项，也没有反复强退。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "已保留的修复",
+      "must_state": [
+        "- 为国内域名增加 `geosite:cn` DNS 策略，使用国内解析器。",
+        "- 在 IP 地理分流前加入 `GEOSITE,CN,DIRECT`，避免国内网站因海外解析结果绕行自建美国节点。",
+        "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。",
+        "- 原有三个节点的凭据和传输参数完整保留，继续使用原生自动选择，没有固定节点。",
+        "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。",
+        "重载后的即时检查曾超时，后续百度与 Apple 中国均复测成功；所有失败证据保留。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "title": "定位证据及试验结果",
+      "must_state": [
+        "1. MacBook 为 8 GB 内存。",
+        "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。",
+        "微信开发者工具共有 138 个进程。",
+        "路由器 ping 平均 3.383 ms、无丢包。",
+        "初始阶段没有关闭应用或重启电脑；得到用户明确授权后，才正常退出 WorkBuddy 和微信开发者工具，且没有重启电脑。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "chart",
+      "title": "定位证据及试验结果…",
+      "must_state": [
+        "2. 原有 Cloudflare 入口有数秒延迟和超时，同一局域网的 Mac mini 也能复现。",
+        "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。",
+        "3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。",
+        "4. **已撤回西雅图备用入口及该阶段测速方式的变更。"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 11,
+      "page_type": "process",
+      "title": "剩余工作及继续条件",
+      "must_state": [
+        "Mac mini 和 MacBook 的密钥认证都被服务器拒绝；用户回复已重新登录后，预期控制套接字仍不存在，服务器只读审计没有执行，也没有改动服务器。",
+        "本轮按用户要求不再重复弹出登录/授权请求。",
+        "服务器端状态和 Cloudflare 回源仍待已认证的管理通道可用后检查。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "timeline",
+      "title": "证据与恢复",
+      "must_state": [
+        "- [当前状态与后续复测](macbook-current-repair-state.json)",
+        "- [国内修正后的测试](macbook-after-domestic-split.json)",
+        "- [试验变更撤回记录](macbook-experimental-route-rollback.json)"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "timeline",
+      "title": "证据与恢复…",
+      "must_state": [
+        "- [系统与配置基线](macbook-baseline-state.json)",
+        "MacBook 私有证据目录：`/Users/yitenhua/Library/Application Support/CodexProxyMigration/20261031/`。",
+        "`before-dns-split/` 保存本次修改前配置，`before-seattle/` 保存保留国内修正后的配置。"
+      ],
+      "_continued_from": 8
+    }
+  ]
+}

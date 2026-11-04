@@ -1,0 +1,441 @@
+{
+  "deck_title": "师序开发与交付规划",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "师序完整开发计划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "师序完整开发计划",
+        "06 教师主工作流",
+        "不可变版本与派生失效",
+        "交付验收",
+        "进入研究的先决条件",
+        "关键路径和缓冲"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "师序完整开发计划…",
+      "must_state": [
+        "27 来源与发布决策记录",
+        "交付总检查"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "进入研究的先决条件",
+      "must_state": [
+        "R3须定义预测目标，例如“下一场同地区同类型公开考试是否覆盖某知识点”，而不是预测真题。",
+        "建议至少5年和30份可比试卷用于可行性初检，但这个数量本身不代表有预测能力。",
+        "数据必须已公开且有使用许可；拆分依时间进行，防止未来信息混入训练。",
+        "门槛由研究负责人在看结果前冻结，不能评完再改目标。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "title": "06 教师主工作流",
+      "must_state": [
+        "从首次使用到再次使用，优先减少重复填写和结果搬运。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "不可变版本与派生失效",
+      "must_state": [
+        "原始材料按不可变版本保存；OCR、量表或审核改变时产生新版本。",
+        "AnalysisSnapshot只引用明确的确认版本列表；导出记录再引用该分析快照。",
+        "上游改变后下游标记需更新，不静默混用新旧结果。",
+        "修改Diff属于受控业务数据，与普通运维日志分开。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "timeline",
+      "title": "关键路径和缓冲",
+      "must_state": [
+        "D49、D50、D58至D60优先留给缺陷和证据补齐，不用新增功能吞掉。",
+        "授权样本 → 教研量表 → OCR识别 → 评分与审核 → 快照交付 → 真实教师验证是关键路径。",
+        "界面与接口骨架可并行。",
+        "D60判技术准入；商业结论必须等最后纳入者完成14个自然日观察。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "TeacherMate  产品与工程执行基线  V5.02026年10月12日  中国大陆英语教师工作台",
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "title": "师序完整开发计划…",
+      "must_state": [
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ],
+      "_continued_from": 8,
+      "_builder_generated_continuation": {
+        "source_planned_page": 8,
+        "source_actual_page": 8,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 2
+      }
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "27 来源与发布决策记录",
+      "must_state": [
+        "所有外部信息以2026年10月12日核验范围为准，持续变化的价格与条款发布前复查。",
+        "[S1] iCloud Drive 原始规划：师序_V3.0_双成长飞轮_60天开发规划与Codex日程_2026-09-18.xlsx。",
+        "重点表：02_V2必须立即植入、03_V3开发框架、09_验收指标、99_说明。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "single_column",
+      "title": "交付验收",
+      "must_state": [
+        "固定样本集至少20份报告，必须全部通过。",
+        "每个文件保存来源快照和内容hash；自动检查文件可打开、必需章节、题答对应和无未解析占位符；渲染检查文字溢出、图表遮挡与中文/英文断行。",
+        "默认只生成下载文件，不自动发家长、学生或学校群。",
+        "若未来接分发，必须有收件人预览、授权、逐项状态与撤回限制；“生成成功”与“发送成功”分开统计。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "title": "交付总检查",
+      "must_state": [
+        "• 产品：用户能完成真实工作，能够纠错、恢复、取回文件和理解费用。",
+        "• 教学：规则适用、评分证据、教师最终判断和讲评内容一致。",
+        "• 工程：版本、权限、统计、文件、成本、日志、恢复及迁移均有证据。",
+        "• 商业：免费竞争下仍有重复使用和真实付款，观察期充分且单位经济成立。"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "summary_action",
+      "title": "交付总检查…",
+      "must_state": [
+        "任何一项未达成，记录具体范围和后续动作，不用“已开发”“已部署”或“AI很准确”覆盖差距。"
+      ],
+      "_continued_from": 11
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 5.14,
+      "done_reason": "stop",
+      "eval_count": 566,
+      "raw_response": "{\n  \"deck_title\": \"师序开发与交付规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"进入研究的先决条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"06 教师主工作流\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"不可变版本与派生失效\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"timeline\",\n      \"title\": \"关键路径和缓冲\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"chart\",\n      \"title\": \"关键路径和缓冲\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"27 来源与发布决策记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"27 来源与发布决策记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"交付验收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "师序完整开发计划",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "06 教师主工作流",
+      "assigned_fact_ids": [
+        "F067"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "不可变版本与派生失效",
+      "assigned_fact_ids": [
+        "F126",
+        "F127",
+        "F128",
+        "F130"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "交付验收",
+      "assigned_fact_ids": [
+        "F190",
+        "F191",
+        "F192",
+        "F193"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "进入研究的先决条件",
+      "assigned_fact_ids": [
+        "F233",
+        "F234",
+        "F235",
+        "F236",
+        "F238"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "关键路径和缓冲",
+      "assigned_fact_ids": [
+        "F303",
+        "F304",
+        "F305",
+        "F306",
+        "F307",
+        "F308",
+        "F315",
+        "F316"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "27 来源与发布决策记录",
+      "assigned_fact_ids": [
+        "F386",
+        "F387",
+        "F388",
+        "F389",
+        "F390",
+        "F391",
+        "F392",
+        "F393",
+        "F394",
+        "F395",
+        "F396",
+        "F397",
+        "F398",
+        "F399",
+        "F400"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "交付总检查",
+      "assigned_fact_ids": [
+        "F558",
+        "F559",
+        "F560",
+        "F561",
+        "F562"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 9,
+      "title": "27 来源与发布决策记录",
+      "page_type": "metrics",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "交付总检查",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "summary_action",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 12,
+    "builder_generated_continuations": 1,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "_planner_slides_before_build": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "师序完整开发计划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "师序完整开发计划",
+        "06 教师主工作流",
+        "不可变版本与派生失效",
+        "交付验收",
+        "进入研究的先决条件",
+        "关键路径和缓冲"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "师序完整开发计划…",
+      "must_state": [
+        "27 来源与发布决策记录",
+        "交付总检查"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "进入研究的先决条件",
+      "must_state": [
+        "R3须定义预测目标，例如“下一场同地区同类型公开考试是否覆盖某知识点”，而不是预测真题。",
+        "建议至少5年和30份可比试卷用于可行性初检，但这个数量本身不代表有预测能力。",
+        "数据必须已公开且有使用许可；拆分依时间进行，防止未来信息混入训练。",
+        "门槛由研究负责人在看结果前冻结，不能评完再改目标。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "title": "06 教师主工作流",
+      "must_state": [
+        "从首次使用到再次使用，优先减少重复填写和结果搬运。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "不可变版本与派生失效",
+      "must_state": [
+        "原始材料按不可变版本保存；OCR、量表或审核改变时产生新版本。",
+        "AnalysisSnapshot只引用明确的确认版本列表；导出记录再引用该分析快照。",
+        "上游改变后下游标记需更新，不静默混用新旧结果。",
+        "修改Diff属于受控业务数据，与普通运维日志分开。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "timeline",
+      "title": "关键路径和缓冲",
+      "must_state": [
+        "D49、D50、D58至D60优先留给缺陷和证据补齐，不用新增功能吞掉。",
+        "授权样本 → 教研量表 → OCR识别 → 评分与审核 → 快照交付 → 真实教师验证是关键路径。",
+        "界面与接口骨架可并行。",
+        "D60判技术准入；商业结论必须等最后纳入者完成14个自然日观察。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "TeacherMate  产品与工程执行基线  V5.02026年10月12日  中国大陆英语教师工作台",
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "title": "27 来源与发布决策记录",
+      "must_state": [
+        "所有外部信息以2026年10月12日核验范围为准，持续变化的价格与条款发布前复查。",
+        "[S1] iCloud Drive 原始规划：师序_V3.0_双成长飞轮_60天开发规划与Codex日程_2026-09-18.xlsx。",
+        "重点表：02_V2必须立即植入、03_V3开发框架、09_验收指标、99_说明。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "single_column",
+      "title": "交付验收",
+      "must_state": [
+        "固定样本集至少20份报告，必须全部通过。",
+        "每个文件保存来源快照和内容hash；自动检查文件可打开、必需章节、题答对应和无未解析占位符；渲染检查文字溢出、图表遮挡与中文/英文断行。",
+        "默认只生成下载文件，不自动发家长、学生或学校群。",
+        "若未来接分发，必须有收件人预览、授权、逐项状态与撤回限制；“生成成功”与“发送成功”分开统计。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "summary_action",
+      "title": "交付总检查",
+      "must_state": [
+        "• 产品：用户能完成真实工作，能够纠错、恢复、取回文件和理解费用。",
+        "• 教学：规则适用、评分证据、教师最终判断和讲评内容一致。",
+        "• 工程：版本、权限、统计、文件、成本、日志、恢复及迁移均有证据。",
+        "• 商业：免费竞争下仍有重复使用和真实付款，观察期充分且单位经济成立。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "title": "交付总检查…",
+      "must_state": [
+        "任何一项未达成，记录具体范围和后续动作，不用“已开发”“已部署”或“AI很准确”覆盖差距。"
+      ],
+      "_continued_from": 10
+    }
+  ]
+}

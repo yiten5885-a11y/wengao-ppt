@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-31T14:05:58.959681+00:00",
+  "material": "workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+  "material_sha256": "426e63f9d2dc6d06f3fcac89ec2eefb4749703bba46e87967b56fa2b55536c86",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "426e63f9d2dc6d06f3fcac89ec2eefb4749703bba46e87967b56fa2b55536c86",
+    "pages": 6,
+    "units": 29,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-9774bb83/fact_ledger.json",
+    "count": 71,
+    "selected": 33,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 71,
+    "selected": 33,
+    "omitted": 38,
+    "subjects_total": 6,
+    "subjects_selected": 6,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 27,
+    "estimated_pages_budgeted": 10,
+    "selected_subjects": [
+      "MacBook Pro 代理卡顿修复记录",
+      "当前结论",
+      "已保留的修复",
+      "定位证据及试验结果",
+      "剩余工作及继续条件",
+      "证据与恢复"
+    ],
+    "omitted_facts_path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-9774bb83/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-9774bb83/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 6,
+    "chunk_calls": 0,
+    "source_assignment_count": 6,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 8,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 40.2,
+        "done_reason": "stop",
+        "eval_count": 534,
+        "raw_response": "```json\n{\n  \"deck_title\": \"MacBook Pro 代理卡顿修复记录\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"议程\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"table\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"conclusion\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"证据与恢复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"剩余工作及继续条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "MacBook Pro 代理卡顿修复记录",
+        "assigned_fact_ids": [
+          "F001"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "当前结论",
+        "assigned_fact_ids": [
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008",
+          "F009",
+          "F010"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "已保留的修复",
+        "assigned_fact_ids": [
+          "F023",
+          "F024",
+          "F025",
+          "F026",
+          "F027",
+          "F028"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "定位证据及试验结果",
+        "assigned_fact_ids": [
+          "F034",
+          "F035",
+          "F036",
+          "F037",
+          "F038",
+          "F039",
+          "F040",
+          "F041",
+          "F042",
+          "F043",
+          "F047"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "剩余工作及继续条件",
+        "assigned_fact_ids": [
+          "F058",
+          "F059",
+          "F060"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "证据与恢复",
+        "assigned_fact_ids": [
+          "F061",
+          "F062",
+          "F063"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      }
+    ]
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 9,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 9,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 9 少于冻结下限 10（区间 10—20）；不得以'内容决定页数'替代原任务页数要求。"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-31T14:06:39.175263+00:00"
+}

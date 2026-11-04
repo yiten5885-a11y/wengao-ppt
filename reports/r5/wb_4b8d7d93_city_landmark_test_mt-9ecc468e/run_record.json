@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-31T13:58:34.129794+00:00",
+  "material": "workbench_uploads/4b8d7d93_city_landmark_test.md",
+  "material_sha256": "be4b0b6fb5459b04e691aeeb8bd43d9dbfe19893582e2c4464960a838de005d4",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "be4b0b6fb5459b04e691aeeb8bd43d9dbfe19893582e2c4464960a838de005d4",
+    "pages": 7,
+    "units": 13,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_4b8d7d93_city_landmark_test_mt-9ecc468e/fact_ledger.json",
+    "count": 19,
+    "selected": 19,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 19,
+    "selected": 19,
+    "omitted": 0,
+    "subjects_total": 6,
+    "subjects_selected": 6,
+    "estimated_pages_unbudgeted": 10
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_4b8d7d93_city_landmark_test_mt-9ecc468e/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 6,
+    "chunk_calls": 0,
+    "source_assignment_count": 6,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 8,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 31.27,
+        "done_reason": "stop",
+        "eval_count": 519,
+        "raw_response": "```json\n{\n  \"deck_title\": \"区域中心年度规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"区域中心年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"总体概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"metrics\",\n      \"title\": \"无锡：华东区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"北京：华北区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"metrics\",\n      \"title\": \"广州：华南区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"metrics\",\n      \"title\": \"青岛：华中区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"comparison\",\n      \"title\": \"区域中心对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"下一年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"summary_action\",\n      \"title\": \"总结与行动\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"single_column\",\n      \"title\": \"附录\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "一、总体概况",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "二、无锡：华东区域中心",
+        "assigned_fact_ids": [
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "三、北京：华北区域中心",
+        "assigned_fact_ids": [
+          "F009",
+          "F010",
+          "F011",
+          "F012"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "四、广州：华南区域中心",
+        "assigned_fact_ids": [
+          "F013",
+          "F014",
+          "F015"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "五、青岛：华中区域中心",
+        "assigned_fact_ids": [
+          "F016",
+          "F017",
+          "F018"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "六、下一年度规划",
+        "assigned_fact_ids": [
+          "F019"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      }
+    ]
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 8,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 8,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 8 少于冻结下限 10（区间 10—20）；不得以'内容决定页数'替代原任务页数要求。"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-31T13:59:05.413171+00:00"
+}

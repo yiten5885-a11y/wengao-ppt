@@ -1,0 +1,3123 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-11-01T04:06:44.605154+00:00",
+  "frozen_before_model_call": true,
+  "count": 30,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "第 1 段",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 1,
+        "line_end": 8,
+        "heading": "",
+        "locator": "line 1-8",
+        "unit_id": "b1_p1",
+        "sentence": "tags:- 项目/游戏"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "第 1 段",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 1,
+        "line_end": 8,
+        "heading": "",
+        "locator": "line 1-8",
+        "unit_id": "b1_p5",
+        "sentence": "status: reference"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "GameState",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 86,
+        "line_end": 92,
+        "heading": "GameState",
+        "locator": "line 86-92 / GameState",
+        "unit_id": "b6_p63",
+        "sentence": "管理当前场景、全局状态和生命周期。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "GameState",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 86,
+        "line_end": 92,
+        "heading": "GameState",
+        "locator": "line 86-92 / GameState",
+        "unit_id": "b6_p64",
+        "sentence": "管理当前场景、全局状态和生命周期。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "BoardRenderer",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 110,
+        "line_end": 116,
+        "heading": "BoardRenderer",
+        "locator": "line 110-116 / BoardRenderer",
+        "unit_id": "b9_p69",
+        "sentence": "绘制棋盘、花砖、线路和高亮。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "BoardRenderer",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 110,
+        "line_end": 116,
+        "heading": "BoardRenderer",
+        "locator": "line 110-116 / BoardRenderer",
+        "unit_id": "b9_p70",
+        "sentence": "绘制棋盘、花砖、线路和高亮。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "HistoryManager",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 142,
+        "line_end": 148,
+        "heading": "HistoryManager",
+        "locator": "line 142-148 / HistoryManager",
+        "unit_id": "b13_p77",
+        "sentence": "保存撤回栈和重做所需状态。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "HistoryManager",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 142,
+        "line_end": 148,
+        "heading": "HistoryManager",
+        "locator": "line 142-148 / HistoryManager",
+        "unit_id": "b13_p78",
+        "sentence": "保存撤回栈和重做所需状态。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "RewardService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 166,
+        "line_end": 172,
+        "heading": "RewardService",
+        "locator": "line 166-172 / RewardService",
+        "unit_id": "b16_p83",
+        "sentence": "发放货币和解锁内容，防重复。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "RewardService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 166,
+        "line_end": 172,
+        "heading": "RewardService",
+        "locator": "line 166-172 / RewardService",
+        "unit_id": "b16_p84",
+        "sentence": "发放货币和解锁内容，防重复。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p89",
+        "sentence": "- BootScene"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p90",
+        "sentence": "- BootScene"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p91",
+        "sentence": "- LoadingScene"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p92",
+        "sentence": "- LoadingScene"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p93",
+        "sentence": "- HomeScene"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p94",
+        "sentence": "- HomeScene"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p95",
+        "sentence": "- LevelScene"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p96",
+        "sentence": "- LevelScene"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p97",
+        "sentence": "- GardenScene"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p98",
+        "sentence": "- GardenScene"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p99",
+        "sentence": "- DailyScene"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p100",
+        "sentence": "- DailyScene"
+      }
+    },
+    {
+      "fact_id": "F076",
+      "subject": "7. 存档",
+      "raw_value_text": "1.0",
+      "value": "1.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F077",
+      "subject": "7. 存档",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F078",
+      "subject": "7. 存档",
+      "raw_value_text": "1.0",
+      "value": "1.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F079",
+      "subject": "7. 存档",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F080",
+      "subject": "7. 存档",
+      "raw_value_text": "1,",
+      "value": "1,",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F081",
+      "subject": "7. 存档",
+      "raw_value_text": "1,",
+      "value": "1,",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F082",
+      "subject": "7. 存档",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p160",
+        "sentence": "\"daily\": {}"
+      }
+    },
+    {
+      "fact_id": "F101",
+      "subject": "关联笔记",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 332,
+        "line_end": 337,
+        "heading": "关联笔记",
+        "locator": "line 332-337 / 关联笔记",
+        "unit_id": "b25_p187",
+        "sentence": "- [[项目/游戏/花路小屋/README|花路小屋 · README]]"
+      }
+    }
+  ],
+  "budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 101,
+    "selected": 30,
+    "omitted": 71,
+    "subjects_total": 22,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 39,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "第 1 段",
+      "GameState",
+      "BoardRenderer",
+      "HistoryManager",
+      "RewardService",
+      "4. 场景",
+      "7. 存档",
+      "关联笔记"
+    ]
+  },
+  "candidate_count": 101,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "第 1 段",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 1,
+        "line_end": 8,
+        "heading": "",
+        "locator": "line 1-8",
+        "unit_id": "b1_p1",
+        "sentence": "tags:- 项目/游戏"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "第 1 段",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 1,
+        "line_end": 8,
+        "heading": "",
+        "locator": "line 1-8",
+        "unit_id": "b1_p5",
+        "sentence": "status: reference"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p7",
+        "sentence": "- 微信小游戏原生JavaScript。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p8",
+        "sentence": "- 微信小游戏原生JavaScript。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "1. 技术原则",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p9",
+        "sentence": "- Canvas 2D渲染。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "1. 技术原则",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p10",
+        "sentence": "- Canvas 2D渲染。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p15",
+        "sentence": "- 不把关卡写死在代码中。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p16",
+        "sentence": "- 不把关卡写死在代码中。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p17",
+        "sentence": "- 核心模块可单元测试。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p18",
+        "sentence": "- 核心模块可单元测试。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p19",
+        "sentence": "- 默认支持离线主线。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "1. 技术原则",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 14,
+        "line_end": 32,
+        "heading": "1. 技术原则",
+        "locator": "line 14-32 / 1. 技术原则",
+        "unit_id": "b3_p20",
+        "sentence": "- 默认支持离线主线。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "2. 目录建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 34,
+        "line_end": 80,
+        "heading": "2. 目录建议",
+        "locator": "line 34-80 / 2. 目录建议",
+        "unit_id": "b4_p41",
+        "sentence": "animation/"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "2. 目录建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 34,
+        "line_end": 80,
+        "heading": "2. 目录建议",
+        "locator": "line 34-80 / 2. 目录建议",
+        "unit_id": "b4_p42",
+        "sentence": "animation/"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "2. 目录建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 34,
+        "line_end": 80,
+        "heading": "2. 目录建议",
+        "locator": "line 34-80 / 2. 目录建议",
+        "unit_id": "b4_p45",
+        "sentence": "analytics/"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "2. 目录建议",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 34,
+        "line_end": 80,
+        "heading": "2. 目录建议",
+        "locator": "line 34-80 / 2. 目录建议",
+        "unit_id": "b4_p46",
+        "sentence": "analytics/"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "GameState",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 86,
+        "line_end": 92,
+        "heading": "GameState",
+        "locator": "line 86-92 / GameState",
+        "unit_id": "b6_p63",
+        "sentence": "管理当前场景、全局状态和生命周期。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "GameState",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 86,
+        "line_end": 92,
+        "heading": "GameState",
+        "locator": "line 86-92 / GameState",
+        "unit_id": "b6_p64",
+        "sentence": "管理当前场景、全局状态和生命周期。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "LevelLoader",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 94,
+        "line_end": 100,
+        "heading": "LevelLoader",
+        "locator": "line 94-100 / LevelLoader",
+        "unit_id": "b7_p65",
+        "sentence": "加载、校验、迁移关卡JSON。"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "LevelLoader",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 94,
+        "line_end": 100,
+        "heading": "LevelLoader",
+        "locator": "line 94-100 / LevelLoader",
+        "unit_id": "b7_p66",
+        "sentence": "加载、校验、迁移关卡JSON。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "BoardModel",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 102,
+        "line_end": 108,
+        "heading": "BoardModel",
+        "locator": "line 102-108 / BoardModel",
+        "unit_id": "b8_p67",
+        "sentence": "保存棋盘逻辑状态，不负责绘制。"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "BoardModel",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 102,
+        "line_end": 108,
+        "heading": "BoardModel",
+        "locator": "line 102-108 / BoardModel",
+        "unit_id": "b8_p68",
+        "sentence": "保存棋盘逻辑状态，不负责绘制。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "BoardRenderer",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 110,
+        "line_end": 116,
+        "heading": "BoardRenderer",
+        "locator": "line 110-116 / BoardRenderer",
+        "unit_id": "b9_p69",
+        "sentence": "绘制棋盘、花砖、线路和高亮。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "BoardRenderer",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 110,
+        "line_end": 116,
+        "heading": "BoardRenderer",
+        "locator": "line 110-116 / BoardRenderer",
+        "unit_id": "b9_p70",
+        "sentence": "绘制棋盘、花砖、线路和高亮。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "InputController",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 118,
+        "line_end": 124,
+        "heading": "InputController",
+        "locator": "line 118-124 / InputController",
+        "unit_id": "b10_p71",
+        "sentence": "处理点击、长按和按钮操作。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "InputController",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 118,
+        "line_end": 124,
+        "heading": "InputController",
+        "locator": "line 118-124 / InputController",
+        "unit_id": "b10_p72",
+        "sentence": "处理点击、长按和按钮操作。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "ConnectivityEngine",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 126,
+        "line_end": 132,
+        "heading": "ConnectivityEngine",
+        "locator": "line 126-132 / ConnectivityEngine",
+        "unit_id": "b11_p73",
+        "sentence": "执行能量传播和冲突检测。"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "ConnectivityEngine",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 126,
+        "line_end": 132,
+        "heading": "ConnectivityEngine",
+        "locator": "line 126-132 / ConnectivityEngine",
+        "unit_id": "b11_p74",
+        "sentence": "执行能量传播和冲突检测。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "HistoryManager",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 142,
+        "line_end": 148,
+        "heading": "HistoryManager",
+        "locator": "line 142-148 / HistoryManager",
+        "unit_id": "b13_p77",
+        "sentence": "保存撤回栈和重做所需状态。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "HistoryManager",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 142,
+        "line_end": 148,
+        "heading": "HistoryManager",
+        "locator": "line 142-148 / HistoryManager",
+        "unit_id": "b13_p78",
+        "sentence": "保存撤回栈和重做所需状态。"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "HintService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 150,
+        "line_end": 156,
+        "heading": "HintService",
+        "locator": "line 150-156 / HintService",
+        "unit_id": "b14_p79",
+        "sentence": "调用求解器计算当前状态下一步。"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "HintService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 150,
+        "line_end": 156,
+        "heading": "HintService",
+        "locator": "line 150-156 / HintService",
+        "unit_id": "b14_p80",
+        "sentence": "调用求解器计算当前状态下一步。"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "SaveService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 158,
+        "line_end": 164,
+        "heading": "SaveService",
+        "locator": "line 158-164 / SaveService",
+        "unit_id": "b15_p81",
+        "sentence": "管理本地存档、版本和容错。"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "SaveService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 158,
+        "line_end": 164,
+        "heading": "SaveService",
+        "locator": "line 158-164 / SaveService",
+        "unit_id": "b15_p82",
+        "sentence": "管理本地存档、版本和容错。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "RewardService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 166,
+        "line_end": 172,
+        "heading": "RewardService",
+        "locator": "line 166-172 / RewardService",
+        "unit_id": "b16_p83",
+        "sentence": "发放货币和解锁内容，防重复。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "RewardService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 166,
+        "line_end": 172,
+        "heading": "RewardService",
+        "locator": "line 166-172 / RewardService",
+        "unit_id": "b16_p84",
+        "sentence": "发放货币和解锁内容，防重复。"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "AdService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 174,
+        "line_end": 180,
+        "heading": "AdService",
+        "locator": "line 174-180 / AdService",
+        "unit_id": "b17_p85",
+        "sentence": "统一广告加载、展示、失败与回调。"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "AdService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 174,
+        "line_end": 180,
+        "heading": "AdService",
+        "locator": "line 174-180 / AdService",
+        "unit_id": "b17_p86",
+        "sentence": "统一广告加载、展示、失败与回调。"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "AnalyticsService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 182,
+        "line_end": 188,
+        "heading": "AnalyticsService",
+        "locator": "line 182-188 / AnalyticsService",
+        "unit_id": "b18_p87",
+        "sentence": "统一埋点，不在业务代码散落调用。"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "AnalyticsService",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 182,
+        "line_end": 188,
+        "heading": "AnalyticsService",
+        "locator": "line 182-188 / AnalyticsService",
+        "unit_id": "b18_p88",
+        "sentence": "统一埋点，不在业务代码散落调用。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p89",
+        "sentence": "- BootScene"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p90",
+        "sentence": "- BootScene"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p91",
+        "sentence": "- LoadingScene"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p92",
+        "sentence": "- LoadingScene"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p93",
+        "sentence": "- HomeScene"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p94",
+        "sentence": "- HomeScene"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p95",
+        "sentence": "- LevelScene"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p96",
+        "sentence": "- LevelScene"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p97",
+        "sentence": "- GardenScene"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p98",
+        "sentence": "- GardenScene"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p99",
+        "sentence": "- DailyScene"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "4. 场景",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 190,
+        "line_end": 206,
+        "heading": "4. 场景",
+        "locator": "line 190-206 / 4. 场景",
+        "unit_id": "b19_p100",
+        "sentence": "- DailyScene"
+      }
+    },
+    {
+      "fact_id": "F053",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p101",
+        "sentence": "建议使用事件总线，但必须限制事件名和载荷。"
+      }
+    },
+    {
+      "fact_id": "F054",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p102",
+        "sentence": "建议使用事件总线，但必须限制事件名和载荷。"
+      }
+    },
+    {
+      "fact_id": "F055",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p103",
+        "sentence": "示例：示例：- LEVEL_STARTED"
+      }
+    },
+    {
+      "fact_id": "F056",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p106",
+        "sentence": "- LEVEL_STARTED"
+      }
+    },
+    {
+      "fact_id": "F057",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p107",
+        "sentence": "- TILE_ROTATED"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p108",
+        "sentence": "- TILE_ROTATED"
+      }
+    },
+    {
+      "fact_id": "F059",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p109",
+        "sentence": "- VALIDATION_FAILED"
+      }
+    },
+    {
+      "fact_id": "F060",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p110",
+        "sentence": "- VALIDATION_FAILED"
+      }
+    },
+    {
+      "fact_id": "F061",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p111",
+        "sentence": "- LEVEL_COMPLETED"
+      }
+    },
+    {
+      "fact_id": "F062",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p112",
+        "sentence": "- LEVEL_COMPLETED"
+      }
+    },
+    {
+      "fact_id": "F063",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p113",
+        "sentence": "- REWARD_GRANTED"
+      }
+    },
+    {
+      "fact_id": "F064",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p114",
+        "sentence": "- REWARD_GRANTED"
+      }
+    },
+    {
+      "fact_id": "F065",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p115",
+        "sentence": "- AD_COMPLETED"
+      }
+    },
+    {
+      "fact_id": "F066",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p116",
+        "sentence": "- AD_COMPLETED"
+      }
+    },
+    {
+      "fact_id": "F067",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p117",
+        "sentence": "- SAVE_FAILED"
+      }
+    },
+    {
+      "fact_id": "F068",
+      "subject": "5. 事件机制",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 208,
+        "line_end": 234,
+        "heading": "5. 事件机制",
+        "locator": "line 208-234 / 5. 事件机制",
+        "unit_id": "b20_p118",
+        "sentence": "- SAVE_FAILED"
+      }
+    },
+    {
+      "fact_id": "F069",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p119",
+        "sentence": "关卡状态：关卡状态：```text"
+      }
+    },
+    {
+      "fact_id": "F070",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p129",
+        "sentence": "VALIDATING"
+      }
+    },
+    {
+      "fact_id": "F071",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p130",
+        "sentence": "VALIDATING"
+      }
+    },
+    {
+      "fact_id": "F072",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p131",
+        "sentence": "ANIMATING_SUCCESS"
+      }
+    },
+    {
+      "fact_id": "F073",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p132",
+        "sentence": "ANIMATING_SUCCESS"
+      }
+    },
+    {
+      "fact_id": "F074",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p139",
+        "sentence": "任何输入只在允许状态生效。"
+      }
+    },
+    {
+      "fact_id": "F075",
+      "subject": "6. 状态机",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 236,
+        "line_end": 266,
+        "heading": "6. 状态机",
+        "locator": "line 236-266 / 6. 状态机",
+        "unit_id": "b21_p140",
+        "sentence": "任何输入只在允许状态生效。"
+      }
+    },
+    {
+      "fact_id": "F076",
+      "subject": "7. 存档",
+      "raw_value_text": "1.0",
+      "value": "1.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F077",
+      "subject": "7. 存档",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F078",
+      "subject": "7. 存档",
+      "raw_value_text": "1.0",
+      "value": "1.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F079",
+      "subject": "7. 存档",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F080",
+      "subject": "7. 存档",
+      "raw_value_text": "1,",
+      "value": "1,",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F081",
+      "subject": "7. 存档",
+      "raw_value_text": "1,",
+      "value": "1,",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p145",
+        "sentence": "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {"
+      }
+    },
+    {
+      "fact_id": "F082",
+      "subject": "7. 存档",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p160",
+        "sentence": "\"daily\": {}"
+      }
+    },
+    {
+      "fact_id": "F083",
+      "subject": "7. 存档",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p165",
+        "sentence": "保存必须原子化：先写临时数据，再替换正式数据。"
+      }
+    },
+    {
+      "fact_id": "F084",
+      "subject": "7. 存档",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 268,
+        "line_end": 300,
+        "heading": "7. 存档",
+        "locator": "line 268-300 / 7. 存档",
+        "unit_id": "b22_p166",
+        "sentence": "保存必须原子化：先写临时数据，再替换正式数据。"
+      }
+    },
+    {
+      "fact_id": "F085",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p167",
+        "sentence": "- 关卡加载失败：回退到安全关卡并记录错误。"
+      }
+    },
+    {
+      "fact_id": "F086",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p168",
+        "sentence": "- 关卡加载失败：回退到安全关卡并记录错误。"
+      }
+    },
+    {
+      "fact_id": "F087",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p169",
+        "sentence": "- 资源缺失：使用占位图。"
+      }
+    },
+    {
+      "fact_id": "F088",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p170",
+        "sentence": "- 资源缺失：使用占位图。"
+      }
+    },
+    {
+      "fact_id": "F089",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p171",
+        "sentence": "- 广告失败：返回游戏。"
+      }
+    },
+    {
+      "fact_id": "F090",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p172",
+        "sentence": "- 广告失败：返回游戏。"
+      }
+    },
+    {
+      "fact_id": "F091",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p173",
+        "sentence": "- 存档损坏：尝试备份恢复。"
+      }
+    },
+    {
+      "fact_id": "F092",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p174",
+        "sentence": "- 存档损坏：尝试备份恢复。"
+      }
+    },
+    {
+      "fact_id": "F093",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p175",
+        "sentence": "- 未知schema：停止加载该关，但不让应用崩溃。"
+      }
+    },
+    {
+      "fact_id": "F094",
+      "subject": "8. 错误处理",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 302,
+        "line_end": 316,
+        "heading": "8. 错误处理",
+        "locator": "line 302-316 / 8. 错误处理",
+        "unit_id": "b23_p176",
+        "sentence": "- 未知schema：停止加载该关，但不让应用崩溃。"
+      }
+    },
+    {
+      "fact_id": "F095",
+      "subject": "9. 性能目标",
+      "raw_value_text": "30",
+      "value": "30",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p177",
+        "sentence": "- 常规设备稳定30FPS以上。"
+      }
+    },
+    {
+      "fact_id": "F096",
+      "subject": "9. 性能目标",
+      "raw_value_text": "30",
+      "value": "30",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p178",
+        "sentence": "- 常规设备稳定30FPS以上。"
+      }
+    },
+    {
+      "fact_id": "F097",
+      "subject": "9. 性能目标",
+      "raw_value_text": "50",
+      "value": "50",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p179",
+        "sentence": "- 单关逻辑计算不阻塞主线程超过50ms。"
+      }
+    },
+    {
+      "fact_id": "F098",
+      "subject": "9. 性能目标",
+      "raw_value_text": "50",
+      "value": "50",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p180",
+        "sentence": "- 单关逻辑计算不阻塞主线程超过50ms。"
+      }
+    },
+    {
+      "fact_id": "F099",
+      "subject": "9. 性能目标",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p181",
+        "sentence": "- 大型求解只在开发工具或Web Worker等可行环境执行。"
+      }
+    },
+    {
+      "fact_id": "F100",
+      "subject": "9. 性能目标",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 318,
+        "line_end": 331,
+        "heading": "9. 性能目标",
+        "locator": "line 318-331 / 9. 性能目标",
+        "unit_id": "b24_p182",
+        "sentence": "- 大型求解只在开发工具或Web Worker等可行环境执行。"
+      }
+    },
+    {
+      "fact_id": "F101",
+      "subject": "关联笔记",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/58c98f2a_08__.md",
+        "line_start": 332,
+        "line_end": 337,
+        "heading": "关联笔记",
+        "locator": "line 332-337 / 关联笔记",
+        "unit_id": "b25_p187",
+        "sentence": "- [[项目/游戏/花路小屋/README|花路小屋 · README]]"
+      }
+    }
+  ],
+  "budget_omitted_facts": [
+    {
+      "fact_id": "F003",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F004",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F005",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F006",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F007",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F008",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F009",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F010",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F011",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F012",
+      "subject": "1. 技术原则",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F013",
+      "subject": "2. 目录建议",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F014",
+      "subject": "2. 目录建议",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F015",
+      "subject": "2. 目录建议",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F016",
+      "subject": "2. 目录建议",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F019",
+      "subject": "LevelLoader",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F020",
+      "subject": "LevelLoader",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F021",
+      "subject": "BoardModel",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F022",
+      "subject": "BoardModel",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F025",
+      "subject": "InputController",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F026",
+      "subject": "InputController",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F027",
+      "subject": "ConnectivityEngine",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F028",
+      "subject": "ConnectivityEngine",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F031",
+      "subject": "HintService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F032",
+      "subject": "HintService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F033",
+      "subject": "SaveService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F034",
+      "subject": "SaveService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F037",
+      "subject": "AdService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F038",
+      "subject": "AdService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F039",
+      "subject": "AnalyticsService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F040",
+      "subject": "AnalyticsService",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F053",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F054",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F055",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F056",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F057",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F058",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F059",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F060",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F061",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F062",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F063",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F064",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F065",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F066",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F067",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F068",
+      "subject": "5. 事件机制",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F069",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F070",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F071",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F072",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F073",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F074",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F075",
+      "subject": "6. 状态机",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F083",
+      "subject": "7. 存档",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F084",
+      "subject": "7. 存档",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F085",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F086",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F087",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F088",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F089",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F090",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F091",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F092",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F093",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F094",
+      "subject": "8. 错误处理",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F095",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F096",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F097",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F098",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F099",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F100",
+      "subject": "9. 性能目标",
+      "reason": "PAGE_BUDGET: 全量必讲需约 39 页，超出冻结上限 20；章节等距抽样未入选，整章原句显式省略（非静默截断）。"
+    }
+  ]
+}

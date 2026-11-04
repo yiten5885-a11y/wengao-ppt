@@ -1,0 +1,292 @@
+{
+  "deck_title": "项目状态简报 2026-10-28",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "项目状态简报 2026-10-28",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "PROJECT STATUS B",
+        "总体判断",
+        "已有完成项与本地回归证据",
+        "测试口径",
+        "真实闭环的零计数"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "功能完整性审核",
+        "恢复与保护建议",
+        "本报告依据"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "总体判断",
+      "must_state": [
+        "开发层面已有可复核的规则、来源绑定、状态摘要和回归结果；业务交付层面仍停在“代码可走到多个门、真实整套图片未产生”。",
+        "测试环境也并非一个可直接重启就完成闭环的干净副本：桌面目录缺 README、动态问题总表、多个 docs/modules 与运行证据；外接盘副本虽有这些文件，但提交较早、仍有本地改动。",
+        "因此，本报告把“已完成”限定为本地代码或定向测试证据，不把历史 HTTP 读取、隔离夹具、模拟接口或旧冻结报告写成当前真实交付通过。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "title": "总体判断…",
+      "must_state": [
+        "01 / COMPLETED WORK AND EVIDENCE"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "已有完成项与本地回归证据",
+      "must_state": [
+        "以下结果来自 10 月 25 日工作台账、WorkBuddy 交付目录中的 TAP 日志或外接盘保存的 QA 报告。",
+        "它们证明各自测试范围，不等于 10 月 28 日当前工作树的全量 clean。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "测试口径",
+      "must_state": [
+        "这些测试组彼此重叠，不能相加成“总通过数”。",
+        "每个数字只代表对应日志的范围。",
+        "151/151 的委外交付自报，以及旧提交上的 T01–T30 / 冻结 clean，不代表当前 b7160e9 + dirty 工作树已经全量通过。",
+        "02 / TEST BLOCKERS"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "title": "真实闭环的零计数",
+      "must_state": [
+        "03 / FUNCTIONAL COMPLETENESS REVIEW"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "comparison",
+      "title": "功能完整性审核",
+      "must_state": [
+        "“本地关闭”仅指对应规则/代码回归通过，不代表相关外部账号写入或真实图片流程也完成。",
+        "04 / DELIVERABLES AND RECOVERY LOCATIONS"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "process",
+      "title": "恢复与保护建议",
+      "must_state": [
+        "不要执行 git clean、git reset --hard 或覆盖式复制；桌面工作树有未提交修改，外接盘也有 105 个状态项。",
+        "先保留桌面现状快照，再按 Desktop HEAD 的 Git 对象或已核 SHA 清单恢复被删跟踪文件；只恢复确认缺失项，保留 9 个修改与 5 个未跟踪文件。",
+        "随后比对外接盘 delivery/source manifests；只有哈希一致的文件才标为同步恢复。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "process",
+      "title": "恢复与保护建议…",
+      "must_state": [
+        "当前 GitHub 远端需在具备登录凭据后确认分支/提交号。",
+        "05 / NEXT STEPS AND ACCEPTANCE GATES"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 12,
+      "page_type": "timeline",
+      "title": "PROJECT STATUS B",
+      "must_state": [
+        "立卡贴图台项目状态与进度报告",
+        "当前代码、测试证据、功能完整性、交付位置与后续闭环",
+        "核对日期：2026 年 10 月 28 日（北京时间）   |   项目目录：/Users/huangyingteng/Desktop/立卡贴图台"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "single_column",
+      "title": "本报告依据",
+      "must_state": [
+        "报告生成时 43119 无监听；未执行生图、文本模型、微信写入、Bark 推送或手机操作。",
+        "当前工作树：data/workbench.json、data/supervision.json、git HEAD / status、WorkBuddy 交付目录中的 TAP 与 failure-map。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 113.09,
+      "done_reason": "stop",
+      "eval_count": 541,
+      "raw_response": "```json\n{\n  \"deck_title\": \"项目状态简报 2026-10-28\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"项目状态简报 2026-10-28\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"总体判断\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"metrics\",\n      \"title\": \"已有完成项与本地回归证据\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"测试口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"真实闭环的零计数\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"comparison\",\n      \"title\": \"功能完整性审核\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"恢复与保护建议\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"恢复与保护建议\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"本报告依据\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"恢复与保护建议\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总体判断\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "总体判断",
+      "assigned_fact_ids": [
+        "F006",
+        "F007",
+        "F008",
+        "F009"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "已有完成项与本地回归证据",
+      "assigned_fact_ids": [
+        "F010",
+        "F011",
+        "F012",
+        "F013"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "测试口径",
+      "assigned_fact_ids": [
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "真实闭环的零计数",
+      "assigned_fact_ids": [
+        "F019"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "功能完整性审核",
+      "assigned_fact_ids": [
+        "F020",
+        "F021"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "恢复与保护建议",
+      "assigned_fact_ids": [
+        "F022",
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "本报告依据",
+      "assigned_fact_ids": [
+        "F028",
+        "F029"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "恢复与保护建议",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "总体判断",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "process",
+        "original_units": 5,
+        "catalog_mid": 5,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}

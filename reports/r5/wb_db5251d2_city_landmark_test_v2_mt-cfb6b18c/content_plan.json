@@ -1,0 +1,400 @@
+{
+  "deck_title": "四城区域中心年度业务报告",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "四城区域中心年度业务报告",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "一、总体概况",
+        "二、无锡：华东区域中心",
+        "三、北京：华北区域中心",
+        "四、广州：华南区域中心",
+        "五、青岛：华中区域中心",
+        "六、四城业务对比"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "七、风险与挑战",
+        "八、下一年度规划"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "metrics",
+      "title": "一、总体概况",
+      "must_state": [
+        "四城营收合计 8.6 亿元，同比增长 14%。",
+        "四城合计新增客户 512 家，同比增长 21%。",
+        "四城合计员工总数达到 1120 人，较上年末增加 180 人。",
+        "公司计划在未来两年内将区域中心城市数量从 4 个扩展到 6 个。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "metrics",
+      "title": "一、总体概况…",
+      "must_state": [
+        "本年度公司业务覆盖华东、华北、华南、华中四个核心区域，区域中心城市分别为无锡、北京、广州、青岛。"
+      ],
+      "_continued_from": 3
+    },
+    {
+      "page": 6,
+      "page_type": "single_column",
+      "title": "二、无锡：华东区域中心",
+      "must_state": [
+        "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。",
+        "无锡太湖新城的办公区已投入使用，可容纳 300 名员工。",
+        "无锡分公司本年度新签约战略客户 9 家，覆盖制造业、物流业与跨境电商三大行业。",
+        "无锡团队本年度完成技术中台升级，系统响应速度提升 35%。",
+        "无锡分公司客户续约率达到 92%，高于集团平均水平 6 个百分点。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "single_column",
+      "title": "二、无锡：华东区域中心…",
+      "must_state": [
+        "无锡作为华东区域总部所在地，承担长三角一体化业务枢纽职能。",
+        "无锡本年度获得当地政府\"数字经济示范企业\"称号。"
+      ],
+      "_continued_from": 4
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "三、北京：华北区域中心",
+      "must_state": [
+        "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。",
+        "北京团队本年度承接政府数字化转型项目 6 个，合同总额 9500 万元。",
+        "北京分公司员工规模达到 410 人，是四城中人数最多的分公司。",
+        "北京分公司客户满意度评分为 4.7 分（满分 5 分）。",
+        "北京分公司覆盖华北六省业务，是公司政企合作的主要窗口。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "single_column",
+      "title": "三、北京：华北区域中心…",
+      "must_state": [
+        "北京总部大楼位于朝阳区，毗邻 CBD 核心商圈。",
+        "北京本年度新设立研发中心一处，重点投入人工智能与大数据方向。"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 10,
+      "page_type": "single_column",
+      "title": "四、广州：华南区域中心",
+      "must_state": [
+        "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。",
+        "广州团队本年度新开拓港澳客户 23 家，跨境业务收入占比提升至 28%。",
+        "广州分公司本年度完成仓储物流体系升级，覆盖大湾区 9 个城市的次日达服务。",
+        "广州团队员工平均司龄为 3.2 年，人才留存率位居四城第一。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "single_column",
+      "title": "四、广州：华南区域中心…",
+      "must_state": [
+        "广州依托珠江新城的区位优势，重点服务跨境电商与制造业客户。",
+        "广州本年度与本地高校共建产学研基地一处。"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 12,
+      "page_type": "single_column",
+      "title": "五、青岛：华中区域中心",
+      "must_state": [
+        "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。",
+        "青岛团队本年度新增海洋经济相关客户 18 家，合同金额合计 3200 万元。",
+        "青岛分公司本年度完成仓储扩建，仓储面积增加至 1.2 万平方米。",
+        "青岛团队本年度人员流失率为 8%，低于集团平均水平。",
+        "青岛凭借港口物流优势，在海洋经济相关业务上形成差异化竞争力。"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "single_column",
+      "title": "五、青岛：华中区域中心…",
+      "must_state": [
+        "青岛分公司计划明年新增两条跨境航运合作线路。"
+      ],
+      "_continued_from": 7
+    },
+    {
+      "page": 14,
+      "page_type": "comparison",
+      "title": "六、四城业务对比",
+      "must_state": [
+        "四城合计贡献集团总营收的 61%。",
+        "四城中无锡与广州的客户续约率最高，均超过 90%。",
+        "从营收规模看，北京最高、青岛最低；从增速看，无锡最快、青岛最慢。",
+        "四城员工满意度调查显示，北京与广州的评分领先。"
+      ]
+    },
+    {
+      "page": 15,
+      "page_type": "single_column",
+      "title": "七、风险与挑战",
+      "must_state": [
+        "四城业务均面临区域人才竞争加剧的挑战，尤其是北京与广州的技术岗位招聘难度上升。",
+        "无锡与青岛的制造业客户受原材料成本波动影响，部分合同执行进度有所延后。",
+        "四城分公司在跨区域协同项目上的沟通成本仍有优化空间。"
+      ]
+    },
+    {
+      "page": 16,
+      "page_type": "process",
+      "title": "八、下一年度规划",
+      "must_state": [
+        "四城将继续深化区域协同，计划新增两个区域服务中心，目标全年营收突破 10 亿元。",
+        "无锡计划扩建办公区二期，预计新增 200 个工位。",
+        "北京计划扩大政企合作团队规模至 60 人。",
+        "广州计划在大湾区再新增两个前置仓。",
+        "青岛计划推进跨境航运合作线路的落地。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 33.47,
+      "done_reason": "stop",
+      "eval_count": 637,
+      "raw_response": "```json\n{\n  \"deck_title\": \"四城区域中心年度业务报告\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"四城区域中心年度业务报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"metrics\",\n      \"title\": \"一、总体概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"二、无锡：华东区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"single_column\",\n      \"title\": \"三、北京：华北区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"四、广州：华南区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"single_column\",\n      \"title\": \"五、青岛：华中区域中心\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"comparison\",\n      \"title\": \"六、四城业务对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"六、四城业务对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"table\",\n      \"title\": \"六、四城业务对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"single_column\",\n      \"title\": \"七、风险与挑战\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"process\",\n      \"title\": \"八、下一年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 13,\n      \"page_type\": \"timeline\",\n      \"title\": \"八、下一年度规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 14,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结与行动\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "一、总体概况",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008",
+        "F009"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "二、无锡：华东区域中心",
+      "assigned_fact_ids": [
+        "F010",
+        "F011",
+        "F012",
+        "F013",
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018",
+        "F019"
+      ],
+      "source_statement_count": 7,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "三、北京：华北区域中心",
+      "assigned_fact_ids": [
+        "F020",
+        "F021",
+        "F022",
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027",
+        "F028",
+        "F029"
+      ],
+      "source_statement_count": 7,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "四、广州：华南区域中心",
+      "assigned_fact_ids": [
+        "F030",
+        "F031",
+        "F032",
+        "F033",
+        "F034",
+        "F035",
+        "F036",
+        "F037"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "五、青岛：华中区域中心",
+      "assigned_fact_ids": [
+        "F038",
+        "F039",
+        "F040",
+        "F041",
+        "F042",
+        "F043",
+        "F044",
+        "F045"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "六、四城业务对比",
+      "assigned_fact_ids": [
+        "F046",
+        "F047",
+        "F048",
+        "F049"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "七、风险与挑战",
+      "assigned_fact_ids": [
+        "F050",
+        "F051",
+        "F052"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "八、下一年度规划",
+      "assigned_fact_ids": [
+        "F053",
+        "F054",
+        "F055",
+        "F056",
+        "F057"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 9,
+      "title": "六、四城业务对比",
+      "page_type": "chart",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "六、四城业务对比",
+      "page_type": "table",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 13,
+      "title": "八、下一年度规划",
+      "page_type": "timeline",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 14,
+      "title": "总结与行动",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 16,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 16,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}

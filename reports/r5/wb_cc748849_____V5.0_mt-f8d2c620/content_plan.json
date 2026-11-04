@@ -1,0 +1,418 @@
+{
+  "deck_title": "师序完整开发计划",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "师序完整开发计划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "师序完整开发计划",
+        "输入范围与失败语义",
+        "不可变版本与派生失效",
+        "讲评文件的固定结构",
+        "19 数据保护与安全设计",
+        "关键路径和缓冲"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "师序完整开发计划…",
+      "must_state": [
+        "28 后续发布与全功能路线",
+        "交付总检查"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "timeline",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "title": "输入范围与失败语义",
+      "must_state": [
+        "首期接收JPEG/PNG、非加密PDF及粘贴文本，正文为英文作文，允许少量中文批注；只支持配置内版式。",
+        "DOCX导入可在扫描链路稳定后追加。",
+        "听力音频、复杂数学公式、多人混页、严重反光、超范围作文、跨校统考试卷均不得假装支持。",
+        "上传后显示接受、需校对、拒绝的数量及具体原因。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "不可变版本与派生失效",
+      "must_state": [
+        "原始材料按不可变版本保存；OCR、量表或审核改变时产生新版本。",
+        "AnalysisSnapshot只引用明确的确认版本列表；导出记录再引用该分析快照。",
+        "上游改变后下游标记需更新，不静默混用新旧结果。",
+        "修改Diff属于受控业务数据，与普通运维日志分开。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "讲评文件的固定结构",
+      "must_state": [
+        "• Word：任务与范围、3至5个共性问题、匿名例句、教师修改稿、课堂讲解建议、分层练习、参考答案与证据附页。",
+        "• PPTX：8至12页固定版式，目标、班级共性问题、例句对照、互动练习、答案、课后巩固；正文为可编辑文本和图表，避免整页图片假冒可编辑。",
+        "• PDF：用于打印与课堂展示；文字可检索、页码连续、字体正确。",
+        "学生个体反馈与全班讲评分别导出，避免名单或分数混入公开展示。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "19 数据保护与安全设计",
+      "must_state": [
+        "真实学生数据进入系统前，数据路径与责任必须可审查。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "title": "关键路径和缓冲",
+      "must_state": [
+        "授权样本 → 教研量表 → OCR识别 → 评分与审核 → 快照交付 → 真实教师验证是关键路径。",
+        "界面与接口骨架可并行。",
+        "试点现金上限建议先按500元/月控制OCR、模型、存储与必要服务，80%提醒、100%暂停新付费调用；须负责人定额后生效，不代表本次已授权支出。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "关键路径和缓冲…",
+      "must_state": [
+        "授权样本 → 教研量表 → OCR识别 → 评分与审核 → 快照交付 → 真实教师验证是关键路径。",
+        "界面与接口骨架可并行。",
+        "试点现金上限建议先按500元/月控制OCR、模型、存储与必要服务，80%提醒、100%暂停新付费调用；须负责人定额后生效，不代表本次已授权支出。"
+      ],
+      "_continued_from": 9,
+      "_builder_generated_continuation": {
+        "source_planned_page": 9,
+        "source_actual_page": 9,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 3
+      }
+    },
+    {
+      "page": 11,
+      "page_type": "timeline",
+      "title": "28 后续发布与全功能路线",
+      "must_state": [
+        "长期路线完整保留，按证据和真实需求逐级投入。",
+        "以上为同等团队容量下的增量估算，不包含学校合同、样本采集、供应商审批和招聘等待；可共享数据底座，但不能把后续阶段的完成指标计入首期成功。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "metrics",
+      "title": "交付总检查",
+      "must_state": [
+        "• 产品：用户能完成真实工作，能够纠错、恢复、取回文件和理解费用。",
+        "• 教学：规则适用、评分证据、教师最终判断和讲评内容一致。",
+        "• 工程：版本、权限、统计、文件、成本、日志、恢复及迁移均有证据。",
+        "• 商业：免费竞争下仍有重复使用和真实付款，观察期充分且单位经济成立。"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "metrics",
+      "title": "交付总检查…",
+      "must_state": [
+        "任何一项未达成，记录具体范围和后续动作，不用“已开发”“已部署”或“AI很准确”覆盖差距。"
+      ],
+      "_continued_from": 11
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 9.91,
+      "done_reason": "stop",
+      "eval_count": 564,
+      "raw_response": "{\n  \"deck_title\": \"师序完整开发计划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"timeline\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"输入范围与失败语义\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"不可变版本与派生失效\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"table\",\n      \"title\": \"讲评文件的固定结构\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"讲评文件的固定结构\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"single_column\",\n      \"title\": \"19 数据保护与安全设计\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"关键路径和缓冲\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"28 后续发布与全功能路线\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"metrics\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "师序完整开发计划",
+      "assigned_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "输入范围与失败语义",
+      "assigned_fact_ids": [
+        "F046",
+        "F047",
+        "F048",
+        "F050"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "不可变版本与派生失效",
+      "assigned_fact_ids": [
+        "F109",
+        "F110",
+        "F111",
+        "F113"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "讲评文件的固定结构",
+      "assigned_fact_ids": [
+        "F164",
+        "F165",
+        "F166",
+        "F167",
+        "F168",
+        "F169"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "19 数据保护与安全设计",
+      "assigned_fact_ids": [
+        "F220"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "关键路径和缓冲",
+      "assigned_fact_ids": [
+        "F276",
+        "F277",
+        "F278",
+        "F279",
+        "F280"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "28 后续发布与全功能路线",
+      "assigned_fact_ids": [
+        "F362",
+        "F363"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "交付总检查",
+      "assigned_fact_ids": [
+        "F426",
+        "F427",
+        "F428",
+        "F429",
+        "F430"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 7,
+      "title": "讲评文件的固定结构",
+      "page_type": "process",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "交付总检查",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 12,
+    "builder_generated_continuations": 1,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "_planner_slides_before_build": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "师序完整开发计划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "师序完整开发计划",
+        "输入范围与失败语义",
+        "不可变版本与派生失效",
+        "讲评文件的固定结构",
+        "19 数据保护与安全设计",
+        "关键路径和缓冲"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "师序完整开发计划…",
+      "must_state": [
+        "28 后续发布与全功能路线",
+        "交付总检查"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "timeline",
+      "title": "师序完整开发计划",
+      "must_state": [
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "title": "输入范围与失败语义",
+      "must_state": [
+        "首期接收JPEG/PNG、非加密PDF及粘贴文本，正文为英文作文，允许少量中文批注；只支持配置内版式。",
+        "DOCX导入可在扫描链路稳定后追加。",
+        "听力音频、复杂数学公式、多人混页、严重反光、超范围作文、跨校统考试卷均不得假装支持。",
+        "上传后显示接受、需校对、拒绝的数量及具体原因。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "title": "不可变版本与派生失效",
+      "must_state": [
+        "原始材料按不可变版本保存；OCR、量表或审核改变时产生新版本。",
+        "AnalysisSnapshot只引用明确的确认版本列表；导出记录再引用该分析快照。",
+        "上游改变后下游标记需更新，不静默混用新旧结果。",
+        "修改Diff属于受控业务数据，与普通运维日志分开。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "讲评文件的固定结构",
+      "must_state": [
+        "• Word：任务与范围、3至5个共性问题、匿名例句、教师修改稿、课堂讲解建议、分层练习、参考答案与证据附页。",
+        "• PPTX：8至12页固定版式，目标、班级共性问题、例句对照、互动练习、答案、课后巩固；正文为可编辑文本和图表，避免整页图片假冒可编辑。",
+        "• PDF：用于打印与课堂展示；文字可检索、页码连续、字体正确。",
+        "学生个体反馈与全班讲评分别导出，避免名单或分数混入公开展示。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "19 数据保护与安全设计",
+      "must_state": [
+        "真实学生数据进入系统前，数据路径与责任必须可审查。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "title": "关键路径和缓冲",
+      "must_state": [
+        "授权样本 → 教研量表 → OCR识别 → 评分与审核 → 快照交付 → 真实教师验证是关键路径。",
+        "界面与接口骨架可并行。",
+        "试点现金上限建议先按500元/月控制OCR、模型、存储与必要服务，80%提醒、100%暂停新付费调用；须负责人定额后生效，不代表本次已授权支出。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "timeline",
+      "title": "28 后续发布与全功能路线",
+      "must_state": [
+        "长期路线完整保留，按证据和真实需求逐级投入。",
+        "以上为同等团队容量下的增量估算，不包含学校合同、样本采集、供应商审批和招聘等待；可共享数据底座，但不能把后续阶段的完成指标计入首期成功。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "metrics",
+      "title": "交付总检查",
+      "must_state": [
+        "• 产品：用户能完成真实工作，能够纠错、恢复、取回文件和理解费用。",
+        "• 教学：规则适用、评分证据、教师最终判断和讲评内容一致。",
+        "• 工程：版本、权限、统计、文件、成本、日志、恢复及迁移均有证据。",
+        "• 商业：免费竞争下仍有重复使用和真实付款，观察期充分且单位经济成立。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "metrics",
+      "title": "交付总检查…",
+      "must_state": [
+        "任何一项未达成，记录具体范围和后续动作，不用“已开发”“已部署”或“AI很准确”覆盖差距。"
+      ],
+      "_continued_from": 10
+    }
+  ]
+}

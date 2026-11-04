@@ -1,0 +1,490 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-31T13:37:05.714036+00:00",
+  "material": "workbench_uploads/c445c7d7__-_.md",
+  "material_sha256": "20e7a12fccb11cc415679a895d3060c56874f927ca51baa7733f1f3c6d9a2dab",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "20e7a12fccb11cc415679a895d3060c56874f927ca51baa7733f1f3c6d9a2dab",
+    "pages": 17,
+    "units": 276,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_c445c7d7__-__mt-d5b797a5/fact_ledger.json",
+    "count": 338,
+    "selected": 40,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 338,
+    "selected": 40,
+    "omitted": 298,
+    "subjects_total": 16,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 108,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "热点原文拓展补充材料 · 工作流开发指令 v1.0",
+      "2. 数据契约",
+      "4. 双门襟",
+      "4.2 G2 图卡门襟",
+      "P3 · 文案生成（S4）",
+      "P5 · 视觉简报（S5）",
+      "P7 · 排版规范（S7，写进渲染模板，不靠模型自由发挥）",
+      "8. 待确认项（影响实现细节，不阻塞开工）"
+    ],
+    "omitted_facts_path": "reports/r5/wb_c445c7d7__-__mt-d5b797a5/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_c445c7d7__-__mt-d5b797a5/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 13,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 40.22,
+        "done_reason": "stop",
+        "eval_count": 524,
+        "raw_response": "```json\n{\n  \"deck_title\": \"工作流开发指令 v1.0\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"工作流开发指令 v1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"热点原文拓展补充材料\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"数据契约\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"双门襟\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"G2 图卡门襟\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"文案生成\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"metrics\",\n      \"title\": \"视觉简报\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"排版规范\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"待确认项\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"行动项\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "热点原文拓展补充材料 · 工作流开发指令 v1.0",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "2. 数据契约",
+        "assigned_fact_ids": [
+          "F033",
+          "F034",
+          "F035"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4. 双门襟",
+        "assigned_fact_ids": [
+          "F105"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.2 G2 图卡门襟",
+        "assigned_fact_ids": [
+          "F143",
+          "F144",
+          "F145",
+          "F149"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P3 · 文案生成（S4）",
+        "assigned_fact_ids": [
+          "F202",
+          "F203",
+          "F204",
+          "F205",
+          "F206"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P5 · 视觉简报（S5）",
+        "assigned_fact_ids": [
+          "F252",
+          "F253",
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F261",
+          "F262"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P7 · 排版规范（S7，写进渲染模板，不靠模型自由发挥）",
+        "assigned_fact_ids": [
+          "F271",
+          "F272",
+          "F273",
+          "F274",
+          "F275"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "8. 待确认项（影响实现细节，不阻塞开工）",
+        "assigned_fact_ids": [
+          "F323",
+          "F324",
+          "F325",
+          "F326"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 13
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": [
+      {
+        "page": 6,
+        "title": "4.2 G2 图卡门襟",
+        "from_page_type": "single_column"
+      },
+      {
+        "page": 9,
+        "title": "P7 · 排版规范（S7，写进渲",
+        "from_page_type": "single_column"
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "table",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_c445c7d7__-__mt-d5b797a5/c445c7d7__-_.generated.pptx",
+    "sha256": "3648a1a88682a5972de3cb6458eb83375820c2139981c93f463ef1a8da6bd5f6",
+    "slides": 13,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 5,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 3,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 3,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 1,
+      "density": "low",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 3,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 1,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 4,
+      "density": "mid",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 4,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 3,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 4,
+      "density": "mid",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-31T13:37:46.002106+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

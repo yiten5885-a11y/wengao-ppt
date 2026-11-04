@@ -1,0 +1,434 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-26T15:12:56.803322+00:00",
+  "material": "samples/material_replay/annual_review_synthetic.md",
+  "material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "target_pages": 17,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "pages": 9,
+    "units": 35,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-9a6a64c3/fact_ledger.json",
+    "count": 59,
+    "frozen_before_model_call": true
+  },
+  "replay": {
+    "frozen_plan": "samples/material_replay/annual_review_17p_deduplicated.plan.json",
+    "sha256": "b1053544284d62e660dbedf49bff254d218fe306edcf5fe1e24253495bf7a759",
+    "model_calls": 0,
+    "model_call_scope": "content_plan",
+    "content_plan_model_calls": 0,
+    "downstream_model_stages": [
+      "semantic_scene_planning"
+    ],
+    "downstream_photo_search_may_use_network": true,
+    "already_paginated": true,
+    "note": "只回放冻结内容计划，跳过内容规划模型；下游语义配图仍可能调用本地模型，照片检索可能联网。不得当作新的内容规划模型或真实生成能力证据。"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [
+      {
+        "fact_id": "F057",
+        "sentence": "主要短板在跨区域数据同步延迟"
+      }
+    ],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-9a6a64c3/content_plan.json",
+    "mode": "replay",
+    "chunk_count": 0,
+    "chunk_calls": 0,
+    "source_assignment_count": 0,
+    "model_call_count": 0,
+    "model_call_scope": "content_plan",
+    "slides": 17,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "replay",
+        "attempt": 1,
+        "source": "samples/material_replay/annual_review_17p_deduplicated.plan.json",
+        "already_paginated": true
+      }
+    ],
+    "physical_pages": 17
+  },
+  "pagination": {
+    "pages_before": 17,
+    "pages_after": 17,
+    "in_range": true,
+    "replayed": true,
+    "note": "回放已分页计划：未重新规划、未重新分页。",
+    "planner_pages_after": 17,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-9a6a64c3/annual_review_synthetic.generated.pptx",
+    "sha256": "d2affde672ecfa872e417f15e90ce1aa42a9eb7c1841892dae7ed5868f82c089",
+    "slides": 17,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "六、问题与改进",
+      "chart_part_hint": "slide 14",
+      "chart_title": "续约预警覆盖率",
+      "series_name": "指标（%）",
+      "axis_unit": "%",
+      "excluded_units_same_page_table": [
+        "分钟",
+        "unknown"
+      ],
+      "unplotted_statements_same_page_table": [
+        "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景",
+        "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口"
+      ],
+      "points": [
+        {
+          "category": "续约预警覆盖率·当前",
+          "display_category": "当前",
+          "value": 74.0,
+          "unit": "%",
+          "fact_id": "F043"
+        },
+        {
+          "category": "续约预警覆盖率·目标",
+          "display_category": "目标",
+          "value": 85.0,
+          "unit": "%",
+          "fact_id": "F044"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 1,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 2,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 3,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 1,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 2,
+      "density": "low",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 3,
+      "density": "mid",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 14,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 3,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 15,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 16,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 2,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 17,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-26T15:12:56.842411+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

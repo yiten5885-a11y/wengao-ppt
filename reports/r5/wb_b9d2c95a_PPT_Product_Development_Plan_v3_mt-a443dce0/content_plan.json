@@ -1,0 +1,277 @@
+{
+  "deck_title": "PPT 交付助手：产品开发与验收方案 V3",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "PPT 交付助手：产品开发与验收方案 V3",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "PPT 交付助手：产品开发与验收方案 V3",
+      "must_state": [
+        "PPT 交付助手：产品开发与验收",
+        "4.1 直接采纳",
+        "6.1 结构",
+        "8.2 美化",
+        "9.3 美观验收"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "PPT 交付助手：产品开发与验收方案 V3…",
+      "must_state": [
+        "12.2 安装和恢复验收",
+        "P2：按对象逐类完成可靠能力",
+        "17. 来源"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "process",
+      "title": "P2：按对象逐类完成可靠能力",
+      "must_state": [
+        "顺序：文字 → 规则表格 → 两类核心图表 → 图片/备注/隐藏页及组结构。",
+        "每类完成：提取、来源映射、生成、独立核对、原生编辑验证、真实渲染、正常/错误样本。",
+        "不要先做完全部生成，最后统一补检查。",
+        "先验收检测器，再单独加入允许的修复。",
+        "必需检查未覆盖的任务不进入正式 READY。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "title": "4.1 直接采纳",
+      "must_state": [
+        "- 固定上游，独立 gate，少量有证据的上游补丁。",
+        "- 原始输入在任何清理和转换之前保存。",
+        "- 解析对象必须已编目、明确不支持或解析失败，禁止静默跳过。",
+        "- 验收器独立重读实际 PPT，不能只相信生成器的 trace。",
+        "- 检测能力与自动修复分别测试；检测时关闭修复。",
+        "- 数字与主体、单位、时间、条件绑定；不能仅比较文字集合。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "chart",
+      "title": "6.1 结构",
+      "must_state": [
+        "| 模块 | 责任 | 不能代替的工作 |",
+        "| --- | --- | --- |",
+        "| Skill 入口 | 识别任务、补必要参数、调用固定入口、解释结果 | 不绕过运行器，不自行签发 READY |",
+        "| 轻量本地界面/CLI | 上传、预检、进度、问题定位、版本操作 | 不维护第二套任务状态 |"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "process",
+      "title": "8.2 美化",
+      "must_state": [
+        "保留原文及出现次数、页序和隐藏状态、备注、表格单元格关系、图表类别与系列、图片的页面引用和内容。",
+        "生成器可创建新的对象 ID，验收依靠显式映射。",
+        "移动整张表不改变其内部单元格身份；重复表头不能只靠文本匹配。",
+        "综合原始表身份、结构位置、合并关系、唯一表头语义判断。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "metrics",
+      "title": "9.3 美观验收",
+      "must_state": [
+        "模型自评可以提出建议，不能充当唯一评分员。",
+        "使用独立用户盲评检查阅读顺序、层级、留白、图表理解和整体一致性。",
+        "暂定设计评估目标：清晰度、整体一致性、继续编辑便利分别采用 5 分量表，中位数至少 4 分；记录低分原因与关键缺陷。",
+        "该目标需要种子用户校准，不代表已有评分，也不能靠高平均分抵消关键阅读错误。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "title": "12.2 安装和恢复验收",
+      "must_state": [
+        "- 指定 Agent 宿主，不扫描后覆盖所有宿主。",
+        "- 不写系统 Python。",
+        "- 依赖锁定；字体及资源许可清楚，实际文件版本进入记录。",
+        "- 新版安装和自测通过后才切换 current。",
+        "- 升级失败保留旧版；恢复程序、对应环境与配置版本。",
+        "- 卸载默认保留用户任务和配置，删除用户数据是单独明确动作。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "single_column",
+      "title": "17. 来源",
+      "must_state": [
+        "https://guide.plusai.com/ai-for-presentations/remix-slides",
+        "https://support.microsoft.com/en-us/powerpoint/copilot/keep-your-presentation-on-brand-with-copilot",
+        "本文把它作为方案意见，非已运行的测试证据。"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "conclusion",
+      "title": "PPT 交付助手：产品开发与验收",
+      "must_state": [
+        "项目性质：基于 luobo-ppt 的二次开发",
+        "文档状态：可用于启动研发的规格草案；不是已实现、已测试或已发布产品的声明"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 5.88,
+      "done_reason": "stop",
+      "eval_count": 603,
+      "raw_response": "{\n  \"deck_title\": \"PPT 交付助手：产品开发与验收方案 V3\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"PPT 交付助手：产品开发与验收方案 V3\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"PPT 交付助手：产品开发与验收方案 V3\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"process\",\n      \"title\": \"P2：按对象逐类完成可靠能力\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"4.1 直接采纳\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"4.1 直接采纳\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"6.1 结构\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"8.2 美化\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"metrics\",\n      \"title\": \"9.3 美观验收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"table\",\n      \"title\": \"12.2 安装和恢复验收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"12.2 安装和恢复验收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"single_column\",\n      \"title\": \"17. 来源\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"PPT 交付助手：产品开发与验收方案 V3\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "PPT 交付助手：产品开发与验收方案 V3",
+      "assigned_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4.1 直接采纳",
+      "assigned_fact_ids": [
+        "F079",
+        "F080",
+        "F081",
+        "F082",
+        "F083",
+        "F084"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "6.1 结构",
+      "assigned_fact_ids": [
+        "F140",
+        "F141",
+        "F142",
+        "F143"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "8.2 美化",
+      "assigned_fact_ids": [
+        "F205",
+        "F206",
+        "F207",
+        "F208"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "9.3 美观验收",
+      "assigned_fact_ids": [
+        "F252",
+        "F253",
+        "F254",
+        "F255",
+        "F256"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "12.2 安装和恢复验收",
+      "assigned_fact_ids": [
+        "F317",
+        "F318",
+        "F319",
+        "F320",
+        "F321",
+        "F322"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P2：按对象逐类完成可靠能力",
+      "assigned_fact_ids": [
+        "F403",
+        "F404",
+        "F405",
+        "F406",
+        "F407"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "17. 来源",
+      "assigned_fact_ids": [
+        "F450",
+        "F451",
+        "F454"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 5,
+      "title": "4.1 直接采纳",
+      "page_type": "comparison",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "12.2 安装和恢复验收",
+      "page_type": "timeline",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 11,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 11,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}

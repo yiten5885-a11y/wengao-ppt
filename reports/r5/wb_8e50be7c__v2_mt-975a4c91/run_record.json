@@ -1,0 +1,1175 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-25T11:30:20.918588+00:00",
+  "material": "workbench_uploads/8e50be7c__v2.md",
+  "material_sha256": "15b7fd5f3d2b0daf9c01e69b7570fb7229f9b7bbedc13ee7f143f47126f708af",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "15b7fd5f3d2b0daf9c01e69b7570fb7229f9b7bbedc13ee7f143f47126f708af",
+    "pages": 39,
+    "units": 384,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_8e50be7c__v2_mt-975a4c91/fact_ledger.json",
+    "count": 468,
+    "frozen_before_model_call": true
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [
+      {
+        "page": 3,
+        "item": "4",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 3,
+        "item": "5",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 6,
+        "item": "4",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 6,
+        "item": "5",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 6,
+        "item": "6",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 6,
+        "item": "8",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 37,
+        "item": "2",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 6,
+        "item": "11",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "9",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "10",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "12",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "13",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "14",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "16",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "17",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 25,
+        "item": "10",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 25,
+        "item": "18",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 6
+      },
+      {
+        "page": 36,
+        "item": "6",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 25
+      },
+      {
+        "page": 39,
+        "item": "60",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 6
+      },
+      {
+        "page": 39,
+        "item": "30",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      }
+    ],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": true,
+      "error": "must_state 存在完全重复条目（共同覆盖不得重复整句）：「17」×2; 「4」×2; 「30」×2; 「5」×3"
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": true
+  },
+  "plan": {
+    "path": "reports/r5/wb_8e50be7c__v2_mt-975a4c91/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 37,
+    "chunk_calls": 0,
+    "source_assignment_count": 37,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 39,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 5.75,
+        "done_reason": "stop",
+        "eval_count": 607,
+        "raw_response": "{\n  \"deck_title\": \"立卡贴图台 开发方案 v2\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"立卡贴图台 开发方案 v2\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"0. 这版改了什么\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"comparison\",\n      \"title\": \"0.1 v1 问题与 v2 解法\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"1. 门（硬规则）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"single_column\",\n      \"title\": \"2. 总体架构\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"process\",\n      \"title\": \"3. 每一步\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"table\",\n      \"title\": \"4.11 模型分工\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"11.2 接入向导：开机前置\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"timeline\",\n      \"title\": \"P5 灰度放量（规模 S，按周推进）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"table\",\n      \"title\": \"6. 故障表\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"7. 验收清单\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"10. 待你拍板的默认值\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "立卡贴图台 开发方案 v2",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "0. 这版改了什么",
+        "assigned_fact_ids": [
+          "F007",
+          "F008",
+          "F009",
+          "F010",
+          "F011",
+          "F012",
+          "F013",
+          "F014"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "0.1 v1 问题与 v2 解法",
+        "assigned_fact_ids": [
+          "F015",
+          "F016",
+          "F017",
+          "F018",
+          "F019",
+          "F020",
+          "F021",
+          "F022",
+          "F023",
+          "F024",
+          "F025",
+          "F026",
+          "F027",
+          "F028",
+          "F029",
+          "F030",
+          "F031",
+          "F032",
+          "F033",
+          "F034",
+          "F035",
+          "F036",
+          "F037",
+          "F038",
+          "F039",
+          "F040",
+          "F041",
+          "F042",
+          "F043",
+          "F044",
+          "F045",
+          "F046",
+          "F047",
+          "F048",
+          "F049",
+          "F050",
+          "F051",
+          "F052",
+          "F053",
+          "F054",
+          "F055",
+          "F056",
+          "F057",
+          "F058",
+          "F059",
+          "F060",
+          "F061",
+          "F062",
+          "F063",
+          "F064",
+          "F065",
+          "F066",
+          "F067",
+          "F068",
+          "F069",
+          "F070",
+          "F071"
+        ],
+        "source_statement_count": 19,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "1. 门（硬规则）",
+        "assigned_fact_ids": [
+          "F072",
+          "F073",
+          "F074",
+          "F075",
+          "F076",
+          "F077",
+          "F078",
+          "F079",
+          "F080",
+          "F081",
+          "F082",
+          "F083",
+          "F084",
+          "F085",
+          "F086",
+          "F087",
+          "F088",
+          "F089"
+        ],
+        "source_statement_count": 18,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "2. 总体架构",
+        "assigned_fact_ids": [
+          "F090",
+          "F091",
+          "F092",
+          "F093",
+          "F094",
+          "F095",
+          "F096",
+          "F097",
+          "F098",
+          "F099"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "3. 每一步",
+        "assigned_fact_ids": [
+          "F100",
+          "F101",
+          "F102",
+          "F103",
+          "F104",
+          "F105",
+          "F106",
+          "F107",
+          "F108",
+          "F109",
+          "F110",
+          "F111",
+          "F112",
+          "F113",
+          "F114",
+          "F115",
+          "F116",
+          "F117",
+          "F118",
+          "F119",
+          "F120",
+          "F121",
+          "F122",
+          "F123",
+          "F124",
+          "F125",
+          "F126",
+          "F127",
+          "F128",
+          "F129",
+          "F130",
+          "F131",
+          "F132",
+          "F133",
+          "F134",
+          "F135",
+          "F136",
+          "F137"
+        ],
+        "source_statement_count": 23,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.1 打分 v2",
+        "assigned_fact_ids": [
+          "F138",
+          "F139",
+          "F140",
+          "F141",
+          "F142",
+          "F143",
+          "F144",
+          "F145",
+          "F146",
+          "F147",
+          "F148",
+          "F149",
+          "F150",
+          "F151",
+          "F152",
+          "F153",
+          "F154",
+          "F155",
+          "F156",
+          "F157"
+        ],
+        "source_statement_count": 9,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.2 事实卡与原文核对",
+        "assigned_fact_ids": [
+          "F158",
+          "F159",
+          "F160",
+          "F161",
+          "F162",
+          "F163",
+          "F164",
+          "F165",
+          "F166",
+          "F167",
+          "F168"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.3 文案 v2",
+        "assigned_fact_ids": [
+          "F169",
+          "F170",
+          "F171",
+          "F172",
+          "F173",
+          "F174",
+          "F175",
+          "F176",
+          "F177",
+          "F178",
+          "F179",
+          "F180"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.4 画面 v2",
+        "assigned_fact_ids": [
+          "F181",
+          "F182",
+          "F183",
+          "F184",
+          "F185",
+          "F186",
+          "F187",
+          "F188",
+          "F189",
+          "F190",
+          "F191",
+          "F192",
+          "F193",
+          "F194",
+          "F195",
+          "F196",
+          "F197",
+          "F198",
+          "F199",
+          "F200",
+          "F201",
+          "F202",
+          "F203"
+        ],
+        "source_statement_count": 14,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.5 通道选择",
+        "assigned_fact_ids": [
+          "F204",
+          "F205",
+          "F206",
+          "F207",
+          "F208",
+          "F209",
+          "F210",
+          "F211",
+          "F212",
+          "F213"
+        ],
+        "source_statement_count": 9,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.6 通道 B：后台会话",
+        "assigned_fact_ids": [
+          "F214",
+          "F215",
+          "F216",
+          "F217",
+          "F218",
+          "F219",
+          "F220",
+          "F221",
+          "F222",
+          "F223",
+          "F224",
+          "F225",
+          "F226",
+          "F227",
+          "F228",
+          "F229",
+          "F230"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.7 守卫 v2",
+        "assigned_fact_ids": [
+          "F231",
+          "F232",
+          "F233",
+          "F234",
+          "F235",
+          "F236",
+          "F237",
+          "F238",
+          "F239",
+          "F240",
+          "F241",
+          "F242"
+        ],
+        "source_statement_count": 11,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.8 读回核查",
+        "assigned_fact_ids": [
+          "F243",
+          "F244",
+          "F245",
+          "F246",
+          "F247",
+          "F248",
+          "F249",
+          "F250",
+          "F251",
+          "F252",
+          "F253"
+        ],
+        "source_statement_count": 7,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.9 账本与幂等",
+        "assigned_fact_ids": [
+          "F254",
+          "F255",
+          "F256",
+          "F257",
+          "F258",
+          "F259",
+          "F260",
+          "F261"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.10 通知与发表截止",
+        "assigned_fact_ids": [
+          "F262",
+          "F263",
+          "F264",
+          "F265",
+          "F266",
+          "F267",
+          "F268",
+          "F269"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.11 模型分工",
+        "assigned_fact_ids": [
+          "F270",
+          "F271",
+          "F272",
+          "F273",
+          "F274"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "4.12 配置项（新增与变化）",
+        "assigned_fact_ids": [
+          "F275",
+          "F276",
+          "F277",
+          "F278",
+          "F279",
+          "F280",
+          "F281",
+          "F282",
+          "F283",
+          "F284"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P0 修补契约（规模 S）",
+        "assigned_fact_ids": [
+          "F285",
+          "F286",
+          "F287",
+          "F288",
+          "F289",
+          "F290",
+          "F291",
+          "F292",
+          "F293",
+          "F294"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P0.5 信源接入（开机前置，规模 S）",
+        "assigned_fact_ids": [
+          "F295",
+          "F296",
+          "F297",
+          "F298",
+          "F299",
+          "F300",
+          "F301",
+          "F302",
+          "F303"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P1 影子内容线（规模 M）",
+        "assigned_fact_ids": [
+          "F304",
+          "F305",
+          "F306",
+          "F307",
+          "F308",
+          "F309",
+          "F310"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P2 通道可行性与接入（规模 M，可与 P1 并行）",
+        "assigned_fact_ids": [
+          "F311",
+          "F312",
+          "F313"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P3 画面线（规模 M）",
+        "assigned_fact_ids": [
+          "F314",
+          "F315",
+          "F316",
+          "F317"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P4 联调、通知、定时（规模 S）",
+        "assigned_fact_ids": [
+          "F318",
+          "F319"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P5 灰度放量（规模 S，按周推进）",
+        "assigned_fact_ids": [
+          "F320",
+          "F321",
+          "F322",
+          "F323",
+          "F324",
+          "F325",
+          "F326"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "P6 本地运维台（规模 S，可选）",
+        "assigned_fact_ids": [
+          "F327",
+          "F328"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "6. 故障表",
+        "assigned_fact_ids": [
+          "F329",
+          "F330",
+          "F331",
+          "F332",
+          "F333",
+          "F334",
+          "F335",
+          "F336",
+          "F337",
+          "F338",
+          "F339",
+          "F340",
+          "F341",
+          "F342",
+          "F343",
+          "F344",
+          "F345",
+          "F346"
+        ],
+        "source_statement_count": 17,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "7. 验收清单",
+        "assigned_fact_ids": [
+          "F347",
+          "F348",
+          "F349",
+          "F350",
+          "F351",
+          "F352",
+          "F353",
+          "F354",
+          "F355",
+          "F356",
+          "F357",
+          "F358",
+          "F359",
+          "F360"
+        ],
+        "source_statement_count": 10,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "8. 人的清单",
+        "assigned_fact_ids": [
+          "F361",
+          "F362",
+          "F363"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "9. 不在范围内",
+        "assigned_fact_ids": [
+          "F364",
+          "F365"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "10. 待你拍板的默认值",
+        "assigned_fact_ids": [
+          "F366",
+          "F367",
+          "F368",
+          "F369",
+          "F370",
+          "F371",
+          "F372",
+          "F373",
+          "F374",
+          "F375"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11. 信源接入：开机前置与使用说明",
+        "assigned_fact_ids": [
+          "F376",
+          "F377"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.1 你需要提供什么",
+        "assigned_fact_ids": [
+          "F378",
+          "F379",
+          "F380",
+          "F381",
+          "F382",
+          "F383",
+          "F384",
+          "F385",
+          "F386",
+          "F387",
+          "F388",
+          "F389",
+          "F390",
+          "F391",
+          "F392",
+          "F393",
+          "F394",
+          "F395",
+          "F396",
+          "F397",
+          "F398",
+          "F399"
+        ],
+        "source_statement_count": 16,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.2 接入向导：开机前置",
+        "assigned_fact_ids": [
+          "F400",
+          "F401",
+          "F402",
+          "F403",
+          "F404",
+          "F405",
+          "F406",
+          "F407",
+          "F408",
+          "F409",
+          "F410",
+          "F411",
+          "F412",
+          "F413",
+          "F414",
+          "F415",
+          "F416",
+          "F417",
+          "F418",
+          "F419",
+          "F420"
+        ],
+        "source_statement_count": 14,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.3 统一条目与体检标准",
+        "assigned_fact_ids": [
+          "F421",
+          "F422",
+          "F423",
+          "F424",
+          "F425",
+          "F426",
+          "F427",
+          "F428",
+          "F429",
+          "F430",
+          "F431",
+          "F432",
+          "F433",
+          "F434",
+          "F435",
+          "F436",
+          "F437"
+        ],
+        "source_statement_count": 8,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.4 安全与运行期监控",
+        "assigned_fact_ids": [
+          "F438",
+          "F439",
+          "F440",
+          "F441",
+          "F442",
+          "F443",
+          "F444",
+          "F445",
+          "F446",
+          "F447",
+          "F448",
+          "F449",
+          "F450",
+          "F451",
+          "F452"
+        ],
+        "source_statement_count": 14,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.5 目录、配置与验收",
+        "assigned_fact_ids": [
+          "F453",
+          "F454",
+          "F455",
+          "F456",
+          "F457",
+          "F458",
+          "F459",
+          "F460",
+          "F461",
+          "F462",
+          "F463",
+          "F464",
+          "F465",
+          "F466",
+          "F467",
+          "F468"
+        ],
+        "source_statement_count": 12,
+        "model_calls": 0
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 39,
+    "pages_after": 131,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 37,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 8
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 17,
+        "catalog_mid": 4,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 9
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 18,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 4
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "process",
+        "original_units": 11,
+        "catalog_mid": 5,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 6
+      },
+      {
+        "page_type": "process",
+        "original_units": 14,
+        "catalog_mid": 5,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 7
+      },
+      {
+        "page_type": "table",
+        "original_units": 17,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 3
+      },
+      {
+        "page_type": "summary_action",
+        "original_units": 10,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 14,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 8
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 11,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 5
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 15,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 15
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 14,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 4
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 10,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 10
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 131,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 131 超过冻结上限 20"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-25T11:30:26.713269+00:00"
+}

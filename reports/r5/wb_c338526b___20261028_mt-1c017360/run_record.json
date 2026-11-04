@@ -1,0 +1,476 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-11-01T03:41:53.093797+00:00",
+  "material": "workbench_uploads/c338526b___20261028.docx",
+  "material_sha256": "88c5b49883da6ccad48153509c361d4757b542a3179db80992d85123e0862049",
+  "target_pages": 10,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "88c5b49883da6ccad48153509c361d4757b542a3179db80992d85123e0862049",
+    "pages": 13,
+    "units": 32,
+    "tables": 10,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 10 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_c338526b___20261028_mt-1c017360/fact_ledger.json",
+    "count": 29,
+    "selected": 29,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 29,
+    "selected": 29,
+    "omitted": 0,
+    "subjects_total": 8,
+    "subjects_selected": 8,
+    "estimated_pages_unbudgeted": 15
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_c338526b___20261028_mt-1c017360/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 13,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 42.77,
+        "done_reason": "stop",
+        "eval_count": 457,
+        "raw_response": "```json\n{\n  \"deck_title\": \"项目状态简报 2026-10-28\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"项目状态简报 2026-10-28\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"总体判断\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"已有完成项与本地回归证据\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"测试口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"真实闭环的零计数\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"comparison\",\n      \"title\": \"功能完整性审核\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"恢复与保护建议\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"summary_action\",\n      \"title\": \"结论与行动\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"本报告依据\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "PROJECT STATUS BRIEF · 2026-10-28",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "总体判断",
+        "assigned_fact_ids": [
+          "F006",
+          "F007",
+          "F008",
+          "F009"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "已有完成项与本地回归证据",
+        "assigned_fact_ids": [
+          "F010",
+          "F011",
+          "F012",
+          "F013"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "测试口径",
+        "assigned_fact_ids": [
+          "F014",
+          "F015",
+          "F016",
+          "F017",
+          "F018"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "真实闭环的零计数",
+        "assigned_fact_ids": [
+          "F019"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "功能完整性审核",
+        "assigned_fact_ids": [
+          "F020",
+          "F021"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "恢复与保护建议",
+        "assigned_fact_ids": [
+          "F022",
+          "F023",
+          "F024",
+          "F025",
+          "F026",
+          "F027"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "本报告依据",
+        "assigned_fact_ids": [
+          "F028",
+          "F029"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 13
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "process",
+        "original_units": 5,
+        "catalog_mid": 5,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_c338526b___20261028_mt-1c017360/c338526b___20261028.generated.pptx",
+    "sha256": "eb6676d56970f190ccf8e5d20c54cc104923bb1e1eca1d69690d418c3c6ed015",
+    "slides": 13,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "真实闭环的零计数",
+      "chart_part_hint": "slide 8",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [],
+      "unplotted_statements_same_page_table": [],
+      "points": [
+        {
+          "category": "03 / FUNCTIONAL COMPLE…",
+          "display_category": "03 / FUNCTIONAL COMPLE…",
+          "value": 3.0,
+          "unit": "unknown",
+          "fact_id": "F019"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 5,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 3,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 3,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 2,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 4,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 1,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 2,
+      "density": "low",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 3,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 2,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "catalog_key": "summary_action",
+      "units": 3,
+      "density": "mid",
+      "layout": "actions_split_two_pages",
+      "fallback_chain": [
+        "summary_plus_actions",
+        "actions_only_with_note",
+        "actions_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-11-01T03:42:35.945094+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

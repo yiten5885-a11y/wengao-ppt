@@ -1,0 +1,3980 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-24T13:30:18.857530+00:00",
+  "frozen_before_model_call": true,
+  "count": 198,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "-10",
+      "value": "-10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "-24",
+      "value": "-24",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 1,
+        "line_end": 6,
+        "heading": "稳稿 PPT · 开发补充包（给 Codex）",
+        "locator": "line 1-6 / 稳稿 PPT · 开发补充包（给 Codex）",
+        "unit_id": "b1_p0",
+        "sentence": "**请先完整读完本文件再动手**，不要只看文件名猜测。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "2.",
+      "value": "2.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "2. 本文件列的是**拼接之后仍然存在的缺口**——有真正要写代码修的 bug，也有不是代码问题、你修不了、必须用户先给凭证/模型的配置缺口，两类已经分开标注，**不要把第二类当成代码任务去\"硬修\"**。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "3.",
+      "value": "3.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "3. 任何改动前后都必须跑一次 `bash scripts/check_all.sh`，现在的及格线是 **478 passed, 313 subtests passed, 0 failed**。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "478",
+      "value": "478",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "3. 任何改动前后都必须跑一次 `bash scripts/check_all.sh`，现在的及格线是 **478 passed, 313 subtests passed, 0 failed**。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "313",
+      "value": "313",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "3. 任何改动前后都必须跑一次 `bash scripts/check_all.sh`，现在的及格线是 **478 passed, 313 subtests passed, 0 failed**。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "3. 任何改动前后都必须跑一次 `bash scripts/check_all.sh`，现在的及格线是 **478 passed, 313 subtests passed, 0 failed**。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "0. 三句话说清楚现状",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 7,
+        "line_end": 14,
+        "heading": "0. 三句话说清楚现状",
+        "locator": "line 7-14 / 0. 三句话说清楚现状",
+        "unit_id": "b2_p2",
+        "sentence": "低于这个数就是你引入了回归，禁止用\"缩小测试范围\"的方式让它看起来变绿。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-10",
+      "value": "-10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-12",
+      "value": "-12",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-00",
+      "value": "-00",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-54",
+      "value": "-54",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-41",
+      "value": "-41",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "13",
+      "value": "13",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-10",
+      "value": "-10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-24",
+      "value": "-24",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "52",
+      "value": "52",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "13",
+      "value": "13",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-0",
+      "value": "-0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "0.1",
+      "value": "0.1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "630",
+      "value": "630",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-0",
+      "value": "-0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-9",
+      "value": "-9",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2375",
+      "value": "2375",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2375",
+      "value": "2375",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "478",
+      "value": "478",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "313",
+      "value": "313",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "-20261023",
+      "value": "-20261023",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```**不要重新 git init、不要换目录、不要从桌面的旧交付包/快照（`稳稿PPT-开发包/`、`稳稿PPT-场景配图交付-20261023/`、`v16验收` 等）里复制文件回灌**——那些都是候选目录在不同时间点的旧快照或子集，候选目录现在的版本更新、更全，以候选目录为准，冲突时旧包作废。"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "raw_value_text": "16",
+      "value": "16",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 15,
+        "line_end": 35,
+        "heading": "1. 代码在哪、现在是什么状态",
+        "locator": "line 15-35 / 1. 代码在哪、现在是什么状态",
+        "unit_id": "b3_p6",
+        "sentence": "```**不要重新 git init、不要换目录、不要从桌面的旧交付包/快照（`稳稿PPT-开发包/`、`稳稿PPT-场景配图交付-20261023/`、`v16验收` 等）里复制文件回灌**——那些都是候选目录在不同时间点的旧快照或子集，候选目录现在的版本更新、更全，以候选目录为准，冲突时旧包作废。"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "来源：候选目录根下的 `OWNERS.yaml`（rs-contracts-v1）。"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F053",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F054",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F055",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F056",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F057",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "01",
+      "value": "01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F059",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      }
+    },
+    {
+      "fact_id": "F060",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 36,
+        "line_end": 51,
+        "heading": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "locator": "line 36-51 / 2. 文件归属（继续沿用，改动前看一眼，别越界）",
+        "unit_id": "b4_p19",
+        "sentence": "改之前跑 `python scripts/ownership_guard.py --base <上一次提交> --head HEAD` 自检。"
+      }
+    },
+    {
+      "fact_id": "F061",
+      "subject": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+      "raw_value_text": "8821",
+      "value": "8821",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 52,
+        "line_end": 64,
+        "heading": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+        "locator": "line 52-64 / 3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+        "unit_id": "b5_p29",
+        "sentence": "- 不碰 8821 端口- 不调用 Claude 或任何付费模型- 不下载未经用户批准的大模型/大权重文件- 不放宽任何既有门禁判定（宁可报 FAILED / NOT_EVALUABLE，不准悄悄调松阈值让它变绿）- 不允许\"缩小测试范围 / 跳过失败用例\"来抬高通过率的假象- 密钥（Pexels 等）只走环境变量读取，绝不写入代码或落盘- 回放材料（synthetic/replay）与真实材料（"
+      }
+    },
+    {
+      "fact_id": "F062",
+      "subject": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+      "raw_value_text": "-615.",
+      "value": "-615.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 52,
+        "line_end": 64,
+        "heading": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+        "locator": "line 52-64 / 3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+        "unit_id": "b5_p29",
+        "sentence": "- 不碰 8821 端口- 不调用 Claude 或任何付费模型- 不下载未经用户批准的大模型/大权重文件- 不放宽任何既有门禁判定（宁可报 FAILED / NOT_EVALUABLE，不准悄悄调松阈值让它变绿）- 不允许\"缩小测试范围 / 跳过失败用例\"来抬高通过率的假象- 密钥（Pexels 等）只走环境变量读取，绝不写入代码或落盘- 回放材料（synthetic/replay）与真实材料（"
+      }
+    },
+    {
+      "fact_id": "F063",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **冻结契约 C6** 规定：`resolve_scenes(...) -> list[SceneResolution]`，`compose_deck` 应该直接接收这个 list。"
+      }
+    },
+    {
+      "fact_id": "F064",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "122",
+      "value": "122",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **现状**（已核实，见该文件 122–127 行）：签名仍是 `resolutions: dict | None`，内部按 `{scene_id: SceneResolution}` 的字典形状消费；如果真传 list 进去会 `AttributeError: 'list' object has no attribute 'get'`。"
+      }
+    },
+    {
+      "fact_id": "F065",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "127",
+      "value": "127",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **现状**（已核实，见该文件 122–127 行）：签名仍是 `resolutions: dict | None`，内部按 `{scene_id: SceneResolution}` 的字典形状消费；如果真传 list 进去会 `AttributeError: 'list' object has no attribute 'get'`。"
+      }
+    },
+    {
+      "fact_id": "F066",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **要做什么**：把 `compose_deck` 改成直接接受 `list[SceneResolution]`（内部自己按 `scene_id` 建索引），和 W1 的 `resolve_scenes` 输出直连，不再需要适配层。"
+      }
+    },
+    {
+      "fact_id": "F067",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "-01",
+      "value": "-01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "改完后同步通知（更新 `reports/handoff/CR-01_interface_alignment.md` 里的状态）。"
+      }
+    },
+    {
+      "fact_id": "F068",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **验证**：`tests/test_w2_planner_builders.py` 以及管线 `tests/pipeline/test_edit_beautify.py` 要在不经过适配层的情况下仍然通过。"
+      }
+    },
+    {
+      "fact_id": "F069",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "-01",
+      "value": "-01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第一条。"
+      }
+    },
+    {
+      "fact_id": "F070",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 67,
+        "line_end": 75,
+        "heading": "P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "locator": "line 67-75 / P0-1　`wengao_ppt/layout/compose.py::compose_deck` 的 `resolutions` 参数形状不符契约（W2 范围）",
+        "unit_id": "b7_p38",
+        "sentence": "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::_adapt_compose_deck` 做了临时双向适配（list↔dict），管线能跑，但这是个临时胶水层，不是修复。"
+      }
+    },
+    {
+      "fact_id": "F071",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "46.8%",
+      "value": "46.8",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **现象**：对含特定文本块（已知复现：一个 \"46.8%\" 这类大数字 + 若干要点的组合）调用 `wengao_ppt.layout.checks.check_layout`，线程卡死在 `wrap_lines` 的换行循环里不返回。"
+      }
+    },
+    {
+      "fact_id": "F072",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "120",
+      "value": "120",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::run_check` 加了看门狗（layout 120s 超时、其余 60–90s），超时记 FAILED 并保留现场，**不是修复，只是不让它拖死整个管线**。"
+      }
+    },
+    {
+      "fact_id": "F073",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "60",
+      "value": "60",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::run_check` 加了看门狗（layout 120s 超时、其余 60–90s），超时记 FAILED 并保留现场，**不是修复，只是不让它拖死整个管线**。"
+      }
+    },
+    {
+      "fact_id": "F074",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "90",
+      "value": "90",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::run_check` 加了看门狗（layout 120s 超时、其余 60–90s），超时记 FAILED 并保留现场，**不是修复，只是不让它拖死整个管线**。"
+      }
+    },
+    {
+      "fact_id": "F075",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "-01",
+      "value": "-01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第二条（BUG-W2-01）。"
+      }
+    },
+    {
+      "fact_id": "F076",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第二条（BUG-W2-01）。"
+      }
+    },
+    {
+      "fact_id": "F077",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "-01",
+      "value": "-01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第二条（BUG-W2-01）。"
+      }
+    },
+    {
+      "fact_id": "F078",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **要做什么**：定位 `wrap_lines`（`wengao_ppt/layout/measure.py`，数字+单位 token 保护逻辑那一段）里导致 `cur_w`/游标 `i`/`j` 不前进的边界条件，修掉真正的死循环，而不是只加超时。"
+      }
+    },
+    {
+      "fact_id": "F079",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "建议：给 token 推进加\"最小前进量\"断言或上限迭代次数作为双重保险，但**前提是先找到并修掉根因**，不能只靠加保险当作修复交差。"
+      }
+    },
+    {
+      "fact_id": "F080",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 76,
+        "line_end": 85,
+        "heading": "P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "locator": "line 76-85 / P0-2　`wengao_ppt/layout/measure.py::wrap_lines` 在特定文本下死循环（W2 范围）",
+        "unit_id": "b8_p44",
+        "sentence": "- **验证**：补一个曾经卡死的具体文本块作回归测试用例，跑 `check_layout` 要能在合理时间内正常返回结果（不是超时 FAILED）。"
+      }
+    },
+    {
+      "fact_id": "F081",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- W2 当时说\"回放材料没有 bundle，没法端到端验证\"，**但现在 W3 已经把 4 份标准 fixture 交到了** `fixtures/research/bundle_sample_zh.json` / `bundle_sample_en.json` / `bundle_sample_empty.json` / `bundle_sample_conflict.json`（已确认文件都"
+      }
+    },
+    {
+      "fact_id": "F082",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- W2 当时说\"回放材料没有 bundle，没法端到端验证\"，**但现在 W3 已经把 4 份标准 fixture 交到了** `fixtures/research/bundle_sample_zh.json` / `bundle_sample_en.json` / `bundle_sample_empty.json` / `bundle_sample_conflict.json`（已确认文件都"
+      }
+    },
+    {
+      "fact_id": "F083",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- W2 当时说\"回放材料没有 bundle，没法端到端验证\"，**但现在 W3 已经把 4 份标准 fixture 交到了** `fixtures/research/bundle_sample_zh.json` / `bundle_sample_en.json` / `bundle_sample_empty.json` / `bundle_sample_conflict.json`（已确认文件都"
+      }
+    },
+    {
+      "fact_id": "F084",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- **要做什么**：拿这 4 份 fixture 跑一遍 `plan_deck` → `compose_deck`，产出一组真实渲染样张，验证\"对比/趋势/洞察页插在提到该指标的页面之后\"这条规则，以及 `conflicts` 字段触发时\"两组数据并列 + 标待确认\"的渲染效果（`bundle_sample_conflict.json` 专门测这个）。"
+      }
+    },
+    {
+      "fact_id": "F085",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- **验证**：新增渲染样张放进 `reports/rs-w2/`，补一条 §2 验收证据。"
+      }
+    },
+    {
+      "fact_id": "F086",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 88,
+        "line_end": 93,
+        "heading": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "locator": "line 88-93 / P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚定，还没有真实样张验证（W2 范围，现在已经不缺依赖了）",
+        "unit_id": "b10_p50",
+        "sentence": "- **验证**：新增渲染样张放进 `reports/rs-w2/`，补一条 §2 验收证据。"
+      }
+    },
+    {
+      "fact_id": "F087",
+      "subject": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 94,
+        "line_end": 98,
+        "heading": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结果完全相同（W2 范围）",
+        "locator": "line 94-98 / P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结果完全相同（W2 范围）",
+        "unit_id": "b11_p53",
+        "sentence": "- 代码路径 `_table_note` 存在，但 W2 自己交的样张没有给带注释的输入数据，所以两个变体看起来一样。"
+      }
+    },
+    {
+      "fact_id": "F088",
+      "subject": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 94,
+        "line_end": 98,
+        "heading": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结果完全相同（W2 范围）",
+        "locator": "line 94-98 / P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结果完全相同（W2 范围）",
+        "unit_id": "b11_p53",
+        "sentence": "- **要做什么**：用一份带 note 内容的输入重新渲染一次 `table·b`，补进 `reports/rs-w2/page_types/`，证明两个变体真的有视觉差异。"
+      }
+    },
+    {
+      "fact_id": "F089",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 99,
+        "line_end": 103,
+        "heading": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "locator": "line 99-103 / P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "unit_id": "b12_p55",
+        "sentence": "- 任务书 §4-C 列了三种图片页变体：整幅 / 左右分栏 / 全出血带蒙版，现在只有前两种。"
+      }
+    },
+    {
+      "fact_id": "F090",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 99,
+        "line_end": 103,
+        "heading": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "locator": "line 99-103 / P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "unit_id": "b12_p55",
+        "sentence": "由谁提供蒙版资产），这部分建议 W1（`wengao_ppt/media/`）配合出一份蒙版资产规范，W2 再接版式。"
+      }
+    },
+    {
+      "fact_id": "F091",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 99,
+        "line_end": 103,
+        "heading": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "locator": "line 99-103 / P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "unit_id": "b12_p55",
+        "sentence": "由谁提供蒙版资产），这部分建议 W1（`wengao_ppt/media/`）配合出一份蒙版资产规范，W2 再接版式。"
+      }
+    },
+    {
+      "fact_id": "F092",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 99,
+        "line_end": 103,
+        "heading": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "locator": "line 99-103 / P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "unit_id": "b12_p55",
+        "sentence": "- **要做什么**：需要先定好\"蒙版素材\"的约定（渐变黑场蒙版图，还是纯色透明度叠加？"
+      }
+    },
+    {
+      "fact_id": "F093",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 99,
+        "line_end": 103,
+        "heading": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "locator": "line 99-103 / P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+        "unit_id": "b12_p55",
+        "sentence": "两边都要改，别只改一边就交差。"
+      }
+    },
+    {
+      "fact_id": "F094",
+      "subject": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode ",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 104,
+        "line_end": 108,
+        "heading": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode MS`（非 OFL 字体进了 PDF）（W1+W2 配合）",
+        "locator": "line 104-108 / P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode MS`（非 OFL 字体进了 PDF）（W1+W2 配合）",
+        "unit_id": "b13_p57",
+        "sentence": "- 栈设计本身没错（末位兜底是故意的），但现在没有任何机制提醒\"这次真的触发了兜底\"。"
+      }
+    },
+    {
+      "fact_id": "F095",
+      "subject": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode ",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 104,
+        "line_end": 108,
+        "heading": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode MS`（非 OFL 字体进了 PDF）（W1+W2 配合）",
+        "locator": "line 104-108 / P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode MS`（非 OFL 字体进了 PDF）（W1+W2 配合）",
+        "unit_id": "b13_p57",
+        "sentence": "- **要做什么**：在 `wengao_ppt/glyphcheck.py` 里加一条检测——如果某个 run 实际渲染用的字体落到了栈末位（而不是 Noto 系），记一条 WARN（不是 FAILED，因为兜底本身是设计内行为），方便后续排查哪个字符缺字。"
+      }
+    },
+    {
+      "fact_id": "F096",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "raw_value_text": "0.55",
+      "value": "0.55",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 109,
+        "line_end": 114,
+        "heading": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "locator": "line 109-114 / P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "unit_id": "b14_p59",
+        "sentence": "- 现状：色数+语义多因子打分，阈值 0.55，标定集 32 张，已经能跑。"
+      }
+    },
+    {
+      "fact_id": "F097",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "raw_value_text": "32",
+      "value": "32",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 109,
+        "line_end": 114,
+        "heading": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "locator": "line 109-114 / P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "unit_id": "b14_p59",
+        "sentence": "- 现状：色数+语义多因子打分，阈值 0.55，标定集 32 张，已经能跑。"
+      }
+    },
+    {
+      "fact_id": "F098",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "raw_value_text": "3.8",
+      "value": "3.8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 109,
+        "line_end": 114,
+        "heading": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "locator": "line 109-114 / P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "unit_id": "b14_p59",
+        "sentence": "- 如果要升级精度：本机 Ollama 已经有 `qwen3.8:27b`（带 vision 能力，已验证本机可达），或者下载专用轻量 SigLIP 模型。"
+      }
+    },
+    {
+      "fact_id": "F099",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "raw_value_text": "27",
+      "value": "27",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 109,
+        "line_end": 114,
+        "heading": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "locator": "line 109-114 / P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "unit_id": "b14_p59",
+        "sentence": "- 如果要升级精度：本机 Ollama 已经有 `qwen3.8:27b`（带 vision 能力，已验证本机可达），或者下载专用轻量 SigLIP 模型。"
+      }
+    },
+    {
+      "fact_id": "F100",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "raw_value_text": "7",
+      "value": "7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 109,
+        "line_end": 114,
+        "heading": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "locator": "line 109-114 / P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**需要用户先决定要不要升级**）",
+        "unit_id": "b14_p59",
+        "sentence": "- **这不是必须修的 bug，是一个\"要不要做\"的产品决策**——默认维持现状（本地启发式打分），除非用户明确说要升级，升级前按 §7 的硬约束，模型下载要先报体积与许可。"
+      }
+    },
+    {
+      "fact_id": "F101",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。"
+      }
+    },
+    {
+      "fact_id": "F102",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。"
+      }
+    },
+    {
+      "fact_id": "F103",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "19",
+      "value": "19",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。"
+      }
+    },
+    {
+      "fact_id": "F104",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。"
+      }
+    },
+    {
+      "fact_id": "F105",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。"
+      }
+    },
+    {
+      "fact_id": "F106",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- **要做什么**：把这 3 项从旧界面搬到新界面（`workbench/ui/`），搬完更新 feature-mapping.md。"
+      }
+    },
+    {
+      "fact_id": "F107",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 115,
+        "line_end": 122,
+        "heading": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "locator": "line 115-122 / P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+        "unit_id": "b15_p62",
+        "sentence": "- 主题选择器 UI、取消/重试按钮、对象级编辑面板——目前都靠旧界面兜底，没有迁移到新界面里。"
+      }
+    },
+    {
+      "fact_id": "F108",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F109",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F110",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F111",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F112",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F113",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 123,
+        "line_end": 131,
+        "heading": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "locator": "line 123-131 / 6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文件，发现了就如实报告缺什么，别装作已经解决**）",
+        "unit_id": "b16_p66",
+        "sentence": "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      }
+    },
+    {
+      "fact_id": "F114",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "W4 的交付报告（`reports/rs-w4/rs1-baseline/REPORT.md`、`FINAL.md`）里说 RS-1 本机基线重跑被阻塞，理由是\"交付机（MacBook Pro）没有 LibreOffice，Mac mini 的 Ollama 跨网不可达\"——**这个理由是在另一台机器上写的，不适用于你现在实际干活的这台机器**。"
+      }
+    },
+    {
+      "fact_id": "F115",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "W4 的交付报告（`reports/rs-w4/rs1-baseline/REPORT.md`、`FINAL.md`）里说 RS-1 本机基线重跑被阻塞，理由是\"交付机（MacBook Pro）没有 LibreOffice，Mac mini 的 Ollama 跨网不可达\"——**这个理由是在另一台机器上写的，不适用于你现在实际干活的这台机器**。"
+      }
+    },
+    {
+      "fact_id": "F116",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "W4 的交付报告（`reports/rs-w4/rs1-baseline/REPORT.md`、`FINAL.md`）里说 RS-1 本机基线重跑被阻塞，理由是\"交付机（MacBook Pro）没有 LibreOffice，Mac mini 的 Ollama 跨网不可达\"——**这个理由是在另一台机器上写的，不适用于你现在实际干活的这台机器**。"
+      }
+    },
+    {
+      "fact_id": "F117",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-1",
+      "value": "-1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "W4 的交付报告（`reports/rs-w4/rs1-baseline/REPORT.md`、`FINAL.md`）里说 RS-1 本机基线重跑被阻塞，理由是\"交付机（MacBook Pro）没有 LibreOffice，Mac mini 的 Ollama 跨网不可达\"——**这个理由是在另一台机器上写的，不适用于你现在实际干活的这台机器**。"
+      }
+    },
+    {
+      "fact_id": "F118",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-615.",
+      "value": "-615.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F119",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "127.0",
+      "value": "127.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F120",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "0.1",
+      "value": "0.1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F121",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "11434",
+      "value": "11434",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F122",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "0.40",
+      "value": "0.40",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F123",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F124",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F125",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-1",
+      "value": "-1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      }
+    },
+    {
+      "fact_id": "F126",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F127",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-10",
+      "value": "-10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F128",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-12",
+      "value": "-12",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F129",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-00",
+      "value": "-00",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F130",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-54",
+      "value": "-54",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F131",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "-41",
+      "value": "-41",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F132",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "13",
+      "value": "13",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F133",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F134",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F135",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "raw_value_text": "13",
+      "value": "13",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 132,
+        "line_end": 149,
+        "heading": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "locator": "line 132-149 / 7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+        "unit_id": "b17_p71",
+        "sentence": "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      }
+    },
+    {
+      "fact_id": "F136",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F137",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F138",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F139",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F140",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F141",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F142",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F143",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "24",
+      "value": "24",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F144",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 150,
+        "line_end": 161,
+        "heading": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "locator": "line 150-161 / 8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+        "unit_id": "b18_p81",
+        "sentence": "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_"
+      }
+    },
+    {
+      "fact_id": "F145",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "| # | 事项 | 现状 / 默认值 ||---|---|---|| 1 | RS-6 多语言分级（26 语言全跑 vs 抽样） | 默认维持现状：中英完整链路 + 6 种文字抽样（中/日/英/俄/阿拉伯 RTL/印地语排版样张 + 中文/英文/一句话三类真实检索验收）。"
+      }
+    },
+    {
+      "fact_id": "F146",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "-6",
+      "value": "-6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "| # | 事项 | 现状 / 默认值 ||---|---|---|| 1 | RS-6 多语言分级（26 语言全跑 vs 抽样） | 默认维持现状：中英完整链路 + 6 种文字抽样（中/日/英/俄/阿拉伯 RTL/印地语排版样张 + 中文/英文/一句话三类真实检索验收）。"
+      }
+    },
+    {
+      "fact_id": "F147",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "26",
+      "value": "26",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "| # | 事项 | 现状 / 默认值 ||---|---|---|| 1 | RS-6 多语言分级（26 语言全跑 vs 抽样） | 默认维持现状：中英完整链路 + 6 种文字抽样（中/日/英/俄/阿拉伯 RTL/印地语排版样张 + 中文/英文/一句话三类真实检索验收）。"
+      }
+    },
+    {
+      "fact_id": "F148",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "| # | 事项 | 现状 / 默认值 ||---|---|---|| 1 | RS-6 多语言分级（26 语言全跑 vs 抽样） | 默认维持现状：中英完整链路 + 6 种文字抽样（中/日/英/俄/阿拉伯 RTL/印地语排版样张 + 中文/英文/一句话三类真实检索验收）。"
+      }
+    },
+    {
+      "fact_id": "F149",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "26",
+      "value": "26",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "不要自己扩展到全 26 语言，除非用户要求。"
+      }
+    },
+    {
+      "fact_id": "F150",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F151",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "-7",
+      "value": "-7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F152",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F153",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "5",
+      "value": "5",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F154",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "20",
+      "value": "20",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F155",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F156",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "7",
+      "value": "7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。"
+      }
+    },
+    {
+      "fact_id": "F157",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 3 | RS-8 五十套开源前门禁 | 预置补丁已写好（`scripts/rs8_extend_identity_contract.py`），同样是\"到条件才触发\"，不要自己提前执行。"
+      }
+    },
+    {
+      "fact_id": "F158",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "-8",
+      "value": "-8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 3 | RS-8 五十套开源前门禁 | 预置补丁已写好（`scripts/rs8_extend_identity_contract.py`），同样是\"到条件才触发\"，不要自己提前执行。"
+      }
+    },
+    {
+      "fact_id": "F159",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 3 | RS-8 五十套开源前门禁 | 预置补丁已写好（`scripts/rs8_extend_identity_contract.py`），同样是\"到条件才触发\"，不要自己提前执行。"
+      }
+    },
+    {
+      "fact_id": "F160",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 4 | 资源锁默认排队上限 900s | 这个数字还没有在真实并发场景（Qwen + ComfyUI + 视觉模型同时跑）下实测过，如果要调整，先在本机做一次真实并发压测再改默认值，不要凭感觉改。"
+      }
+    },
+    {
+      "fact_id": "F161",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "raw_value_text": "900",
+      "value": "900",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 162,
+        "line_end": 172,
+        "heading": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "locator": "line 162-172 / 9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除非用户另有话说）",
+        "unit_id": "b19_p87",
+        "sentence": "|| 4 | 资源锁默认排队上限 900s | 这个数字还没有在真实并发场景（Qwen + ComfyUI + 视觉模型同时跑）下实测过，如果要调整，先在本机做一次真实并发压测再改默认值，不要凭感觉改。"
+      }
+    },
+    {
+      "fact_id": "F162",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "2026",
+      "value": "2026",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F163",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "-10",
+      "value": "-10",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F164",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "-12",
+      "value": "-12",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F165",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "-00",
+      "value": "-00",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F166",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "-54",
+      "value": "-54",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F167",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "-41",
+      "value": "-41",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F168",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "13",
+      "value": "13",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F169",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "0",
+      "value": "0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      }
+    },
+    {
+      "fact_id": "F170",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "478",
+      "value": "478",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "- 测试数只能比 478 passed 多，不能变少；新加的功能要配新测试，不是口头说\"做完了\"。"
+      }
+    },
+    {
+      "fact_id": "F171",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 173,
+        "line_end": 185,
+        "heading": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "locator": "line 173-185 / 10. 每次改动后必须做的事（硬性流程，不是可选项）",
+        "unit_id": "b20_p94",
+        "sentence": "- 改动涉及 `OWNERS.yaml` 列出的独占路径时，先确认没越界（见 §2），越界就是在改别的窗口的文件，先别改，走变更请求单（写进 `reports/handoff/`）。"
+      }
+    },
+    {
+      "fact_id": "F172",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F173",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F174",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F175",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F176",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F177",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F178",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F179",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F180",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F181",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "16",
+      "value": "16",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F182",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F183",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F184",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F185",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "-1",
+      "value": "-1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F186",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F187",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "7",
+      "value": "7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F188",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "-01",
+      "value": "-01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F189",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F190",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F191",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "00",
+      "value": "00",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F192",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "01",
+      "value": "01",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F193",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "20261024.",
+      "value": "20261024.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F194",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F195",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F196",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F197",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "-20261024",
+      "value": "-20261024",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    },
+    {
+      "fact_id": "F198",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "raw_value_text": "4",
+      "value": "4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/9b1efd7e_00__Codex__.md",
+        "line_start": 186,
+        "line_end": 207,
+        "heading": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "locator": "line 186-207 / 11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+        "unit_id": "b21_p102",
+        "sentence": "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI"
+      }
+    }
+  ]
+}

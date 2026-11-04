@@ -1,0 +1,2346 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-11-02T02:11:24.369614+00:00",
+  "frozen_before_model_call": true,
+  "count": 58,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "2024",
+      "value": "2024",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "12.8 亿元",
+      "value": "12.8",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "38%",
+      "value": "38",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "8.6 亿元",
+      "value": "8.6",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "其中订阅收入 8.6 亿元，占总收入的 67%。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "67%",
+      "value": "67",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "其中订阅收入 8.6 亿元，占总收入的 67%。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "1240 家",
+      "value": "1240",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "专业版客户数达到 1240 家，较上年增加 310 家。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "310 家",
+      "value": "310",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "专业版客户数达到 1240 家，较上年增加 310 家。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "1870 家",
+      "value": "1870",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "年度新增签约客户 1870 家，客户续约率为 91%。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "91%",
+      "value": "91",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "年度新增签约客户 1870 家，客户续约率为 91%。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "63.5%",
+      "value": "63.5",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "4.2 个百分点",
+      "value": "4.2",
+      "unit_class": "个百分点",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "42 亿",
+      "value": "42",
+      "unit_class": "亿",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p5",
+        "sentence": "实时数据管道上线，日均处理消息量达到 42 亿条。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p5",
+        "sentence": "年内完成三大能力建设。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "86%",
+      "value": "86",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "45 分钟",
+      "value": "45",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "8 分钟",
+      "value": "8",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p7",
+        "sentence": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "34",
+      "value": "34",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p7",
+        "sentence": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "三、客户与生态",
+      "raw_value_text": "58 家",
+      "value": "58",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "三、客户与生态",
+      "raw_value_text": "2.3 亿元",
+      "value": "2.3",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "三、客户与生态",
+      "raw_value_text": "18%",
+      "value": "18",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "三、客户与生态",
+      "raw_value_text": "27 万",
+      "value": "27",
+      "unit_class": "万",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p9",
+        "sentence": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "三、客户与生态",
+      "raw_value_text": "5400",
+      "value": "5400",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p9",
+        "sentence": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "三、客户与生态",
+      "raw_value_text": "9.4",
+      "value": "9.4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p10",
+        "sentence": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "三、客户与生态",
+      "raw_value_text": "1.6",
+      "value": "1.6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p10",
+        "sentence": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "四、成本与效率",
+      "raw_value_text": "3.1 亿元",
+      "value": "3.1",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "基础设施成本 3.1 亿元，占总收入的 24%。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "四、成本与效率",
+      "raw_value_text": "24%",
+      "value": "24",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "基础设施成本 3.1 亿元，占总收入的 24%。"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "四、成本与效率",
+      "raw_value_text": "0.021 元",
+      "value": "0.021",
+      "unit_class": "元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "单位请求成本从 0.021 元下降到 0.013 元。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "四、成本与效率",
+      "raw_value_text": "0.013 元",
+      "value": "0.013",
+      "unit_class": "元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "单位请求成本从 0.021 元下降到 0.013 元。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "四、成本与效率",
+      "raw_value_text": "860 人",
+      "value": "860",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "研发人员规模为 860 人，人均研发投入为 46 万元。"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "四、成本与效率",
+      "raw_value_text": "46 万元",
+      "value": "46",
+      "unit_class": "万元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "研发人员规模为 860 人，人均研发投入为 46 万元。"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "四、成本与效率",
+      "raw_value_text": "78%",
+      "value": "78",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "运维自动化覆盖 78% 的常规巡检任务。"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "99.95%",
+      "value": "99.95",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标。"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "99.9%",
+      "value": "99.9",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "4 次",
+      "value": "4",
+      "unit_class": "次",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "P1 级故障发生 4 次，平均恢复时间为 26 分钟。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "26 分钟",
+      "value": "26",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "P1 级故障发生 4 次，平均恢复时间为 26 分钟。"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "8600",
+      "value": "8600",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "客户工单总量 8600 件，平均首次响应时间为 18 分钟。"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "18 分钟",
+      "value": "18",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "客户工单总量 8600 件，平均首次响应时间为 18 分钟。"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "7",
+      "value": "7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p15",
+        "sentence": "安全合规方面通过了 7 项行业认证审查。"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "六、问题与改进",
+      "raw_value_text": "3 分钟",
+      "value": "3",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p16",
+        "sentence": "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "六、问题与改进",
+      "raw_value_text": "22",
+      "value": "22",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p17",
+        "sentence": "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口。"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "六、问题与改进",
+      "raw_value_text": "74%",
+      "value": "74",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p18",
+        "sentence": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标。"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "六、问题与改进",
+      "raw_value_text": "85%",
+      "value": "85",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p18",
+        "sentence": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标。"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "七、下年度计划",
+      "raw_value_text": "2025",
+      "value": "2025",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "七、下年度计划",
+      "raw_value_text": "18 亿元",
+      "value": "18",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "七、下年度计划",
+      "raw_value_text": "40%",
+      "value": "40",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "七、下年度计划",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "计划新增区域 2 个可用区。"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "七、下年度计划",
+      "raw_value_text": "30",
+      "value": "30",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p20",
+        "sentence": "计划将跨区域同步延迟压缩到 30 秒以内。"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "七、下年度计划",
+      "raw_value_text": "22",
+      "value": "22",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p20",
+        "sentence": "计划完成全部 22 个存量接口的迁移下线。"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "七、下年度计划",
+      "raw_value_text": "90%",
+      "value": "90",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划将续约预警覆盖率提升到 90%。"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "七、下年度计划",
+      "raw_value_text": "5.2 亿元",
+      "value": "5.2",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人。"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "七、下年度计划",
+      "raw_value_text": "1100 人",
+      "value": "1100",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人。"
+      }
+    },
+    {
+      "fact_id": "F053",
+      "subject": "八、结论",
+      "raw_value_text": "2024",
+      "value": "2024",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "2024 年是平台能力与规模同步扩张的一年。"
+      }
+    },
+    {
+      "fact_id": "F054",
+      "subject": "八、结论",
+      "raw_value_text": "38%",
+      "value": "38",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      }
+    },
+    {
+      "fact_id": "F055",
+      "subject": "八、结论",
+      "raw_value_text": "4.2 个百分点",
+      "value": "4.2",
+      "unit_class": "个百分点",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      }
+    },
+    {
+      "fact_id": "F056",
+      "subject": "八、结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "主要短板在跨区域数据同步延迟"
+      }
+    },
+    {
+      "fact_id": "F057",
+      "subject": "八、结论",
+      "raw_value_text": "2025",
+      "value": "2025",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p24",
+        "sentence": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "八、结论",
+      "raw_value_text": "18 亿元",
+      "value": "18",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p24",
+        "sentence": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    }
+  ],
+  "budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 58,
+    "selected": 58,
+    "omitted": 0,
+    "subjects_total": 8,
+    "subjects_selected": 8,
+    "estimated_pages_unbudgeted": 19
+  },
+  "candidate_count": 58,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "2024",
+      "value": "2024",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "12.8 亿元",
+      "value": "12.8",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "38%",
+      "value": "38",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "8.6 亿元",
+      "value": "8.6",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "其中订阅收入 8.6 亿元，占总收入的 67%。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "67%",
+      "value": "67",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "其中订阅收入 8.6 亿元，占总收入的 67%。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "1240 家",
+      "value": "1240",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "专业版客户数达到 1240 家，较上年增加 310 家。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "310 家",
+      "value": "310",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "专业版客户数达到 1240 家，较上年增加 310 家。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "1870 家",
+      "value": "1870",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "年度新增签约客户 1870 家，客户续约率为 91%。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "91%",
+      "value": "91",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "年度新增签约客户 1870 家，客户续约率为 91%。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "63.5%",
+      "value": "63.5",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "一、年度经营概况",
+      "raw_value_text": "4.2 个百分点",
+      "value": "4.2",
+      "unit_class": "个百分点",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 6,
+        "line_end": 11,
+        "heading": "一、年度经营概况",
+        "locator": "line 6-11 / 一、年度经营概况",
+        "unit_id": "b2_p2",
+        "sentence": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "42 亿",
+      "value": "42",
+      "unit_class": "亿",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p5",
+        "sentence": "实时数据管道上线，日均处理消息量达到 42 亿条。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p5",
+        "sentence": "年内完成三大能力建设。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "86%",
+      "value": "86",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "45 分钟",
+      "value": "45",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "8 分钟",
+      "value": "8",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p6",
+        "sentence": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p7",
+        "sentence": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "二、产品能力进展",
+      "raw_value_text": "34",
+      "value": "34",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 12,
+        "line_end": 17,
+        "heading": "二、产品能力进展",
+        "locator": "line 12-17 / 二、产品能力进展",
+        "unit_id": "b3_p7",
+        "sentence": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "三、客户与生态",
+      "raw_value_text": "58 家",
+      "value": "58",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "三、客户与生态",
+      "raw_value_text": "2.3 亿元",
+      "value": "2.3",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "三、客户与生态",
+      "raw_value_text": "18%",
+      "value": "18",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p8",
+        "sentence": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%。"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "三、客户与生态",
+      "raw_value_text": "27 万",
+      "value": "27",
+      "unit_class": "万",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p9",
+        "sentence": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "三、客户与生态",
+      "raw_value_text": "5400",
+      "value": "5400",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p9",
+        "sentence": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "三、客户与生态",
+      "raw_value_text": "9.4",
+      "value": "9.4",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p10",
+        "sentence": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "三、客户与生态",
+      "raw_value_text": "1.6",
+      "value": "1.6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 18,
+        "line_end": 23,
+        "heading": "三、客户与生态",
+        "locator": "line 18-23 / 三、客户与生态",
+        "unit_id": "b4_p10",
+        "sentence": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "四、成本与效率",
+      "raw_value_text": "3.1 亿元",
+      "value": "3.1",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "基础设施成本 3.1 亿元，占总收入的 24%。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "四、成本与效率",
+      "raw_value_text": "24%",
+      "value": "24",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "基础设施成本 3.1 亿元，占总收入的 24%。"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "四、成本与效率",
+      "raw_value_text": "0.021 元",
+      "value": "0.021",
+      "unit_class": "元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "单位请求成本从 0.021 元下降到 0.013 元。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "四、成本与效率",
+      "raw_value_text": "0.013 元",
+      "value": "0.013",
+      "unit_class": "元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "neg",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p11",
+        "sentence": "单位请求成本从 0.021 元下降到 0.013 元。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "四、成本与效率",
+      "raw_value_text": "860 人",
+      "value": "860",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "研发人员规模为 860 人，人均研发投入为 46 万元。"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "四、成本与效率",
+      "raw_value_text": "46 万元",
+      "value": "46",
+      "unit_class": "万元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "研发人员规模为 860 人，人均研发投入为 46 万元。"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "四、成本与效率",
+      "raw_value_text": "78%",
+      "value": "78",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 24,
+        "line_end": 28,
+        "heading": "四、成本与效率",
+        "locator": "line 24-28 / 四、成本与效率",
+        "unit_id": "b5_p12",
+        "sentence": "运维自动化覆盖 78% 的常规巡检任务。"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "99.95%",
+      "value": "99.95",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标。"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "99.9%",
+      "value": "99.9",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "4 次",
+      "value": "4",
+      "unit_class": "次",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "P1 级故障发生 4 次，平均恢复时间为 26 分钟。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "26 分钟",
+      "value": "26",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "P1 级故障发生 4 次，平均恢复时间为 26 分钟。"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "8600",
+      "value": "8600",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "客户工单总量 8600 件，平均首次响应时间为 18 分钟。"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "18 分钟",
+      "value": "18",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p13",
+        "sentence": "客户工单总量 8600 件，平均首次响应时间为 18 分钟。"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "五、质量与稳定性",
+      "raw_value_text": "7",
+      "value": "7",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 29,
+        "line_end": 34,
+        "heading": "五、质量与稳定性",
+        "locator": "line 29-34 / 五、质量与稳定性",
+        "unit_id": "b6_p15",
+        "sentence": "安全合规方面通过了 7 项行业认证审查。"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "六、问题与改进",
+      "raw_value_text": "3 分钟",
+      "value": "3",
+      "unit_class": "分钟",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p16",
+        "sentence": "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "六、问题与改进",
+      "raw_value_text": "22",
+      "value": "22",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p17",
+        "sentence": "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口。"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "六、问题与改进",
+      "raw_value_text": "74%",
+      "value": "74",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p18",
+        "sentence": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标。"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "六、问题与改进",
+      "raw_value_text": "85%",
+      "value": "85",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 35,
+        "line_end": 40,
+        "heading": "六、问题与改进",
+        "locator": "line 35-40 / 六、问题与改进",
+        "unit_id": "b7_p18",
+        "sentence": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标。"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "七、下年度计划",
+      "raw_value_text": "2025",
+      "value": "2025",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "七、下年度计划",
+      "raw_value_text": "18 亿元",
+      "value": "18",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "七、下年度计划",
+      "raw_value_text": "40%",
+      "value": "40",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "2025 年计划总收入达到 18 亿元，同比增长 40%。"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "七、下年度计划",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p19",
+        "sentence": "计划新增区域 2 个可用区。"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "七、下年度计划",
+      "raw_value_text": "30",
+      "value": "30",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p20",
+        "sentence": "计划将跨区域同步延迟压缩到 30 秒以内。"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "七、下年度计划",
+      "raw_value_text": "22",
+      "value": "22",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p20",
+        "sentence": "计划完成全部 22 个存量接口的迁移下线。"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "七、下年度计划",
+      "raw_value_text": "90%",
+      "value": "90",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划将续约预警覆盖率提升到 90%。"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "七、下年度计划",
+      "raw_value_text": "5.2 亿元",
+      "value": "5.2",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人。"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "七、下年度计划",
+      "raw_value_text": "1100 人",
+      "value": "1100",
+      "unit_class": "人",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 41,
+        "line_end": 46,
+        "heading": "七、下年度计划",
+        "locator": "line 41-46 / 七、下年度计划",
+        "unit_id": "b8_p21",
+        "sentence": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人。"
+      }
+    },
+    {
+      "fact_id": "F053",
+      "subject": "八、结论",
+      "raw_value_text": "2024",
+      "value": "2024",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "2024 年是平台能力与规模同步扩张的一年。"
+      }
+    },
+    {
+      "fact_id": "F054",
+      "subject": "八、结论",
+      "raw_value_text": "38%",
+      "value": "38",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      }
+    },
+    {
+      "fact_id": "F055",
+      "subject": "八、结论",
+      "raw_value_text": "4.2 个百分点",
+      "value": "4.2",
+      "unit_class": "个百分点",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      }
+    },
+    {
+      "fact_id": "F056",
+      "subject": "八、结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p22",
+        "sentence": "主要短板在跨区域数据同步延迟"
+      }
+    },
+    {
+      "fact_id": "F057",
+      "subject": "八、结论",
+      "raw_value_text": "2025",
+      "value": "2025",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p24",
+        "sentence": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "八、结论",
+      "raw_value_text": "18 亿元",
+      "value": "18",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/samples/material_replay/annual_review_synthetic.md",
+        "line_start": 47,
+        "line_end": 52,
+        "heading": "八、结论",
+        "locator": "line 47-52 / 八、结论",
+        "unit_id": "b9_p24",
+        "sentence": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    }
+  ],
+  "budget_omitted_facts": []
+}

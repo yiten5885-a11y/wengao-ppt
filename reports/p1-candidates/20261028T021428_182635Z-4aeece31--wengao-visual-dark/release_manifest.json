@@ -1,0 +1,591 @@
+{
+  "schema_version": "1.0.0",
+  "label": "DEVELOPMENT_CANDIDATE",
+  "run_id": "20261028T021428_182635Z-4aeece31",
+  "attempt_id": "b87ff63d",
+  "job_id": "job-3afdd5d88bd9",
+  "contract_version": "contracts/1.1.0",
+  "support_profile": "P1_TEXT_LIMITED",
+  "exported_at": "2026-10-31T19:42:55.174323+08:00",
+  "theme": {
+    "theme_id": "wengao-visual-dark",
+    "theme_name": "深色视觉升级（关键词配图+动效）",
+    "theme_version": "1.0.0",
+    "registry_version": "1.1.0",
+    "config_digest": "b834d6ba2be15119b862d215d64fe234fde4368a7c2d57ea723c709043a690c3",
+    "frozen_at_job": true,
+    "legacy_no_digest": false
+  },
+  "input": {
+    "path": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/28911bf3__Token_.pptx",
+    "sha256": "5c380c88f8cd4db2d9079aaa53d84b94e90fa3c840182b1c223f191018b9afdd"
+  },
+  "output": {
+    "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/p1-candidates/20261028T021428_182635Z-4aeece31--wengao-visual-dark/28911bf3__Token_.wengao.pptx",
+    "pptx_sha256": "603fddedb9a6864676e427330f5d7afe15b2fd24148e72c582fc42d91077937c"
+  },
+  "validation": {
+    "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/validation.json",
+    "sha256": "bd979de54e028b99066a811bc9637a033dda584e9ad625a707bb49f251686898",
+    "verdict": "DEVELOPMENT_CANDIDATE",
+    "release_ready": false
+  },
+  "render": {
+    "stage": "render_real",
+    "renderer": "libreoffice",
+    "soffice_path": "/Applications/LibreOffice.app/Contents/MacOS/soffice",
+    "soffice_source": "mac_bundle",
+    "soffice_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "available": true,
+    "pdf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+    "png_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png",
+    "png_count": 10,
+    "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+    "exit_code": 0,
+    "stderr": "",
+    "font_environment": {
+      "policy": "fontenv/2",
+      "ok": true,
+      "mode": "packaged",
+      "package_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "base_conf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/assets/fontconfig/fonts.conf",
+      "base_conf_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+      "effective_conf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+      "effective_conf_sha256": "867ad0298dfc158330470597bdc5088c915bc2eaaa9dd3c9f733eaf0290bebdf",
+      "cache_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/cache",
+      "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "platform_dirs": [
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Library/Fonts",
+        "/Users/huangyingteng/Library/Fonts",
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+      ],
+      "platform": "darwin",
+      "override": null,
+      "disabled": false,
+      "error": null,
+      "platform_marker_used": true
+    },
+    "fontconfig_file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.fontconfig/fonts.conf",
+    "lo_profile": "/Users/huangyingteng/.cache/wengao-ppt/.lo-profile",
+    "attempts": [
+      {
+        "profile": "/Users/huangyingteng/.cache/wengao-ppt/.lo-profile",
+        "exit_code": 0,
+        "budget": 599.922,
+        "pid": 97977,
+        "timed_out": false,
+        "stdout_tail": "ingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/28911bf3__Token_.themed.pptx as a Impress document -> /Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf using filter : impress_pdf_Export\n",
+        "stderr_tail": "",
+        "pdf_exists": true
+      }
+    ],
+    "attempt_count": 1,
+    "final_attempt_faulted": false,
+    "stdout": "ingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/28911bf3__Token_.themed.pptx as a Impress document -> /Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf using filter : impress_pdf_Export\n",
+    "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+    "pdf_fonts": [
+      "ArialUnicodeMS",
+      "AvenirNext-Bold",
+      "AvenirNext-Regular",
+      "DINAlternate-Bold",
+      "NotoSansSCBold"
+    ],
+    "pdf_fonts_error": null,
+    "environment_fingerprint": {
+      "policy": "fontenv/2",
+      "mode": "packaged",
+      "ok": true,
+      "effective_conf_sha256": "867ad0298dfc158330470597bdc5088c915bc2eaaa9dd3c9f733eaf0290bebdf",
+      "base_conf_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+      "platform": "darwin",
+      "platform_dirs": [
+        "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+        "/Library/Fonts",
+        "/System/Library/Fonts",
+        "/System/Library/Fonts/Supplemental",
+        "/Users/huangyingteng/Library/Fonts"
+      ],
+      "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+      "resolved_fonts": [
+        "ArialUnicodeMS",
+        "AvenirNext-Bold",
+        "AvenirNext-Regular",
+        "DINAlternate-Bold",
+        "NotoSansSCBold"
+      ],
+      "digest": "969133c11feb65f4c95caaf51afdc4968c64c88f74d926ea96668049488611f2"
+    },
+    "pdf_pages_for_png": 10,
+    "png_detail": "pdftoppm 未安装；改用 PDFium 对 LibreOffice 产出的真实 PDF 逐页栅格化，渲染器身份与版本已记录。",
+    "png_bindings": [
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-01.png",
+        "page_no": 1,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "c134f63c967b4cae3cdbea7b2cafb7627fe87b251efe2833c73133f8cd853e6b",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-02.png",
+        "page_no": 2,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "9cd884c1180396f2d1964b50159b349ee821d7f6b9722ff753f264926efb5118",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-03.png",
+        "page_no": 3,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "9683dae1fe7adcc5f596cd1ef0060959d8db093d0dcaadca21fada6018779a97",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-04.png",
+        "page_no": 4,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "6fd3f2b66428c01d206c92aa6abde0924dd3e973ff492d1d0696c8143f1b06a0",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-05.png",
+        "page_no": 5,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2b5d08031c52224c277823413c99dbc220596a485a56bb400d88aca292948a20",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-06.png",
+        "page_no": 6,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "7537e11bd3fe0fbeb02d62deb3219c1816accf671c5acea994b1a6b0da538f77",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-07.png",
+        "page_no": 7,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "3cfd8e245cc45b498fc76afee1a6a3c577c026c3e4bda0ffa7db0c242f36a06d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-08.png",
+        "page_no": 8,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "41960d674bcbe2e268d2e2282d657a6ef07ebd2109afe713d684eafd71fa189a",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-09.png",
+        "page_no": 9,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2326afd6e45b3578cd0aff3f46fb791ed9f837e5dcea2fe5fe183cbbf7393c19",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-10.png",
+        "page_no": 10,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "0394fb2b476817591d1c5a5b44b071dcb172169b3156bd9cf9aafd7eeb36243d",
+        "width": 1467,
+        "height": 825
+      }
+    ],
+    "code": "RENDER.OK",
+    "pdf_page_count": 10,
+    "pdf_page_count_error": null,
+    "pptx_slides": 10,
+    "pptx_hidden_pages": 0,
+    "pptx_slides_exportable": 10,
+    "page_count_rule": "隐藏页不导出；PDF 页数应等于非隐藏页数",
+    "counts_consistent": true,
+    "pdf_text_stats": {
+      "pages": 10,
+      "text_len": 1698,
+      "cjk_chars": 1009
+    },
+    "pdf_text_error": null,
+    "cjk_units_in_input": 110,
+    "cjk_units_in_input_all_pages": 110,
+    "cjk_gate_scope": "exportable_pages_only（隐藏页不计入分母）",
+    "cjk_glyphs_in_render": 1009,
+    "glyph_quality": {
+      "verdict": "OK",
+      "summary": {
+        "pages": 10,
+        "cjk_pages_checked": 10,
+        "missing_pages": [],
+        "ambiguous_pages": [],
+        "insufficient_pages": []
+      },
+      "engine": "pdfium-textpage+glyph-bitmap",
+      "applicability": "APPLICABLE"
+    },
+    "glyph_expectation": {
+      "available": true,
+      "reason": null,
+      "source": "ExtractedDoc(all_units)",
+      "expected_cjk_units": 110,
+      "expected_pages": {
+        "1": {
+          "cjk_units": 3,
+          "cjk_chars": 34,
+          "render_page": 1,
+          "hidden": false,
+          "samples": [
+            "2026 · TOKEN 经营元年",
+            "从卖流量\n到卖 Token",
+            "三大运营商把 AI 能力写进年度经营主线"
+          ]
+        },
+        "2": {
+          "cjk_units": 2,
+          "cjk_chars": 21,
+          "render_page": 2,
+          "hidden": false,
+          "samples": [
+            "战略转变",
+            "不再只卖带宽与连接，改卖可计量的智能"
+          ]
+        },
+        "3": {
+          "cjk_units": 23,
+          "cjk_chars": 183,
+          "render_page": 3,
+          "hidden": false,
+          "samples": [
+            "01 战略转变",
+            "组织 · 平台 · 计费",
+            "三家路径不同，KPI 是同一个"
+          ]
+        },
+        "4": {
+          "cjk_units": 20,
+          "cjk_chars": 157,
+          "render_page": 4,
+          "hidden": false,
+          "samples": [
+            "01 战略转变",
+            "2026 上半年财报口径",
+            "计价单位一换，生意逻辑就换了"
+          ]
+        },
+        "5": {
+          "cjk_units": 2,
+          "cjk_chars": 19,
+          "render_page": 5,
+          "hidden": false,
+          "samples": [
+            "标准建设",
+            "统一口径出现，Token 才开始能比价、"
+          ]
+        },
+        "6": {
+          "cjk_units": 23,
+          "cjk_chars": 227,
+          "render_page": 6,
+          "hidden": false,
+          "samples": [
+            "02 标准建设",
+            "中国信通院 · 可信服务商能力分级评价",
+            "四个能力域，一张分级尺"
+          ]
+        },
+        "7": {
+          "cjk_units": 18,
+          "cjk_chars": 151,
+          "render_page": 7,
+          "hidden": false,
+          "samples": [
+            "02 标准建设",
+            "地方落地与政策节奏",
+            "需求已经落到城市一级"
+          ]
+        },
+        "8": {
+          "cjk_units": 2,
+          "cjk_chars": 19,
+          "render_page": 8,
+          "hidden": false,
+          "samples": [
+            "竞争壁垒",
+            "模型可以买，网络、账户与交付买不到"
+          ]
+        },
+        "9": {
+          "cjk_units": 14,
+          "cjk_chars": 170,
+          "render_page": 9,
+          "hidden": false,
+          "samples": [
+            "03 竞争壁垒",
+            "与云厂商、独立 Token 工厂的差异",
+            "云厂商能复制模型，复制不了这三层"
+          ]
+        },
+        "10": {
+          "cjk_units": 3,
+          "cjk_chars": 28,
+          "render_page": 10,
+          "hidden": false,
+          "samples": [
+            "TOKEN 经济",
+            "谁定义了计量单位\n谁就写下下一个十年的账",
+            "行业观察 · 2026 年 10 月"
+          ]
+        }
+      },
+      "scope": "按应导出页统计；隐藏页与备注不计入，图片内文字不在当前声明范围"
+    }
+  },
+  "render_artifacts": {
+    "pdf": "28911bf3__Token_.wengao.pdf",
+    "png": [
+      "pages/page-01.png",
+      "pages/page-02.png",
+      "pages/page-03.png",
+      "pages/page-04.png",
+      "pages/page-05.png",
+      "pages/page-06.png",
+      "pages/page-07.png",
+      "pages/page-08.png",
+      "pages/page-09.png",
+      "pages/page-10.png"
+    ],
+    "pdf_pages": 10,
+    "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+    "pptx_slides": 10,
+    "counts_consistent": true,
+    "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+    "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+    "png_bindings": [
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-01.png",
+        "page_no": 1,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "c134f63c967b4cae3cdbea7b2cafb7627fe87b251efe2833c73133f8cd853e6b",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-02.png",
+        "page_no": 2,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "9cd884c1180396f2d1964b50159b349ee821d7f6b9722ff753f264926efb5118",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-03.png",
+        "page_no": 3,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "9683dae1fe7adcc5f596cd1ef0060959d8db093d0dcaadca21fada6018779a97",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-04.png",
+        "page_no": 4,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "6fd3f2b66428c01d206c92aa6abde0924dd3e973ff492d1d0696c8143f1b06a0",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-05.png",
+        "page_no": 5,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2b5d08031c52224c277823413c99dbc220596a485a56bb400d88aca292948a20",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-06.png",
+        "page_no": 6,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "7537e11bd3fe0fbeb02d62deb3219c1816accf671c5acea994b1a6b0da538f77",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-07.png",
+        "page_no": 7,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "3cfd8e245cc45b498fc76afee1a6a3c577c026c3e4bda0ffa7db0c242f36a06d",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-08.png",
+        "page_no": 8,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "41960d674bcbe2e268d2e2282d657a6ef07ebd2109afe713d684eafd71fa189a",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-09.png",
+        "page_no": 9,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "2326afd6e45b3578cd0aff3f46fb791ed9f837e5dcea2fe5fe183cbbf7393c19",
+        "width": 1467,
+        "height": 825
+      },
+      {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/png/page-10.png",
+        "page_no": 10,
+        "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/jobs/job-3afdd5d88bd9/candidate/render/28911bf3__Token_.themed.pdf",
+        "pdf_sha256": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894",
+        "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+        "dpi": 110,
+        "png_sha256": "0394fb2b476817591d1c5a5b44b071dcb172169b3156bd9cf9aafd7eeb36243d",
+        "width": 1467,
+        "height": 825
+      }
+    ]
+  },
+  "export_gate": {
+    "expected_hashes_from": "validation.json（此前有效验收记录；非导出时重算）",
+    "verified": {
+      "pptx": {
+        "rel": "28911bf3__Token_.wengao.pptx",
+        "expected": "603fddedb9a6864676e427330f5d7afe15b2fd24148e72c582fc42d91077937c"
+      },
+      "pdf": {
+        "rel": "28911bf3__Token_.wengao.pdf",
+        "expected": "a30577b88a2f17efa6cfc8821a2bde3c374ccdcbc0108af87c919905f8fb2894"
+      },
+      "png:page-01.png": {
+        "rel": "pages/page-01.png",
+        "page_no": 1,
+        "expected": "c134f63c967b4cae3cdbea7b2cafb7627fe87b251efe2833c73133f8cd853e6b"
+      },
+      "png:page-02.png": {
+        "rel": "pages/page-02.png",
+        "page_no": 2,
+        "expected": "9cd884c1180396f2d1964b50159b349ee821d7f6b9722ff753f264926efb5118"
+      },
+      "png:page-03.png": {
+        "rel": "pages/page-03.png",
+        "page_no": 3,
+        "expected": "9683dae1fe7adcc5f596cd1ef0060959d8db093d0dcaadca21fada6018779a97"
+      },
+      "png:page-04.png": {
+        "rel": "pages/page-04.png",
+        "page_no": 4,
+        "expected": "6fd3f2b66428c01d206c92aa6abde0924dd3e973ff492d1d0696c8143f1b06a0"
+      },
+      "png:page-05.png": {
+        "rel": "pages/page-05.png",
+        "page_no": 5,
+        "expected": "2b5d08031c52224c277823413c99dbc220596a485a56bb400d88aca292948a20"
+      },
+      "png:page-06.png": {
+        "rel": "pages/page-06.png",
+        "page_no": 6,
+        "expected": "7537e11bd3fe0fbeb02d62deb3219c1816accf671c5acea994b1a6b0da538f77"
+      },
+      "png:page-07.png": {
+        "rel": "pages/page-07.png",
+        "page_no": 7,
+        "expected": "3cfd8e245cc45b498fc76afee1a6a3c577c026c3e4bda0ffa7db0c242f36a06d"
+      },
+      "png:page-08.png": {
+        "rel": "pages/page-08.png",
+        "page_no": 8,
+        "expected": "41960d674bcbe2e268d2e2282d657a6ef07ebd2109afe713d684eafd71fa189a"
+      },
+      "png:page-09.png": {
+        "rel": "pages/page-09.png",
+        "page_no": 9,
+        "expected": "2326afd6e45b3578cd0aff3f46fb791ed9f837e5dcea2fe5fe183cbbf7393c19"
+      },
+      "png:page-10.png": {
+        "rel": "pages/page-10.png",
+        "page_no": 10,
+        "expected": "0394fb2b476817591d1c5a5b44b071dcb172169b3156bd9cf9aafd7eeb36243d"
+      }
+    },
+    "pre_publish_recheck": "PASSED",
+    "commit_strategy": "staging → atomic swap（bak → rename → cleanup）",
+    "cancelled_at_gate": null,
+    "note": "export 不持 .run.lock；取消可随时登记，由发布前身份复查拦截。"
+  },
+  "delivery_eligibility": {
+    "allowed": true,
+    "code": "OK",
+    "checked_at": "2026-10-31T19:42:55.174505+08:00",
+    "rule": "当前 attempt 验收 + 候选哈希一致 + 判定允许 + 未被事故失效",
+    "incidents_consulted": []
+  },
+  "glyph_quality": "OK",
+  "theme_application": "APPLIED_WITH_PROTECTED",
+  "release_statement": "开发候选，非完整产品 READY；不含 P2—P5 能力与发布门禁。"
+}

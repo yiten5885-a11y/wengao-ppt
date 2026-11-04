@@ -1,0 +1,253 @@
+{
+  "deck_title": "游戏系统架构与实现",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "游戏系统架构与实现",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "第 1 段",
+        "GameState",
+        "BoardRenderer",
+        "HistoryManager",
+        "RewardService",
+        "4. 场景"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "7. 存档",
+        "关联笔记"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "第 1 段",
+      "must_state": [
+        "tags:- 项目/游戏",
+        "status: reference"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "title": "GameState",
+      "must_state": [
+        "管理当前场景、全局状态和生命周期。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "single_column",
+      "title": "BoardRenderer",
+      "must_state": [
+        "绘制棋盘、花砖、线路和高亮。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "single_column",
+      "title": "HistoryManager",
+      "must_state": [
+        "保存撤回栈和重做所需状态。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "RewardService",
+      "must_state": [
+        "发放货币和解锁内容，防重复。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "title": "4. 场景",
+      "must_state": [
+        "- BootScene",
+        "- LoadingScene",
+        "- HomeScene",
+        "- LevelScene",
+        "- GardenScene",
+        "- DailyScene"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "7. 存档",
+      "must_state": [
+        "\"saveVersion\": \"1.0.0\",\"saveVersion\": \"1.0.0\",\"highestUnlockedLevel\": 1,\"highestUnlockedLevel\": 1,\"levelRecords\": {},\"levelRecords\": {},\"wallet\": {},\"wallet\": {},\"cats\": {},\"cats\": {},\"decorations\": {",
+        "\"daily\": {}"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "single_column",
+      "title": "关联笔记",
+      "must_state": [
+        "- [[项目/游戏/花路小屋/README|花路小屋 · README]]"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 210.8,
+      "done_reason": "stop",
+      "eval_count": 517,
+      "raw_response": "```json\n{\n  \"deck_title\": \"游戏系统架构与实现\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"游戏系统架构与实现\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"第 1 段\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"single_column\",\n      \"title\": \"GameState\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"single_column\",\n      \"title\": \"BoardRenderer\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"HistoryManager\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"single_column\",\n      \"title\": \"RewardService\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"4. 场景\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"table\",\n      \"title\": \"7. 存档\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"关联笔记\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"summary_action\",\n      \"title\": \"下一步行动\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "第 1 段",
+      "assigned_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "GameState",
+      "assigned_fact_ids": [
+        "F017",
+        "F018"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "BoardRenderer",
+      "assigned_fact_ids": [
+        "F023",
+        "F024"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "HistoryManager",
+      "assigned_fact_ids": [
+        "F029",
+        "F030"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "RewardService",
+      "assigned_fact_ids": [
+        "F035",
+        "F036"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "4. 场景",
+      "assigned_fact_ids": [
+        "F041",
+        "F042",
+        "F043",
+        "F044",
+        "F045",
+        "F046",
+        "F047",
+        "F048",
+        "F049",
+        "F050",
+        "F051",
+        "F052"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "7. 存档",
+      "assigned_fact_ids": [
+        "F076",
+        "F077",
+        "F078",
+        "F079",
+        "F080",
+        "F081",
+        "F082"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "关联笔记",
+      "assigned_fact_ids": [
+        "F101"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "总结",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "下一步行动",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 11,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 11,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}

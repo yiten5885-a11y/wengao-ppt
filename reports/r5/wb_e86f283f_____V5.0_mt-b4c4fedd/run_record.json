@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-24T17:16:33.736638+00:00",
+  "material": "workbench_uploads/e86f283f_____V5.0.docx",
+  "material_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+    "pages": 90,
+    "units": 266,
+    "tables": 23,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 23 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_e86f283f_____V5.0_mt-b4c4fedd/fact_ledger.json",
+    "count": 561,
+    "frozen_before_model_call": true
+  },
+  "model_error": {
+    "code": "MODEL.TRANSPORT_ERROR",
+    "provider": "ollama-local",
+    "status_code": null,
+    "detail": "local model endpoint transport failed (ConnectionRefusedError)"
+  },
+  "plan": {
+    "mode": "chunked",
+    "failed": true,
+    "error": "MODEL.TRANSPORT_ERROR",
+    "trace": []
+  },
+  "finished_at": "2026-10-24T17:16:33.833813+00:00",
+  "verdict": "PLAN_FAILED"
+}

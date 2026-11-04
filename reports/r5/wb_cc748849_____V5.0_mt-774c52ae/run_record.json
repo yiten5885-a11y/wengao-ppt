@@ -1,0 +1,514 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-27T01:20:59.995212+00:00",
+  "material": "workbench_uploads/cc748849_____V5.0.docx",
+  "material_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "c9aa18a44a39bdbc749fc78a00291a6982fe11570b20a96a08cf0e317e0dbc55",
+    "pages": 90,
+    "units": 266,
+    "tables": 23,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 23 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-774c52ae/fact_ledger.json",
+    "count": 562,
+    "selected": 47,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 562,
+    "selected": 47,
+    "omitted": 515,
+    "subjects_total": 89,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 212,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "师序完整开发计划",
+      "06 教师主工作流",
+      "不可变版本与派生失效",
+      "交付验收",
+      "进入研究的先决条件",
+      "关键路径和缓冲",
+      "27 来源与发布决策记录",
+      "交付总检查"
+    ],
+    "omitted_facts_path": "reports/r5/wb_cc748849_____V5.0_mt-774c52ae/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-774c52ae/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 13,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 5.14,
+        "done_reason": "stop",
+        "eval_count": 566,
+        "raw_response": "{\n  \"deck_title\": \"师序开发与交付规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"师序完整开发计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"进入研究的先决条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"06 教师主工作流\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"不可变版本与派生失效\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"timeline\",\n      \"title\": \"关键路径和缓冲\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"chart\",\n      \"title\": \"关键路径和缓冲\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"27 来源与发布决策记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"27 来源与发布决策记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"交付验收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"交付总检查\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "师序完整开发计划",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "06 教师主工作流",
+        "assigned_fact_ids": [
+          "F067"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "不可变版本与派生失效",
+        "assigned_fact_ids": [
+          "F126",
+          "F127",
+          "F128",
+          "F130"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "交付验收",
+        "assigned_fact_ids": [
+          "F190",
+          "F191",
+          "F192",
+          "F193"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "进入研究的先决条件",
+        "assigned_fact_ids": [
+          "F233",
+          "F234",
+          "F235",
+          "F236",
+          "F238"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "关键路径和缓冲",
+        "assigned_fact_ids": [
+          "F303",
+          "F304",
+          "F305",
+          "F306",
+          "F307",
+          "F308",
+          "F315",
+          "F316"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "27 来源与发布决策记录",
+        "assigned_fact_ids": [
+          "F386",
+          "F387",
+          "F388",
+          "F389",
+          "F390",
+          "F391",
+          "F392",
+          "F393",
+          "F394",
+          "F395",
+          "F396",
+          "F397",
+          "F398",
+          "F399",
+          "F400"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "交付总检查",
+        "assigned_fact_ids": [
+          "F558",
+          "F559",
+          "F560",
+          "F561",
+          "F562"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 13
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 13,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "summary_action",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 12,
+    "builder_generated_continuations": 1,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_cc748849_____V5.0_mt-774c52ae/cc748849_____V5.0.generated.pptx",
+    "sha256": "fe54f2972bccfec76573e20b9c589bfcf044a18750b79c495e253b9c161a939d",
+    "slides": 13,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "师序完整开发计划",
+      "chart_part_hint": "slide 8",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [],
+      "unplotted_statements_same_page_table": [
+        "核心决策：先把一个班的英语作文从上传、初批、复核到讲评材料交付做稳，再扩展试卷、成长与组织分析。",
+        "教师保留教学判断，智能系统承担整理、建议和重复执行，所有正式结果可追溯、可修正、可撤回。"
+      ],
+      "points": [
+        {
+          "category": "TeacherMate  产品与工程执行基线…",
+          "display_category": "TeacherMate  产品与工程执行基线…",
+          "value": 5.02026,
+          "unit": "unknown",
+          "fact_id": "F001"
+        },
+        {
+          "category": "TeacherMate  产品与工程执行基线…·10",
+          "display_category": "TeacherMate  产品与工程执行基线…·10",
+          "value": 10.0,
+          "unit": "unknown",
+          "fact_id": "F002"
+        },
+        {
+          "category": "TeacherMate  产品与工程执行基线…·12",
+          "display_category": "TeacherMate  产品与工程执行基线…·12",
+          "value": 12.0,
+          "unit": "unknown",
+          "fact_id": "F003"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 6,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 1,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 4,
+      "density": "mid",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 3,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 2,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 3,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "summary_action",
+      "catalog_key": "summary_action",
+      "units": 4,
+      "density": "mid",
+      "layout": "actions_split_two_pages",
+      "fallback_chain": [
+        "summary_plus_actions",
+        "actions_only_with_note",
+        "actions_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "summary_action",
+      "catalog_key": "summary_action",
+      "units": 1,
+      "density": "low",
+      "layout": "actions_split_two_pages",
+      "fallback_chain": [
+        "summary_plus_actions",
+        "actions_only_with_note",
+        "actions_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-27T01:21:05.252629+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

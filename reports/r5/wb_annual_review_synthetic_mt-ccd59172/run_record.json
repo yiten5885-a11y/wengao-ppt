@@ -1,0 +1,621 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-25T04:23:21.296402+00:00",
+  "material": "samples/material_replay/annual_review_synthetic.md",
+  "material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "target_pages": 17,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "pages": 9,
+    "units": 35,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-ccd59172/fact_ledger.json",
+    "count": 59,
+    "frozen_before_model_call": true
+  },
+  "replay": {
+    "frozen_plan": "samples/material_replay/annual_review_17p.plan.json",
+    "sha256": "9f68e6809144447a636b9031b222765ef3c5cc2df4bc85b32809c6beb59335b6",
+    "model_calls": 0,
+    "model_call_scope": "content_plan",
+    "content_plan_model_calls": 0,
+    "downstream_model_stages": [
+      "semantic_scene_planning"
+    ],
+    "downstream_photo_search_may_use_network": true,
+    "already_paginated": true,
+    "note": "只回放冻结内容计划，跳过内容规划模型；下游语义配图仍可能调用本地模型，照片检索可能联网。不得当作新的内容规划模型或真实生成能力证据。"
+  },
+  "source_completion": {
+    "completed_half_sentences": [
+      {
+        "page": 2,
+        "was": "其中订阅收入 8.6 亿元，",
+        "now": "其中订阅收入 8.6 亿元，占总收入的 67%。"
+      },
+      {
+        "page": 4,
+        "was": "年度新增签约客户 1870 家，",
+        "now": "年度新增签约客户 1870 家，客户续约率为 91%。"
+      },
+      {
+        "page": 12,
+        "was": "P1 级故障发生 4 次，",
+        "now": "P1 级故障发生 4 次，平均恢复时间为 26 分钟。"
+      },
+      {
+        "page": 17,
+        "was": "收入增速 38% 高于行业平均水平，",
+        "now": "收入增速 38% 高于行业平均水平，毛利率提升 4.2 个百分点说明交付成本控制有效。"
+      },
+      {
+        "page": 17,
+        "was": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、",
+        "now": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、接口治理、续约预警三项改进措施绑定推进。"
+      }
+    ],
+    "added_qualitative": [
+      {
+        "fact_id": "F018",
+        "page": 7,
+        "subject": "二、产品能力进展",
+        "sentence": "年内完成三大能力建设。"
+      },
+      {
+        "fact_id": "F059",
+        "page": 17,
+        "subject": "八、结论",
+        "sentence": "主要短板在跨区域数据同步延迟与老接口维护成本。"
+      }
+    ],
+    "unplaced": [],
+    "dropped_duplicates": [
+      {
+        "page": 12,
+        "item": "P1 级故障发生 4 次，"
+      },
+      {
+        "page": 17,
+        "item": "2025 年的重点是把 18 亿元收入目标与基础设施稳定性、"
+      },
+      {
+        "page": 17,
+        "item": "毛利率提升 4.2 个百分点说明交付成本控制有效",
+        "why": "已被同页补全后的完整原句包含"
+      },
+      {
+        "page": 1,
+        "item": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 1
+      },
+      {
+        "page": 2,
+        "item": "2024 年云服务平台全年总收入达到 12.8 亿元，同比增长 38%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 1
+      },
+      {
+        "page": 4,
+        "item": "专业版客户数达到 1240 家，较上年增加 310 家",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 3
+      },
+      {
+        "page": 6,
+        "item": "平台整体毛利率为 63.5%，较上年提升 4.2 个百分点",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 5
+      },
+      {
+        "page": 7,
+        "item": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 7
+      },
+      {
+        "page": 7,
+        "item": "智能运维模块覆盖 86% 的核心告警场景，平均故障定位时间从 45 分钟缩短到 8 分钟",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 7
+      },
+      {
+        "page": 7,
+        "item": "多区域部署能力扩展到 6 个可用区，跨区域延迟中位数为 34 毫秒",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 7
+      },
+      {
+        "page": 8,
+        "item": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 8
+      },
+      {
+        "page": 8,
+        "item": "年内新增渠道合作伙伴 58 家，通过渠道带来的收入为 2.3 亿元，占总收入的 18%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 8
+      },
+      {
+        "page": 9,
+        "item": "开发者社区注册开发者数量达到 27 万人，上传的模板数量为 5400 个",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 8
+      },
+      {
+        "page": 9,
+        "item": "企业版客户平均使用模块数为 9.4 个，较上年提升 1.6 个",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 9
+      },
+      {
+        "page": 10,
+        "item": "基础设施成本 3.1 亿元，占总收入的 24%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 10
+      },
+      {
+        "page": 10,
+        "item": "单位请求成本从 0.021 元下降到 0.013 元",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 10
+      },
+      {
+        "page": 11,
+        "item": "研发人员规模为 860 人，人均研发投入为 46 万元",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 10
+      },
+      {
+        "page": 12,
+        "item": "全年服务可用性为 99.95%，满足 99.9% 的承诺指标",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 12
+      },
+      {
+        "page": 13,
+        "item": "客户工单总量 8600 件，平均首次响应时间为 18 分钟",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 13
+      },
+      {
+        "page": 14,
+        "item": "客户成功团队人手不足，续约预警覆盖率为 74%，低于 85% 的目标",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 14
+      },
+      {
+        "page": 15,
+        "item": "2025 年计划总收入达到 18 亿元，同比增长 40%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 15
+      },
+      {
+        "page": 15,
+        "item": "2025 年计划总收入达到 18 亿元，同比增长 40%",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 15
+      },
+      {
+        "page": 16,
+        "item": "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人",
+        "why": "计划级精确重复；首次出现的信息已完整覆盖",
+        "retained_on_page": 16
+      }
+    ],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [
+      {
+        "page": 6,
+        "title": "一、年度经营概况（续）",
+        "why": "该页只含已在其他页完整出现的重复原句"
+      }
+    ],
+    "repaginated": true
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-ccd59172/content_plan.json",
+    "mode": "replay",
+    "chunk_count": 0,
+    "chunk_calls": 0,
+    "source_assignment_count": 0,
+    "model_call_count": 0,
+    "model_call_scope": "content_plan",
+    "slides": 17,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "replay",
+        "attempt": 1,
+        "source": "samples/material_replay/annual_review_17p.plan.json",
+        "already_paginated": true
+      }
+    ],
+    "physical_pages": 17
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 16,
+    "pages_after": 17,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 17,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-ccd59172/annual_review_synthetic.generated.pptx",
+    "sha256": "fd8d7dc70aeb2437bb37c5593fb15c232f849fb0c53996d04e17ef6cb66e6f38",
+    "slides": 17,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "六、问题与改进",
+      "chart_part_hint": "slide 14",
+      "chart_title": "续约预警覆盖率",
+      "series_name": "指标（%）",
+      "axis_unit": "%",
+      "excluded_units_same_page_table": [
+        "分钟",
+        "unknown"
+      ],
+      "unplotted_statements_same_page_table": [
+        "跨区域数据同步存在 3 分钟的延迟，影响实时分析场景",
+        "老版本接口未完全下线，维护成本较高，涉及 22 个存量接口"
+      ],
+      "points": [
+        {
+          "category": "续约预警覆盖率·当前",
+          "display_category": "当前",
+          "value": 74.0,
+          "unit": "%",
+          "fact_id": "F043"
+        },
+        {
+          "category": "续约预警覆盖率·目标",
+          "display_category": "目标",
+          "value": 85.0,
+          "unit": "%",
+          "fact_id": "F044"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 1,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 2,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 3,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 1,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 2,
+      "density": "low",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 3,
+      "density": "mid",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 14,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 3,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 15,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 16,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 2,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 17,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-25T04:23:21.364102+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

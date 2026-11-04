@@ -1,0 +1,170 @@
+{
+  "deck_title": "英语作文讲评与个体反馈",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "英语作文个体反馈",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "本次作文",
+      "must_state": [
+        "英语作文个体反馈",
+        "教师评语",
+        "扣分依据",
+        "本次作文",
+        "核对口径"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "single_column",
+      "title": "本次作文",
+      "must_state": [
+        "[SIMULATED] Fictional essay 01 describes a classroom garden and an imaginary reading hour with friends."
+      ]
+    },
+    {
+      "page": 4,
+      "page_type": "process",
+      "title": "核对口径",
+      "must_state": [
+        "分数和评语取自同一份教师确认修订；扣分引文对应这份作文的源修订。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "table",
+      "title": "扣分依据",
+      "must_state": [
+        "内容：扣 1 分；原文引句 “[SIMULATED]”",
+        "语言：扣 2 分；原文引句 “Fictiona”"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "英语作文个体反馈",
+      "must_state": [
+        "仿真学生 01 · 已确认教师版本",
+        "这份反馈来自本地 40 人仿真任务中的一份已确认作文，仅用于核对个体报告导出。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "single_column",
+      "title": "教师评语",
+      "must_state": [
+        "Synthetic teacher feedback 01."
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 5.19,
+      "done_reason": "stop",
+      "eval_count": 545,
+      "raw_response": "{\n  \"deck_title\": \"英语作文讲评与个体反馈\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"英语作文个体反馈\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"本次作文\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"本次作文\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"核对口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"扣分依据\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"comparison\",\n      \"title\": \"扣分依据\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"metrics\",\n      \"title\": \"英语作文个体反馈\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"chart\",\n      \"title\": \"英语作文个体反馈\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"教师评语\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"核对口径\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"教师评语\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"英语作文个体反馈\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "英语作文个体反馈",
+      "assigned_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "教师评语",
+      "assigned_fact_ids": [
+        "F003"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "扣分依据",
+      "assigned_fact_ids": [
+        "F004",
+        "F005"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "本次作文",
+      "assigned_fact_ids": [
+        "F006"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "核对口径",
+      "assigned_fact_ids": [
+        "F007"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 6,
+      "title": "扣分依据",
+      "page_type": "comparison",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 8,
+      "title": "英语作文个体反馈",
+      "page_type": "chart",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "核对口径",
+      "page_type": "timeline",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 11,
+      "title": "教师评语",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "英语作文个体反馈",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 7,
+    "pages_after": 7,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

@@ -1,0 +1,627 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-31T19:27:48.110797+00:00",
+  "material": "workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+  "material_sha256": "426e63f9d2dc6d06f3fcac89ec2eefb4749703bba46e87967b56fa2b55536c86",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "426e63f9d2dc6d06f3fcac89ec2eefb4749703bba46e87967b56fa2b55536c86",
+    "pages": 6,
+    "units": 29,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-406507b4/fact_ledger.json",
+    "count": 71,
+    "selected": 54,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 71,
+    "selected": 54,
+    "omitted": 17,
+    "subjects_total": 6,
+    "subjects_selected": 6,
+    "pages_per_subject": 2,
+    "estimated_pages_unbudgeted": 27,
+    "estimated_pages_budgeted": 16,
+    "selected_subjects": [
+      "MacBook Pro 代理卡顿修复记录",
+      "当前结论",
+      "已保留的修复",
+      "定位证据及试验结果",
+      "剩余工作及继续条件",
+      "证据与恢复"
+    ],
+    "omitted_facts_path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-406507b4/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-406507b4/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 6,
+    "chunk_calls": 0,
+    "source_assignment_count": 6,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 16,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 23.09,
+        "done_reason": "stop",
+        "eval_count": 528,
+        "raw_response": "```json\n{\n  \"deck_title\": \"MacBook Pro 代理卡顿修复记录\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"conclusion\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"剩余工作及继续条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"timeline\",\n      \"title\": \"证据与恢复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"关键指标\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"comparison\",\n      \"title\": \"修复前后对比\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"下一步行动\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "MacBook Pro 代理卡顿修复记录",
+        "assigned_fact_ids": [
+          "F001"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "当前结论",
+        "assigned_fact_ids": [
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008",
+          "F009",
+          "F010",
+          "F011",
+          "F012",
+          "F013",
+          "F014",
+          "F015",
+          "F016",
+          "F017",
+          "F018",
+          "F022"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "已保留的修复",
+        "assigned_fact_ids": [
+          "F023",
+          "F024",
+          "F025",
+          "F026",
+          "F027",
+          "F028",
+          "F029",
+          "F030",
+          "F031",
+          "F032",
+          "F033"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "定位证据及试验结果",
+        "assigned_fact_ids": [
+          "F034",
+          "F035",
+          "F036",
+          "F037",
+          "F038",
+          "F039",
+          "F040",
+          "F041",
+          "F042",
+          "F043",
+          "F044",
+          "F045",
+          "F046",
+          "F047",
+          "F052"
+        ],
+        "source_statement_count": 9,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "剩余工作及继续条件",
+        "assigned_fact_ids": [
+          "F058",
+          "F059",
+          "F060"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "证据与恢复",
+        "assigned_fact_ids": [
+          "F061",
+          "F062",
+          "F063",
+          "F064",
+          "F065",
+          "F066"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 16
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 16,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 6,
+        "catalog_mid": 3,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 3
+      },
+      {
+        "page_type": "chart",
+        "original_units": 9,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "timeline",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 3,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_e9c5a702_MacBookPro-_-2026-10-31_mt-406507b4/e9c5a702_MacBookPro-_-2026-10-31.generated.pptx",
+    "sha256": "7ed17953c058f2d1bc30eaea41d76b12aa5a354814bccfa3e34c368216dd46e3",
+    "slides": 16,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "定位证据及试验结果",
+      "chart_part_hint": "slide 9",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [
+        "%"
+      ],
+      "unplotted_statements_same_page_table": [],
+      "points": [
+        {
+          "category": "健康检查·1",
+          "display_category": "健康检查·1",
+          "value": 1.0,
+          "unit": "unknown",
+          "fact_id": "F014"
+        },
+        {
+          "category": "MacBook·8",
+          "display_category": "MacBook·8",
+          "value": 8.0,
+          "unit": "unknown",
+          "fact_id": "F035"
+        },
+        {
+          "category": "速度限制",
+          "display_category": "速度限制",
+          "value": 118.0,
+          "unit": "unknown",
+          "fact_id": "F036"
+        },
+        {
+          "category": "速度限制·279",
+          "display_category": "速度限制·279",
+          "value": 279.0,
+          "unit": "unknown",
+          "fact_id": "F037"
+        },
+        {
+          "category": "速度限制·11",
+          "display_category": "速度限制·11",
+          "value": 11.0,
+          "unit": "unknown",
+          "fact_id": "F038"
+        },
+        {
+          "category": "速度限制·134",
+          "display_category": "速度限制·134",
+          "value": 134.0,
+          "unit": "unknown",
+          "fact_id": "F039"
+        }
+      ]
+    },
+    {
+      "page_title": "定位证据及试验结果…",
+      "chart_part_hint": "slide 12",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [],
+      "unplotted_statements_same_page_table": [
+        "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。"
+      ],
+      "points": [
+        {
+          "category": "边2的 GitHub/OpenAI API …",
+          "display_category": "边2的 GitHub/OpenAI API …",
+          "value": 2.0,
+          "unit": "unknown",
+          "fact_id": "F015"
+        },
+        {
+          "category": "边1/边3的 Google 可达2",
+          "display_category": "边1/边3的 Google 可达2",
+          "value": 3.0,
+          "unit": "unknown",
+          "fact_id": "F017"
+        },
+        {
+          "category": "4. **已撤回西雅图备用入口及该阶段测速方…",
+          "display_category": "4. **已撤回西雅图备用入口及该阶段测速方…",
+          "value": 4.0,
+          "unit": "unknown",
+          "fact_id": "F052"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 5,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 1,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "conclusion",
+      "catalog_key": "conclusion",
+      "units": 2,
+      "density": "mid",
+      "layout": "statement_dense",
+      "fallback_chain": [
+        "statement_block",
+        "statement_plus_support",
+        "statement_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "conclusion",
+      "catalog_key": "conclusion",
+      "units": 2,
+      "density": "mid",
+      "layout": "statement_dense",
+      "fallback_chain": [
+        "statement_block",
+        "statement_plus_support",
+        "statement_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "conclusion",
+      "catalog_key": "conclusion",
+      "units": 2,
+      "density": "mid",
+      "layout": "statement_dense",
+      "fallback_chain": [
+        "statement_block",
+        "statement_plus_support",
+        "statement_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 6,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 5,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 5,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 11,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 1,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 12,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 14,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 3,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 15,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 3,
+      "density": "low",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 16,
+      "page_type": "timeline",
+      "catalog_key": "timeline",
+      "units": 3,
+      "density": "low",
+      "layout": "vertical_timeline_split",
+      "fallback_chain": [
+        "horizontal_timeline",
+        "vertical_timeline",
+        "vertical_timeline_split"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-10-31T19:28:11.269666+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

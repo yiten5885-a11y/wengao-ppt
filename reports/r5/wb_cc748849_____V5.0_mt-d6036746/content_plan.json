@@ -1,0 +1,24 @@
+{
+  "_failed": true,
+  "error": "deck_title 缺失; slides 缺失或为空",
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 11.77,
+      "done_reason": "length",
+      "eval_count": 49,
+      "raw_response": "{\n  \"deck_title\": \"师序完整开发计划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"师"
+    },
+    {
+      "phase": "global_plan",
+      "attempt": 2,
+      "model_calls": 1,
+      "elapsed_s": 10.88,
+      "done_reason": "length",
+      "eval_count": 47,
+      "raw_response": "{\n  \"deck_title\": \"师序完整开发计划与交付总检查\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\","
+    }
+  ]
+}

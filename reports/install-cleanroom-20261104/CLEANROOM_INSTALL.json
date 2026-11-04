@@ -1,0 +1,277 @@
+{
+  "schema": "wengao.cleanroom_install.v1",
+  "started_at": "2026-11-04T00:23:28+0800",
+  "scope": "同机 + 全新安装根 + 独立数据根；**不是**全新机器验证",
+  "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+  "payload": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-895a765f",
+  "payload_sha256_members": 211,
+  "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+  "non_ascii_root": true,
+  "steps": [
+    {
+      "step": "install",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "install",
+        "--package",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-895a765f",
+        "--activate",
+        "--expect-root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-895a765f",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"label\": \"build-cc4782ab\",\n  \"build_id\": \"cc4782ab67604ad64384da956c7785d5\",\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/versions/build-cc4782ab\",\n  \"activated\": true,\n  \"current\": \"build-cc4782ab\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/data\",\n  \"entry\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/bin/wengao\",\n  \"double_click\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/启动稳稿PPT.command\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "label": "build-cc4782ab",
+        "build_id": "cc4782ab67604ad64384da956c7785d5",
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/versions/build-cc4782ab",
+        "activated": true,
+        "current": "build-cc4782ab",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/data",
+        "entry": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/bin/wengao",
+        "double_click": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/启动稳稿PPT.command"
+      },
+      "seconds": 4.81,
+      "ok": true
+    },
+    {
+      "step": "status_after_install",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "first_task_precheck",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "cli",
+        "--",
+        "precheck",
+        "--input",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104/first-task/cleanroom_3p.pptx",
+        "--mode",
+        "beautify",
+        "--theme",
+        "wengao-basic"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "upgrade",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "upgrade",
+        "--package",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104/upgrade-payload",
+        "--label",
+        "build-cc4782ab-upgrade",
+        "--expect-root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104/upgrade-payload",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"label\": \"build-cc4782ab-upgrade\",\n  \"build_id\": \"e1fe9719f6d1978f4c2ba2924d20803f\",\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/versions/build-cc4782ab-upgrade\",\n  \"activated\": true,\n  \"current\": \"build-cc4782ab-upgrade\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/data\",\n  \"entry\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/bin/wengao\",\n  \"double_click\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/启动稳稿PPT.command\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "label": "build-cc4782ab-upgrade",
+        "build_id": "e1fe9719f6d1978f4c2ba2924d20803f",
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/versions/build-cc4782ab-upgrade",
+        "activated": true,
+        "current": "build-cc4782ab-upgrade",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/data",
+        "entry": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/bin/wengao",
+        "double_click": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/启动稳稿PPT.command"
+      },
+      "seconds": 4.26,
+      "ok": true
+    },
+    {
+      "step": "status_after_upgrade",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "rollback",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "rollback",
+        "--to",
+        "build-cc4782ab"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "status_after_rollback",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "uninstall_preview",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "uninstall"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "uninstall_apply",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "uninstall",
+        "--apply"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    },
+    {
+      "step": "status_after_uninstall_expects_not_installed",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104",
+      "rc": 1,
+      "stdout_head": "",
+      "stderr_head": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python: Error while finding module specification for 'wengao_ppt.install' (ModuleNotFoundError: No module named 'wengao_ppt')\n",
+      "json": null,
+      "seconds": 0.02,
+      "ok": false
+    }
+  ],
+  "installed_label": "build-cc4782ab",
+  "status_after_install": {},
+  "version_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 20261104/versions/build-cc4782ab",
+  "input": {
+    "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104/first-task/cleanroom_3p.pptx",
+    "sha256": "08ca5eb9eb871806e959316d3933f86dde6f51e7610984229a9f6c510dfb8a59",
+    "pages": 3,
+    "origin": "本脚本用 python-pptx 生成，无用户私有材料"
+  },
+  "job_id": null,
+  "upgrade": {
+    "current_after": null,
+    "marker_present": false,
+    "data_jobs_before": 0,
+    "data_jobs_after": 0
+  },
+  "rollback": {
+    "current_after": null
+  },
+  "uninstall": {
+    "quarantine": [],
+    "data_jobs_preserved": 0,
+    "pointer_present_after_apply": true,
+    "pointer_backup_present": false,
+    "status_exit_code": 1
+  },
+  "finished_at": "2026-11-04T00:23:37+0800",
+  "passed": 2,
+  "failed": [
+    "status_after_install",
+    "first_task_precheck",
+    "status_after_upgrade",
+    "rollback",
+    "status_after_rollback",
+    "uninstall_preview",
+    "uninstall_apply",
+    "status_after_uninstall_expects_not_installed"
+  ],
+  "verdict": "FAIL"
+}

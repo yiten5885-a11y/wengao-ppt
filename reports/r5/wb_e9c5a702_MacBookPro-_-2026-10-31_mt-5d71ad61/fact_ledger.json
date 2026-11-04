@@ -1,0 +1,2659 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-31T14:38:11.503633+00:00",
+  "frozen_before_model_call": true,
+  "count": 54,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "MacBook Pro 代理卡顿修复记录",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 1,
+        "line_end": 4,
+        "heading": "MacBook Pro 代理卡顿修复记录",
+        "locator": "line 1-4 / MacBook Pro 代理卡顿修复记录",
+        "unit_id": "b1_p0",
+        "sentence": "目标为 `yitenhuadeMacBook-Pro.local`。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "当前结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p1",
+        "sentence": "**国内访问已修正；国外代理的慢响应和 TLS 超时仍在，本轮未能彻底解决。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "当前结论",
+      "raw_value_text": "0.088",
+      "value": "0.088",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "当前结论",
+      "raw_value_text": "0.117",
+      "value": "0.117",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "当前结论",
+      "raw_value_text": "3.62",
+      "value": "3.62",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "当前结论",
+      "raw_value_text": "5.04",
+      "value": "5.04",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "当前结论",
+      "raw_value_text": "5.65",
+      "value": "5.65",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "当前结论",
+      "raw_value_text": "401",
+      "value": "401",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "当前结论",
+      "raw_value_text": "4.96",
+      "value": "4.96",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "当前结论",
+      "raw_value_text": "5.74",
+      "value": "5.74",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "当前结论",
+      "raw_value_text": "0.001",
+      "value": "0.001",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "DNS 和连到本机代理端口都在 0.001 秒内，延迟主要出现在代理上游 TLS 阶段；这是依据 curl 分段计时作出的判断。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "当前结论",
+      "raw_value_text": "387",
+      "value": "387",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "当前结论",
+      "raw_value_text": "715",
+      "value": "715",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "当前结论",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "当前结论",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "当前结论",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "当前结论",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "当前结论",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "当前结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p4",
+        "sentence": "没有改动登录启动项，也没有反复强退。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p5",
+        "sentence": "- 为国内域名增加 `geosite:cn` DNS 策略，使用国内解析器。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p6",
+        "sentence": "- 在 IP 地理分流前加入 `GEOSITE,CN,DIRECT`，避免国内网站因海外解析结果绕行自建美国节点。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "已保留的修复",
+      "raw_value_text": "127.0",
+      "value": "127.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.1",
+      "value": "0.1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "已保留的修复",
+      "raw_value_text": "7897",
+      "value": "7897",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "- 原有三个节点的凭据和传输参数完整保留，继续使用原生自动选择，没有固定节点。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "已保留的修复",
+      "raw_value_text": "3.279",
+      "value": "3.279",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "已保留的修复",
+      "raw_value_text": "4.529",
+      "value": "4.529",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.08",
+      "value": "0.08",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.69",
+      "value": "0.69",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "重载后的即时检查曾超时，后续百度与 Apple 中国均复测成功；所有失败证据保留。"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "1. MacBook 为 8 GB 内存。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "1. MacBook 为 8 GB 内存。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "118",
+      "value": "118",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "279",
+      "value": "279",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "11",
+      "value": "11",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "134",
+      "value": "134",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "105",
+      "value": "105",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "33%",
+      "value": "33",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "138",
+      "value": "138",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "微信开发者工具共有 138 个进程。"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "3.383",
+      "value": "3.383",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "路由器 ping 平均 3.383 ms、无丢包。"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始阶段没有关闭应用或重启电脑；得到用户明确授权后，才正常退出 WorkBuddy 和微信开发者工具，且没有重启电脑。"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "2.",
+      "value": "2.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p10",
+        "sentence": "2. 原有 Cloudflare 入口有数秒延迟和超时，同一局域网的 Mac mini 也能复现。"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p10",
+        "sentence": "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "3.",
+      "value": "3.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "4.",
+      "value": "4.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p12",
+        "sentence": "4. **已撤回西雅图备用入口及该阶段测速方式的变更。"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "Mac mini 和 MacBook 的密钥认证都被服务器拒绝；用户回复已重新登录后，预期控制套接字仍不存在，服务器只读审计没有执行，也没有改动服务器。"
+      }
+    },
+    {
+      "fact_id": "F059",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "本轮按用户要求不再重复弹出登录/授权请求。"
+      }
+    },
+    {
+      "fact_id": "F060",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "服务器端状态和 Cloudflare 回源仍待已认证的管理通道可用后检查。"
+      }
+    },
+    {
+      "fact_id": "F061",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p15",
+        "sentence": "- [当前状态与后续复测](macbook-current-repair-state.json)"
+      }
+    },
+    {
+      "fact_id": "F062",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p16",
+        "sentence": "- [国内修正后的测试](macbook-after-domestic-split.json)"
+      }
+    },
+    {
+      "fact_id": "F063",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p18",
+        "sentence": "- [试验变更撤回记录](macbook-experimental-route-rollback.json)"
+      }
+    },
+    {
+      "fact_id": "F064",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p19",
+        "sentence": "- [系统与配置基线](macbook-baseline-state.json)"
+      }
+    },
+    {
+      "fact_id": "F065",
+      "subject": "证据与恢复",
+      "raw_value_text": "20261031",
+      "value": "20261031",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p20",
+        "sentence": "MacBook 私有证据目录：`/Users/yitenhua/Library/Application Support/CodexProxyMigration/20261031/`。"
+      }
+    },
+    {
+      "fact_id": "F066",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p20",
+        "sentence": "`before-dns-split/` 保存本次修改前配置，`before-seattle/` 保存保留国内修正后的配置。"
+      }
+    }
+  ],
+  "budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 71,
+    "selected": 54,
+    "omitted": 17,
+    "subjects_total": 6,
+    "subjects_selected": 6,
+    "pages_per_subject": 2,
+    "estimated_pages_unbudgeted": 27,
+    "estimated_pages_budgeted": 16,
+    "selected_subjects": [
+      "MacBook Pro 代理卡顿修复记录",
+      "当前结论",
+      "已保留的修复",
+      "定位证据及试验结果",
+      "剩余工作及继续条件",
+      "证据与恢复"
+    ]
+  },
+  "candidate_count": 71,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "MacBook Pro 代理卡顿修复记录",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 1,
+        "line_end": 4,
+        "heading": "MacBook Pro 代理卡顿修复记录",
+        "locator": "line 1-4 / MacBook Pro 代理卡顿修复记录",
+        "unit_id": "b1_p0",
+        "sentence": "目标为 `yitenhuadeMacBook-Pro.local`。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "当前结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p1",
+        "sentence": "**国内访问已修正；国外代理的慢响应和 TLS 超时仍在，本轮未能彻底解决。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "当前结论",
+      "raw_value_text": "0.088",
+      "value": "0.088",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "当前结论",
+      "raw_value_text": "0.117",
+      "value": "0.117",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "当前结论",
+      "raw_value_text": "3.62",
+      "value": "3.62",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "当前结论",
+      "raw_value_text": "5.04",
+      "value": "5.04",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "当前结论",
+      "raw_value_text": "5.65",
+      "value": "5.65",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "当前结论",
+      "raw_value_text": "401",
+      "value": "401",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "当前结论",
+      "raw_value_text": "4.96",
+      "value": "4.96",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "当前结论",
+      "raw_value_text": "5.74",
+      "value": "5.74",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "当前结论",
+      "raw_value_text": "0.001",
+      "value": "0.001",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p2",
+        "sentence": "DNS 和连到本机代理端口都在 0.001 秒内，延迟主要出现在代理上游 TLS 阶段；这是依据 curl 分段计时作出的判断。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "当前结论",
+      "raw_value_text": "387",
+      "value": "387",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "当前结论",
+      "raw_value_text": "715",
+      "value": "715",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "当前结论",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "三节点的 gstatic 健康检查为 387–715 ms，自动组当前选中边1。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "当前结论",
+      "raw_value_text": "2",
+      "value": "2",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "当前结论",
+      "raw_value_text": "1",
+      "value": "1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "当前结论",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "当前结论",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "按目标分别探测时，边2的 GitHub/OpenAI API 响应较快，但 Google 超时；边1/边3的 Google 可达，边3的 OpenAI 较慢。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "当前结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p3",
+        "sentence": "没有一个节点对这些目标都更快，因此保留三个节点自动选择，没有固定或新增节点。"
+      }
+    },
+    {
+      "fact_id": "F020",
+      "subject": "当前结论",
+      "raw_value_text": "3",
+      "value": "3",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p4",
+        "sentence": "按用户授权正常退出 WorkBuddy 和微信开发者工具后，复测开始时两者进程均已退出，MacBook 交换空间约 3 GB、CPU 速度限制 100%；稍后两款应用进程又出现，负载与交换空间随之回升。"
+      }
+    },
+    {
+      "fact_id": "F021",
+      "subject": "当前结论",
+      "raw_value_text": "100%",
+      "value": "100",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p4",
+        "sentence": "按用户授权正常退出 WorkBuddy 和微信开发者工具后，复测开始时两者进程均已退出，MacBook 交换空间约 3 GB、CPU 速度限制 100%；稍后两款应用进程又出现，负载与交换空间随之回升。"
+      }
+    },
+    {
+      "fact_id": "F022",
+      "subject": "当前结论",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 5,
+        "line_end": 14,
+        "heading": "当前结论",
+        "locator": "line 5-14 / 当前结论",
+        "unit_id": "b2_p4",
+        "sentence": "没有改动登录启动项，也没有反复强退。"
+      }
+    },
+    {
+      "fact_id": "F023",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p5",
+        "sentence": "- 为国内域名增加 `geosite:cn` DNS 策略，使用国内解析器。"
+      }
+    },
+    {
+      "fact_id": "F024",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p6",
+        "sentence": "- 在 IP 地理分流前加入 `GEOSITE,CN,DIRECT`，避免国内网站因海外解析结果绕行自建美国节点。"
+      }
+    },
+    {
+      "fact_id": "F025",
+      "subject": "已保留的修复",
+      "raw_value_text": "127.0",
+      "value": "127.0",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F026",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.1",
+      "value": "0.1",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F027",
+      "subject": "已保留的修复",
+      "raw_value_text": "7897",
+      "value": "7897",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。"
+      }
+    },
+    {
+      "fact_id": "F028",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p7",
+        "sentence": "- 原有三个节点的凭据和传输参数完整保留，继续使用原生自动选择，没有固定节点。"
+      }
+    },
+    {
+      "fact_id": "F029",
+      "subject": "已保留的修复",
+      "raw_value_text": "3.279",
+      "value": "3.279",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F030",
+      "subject": "已保留的修复",
+      "raw_value_text": "4.529",
+      "value": "4.529",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F031",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.08",
+      "value": "0.08",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F032",
+      "subject": "已保留的修复",
+      "raw_value_text": "0.69",
+      "value": "0.69",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "修复前 MacBook 百度两次经代理请求为 3.279 和 4.529 秒；修复后的多次样本约 0.08–0.69 秒。"
+      }
+    },
+    {
+      "fact_id": "F033",
+      "subject": "已保留的修复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 15,
+        "line_end": 22,
+        "heading": "已保留的修复",
+        "locator": "line 15-22 / 已保留的修复",
+        "unit_id": "b3_p8",
+        "sentence": "重载后的即时检查曾超时，后续百度与 Apple 中国均复测成功；所有失败证据保留。"
+      }
+    },
+    {
+      "fact_id": "F034",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "1.",
+      "value": "1.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "1. MacBook 为 8 GB 内存。"
+      }
+    },
+    {
+      "fact_id": "F035",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "1. MacBook 为 8 GB 内存。"
+      }
+    },
+    {
+      "fact_id": "F036",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "118",
+      "value": "118",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F037",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "279",
+      "value": "279",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F038",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "11",
+      "value": "11",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F039",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "134",
+      "value": "134",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F040",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "105",
+      "value": "105",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F041",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "33%",
+      "value": "33",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。"
+      }
+    },
+    {
+      "fact_id": "F042",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "138",
+      "value": "138",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "微信开发者工具共有 138 个进程。"
+      }
+    },
+    {
+      "fact_id": "F043",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "3.383",
+      "value": "3.383",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "路由器 ping 平均 3.383 ms、无丢包。"
+      }
+    },
+    {
+      "fact_id": "F044",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p9",
+        "sentence": "初始阶段没有关闭应用或重启电脑；得到用户明确授权后，才正常退出 WorkBuddy 和微信开发者工具，且没有重启电脑。"
+      }
+    },
+    {
+      "fact_id": "F045",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "2.",
+      "value": "2.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p10",
+        "sentence": "2. 原有 Cloudflare 入口有数秒延迟和超时，同一局域网的 Mac mini 也能复现。"
+      }
+    },
+    {
+      "fact_id": "F046",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p10",
+        "sentence": "对自有域名的 Cloudflare trace 请求采样显示原入口经过 LHR；因此到 CDN 的链路本身存在慢请求，但尚不能据此确定服务器内部状态。"
+      }
+    },
+    {
+      "fact_id": "F047",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "3.",
+      "value": "3.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。"
+      }
+    },
+    {
+      "fact_id": "F048",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "西雅图备用入口在 MacBook 独立核心中 8/8 请求通过，但加入生产自动组后的性能验收未通过：国外完整请求仍有 6–14 秒，OpenAI 的一次 TLS 请求失败。"
+      }
+    },
+    {
+      "fact_id": "F049",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "8",
+      "value": "8",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "西雅图备用入口在 MacBook 独立核心中 8/8 请求通过，但加入生产自动组后的性能验收未通过：国外完整请求仍有 6–14 秒，OpenAI 的一次 TLS 请求失败。"
+      }
+    },
+    {
+      "fact_id": "F050",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "6",
+      "value": "6",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "西雅图备用入口在 MacBook 独立核心中 8/8 请求通过，但加入生产自动组后的性能验收未通过：国外完整请求仍有 6–14 秒，OpenAI 的一次 TLS 请求失败。"
+      }
+    },
+    {
+      "fact_id": "F051",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "14",
+      "value": "14",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p11",
+        "sentence": "西雅图备用入口在 MacBook 独立核心中 8/8 请求通过，但加入生产自动组后的性能验收未通过：国外完整请求仍有 6–14 秒，OpenAI 的一次 TLS 请求失败。"
+      }
+    },
+    {
+      "fact_id": "F052",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "4.",
+      "value": "4.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p12",
+        "sentence": "4. **已撤回西雅图备用入口及该阶段测速方式的变更。"
+      }
+    },
+    {
+      "fact_id": "F053",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p12",
+        "sentence": "** 当前恢复为原有三个节点自动选择，仅保留有效的国内 DNS/分流修正。"
+      }
+    },
+    {
+      "fact_id": "F054",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p12",
+        "sentence": "没有启用已耗尽的 iKuuu 订阅。"
+      }
+    },
+    {
+      "fact_id": "F055",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "5.",
+      "value": "5.",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p13",
+        "sentence": "5. 从 Mac mini 和 MacBook 尝试现有 SSH 密钥登录自建服务器，均被拒绝：`Permission denied (publickey,password)`。"
+      }
+    },
+    {
+      "fact_id": "F056",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "80",
+      "value": "80",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p13",
+        "sentence": "直连源站 80/443 的探测超时，未改用不验证证书或降级传输。"
+      }
+    },
+    {
+      "fact_id": "F057",
+      "subject": "定位证据及试验结果",
+      "raw_value_text": "443",
+      "value": "443",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 23,
+        "line_end": 30,
+        "heading": "定位证据及试验结果",
+        "locator": "line 23-30 / 定位证据及试验结果",
+        "unit_id": "b4_p13",
+        "sentence": "直连源站 80/443 的探测超时，未改用不验证证书或降级传输。"
+      }
+    },
+    {
+      "fact_id": "F058",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "Mac mini 和 MacBook 的密钥认证都被服务器拒绝；用户回复已重新登录后，预期控制套接字仍不存在，服务器只读审计没有执行，也没有改动服务器。"
+      }
+    },
+    {
+      "fact_id": "F059",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "本轮按用户要求不再重复弹出登录/授权请求。"
+      }
+    },
+    {
+      "fact_id": "F060",
+      "subject": "剩余工作及继续条件",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 31,
+        "line_end": 34,
+        "heading": "剩余工作及继续条件",
+        "locator": "line 31-34 / 剩余工作及继续条件",
+        "unit_id": "b5_p14",
+        "sentence": "服务器端状态和 Cloudflare 回源仍待已认证的管理通道可用后检查。"
+      }
+    },
+    {
+      "fact_id": "F061",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p15",
+        "sentence": "- [当前状态与后续复测](macbook-current-repair-state.json)"
+      }
+    },
+    {
+      "fact_id": "F062",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p16",
+        "sentence": "- [国内修正后的测试](macbook-after-domestic-split.json)"
+      }
+    },
+    {
+      "fact_id": "F063",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p18",
+        "sentence": "- [试验变更撤回记录](macbook-experimental-route-rollback.json)"
+      }
+    },
+    {
+      "fact_id": "F064",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p19",
+        "sentence": "- [系统与配置基线](macbook-baseline-state.json)"
+      }
+    },
+    {
+      "fact_id": "F065",
+      "subject": "证据与恢复",
+      "raw_value_text": "20261031",
+      "value": "20261031",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p20",
+        "sentence": "MacBook 私有证据目录：`/Users/yitenhua/Library/Application Support/CodexProxyMigration/20261031/`。"
+      }
+    },
+    {
+      "fact_id": "F066",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p20",
+        "sentence": "`before-dns-split/` 保存本次修改前配置，`before-seattle/` 保存保留国内修正后的配置。"
+      }
+    },
+    {
+      "fact_id": "F067",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p20",
+        "sentence": "节点凭据、订阅地址和控制密钥没有复制到工作目录。"
+      }
+    },
+    {
+      "fact_id": "F068",
+      "subject": "证据与恢复",
+      "raw_value_text": "20261031",
+      "value": "20261031",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p21",
+        "sentence": "本轮无凭据实测记录：`/Users/yitenhua/Library/Application Support/CodexProxyMigration/20261031/latency-acceptance-followup-20261031.json`。"
+      }
+    },
+    {
+      "fact_id": "F069",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p21",
+        "sentence": "其中保留了超时样本；`passed=false`，不代表代理已稳定。"
+      }
+    },
+    {
+      "fact_id": "F070",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p22",
+        "sentence": "临时测试核心均已退出；服务器没有修改。"
+      }
+    },
+    {
+      "fact_id": "F071",
+      "subject": "证据与恢复",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/e9c5a702_MacBookPro-_-2026-10-31.md",
+        "line_start": 35,
+        "line_end": 47,
+        "heading": "证据与恢复",
+        "locator": "line 35-47 / 证据与恢复",
+        "unit_id": "b6_p22",
+        "sentence": "官方配置依据：[Mihomo DNS](https://wiki.metacubex.one/config/dns/)、[自动选择](https://wiki.metacubex.one/config/proxy-groups/url-test/)。"
+      }
+    }
+  ],
+  "budget_omitted_facts": [
+    {
+      "fact_id": "F019",
+      "subject": "当前结论",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F020",
+      "subject": "当前结论",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F021",
+      "subject": "当前结论",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F048",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F049",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F050",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F051",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F053",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F054",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F055",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F056",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F057",
+      "subject": "定位证据及试验结果",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F067",
+      "subject": "证据与恢复",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F068",
+      "subject": "证据与恢复",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F069",
+      "subject": "证据与恢复",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F070",
+      "subject": "证据与恢复",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    },
+    {
+      "fact_id": "F071",
+      "subject": "证据与恢复",
+      "reason": "PAGE_BUDGET: 全量必讲需约 27 页，超出冻结上限 20；本章页数预算已满，原句显式省略（非静默截断）。"
+    }
+  ]
+}

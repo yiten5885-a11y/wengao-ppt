@@ -1,0 +1,267 @@
+{
+ "schema": "wengao.u1-8823.walkthrough.v1",
+ "scope": "安装实例（build-5d89f681, 安装 根 U, port 8823）UI HTTP 全链复验；Cua 点击层与原生实播录像另行登记",
+ "started": "2026-11-04T13:43:26+0800",
+ "bootstrap_seconds": 0.0,
+ "bootstrap_instance": {
+  "kind": "installed",
+  "kind_label": "安装实例",
+  "label": "build-5d89f681",
+  "build_id": "5d89f681136a52555e4aafca6a429f1b",
+  "build_id_scope": "程序成员聚合（代码/资源/契约/vendor/样例/工作台 UI；已排除数据根 wb_loopback_data、jobs/、reports/、workbench_uploads/previews、*.log 等运行期文件）",
+  "runner_version": "0.1.0",
+  "program_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 U/versions/build-5d89f681",
+  "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 U/data",
+  "data_root_is_program": false,
+  "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+  "jobs": 1,
+  "install_record": {
+   "label": "build-5d89f681",
+   "build_id": "5d89f681136a52555e4aafca6a429f1b",
+   "installed_at": "2026-11-04T13:20:27+0800",
+   "source_package": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-faeb303f"
+  },
+  "install_record_state": "MATCH",
+  "note": "安装实例使用安装根的 data/；初始没有任务是正常现象，不代表历史丢失。"
+ },
+ "bootstrap_vision": {
+  "available": true,
+  "mode": "cloud",
+  "provider": "cloud:generativelanguage.googleapis.com"
+ },
+ "theme_default": "wengao-basic",
+ "theme_registry_version": "1.3.0",
+ "job_id": "job-e4e358fc36c4",
+ "theme": "wengao-basic",
+ "run_final": {
+  "poll": 15,
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "stage": "validate"
+ },
+ "validate_final": {
+  "poll": 1,
+  "validation_verdict": "DEVELOPMENT_CANDIDATE",
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "op_busy": false,
+  "op_state": "done"
+ },
+ "export_result": {
+  "exported": true,
+  "gate": null,
+  "detail": null
+ },
+ "result_index": {
+  "ready": true,
+  "job_id": "job-e4e358fc36c4",
+  "export_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 U/data/reports/p1-candidates/20261104T053032_449310Z-ee35973b--wengao-basic",
+  "items": [
+   {
+    "kind": "pdf",
+    "name": "5f16ee31_u1_fullchain.wengao.pdf",
+    "expected_sha256": "74ad690e8244bed5048241ca5e9f1ba5b8aa553bf7c3c34479cb93a3524d234e",
+    "bytes": 312053,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=5f16ee31_u1_fullchain.wengao.pdf"
+   },
+   {
+    "kind": "pptx",
+    "name": "5f16ee31_u1_fullchain.wengao.pptx",
+    "expected_sha256": "4614b8d415c61b0e73ff55d7660e7dfc2cbf0bb89437efb93d211050058c539a",
+    "bytes": 218536,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=5f16ee31_u1_fullchain.wengao.pptx"
+   },
+   {
+    "kind": "png",
+    "name": "pages/page-01.png",
+    "expected_sha256": "3a0d3edd90933b5c5c0bc333e677af351c4e745219d8c3d81c4d21b995ce8583",
+    "bytes": 44974,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=pages/page-01.png"
+   },
+   {
+    "kind": "png",
+    "name": "pages/page-02.png",
+    "expected_sha256": "e82e8b73b2e5b92933bf077fcf5dbe4f4cba74d75093e69ed623caafd40b24df",
+    "bytes": 51322,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=pages/page-02.png"
+   },
+   {
+    "kind": "png",
+    "name": "pages/page-03.png",
+    "expected_sha256": "0d2944019633b440df0c147224063b53598c05e1dc336c8ac024bef6b4b29e12",
+    "bytes": 44027,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=pages/page-03.png"
+   },
+   {
+    "kind": "png",
+    "name": "pages/page-04.png",
+    "expected_sha256": "2fc8c884fb614f308b08daa7d77aaa67e704bfc916fc79cf8508c8e45a43448f",
+    "bytes": 424033,
+    "url": "/api/jobs/job-e4e358fc36c4/download?name=pages/page-04.png"
+   }
+  ]
+ },
+ "steps": [
+  {
+   "method": "GET",
+   "path": "/api/meta",
+   "status": 200,
+   "seconds": 0.002
+  },
+  {
+   "method": "GET",
+   "path": "/api/bootstrap",
+   "status": 200,
+   "seconds": 0.002
+  },
+  {
+   "method": "GET",
+   "path": "/api/meta",
+   "status": 200,
+   "seconds": 0.001
+  },
+  {
+   "method": "GET",
+   "path": "/api/history",
+   "status": 200,
+   "seconds": 0.002
+  },
+  {
+   "method": "POST",
+   "path": "/api/upload",
+   "status": 200,
+   "seconds": 0.001
+  },
+  {
+   "method": "POST",
+   "path": "/api/make",
+   "status": 202,
+   "seconds": 0.092
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.011
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.011
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.008
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.003
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.005
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.008
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.007
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.009
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.008
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.008
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.008
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.007
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.004
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.007
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.003
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.009
+  },
+  {
+   "method": "POST",
+   "path": "/api/jobs/job-e4e358fc36c4/validate",
+   "status": 202,
+   "seconds": 0.126
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.003
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4",
+   "status": 200,
+   "seconds": 0.006
+  },
+  {
+   "method": "POST",
+   "path": "/api/jobs/job-e4e358fc36c4/export",
+   "status": 200,
+   "seconds": 0.125
+  },
+  {
+   "method": "GET",
+   "path": "/api/jobs/job-e4e358fc36c4/result",
+   "status": 200,
+   "seconds": 0.003
+  }
+ ],
+ "verdict": "PASS"
+}

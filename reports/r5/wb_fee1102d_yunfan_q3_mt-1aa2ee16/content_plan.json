@@ -1,0 +1,182 @@
+{
+  "deck_title": "季度经营复盘与规划",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "季度经营复盘与规划",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "营收",
+        "门店",
+        "库存",
+        "毛利",
+        "下季重点"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "metrics",
+      "title": "营收",
+      "must_state": [
+        "Q3 营收 4.82 亿元，同比增长 12.3%，环比增长 5.1%。",
+        "线上渠道占比 38%，去年同期为 29%。"
+      ]
+    },
+    {
+      "page": 4,
+      "page_type": "table",
+      "title": "门店",
+      "must_state": [
+        "期末门店 412 家，净增 23 家。",
+        "单店月均销售 11.7 万元，同比下降 2.4%。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "title": "库存",
+      "must_state": [
+        "库存周转天数 58 天，较 Q2 的 64 天改善 6 天。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "毛利",
+      "must_state": [
+        "综合毛利率 31.2%，同比提升 1.8 个百分点。",
+        "自有品牌贡献毛利占比 24%。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "timeline",
+      "title": "下季重点",
+      "must_state": [
+        "扩大自有品牌 SKU，优化华东仓配网络，推进会员复购。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 95.86,
+      "done_reason": "stop",
+      "eval_count": 495,
+      "raw_response": "{\n  \"deck_title\": \"季度经营复盘与规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"季度经营复盘与规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"metrics\",\n      \"title\": \"营收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"chart\",\n      \"title\": \"营收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"门店\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"comparison\",\n      \"title\": \"门店\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"库存\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"chart\",\n      \"title\": \"库存\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"毛利\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"毛利\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"timeline\",\n      \"title\": \"下季重点\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"下季重点\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "营收",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "门店",
+      "assigned_fact_ids": [
+        "F007",
+        "F008",
+        "F009",
+        "F010"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "库存",
+      "assigned_fact_ids": [
+        "F011",
+        "F012",
+        "F013",
+        "F014"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "毛利",
+      "assigned_fact_ids": [
+        "F015",
+        "F016",
+        "F017"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "下季重点",
+      "assigned_fact_ids": [
+        "F018"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 4,
+      "title": "营收",
+      "page_type": "chart",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 6,
+      "title": "门店",
+      "page_type": "comparison",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 8,
+      "title": "库存",
+      "page_type": "chart",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 10,
+      "title": "毛利",
+      "page_type": "single_column",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "下季重点",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 7,
+    "pages_after": 7,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

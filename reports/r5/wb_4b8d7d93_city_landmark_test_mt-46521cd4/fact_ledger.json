@@ -1,0 +1,794 @@
+{
+  "schema_version": "1.0.0",
+  "frozen_at": "2026-10-31T16:02:28.794100+00:00",
+  "frozen_before_model_call": true,
+  "count": 19,
+  "facts": [
+    {
+      "fact_id": "F001",
+      "subject": "一、总体概况",
+      "raw_value_text": "8.6 亿元",
+      "value": "8.6",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "四城营收合计 8.6 亿元，同比增长 14%。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "一、总体概况",
+      "raw_value_text": "14%",
+      "value": "14",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "四城营收合计 8.6 亿元，同比增长 14%。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "一、总体概况",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "本年度公司业务覆盖华东、华北、华南、华中四个核心区域，区域中心城市分别为无锡、北京、广州、青岛。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "2.3 亿元",
+      "value": "2.3",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "18%",
+      "value": "18",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "142 家",
+      "value": "142",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "300",
+      "value": "300",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "无锡太湖新城的办公区已投入使用，可容纳 300 名员工。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "无锡作为华东区域总部所在地，承担长三角一体化业务枢纽职能。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "2.8 亿元",
+      "value": "2.8",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "11%",
+      "value": "11",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "北京分公司覆盖华北六省业务，是公司政企合作的主要窗口。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "北京总部大楼位于朝阳区，毗邻 CBD 核心商圈。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "2.0 亿元",
+      "value": "2.0",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "16%",
+      "value": "16",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州依托珠江新城的区位优势，重点服务跨境电商与制造业客户。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "1.5 亿元",
+      "value": "1.5",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "9%",
+      "value": "9",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛凭借港口物流优势，在海洋经济相关业务上形成差异化竞争力。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "六、下一年度规划",
+      "raw_value_text": "10 亿元",
+      "value": "10",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 23,
+        "line_end": 25,
+        "heading": "六、下一年度规划",
+        "locator": "line 23-25 / 六、下一年度规划",
+        "unit_id": "b7_p5",
+        "sentence": "四城将继续深化区域协同，计划新增两个区域服务中心，目标全年营收突破 10 亿元。"
+      }
+    }
+  ],
+  "budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 19,
+    "selected": 19,
+    "omitted": 0,
+    "subjects_total": 6,
+    "subjects_selected": 6,
+    "estimated_pages_unbudgeted": 10
+  },
+  "candidate_count": 19,
+  "candidate_facts": [
+    {
+      "fact_id": "F001",
+      "subject": "一、总体概况",
+      "raw_value_text": "8.6 亿元",
+      "value": "8.6",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "四城营收合计 8.6 亿元，同比增长 14%。"
+      }
+    },
+    {
+      "fact_id": "F002",
+      "subject": "一、总体概况",
+      "raw_value_text": "14%",
+      "value": "14",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "四城营收合计 8.6 亿元，同比增长 14%。"
+      }
+    },
+    {
+      "fact_id": "F003",
+      "subject": "一、总体概况",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 3,
+        "line_end": 6,
+        "heading": "一、总体概况",
+        "locator": "line 3-6 / 一、总体概况",
+        "unit_id": "b2_p0",
+        "sentence": "本年度公司业务覆盖华东、华北、华南、华中四个核心区域，区域中心城市分别为无锡、北京、广州、青岛。"
+      }
+    },
+    {
+      "fact_id": "F004",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "2.3 亿元",
+      "value": "2.3",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F005",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "18%",
+      "value": "18",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F006",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "142 家",
+      "value": "142",
+      "unit_class": "家",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "本年度无锡分公司营收 2.3 亿元，同比增长 18%，新增客户 142 家。"
+      }
+    },
+    {
+      "fact_id": "F007",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "300",
+      "value": "300",
+      "unit_class": "unknown",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "无锡太湖新城的办公区已投入使用，可容纳 300 名员工。"
+      }
+    },
+    {
+      "fact_id": "F008",
+      "subject": "二、无锡：华东区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 7,
+        "line_end": 10,
+        "heading": "二、无锡：华东区域中心",
+        "locator": "line 7-10 / 二、无锡：华东区域中心",
+        "unit_id": "b3_p1",
+        "sentence": "无锡作为华东区域总部所在地，承担长三角一体化业务枢纽职能。"
+      }
+    },
+    {
+      "fact_id": "F009",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "2.8 亿元",
+      "value": "2.8",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。"
+      }
+    },
+    {
+      "fact_id": "F010",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "11%",
+      "value": "11",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "本年度北京营收 2.8 亿元，同比增长 11%，与多家央企达成战略合作。"
+      }
+    },
+    {
+      "fact_id": "F011",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "北京分公司覆盖华北六省业务，是公司政企合作的主要窗口。"
+      }
+    },
+    {
+      "fact_id": "F012",
+      "subject": "三、北京：华北区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 11,
+        "line_end": 14,
+        "heading": "三、北京：华北区域中心",
+        "locator": "line 11-14 / 三、北京：华北区域中心",
+        "unit_id": "b4_p2",
+        "sentence": "北京总部大楼位于朝阳区，毗邻 CBD 核心商圈。"
+      }
+    },
+    {
+      "fact_id": "F013",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "2.0 亿元",
+      "value": "2.0",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。"
+      }
+    },
+    {
+      "fact_id": "F014",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "16%",
+      "value": "16",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州分公司负责粤港澳大湾区业务拓展，本年度营收 2.0 亿元，同比增长 16%。"
+      }
+    },
+    {
+      "fact_id": "F015",
+      "subject": "四、广州：华南区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 15,
+        "line_end": 18,
+        "heading": "四、广州：华南区域中心",
+        "locator": "line 15-18 / 四、广州：华南区域中心",
+        "unit_id": "b5_p3",
+        "sentence": "广州依托珠江新城的区位优势，重点服务跨境电商与制造业客户。"
+      }
+    },
+    {
+      "fact_id": "F016",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "1.5 亿元",
+      "value": "1.5",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。"
+      }
+    },
+    {
+      "fact_id": "F017",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "9%",
+      "value": "9",
+      "unit_class": "%",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛分公司覆盖山东半岛及周边业务，本年度营收 1.5 亿元，同比增长 9%。"
+      }
+    },
+    {
+      "fact_id": "F018",
+      "subject": "五、青岛：华中区域中心",
+      "raw_value_text": "",
+      "value": "",
+      "unit_class": "qualitative",
+      "qualitative": true,
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 19,
+        "line_end": 22,
+        "heading": "五、青岛：华中区域中心",
+        "locator": "line 19-22 / 五、青岛：华中区域中心",
+        "unit_id": "b6_p4",
+        "sentence": "青岛凭借港口物流优势，在海洋经济相关业务上形成差异化竞争力。"
+      }
+    },
+    {
+      "fact_id": "F019",
+      "subject": "六、下一年度规划",
+      "raw_value_text": "10 亿元",
+      "value": "10",
+      "unit_class": "亿元",
+      "time": "unknown",
+      "scope": "unknown",
+      "qualifier": "unknown",
+      "negation_or_comparison": "unknown",
+      "source_ref": {
+        "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/4b8d7d93_city_landmark_test.md",
+        "line_start": 23,
+        "line_end": 25,
+        "heading": "六、下一年度规划",
+        "locator": "line 23-25 / 六、下一年度规划",
+        "unit_id": "b7_p5",
+        "sentence": "四城将继续深化区域协同，计划新增两个区域服务中心，目标全年营收突破 10 亿元。"
+      }
+    }
+  ],
+  "budget_omitted_facts": []
+}

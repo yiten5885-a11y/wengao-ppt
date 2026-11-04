@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-10-24T07:10:25.134699+00:00",
+  "material": "workbench_uploads/fee1102d_yunfan_q3.md",
+  "material_sha256": "614b7780f4ca6acbe0780541673dd0859510944c1f3f45d04752d8fc3a93f126",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "614b7780f4ca6acbe0780541673dd0859510944c1f3f45d04752d8fc3a93f126",
+    "pages": 6,
+    "units": 12,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_fee1102d_yunfan_q3_mt-1aa2ee16/fact_ledger.json",
+    "count": 18,
+    "frozen_before_model_call": true
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_fee1102d_yunfan_q3_mt-1aa2ee16/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 5,
+    "chunk_calls": 0,
+    "source_assignment_count": 5,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 7,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 95.86,
+        "done_reason": "stop",
+        "eval_count": 495,
+        "raw_response": "{\n  \"deck_title\": \"季度经营复盘与规划\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"季度经营复盘与规划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"metrics\",\n      \"title\": \"营收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"chart\",\n      \"title\": \"营收\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"table\",\n      \"title\": \"门店\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"comparison\",\n      \"title\": \"门店\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"库存\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"chart\",\n      \"title\": \"库存\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"metrics\",\n      \"title\": \"毛利\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"毛利\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"timeline\",\n      \"title\": \"下季重点\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"下季重点\",\n      \"must_state\": []\n    }\n  ]\n}"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "营收",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "门店",
+        "assigned_fact_ids": [
+          "F007",
+          "F008",
+          "F009",
+          "F010"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "库存",
+        "assigned_fact_ids": [
+          "F011",
+          "F012",
+          "F013",
+          "F014"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "毛利",
+        "assigned_fact_ids": [
+          "F015",
+          "F016",
+          "F017"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "下季重点",
+        "assigned_fact_ids": [
+          "F018"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      }
+    ]
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 7,
+    "pages_after": 7,
+    "splits": [],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  },
+  "verdict": "PAGE_RANGE_UNSATISFIED",
+  "page_range_conflict": {
+    "pages": 7,
+    "range": [
+      10,
+      20
+    ],
+    "problems": [
+      "分页后页数 7 少于冻结下限 10（区间 10—20）；不得以'内容决定页数'替代原任务页数要求。"
+    ],
+    "note": "内容天然不足以落入冻结区间；按契约报告容量/约束冲突，不提高容量上限、不复制页面凑数。"
+  },
+  "finished_at": "2026-10-24T07:12:01.038426+00:00"
+}

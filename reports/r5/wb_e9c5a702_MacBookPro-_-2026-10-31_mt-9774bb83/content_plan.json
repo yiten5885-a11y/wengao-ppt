@@ -1,0 +1,235 @@
+{
+  "deck_title": "MacBook Pro 代理卡顿修复记录",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "MacBook Pro 代理卡顿修复记录",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "议程",
+      "must_state": [
+        "MacBook Pro 代理卡顿",
+        "当前结论",
+        "已保留的修复",
+        "定位证据及试验结果",
+        "剩余工作及继续条件"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "议程…",
+      "must_state": [
+        "证据与恢复"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "MacBook Pro 代理卡顿",
+      "must_state": [
+        "目标为 `yitenhuadeMacBook-Pro.local`。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "table",
+      "title": "定位证据及试验结果",
+      "must_state": [
+        "1. MacBook 为 8 GB 内存。",
+        "初始系统负载约 118，后续曾超过 279；交换空间约 11 GB，五秒采样换入约 134 MB/s、换出约 105 MB/s，CPU 速度限制为 33%。",
+        "微信开发者工具共有 138 个进程。",
+        "路由器 ping 平均 3.383 ms、无丢包。",
+        "3. 小范围测试了域名当前 A 记录及其他 Cloudflare 入口。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "table",
+      "title": "当前结论",
+      "must_state": [
+        "**国内访问已修正；国外代理的慢响应和 TLS 超时仍在，本轮未能彻底解决。",
+        "本轮 MacBook 生产配置实测中，百度两次 0.088–0.117 秒；Google 一次 TLS 超时、一次 3.62 秒，TUN 路径 5.04 秒；GitHub 一次 TLS 超时、一次 5.65 秒；OpenAI API 返回预期的 401，但耗时 4.96–5.74 秒。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "已保留的修复",
+      "must_state": [
+        "- 为国内域名增加 `geosite:cn` DNS 策略，使用国内解析器。",
+        "- 在 IP 地理分流前加入 `GEOSITE,CN,DIRECT`，避免国内网站因海外解析结果绕行自建美国节点。",
+        "规则模式、TUN、系统代理 `127.0.0.1:7897` 均保留。",
+        "- 原有三个节点的凭据和传输参数完整保留，继续使用原生自动选择，没有固定节点。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "证据与恢复",
+      "must_state": [
+        "- [当前状态与后续复测](macbook-current-repair-state.json)",
+        "- [国内修正后的测试](macbook-after-domestic-split.json)",
+        "- [试验变更撤回记录](macbook-experimental-route-rollback.json)"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "summary_action",
+      "title": "剩余工作及继续条件",
+      "must_state": [
+        "Mac mini 和 MacBook 的密钥认证都被服务器拒绝；用户回复已重新登录后，预期控制套接字仍不存在，服务器只读审计没有执行，也没有改动服务器。",
+        "本轮按用户要求不再重复弹出登录/授权请求。",
+        "服务器端状态和 Cloudflare 回源仍待已认证的管理通道可用后检查。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 40.2,
+      "done_reason": "stop",
+      "eval_count": 534,
+      "raw_response": "```json\n{\n  \"deck_title\": \"MacBook Pro 代理卡顿修复记录\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"议程\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"MacBook Pro 代理卡顿修复记录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"定位证据及试验结果\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"table\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"conclusion\",\n      \"title\": \"当前结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"已保留的修复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"证据与恢复\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"剩余工作及继续条件\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"总结\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "MacBook Pro 代理卡顿修复记录",
+      "assigned_fact_ids": [
+        "F001"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "当前结论",
+      "assigned_fact_ids": [
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008",
+        "F009",
+        "F010"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "已保留的修复",
+      "assigned_fact_ids": [
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027",
+        "F028"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "定位证据及试验结果",
+      "assigned_fact_ids": [
+        "F034",
+        "F035",
+        "F036",
+        "F037",
+        "F038",
+        "F039",
+        "F040",
+        "F041",
+        "F042",
+        "F043",
+        "F047"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "剩余工作及继续条件",
+      "assigned_fact_ids": [
+        "F058",
+        "F059",
+        "F060"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "证据与恢复",
+      "assigned_fact_ids": [
+        "F061",
+        "F062",
+        "F063"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 5,
+      "title": "定位证据及试验结果",
+      "page_type": "metrics",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 7,
+      "title": "当前结论",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 9,
+      "title": "已保留的修复",
+      "page_type": "single_column",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "总结",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 8,
+    "pages_after": 9,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 6,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

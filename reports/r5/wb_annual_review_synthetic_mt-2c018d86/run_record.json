@@ -1,0 +1,616 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-11-01T15:58:05.117725+00:00",
+  "material": "samples/material_replay/annual_review_synthetic.md",
+  "material_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+  "target_pages": 16,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "markdown",
+    "input_sha256": "659255db46d1aba18cc739d8b865130282abb5738134f39d21dbf7cbab9c4bcf",
+    "pages": 9,
+    "units": 35,
+    "tables": 0,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": []
+  },
+  "fact_ledger": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-2c018d86/fact_ledger.json",
+    "count": 58,
+    "selected": 58,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": false,
+    "policy": "材料自然规模在冻结页数区间内，不预算。",
+    "candidates": 58,
+    "selected": 58,
+    "omitted": 0,
+    "subjects_total": 8,
+    "subjects_selected": 8,
+    "estimated_pages_unbudgeted": 19
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-2c018d86/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 15,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 25.72,
+        "done_reason": "stop",
+        "eval_count": 678,
+        "raw_response": "```json\n{\n  \"deck_title\": \"年度经营与战略规划报告\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"年度经营与战略规划报告\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"metrics\",\n      \"title\": \"年度经营概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"chart\",\n      \"title\": \"年度经营概况\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"process\",\n      \"title\": \"产品能力进展\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"comparison\",\n      \"title\": \"产品能力进展\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"table\",\n      \"title\": \"客户与生态\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"metrics\",\n      \"title\": \"成本与效率\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"成本与效率\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"metrics\",\n      \"title\": \"质量与稳定性\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"single_column\",\n      \"title\": \"质量与稳定性\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"single_column\",\n      \"title\": \"问题与改进\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 13,\n      \"page_type\": \"timeline\",\n      \"title\": \"下年度计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 14,\n      \"page_type\": \"process\",\n      \"title\": \"下年度计划\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 15,\n      \"page_type\": \"summary_action\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 16,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "一、年度经营概况",
+        "assigned_fact_ids": [
+          "F001",
+          "F002",
+          "F003",
+          "F004",
+          "F005",
+          "F006",
+          "F007",
+          "F008",
+          "F009",
+          "F010",
+          "F011"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "二、产品能力进展",
+        "assigned_fact_ids": [
+          "F012",
+          "F013",
+          "F014",
+          "F015",
+          "F016",
+          "F017",
+          "F018"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "三、客户与生态",
+        "assigned_fact_ids": [
+          "F019",
+          "F020",
+          "F021",
+          "F022",
+          "F023",
+          "F024",
+          "F025"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "四、成本与效率",
+        "assigned_fact_ids": [
+          "F026",
+          "F027",
+          "F028",
+          "F029",
+          "F030",
+          "F031",
+          "F032"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "五、质量与稳定性",
+        "assigned_fact_ids": [
+          "F033",
+          "F034",
+          "F035",
+          "F036",
+          "F037",
+          "F038",
+          "F039"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "六、问题与改进",
+        "assigned_fact_ids": [
+          "F040",
+          "F041",
+          "F042",
+          "F043"
+        ],
+        "source_statement_count": 3,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "七、下年度计划",
+        "assigned_fact_ids": [
+          "F044",
+          "F045",
+          "F046",
+          "F047",
+          "F048",
+          "F049",
+          "F050",
+          "F051",
+          "F052"
+        ],
+        "source_statement_count": 6,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "八、结论",
+        "assigned_fact_ids": [
+          "F053",
+          "F054",
+          "F055",
+          "F056",
+          "F057",
+          "F058"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 15
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 15,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 6,
+        "capacity_per_page": 6,
+        "pages": 2
+      },
+      {
+        "page_type": "metrics",
+        "original_units": 5,
+        "catalog_mid": 4,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      },
+      {
+        "page_type": "chart",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 13,
+    "builder_generated_continuations": 2,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/r5/wb_annual_review_synthetic_mt-2c018d86/annual_review_synthetic.generated.pptx",
+    "sha256": "239ea8dfde2c681965f87198f077a78792bf15d03a6166758c0f2b422993d72a",
+    "slides": 15,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "二、产品能力进展",
+      "chart_part_hint": "slide 6",
+      "chart_title": "平均故障定位时间",
+      "series_name": "指标（分钟）",
+      "axis_unit": "分钟",
+      "excluded_units_same_page_table": [
+        "亿",
+        "%",
+        "unknown"
+      ],
+      "unplotted_statements_same_page_table": [],
+      "points": [
+        {
+          "category": "平均故障定位时间·改善前",
+          "display_category": "改善前",
+          "value": 45.0,
+          "unit": "分钟",
+          "fact_id": "F015"
+        },
+        {
+          "category": "平均故障定位时间·改善后",
+          "display_category": "改善后",
+          "value": 8.0,
+          "unit": "分钟",
+          "fact_id": "F016"
+        }
+      ]
+    },
+    {
+      "page_title": "七、下年度计划",
+      "chart_part_hint": "slide 12",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [
+        "%"
+      ],
+      "unplotted_statements_same_page_table": [
+        "2025 年计划总收入达到 18 亿元，同比增长 40%。",
+        "计划将续约预警覆盖率提升到 90%。"
+      ],
+      "points": [
+        {
+          "category": "年计划总收入·目标",
+          "display_category": "年计划总收入·目标",
+          "value": 2025.0,
+          "unit": "unknown",
+          "fact_id": "F044"
+        },
+        {
+          "category": "可用区·2·目标",
+          "display_category": "可用区·2·目标",
+          "value": 2.0,
+          "unit": "unknown",
+          "fact_id": "F047"
+        },
+        {
+          "category": "计划将跨区域同步延迟压缩·目标",
+          "display_category": "计划将跨区域同步延迟压缩·目标",
+          "value": 30.0,
+          "unit": "unknown",
+          "fact_id": "F048"
+        },
+        {
+          "category": "存量接口",
+          "display_category": "存量接口",
+          "value": 22.0,
+          "unit": "unknown",
+          "fact_id": "F041"
+        }
+      ]
+    },
+    {
+      "page_title": "七、下年度计划…",
+      "chart_part_hint": "slide 14",
+      "chart_title": "计划研发投入增加",
+      "series_name": "指标（亿元）",
+      "axis_unit": "亿元",
+      "excluded_units_same_page_table": [
+        "人"
+      ],
+      "unplotted_statements_same_page_table": [
+        "计划研发投入增加至 5.2 亿元，研发人员扩展到 1100 人。"
+      ],
+      "points": [
+        {
+          "category": "计划研发投入增加·目标",
+          "display_category": "目标",
+          "value": 5.2,
+          "unit": "亿元",
+          "fact_id": "F051"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 6,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 2,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 4,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 8,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 3,
+      "density": "low",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 9,
+      "page_type": "comparison",
+      "catalog_key": "double_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "two_column_with_footnote",
+      "fallback_chain": [
+        "two_column",
+        "two_column_split",
+        "two_column_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 4,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 11,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 3,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 5,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 6,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 14,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 1,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 15,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 4,
+      "density": "mid",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-11-01T15:58:30.924330+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

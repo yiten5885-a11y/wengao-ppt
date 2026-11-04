@@ -1,0 +1,1065 @@
+{
+  "deck_title": "稳稿 PPT 开发补充包",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "稳稿 PPT · 开发补充包",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "稳稿 PPT · 开发补充包（给",
+        "0. 三句话说清楚现状",
+        "1. 代码在哪、现在是什么状态",
+        "2. 文件归属（继续沿用，改动前"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "3. 硬约束（继承自任务书，不可",
+        "P0-1　`wengao_ppt",
+        "P0-2　`wengao_ppt",
+        "P1-1　对比/趋势/洞察页的"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "P1-2　`table·b`（表",
+        "P1-3　图片页型第三变体\"全出",
+        "P1-4　阿拉伯语标题里有 1",
+        "P1-5　视觉判图目前只有本地多"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 5,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "P1-6　工作台新界面（RS-9",
+        "6. 配置/凭证缺口（P2，**",
+        "7. 环境相关：这两条已经不再阻",
+        "8. 文档纠错：美术手册其实存在"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 6,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "9. 待用户决策事项（不是代码缺",
+        "10. 每次改动后必须做的事（硬",
+        "11. 原始材料索引（想看更多细"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 7,
+      "page_type": "single_column",
+      "title": "稳稿 PPT · 开发补充包（给",
+      "must_state": [
+        "日期：2026-10-24　交给：Codex　背景：W1–W4 四窗口并行开发已结束并完成拼接，本文件是\"拼接之后、发布之前\"仍然欠缺的全部事项清单 + 开发约束。",
+        "**请先完整读完本文件再动手**，不要只看文件名猜测。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "0. 三句话说清楚现状",
+      "must_state": [
+        "1. 四个窗口（W1 素材与动效 / W2 版式与成稿 / W3 联网研究 / W4 工作台与集成）的代码已经**物理拼接完成**，位置、分支、测试基线见 §1。",
+        "2. 本文件列的是**拼接之后仍然存在的缺口**——有真正要写代码修的 bug，也有不是代码问题、你修不了、必须用户先给凭证/模型的配置缺口，两类已经分开标注，**不要把第二类当成代码任务去\"硬修\"**。",
+        "3. 任何改动前后都必须跑一次 `bash scripts/check_all.sh`，现在的及格线是 **478 passed, 313 subtests passed, 0 failed**。",
+        "低于这个数就是你引入了回归，禁止用\"缩小测试范围\"的方式让它看起来变绿。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态",
+      "must_state": [
+        "```项目目录（唯一真实位置，不要在别处新建副本）：/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/git 状态：今天（2026-10-24）刚建立 git 仓库，分支 main，3 个提交：52b3fdf  baseline: wengao-vis"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "```**不要重新 git init、不要换目录、不要从桌面的旧交付包/快照（`稳稿PPT-开发包/`、`稳稿PPT-场景配图交付-20261023/`、`v16验收` 等）里复制文件回灌**——那些都是候选目录在不同时间点的旧快照或子集，候选目录现在的版本更新、更全，以候选目录为准，冲突时旧包作废。"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 11,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "0.1"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 12,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "630"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 13,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "-9"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 14,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "2375"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 15,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "478"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 16,
+      "page_type": "comparison",
+      "title": "1. 代码在哪、现在是什么状态…",
+      "must_state": [
+        "313"
+      ],
+      "_continued_from": 5
+    },
+    {
+      "page": 17,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前",
+      "must_state": [
+        "来源：候选目录根下的 `OWNERS.yaml`（rs-contracts-v1）。"
+      ]
+    },
+    {
+      "page": 18,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "| 窗口 | 独占路径（节选，完整见 OWNERS.yaml） ||---|---|| W1 素材与动效 | `wengao_ppt/scene_images.py` `scene_model.py` `semantic_scenes.py` `visual_plan.py` `transitions.py` `media/**` || W2 版式与成稿 | `wengao_ppt/page_ca"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 19,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "改之前跑 `python scripts/ownership_guard.py --base <上一次提交> --head HEAD` 自检。"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 20,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "3"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 21,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "4"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 22,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "01"
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 23,
+      "page_type": "single_column",
+      "title": "2. 文件归属（继续沿用，改动前…",
+      "must_state": [
+        "1."
+      ],
+      "_continued_from": 6
+    },
+    {
+      "page": 24,
+      "page_type": "process",
+      "title": "3. 硬约束（继承自任务书，不可",
+      "must_state": [
+        "- 不碰 8821 端口- 不调用 Claude 或任何付费模型- 不下载未经用户批准的大模型/大权重文件- 不放宽任何既有门禁判定（宁可报 FAILED / NOT_EVALUABLE，不准悄悄调松阈值让它变绿）- 不允许\"缩小测试范围 / 跳过失败用例\"来抬高通过率的假象- 密钥（Pexels 等）只走环境变量读取，绝不写入代码或落盘- 回放材料（synthetic/replay）与真实材料（",
+        "-615."
+      ]
+    },
+    {
+      "page": 25,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt",
+      "must_state": [
+        "- **冻结契约 C6** 规定：`resolve_scenes(...) -> list[SceneResolution]`，`compose_deck` 应该直接接收这个 list。"
+      ]
+    },
+    {
+      "page": 26,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "- **现状**（已核实，见该文件 122–127 行）：签名仍是 `resolutions: dict | None`，内部按 `{scene_id: SceneResolution}` 的字典形状消费；如果真传 list 进去会 `AttributeError: 'list' object has no attribute 'get'`。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 27,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "- **要做什么**：把 `compose_deck` 改成直接接受 `list[SceneResolution]`（内部自己按 `scene_id` 建索引），和 W1 的 `resolve_scenes` 输出直连，不再需要适配层。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 28,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "改完后同步通知（更新 `reports/handoff/CR-01_interface_alignment.md` 里的状态）。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 29,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "- **验证**：`tests/test_w2_planner_builders.py` 以及管线 `tests/pipeline/test_edit_beautify.py` 要在不经过适配层的情况下仍然通过。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 30,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第一条。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 31,
+      "page_type": "process",
+      "title": "P0-1　`wengao_ppt…",
+      "must_state": [
+        "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::_adapt_compose_deck` 做了临时双向适配（list↔dict），管线能跑，但这是个临时胶水层，不是修复。"
+      ],
+      "_continued_from": 8
+    },
+    {
+      "page": 32,
+      "page_type": "chart",
+      "title": "P0-2　`wengao_ppt",
+      "must_state": [
+        "- **现象**：对含特定文本块（已知复现：一个 \"46.8%\" 这类大数字 + 若干要点的组合）调用 `wengao_ppt.layout.checks.check_layout`，线程卡死在 `wrap_lines` 的换行循环里不返回。",
+        "- **当前靠谁兜底**：`wengao_ppt/pipeline/modules.py::run_check` 加了看门狗（layout 120s 超时、其余 60–90s），超时记 FAILED 并保留现场，**不是修复，只是不让它拖死整个管线**。",
+        "- **详情**：`reports/handoff/CR-01_interface_alignment.md` 第二条（BUG-W2-01）。",
+        "- **要做什么**：定位 `wrap_lines`（`wengao_ppt/layout/measure.py`，数字+单位 token 保护逻辑那一段）里导致 `cur_w`/游标 `i`/`j` 不前进的边界条件，修掉真正的死循环，而不是只加超时。",
+        "建议：给 token 推进加\"最小前进量\"断言或上限迭代次数作为双重保险，但**前提是先找到并修掉根因**，不能只靠加保险当作修复交差。"
+      ]
+    },
+    {
+      "page": 33,
+      "page_type": "chart",
+      "title": "P0-2　`wengao_ppt…",
+      "must_state": [
+        "- **验证**：补一个曾经卡死的具体文本块作回归测试用例，跑 `check_layout` 要能在合理时间内正常返回结果（不是超时 FAILED）。"
+      ],
+      "_continued_from": 9
+    },
+    {
+      "page": 34,
+      "page_type": "comparison",
+      "title": "P1-1　对比/趋势/洞察页的",
+      "must_state": [
+        "- W2 当时说\"回放材料没有 bundle，没法端到端验证\"，**但现在 W3 已经把 4 份标准 fixture 交到了** `fixtures/research/bundle_sample_zh.json` / `bundle_sample_en.json` / `bundle_sample_empty.json` / `bundle_sample_conflict.json`（已确认文件都"
+      ]
+    },
+    {
+      "page": 35,
+      "page_type": "comparison",
+      "title": "P1-1　对比/趋势/洞察页的…",
+      "must_state": [
+        "- **要做什么**：拿这 4 份 fixture 跑一遍 `plan_deck` → `compose_deck`，产出一组真实渲染样张，验证\"对比/趋势/洞察页插在提到该指标的页面之后\"这条规则，以及 `conflicts` 字段触发时\"两组数据并列 + 标待确认\"的渲染效果（`bundle_sample_conflict.json` 专门测这个）。"
+      ],
+      "_continued_from": 10
+    },
+    {
+      "page": 36,
+      "page_type": "comparison",
+      "title": "P1-1　对比/趋势/洞察页的…",
+      "must_state": [
+        "- **验证**：新增渲染样张放进 `reports/rs-w2/`，补一条 §2 验收证据。"
+      ],
+      "_continued_from": 10
+    },
+    {
+      "page": 37,
+      "page_type": "single_column",
+      "title": "P1-2　`table·b`（表",
+      "must_state": [
+        "- 代码路径 `_table_note` 存在，但 W2 自己交的样张没有给带注释的输入数据，所以两个变体看起来一样。",
+        "- **要做什么**：用一份带 note 内容的输入重新渲染一次 `table·b`，补进 `reports/rs-w2/page_types/`，证明两个变体真的有视觉差异。"
+      ]
+    },
+    {
+      "page": 38,
+      "page_type": "conclusion",
+      "title": "P1-3　图片页型第三变体\"全出",
+      "must_state": [
+        "- 任务书 §4-C 列了三种图片页变体：整幅 / 左右分栏 / 全出血带蒙版，现在只有前两种。",
+        "由谁提供蒙版资产），这部分建议 W1（`wengao_ppt/media/`）配合出一份蒙版资产规范，W2 再接版式。",
+        "- **要做什么**：需要先定好\"蒙版素材\"的约定（渐变黑场蒙版图，还是纯色透明度叠加？"
+      ]
+    },
+    {
+      "page": 39,
+      "page_type": "conclusion",
+      "title": "P1-3　图片页型第三变体\"全出…",
+      "must_state": [
+        "两边都要改，别只改一边就交差。"
+      ],
+      "_continued_from": 12
+    },
+    {
+      "page": 40,
+      "page_type": "single_column",
+      "title": "P1-4　阿拉伯语标题里有 1",
+      "must_state": [
+        "- 栈设计本身没错（末位兜底是故意的），但现在没有任何机制提醒\"这次真的触发了兜底\"。",
+        "- **要做什么**：在 `wengao_ppt/glyphcheck.py` 里加一条检测——如果某个 run 实际渲染用的字体落到了栈末位（而不是 Noto 系），记一条 WARN（不是 FAILED，因为兜底本身是设计内行为），方便后续排查哪个字符缺字。"
+      ]
+    },
+    {
+      "page": 41,
+      "page_type": "single_column",
+      "title": "P1-5　视觉判图目前只有本地多",
+      "must_state": [
+        "- 现状：色数+语义多因子打分，阈值 0.55，标定集 32 张，已经能跑。",
+        "- 如果要升级精度：本机 Ollama 已经有 `qwen3.8:27b`（带 vision 能力，已验证本机可达），或者下载专用轻量 SigLIP 模型。"
+      ]
+    },
+    {
+      "page": 42,
+      "page_type": "single_column",
+      "title": "P1-5　视觉判图目前只有本地多…",
+      "must_state": [
+        "- **这不是必须修的 bug，是一个\"要不要做\"的产品决策**——默认维持现状（本地启发式打分），除非用户明确说要升级，升级前按 §7 的硬约束，模型下载要先报体积与许可。"
+      ],
+      "_continued_from": 14
+    },
+    {
+      "page": 43,
+      "page_type": "single_column",
+      "title": "P1-6　工作台新界面（RS-9",
+      "must_state": [
+        "- 完整清单与截图对照见 `reports/rs-w4/feature-mapping.md` 第 1 节（19 项已接、3 项部分接、0 项丢失）。",
+        "- **要做什么**：把这 3 项从旧界面搬到新界面（`workbench/ui/`），搬完更新 feature-mapping.md。",
+        "- 主题选择器 UI、取消/重试按钮、对象级编辑面板——目前都靠旧界面兜底，没有迁移到新界面里。"
+      ]
+    },
+    {
+      "page": 44,
+      "page_type": "single_column",
+      "title": "6. 配置/凭证缺口（P2，**",
+      "must_state": [
+        "| # | 缺什么 | 影响 | 谁来给 ||---|---|---|---|| 1 | `PEXELS_API_KEY` 环境变量未设置 | 配图分级引擎 T2 的 Pexels 主源用不了，自动降级到备用源/T4，功能本身没问题，就是用不到首选图库 | 用户去 Pexels 申请 key，写进本机环境变量（绝不能写进代码或配置文件落盘） || 2 | ComfyUI 扩散模型权重缺失（`/Vo"
+      ]
+    },
+    {
+      "page": 45,
+      "page_type": "single_column",
+      "title": "7. 环境相关：这两条已经不再阻",
+      "must_state": [
+        "W4 的交付报告（`reports/rs-w4/rs1-baseline/REPORT.md`、`FINAL.md`）里说 RS-1 本机基线重跑被阻塞，理由是\"交付机（MacBook Pro）没有 LibreOffice，Mac mini 的 Ollama 跨网不可达\"——**这个理由是在另一台机器上写的，不适用于你现在实际干活的这台机器**。"
+      ]
+    },
+    {
+      "page": 46,
+      "page_type": "single_column",
+      "title": "7. 环境相关：这两条已经不再阻…",
+      "must_state": [
+        "本次拼接时我在当前机器（主机名 `huangyingtengdeMac-Mini-615.local`，即 Mac mini 本机）上直接核实过：- LibreOffice：已安装（`/Applications/LibreOffice.app` 存在）- Ollama：本机 `127.0.0.1:11434` 可直接访问（已返回版本号 `0.40.3-localqwen4`）**也就是说 RS-1"
+      ],
+      "_continued_from": 17
+    },
+    {
+      "page": 47,
+      "page_type": "single_column",
+      "title": "7. 环境相关：这两条已经不再阻…",
+      "must_state": [
+        "脚本已经就位：```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix.venv/bin/python3 scripts/rs1_baseline.py --input <13页原稿.pptx>```建议 Codex 把这个列为优先要做的事"
+      ],
+      "_continued_from": 17
+    },
+    {
+      "page": 48,
+      "page_type": "single_column",
+      "title": "8. 文档纠错：美术手册其实存在",
+      "must_state": [
+        "W2 的 `reports/rs-w2/FINAL.md` §3 说\"美术手册 `WENGAO_PPT_ART_DIRECTION_PLAYBOOK.md` 在本机不存在（Desktop 与仓库均未找到），无法按其 §8 原始量表评分\"——**这个说法不对，文件其实在，只是 W2 当时没找对位置**：```/Users/huangyingteng/Desktop/稳稿PPT-计划包/WENGAO_",
+        "24"
+      ]
+    },
+    {
+      "page": 49,
+      "page_type": "single_column",
+      "title": "9. 待用户决策事项（不是代码缺",
+      "must_state": [
+        "| # | 事项 | 现状 / 默认值 ||---|---|---|| 1 | RS-6 多语言分级（26 语言全跑 vs 抽样） | 默认维持现状：中英完整链路 + 6 种文字抽样（中/日/英/俄/阿拉伯 RTL/印地语排版样张 + 中文/英文/一句话三类真实检索验收）。",
+        "不要自己扩展到全 26 语言，除非用户要求。"
+      ]
+    },
+    {
+      "page": 50,
+      "page_type": "single_column",
+      "title": "9. 待用户决策事项（不是代码缺…",
+      "must_state": [
+        "|| 2 | RS-7 三档真实验证（1→5→20 套） | 运行手册已就位（`reports/rs-w4/rs7-verification-runbook.md`），但**触发时机由用户定**，不要自己启动大规模真实验证消耗资源/调用外部检索。",
+        "|| 3 | RS-8 五十套开源前门禁 | 预置补丁已写好（`scripts/rs8_extend_identity_contract.py`），同样是\"到条件才触发\"，不要自己提前执行。"
+      ],
+      "_continued_from": 19
+    },
+    {
+      "page": 51,
+      "page_type": "single_column",
+      "title": "9. 待用户决策事项（不是代码缺…",
+      "must_state": [
+        "|| 4 | 资源锁默认排队上限 900s | 这个数字还没有在真实并发场景（Qwen + ComfyUI + 视觉模型同时跑）下实测过，如果要调整，先在本机做一次真实并发压测再改默认值，不要凭感觉改。"
+      ],
+      "_continued_from": 19
+    },
+    {
+      "page": 52,
+      "page_type": "single_column",
+      "title": "10. 每次改动后必须做的事（硬",
+      "must_state": [
+        "```bashcd /Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fixbash scripts/check_all.sh          # pytest + 契约 schema 自检 + 文件独占检查，退出码 0 才算过```- 三项任何一项不过，不"
+      ]
+    },
+    {
+      "page": 53,
+      "page_type": "single_column",
+      "title": "10. 每次改动后必须做的事（硬…",
+      "must_state": [
+        "- 测试数只能比 478 passed 多，不能变少；新加的功能要配新测试，不是口头说\"做完了\"。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 54,
+      "page_type": "single_column",
+      "title": "10. 每次改动后必须做的事（硬…",
+      "must_state": [
+        "- 改动涉及 `OWNERS.yaml` 列出的独占路径时，先确认没越界（见 §2），越界就是在改别的窗口的文件，先别改，走变更请求单（写进 `reports/handoff/`）。"
+      ],
+      "_continued_from": 20
+    },
+    {
+      "page": 55,
+      "page_type": "single_column",
+      "title": "11. 原始材料索引（想看更多细",
+      "must_state": [
+        "```候选目录（代码本体）/OWNERS.yaml                                文件独占清单reports/rs-w1/FINAL.md                     W1 交付报告（素材与动效）reports/rs-w2/FINAL.md                     W2 交付报告（版式与成稿，含逐页评分表）reports/rs-w3/FI",
+        "16"
+      ]
+    },
+    {
+      "page": 56,
+      "page_type": "single_column",
+      "title": "11. 原始材料索引（想看更多细…",
+      "must_state": [
+        "-1",
+        "7"
+      ],
+      "_continued_from": 21
+    },
+    {
+      "page": 57,
+      "page_type": "single_column",
+      "title": "11. 原始材料索引（想看更多细…",
+      "must_state": [
+        "-01",
+        "00"
+      ],
+      "_continued_from": 21
+    },
+    {
+      "page": 58,
+      "page_type": "single_column",
+      "title": "11. 原始材料索引（想看更多细…",
+      "must_state": [
+        "20261024.",
+        "8"
+      ],
+      "_continued_from": 21
+    },
+    {
+      "page": 59,
+      "page_type": "single_column",
+      "title": "11. 原始材料索引（想看更多细…",
+      "must_state": [
+        "-20261024"
+      ],
+      "_continued_from": 21
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 63.03,
+      "done_reason": "stop",
+      "eval_count": 552,
+      "raw_response": "{\n  \"deck_title\": \"稳稿 PPT 开发补充包\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"稳稿 PPT · 开发补充包\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"三句话说清楚现状\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"table\",\n      \"title\": \"代码在哪、现在是什么状态\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"comparison\",\n      \"title\": \"文件归属\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"硬约束\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"process\",\n      \"title\": \"P0-1 compose.py\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"P0-2 measure.py\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"chart\",\n      \"title\": \"P1-1 ResearchBundle\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"comparison\",\n      \"title\": \"P1-2 table·b 变体\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"single_column\",\n      \"title\": \"P1-3 全出血带蒙版\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"P1-4 阿拉伯语字形\",\n      \"must_state\": []\n    }\n  ]\n}"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "稳稿 PPT · 开发补充包（给 Codex）",
+      "assigned_fact_ids": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "0. 三句话说清楚现状",
+      "assigned_fact_ids": [
+        "F007",
+        "F008",
+        "F009",
+        "F010",
+        "F011",
+        "F012",
+        "F013",
+        "F014",
+        "F015",
+        "F016",
+        "F017",
+        "F018"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "1. 代码在哪、现在是什么状态",
+      "assigned_fact_ids": [
+        "F019",
+        "F020",
+        "F021",
+        "F022",
+        "F023",
+        "F024",
+        "F025",
+        "F026",
+        "F027",
+        "F028",
+        "F029",
+        "F030",
+        "F031",
+        "F032",
+        "F033",
+        "F034",
+        "F035",
+        "F036",
+        "F037",
+        "F038",
+        "F039",
+        "F040",
+        "F041",
+        "F042",
+        "F043",
+        "F044",
+        "F045",
+        "F046",
+        "F047",
+        "F048",
+        "F049",
+        "F050"
+      ],
+      "source_statement_count": 8,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "2. 文件归属（继续沿用，改动前看一眼，别越界）",
+      "assigned_fact_ids": [
+        "F051",
+        "F052",
+        "F053",
+        "F054",
+        "F055",
+        "F056",
+        "F057",
+        "F058",
+        "F059",
+        "F060"
+      ],
+      "source_statement_count": 7,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "3. 硬约束（继承自任务书，不可违反，不是\"建议\"）",
+      "assigned_fact_ids": [
+        "F061",
+        "F062"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P0-1　`wengao_ppt/layout/compose.py::comp",
+      "assigned_fact_ids": [
+        "F063",
+        "F064",
+        "F065",
+        "F066",
+        "F067",
+        "F068",
+        "F069",
+        "F070"
+      ],
+      "source_statement_count": 7,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P0-2　`wengao_ppt/layout/measure.py::wrap",
+      "assigned_fact_ids": [
+        "F071",
+        "F072",
+        "F073",
+        "F074",
+        "F075",
+        "F076",
+        "F077",
+        "F078",
+        "F079",
+        "F080"
+      ],
+      "source_statement_count": 6,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-1　对比/趋势/洞察页的 `ResearchBundle.views` 锚",
+      "assigned_fact_ids": [
+        "F081",
+        "F082",
+        "F083",
+        "F084",
+        "F085",
+        "F086"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-2　`table·b`（表+注变体）在样张里和 `table·a` 渲染结",
+      "assigned_fact_ids": [
+        "F087",
+        "F088"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-3　图片页型第三变体\"全出血带蒙版\"没做（W2+W1 配合）",
+      "assigned_fact_ids": [
+        "F089",
+        "F090",
+        "F091",
+        "F092",
+        "F093"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-4　阿拉伯语标题里有 1 个字形回退到系统 `Arial Unicode ",
+      "assigned_fact_ids": [
+        "F094",
+        "F095"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-5　视觉判图目前只有本地多因子启发式打分，没接视觉大模型（W1 范围，**",
+      "assigned_fact_ids": [
+        "F096",
+        "F097",
+        "F098",
+        "F099",
+        "F100"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "P1-6　工作台新界面（RS-9）还有三项只是部分接入（W4 范围）",
+      "assigned_fact_ids": [
+        "F101",
+        "F102",
+        "F103",
+        "F104",
+        "F105",
+        "F106",
+        "F107"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "6. 配置/凭证缺口（P2，**这些不是代码任务，你改不出来，缺的是密钥和模型文",
+      "assigned_fact_ids": [
+        "F108",
+        "F109",
+        "F110",
+        "F111",
+        "F112",
+        "F113"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "7. 环境相关：这两条已经不再阻塞，不要被旧报告误导（重要）",
+      "assigned_fact_ids": [
+        "F114",
+        "F115",
+        "F116",
+        "F117",
+        "F118",
+        "F119",
+        "F120",
+        "F121",
+        "F122",
+        "F123",
+        "F124",
+        "F125",
+        "F126",
+        "F127",
+        "F128",
+        "F129",
+        "F130",
+        "F131",
+        "F132",
+        "F133",
+        "F134",
+        "F135"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "8. 文档纠错：美术手册其实存在，别被 W2 的报告误导",
+      "assigned_fact_ids": [
+        "F136",
+        "F137",
+        "F138",
+        "F139",
+        "F140",
+        "F141",
+        "F142",
+        "F143",
+        "F144"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "9. 待用户决策事项（不是代码缺口，Codex 碰到这几条时按\"默认值\"处理，除",
+      "assigned_fact_ids": [
+        "F145",
+        "F146",
+        "F147",
+        "F148",
+        "F149",
+        "F150",
+        "F151",
+        "F152",
+        "F153",
+        "F154",
+        "F155",
+        "F156",
+        "F157",
+        "F158",
+        "F159",
+        "F160",
+        "F161"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "10. 每次改动后必须做的事（硬性流程，不是可选项）",
+      "assigned_fact_ids": [
+        "F162",
+        "F163",
+        "F164",
+        "F165",
+        "F166",
+        "F167",
+        "F168",
+        "F169",
+        "F170",
+        "F171"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11. 原始材料索引（想看更多细节就去这些文件，不用我复述）",
+      "assigned_fact_ids": [
+        "F172",
+        "F173",
+        "F174",
+        "F175",
+        "F176",
+        "F177",
+        "F178",
+        "F179",
+        "F180",
+        "F181",
+        "F182",
+        "F183",
+        "F184",
+        "F185",
+        "F186",
+        "F187",
+        "F188",
+        "F189",
+        "F190",
+        "F191",
+        "F192",
+        "F193",
+        "F194",
+        "F195",
+        "F196",
+        "F197",
+        "F198"
+      ],
+      "source_statement_count": 10,
+      "model_calls": 0
+    }
+  ],
+  "_added_skeleton_slides": [
+    {
+      "title": "P1-4　阿拉伯语标题里有 1",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P1-5　视觉判图目前只有本地多",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "P1-6　工作台新界面（RS-9",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "6. 配置/凭证缺口（P2，**",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "7. 环境相关：这两条已经不再阻",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "8. 文档纠错：美术手册其实存在",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "9. 待用户决策事项（不是代码缺",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "10. 每次改动后必须做的事（硬",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    },
+    {
+      "title": "11. 原始材料索引（想看更多细",
+      "reason": "内容页少于章节数：程序补 single_column 承载该章节"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 21,
+    "pages_after": 59,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 19,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 5
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 8,
+        "catalog_mid": 4,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 8
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 7,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "process",
+        "original_units": 7,
+        "catalog_mid": 5,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 7
+      },
+      {
+        "page_type": "chart",
+        "original_units": 6,
+        "catalog_mid": 5,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "comparison",
+        "original_units": 3,
+        "catalog_mid": 4,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "conclusion",
+        "original_units": 4,
+        "catalog_mid": 3,
+        "readable_cap": 3,
+        "capacity_per_page": 3,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 5,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 3,
+        "catalog_mid": 6,
+        "readable_cap": 1,
+        "capacity_per_page": 1,
+        "pages": 3
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 9,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 5
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": false
+  }
+}

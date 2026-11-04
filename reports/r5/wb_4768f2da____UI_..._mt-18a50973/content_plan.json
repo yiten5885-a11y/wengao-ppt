@@ -1,0 +1,258 @@
+{
+  "deck_title": "游戏设计与开发指南",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "游戏设计与开发指南",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "第 1 段",
+        "**一、 核心玩法与“首局上瘾”",
+        "**二、 精致UI画面与视觉美术",
+        "**三、 炫酷动画与“汁水感（G"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "**四、 开发指南与技术落地明细",
+        "**1\\. 核心架构与模块拆解*",
+        "**2\\. 关键技术实现明细**",
+        "**3\\. 四阶段敏捷开发里程碑"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "第 1 段",
+      "must_state": [
+        "《花路小屋绽放纪》定位为一款“连锁流光合成（Chain-Merge）+ 治愈系立体小屋翻新 \\+ 奇幻基因育种”**的精品小游戏，核心通过**“0门槛高爽感的多米诺连锁反馈”**与**“未完成心理悬念（蔡格尼克效应）”实现玩家首局即上瘾。"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "metrics",
+      "title": "**一、 核心玩法与“首局上瘾”",
+      "must_state": [
+        "游戏抛弃传统慢节奏的种田等待，采用“棋盘合成触发连锁绽放 ➔ 收集花露能量 ➔ 一键擦除破败并流体式翻新小屋”的极速多巴胺循环。",
+        "**1\\. 核心玩法三角（30秒微循环）**",
+        "* **流光棋盘（高频操作层）：** 在 $7\\times 9$ 的玻璃花房棋盘上拖动合成同级花苞。",
+        "**2\\. 留住玩家的四大“成瘾钩子”设计**"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "single_column",
+      "title": "**二、 精致UI画面与视觉美术",
+      "must_state": [
+        "整体美术采用“新艺术运动（Art Nouveau）鎏金玻璃风 \\+ 吉卜力式手绘厚涂”，兼具通透的高级感与治愈系温度。",
+        "**1\\. 色彩与光影规范**",
+        "* **主色调（阳光花房）：** 奶油羊皮纸白（\\#FAF6F0）作为底板，降低长时间游玩的视觉疲劳；森林苔藓绿（\\#2C4A3E）作为深色衬底，突出前景发光花卉。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "table",
+      "title": "**三、 炫酷动画与“汁水感（G",
+      "must_state": [
+        "要让玩家“玩一次就爽到停不下来”，每一个基础交互都必须配备精确到毫秒的动画帧与粒子反馈。",
+        "| 交互场景 | 动画与骨骼（Spine / Tween） | 粒子与Shader特效（VFX） | 时间轴与缓动曲线（Easing） |",
+        "| :---- | :---- | :---- | :---- |"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "single_column",
+      "title": "**四、 开发指南与技术落地明细",
+      "must_state": [
+        "建议采用 **Cocos Creator 3.8+** 或 **Unity（结合团建/WebGL/小游戏导出方案）**，支持直接发布为微信/抖音小游戏、iOS/Android及Web端，兼顾极致渲染表现与秒开体验。"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "process",
+      "title": "**1\\. 核心架构与模块拆解*",
+      "must_state": [
+        "│   ├── EventBus.ts          \\# 全局强类型事件总线（解耦棋盘合成与UI动画）",
+        "│   ├── ObjectPool.ts        \\# 通用节点对象池（管理高频生成的花粉粒子、飘字、花朵节点）",
+        "│   └── AudioEngine.ts       \\# 动态音高音频管理器（支持Pitch实时调制实现连击升调）"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "**2\\. 关键技术实现明细**",
+      "must_state": [
+        "* **顿帧与打击感（Hit-Stop）代码级实现：** 在触发5阶以上高阶花卉合成或全屏连锁时，将游戏主循环 timeScale 瞬间降至 0.1 持续 45ms，随后恢复 1.0 并配合相机 3px 的高频微震动，能瞬间将平面UI合成做出动作游戏般的“破屏张力”。",
+        "* **自定义 Shader 必做清单（仅需3个核心Shader即可撑起顶级视觉）：**"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "timeline",
+      "title": "**3\\. 四阶段敏捷开发里程碑",
+      "must_state": [
+        "> 1. **阶段一：核心爽感原型（Day 1 \\- Day 5）** 完成 $7\\times 9$ 棋盘拖拽、十字连锁合成逻辑、贝塞尔飞球、连击升调音效与果冻缩放曲线。",
+        "**验收标准：不看任何美术包装，光靠合成白模方块和音效就能让人连续点按5分钟不腻。",
+        "我可以据此为你直接编写核心的“果冻回弹合成+贝塞尔流光飞球”代码模块。"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 173.73,
+      "done_reason": "stop",
+      "eval_count": 531,
+      "raw_response": "```json\n{\n  \"deck_title\": \"游戏设计与开发指南\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"游戏设计与开发指南\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"第 1 段\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"metrics\",\n      \"title\": \"核心玩法与留存机制\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"single_column\",\n      \"title\": \"精致UI画面与视觉规范\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"single_column\",\n      \"title\": \"炫酷动画与表现明细\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"single_column\",\n      \"title\": \"开发指南与技术落地\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"process\",\n      \"title\": \"核心架构与模块拆解\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"table\",\n      \"title\": \"关键技术实现明细\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"timeline\",\n      \"title\": \"四阶段敏捷开发里程碑\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"summary_action\",\n      \"title\": \"总结与行动建议\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结语\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "第 1 段",
+      "assigned_fact_ids": [
+        "F001"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**一、 核心玩法与“首局上瘾”留存机制**",
+      "assigned_fact_ids": [
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F011"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**二、 精致UI画面与视觉美术规范**",
+      "assigned_fact_ids": [
+        "F027",
+        "F028",
+        "F029"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**三、 炫酷动画与“汁水感（Game Juice）”表现明细**",
+      "assigned_fact_ids": [
+        "F041",
+        "F042",
+        "F043"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**四、 开发指南与技术落地明细**",
+      "assigned_fact_ids": [
+        "F067"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**1\\. 核心架构与模块拆解**",
+      "assigned_fact_ids": [
+        "F068",
+        "F069",
+        "F070"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**2\\. 关键技术实现明细**",
+      "assigned_fact_ids": [
+        "F082",
+        "F083",
+        "F084",
+        "F085",
+        "F086",
+        "F087"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "**3\\. 四阶段敏捷开发里程碑**",
+      "assigned_fact_ids": [
+        "F100",
+        "F101",
+        "F102",
+        "F103",
+        "F104",
+        "F105",
+        "F122"
+      ],
+      "source_statement_count": 3,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "总结与行动建议",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "结语",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 11,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 4,
+        "capacity_per_page": 4,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 11,
+    "builder_generated_continuations": 0,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  }
+}
