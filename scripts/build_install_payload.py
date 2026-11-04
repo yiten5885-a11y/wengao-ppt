@@ -54,6 +54,7 @@ INCLUDE_FILES = (
     "README.md",
     "README_EN.md",
     "SKILL.md",
+    "LICENSE",
     "LICENSE-STATUS.md",
     "THIRD-PARTY-NOTICES.md",
     "VERSIONS.md",

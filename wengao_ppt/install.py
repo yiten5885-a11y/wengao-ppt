@@ -82,13 +82,31 @@ DATA_PREFIXES = ("wb_loopback_data/", "jobs/", "reports/", "workbench_uploads/",
 RUNTIME_SUFFIXES = (".pyc", ".pyo", ".log", ".pid", ".tmp", ".lock")
 
 
-def build_id(prog_dir: Path) -> str:
+#: 同一进程内按 (resolved prog_dir) 记忆化构建身份。构建身份是**程序树**的
+#: 确定性聚合；程序在运行期不自我改写（安装器/门禁/工作台都只读程序树），
+#: 因此首算后复用既是安全的，也把"连续两次只读访问得到同一身份"从巧合变成
+#: 契约。install-cleanroom-20261104 实测：工作台每次 bootstrap 都全树重算
+#: （15,649 个文件逐个 SHA-256），在文件 I/O 受代理的环境里把首屏拖到 35s；
+#: 进程内记忆化后同进程第二次 bootstrap 不再碰文件系统。进程内确实改写了
+#: 程序树又需要新身份的调用方（目前没有；测试里验证记忆化契约时会用）传
+#: refresh=True 强制重算。
+_BUILD_ID_CACHE: dict[str, str] = {}
+
+
+def build_id(prog_dir: Path, *, refresh: bool = False) -> str:
     """构建身份 = 全量**程序**成员 (相对路径, 内容哈希) 的聚合摘要（与文件名/时间无关）。
 
     排除：安装器记录、渲染 profile、字节码、数据根与运行期文件（见上方常量）。
     排除项是显式清单而非通配掩盖——核对方式：`find <prog> -type f` 与
     `build_id` 实际计入成员的差集必须只含上述类别的运行期/数据文件。
+
+    同一进程内按 resolved 目录记忆化（见 `_BUILD_ID_CACHE` 说明）。
     """
+    key = str(Path(prog_dir).resolve())
+    if not refresh:
+        hit = _BUILD_ID_CACHE.get(key)
+        if hit is not None:
+            return hit
     h = hashlib.sha256()
     files = sorted(
         p for p in Path(prog_dir).rglob("*")
@@ -99,7 +117,9 @@ def build_id(prog_dir: Path) -> str:
     for p in files:
         rel = p.relative_to(prog_dir).as_posix()
         h.update(f"{rel}\0{p.stat().st_size}\0{sha256(p)}\n".encode())
-    return h.hexdigest()[:32]
+    out = h.hexdigest()[:32]
+    _BUILD_ID_CACHE[key] = out
+    return out
 
 
 def root_dir(args=None) -> Path:
