@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-04T15:12+08:00",
+  "acceptance": "第三方 Office 兼容实测（WPS Office 12.1.29182 arm64 官方正式版）",
+  "context": "本机无 PowerPoint/WPS/Keynote（PowerPoint 本体验证 NOT_EVALUABLE 维持）。用户明确授权为本项安装 WPS（解除原「不装 Office」边界的仅限本项）。WPS 是本机条件下可获得的第三方 MS OOXML 格式 Office 实现，其 PPTX 解析器与 LibreOffice 独立。",
+  "install": {
+    "source": "https://package.mac.wpscdn.cn/mac_wps_pkg/12.1.29182/WPS_Office_12.1.29182(29182)_arm64.dmg",
+    "size_bytes": 720321259,
+    "notarization": "spctl -a -vv: accepted, source=Notarized Developer ID",
+    "installed_to": "/Applications/wpsoffice.app"
+  },
+  "target_file": "reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+  "target_sha256_before": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+  "target_sha256_after": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+  "sha_unchanged": true,
+  "visual_verification": {
+    "screenshots": ["wps-open-1.png", "wps-open-2.png"],
+    "observed": [
+      "文档以「cleanroom_first.wengao」打开，幻灯片 1/4，Office Theme",
+      "左侧缩略图 4/4 页全部渲染",
+      "第 4 页（交付环境示意）的 AI 生成机房场景照片在缩略图中清晰可见",
+      "画布渲染第 1 页正文（会员推广浮层部分遮挡画布，属 WPS 自带推广弹窗，非许可协议阻断，文档本体已打开）"
+    ],
+    "limitations": [
+      "弹窗关闭/放映翻页等 UI 自动化需 macOS 辅助功能权限（TCC -10004 拒绝），未做点击层",
+      "Microsoft PowerPoint 本体打开验证仍 NOT_EVALUABLE（本机无 PowerPoint，未安装）"
+    ]
+  },
+  "verdict": "PASS（WPS 第三方兼容实测：打开+渲染+SHA 不变；PowerPoint 本体维持 NOT_EVALUABLE）"
+}
