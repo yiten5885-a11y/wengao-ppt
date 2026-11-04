@@ -608,7 +608,7 @@ dist/BUILD_MANIFEST.json                                          载荷逐成�
    `semantic_scenes.validate_output` 的既有口径矛盾，属漏改的一致性缺陷。
    新增纯函数 `scene_no_photo_outcomes` 统一结账。真实
    `job-624391145aa3`（5 场景 = 1 unplaced + 4 text_cards、unresolved=0）
-   在隔离根复验：`FAILED → DEVELOPMENT_CANDIDATE`，18 项检查全 EXECUTED，
+   在隔离根复验：`FAILED → DEVELOPMENT_CANDIDATE`，19 项检查全 EXECUTED，
    publish/export 均 exit=0，输入候选 SHA256 前后一致。
 2. **云端视觉 402 无本地回退**：`scene_model.call_local_vision_model` 云端
    失败即令整份稿子作废；改为按明确错误码集合回退本机 loopback 视觉端点，

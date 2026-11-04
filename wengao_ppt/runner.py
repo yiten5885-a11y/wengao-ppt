@@ -2736,8 +2736,17 @@ class Runner:
             "total_findings": len(findings),
             "verdict": verdict,
             "release_ready": False,
-            "release_block_reason": ("完整发布 profile 的必需检查未全部实现/通过；"
-                                     "本阶段只能产出 DEVELOPMENT_CANDIDATE。"),
+            # 旧文案写「必需检查未全部实现/通过」，与实测矛盾：本次复验 19 项
+            # required_checks 全部 EXECUTED、not_implemented_required_checks=[]，
+            # release_ready 仍是 False——因为它是**外部发布闸门**，不是检查覆盖度
+            # 的函数（verdict 只有 FAILED / NEEDS_REVIEW / DEVELOPMENT_CANDIDATE
+            # 三态）。照旧文案排查会去找根本不存在的"未实现检查"。
+            "release_block_reason": (
+                "release_ready 由外部发布流程决定，不由单次 validate 自动判定："
+                "本次必需检查的执行情况见 checks 与 not_implemented_required_checks；"
+                "即使全部 EXECUTED 也只产出 DEVELOPMENT_CANDIDATE，完整发布还需"
+                "所有者完成发布 profile 的整体确认（PowerPoint 本体、SkillHub 等）"
+                "与明确授权。"),
         }
         save_json_atomic(validation, d / "validation.json")
         self._stage(job_id, "validate", "DONE", {"blocking": len(blocking), "total": len(findings)})

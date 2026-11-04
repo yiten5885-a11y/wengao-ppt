@@ -178,7 +178,7 @@ vision_fallback  = {reason_code: MODEL.QUOTA_EXCEEDED, status_code: 402,
 
 | 步骤 | 结果 |
 |---|---|
-| `validate` | exit=0，`verdict=DEVELOPMENT_CANDIDATE`，`blocking_findings=0`，`total_findings=0`，18 项必需检查全部 `EXECUTED`（含 `layout.hard_gate` 与 `visual.semantic_scene_coverage`），`not_implemented_required_checks=[]`，`RENDER.OK` |
+| `validate` | exit=0，`verdict=DEVELOPMENT_CANDIDATE`，`blocking_findings=0`，`total_findings=0`，19 项必需检查全部 `EXECUTED`（含 `layout.hard_gate` 与 `visual.semantic_scene_coverage`），`not_implemented_required_checks=[]`，`RENDER.OK` |
 | HG13 报告 | `status=EXECUTED / blocking=false / all_scenes_accounted=true / embedded_scene_picture_count=0 / text_card_fallback_count=4 / unverified=[]` |
 | `publish` | exit=0，`label=DEVELOPMENT_CANDIDATE` |
 | `export` | exit=0，产出 PPTX / PDF / 逐页 PNG / release_manifest |
@@ -242,3 +242,28 @@ mkdir -p "$R/jobs" && cp -a "$ROOT/jobs/job-624391145aa3" "$R/jobs/"
 env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY .venv/bin/python \
   -m wengao_ppt.cli --project-root "$R" validate --job-id job-624391145aa3
 ```
+
+---
+
+## 8. 收尾补记：`release_ready` 诊断文案与检查项计数
+
+### 8.1 诊断文案与实测矛盾（已修）
+
+`runner.py` 把 `release_ready` 硬编码为 `False`——`verdict` 只有
+`FAILED / NEEDS_REVIEW / DEVELOPMENT_CANDIDATE` 三态，它是**外部发布闸门**，
+不是"必需检查是否齐备"的函数。但 `release_block_reason` 旧文案写
+「完整发布 profile 的必需检查未全部实现/通过」，与本次复验的
+`checks` 全 EXECUTED、`not_implemented_required_checks=[]` 直接矛盾，
+会把后续排查引向根本不存在的"未实现检查"。
+
+改为准确描述：release_ready 由外部发布流程决定，不由单次 validate 自动判定；
+即使必需检查全部 EXECUTED 也只产出 DEVELOPMENT_CANDIDATE，完整发布还需
+所有者完成发布 profile 的整体确认（PowerPoint 本体、SkillHub 等）与明确授权。
+改后在隔离根重跑 validate：exit=0、`DEVELOPMENT_CANDIDATE`、blocking 0、
+19/19 EXECUTED，新文案已落盘。
+
+### 8.2 检查项计数更正
+
+本报告、主报告、交接文档与完成矩阵初稿把 `checks` 数写成 18，实为 **19**：
+首次与复验两次 `validate_stdout.json` 逐键对比为 19 项、无增删、无状态变化。
+已全量更正；前三个提交信息中的「18 项」以本节为准。
