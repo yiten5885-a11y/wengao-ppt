@@ -162,6 +162,63 @@ def scene_stage_verdict(scene_plan: dict) -> dict:
     return {"blocks": False, "blockers": [], "detail_kind": "resolved"}
 
 
+def scene_no_photo_outcomes(scene_plan: dict) -> dict:
+    """HG13 零照片门禁的纯函数判定（与 run 阶段 scene_stage_verdict 同口径）。
+
+    「没有计划嵌入的场景照片」不等于「场景没解决」。冻结计划里每个场景都必须
+    落在一个**已登记原因**的允许出口里：
+
+    - ``unplaced_scenes``：版位容量不足，reason 必须属于
+      ``semantic_scenes.CAPACITY_UNRESOLVED_REASONS``；
+    - ``text_cards``：用户显式勾选说明卡兜底（--allow-text-card-fallback），
+      每张卡必须带非空 ``fallback_reason``（semantic_scenes.validate_output
+      用 SCENE.TEXT_CARD_UNDISCLOSED 守的是同一条纪律）。
+
+    run 阶段的 scene_stage_verdict 与 semantic_scenes.validate_output 早已把
+    text_cards 记作合法出口；本函数供 validate 的 HG13 分支复用，修掉
+    「run 放行、validate 必拦」的自相矛盾（2026-11-04 job-624391145aa3：
+    5 个场景 = 1 个 unplaced + 4 张 text_cards、unresolved=0，仍被
+    SCENE.NO_SCENE_PICTURES 阻断）。unresolved_scenes 非空、或存在未被出口
+    覆盖的规划场景，一律不算已解决——这里只做口径对齐，不放宽任何真实性门禁。
+    """
+    from . import semantic_scenes as _scenes
+
+    images = scene_plan.get("images") or {}
+    unplaced = scene_plan.get("unplaced_scenes") or []
+    text_cards = scene_plan.get("text_cards") or {}
+    unresolved = scene_plan.get("unresolved_scenes") or []
+    card_items = ([dict(value or {}, scene_key=key) for key, value in text_cards.items()]
+                  if isinstance(text_cards, dict) else list(text_cards))
+    outcomes = []
+    for item in unplaced:
+        if isinstance(item, dict):
+            outcomes.append({"scene_key": item.get("scene_key"),
+                             "reason": item.get("reason"), "kind": "capacity"})
+    for item in card_items:
+        if isinstance(item, dict):
+            outcomes.append({"scene_key": item.get("scene_key"),
+                             "reason": item.get("fallback_reason"), "kind": "text_card"})
+    planned_keys = {str(s.get("scene_key")) for s in (scene_plan.get("scenes") or [])
+                    if isinstance(s, dict) and s.get("scene_key")}
+    outcome_keys = {str(o["scene_key"]) for o in outcomes if o.get("scene_key")}
+    reasons_ok = all(
+        (str(o.get("reason")) in _scenes.CAPACITY_UNRESOLVED_REASONS)
+        if o["kind"] == "capacity" else bool(str(o.get("reason") or "").strip())
+        for o in outcomes
+    )
+    return {
+        "no_photo": not bool(images),
+        "outcomes": outcomes,
+        # 无照片 + 至少有一个已登记出口 + 没有真失败，才进「确定的无照片稿」分支。
+        "capacity_only": (not images and bool(outcomes) and not unresolved),
+        # 全部规划场景都被出口覆盖，且每个出口的理由都合规，才算 EXECUTED。
+        "all_scenes_accounted": (bool(planned_keys) and planned_keys <= outcome_keys
+                                 and reasons_ok and not unresolved),
+        "text_card_count": sum(1 for o in outcomes if o["kind"] == "text_card"),
+        "capacity_count": sum(1 for o in outcomes if o["kind"] == "capacity"),
+    }
+
+
 #: 材料任务身份在**建任务时**冻结在此文件；它不依赖台账是否还在、
 #: 是否被换过。缺失台账不再等于"退回普通 PPTX 自基线路径"。
 MATERIAL_INTENT_FILE = "material_intent.json"
@@ -2316,18 +2373,17 @@ class Runner:
             else:
                 plan_data = json.loads(scene_plan_file.read_text(encoding="utf-8"))
                 planned_images = plan_data.get("images") or {}
-                # 没有配图分两种，run 阶段（见 semantic_scenes 调用处）已经按这个
-                # 口径放行过一次："版位容量不足"（unplaced_scenes，如实登记、
-                # 没有伪造替代）允许稿子照常交付；只有"找不到/不合规"
-                # （unresolved_scenes，真失败）或两者皆空（没有一个有依据的
-                # 具体场景）才阻断。validate 阶段之前对这两种原因不加区分，
-                # 一律 BLOCKING——这让 run 阶段明确放行过的版位容量受限稿件，
-                # 到 validate 必然又被此门禁拦下，两处口径互相矛盾
-                # （2026-10-27 job-c915c8c7deff / job-a7f6f5400f70：场景规划
-                # 找到了有依据的场景，但稿面确实放不下，仍被判 BLOCKING）。
-                capacity_only = (not planned_images and bool(plan_data.get("unplaced_scenes"))
-                                 and not plan_data.get("unresolved_scenes")
-                                 and not plan_data.get("text_cards"))
+                # 没有配图分两种，run 阶段（scene_stage_verdict）已经按同一口径
+                # 放行过：版位容量不足（unplaced_scenes）与用户显式开启的
+                # 说明卡兜底（text_cards）都是「已登记原因的确定结果」，允许
+                # 稿子照常交付；只有"找不到/不合规"（unresolved_scenes，真失败）
+                # 或三种出口皆空（没有一个有依据的具体场景）才阻断。
+                # validate 曾在这里排除 text_cards，使 2026-10-27 修好的容量
+                # 口径在 2026-11-04 job-624391145aa3（1 unplaced + 4 text_cards、
+                # unresolved=0）复发。判定统一收敛到纯函数，便于回归测试与
+                # run 阶段逐项对齐。
+                no_photo = scene_no_photo_outcomes(plan_data)
+                capacity_only = no_photo["capacity_only"]
                 if not planned_images and not capacity_only:
                     scene_gate_status = "FAILED"
                     scene_gate_report = {
@@ -2345,11 +2401,7 @@ class Runner:
                     # missing one. It used to be NOT_EVALUABLE, which handed a
                     # "please check" item to the user for nothing they could
                     # check (2026-10-29 user: checks must not land on the user).
-                    unplaced = plan_data.get("unplaced_scenes") or []
-                    planned_keys = {str(s.get("scene_key")) for s in plan_data.get("scenes") or []}
-                    unplaced_keys = {str(u.get("scene_key")) for u in unplaced}
-                    accounted = (bool(planned_keys) and planned_keys <= unplaced_keys and all(
-                        u.get("reason") in scene_mod.CAPACITY_UNRESOLVED_REASONS for u in unplaced))
+                    accounted = no_photo["all_scenes_accounted"]
                     scene_gate_status = "EXECUTED" if accounted else "NOT_EVALUABLE"
                     scene_gate_report = {
                         "schema_version": "WG-COMPLETE-SEMANTIC-SCENE-GATE/1",
@@ -2358,12 +2410,16 @@ class Runner:
                         "findings": [],
                         "all_scenes_accounted": accounted,
                         "embedded_scene_picture_count": 0,
-                        "unplaced_scenes": unplaced,
+                        "unplaced_scenes": plan_data.get("unplaced_scenes") or [],
+                        # 无照片稿的两种允许出口都如实写进报告，不静默放行。
+                        "text_card_fallback_count": no_photo["text_card_count"],
+                        "no_photo_outcomes": no_photo["outcomes"],
                         "unverified": [] if accounted else [{"code": "SCENE.CAPACITY_NO_SAFE_AREA",
-                                        "detail": ("所有规划场景都有原文依据，但稿面没有空间可安全放置照片"
-                                                   "（已逐一记录在 unplaced_scenes，不是找不到/不合规）；"
-                                                   "本稿未嵌入场景照片，按容量限制如实交付，未伪造或替代任何内容。"),
-                                        "unplaced_scenes": plan_data.get("unplaced_scenes")}],
+                                        "detail": ("规划场景未被允许出口完整覆盖，或出口原因不合规；"
+                                                   "本稿未嵌入场景照片，不能伪装成已核验结果。"),
+                                        "unplaced_scenes": plan_data.get("unplaced_scenes"),
+                                        "text_card_fallback_count": no_photo["text_card_count"],
+                                        "no_photo_outcomes": no_photo["outcomes"]}],
                     }
                 else:
                     # 1. 制造仅移除标记场景图片的抑制参考件
