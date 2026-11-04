@@ -596,3 +596,28 @@ dist/BUILD_MANIFEST.json                                          载荷逐成�
 外层元数据门禁不回退生图）见 `reports/vision-enable-20261104/README.md`
 与 `CONTINUE_HERE.md` 本日章节；轮次证据 r5–r10b：
 `reports/install-cleanroom-20261104-r5…r10b/`。
+
+---
+
+## 2026-11-05 接手轮（本报告不追改上文）
+
+完整证据与复现命令见 `reports/rerun-20261105-hg13/REPORT.md`。
+
+1. **HG13 说明卡兜底误杀**：`runner.py` 的 `capacity_only` 把 `text_cards`
+   当作否决项，与 `scene_stage_verdict`（run 阶段）及
+   `semantic_scenes.validate_output` 的既有口径矛盾，属漏改的一致性缺陷。
+   新增纯函数 `scene_no_photo_outcomes` 统一结账。真实
+   `job-624391145aa3`（5 场景 = 1 unplaced + 4 text_cards、unresolved=0）
+   在隔离根复验：`FAILED → DEVELOPMENT_CANDIDATE`，18 项检查全 EXECUTED，
+   publish/export 均 exit=0，输入候选 SHA256 前后一致。
+2. **云端视觉 402 无本地回退**：`scene_model.call_local_vision_model` 云端
+   失败即令整份稿子作废；改为按明确错误码集合回退本机 loopback 视觉端点，
+   并如实登记 `vision_fallback`。真实冒烟：Gemini 402 → 本机 Qwen3-VL-8B
+   返回有效判定。
+3. **全量回归环境噪音**：治理前 `831 passed / 59 errors`
+   （safe-delete guard 在 teardown 触发 `SystemExit` 级联 +
+   `/var/folders/pytest-of-*` 的 EEXIST）；新增
+   `scripts/run_full_regression.sh` 后
+   **848 passed / 597 subtests / 0 errors / exit=0**。
+
+`release_ready` 仍为 false（完整发布 profile 未全部通过），不声明整体完成。

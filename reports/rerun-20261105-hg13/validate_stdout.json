@@ -1,0 +1,29 @@
+{
+  "verdict": "DEVELOPMENT_CANDIDATE",
+  "blocking_findings": 0,
+  "total_findings": 0,
+  "checks": {
+    "content_fidelity.required_text": "EXECUTED",
+    "content_fidelity.occurrence": "EXECUTED",
+    "content_fidelity.sign": "EXECUTED",
+    "native_editability.visible_native": "EXECUTED",
+    "object.actual_geometry": "EXECUTED",
+    "content_fidelity.hidden_state": "EXECUTED",
+    "object.group_structure": "EXECUTED",
+    "parser.census_consistency": "EXECUTED",
+    "render.real_render": "EXECUTED",
+    "render.glyph_quality": "EXECUTED",
+    "theme.contrast": "EXECUTED",
+    "layout.hard_gate": "EXECUTED",
+    "visual.semantic_scene_coverage": "EXECUTED",
+    "table.native_present": "EXECUTED",
+    "table.relation_binding": "EXECUTED",
+    "chart.native_present": "EXECUTED",
+    "chart.relation_binding": "EXECUTED",
+    "chart.source_consistency": "EXECUTED",
+    "source.fact_coverage": "EXECUTED"
+  },
+  "not_implemented_required_checks": [],
+  "render_code": "RENDER.OK",
+  "release_ready": false
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-624391145aa3",
+  "run_id": "20261104T152934_211894Z-8dea154d",
+  "attempt_id": "1dcdd723",
+  "published_at": "2026-11-05T00:46:18.660486+08:00",
+  "candidate_pptx_sha256": "f3891c6ac7415de76a34fad80896dbd37388ed3a7971a787182968deeaac3312",
+  "validation_sha256": "42a44e550eb6ab384b5611a76b5b33396f689cccf68efb8ede2eae2f72f0d399",
+  "label": "DEVELOPMENT_CANDIDATE"
+}

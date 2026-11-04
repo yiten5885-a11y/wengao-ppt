@@ -19,6 +19,8 @@ workbench_uploads/
 workbench_previews/
 .pytest_cache/
 .pytest_run_tmp/
+# 渲染/版式回归的可重建临时工作区（w2/w2p 等按轮次命名，统一排除）
+.pytest_tmp*/
 .fontconfig/
 .lo-profile/
 .DS_Store
@@ -30,6 +32,9 @@ jobs/
 material_tasks/
 build/test-tmp/
 .claude/
+# 全量回归的 pytest basetemp（见 scripts/run_full_regression.sh）
+build/pytest-tmp*/
+build/pytest-basetemp*/
 # 干净安装实测的中间副本（可重建；只保留 CLEANROOM_INSTALL.json 与首任务输入）
 reports/install-cleanroom-*/upgrade-payload*/
 reports/install-cleanroom-*/upgrade-payload-old-*/

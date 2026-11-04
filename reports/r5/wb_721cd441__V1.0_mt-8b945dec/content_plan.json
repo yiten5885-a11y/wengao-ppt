@@ -1,0 +1,471 @@
+{
+  "deck_title": "《花路小屋绽放纪》完整开发指南 V1.0",
+  "slides": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "《花路小屋绽放纪》完整开发指南 V1.0",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "《花路小屋绽放纪》完整开发指南",
+        "2.4 生成器与掉落",
+        "5. 通关奖励设计",
+        "7.4 免费玩家的钻石收入",
+        "9.3 兴奋度指数 H（判断「高"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "11.2 字体（均可免费商用，上",
+        "13.6 UI 与运营素材",
+        "参考来源"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "《花路小屋绽放纪》完整开发指南",
+      "must_state": [
+        "Nov 4, 2026 · @yiten5885"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "title": "2.4 生成器与掉落",
+      "must_state": [
+        "普通生成器点 1 次耗 1 点体力。",
+        "一级生成器掉落：1 级物品 85%、2 级 13%、3 级 2%；每升 1 级生成器，2 级以上概率 +6%。",
+        "节奏控制只改「订单要什么」和「奖励放在哪里」，这一点关系到合规（第 16 节）。",
+        "掉落表在生成器详情页公开，线上不对单个玩家暗改概率。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "5. 通关奖励设计",
+      "must_state": [
+        "奖励采用「固定奖励保底 + 一格惊喜」的结构：固定部分让玩家敢于投入，惊喜格制造期待，稀有物品全部带保底。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "chart",
+      "title": "7.4 免费玩家的钻石收入",
+      "must_state": [
+        "前 7 天：每天约 40–50 钻（图鉴首发现多），足够每天买 1–2 次体力，让玩家习惯「用钻石买体力」这个动作。",
+        "7 天后：每天约 25–35 钻，只够买 1 次，第 2 次起就是付费入口。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "title": "7.4 免费玩家的钻石收入…",
+      "must_state": [
+        "来源与限定（原句）：前 7 天：每天约 40–50 钻（图鉴首发现多），足够每天买 1–2 次体力，让玩家习惯「用钻石买体力」这个动作。",
+        "来源与限定（原句）：7 天后：每天约 25–35 钻，只够买 1 次，第 2 次起就是付费入口。"
+      ],
+      "_continued_from": 7,
+      "_builder_generated_continuation": {
+        "source_planned_page": 7,
+        "source_actual_page": 7,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 2
+      }
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "title": "9.3 兴奋度指数 H（判断「高",
+      "must_state": [
+        "H = 0.30\\,C + 0.25\\,P + 0.20\\,N + 0.15\\,M + 0.10\\,S",
+        "C 连击强度 = min(近 30 秒合成次数 ÷ 8, 1)",
+        "P 房间进度 = 当前房间已完成任务占比",
+        "N 接近度 = clamp(1 − Δ ÷ 15, 0, 1)，Δ 越小越接近",
+        "M 高光时刻 = 近 60 秒内合出过 ≥ 6 级物品记 1，否则 0"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "title": "9.3 兴奋度指数 H（判断「高…",
+      "must_state": [
+        "P 房间进度 = 当前房间已完成任务占比",
+        "C 连击强度 = min(近 30 秒合成次数 ÷ 8, 1)",
+        "N 接近度 = clamp(1 − Δ ÷ 15, 0, 1)，Δ 越小越接近",
+        "M 高光时刻 = 近 60 秒内合出过 ≥ 6 级物品记 1，否则 0",
+        "来源与限定（原句）：H = 0.30\\,C + 0.25\\,P + 0.20\\,N + 0.15\\,M + 0.10\\,S",
+        "来源与限定（原句）：C 连击强度 = min(近 30 秒合成次数 ÷ 8, 1)"
+      ],
+      "_continued_from": 9,
+      "_builder_generated_continuation": {
+        "source_planned_page": 8,
+        "source_actual_page": 9,
+        "source_page_type": "chart",
+        "sequence": 1,
+        "source_items": 6
+      }
+    },
+    {
+      "page": 11,
+      "page_type": "table",
+      "title": "11.2 字体（均可免费商用，上",
+      "must_state": [
+        "标题、数字、弹窗大字：站酷快乐体，圆润、有趣。",
+        "正文、对话、说明：阿里巴巴普惠体，清晰易读。",
+        "字号（750 宽设计稿）：标题 40、小标题 32、正文 28、辅助 24，最小不低于 22。",
+        "大字号是对 40 岁以上玩家的基本尊重。",
+        "数字一律白字 + 4px 暖棕描边，在任何背景上都能看清。"
+      ]
+    },
+    {
+      "page": 12,
+      "page_type": "single_column",
+      "title": "13.6 UI 与运营素材",
+      "must_state": [
+        "弹窗木框（质感参考，正式版由 UI 重绘九宫格）",
+        "mobile game UI popup frame, rounded rectangle cream panel with light wood border, climbing pink roses and green vines along the top edge, small hanging flower ornament, empty center, flat front view,"
+      ]
+    },
+    {
+      "page": 13,
+      "page_type": "single_column",
+      "title": "13.6 UI 与运营素材…",
+      "must_state": [
+        "3",
+        "7"
+      ],
+      "_continued_from": 11
+    },
+    {
+      "page": 14,
+      "page_type": "single_column",
+      "title": "参考来源",
+      "must_state": [
+        "WeChat Mini Games crosses 500m monthly active users as Tencent shifts focus to retention — PocketGamer.biz",
+        "苹果中国区佣金下调报道 — 凤凰网",
+        "这次，微信下血本了（2026 IAP 激励计划）— 虎嗅",
+        "小程序游戏需要版号吗 — 腾讯云开发者社区"
+      ]
+    }
+  ],
+  "_trace": [
+    {
+      "phase": "global_plan",
+      "attempt": 1,
+      "model_calls": 1,
+      "elapsed_s": 25.74,
+      "done_reason": "stop",
+      "eval_count": 590,
+      "raw_response": "```json\n{\n  \"deck_title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"2.4 生成器与掉落\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"5. 通关奖励设计\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"7.4 免费玩家的钻石收入\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"chart\",\n      \"title\": \"9.3 兴奋度指数 H（判断「高潮」）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"11.2 字体（均可免费商用，上线前再核对授权说明）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"13.6 UI 与运营素材\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"参考来源\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"summary_action\",\n      \"title\": \"行动建议\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "《花路小屋绽放纪》完整开发指南 V1.0",
+      "assigned_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "2.4 生成器与掉落",
+      "assigned_fact_ids": [
+        "F074",
+        "F075",
+        "F076",
+        "F077",
+        "F078",
+        "F079",
+        "F080",
+        "F081",
+        "F082",
+        "F083",
+        "F084",
+        "F085",
+        "F086"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "5. 通关奖励设计",
+      "assigned_fact_ids": [
+        "F134"
+      ],
+      "source_statement_count": 1,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "7.4 免费玩家的钻石收入",
+      "assigned_fact_ids": [
+        "F187",
+        "F188",
+        "F189",
+        "F190",
+        "F191",
+        "F192",
+        "F193",
+        "F194",
+        "F195",
+        "F196"
+      ],
+      "source_statement_count": 2,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "9.3 兴奋度指数 H（判断「高潮」）",
+      "assigned_fact_ids": [
+        "F227",
+        "F228",
+        "F229",
+        "F230",
+        "F231",
+        "F232",
+        "F233",
+        "F234",
+        "F235",
+        "F236",
+        "F237",
+        "F238",
+        "F239",
+        "F240",
+        "F241",
+        "F242",
+        "F243"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "11.2 字体（均可免费商用，上线前再核对授权说明）",
+      "assigned_fact_ids": [
+        "F336",
+        "F337",
+        "F338",
+        "F339",
+        "F340",
+        "F341",
+        "F342",
+        "F343",
+        "F344",
+        "F345"
+      ],
+      "source_statement_count": 5,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "13.6 UI 与运营素材",
+      "assigned_fact_ids": [
+        "F421",
+        "F422",
+        "F423"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    },
+    {
+      "phase": "source_assignment",
+      "subject": "参考来源",
+      "assigned_fact_ids": [
+        "F504",
+        "F505",
+        "F506",
+        "F508"
+      ],
+      "source_statement_count": 4,
+      "model_calls": 0
+    }
+  ],
+  "_dropped_skeleton_slides": [
+    {
+      "page": 11,
+      "title": "结论",
+      "page_type": "conclusion",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    },
+    {
+      "page": 12,
+      "title": "行动建议",
+      "page_type": "summary_action",
+      "reason": "无对应事实章节，避免产出无内容的空页"
+    }
+  ],
+  "omitted_facts": [],
+  "_chunked": true,
+  "_chunk_fill_strategy": "source_exact_by_subject",
+  "_pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 14,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 12,
+    "builder_generated_continuations": 2,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "_planner_slides_before_build": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "title": "《花路小屋绽放纪》完整开发指南 V1.0",
+      "must_state": []
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "title": "目录",
+      "must_state": [
+        "《花路小屋绽放纪》完整开发指南",
+        "2.4 生成器与掉落",
+        "5. 通关奖励设计",
+        "7.4 免费玩家的钻石收入",
+        "9.3 兴奋度指数 H（判断「高"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）"
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "title": "目录…",
+      "must_state": [
+        "11.2 字体（均可免费商用，上",
+        "13.6 UI 与运营素材",
+        "参考来源"
+      ],
+      "_agenda_note": "目录条目=材料章节名清单（来源为材料本身）",
+      "_continued_from": 2
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "title": "《花路小屋绽放纪》完整开发指南",
+      "must_state": [
+        "Nov 4, 2026 · @yiten5885"
+      ]
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "title": "2.4 生成器与掉落",
+      "must_state": [
+        "普通生成器点 1 次耗 1 点体力。",
+        "一级生成器掉落：1 级物品 85%、2 级 13%、3 级 2%；每升 1 级生成器，2 级以上概率 +6%。",
+        "节奏控制只改「订单要什么」和「奖励放在哪里」，这一点关系到合规（第 16 节）。",
+        "掉落表在生成器详情页公开，线上不对单个玩家暗改概率。"
+      ]
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "title": "5. 通关奖励设计",
+      "must_state": [
+        "奖励采用「固定奖励保底 + 一格惊喜」的结构：固定部分让玩家敢于投入，惊喜格制造期待，稀有物品全部带保底。"
+      ]
+    },
+    {
+      "page": 7,
+      "page_type": "chart",
+      "title": "7.4 免费玩家的钻石收入",
+      "must_state": [
+        "前 7 天：每天约 40–50 钻（图鉴首发现多），足够每天买 1–2 次体力，让玩家习惯「用钻石买体力」这个动作。",
+        "7 天后：每天约 25–35 钻，只够买 1 次，第 2 次起就是付费入口。"
+      ]
+    },
+    {
+      "page": 8,
+      "page_type": "chart",
+      "title": "9.3 兴奋度指数 H（判断「高",
+      "must_state": [
+        "H = 0.30\\,C + 0.25\\,P + 0.20\\,N + 0.15\\,M + 0.10\\,S",
+        "C 连击强度 = min(近 30 秒合成次数 ÷ 8, 1)",
+        "P 房间进度 = 当前房间已完成任务占比",
+        "N 接近度 = clamp(1 − Δ ÷ 15, 0, 1)，Δ 越小越接近",
+        "M 高光时刻 = 近 60 秒内合出过 ≥ 6 级物品记 1，否则 0"
+      ]
+    },
+    {
+      "page": 9,
+      "page_type": "table",
+      "title": "11.2 字体（均可免费商用，上",
+      "must_state": [
+        "标题、数字、弹窗大字：站酷快乐体，圆润、有趣。",
+        "正文、对话、说明：阿里巴巴普惠体，清晰易读。",
+        "字号（750 宽设计稿）：标题 40、小标题 32、正文 28、辅助 24，最小不低于 22。",
+        "大字号是对 40 岁以上玩家的基本尊重。",
+        "数字一律白字 + 4px 暖棕描边，在任何背景上都能看清。"
+      ]
+    },
+    {
+      "page": 10,
+      "page_type": "single_column",
+      "title": "13.6 UI 与运营素材",
+      "must_state": [
+        "弹窗木框（质感参考，正式版由 UI 重绘九宫格）",
+        "mobile game UI popup frame, rounded rectangle cream panel with light wood border, climbing pink roses and green vines along the top edge, small hanging flower ornament, empty center, flat front view,"
+      ]
+    },
+    {
+      "page": 11,
+      "page_type": "single_column",
+      "title": "13.6 UI 与运营素材…",
+      "must_state": [
+        "3",
+        "7"
+      ],
+      "_continued_from": 9
+    },
+    {
+      "page": 12,
+      "page_type": "single_column",
+      "title": "参考来源",
+      "must_state": [
+        "WeChat Mini Games crosses 500m monthly active users as Tencent shifts focus to retention — PocketGamer.biz",
+        "苹果中国区佣金下调报道 — 凤凰网",
+        "这次，微信下血本了（2026 IAP 激励计划）— 虎嗅",
+        "小程序游戏需要版号吗 — 腾讯云开发者社区"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3463 @@
+......................................................E...E......EEE..EE [  8%]
+EE.................................................. [ 14%]
+....................EEEEE.................................................................................................. [ 29%]
+......................................... [ 33%]
+........................................................................ [ 42%]
+............................................................................................................................... [ 57%]
+........................................... [ 62%]
+........................................ [ 67%]
+......................................................................................................E................ [ 81%]
+.................................................................................. [ 90%]
+.E......E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E..E.E........ [ 95%]
+..E.E.E.E.E.E.E.....E.E.E.E.EE........E.E......                          [100%]
+==================================== ERRORS ====================================
+_____________ ERROR at teardown of test_decisions_record_and_rerun _____________
+
+    @pytest.fixture()
+    def job_root():
+        """项目内临时目录（沙箱对 /var/folders 的创建可能受限）。"""
+        base = ROOT / "build" / "test-tmp"
+        base.mkdir(parents=True, exist_ok=True)
+        d = base / f"job-{len(list(base.iterdir()))}"
+        (d / "jobs").mkdir(parents=True, exist_ok=True)
+        yield d
+        import shutil
+>       shutil.rmtree(d, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/pipeline/test_generate.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...ddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/build/test-tmp/job-28"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/build/test-tmp/job-28"],"targetCount":1}
+______________ ERROR at setup of test_fixture_snapshots_grounded _______________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+__________ ERROR at setup of test_redteam_fake_quote_not_in_snapshot ___________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_______________ ERROR at setup of test_redteam_snapshot_tampered _______________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+________________ ERROR at setup of test_redteam_source_missing _________________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+___ ERROR at setup of test_redteam_empty_search_results_graceful_degradation ___
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_________________ ERROR at setup of test_run_research_disabled _________________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+________ ERROR at setup of test_run_research_with_mock_data_and_verify _________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+__________ ERROR at setup of test_verify_bundle_tampered_calculation ___________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+________ ERROR at setup of test_relative_path_root_yields_absolute_env _________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_______ ERROR at setup of test_relative_string_root_yields_absolute_env ________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_______ ERROR at setup of test_relative_root_via_env_var_yields_absolute _______
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+________________ ERROR at setup of test_absolute_root_unchanged ________________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_________ ERROR at setup of test_effective_conf_contains_platform_dirs _________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_ ERROR at setup of test_attestation_requires_trusted_roster_signature_and_source_binding _
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+_ ERROR at teardown of test_wrap_lines_terminates_on_bignumber_percent_and_bullets _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":63,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":63,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-cover] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":64,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":64,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-section] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":65,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":65,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-content] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":66,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":66,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-compare] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":67,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":67,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-trend] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":68,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":68,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-insight] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":69,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":69,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-image] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":70,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":70,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-process] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":71,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":71,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-timeline] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-table] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-quote] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[a-closing] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-cover] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-section] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-content] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-compare] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-trend] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-insight] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-image] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-process] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-timeline] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-table] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-quote] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_every_page_type_and_variant_composes_clean[b-closing] _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+______ ERROR at teardown of test_check_layout_flags_undersized_body_font _______
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_ ERROR at teardown of test_check_layout_accepts_policy_roles_for_footnote_and_ordinal _
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_________ ERROR at teardown of test_render_pages_outputs_two_png_tiers _________
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_____ ERROR at teardown of test_arabic_paragraph_is_rtl_and_right_aligned ______
+
+    @pytest.fixture
+    def tmp_path():
+        """仓库内临时目录：本环境的 pytest tmp_path 会被宿主 broker 拦截，无法建目录。"""
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_layout_engine.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyi.../WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":72,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2"],"targetCount":1}
+_______ ERROR at teardown of test_chart_builder_roundtrip_matches_input ________
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+___ ERROR at teardown of test_chart_builder_rejects_unknown_highlight_series ___
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_______ ERROR at teardown of test_table_builder_roundtrip_matches_input ________
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_________ ERROR at teardown of test_process_builder_requires_two_steps _________
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+______ ERROR at teardown of test_timeline_builder_requires_two_milestones ______
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+____ ERROR at teardown of test_recompose_slide_leaves_other_pages_untouched ____
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_ ERROR at teardown of test_insert_slide_keeps_page_count_and_others_unchanged _
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_ ERROR at teardown of test_compose_deck_places_resolved_image_and_checks_clean _
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+__ ERROR at teardown of test_t4_fallback_keeps_footnote_trace_and_no_picture ___
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_______ ERROR at teardown of test_check_layout_flags_picture_without_alt _______
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_ ERROR at teardown of test_compose_deck_accepts_list_resolutions_contract_c6 __
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_____________ ERROR at teardown of test_image_bleed_mask_variant_c _____________
+
+    @pytest.fixture
+    def tmp_path():
+        _TMP.mkdir(parents=True, exist_ok=True)
+        yield _TMP
+>       shutil.rmtree(_TMP, ignore_errors=True)
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/tests/test_w2_planner_builders.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1249: in _safe_shutil_rmtree
+    _try_trash(abs_path, recursive=True)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:1016: in _try_trash
+    _check_bulk_delete_guard(abs_path)
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:895: in _check_bulk_delete_guard
+    _exit_bulk_guard_control(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = '[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyi...WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}'
+
+    def _exit_bulk_guard_control(message):
+        try:
+            sys.stderr.write(message)
+            if not message.endswith("\n"):
+                sys.stderr.write("\n")
+            sys.stderr.flush()
+        finally:
+>           raise SystemExit(1)
+E           SystemExit: 1
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:868: SystemExit
+--------------------------- Captured stderr teardown ---------------------------
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":56,"threshold":50,"scope":"turn","targets":["/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.pytest_tmp_w2p"],"targetCount":1}
+_ ERROR at setup of TestWengaoBusinessMutedContrastMargin.test_muted_and_subtitle_clear_a_real_safety_margin _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x14db0e520>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/logging.py:858: in pytest_runtest_setup
+    yield
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/capture.py:895: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.runner.SetupState object at 0x1075e3380>
+item = <TestCaseFunction test_muted_and_subtitle_clear_a_real_safety_margin>
+
+    def setup(self, item: Item) -> None:
+        """Setup objects along the collector chain to the item."""
+        needed_collectors = item.listchain()
+    
+        # If a collector fails its setup, fail its entire subtree of items.
+        # The setup is not retried for each item - the same exception is used.
+        for col, (finalizers, exc) in self.stack.items():
+>           assert col in needed_collectors, "previous item was not torn down properly"
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: previous item was not torn down properly
+
+../../../../../../WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/lib/python3.13/site-packages/_pytest/runner.py:527: AssertionError
+___ ERROR at setup of test_bootstrap_reports_vision_and_visual_upgrade_flag ____
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+______________ ERROR at setup of test_vision_summary_never_raises ______________
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-root'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+
+During handling of the above exception, another exception occurred:
+
+self = PosixPath('/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown')
+mode = 448, parents = False, exist_ok = True
+
+    def _brokered_path_mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        abs_path = _broker_abs_path(self)
+        if abs_path and isinstance(mode, int):
+            if not exist_ok and os.path.exists(abs_path):
+                return _broker_call_native_host_operation(
+                    _orig_path_mkdir, self, mode=mode, parents=parents, exist_ok=exist_ok
+                )
+>           if _broker_request_host_operation(
+                "mkdir", abs_path, path=abs_path, recursive=parents, mode=mode
+            ):
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:774: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'mkdir'
+primary_path = '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+fields = {'path': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown', 'recursive': False, 'mode': 448}
+
+    def _broker_request_host_operation(operation, primary_path, **fields):
+        global _broker_request_seq
+        if not _broker_host_ops_enabled():
+            return False
+    
+        _broker_request_seq += 1
+        request = {
+            "id": "python-%d" % _broker_request_seq,
+            "command": _broker_host_operation_command,
+            "runtime": "python",
+            "operation": operation,
+            "sessionId": _broker_session_id,
+        }
+        request.update(fields)
+        if _broker_tool_call_id:
+            request["toolCallId"] = _broker_tool_call_id
+        if _broker_trace_id:
+            request["brokerTraceId"] = _broker_trace_id
+    
+        response = _broker_send_request(request)
+        if response is None:
+            return False
+        if response.get("ok") is True:
+            return True
+        if response.get("decision") == "sandbox":
+            return False
+        if response.get("ok") is False and response.get("decision") == "host-op":
+            # 策略已放行但宿主代执行失败：还原为对应 errno 的标准异常，
+            # 让调用方按普通文件系统错误处理（例如 EEXIST）。
+            # 打上标记，供安全删除链路识别「真实失败」而非「策略拒绝」。
+            error = _broker_host_operation_error(response, operation, primary_path)
+            error._codebuddy_broker_host_op_error = True
+>           raise error
+E           FileExistsError: [Errno 17] EEXIST: file already exists, mkdir '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown': '/private/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/pytest-of-unknown'
+
+/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/cli/vendor/shim/sitecustomize.py:507: FileExistsError
+=========================== short test summary info ============================
+ERROR tests/pipeline/test_generate.py::test_decisions_record_and_rerun - Syst...
+ERROR tests/research/test_fixtures.py::test_fixture_snapshots_grounded - File...
+ERROR tests/research/test_red_team.py::test_redteam_fake_quote_not_in_snapshot
+ERROR tests/research/test_red_team.py::test_redteam_snapshot_tampered - FileE...
+ERROR tests/research/test_red_team.py::test_redteam_source_missing - FileExis...
+ERROR tests/research/test_red_team.py::test_redteam_empty_search_results_graceful_degradation
+ERROR tests/research/test_runner_and_verify.py::test_run_research_disabled - ...
+ERROR tests/research/test_runner_and_verify.py::test_run_research_with_mock_data_and_verify
+ERROR tests/research/test_runner_and_verify.py::test_verify_bundle_tampered_calculation
+ERROR tests/test_fontenv_absolute_paths.py::test_relative_path_root_yields_absolute_env
+ERROR tests/test_fontenv_absolute_paths.py::test_relative_string_root_yields_absolute_env
+ERROR tests/test_fontenv_absolute_paths.py::test_relative_root_via_env_var_yields_absolute
+ERROR tests/test_fontenv_absolute_paths.py::test_absolute_root_unchanged - Fi...
+ERROR tests/test_fontenv_absolute_paths.py::test_effective_conf_contains_platform_dirs
+ERROR tests/test_source_corpus_review_gate.py::test_attestation_requires_trusted_roster_signature_and_source_binding
+ERROR tests/test_w2_layout_engine.py::test_wrap_lines_terminates_on_bignumber_percent_and_bullets
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-cover]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-section]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-content]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-compare]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-trend]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-insight]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-image]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-process]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-timeline]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-table]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-quote]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[a-closing]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-cover]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-section]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-content]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-compare]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-trend]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-insight]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-image]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-process]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-timeline]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-table]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-quote]
+ERROR tests/test_w2_layout_engine.py::test_every_page_type_and_variant_composes_clean[b-closing]
+ERROR tests/test_w2_layout_engine.py::test_check_layout_flags_undersized_body_font
+ERROR tests/test_w2_layout_engine.py::test_check_layout_accepts_policy_roles_for_footnote_and_ordinal
+ERROR tests/test_w2_layout_engine.py::test_render_pages_outputs_two_png_tiers
+ERROR tests/test_w2_layout_engine.py::test_arabic_paragraph_is_rtl_and_right_aligned
+ERROR tests/test_w2_planner_builders.py::test_chart_builder_roundtrip_matches_input
+ERROR tests/test_w2_planner_builders.py::test_chart_builder_rejects_unknown_highlight_series
+ERROR tests/test_w2_planner_builders.py::test_table_builder_roundtrip_matches_input
+ERROR tests/test_w2_planner_builders.py::test_process_builder_requires_two_steps
+ERROR tests/test_w2_planner_builders.py::test_timeline_builder_requires_two_milestones
+ERROR tests/test_w2_planner_builders.py::test_recompose_slide_leaves_other_pages_untouched
+ERROR tests/test_w2_planner_builders.py::test_insert_slide_keeps_page_count_and_others_unchanged
+ERROR tests/test_w2_planner_builders.py::test_compose_deck_places_resolved_image_and_checks_clean
+ERROR tests/test_w2_planner_builders.py::test_t4_fallback_keeps_footnote_trace_and_no_picture
+ERROR tests/test_w2_planner_builders.py::test_check_layout_flags_picture_without_alt
+ERROR tests/test_w2_planner_builders.py::test_compose_deck_accepts_list_resolutions_contract_c6
+ERROR tests/test_w2_planner_builders.py::test_image_bleed_mask_variant_c - Sy...
+ERROR tests/test_wengao_business_muted_contrast_margin.py::TestWengaoBusinessMutedContrastMargin::test_muted_and_subtitle_clear_a_real_safety_margin
+ERROR tests/test_workbench_vision_badge.py::test_bootstrap_reports_vision_and_visual_upgrade_flag
+ERROR tests/test_workbench_vision_badge.py::test_vision_summary_never_raises
+831 passed, 59 errors, 597 subtests passed in 78.44s (0:01:18)
