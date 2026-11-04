@@ -655,6 +655,60 @@ def _text_card_sanctioned(shape, text: str) -> bool:
     return text.rstrip().endswith(_TEXT_CARD_DISCLOSURE)
 
 
+def _bottom_brand_band(i, shapes, idxs) -> bool:
+    """页底品牌带：页脚语义的第三种形态（2026-11-04 job-293501ae3698 页 1）。
+
+    位置规则只认 top ≥ 6.85 的形状；真实稿里品牌条常挂在 6.6–6.85
+    （该任务页 1 的「宏观观察 · 短视频配套文稿」top=6.688）。被当正文
+    处理的后果：精修的可读性地板把它抬到 body 目标字号（11.25→18pt），
+    字形底随之压进页脚净空（HG06 CONTENT_FOOTER_GAP，gap 0.042<0.12），
+    且 HG07 还会按 body 下限 13pt 报它字号过小——两头挨打。
+
+    判为 footer 须五条同时成立（与 refine.infer_text_roles 同口径，
+    见 _floor_brand_band 的镜像实现）：
+    1. 位于页脚区上沿 0.35in 带内（6.65 ≤ top < 6.85；≥6.85 由既有的
+       位置规则兜底，不依赖品牌呼应）；
+    2. 是全页最底部的文字（没有更低的正文行——底部还有正文说明它是
+       内容行而非页装帧）；
+    3. ≤60 字（与既有页脚规则同限）；
+    4. 与上半页（top<3.75）另一形状存在 ≥2 字 token 的品牌呼应
+       （「宏观观察」同时出现在页顶 kicker 与页底品牌条）——防把
+       碰巧呼应标题的底部正文行/结论误判成页脚；
+    5. 字号 ≤14pt（品牌条是小字装帧；16–22pt 的底部大字更可能是
+       conclusion，宁可让它留在 body 走正常检查）。
+    """
+    s = shapes[i]
+    t = s["text"].strip()
+    if not t or len(t) > 60:
+        return False
+    pt = s.get("max_size") or s.get("font_size_pt", 0.0)
+    if not (0.0 < pt <= 14.0):
+        return False
+    top = s.get("top", 0)
+    if not (6.65 <= top < 6.85):
+        return False
+    # 「全页最底部」只看真正的正文行：其下若还有页码/来源/页脚区短文本
+    # （页脚装帧），品牌带仍成立——页 1 品牌带 6.688 之上常还有 7.07 的页码。
+    def _footer_furniture(x):
+        xt = x["text"].strip()
+        return (_is_page_number(x) or _is_source(x)
+                or (x.get("top", 0) >= 6.85 and len(xt) <= 60))
+    lowers = [shapes[j]["top"] for j in idxs
+              if shapes[j]["top"] > top + 0.02 and not _footer_furniture(shapes[j])]
+    if lowers:
+        return False
+    tokens = re.findall(r"[0-9A-Za-z\u4e00-\u9fff]{2,}", t)
+    if not tokens:
+        return False
+    for j in idxs:
+        if j == i or shapes[j]["top"] >= 3.75:
+            continue
+        other = shapes[j]["text"]
+        if any(tok in other for tok in tokens):
+            return True
+    return False
+
+
 def infer_roles(shapes) -> dict:
     """按几何+文本语义推断角色（不按页码硬编码）。返回 {shape_idx: role}。"""
     # 原生图表显示的文字来自 chart part，而不在 slide a:t 中；即便 text 为空，
@@ -693,6 +747,8 @@ def infer_roles(shapes) -> dict:
             roles[i] = "footer"
         elif _is_source(s):
             roles[i] = "source"
+        elif _bottom_brand_band(i, shapes, idxs):
+            roles[i] = "footer"
         elif s.get("top", 0) >= 6.85 and len(t) <= 60:
             roles[i] = "footer"
         # Roman numeral badges (Ⅰ Ⅱ Ⅲ ...) are the same kind of standalone

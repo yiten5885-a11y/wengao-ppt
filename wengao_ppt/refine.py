@@ -940,6 +940,48 @@ def _floor_is_source(sh) -> bool:
                                 "财政部", "新华社"))
 
 
+def _floor_brand_band(sh, shs, sw, sh_) -> bool:
+    """页底品牌带判定：与 scripts/layout_gate.py:_bottom_brand_band 同口径。
+
+    位置规则只认 top ≥ 页高 91%（7.5in 稿的 6.825）的形状；真实稿里品牌
+    条常挂在 6.6–6.85（job-293501ae3698 页 1「宏观观察 · 短视频配套文稿」
+    top=6.688）。被当正文处理的后果：抬字地板把它推到 body 目标字号
+    （11.25→18pt），字形底压进页脚净空，门槛 HG06/HG07 两头拦截。
+
+    判为 footer 须同时成立（口径细节见门槛侧 _bottom_brand_band 的
+    docstring，两侧必须同步修改）：
+    带内（top ≥ sh_−0.85，7.5in 稿即 6.65）且低于既有 91% 线；全页最底
+    部文字；≤60 字；字号 ≤14pt；与上半页（top<sh_/2）另一形状有 ≥2 字
+    token 的品牌呼应。
+    """
+    t = sh.text.strip()
+    if not t or len(t) > 60:
+        return False
+    pt = sh.max_pt() or 0.0
+    if not (0.0 < pt <= 14.0):
+        return False
+    if not (sh_ - 0.85 <= sh.T < sh_ * 0.91):
+        return False
+    # 「全页最底部」只看真正的正文行：其下若还有页码/来源/页脚区短文本
+    # （页脚装帧），品牌带仍成立——与门槛侧 _bottom_brand_band 同口径。
+    lowers = [x.T for x in shs
+              if x.is_text and x.text.strip() and x.T > sh.T + 0.02
+              and not (_floor_is_page_number(x, sw, sh_)
+                       or _floor_is_source(x)
+                       or (x.T >= sh_ * 0.91 and len(x.text.strip()) <= 60))]
+    if lowers:
+        return False
+    tokens = re.findall(r"[0-9A-Za-z\u4e00-\u9fff]{2,}", t)
+    if not tokens:
+        return False
+    for other in shs:
+        if other.idx == sh.idx or not other.is_text or other.T >= sh_ * 0.5:
+            continue
+        if any(tok in other.text for tok in tokens):
+            return True
+    return False
+
+
 def infer_text_roles(shs, sw, sh_) -> dict:
     """推断文本角色，与 scripts/layout_gate.py:infer_roles 同口径。
 
@@ -979,6 +1021,8 @@ def infer_text_roles(shs, sw, sh_) -> dict:
             roles[s.idx] = "footer"
         elif _floor_is_source(s):
             roles[s.idx] = "source"
+        elif _floor_brand_band(s, shs, sw, sh_):
+            roles[s.idx] = "footer"
         elif s.T >= sh_ * 0.91 and len(t) <= 60:
             roles[s.idx] = "footer"
         # Keep in sync with scripts/layout_gate.py:infer_roles (see this
@@ -1517,7 +1561,16 @@ def fit_page_type_scale(shs, sw, sh_, acts=None):
         actual_h = round(max(need_h, safe_h), 3)
 
         if is_single_line:
-            actual_w = round(min(max(need_w + 0.12, s.W), avail_max_w), 3)
+            # 只增不缩（2026-11-04 job-293501ae3698 页 3「关键约束」）：
+            # declared box 收窄从来不会让墨迹变短（PowerPoint/LibreOffice
+            # 不裁剪溢出文字），只会把 HG02/HG05 的「字形超出声明框」从
+            # 假变真——该页标签框 4.312in 被同行避让上限（0.335in，由上
+            # 方 0.03in 处的「居民端」长高后的边界浮动触发）砍到 0.335，
+            # 13pt 四字必然"溢出"自己被砍小的框。同行右侧真正需要让位时
+            # 靠字号收缩（k 搜索 / row-fit），不靠砍框；避让上限因此不得
+            # 低于现宽。
+            actual_w = round(min(max(need_w + 0.12, s.W),
+                                 max(avail_max_w, s.W)), 3)
         else:
             actual_w = s.W
 

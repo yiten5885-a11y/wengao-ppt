@@ -126,7 +126,13 @@ def build_env(root: str | Path | None = None) -> tuple[dict, dict]:
     调用方必须把本次渲染判为不可信（新错误码 RENDER.FONTCONFIG_RESOURCE_MISSING），
     不能因为 LibreOffice 仍能退出 0 就当渲染通过。
     """
-    root_p = data_root(root)
+    root_p = Path(data_root(root)).resolve()
+    # 必须落成**绝对路径**（2026-11-04 job-293501ae3698 v3/v4 复现实证）：
+    # 调用方传相对 data_root（如 `--project-root .`）时，FONTCONFIG_FILE/
+    # XDG_CACHE_HOME 会是相对路径，而 macOS 的 soffice wrapper 启动
+    # soffice.bin 前不保证保持 cwd——相对路径一旦失配，fontconfig 静默
+    # 回退默认配置，全部中文画成方框且退出码仍为 0。resolve() 与调用方
+    # cwd 无关，永远给出可解析的绝对路径。
     rec: dict = {
         "policy": ENV_POLICY_VERSION, "ok": True, "mode": "packaged",
         "package_root": str(package_root()),
