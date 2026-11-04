@@ -229,8 +229,13 @@ def fixture_visual_review_call(model: str, scene: dict, image_bytes: bytes) -> d
 
 
 def synthetic_scene_render_evidence(candidate: Path, plan: dict, output_dir: Path,
-                                    *, occlude_fraction: float = 0.0) -> dict:
-    """Build deterministic pixel fixtures; this is not a real-render acceptance."""
+                                    *, occlude_fraction: float = 0.0,
+                                    background=(31, 37, 44)) -> dict:
+    """Build deterministic pixel fixtures; this is not a real-render acceptance.
+
+    background 可自定义：浅色底用于复现「浅色照片在浅色页面上 contribution
+    度量盲区」（2026-11-04 mt-2e236f66 页 12）；默认深底保持旧测试不变。
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
     prs = Presentation(str(candidate))
     width = 1280
@@ -239,8 +244,8 @@ def synthetic_scene_render_evidence(candidate: Path, plan: dict, output_dir: Pat
     rendered_pdf_pages = []
     suppressed_pdf_pages = []
     for page_no, slide in enumerate(prs.slides, 1):
-        page = Image.new("RGB", (width, height), (31, 37, 44))
-        suppressed_page = Image.new("RGB", (width, height), (31, 37, 44))
+        page = Image.new("RGB", (width, height), background)
+        suppressed_page = Image.new("RGB", (width, height), background)
         for shape in slide.shapes:
             if getattr(shape, "shape_type", None) != MSO_SHAPE_TYPE.PICTURE:
                 continue

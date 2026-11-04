@@ -89,6 +89,10 @@ _SCENE_RENDER_GRID = 8
 _SCENE_RENDER_MAX_TILE_MAE = 48.0
 _SCENE_RENDER_MIN_MATCHED_TILES = 0.65
 _SCENE_RENDER_MIN_CHANGED_PIXEL_FRACTION = 0.65
+# 「照片内容确证」的 mae 上限：真实渲染的照片区域与照片本体逐 tile 平均差
+# 远低于此（实测 1.3）；照片未显示（roi≈页面背景）时通常高出数倍。
+# 只与 MIN_MATCHED_TILES 联合使用，作为低 contribution 的充分豁免依据。
+_SCENE_RENDER_CONTENT_PROOF_MAE = 8.0
 _SCENE_RENDER_MIN_WIDTH = 640
 _SCENE_RENDER_MIN_HEIGHT = 360
 _SCENE_RENDER_MIN_SOURCE_RETAINED = 0.58
@@ -2621,8 +2625,19 @@ def validate_rendered_scene_visibility(candidate_pptx: str | Path,
                 contribution_mask = contribution.point(lambda value: 255 if value >= 18 else 0)
                 contribution_fraction = (contribution_mask.histogram()[255]
                                          / max(1, roi.width * roi.height))
-                visible = (match_ratio >= _SCENE_RENDER_MIN_MATCHED_TILES
-                           and contribution_fraction >= _SCENE_RENDER_MIN_CHANGED_PIXEL_FRACTION)
+                # 照片内容确证（2026-11-04 job-3331ea06ac2c 页 12）：
+                # contribution 度量「有图 vs 无图」的像素差，会被照片大面积
+                # 浅色底与页面背景的色调巧合压低——该页 UI mockup 41.9% 近白
+                # 像素，照片渲染完美（match=1.0、mae=1.3、无遮挡、无裁切）
+                # 但 contribution 0.592<0.65。照片真没显示时 roi≈背景，
+                # match 不可能过线、mae 会远高于真渲染——因此 match 过线
+                # 且 mae 极低即构成「照片确实渲染」的充分证据，低 contribution
+                # 属度量盲区而非缺失，不再一票否决（仍记录进证据供复核）。
+                content_proved = (match_ratio >= _SCENE_RENDER_MIN_MATCHED_TILES
+                                  and mean_mae <= _SCENE_RENDER_CONTENT_PROOF_MAE)
+                visible = ((match_ratio >= _SCENE_RENDER_MIN_MATCHED_TILES
+                            and contribution_fraction >= _SCENE_RENDER_MIN_CHANGED_PIXEL_FRACTION)
+                           or content_proved)
                 visibility[str(scene_key)] = {
                     "slide": page,
                     "matched_tile_fraction": round(match_ratio, 5),
@@ -2631,6 +2646,7 @@ def validate_rendered_scene_visibility(candidate_pptx: str | Path,
                     "mean_tile_mae": round(mean_mae, 3),
                     "candidate_pixel_contribution_fraction": round(contribution_fraction, 5),
                     "source_retained_fraction": round(retained, 5),
+                    "content_proved": content_proved,
                     "visible": visible,
                 }
                 result["summary"]["rendered_scene_count"] += 1

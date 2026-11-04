@@ -171,7 +171,10 @@ def _canon_num(tok: str) -> tuple[float, int, str]:
     sign = "-" if s.startswith("-") else ("+" if s.startswith("+") else "")
     s2 = s.lstrip("+-")
     try:
-        val = float(s2)
+        # val 必须带符号（2026-11-04 mt-2e236f66 回归测试暴露的既有缺陷）：
+        # 早先返回绝对值，负数事实（raw '-6' → want_val -6.0）与候选
+        # val=+6.0 的 abs 比较永远失败，负数事实全部误报「未找到」。
+        val = float(s2) * (-1.0 if sign == "-" else 1.0)
     except ValueError:
         return (float("nan"), 0, sign)
     dec = len(s2.split(".")[1]) if "." in s2 else 0
@@ -243,10 +246,14 @@ def value_matches(fact: dict, page_text: str) -> dict:
                     "why": f"数值 {tok!r} 丢失了冻结写法 {raw!r} 的负号",
                     "mode": None, "seen": tok}
         if not want_sign and sign and want_val is not None and val > 0:
-            # 候选写成 -N 而冻结为正：可能是符号被改
-            return {"ok": False,
-                    "why": f"数值 {tok!r} 的符号与冻结写法 {raw!r} 不一致",
-                    "mode": None, "seen": tok}
+            # 候选写成 -N 而冻结为正：可能是符号被改。
+            # 只拦**负号**（语义翻转）；"+" 是冗余正向修饰（原文「+6%」被
+            # 冻结器归一为 '6%'，候选忠实照抄原文写 '+6' 语义完全一致，
+            # 2026-11-04 job-3331ea06ac2c F084 误判为符号不一致）。
+            if sign == "-":
+                return {"ok": False,
+                        "why": f"数值 {tok!r} 的符号与冻结写法 {raw!r} 不一致",
+                        "mode": None, "seen": tok}
         # 精度：冻结写法有小数位时，候选不得改成整数或不同精度
         _, want_dec, _ = _canon_num(want or raw)
         if want_dec and dec == 0:
@@ -269,6 +276,17 @@ def value_matches(fact: dict, page_text: str) -> dict:
             return {"ok": False,
                     "why": f"单位被改动：{seen_unit} 与冻结的 {want_unit} 语义不同",
                     "mode": None, "seen": tok}
+    # 没有任何 token 通过。数值带符号比较后，"同值反号" 不再进入符号
+    # 分支（-6 ≠ 6）；但诊断信息不能退化成笼统的"未找到"：先扫一遍
+    # 是否存在数值相同、符号相反的 token，给出精准的翻转提示。
+    if want_val is not None:
+        for m2 in _NUM_TOKEN.finditer(page_text or ""):
+            v2, _d2, _s2 = _canon_num(m2.group(0))
+            if v2 == v2 and want_val and v2 == -want_val:
+                return {"ok": False,
+                        "why": f"数值 {m2.group(0)!r} 的符号与冻结写法 "
+                               f"{raw!r} 相反",
+                        "mode": None, "seen": m2.group(0)}
     return {"ok": False,
             "why": f"未找到与冻结值 {raw!r} 按数字边界一致且单位关联明确的数值",
             "mode": None}

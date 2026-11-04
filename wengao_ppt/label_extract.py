@@ -109,7 +109,17 @@ def _short_source_desc(sentence: str, number: str, limit: int = 22) -> str:
         clause = s[left:right]
     clause = clause.strip(" 　、，,;；。")
     if len(clause) > limit:
-        clause = clause[:limit] + "…"
+        # 按 docstring 契约截到**标点边界**（2026-11-04 job-3331ea06ac2c 实证）：
+        # 早先的实现硬切 limit 字再补 "…"，而保真门
+        # （source_fidelity._looks_truncated）把以 "…" 结尾的图表类别一律
+        # 判 BLOCKING——兜底标签天然无法过检，等于左手制造缺陷、
+        # 右手拦截缺陷。截到标点边界后不得再补省略号。
+        cut = limit
+        for i in range(min(limit, len(clause)) - 1, 7, -1):
+            if clause[i] in "，。、；：！？,;:!?）)】]」』 ":
+                cut = i + 1
+                break
+        clause = clause[:cut].rstrip(" 　、，,;；。:：！?？）)】]」』")
     return clause
 
 
