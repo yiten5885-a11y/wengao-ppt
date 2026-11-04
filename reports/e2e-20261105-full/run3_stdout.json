@@ -1,0 +1,4 @@
+{
+  "gate": "MODEL.HTTP_ERROR",
+  "detail": "Generation failed: [METAL] Command buffer execution failed: Insufficient Memory (00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory)."
+}

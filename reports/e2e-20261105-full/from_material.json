@@ -1,0 +1,38 @@
+{
+  "input": "/Users/huangyingteng/WorkBuddy/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/workbench_uploads/721cd441__V1.0.docx",
+  "input_kind": "docx",
+  "facts_frozen": 511,
+  "plan_mode": "chunked",
+  "plan_chunks": 8,
+  "plan_slides": 14,
+  "generated_pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/e2e-20261105-full/out/721cd441__V1.0.generated.pptx",
+  "verdict": "GENERATED_PENDING_VALIDATION",
+  "accepted_into_pipeline": false,
+  "next": "材料生成**不会自动进入**候选/发布；如需验收请对该 PPTX 执行 precheck → run → validate → publish → export"
+}
+{
+  "job_id": "job-08c2fe26cd1d",
+  "run_id": "20261104T170902_378693Z-5aa8ef8e",
+  "attempt_id": "ad887b31",
+  "verdict": "QUEUED",
+  "material_intent": true,
+  "input_kind": ".pptx",
+  "input_sha256": "389cdc4406990ad63d99bedfbaaa2ca7e0f1f9f9cf48852dce996575602973ca",
+  "upstream_verified": true,
+  "real_renderer": "available",
+  "support_profile": "P1_TEXT_LIMITED",
+  "required_checks": [
+    "content_fidelity.required_text",
+    "content_fidelity.occurrence",
+    "content_fidelity.sign",
+    "native_editability.visible_native",
+    "render.real_render"
+  ]
+}
+{
+  "job_id": "job-08c2fe26cd1d",
+  "material_intent": "jobs/<job>/material_intent.json",
+  "fact_ledger": "jobs/<job>/material_fact_ledger.json",
+  "content_plan": "jobs/<job>/material_content_plan.json",
+  "required_check": "source.fact_coverage（导出前必须 EXECUTED）"
+}

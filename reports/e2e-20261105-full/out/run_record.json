@@ -1,0 +1,619 @@
+{
+  "schema_version": "1.0.0",
+  "started_at": "2026-11-04T17:07:55.918279+00:00",
+  "material": "workbench_uploads/721cd441__V1.0.docx",
+  "material_sha256": "1b1a3780b925e6db4e6572f09ed3505862ef067437fa3264da0b60448423e849",
+  "target_pages": 12,
+  "model": "qwen3.8:27b-wb65536",
+  "budget": {
+    "num_ctx": 8192,
+    "temperature": 0.2,
+    "plan_num_predict": 3000,
+    "chunk_num_predict": 1200,
+    "max_retries_per_call": 2,
+    "request_timeout_s": 900,
+    "keep_alive": "3m"
+  },
+  "note": "模型输出只当数据；不执行其命令/XML；不写 status/passed/verdict。",
+  "extraction": {
+    "input_kind": "docx",
+    "input_sha256": "1b1a3780b925e6db4e6572f09ed3505862ef067437fa3264da0b60448423e849",
+    "pages": 83,
+    "units": 305,
+    "tables": 29,
+    "extractor": "wengao_ppt.extractors.extract_any（复用既有，未另建引擎）",
+    "warnings": [
+      "DOCX 已提取正文段落、标题层级与 29 张规则表（P2）；合并单元格等不规则结构与图表关系仍不在本阶段承诺范围。"
+    ]
+  },
+  "fact_ledger": {
+    "path": "reports/e2e-20261105-full/out/fact_ledger.json",
+    "count": 511,
+    "selected": 60,
+    "frozen_before_model_call": true
+  },
+  "fact_budget": {
+    "activated": true,
+    "policy": "章节等距抽样 + 每章按源稿顺序截取至页数预算；落选事实逐条记录 PAGE_BUDGET，显式省略、可审计。",
+    "candidates": 511,
+    "selected": 60,
+    "omitted": 451,
+    "subjects_total": 70,
+    "subjects_selected": 8,
+    "pages_per_subject": 1,
+    "estimated_pages_unbudgeted": 209,
+    "estimated_pages_budgeted": 12,
+    "selected_subjects": [
+      "《花路小屋绽放纪》完整开发指南 V1.0",
+      "2.4 生成器与掉落",
+      "5. 通关奖励设计",
+      "7.4 免费玩家的钻石收入",
+      "9.3 兴奋度指数 H（判断「高潮」）",
+      "11.2 字体（均可免费商用，上线前再核对授权说明）",
+      "13.6 UI 与运营素材",
+      "参考来源"
+    ],
+    "omitted_facts_path": "reports/e2e-20261105-full/out/fact_ledger.json#budget_omitted_facts"
+  },
+  "source_completion": {
+    "completed_half_sentences": [],
+    "added_qualitative": [],
+    "unplaced": [],
+    "dropped_duplicates": [],
+    "already_covered": [],
+    "removed_duplicate_only_pages": [],
+    "repaginated": false
+  },
+  "plan_revalidation": {
+    "pre_completion_status": {
+      "failed": false,
+      "error": ""
+    },
+    "final_problems": [],
+    "pre_completion_failure_cleared": false
+  },
+  "plan": {
+    "path": "reports/e2e-20261105-full/out/content_plan.json",
+    "mode": "chunked",
+    "chunk_count": 8,
+    "chunk_calls": 0,
+    "source_assignment_count": 8,
+    "model_call_count": 1,
+    "model_call_scope": "content_plan",
+    "slides": 14,
+    "failed": false,
+    "error": null,
+    "trace": [
+      {
+        "phase": "global_plan",
+        "attempt": 1,
+        "model_calls": 1,
+        "elapsed_s": 66.28,
+        "done_reason": "stop",
+        "eval_count": 590,
+        "raw_response": "```json\n{\n  \"deck_title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"page_type\": \"cover\",\n      \"title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 2,\n      \"page_type\": \"agenda\",\n      \"title\": \"目录\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 3,\n      \"page_type\": \"single_column\",\n      \"title\": \"《花路小屋绽放纪》完整开发指南 V1.0\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 4,\n      \"page_type\": \"process\",\n      \"title\": \"2.4 生成器与掉落\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 5,\n      \"page_type\": \"metrics\",\n      \"title\": \"5. 通关奖励设计\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 6,\n      \"page_type\": \"chart\",\n      \"title\": \"7.4 免费玩家的钻石收入\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 7,\n      \"page_type\": \"chart\",\n      \"title\": \"9.3 兴奋度指数 H（判断「高潮」）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 8,\n      \"page_type\": \"table\",\n      \"title\": \"11.2 字体（均可免费商用，上线前再核对授权说明）\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 9,\n      \"page_type\": \"single_column\",\n      \"title\": \"13.6 UI 与运营素材\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 10,\n      \"page_type\": \"single_column\",\n      \"title\": \"参考来源\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 11,\n      \"page_type\": \"conclusion\",\n      \"title\": \"结论\",\n      \"must_state\": []\n    },\n    {\n      \"page\": 12,\n      \"page_type\": \"summary_action\",\n      \"title\": \"行动建议\",\n      \"must_state\": []\n    }\n  ]\n}\n```"
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "《花路小屋绽放纪》完整开发指南 V1.0",
+        "assigned_fact_ids": [
+          "F001",
+          "F002"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "2.4 生成器与掉落",
+        "assigned_fact_ids": [
+          "F074",
+          "F075",
+          "F076",
+          "F077",
+          "F078",
+          "F079",
+          "F080",
+          "F081",
+          "F082",
+          "F083",
+          "F084",
+          "F085",
+          "F086"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "5. 通关奖励设计",
+        "assigned_fact_ids": [
+          "F134"
+        ],
+        "source_statement_count": 1,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "7.4 免费玩家的钻石收入",
+        "assigned_fact_ids": [
+          "F187",
+          "F188",
+          "F189",
+          "F190",
+          "F191",
+          "F192",
+          "F193",
+          "F194",
+          "F195",
+          "F196"
+        ],
+        "source_statement_count": 2,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "9.3 兴奋度指数 H（判断「高潮」）",
+        "assigned_fact_ids": [
+          "F227",
+          "F228",
+          "F229",
+          "F230",
+          "F231",
+          "F232",
+          "F233",
+          "F234",
+          "F235",
+          "F236",
+          "F237",
+          "F238",
+          "F239",
+          "F240",
+          "F241",
+          "F242",
+          "F243"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "11.2 字体（均可免费商用，上线前再核对授权说明）",
+        "assigned_fact_ids": [
+          "F336",
+          "F337",
+          "F338",
+          "F339",
+          "F340",
+          "F341",
+          "F342",
+          "F343",
+          "F344",
+          "F345"
+        ],
+        "source_statement_count": 5,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "13.6 UI 与运营素材",
+        "assigned_fact_ids": [
+          "F421",
+          "F422",
+          "F423"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      },
+      {
+        "phase": "source_assignment",
+        "subject": "参考来源",
+        "assigned_fact_ids": [
+          "F504",
+          "F505",
+          "F506",
+          "F508"
+        ],
+        "source_statement_count": 4,
+        "model_calls": 0
+      }
+    ],
+    "physical_pages": 14
+  },
+  "markdown_table_reclassification": {
+    "reclassified_pages": []
+  },
+  "pagination": {
+    "capacity_source": "wengao_ppt.page_catalog.PAGE_TYPES[*].capacity['mid'] 为上限；实际取 min(mid, 可读性容量)——正文 24pt/表格 20pt 版式下按条目实际长度估算（2026-10-20 可读性基线）",
+    "pages_before": 10,
+    "pages_after": 14,
+    "splits": [
+      {
+        "page_type": "agenda",
+        "original_units": 8,
+        "catalog_mid": 6,
+        "readable_cap": 5,
+        "capacity_per_page": 5,
+        "pages": 2
+      },
+      {
+        "page_type": "single_column",
+        "original_units": 4,
+        "catalog_mid": 6,
+        "readable_cap": 2,
+        "capacity_per_page": 2,
+        "pages": 2
+      }
+    ],
+    "page_range": [
+      10,
+      20
+    ],
+    "in_range": true,
+    "planner_pages_after": 12,
+    "builder_generated_continuations": 2,
+    "builder_page_manifest_verified": true,
+    "page_count_basis": "reopened PPTX slide count matched ordered builder page manifest"
+  },
+  "pptx": {
+    "path": "reports/e2e-20261105-full/out/721cd441__V1.0.generated.pptx",
+    "sha256": "389cdc4406990ad63d99bedfbaaa2ca7e0f1f9f9cf48852dce996575602973ca",
+    "slides": 14,
+    "slides_match_pagination": true,
+    "matches_reopened_file": true,
+    "matches_builder_manifest": true
+  },
+  "page_count_source": "重开保存后的 PPTX 幻灯片数，与有序构建页清单逐页核对",
+  "chart_relations": [
+    {
+      "page_title": "7.4 免费玩家的钻石收入",
+      "chart_part_hint": "slide 7",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [],
+      "unplotted_statements_same_page_table": [],
+      "points": [
+        {
+          "category": "体力·40",
+          "display_category": "体力·40",
+          "value": 40.0,
+          "unit": "unknown",
+          "fact_id": "F188"
+        },
+        {
+          "category": "体力·50",
+          "display_category": "体力·50",
+          "value": 50.0,
+          "unit": "unknown",
+          "fact_id": "F189"
+        },
+        {
+          "category": "普通生成器点 1 次耗 1 点体力2",
+          "display_category": "普通生成器点 1 次耗 1 点体力2",
+          "value": 1.0,
+          "unit": "unknown",
+          "fact_id": "F075"
+        },
+        {
+          "category": "一级生成器掉落：1 级物品 85%、2 级3",
+          "display_category": "一级生成器掉落：1 级物品 85%、2 级3",
+          "value": 2.0,
+          "unit": "unknown",
+          "fact_id": "F078"
+        },
+        {
+          "category": "起就是付费入口·25",
+          "display_category": "起就是付费入口·25",
+          "value": 25.0,
+          "unit": "unknown",
+          "fact_id": "F193"
+        },
+        {
+          "category": "起就是付费入口·35",
+          "display_category": "起就是付费入口·35",
+          "value": 35.0,
+          "unit": "unknown",
+          "fact_id": "F194"
+        }
+      ]
+    },
+    {
+      "page_title": "9.3 兴奋度指数 H（判断「高",
+      "chart_part_hint": "slide 9",
+      "chart_title": "",
+      "series_name": "指标（单位见来源台账）",
+      "axis_unit": "unknown",
+      "excluded_units_same_page_table": [],
+      "unplotted_statements_same_page_table": [],
+      "points": [
+        {
+          "category": "H = 0.30\\",
+          "display_category": "H = 0.30\\",
+          "value": 0.3,
+          "unit": "unknown",
+          "fact_id": "F227"
+        },
+        {
+          "category": "C + 0.25\\",
+          "display_category": "C + 0.25\\",
+          "value": 0.25,
+          "unit": "unknown",
+          "fact_id": "F228"
+        },
+        {
+          "category": "P + 0.20\\",
+          "display_category": "P + 0.20\\",
+          "value": 0.2,
+          "unit": "unknown",
+          "fact_id": "F229"
+        },
+        {
+          "category": "N + 0.15\\",
+          "display_category": "N + 0.15\\",
+          "value": 0.15,
+          "unit": "unknown",
+          "fact_id": "F230"
+        },
+        {
+          "category": "M + 0.10\\",
+          "display_category": "M + 0.10\\",
+          "value": 0.1,
+          "unit": "unknown",
+          "fact_id": "F231"
+        },
+        {
+          "category": "C 连击强度 = min(近 30",
+          "display_category": "C 连击强度 = min(近 30",
+          "value": 30.0,
+          "unit": "unknown",
+          "fact_id": "F232"
+        }
+      ]
+    }
+  ],
+  "page_type_decisions": [
+    {
+      "page": 1,
+      "page_type": "cover",
+      "catalog_key": "cover",
+      "units": 0,
+      "density": "low",
+      "layout": "title_only_dense",
+      "fallback_chain": [
+        "title+subtitle",
+        "title_only",
+        "title_only_dense"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 2,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 5,
+      "density": "mid",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 3,
+      "page_type": "agenda",
+      "catalog_key": "toc_section",
+      "units": 3,
+      "density": "low",
+      "layout": "section_divider_only",
+      "fallback_chain": [
+        "single_column_list",
+        "two_column_list",
+        "section_divider_only"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 4,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 1,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 5,
+      "page_type": "process",
+      "catalog_key": "flow",
+      "units": 4,
+      "density": "mid",
+      "layout": "linear_flow_with_note",
+      "fallback_chain": [
+        "linear_flow",
+        "two_row_flow",
+        "linear_flow_with_note"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 6,
+      "page_type": "metrics",
+      "catalog_key": "metrics",
+      "units": 1,
+      "density": "low",
+      "layout": "card_grid_3x2",
+      "fallback_chain": [
+        "card_grid_2x1",
+        "card_grid_2x2",
+        "card_grid_3x2"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 7,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 2,
+      "density": "low",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 8,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 2,
+      "density": "low",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 9,
+      "page_type": "chart",
+      "catalog_key": "chart",
+      "units": 5,
+      "density": "mid",
+      "layout": "native_chart_split_two_pages",
+      "fallback_chain": [
+        "native_chart_only",
+        "native_chart_plus_companion_table",
+        "native_chart_split_two_pages"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 10,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 6,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false,
+      "generated_continuation": true
+    },
+    {
+      "page": 11,
+      "page_type": "table",
+      "catalog_key": "table",
+      "units": 5,
+      "density": "mid",
+      "layout": "native_table_plus_footnote",
+      "fallback_chain": [
+        "native_table_full",
+        "native_table_split",
+        "native_table_plus_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 12,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 13,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 2,
+      "density": "low",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    },
+    {
+      "page": 14,
+      "page_type": "single_column",
+      "catalog_key": "single_column",
+      "units": 4,
+      "density": "mid",
+      "layout": "bullets_with_footnote",
+      "fallback_chain": [
+        "bullets",
+        "bullets_split_two_pages",
+        "bullets_with_footnote"
+      ],
+      "body_pt": 16,
+      "min_body_pt": 14,
+      "font_ok": true,
+      "capacity_conflict": false
+    }
+  ],
+  "finished_at": "2026-11-04T17:09:02.356259+00:00",
+  "verdict": "GENERATED_PENDING_VALIDATION"
+}

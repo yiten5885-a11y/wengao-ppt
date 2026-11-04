@@ -1,0 +1,98 @@
+{
+  "source": "reports/e2e-20261105-full/jobs/job-08c2fe26cd1d/job.json（首次 run 的真实结论）",
+  "real_plan": {
+    "detected_scene_ids": [
+      "player_tapping_generator",
+      "player_receiving_reward",
+      "player_spending_diamonds",
+      "designer_typing_font_specs",
+      "designer_reviewing_ui_mockup"
+    ],
+    "coverage_audit": {
+      "status": "PASSED",
+      "pages_checked": 14,
+      "missing_scene_count": 0,
+      "merged_distinct_scene_count": 0
+    },
+    "planned_scene_count": 5,
+    "planned_photo_count": 0,
+    "text_card_count": 4,
+    "unresolved_scenes": [
+      {
+        "scene_key": "designer_typing_font_specs",
+        "reason": "SCENE.GEN_IMAGE_PERMANENT_FAILURE",
+        "detail": "云端生图服务本次任务内已判定为永久失败（认证/额度/请求参数问题），本任务内不再重试该服务。",
+        "query_attempts": [
+          {
+            "query": "designer typing text office desk",
+            "code": "SCENE.PROVIDER_ROWS_INELIGIBLE",
+            "detail": "图库返回了候选，但没有一张同时满足许可、格式、分辨率与去重要求；逐项拒绝原因：SCENE.VISUAL_CONTENT_MISMATCH×3, SCENE.IMAGE_CONTEXT_UNVERIFIED×91, SCENE.PHOTO_STYLE_MISMATCH×1"
+          },
+          {
+            "query": "ai_image_generation",
+            "code": "SCENE.GEN_IMAGE_PERMANENT_FAILURE",
+            "detail": "云端生图服务本次任务内已判定为永久失败（认证/额度/请求参数问题），本任务内不再重试该服务。"
+          }
+        ]
+      }
+    ],
+    "plan_sha256": "1dae0c71d9200aabb3f4c645545bcedd7b0242cfd4a9dd48ebc7102c2072dd47"
+  },
+  "before_fix": {
+    "blocking": 1,
+    "capacity": 0,
+    "reasons": [
+      "SCENE.GEN_IMAGE_PERMANENT_FAILURE"
+    ]
+  },
+  "after_fix": {
+    "blocking": 0,
+    "capacity": 1,
+    "capacity_rows": [
+      {
+        "scene_key": "designer_typing_font_specs",
+        "reason": "SCENE.NO_VERIFIED_PHOTO_SKIPPED",
+        "original_reason": "SCENE.GEN_IMAGE_PERMANENT_FAILURE"
+      }
+    ]
+  },
+  "run_stage_after_fix": {
+    "blocks": false,
+    "blockers": [],
+    "detail_kind": "resolved"
+  },
+  "no_photo_outcomes_after_fix": {
+    "no_photo": true,
+    "outcomes": [
+      {
+        "scene_key": "designer_typing_font_specs",
+        "reason": "SCENE.NO_VERIFIED_PHOTO_SKIPPED",
+        "kind": "capacity"
+      },
+      {
+        "scene_key": "card0",
+        "reason": null,
+        "kind": "text_card"
+      },
+      {
+        "scene_key": "card1",
+        "reason": null,
+        "kind": "text_card"
+      },
+      {
+        "scene_key": "card2",
+        "reason": null,
+        "kind": "text_card"
+      },
+      {
+        "scene_key": "card3",
+        "reason": null,
+        "kind": "text_card"
+      }
+    ],
+    "capacity_only": true,
+    "all_scenes_accounted": false,
+    "text_card_count": 4,
+    "capacity_count": 1
+  }
+}

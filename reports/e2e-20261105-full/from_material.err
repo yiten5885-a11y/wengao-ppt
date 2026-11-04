@@ -1,0 +1,9 @@
+[facts] 候选 511 条，页数预算后必讲 60 条（章节 8/70，落选逐条留痕）；不预算约 209 页 > 冻结上限 20
+[complete] 半句补全 0 条、定性补入 0 条、未放置 0 条、重新分页=False
+[plan] mode=chunked slides=10 assignments=8 content_plan_model_calls=1 failed=False
+[pages] 10 → 12 页 (区间 10—20, in_range=True)
+[pptx] reports/e2e-20261105-full/out/721cd441__V1.0.generated.pptx slides=14 chart_points=12
+[out] reports/e2e-20261105-full/out/run_record.json
+===== from_material =====
+===== precheck =====
+===== material_source_linked =====
