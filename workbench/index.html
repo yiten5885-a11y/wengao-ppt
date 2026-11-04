@@ -160,6 +160,9 @@
   .theme .sw i{position:absolute;display:block;border-radius:2px}
   .theme .tname{font-size:calc(12.5px * var(--font-scale, 1));margin-top:7px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .theme .tid{font-size:calc(10.5px * var(--font-scale, 1));color:var(--muted)}
+  .needvision{display:inline-block;margin-left:6px;padding:0 7px;border-radius:9px;
+    font-size:calc(10px * var(--font-scale, 1));line-height:17px;background:var(--bad-weak);
+    color:var(--bad-ink);border:1px solid var(--bad-border);white-space:nowrap;vertical-align:1px}
   .theme .sname{font-size:calc(11px * var(--font-scale, 1));color:var(--ink);opacity:.78;margin-top:2px;display:flex;align-items:center;gap:5px}
   .theme .sname b{font-weight:600}
   .theme .sname em{font-style:normal;color:var(--muted);font-size:calc(10px * var(--font-scale, 1))}
@@ -367,7 +370,7 @@
               <p class="hint" style="margin-top:10px">主题在预检时冻结进任务身份，制作过程中不可更改。卡片配色来自主题注册表，属<b>配色示例</b>，不是本次原稿预览。</p>
               <div id="themes-visual-upgrade-section" class="hidden" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
                 <label class="field" style="margin-bottom:6px">视觉升级主题（不是配色选项）</label>
-                <p class="hint" style="margin-bottom:10px">选中会额外运行关键词配图与转场/粒子动效生成，耗时更长、调用图库与本机模型；不是单纯换个颜色。</p>
+                <p class="hint" id="themes-visual-upgrade-hint" style="margin-bottom:10px">选中会额外运行关键词配图与转场/粒子动效生成，耗时更长、调用图库与本机模型；不是单纯换个颜色。</p>
                 <div class="themes" id="themes-visual-upgrade" role="group" aria-label="视觉升级主题"></div>
               </div>
             </div>
@@ -1091,10 +1094,14 @@ function themeCard(t, on) {
     ? "<div class='sname'><b>" + esc(st.style_name) + "</b>" +
       (st.genre ? "<em>" + esc(st.genre) + "</em>" : "") + "</div>"
     : "";
+  // 视觉升级主题在本安装能不能跑，bootstrap 首屏就告诉了用户；不可用时
+  // 在卡上直接标出来，而不是让用户在运行阶段才第一次看到报错。
+  const visBad = !!(S.boot && S.boot.vision && S.boot.vision.available === false);
+  const badge = (t.visual_upgrade && visBad) ? "<span class='needvision'>本安装不可用</span>" : "";
   return "<button class='theme' data-theme='" + esc(t.id) + "' aria-pressed='" + (on ? "true" : "false") + "'" +
     (st.tagline ? " title='" + esc(st.tagline) + "'" : "") + ">" +
     themeThumb(t) +
-    "<div class='tname'>" + esc(t.name) + "</div>" +
+    "<div class='tname'>" + esc(t.name) + badge + "</div>" +
     styleLine +
     "<div class='tid'>" + esc(t.id) + " · v" + esc(t.version) + "</div>" +
   "</button>";
@@ -1111,6 +1118,14 @@ function renderThemes(themes, defId) {
   const groups = [["themes", plain]];
   if (upgrade.length) groups.push(["themes-visual-upgrade", upgrade]);
   $("themes-visual-upgrade-section").classList.toggle("hidden", !upgrade.length);
+  // 视觉端点可用性（bootstrap.vision）：可用就说清是谁在复核；不可用就在
+  // 用户选择之前给出两条可操作的去处，而不是等运行阶段才报错。
+  const vis = (S.boot && S.boot.vision) || null;
+  const visHint = $("themes-visual-upgrade-hint");
+  if (visHint) visHint.innerHTML = (vis && vis.available === false)
+    ? "<b>本安装视觉端点不可用</b>：选中后配图复核会在运行阶段失败。可先在「技术详情 → 云端模型」启用云端视觉（只发出候选配图与场景描述，原稿文字不出本机），或启动本机视觉服务（127.0.0.1:8080）。"
+    : "选中会额外运行关键词配图与转场/粒子动效生成，耗时更长；不是单纯换个颜色。当前图片语义复核：" +
+      (vis && vis.available ? "<b>已就绪（" + esc(vis.provider || vis.mode || "云端") + "）</b>" : "状态未知");
   const selectTheme = (id) => {
     S.studio.theme = id;
     groups.forEach(([elId]) => $(elId).querySelectorAll(".theme").forEach((x) =>

@@ -1,0 +1,1090 @@
+{
+  "schema": "wengao.cleanroom_install.v1",
+  "started_at": "2026-11-04T12:09:55+0800",
+  "scope": "同机 + 全新安装根 + 独立数据根；**不是**全新机器验证",
+  "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+  "payload": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-7a876cf7",
+  "payload_sha256_members": 213,
+  "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+  "non_ascii_root": true,
+  "steps": [
+    {
+      "step": "install",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-m",
+        "wengao_ppt.install",
+        "--root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+        "install",
+        "--package",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-7a876cf7",
+        "--activate",
+        "--expect-root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/dist/wengao-ppt-0.1.0-7a876cf7",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"label\": \"build-47f40feb\",\n  \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n  \"activated\": true,\n  \"current\": \"build-47f40feb\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"entry\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao\",\n  \"double_click\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/启动稳稿PPT.command\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "label": "build-47f40feb",
+        "build_id": "47f40feb79f90bf154f61f002280f283",
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+        "activated": true,
+        "current": "build-47f40feb",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "entry": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "double_click": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/启动稳稿PPT.command"
+      },
+      "seconds": 5.66,
+      "ok": true
+    },
+    {
+      "step": "status_after_install",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T\",\n  \"current\": \"build-47f40feb\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"python\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python\",\n  \"versions\": [\n    {\n      \"label\": \"build-47f40feb\",\n      \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n      \"installed_at\": \"2026-11-04T12:10:00+0800\",\n      \"ok\": true\n    }\n  ],\n  \"ok\": true,\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n  \"module_file\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/wengao_ppt/__init__.py\",\n  \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n  \"jobs\": 0\n}\n",
+      "stderr_head": "",
+      "json": {
+        "schema_version": "1.0.0",
+        "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+        "current": "build-47f40feb",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "versions": [
+          {
+            "label": "build-47f40feb",
+            "build_id": "47f40feb79f90bf154f61f002280f283",
+            "installed_at": "2026-11-04T12:10:00+0800",
+            "ok": true
+          }
+        ],
+        "ok": true,
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+        "module_file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/wengao_ppt/__init__.py",
+        "build_id": "47f40feb79f90bf154f61f002280f283",
+        "jobs": 0
+      },
+      "seconds": 1.04,
+      "ok": true
+    },
+    {
+      "step": "doctor_after_install",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "doctor",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T\",\n  \"current\": \"build-47f40feb\",\n  \"install_ok\": true,\n  \"run_ready\": true,\n  \"blocking_missing\": [],\n  \"prerequisites_missing\": [],\n  \"checks\": [\n    {\n      \"name\": \"version_resolved\",\n      \"ok\": true,\n      \"detail\": \"current=build-47f40feb program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n      \"severity\": \"blocking\"\n    },\n    {\n      \"name\": \"required_members\",\n      \"ok\": true,\n      \"detail\": \"missing=[] members=308 build=47f40feb79f90bf154f61f002280f283\",\n      \"severity\": \"blocking\"\n    },\n    {\n      \"name\": \"data_root_separate\",\n      \"ok\": true,\n      \"detail\": \"program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb data=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n      \"severity\": \"blocking\"\n    },\n    {\n      \"name\": \"python_deps\",\n      \"ok\": true,\n      \"detail\": \"python=3.13.16\",\n      \"severity\": \"blocking\"\n    },\n    {\n      \"name\": \"libreoffice\",\n      \"ok\": true,\n      \"detail\": \"real_render_available=True\",\n      \"severity\": \"prerequisite\"\n    },\n    {\n      \"name\": \"font_config\",\n      \"ok\": true,\n      \"detail\": \"ok=True mode=packaged cache=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/cache\",\n      \"severity\": \"prerequisite\"\n    },\n    {\n      \"name\": \"material_flow\",\n      \"ok\": true,\n      \"detail\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/samples/r5_material_to_ppt.py\",\n      \"severity\": \"blocking\"\n    },\n    {\n      \"name\": \"visual_theme_assets\",\n      \"ok\": false,\n      \"detail\": \"missing=['promo_ecom.png', 'factory_night.png', 'aisle_supermarket.png', 'desk_planning.png'] total=5\",\n      \"severity\": \"info\",\n      \"next_actions\": [\n        \"视觉升级主题不可用：改用非视觉主题\",\n        \"或 build_install_payload.py --include-unverified-assets 重打包（许可责任随载荷转移）\"\n      ]\n    },\n    {\n      \"name\": \"text_endpoint\",\n      \"ok\": true,\n      \"detail\": \"127.0.0.1:18088 available=True\",\n      \"severity\": \"prerequisite\"\n    },\n    {\n      \"name\": \"vision_endpoint\",\n      \"ok\": true,\n      \"detail\": \"None available=True candidates=None\",\n      \"severity\": \"prerequisite\"\n    }\n  ]\n}\n",
+      "stderr_head": "",
+      "json": {
+        "schema_version": "1.0.0",
+        "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+        "current": "build-47f40feb",
+        "install_ok": true,
+        "run_ready": true,
+        "blocking_missing": [],
+        "prerequisites_missing": [],
+        "checks": [
+          {
+            "name": "version_resolved",
+            "ok": true,
+            "detail": "current=build-47f40feb program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+            "severity": "blocking"
+          },
+          {
+            "name": "required_members",
+            "ok": true,
+            "detail": "missing=[] members=308 build=47f40feb79f90bf154f61f002280f283",
+            "severity": "blocking"
+          },
+          {
+            "name": "data_root_separate",
+            "ok": true,
+            "detail": "program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb data=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+            "severity": "blocking"
+          },
+          {
+            "name": "python_deps",
+            "ok": true,
+            "detail": "python=3.13.16",
+            "severity": "blocking"
+          },
+          {
+            "name": "libreoffice",
+            "ok": true,
+            "detail": "real_render_available=True",
+            "severity": "prerequisite"
+          },
+          {
+            "name": "font_config",
+            "ok": true,
+            "detail": "ok=True mode=packaged cache=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/cache",
+            "severity": "prerequisite"
+          },
+          {
+            "name": "material_flow",
+            "ok": true,
+            "detail": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/samples/r5_material_to_ppt.py",
+            "severity": "blocking"
+          },
+          {
+            "name": "visual_theme_assets",
+            "ok": false,
+            "detail": "missing=['promo_ecom.png', 'factory_night.png', 'aisle_supermarket.png', 'desk_planning.png'] total=5",
+            "severity": "info",
+            "next_actions": [
+              "视觉升级主题不可用：改用非视觉主题",
+              "或 build_install_payload.py --include-unverified-assets 重打包（许可责任随载荷转移）"
+            ]
+          },
+          {
+            "name": "text_endpoint",
+            "ok": true,
+            "detail": "127.0.0.1:18088 available=True",
+            "severity": "prerequisite"
+          },
+          {
+            "name": "vision_endpoint",
+            "ok": true,
+            "detail": "None available=True candidates=None",
+            "severity": "prerequisite"
+          }
+        ]
+      },
+      "seconds": 0.65,
+      "ok": true
+    },
+    {
+      "step": "runtime_gate_loadable",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "-c",
+        "import importlib.util,json,os,sys,tempfile\nfrom pathlib import Path\np=Path(sys.argv[1])/'scripts'/'layout_gate.py'\nspec=importlib.util.spec_from_file_location('gate_probe',p)\nm=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)\nfd,tmp=tempfile.mkstemp(suffix='.mp4'); os.write(fd,b'\\x00'*64); os.close(fd)\ninfo=m._inspect_mp4(Path(tmp)); os.unlink(tmp)\nhas=lambda n: hasattr(m,n)\nok=(info.get('ok') is False and has('_inspect_mp4')\n    and has('_validate_native_review_record'))\nprint(json.dumps({'bytes':p.stat().st_size,'fake_mp4':info,\n                  'validators':[n for n in ('_inspect_mp4',\n                     '_validate_native_review_record') if has(n)],'ok':ok}))\nsys.exit(0 if ok else 3)\n",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\"bytes\": 160106, \"fake_mp4\": {\"ok\": false, \"error\": \"missing_ftyp\"}, \"validators\": [\"_inspect_mp4\", \"_validate_native_review_record\"], \"ok\": true}\n",
+      "stderr_head": "",
+      "json": {
+        "bytes": 160106,
+        "fake_mp4": {
+          "ok": false,
+          "error": "missing_ftyp"
+        },
+        "validators": [
+          "_inspect_mp4",
+          "_validate_native_review_record"
+        ],
+        "ok": true
+      },
+      "seconds": 0.09,
+      "ok": true
+    },
+    {
+      "step": "first_task_precheck",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "cli",
+        "--",
+        "precheck",
+        "--input",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/cleanroom_first.pptx",
+        "--mode",
+        "beautify",
+        "--theme",
+        "wengao-basic"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"job_id\": \"job-e4e358fc36c4\",\n  \"run_id\": \"20261104T041003_124440Z-75b2b9b2\",\n  \"attempt_id\": \"15780197\",\n  \"verdict\": \"QUEUED\",\n  \"material_intent\": false,\n  \"input_kind\": \".pptx\",\n  \"input_sha256\": \"07b2ed202ffc855204358488ed1231e24c1f03d72c3bc4c21b2b1072a452b836\",\n  \"upstream_verified\": false,\n  \"real_renderer\": \"available\",\n  \"support_profile\": \"P1_TEXT_LIMITED\",\n  \"required_checks\": [\n    \"content_fidelity.required_text\",\n    \"content_fidelity.occurrence\",\n    \"content_fidelity.sign\",\n    \"native_editability.visible_native\",\n    \"render.real_render\"\n  ]\n}\n",
+      "stderr_head": "===== precheck =====\n",
+      "json": {
+        "job_id": "job-e4e358fc36c4",
+        "run_id": "20261104T041003_124440Z-75b2b9b2",
+        "attempt_id": "15780197",
+        "verdict": "QUEUED",
+        "material_intent": false,
+        "input_kind": ".pptx",
+        "input_sha256": "07b2ed202ffc855204358488ed1231e24c1f03d72c3bc4c21b2b1072a452b836",
+        "upstream_verified": false,
+        "real_renderer": "available",
+        "support_profile": "P1_TEXT_LIMITED",
+        "required_checks": [
+          "content_fidelity.required_text",
+          "content_fidelity.occurrence",
+          "content_fidelity.sign",
+          "native_editability.visible_native",
+          "render.real_render"
+        ]
+      },
+      "seconds": 0.18,
+      "ok": true
+    },
+    {
+      "step": "first_task_run",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "cli",
+        "--",
+        "run",
+        "--job-id",
+        "job-e4e358fc36c4",
+        "--timeout",
+        "900",
+        "--allow-text-card-fallback"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"candidate\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/cleanroom_first.themed.pptx\",\n  \"staging\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/staging/15780197\",\n  \"attempt_id\": \"15780197\",\n  \"run_id\": \"20261104T041003_124440Z-75b2b9b2\",\n  \"submitted\": {\n    \"accepted\": true,\n    \"job_id\": \"job-e4e358fc36c4\",\n    \"attempt_id\": \"15780197\",\n    \"candidate\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate\"\n  },\n  \"elapsed_seconds\": 98.783,\n  \"input_doc\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/extracted.json\",\n  \"output_doc\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/extracted_output.json\"\n}\n",
+      "stderr_head": "===== run =====\n",
+      "json": {
+        "candidate": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/cleanroom_first.themed.pptx",
+        "staging": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/staging/15780197",
+        "attempt_id": "15780197",
+        "run_id": "20261104T041003_124440Z-75b2b9b2",
+        "submitted": {
+          "accepted": true,
+          "job_id": "job-e4e358fc36c4",
+          "attempt_id": "15780197",
+          "candidate": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate"
+        },
+        "elapsed_seconds": 98.783,
+        "input_doc": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/extracted.json",
+        "output_doc": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/extracted_output.json"
+      },
+      "seconds": 98.97,
+      "ok": true
+    },
+    {
+      "step": "first_task_validate",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "cli",
+        "--",
+        "validate",
+        "--job-id",
+        "job-e4e358fc36c4"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"verdict\": \"DEVELOPMENT_CANDIDATE\",\n  \"blocking_findings\": 0,\n  \"total_findings\": 0,\n  \"checks\": {\n    \"content_fidelity.required_text\": \"EXECUTED\",\n    \"content_fidelity.occurrence\": \"EXECUTED\",\n    \"content_fidelity.sign\": \"EXECUTED\",\n    \"native_editability.visible_native\": \"EXECUTED\",\n    \"object.actual_geometry\": \"EXECUTED\",\n    \"content_fidelity.hidden_state\": \"EXECUTED\",\n    \"object.group_structure\": \"EXECUTED\",\n    \"parser.census_consistency\": \"EXECUTED\",\n    \"render.real_render\": \"EXECUTED\",\n    \"render.glyph_quality\": \"EXECUTED\",\n    \"theme.contrast\": \"EXECUTED\",\n    \"layout.hard_gate\": \"EXECUTED\",\n    \"visual.semantic_scene_coverage\": \"EXECUTED\"\n  },\n  \"not_implemented_required_checks\": [],\n  \"render_code\": \"RENDER.OK\",\n  \"release_ready\": false\n}\n",
+      "stderr_head": "===== validate =====\n",
+      "json": {
+        "verdict": "DEVELOPMENT_CANDIDATE",
+        "blocking_findings": 0,
+        "total_findings": 0,
+        "checks": {
+          "content_fidelity.required_text": "EXECUTED",
+          "content_fidelity.occurrence": "EXECUTED",
+          "content_fidelity.sign": "EXECUTED",
+          "native_editability.visible_native": "EXECUTED",
+          "object.actual_geometry": "EXECUTED",
+          "content_fidelity.hidden_state": "EXECUTED",
+          "object.group_structure": "EXECUTED",
+          "parser.census_consistency": "EXECUTED",
+          "render.real_render": "EXECUTED",
+          "render.glyph_quality": "EXECUTED",
+          "theme.contrast": "EXECUTED",
+          "layout.hard_gate": "EXECUTED",
+          "visual.semantic_scene_coverage": "EXECUTED"
+        },
+        "not_implemented_required_checks": [],
+        "render_code": "RENDER.OK",
+        "release_ready": false
+      },
+      "seconds": 9.24,
+      "ok": true
+    },
+    {
+      "step": "first_task_publish",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "cli",
+        "--",
+        "publish",
+        "--job-id",
+        "job-e4e358fc36c4"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"job_id\": \"job-e4e358fc36c4\",\n  \"run_id\": \"20261104T041003_124440Z-75b2b9b2\",\n  \"attempt_id\": \"15780197\",\n  \"published_at\": \"2026-11-04T12:11:51.521996+08:00\",\n  \"candidate_pptx_sha256\": \"20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f\",\n  \"validation_sha256\": \"591ec7217294e8533741e2b498da69b9943756c60ab7a69da0d93540cedfd95d\",\n  \"label\": \"DEVELOPMENT_CANDIDATE\"\n}\n",
+      "stderr_head": "===== publish_valid =====\n",
+      "json": {
+        "schema_version": "1.0.0",
+        "job_id": "job-e4e358fc36c4",
+        "run_id": "20261104T041003_124440Z-75b2b9b2",
+        "attempt_id": "15780197",
+        "published_at": "2026-11-04T12:11:51.521996+08:00",
+        "candidate_pptx_sha256": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+        "validation_sha256": "591ec7217294e8533741e2b498da69b9943756c60ab7a69da0d93540cedfd95d",
+        "label": "DEVELOPMENT_CANDIDATE"
+      },
+      "seconds": 0.18,
+      "ok": true
+    },
+    {
+      "step": "first_task_export",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "cli",
+        "--",
+        "export",
+        "--job-id",
+        "job-e4e358fc36c4",
+        "--outdir",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"label\": \"DEVELOPMENT_CANDIDATE\",\n  \"run_id\": \"20261104T041003_124440Z-75b2b9b2\",\n  \"attempt_id\": \"15780197\",\n  \"job_id\": \"job-e4e358fc36c4\",\n  \"contract_version\": \"contracts/1.1.0\",\n  \"support_profile\": \"P1_TEXT_LIMITED\",\n  \"exported_at\": \"2026-11-04T12:11:51.709182+08:00\",\n  \"theme\": {\n    \"theme_id\": \"wengao-basic\",\n    \"theme_name\": \"稳稿基础主题（旧默认）\",\n    \"theme_version\": \"1.1.0\",\n    \"registry_version\": \"1.3.0\",\n    \"config_digest\": \"c9c563ccc0feb8b5ec465bd2ddcdab1e94ba588e36766281814f147b83bc56b5\",\n    \"frozen_at_job\": true,\n    \"legacy_no_digest\": false\n  },\n  \"input\": {\n    \"path\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/cleanroom_first.pptx\",\n    \"sha256\": \"07b2ed202ffc855204358488ed1231e24c1f03d72c3bc4c21b2b1072a452b836\"\n  },\n  \"output\": {\n    \"pptx\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx\",\n    \"pptx_sha256\": \"20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f\"\n  },\n  \"validation\": {\n    \"path\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/validation.json\",\n    \"sha256\": \"591ec7217294e8533741e2b498da69b9943756c60ab7a69da0d93540cedfd95d\",\n    \"verdict\": \"DEVELOPMENT_CANDIDATE\",\n    \"release_ready\": false\n  },\n  \"render\": {\n    \"stage\": \"render_real\",\n    \"renderer\": \"libreoffice\",\n    \"soffice_path\": \"/Applications/LibreOffice.app/Contents/MacOS/soffice\",\n    \"soffice_source\": \"mac_bundle\",\n    \"soffice_version\": \"LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1\",\n    \"available\": true,\n    \"pdf\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf\",\n    \"png_dir\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png\",\n    \"png_count\": 4,\n    \"png_renderer\": \"pypdfium2 5.14.0 / pdfium 156.0.8076.0\",\n    \"exit_code\": 0,\n    \"stderr\": \"\",\n    \"font_environment\": {\n      \"policy\": \"fontenv/2\",\n      \"ok\": true,\n      \"mode\": \"packaged\",\n      \"package_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n      \"base_conf\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/assets/fontconfig/fonts.conf\",\n      \"base_conf_sha256\": \"57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d\",\n      \"effective_conf\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/fonts.conf\",\n      \"effective_conf_sha256\": \"d1e494550d2f98f689c94e7e3ebc74e36b67fe0a630acc3ee11975ce6c1355a8\",\n      \"cache_dir\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/cache\",\n      \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n      \"platform_dirs\": [\n        \"/System/Library/Fonts\",\n        \"/System/Library/Fonts/Supplemental\",\n        \"/Library/Fonts\",\n        \"/Users/huangyingteng/Library/Fonts\",\n        \"/Applications/LibreOffice.app/Contents/Resources/fonts/truetype\"\n      ],\n      \"platform\": \"darwin\",\n      \"override\": null,\n      \"disabled\": false,\n      \"error\": null,\n    ",
+      "stderr_head": "===== export =====\n",
+      "json": {
+        "schema_version": "1.0.0",
+        "label": "DEVELOPMENT_CANDIDATE",
+        "run_id": "20261104T041003_124440Z-75b2b9b2",
+        "attempt_id": "15780197",
+        "job_id": "job-e4e358fc36c4",
+        "contract_version": "contracts/1.1.0",
+        "support_profile": "P1_TEXT_LIMITED",
+        "exported_at": "2026-11-04T12:11:51.709182+08:00",
+        "theme": {
+          "theme_id": "wengao-basic",
+          "theme_name": "稳稿基础主题（旧默认）",
+          "theme_version": "1.1.0",
+          "registry_version": "1.3.0",
+          "config_digest": "c9c563ccc0feb8b5ec465bd2ddcdab1e94ba588e36766281814f147b83bc56b5",
+          "frozen_at_job": true,
+          "legacy_no_digest": false
+        },
+        "input": {
+          "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/cleanroom_first.pptx",
+          "sha256": "07b2ed202ffc855204358488ed1231e24c1f03d72c3bc4c21b2b1072a452b836"
+        },
+        "output": {
+          "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+          "pptx_sha256": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f"
+        },
+        "validation": {
+          "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/validation.json",
+          "sha256": "591ec7217294e8533741e2b498da69b9943756c60ab7a69da0d93540cedfd95d",
+          "verdict": "DEVELOPMENT_CANDIDATE",
+          "release_ready": false
+        },
+        "render": {
+          "stage": "render_real",
+          "renderer": "libreoffice",
+          "soffice_path": "/Applications/LibreOffice.app/Contents/MacOS/soffice",
+          "soffice_source": "mac_bundle",
+          "soffice_version": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+          "available": true,
+          "pdf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+          "png_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png",
+          "png_count": 4,
+          "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+          "exit_code": 0,
+          "stderr": "",
+          "font_environment": {
+            "policy": "fontenv/2",
+            "ok": true,
+            "mode": "packaged",
+            "package_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+            "base_conf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/assets/fontconfig/fonts.conf",
+            "base_conf_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+            "effective_conf": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/fonts.conf",
+            "effective_conf_sha256": "d1e494550d2f98f689c94e7e3ebc74e36b67fe0a630acc3ee11975ce6c1355a8",
+            "cache_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/cache",
+            "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+            "platform_dirs": [
+              "/System/Library/Fonts",
+              "/System/Library/Fonts/Supplemental",
+              "/Library/Fonts",
+              "/Users/huangyingteng/Library/Fonts",
+              "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype"
+            ],
+            "platform": "darwin",
+            "override": null,
+            "disabled": false,
+            "error": null,
+            "platform_marker_used": true
+          },
+          "fontconfig_file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/fonts.conf",
+          "lo_profile": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.lo-profile",
+          "attempts": [
+            {
+              "profile": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.lo-profile",
+              "exit_code": -6,
+              "budget": 599.817,
+              "pid": 77479,
+              "timed_out": false,
+              "stdout_tail": "",
+              "stderr_tail": "libc++abi: terminating due to uncaught exception of type com::sun::star::uno::RuntimeException\n",
+              "pdf_exists": false
+            },
+            {
+              "profile": "/var/folders/c5/sfzgv5v92qv359t7xyk0tx8r0000gn/T/wengao-lo-profile-s6caafq9/profile",
+              "exit_code": 0,
+              "budget": 599.631,
+              "pid": 77483,
+              "timed_out": false,
+              "stdout_tail": "wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/cleanroom_first.themed.pptx as a Impress document -> /Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf using filter : impress_pdf_Export\n",
+              "stderr_tail": "",
+              "pdf_exists": true
+            }
+          ],
+          "attempt_count": 2,
+          "final_attempt_faulted": false,
+          "stdout": "wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/cleanroom_first.themed.pptx as a Impress document -> /Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf using filter : impress_pdf_Export\n",
+          "render_note": "首次渲染失败后改用全新隔离 LibreOffice profile 重试成功；首次退出码与输出见 attempts[0]，不因重试而隐瞒。",
+          "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+          "pdf_fonts": [
+            "ArialMT",
+            "STSongti-SC-Regular"
+          ],
+          "pdf_fonts_error": null,
+          "environment_fingerprint": {
+            "policy": "fontenv/2",
+            "mode": "packaged",
+            "ok": true,
+            "effective_conf_sha256": "d1e494550d2f98f689c94e7e3ebc74e36b67fe0a630acc3ee11975ce6c1355a8",
+            "base_conf_sha256": "57f8dfe288dd9fc33a14e538f9944e42d0fc3e9f197564d9a908ab79e33db98d",
+            "platform": "darwin",
+            "platform_dirs": [
+              "/Applications/LibreOffice.app/Contents/Resources/fonts/truetype",
+              "/Library/Fonts",
+              "/System/Library/Fonts",
+              "/System/Library/Fonts/Supplemental",
+              "/Users/huangyingteng/Library/Fonts"
+            ],
+            "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+            "resolved_fonts": [
+              "ArialMT",
+              "STSongti-SC-Regular"
+            ],
+            "digest": "2ac0ec6e46ce1fa515a21efaebaa576d99cdc33192726e3b08370914b8a22b1f"
+          },
+          "pdf_pages_for_png": 4,
+          "png_detail": "pdftoppm 未安装；改用 PDFium 对 LibreOffice 产出的真实 PDF 逐页栅格化，渲染器身份与版本已记录。",
+          "png_bindings": [
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-01.png",
+              "page_no": 1,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "3a0d3edd90933b5c5c0bc333e677af351c4e745219d8c3d81c4d21b995ce8583",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-02.png",
+              "page_no": 2,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "e82e8b73b2e5b92933bf077fcf5dbe4f4cba74d75093e69ed623caafd40b24df",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-03.png",
+              "page_no": 3,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "0d2944019633b440df0c147224063b53598c05e1dc336c8ac024bef6b4b29e12",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-04.png",
+              "page_no": 4,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "906ed5fda314fa3948f954f0dc7ae7152c11f16363a0112fd660fab000e78d7d",
+              "width": 1467,
+              "height": 825
+            }
+          ],
+          "code": "RENDER.OK",
+          "pdf_page_count": 4,
+          "pdf_page_count_error": null,
+          "pptx_slides": 4,
+          "pptx_hidden_pages": 0,
+          "pptx_slides_exportable": 4,
+          "page_count_rule": "隐藏页不导出；PDF 页数应等于非隐藏页数",
+          "counts_consistent": true,
+          "pdf_text_stats": {
+            "pages": 4,
+            "text_len": 207,
+            "cjk_chars": 177
+          },
+          "pdf_text_error": null,
+          "cjk_units_in_input": 8,
+          "cjk_units_in_input_all_pages": 8,
+          "cjk_gate_scope": "exportable_pages_only（隐藏页不计入分母）",
+          "cjk_glyphs_in_render": 177,
+          "glyph_quality": {
+            "verdict": "OK",
+            "summary": {
+              "pages": 4,
+              "cjk_pages_checked": 4,
+              "missing_pages": [],
+              "ambiguous_pages": [],
+              "insufficient_pages": []
+            },
+            "engine": "pdfium-textpage+glyph-bitmap",
+            "applicability": "APPLICABLE"
+          },
+          "glyph_expectation": {
+            "available": true,
+            "reason": null,
+            "source": "ExtractedDoc(all_units)",
+            "expected_cjk_units": 8,
+            "expected_pages": {
+              "1": {
+                "cjk_units": 2,
+                "cjk_chars": 30,
+                "render_page": 1,
+                "hidden": false,
+                "samples": [
+                  "干净安装首任务",
+                  "本页用于验证安装实例能否完成一次真实的美"
+                ]
+              },
+              "2": {
+                "cjk_units": 2,
+                "cjk_chars": 34,
+                "render_page": 2,
+                "hidden": false,
+                "samples": [
+                  "覆盖范围",
+                  "前三页纯文本；不含图片、表格与图表，便于"
+                ]
+              },
+              "3": {
+                "cjk_units": 2,
+                "cjk_chars": 31,
+                "render_page": 3,
+                "hidden": false,
+                "samples": [
+                  "结论",
+                  "若导出件可打开且结构自洽，说明安装布局下"
+                ]
+              },
+              "4": {
+                "cjk_units": 2,
+                "cjk_chars": 82,
+                "render_page": 4,
+                "hidden": false,
+                "samples": [
+                  "交付环境示意",
+                  "安装完成后交付环境保持就绪。机房里一排服"
+                ]
+              }
+            },
+            "scope": "按应导出页统计；隐藏页与备注不计入，图片内文字不在当前声明范围"
+          }
+        },
+        "render_artifacts": {
+          "pdf": "cleanroom_first.wengao.pdf",
+          "png": [
+            "pages/page-01.png",
+            "pages/page-02.png",
+            "pages/page-03.png",
+            "pages/page-04.png"
+          ],
+          "pdf_pages": 4,
+          "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+          "pptx_slides": 4,
+          "counts_consistent": true,
+          "renderer": "LibreOffice 26.8.1.1 bf6ef2662401c7d6dce671ab4deb26ee0af3a7c1",
+          "png_renderer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+          "png_bindings": [
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-01.png",
+              "page_no": 1,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "3a0d3edd90933b5c5c0bc333e677af351c4e745219d8c3d81c4d21b995ce8583",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-02.png",
+              "page_no": 2,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "e82e8b73b2e5b92933bf077fcf5dbe4f4cba74d75093e69ed623caafd40b24df",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-03.png",
+              "page_no": 3,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "0d2944019633b440df0c147224063b53598c05e1dc336c8ac024bef6b4b29e12",
+              "width": 1467,
+              "height": 825
+            },
+            {
+              "file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/png/page-04.png",
+              "page_no": 4,
+              "pdf_path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/jobs/job-e4e358fc36c4/candidate/render/cleanroom_first.themed.pdf",
+              "pdf_sha256": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5",
+              "rasterizer": "pypdfium2 5.14.0 / pdfium 156.0.8076.0",
+              "dpi": 110,
+              "png_sha256": "906ed5fda314fa3948f954f0dc7ae7152c11f16363a0112fd660fab000e78d7d",
+              "width": 1467,
+              "height": 825
+            }
+          ]
+        },
+        "export_gate": {
+          "expected_hashes_from": "validation.json（此前有效验收记录；非导出时重算）",
+          "verified": {
+            "pptx": {
+              "rel": "cleanroom_first.wengao.pptx",
+              "expected": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f"
+            },
+            "pdf": {
+              "rel": "cleanroom_first.wengao.pdf",
+              "expected": "c87faf4a8bf63d47a2f04853b12d8e7bf2bd4bc25f98db8c4653fc5f65025de5"
+            },
+            "png:page-01.png": {
+              "rel": "pages/page-01.png",
+              "page_no": 1,
+              "expected": "3a0d3edd90933b5c5c0bc333e677af351c4e745219d8c3d81c4d21b995ce8583"
+            },
+            "png:page-02.png": {
+              "rel": "pages/page-02.png",
+              "page_no": 2,
+              "expected": "e82e8b73b2e5b92933bf077fcf5dbe4f4cba74d75093e69ed623caafd40b24df"
+            },
+            "png:page-03.png": {
+              "rel": "pages/page-03.png",
+              "page_no": 3,
+              "expected": "0d2944019633b440df0c147224063b53598c05e1dc336c8ac024bef6b4b29e12"
+            },
+            "png:page-04.png": {
+              "rel": "pages/page-04.png",
+              "page_no": 4,
+              "expected": "906ed5fda314fa3948f954f0dc7ae7152c11f16363a0112fd660fab000e78d7d"
+            }
+          },
+          "pre_publish_recheck": "PASSED",
+          "commit_strategy": "staging → atomic swap（bak → rename → cleanup）",
+          "cancelled_at_gate": null,
+          "note": "export 不持 .run.lock；取消可随时登记，由发布前身份复查拦截。"
+        },
+        "delivery_eligibility": {
+          "allowed": true,
+          "code": "OK",
+          "checked_at": "2026-11-04T12:11:51.709403+08:00",
+          "rule": "当前 attempt 验收 + 候选哈希一致 + 判定允许 + 未被事故失效",
+          "incidents_consulted": []
+        },
+        "glyph_quality": "OK",
+        "theme_application": "APPLIED",
+        "release_statement": "开发候选，非完整产品 READY；不含 P2—P5 能力与发布门禁。"
+      },
+      "seconds": 0.19,
+      "ok": true
+    },
+    {
+      "step": "artifact_ooxml_conform",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/scripts/ooxml_conform.py",
+        "--pptx",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+        "--json-out",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/artifact-ooxml.json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix",
+      "rc": 0,
+      "stdout_head": "{\n  \"pptx\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx\",\n  \"verdict\": \"PASS\",\n  \"passed\": 7,\n  \"failed\": 0\n}\n",
+      "stderr_head": "[PASS] C1_ZIP_READABLE — 50 条目；损坏成员=None；重复条目=[]\n[PASS] C2_CONTENT_TYPES — Default=5 Override=26；问题 0 项\n[PASS] C3_RELATIONSHIPS — 检查 20 个 rels；问题 0 项\n[PASS] C4_SLIDE_LIST — sldIdLst=4 slides=4；问题 0 项\n[PASS] C5_SHAPE_IDS — 检查 4 页；问题 0 项\n[PASS] C6_LAYOUT_MASTER_CHAIN — layout=11；问题 0 项\n[PASS] C7_NO_LOCAL_FILE_URIS — 问题 0 项\n",
+      "json": {
+        "pptx": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+        "verdict": "PASS",
+        "passed": 7,
+        "failed": 0
+      },
+      "seconds": 0.05,
+      "ok": true
+    },
+    {
+      "step": "upgrade",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "upgrade",
+        "--package",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/upgrade-payload",
+        "--label",
+        "build-47f40feb-upgrade",
+        "--expect-root",
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"label\": \"build-47f40feb-upgrade\",\n  \"build_id\": \"80b62f604a53e0599d623132ee449f67\",\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade\",\n  \"activated\": true,\n  \"current\": \"build-47f40feb-upgrade\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"entry\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao\",\n  \"double_click\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/启动稳稿PPT.command\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "label": "build-47f40feb-upgrade",
+        "build_id": "80b62f604a53e0599d623132ee449f67",
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade",
+        "activated": true,
+        "current": "build-47f40feb-upgrade",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "entry": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "double_click": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/启动稳稿PPT.command"
+      },
+      "seconds": 5.59,
+      "ok": true
+    },
+    {
+      "step": "status_after_upgrade",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T\",\n  \"current\": \"build-47f40feb-upgrade\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"python\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python\",\n  \"versions\": [\n    {\n      \"label\": \"build-47f40feb\",\n      \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n      \"installed_at\": \"2026-11-04T12:10:00+0800\",\n      \"ok\": true\n    },\n    {\n      \"label\": \"build-47f40feb-upgrade\",\n      \"build_id\": \"80b62f604a53e0599d623132ee449f67\",\n      \"installed_at\": \"2026-11-04T12:11:57+0800\",\n      \"ok\": true\n    }\n  ],\n  \"ok\": true,\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade\",\n  \"module_file\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade/wengao_ppt/__init__.py\",\n  \"build_id\": \"80b62f604a53e0599d623132ee449f67\",\n  \"jobs\": 1\n}\n",
+      "stderr_head": "",
+      "json": {
+        "schema_version": "1.0.0",
+        "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+        "current": "build-47f40feb-upgrade",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "versions": [
+          {
+            "label": "build-47f40feb",
+            "build_id": "47f40feb79f90bf154f61f002280f283",
+            "installed_at": "2026-11-04T12:10:00+0800",
+            "ok": true
+          },
+          {
+            "label": "build-47f40feb-upgrade",
+            "build_id": "80b62f604a53e0599d623132ee449f67",
+            "installed_at": "2026-11-04T12:11:57+0800",
+            "ok": true
+          }
+        ],
+        "ok": true,
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade",
+        "module_file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb-upgrade/wengao_ppt/__init__.py",
+        "build_id": "80b62f604a53e0599d623132ee449f67",
+        "jobs": 1
+      },
+      "seconds": 0.6,
+      "ok": true
+    },
+    {
+      "step": "rollback",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "rollback",
+        "--to",
+        "build-47f40feb"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"from\": \"build-47f40feb-upgrade\",\n  \"to\": \"build-47f40feb\",\n  \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"data_files\": 90,\n  \"config_dir_present\": false,\n  \"jobs_present\": true,\n  \"note\": \"配置/任务在共享数据根，切版本不改动它们；config 目录不存在表示本轮测试未创建配置（不是丢失）。\",\n  \"current\": \"build-47f40feb\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "from": "build-47f40feb-upgrade",
+        "to": "build-47f40feb",
+        "build_id": "47f40feb79f90bf154f61f002280f283",
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "data_files": 90,
+        "config_dir_present": false,
+        "jobs_present": true,
+        "note": "配置/任务在共享数据根，切版本不改动它们；config 目录不存在表示本轮测试未创建配置（不是丢失）。",
+        "current": "build-47f40feb"
+      },
+      "seconds": 2.61,
+      "ok": true
+    },
+    {
+      "step": "status_after_rollback",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"schema_version\": \"1.0.0\",\n  \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T\",\n  \"current\": \"build-47f40feb\",\n  \"data_root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n  \"python\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python\",\n  \"versions\": [\n    {\n      \"label\": \"build-47f40feb\",\n      \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n      \"installed_at\": \"2026-11-04T12:10:00+0800\",\n      \"ok\": true\n    },\n    {\n      \"label\": \"build-47f40feb-upgrade\",\n      \"build_id\": \"80b62f604a53e0599d623132ee449f67\",\n      \"installed_at\": \"2026-11-04T12:11:57+0800\",\n      \"ok\": true\n    }\n  ],\n  \"ok\": true,\n  \"program\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb\",\n  \"module_file\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/wengao_ppt/__init__.py\",\n  \"build_id\": \"47f40feb79f90bf154f61f002280f283\",\n  \"jobs\": 1\n}\n",
+      "stderr_head": "",
+      "json": {
+        "schema_version": "1.0.0",
+        "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+        "current": "build-47f40feb",
+        "data_root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+        "python": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/.venv/bin/python",
+        "versions": [
+          {
+            "label": "build-47f40feb",
+            "build_id": "47f40feb79f90bf154f61f002280f283",
+            "installed_at": "2026-11-04T12:10:00+0800",
+            "ok": true
+          },
+          {
+            "label": "build-47f40feb-upgrade",
+            "build_id": "80b62f604a53e0599d623132ee449f67",
+            "installed_at": "2026-11-04T12:11:57+0800",
+            "ok": true
+          }
+        ],
+        "ok": true,
+        "program": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+        "module_file": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/wengao_ppt/__init__.py",
+        "build_id": "47f40feb79f90bf154f61f002280f283",
+        "jobs": 1
+      },
+      "seconds": 0.58,
+      "ok": true
+    },
+    {
+      "step": "uninstall_preview",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "uninstall"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"mode\": \"preview\",\n  \"program_versions\": [\n    \"build-47f40feb\",\n    \"build-47f40feb-upgrade\"\n  ],\n  \"current\": \"build-47f40feb\",\n  \"user_data\": {\n    \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n    \"files\": 90,\n    \"kept\": true\n  },\n  \"note\": \"卸载只处理**程序**；config/jobs/results 原地保留。未提供 --apply 时仅预演，不改动任何文件。\"\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "mode": "preview",
+        "program_versions": [
+          "build-47f40feb",
+          "build-47f40feb-upgrade"
+        ],
+        "current": "build-47f40feb",
+        "user_data": {
+          "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+          "files": 90,
+          "kept": true
+        },
+        "note": "卸载只处理**程序**；config/jobs/results 原地保留。未提供 --apply 时仅预演，不改动任何文件。"
+      },
+      "seconds": 0.1,
+      "ok": true
+    },
+    {
+      "step": "uninstall_apply",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "uninstall",
+        "--apply"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 0,
+      "stdout_head": "{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"program_versions\": [\n    \"build-47f40feb\",\n    \"build-47f40feb-upgrade\"\n  ],\n  \"current\": \"build-47f40feb\",\n  \"user_data\": {\n    \"root\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data\",\n    \"files\": 90,\n    \"kept\": true\n  },\n  \"note\": \"卸载只处理**程序**；config/jobs/results 原地保留。未提供 --apply 时仅预演，不改动任何文件。\",\n  \"moved_to\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/quarantine/20261104T121201\",\n  \"moved\": [\n    \"build-47f40feb\",\n    \"build-47f40feb-upgrade\"\n  ],\n  \"pointer_backup\": \"/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/current.json.removed\",\n  \"user_data_files_after\": 90\n}\n",
+      "stderr_head": "",
+      "json": {
+        "ok": true,
+        "mode": "apply",
+        "program_versions": [
+          "build-47f40feb",
+          "build-47f40feb-upgrade"
+        ],
+        "current": "build-47f40feb",
+        "user_data": {
+          "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data",
+          "files": 90,
+          "kept": true
+        },
+        "note": "卸载只处理**程序**；config/jobs/results 原地保留。未提供 --apply 时仅预演，不改动任何文件。",
+        "moved_to": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/quarantine/20261104T121201",
+        "moved": [
+          "build-47f40feb",
+          "build-47f40feb-upgrade"
+        ],
+        "pointer_backup": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/current.json.removed",
+        "user_data_files_after": 90
+      },
+      "seconds": 0.63,
+      "ok": true
+    },
+    {
+      "step": "status_after_uninstall_expects_not_installed",
+      "cmd": [
+        "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+        "status",
+        "--json"
+      ],
+      "cwd": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/cwd-neutral",
+      "rc": 4,
+      "stdout_head": "",
+      "stderr_head": "当前没有已安装版本（current.json 不存在）：先执行 install --package <包目录> --activate\n",
+      "json": null,
+      "seconds": 0.09,
+      "ok": true
+    }
+  ],
+  "installed_label": "build-47f40feb",
+  "entry": {
+    "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/bin/wengao",
+    "exists": true,
+    "executable": true
+  },
+  "doctor": {
+    "install_ok": true,
+    "run_ready": true,
+    "blocking_missing": [],
+    "prerequisites_missing": [],
+    "checks": [
+      {
+        "name": "version_resolved",
+        "ok": true,
+        "severity": "blocking",
+        "detail": "current=build-47f40feb program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb"
+      },
+      {
+        "name": "required_members",
+        "ok": true,
+        "severity": "blocking",
+        "detail": "missing=[] members=308 build=47f40feb79f90bf154f61f002280f283"
+      },
+      {
+        "name": "data_root_separate",
+        "ok": true,
+        "severity": "blocking",
+        "detail": "program=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb data=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data"
+      },
+      {
+        "name": "python_deps",
+        "ok": true,
+        "severity": "blocking",
+        "detail": "python=3.13.16"
+      },
+      {
+        "name": "libreoffice",
+        "ok": true,
+        "severity": "prerequisite",
+        "detail": "real_render_available=True"
+      },
+      {
+        "name": "font_config",
+        "ok": true,
+        "severity": "prerequisite",
+        "detail": "ok=True mode=packaged cache=/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/data/.fontconfig/cache"
+      },
+      {
+        "name": "material_flow",
+        "ok": true,
+        "severity": "blocking",
+        "detail": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb/samples/r5_material_to_ppt.py"
+      },
+      {
+        "name": "visual_theme_assets",
+        "ok": false,
+        "severity": "info",
+        "detail": "missing=['promo_ecom.png', 'factory_night.png', 'aisle_supermarket.png', 'desk_planning.png'] total=5"
+      },
+      {
+        "name": "text_endpoint",
+        "ok": true,
+        "severity": "prerequisite",
+        "detail": "127.0.0.1:18088 available=True"
+      },
+      {
+        "name": "vision_endpoint",
+        "ok": true,
+        "severity": "prerequisite",
+        "detail": "None available=True candidates=None"
+      }
+    ]
+  },
+  "status_after_install": {
+    "root": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T",
+    "current": "build-47f40feb"
+  },
+  "version_dir": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/work/cleanroom/安装 根 T/versions/build-47f40feb",
+  "runtime_gate": {
+    "bytes": 160106,
+    "fake_mp4": {
+      "ok": false,
+      "error": "missing_ftyp"
+    },
+    "validators": [
+      "_inspect_mp4",
+      "_validate_native_review_record"
+    ],
+    "ok": true
+  },
+  "input": {
+    "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/cleanroom_first.pptx",
+    "sha256": "07b2ed202ffc855204358488ed1231e24c1f03d72c3bc4c21b2b1072a452b836",
+    "pages": 4,
+    "origin": "本脚本用 python-pptx 生成，无用户私有材料"
+  },
+  "job_id": "job-e4e358fc36c4",
+  "validate_verdict": "DEVELOPMENT_CANDIDATE",
+  "artifact": {
+    "path": "/Users/huangyingteng/Desktop/WorkBuddy项目开发归档/2026-10-12-00-54-41/wengao-ppt/build/wengao-visual-v13-material-fix/reports/install-cleanroom-20261104-r10b/first-task/export/cleanroom_first.wengao.pptx",
+    "sha256": "20f0ad21e89a1547a03ab7b579d72ff5997a36fa5a036ea583596ac92d4c100f",
+    "bytes": 1831841,
+    "origin": "install 实例 export 的真实输出"
+  },
+  "upgrade": {
+    "current_after": "build-47f40feb-upgrade",
+    "marker_present": true,
+    "data_jobs_before": 1,
+    "data_jobs_after": 1
+  },
+  "rollback": {
+    "current_after": "build-47f40feb"
+  },
+  "uninstall": {
+    "quarantine": [
+      "20261104T121201"
+    ],
+    "data_jobs_preserved": 1,
+    "pointer_present_after_apply": false,
+    "pointer_backup_present": true,
+    "status_exit_code": 4
+  },
+  "finished_at": "2026-11-04T12:12:02+0800",
+  "passed": 17,
+  "failed": [],
+  "blocked_external": [],
+  "not_evaluable": [],
+  "model_env": {
+    "WENGAO_LOCAL_MODEL_ENDPOINT": null,
+    "WENGAO_LOCAL_VISION_MODEL_ENDPOINT": null
+  },
+  "verdict": "PASS"
+}

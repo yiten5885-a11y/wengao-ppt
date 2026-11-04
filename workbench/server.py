@@ -2414,6 +2414,24 @@ class Handler(BaseHTTPRequestHandler):
         return self._send(200, _history_data())
 
     # ---------------- 具体处理 ----------------
+    def _vision_summary(self) -> dict:
+        """首屏给一次「视觉主题在本安装能不能跑」的诚实答案。
+
+        视觉升级主题（wengao-visual-dark）的语义复核依赖视觉端点（本机 8080
+        或云端视觉），配图依赖云端生图/本机 ComfyUI/图库。以前这个状态只在
+        doctor 与 run 报错时可见——用户在主题卡上选了主题，到运行阶段才发现
+        不可用。bootstrap 顺手探测一次（不抛异常；回环拒绝时几乎零开销，
+        云端视觉只读本地配置文件，不发网络请求），前端据此在**选择之前**标注。
+        """
+        try:
+            from wengao_ppt import scene_model
+            v = scene_model.probe_vision_endpoint(timeout_s=1.5)
+            return {"available": bool(v.get("available")),
+                    "mode": str(v.get("mode") or "unknown"),
+                    "provider": str(v.get("provider") or "")}
+        except Exception:  # noqa: BLE001 — bootstrap 永不因探测失败而 500
+            return {"available": False, "mode": "unknown", "provider": ""}
+
     def _bootstrap(self):
         from wengao_ppt import __version__, theme as theme_mod
         # 契约与样例随**程序**走；jobs/previews 随**数据根**走（两者可分离）
@@ -2435,6 +2453,7 @@ class Handler(BaseHTTPRequestHandler):
             "themes": theme_mod.list_themes(),
             "theme_registry_version": theme_mod.REGISTRY_VERSION,
             "theme_default": theme_mod.DEFAULT_THEME_ID,
+            "vision": self._vision_summary(),
             "support_profile_default": "P1_TEXT_LIMITED",
             "support_matrix": {
                 "scope_statement": matrix.get("scope_statement"),

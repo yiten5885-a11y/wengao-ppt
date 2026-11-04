@@ -245,6 +245,14 @@ def _html(d: dict) -> str:
         pages = "".join(
             f"<img src='{p}' alt='{rec['theme']} 第 {k+1} 页' loading='lazy'>"
             for k, p in enumerate(rec["page_pngs"][:3]))
+        fu = rec.get("furniture") or {}
+        if fu.get("id"):
+            fu_line = (f"<dt>构件</dt><dd>{fu['id']} · {fu.get('added', 0)} 条 / "
+                       f"{fu.get('pages_with_furniture', 0)}/{fu.get('pages', '?')} 页"
+                       + (f" · 跳过 {fu.get('skipped_count', 0)}"
+                          if fu.get("skipped_count") else "") + "</dd>")
+        else:
+            fu_line = "<dt>构件</dt><dd>无（不换肤即风格）</dd>"
         cards.append(f"""
     <article class="card">
       <h3>{st.get('style_name', rec['name'])} <small>{st.get('genre','')}</small></h3>
@@ -254,6 +262,7 @@ def _html(d: dict) -> str:
       <dl>
         <dt>主题</dt><dd>{rec['theme']} · v{rec['version']}</dd>
         <dt>应用</dt><dd>{rec['application']} · {rec['pages_rendered']} 页</dd>
+        {fu_line}
         <dt>摘要</dt><dd class="mono">{rec['config_digest'][:16]}…</dd>
       </dl>
     </article>""")

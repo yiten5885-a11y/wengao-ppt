@@ -26,7 +26,7 @@
       "config_digest": "c9c563ccc0feb8b5ec465bd2ddcdab1e94ba588e36766281814f147b83bc56b5",
       "application": "APPLIED",
       "pptx": "pptx/wengao-basic.pptx",
-      "pptx_sha256": "ddd9ae67cba13b81b9b096386b68a948f5f0a7abedf871e9a338b2f1737a0dd1",
+      "pptx_sha256": "41caa1be63ca4854fef7f6ce2bbad4e905da5ef11973455b55fec8b66500c4ca",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-basic/png/page-01.png",
@@ -75,7 +75,7 @@
       "config_digest": "cdcfb9c094cd2913edd1ee13273851c49be945546d8af53db2deac05cfc6e112",
       "application": "APPLIED",
       "pptx": "pptx/wengao-business.pptx",
-      "pptx_sha256": "7e6ae35fb4b4fcc29883151136d72d4cc6565e05337aaa2c320bcc7889ff5924",
+      "pptx_sha256": "c9ac6f6477cb6b29956c48c14b734e5621d8019027dd53384bfa12189d5cb609",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-business/png/page-01.png",
@@ -124,7 +124,7 @@
       "config_digest": "0b0ef9100685461169fd378c876237fd29f0b7eced8f1dd7ff93f25f6800f535",
       "application": "APPLIED",
       "pptx": "pptx/wengao-dark.pptx",
-      "pptx_sha256": "fc9ae3e873d5e3f63a64730fdf250ec040b3e0d986a012aad51b0c4aa3abd998",
+      "pptx_sha256": "cda60eb2050365adb62edc3e435ada6752b2277975e5fc4425c042053c302f24",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-dark/png/page-01.png",
@@ -173,7 +173,7 @@
       "config_digest": "08f497c42b95b78ff65496afd6fe0f7b464040f5133d14b118da7eac8ca29fe0",
       "application": "APPLIED",
       "pptx": "pptx/wengao-minimal.pptx",
-      "pptx_sha256": "0ee62ba43e1dd42ebd79b8971dcfc1cec7410bfbc4180d3fdd463616e9bd0a20",
+      "pptx_sha256": "b1c6ededcff05dde0988c1f6c1dd8dea63bca857d6151437f69a459fad08cb70",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-minimal/png/page-01.png",
@@ -221,7 +221,7 @@
       "config_digest": "0b0518c3d82003cfa45046d349991bb0edabf8b3fc16369115bef111530c9b19",
       "application": "REFINED_ORIGINAL",
       "pptx": "pptx/wengao-adaptive.pptx",
-      "pptx_sha256": "1295707f18b5f941933d1aa0045287ecf55eff72d99ff55febe6697d416a1967",
+      "pptx_sha256": "5924f9c714cc8a9d76aca8efff592864f97a3a700cab2643c3a00bb22e7b372c",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-adaptive/png/page-01.png",
@@ -256,7 +256,7 @@
       "config_digest": "efd6988c1fec17ca4d5cbe0dc74d435728bc782347ad6784b711a97dfd41d006",
       "application": "APPLIED",
       "pptx": "pptx/wengao-visual-dark.pptx",
-      "pptx_sha256": "3a276e127f7066045b635cc57ea307b131d441449d3885fb859ec235dd192ceb",
+      "pptx_sha256": "2e8591f46319be198731b6e1baf6a10e0886220cd99a6ff3cb63095fddf87b1a",
       "pages_rendered": 6,
       "page_pngs": [
         "render/wengao-visual-dark/png/page-01.png",

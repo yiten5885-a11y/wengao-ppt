@@ -1,0 +1,11 @@
+{
+ "url": "http://127.0.0.1:8902/",
+ "errors": [],
+ "visual_section_visible": true,
+ "hint_text": "选中会额外运行关键词配图与转场/粒子动效生成，耗时更长；不是单纯换个颜色。当前图片语义复核：已就绪（cloud:generativelanguage.googleapis.com）",
+ "visual_cards": 1,
+ "badges": [
+  0
+ ],
+ "page_errors": []
+}

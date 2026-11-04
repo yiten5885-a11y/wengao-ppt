@@ -132,7 +132,11 @@ class VisualAssetCapabilityTests(unittest.TestCase):
 
 class VisionProbeTests(unittest.TestCase):
     def test_unavailable_probe_carries_candidates_and_actions(self):
-        with mock.patch.object(scene_model, "_probe_endpoint_health",
+        # 2026-11-04：本机已启用云端视觉（~/.wengao_ppt/cloud_model.json），
+        # probe 会先走云端分支。这里显式隔离云端，只测**本机探测路径**的形状。
+        with mock.patch.object(scene_model.cloud_model_config, "active_vision_target",
+                               return_value=None), \
+             mock.patch.object(scene_model, "_probe_endpoint_health",
                                return_value=(False, {})):
             rec = scene_model.probe_vision_endpoint()
         self.assertFalse(rec["available"])
@@ -144,13 +148,29 @@ class VisionProbeTests(unittest.TestCase):
     def test_available_probe_carries_model_health(self):
         health = {"status": "healthy", "model": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
                   "warnings": []}
-        with mock.patch.object(scene_model, "_probe_endpoint_health",
+        # 同上：显式隔离云端，只测本机探测路径。
+        with mock.patch.object(scene_model.cloud_model_config, "active_vision_target",
+                               return_value=None), \
+             mock.patch.object(scene_model, "_probe_endpoint_health",
                                return_value=(True, health)):
             rec = scene_model.probe_vision_endpoint()
         self.assertTrue(rec["available"])
         self.assertEqual(rec["model_health"]["model"],
                          "mlx-community/Qwen2.5-VL-3B-Instruct-4bit")
         self.assertFalse(rec.get("next_actions"))
+
+    def test_cloud_vision_probe_reports_cloud_mode_without_local_probing(self):
+        # 云端视觉启用时（2026-11-04 起本机真实状态）：probe 必须直接报
+        # mode=cloud / available=true，且**不得**去探测本机端点。
+        target = {"endpoint": "https://generativelanguage.example/v1beta/openai",
+                  "api_key": "test-key", "model": "gemini-test-flash"}
+        with mock.patch.object(scene_model.cloud_model_config, "active_vision_target",
+                               return_value=target), \
+             mock.patch.object(scene_model, "_probe_endpoint_health",
+                               side_effect=AssertionError("云端分支不得探测本机端点")):
+            rec = scene_model.probe_vision_endpoint()
+        self.assertTrue(rec["available"])
+        self.assertEqual(rec["mode"], "cloud")
 
     def test_text_probe_unavailable_reports_next_actions(self):
         with mock.patch.object(scene_model, "_probe_endpoint_health",
@@ -168,7 +188,10 @@ class VisionProbeTests(unittest.TestCase):
             order.append(scene_model._endpoint_authority(endpoint))
             return orig(endpoint, timeout_s)
 
-        with mock.patch.object(scene_model, "_probe_endpoint_health", side_effect=spy):
+        # 同上：显式隔离云端，只测本机候选端点的探测顺序。
+        with mock.patch.object(scene_model.cloud_model_config, "active_vision_target",
+                               return_value=None), \
+             mock.patch.object(scene_model, "_probe_endpoint_health", side_effect=spy):
             rec = scene_model.probe_vision_endpoint()
         # doctor 探测的端点就是 candidates 里被选中的那一个
         self.assertEqual(order, [rec["endpoint"]])
