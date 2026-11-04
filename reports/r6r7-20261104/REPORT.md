@@ -587,3 +587,12 @@ reports/ooxml-sweep-20261104/SWEEP.json                           116 件历史�
 work/ooxml/latest.json                                            15 页真实导出件结构门禁结果
 dist/BUILD_MANIFEST.json                                          载荷逐成员哈希与自检
 ```
+
+---
+
+## 后续（2026-11-04 下午，本报告不再追改上文）
+
+「首任务 run 外部阻断」解除后的排障与两处产品缺陷修复（runner 场景判定、
+外层元数据门禁不回退生图）见 `reports/vision-enable-20261104/README.md`
+与 `CONTINUE_HERE.md` 本日章节；轮次证据 r5–r10b：
+`reports/install-cleanroom-20261104-r5…r10b/`。
