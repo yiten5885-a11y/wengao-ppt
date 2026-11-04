@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-11-04T15:06:11",
+  "acceptance": "U1 点击层（真浏览器 UI 全链）",
+  "engine": "Playwright CDP -> 本机已装 Google Chrome（无头），DOM 级真实点击",
+  "honest_boundary": "WorkBuddy Cua 本体（AppleScript/辅助功能）仍被系统 TCC 拒绝（osascript 报 -10004 权限违例，2026-11-04 实测）；本证据是点击层等价验证，不冒名 Cua 本体。",
+  "base_url": "http://127.0.0.1:8823",
+  "input_sha256_12": "a1596b81d4a3",
+  "job_id": "job-96c6966226fe。阶段由后端推进。",
+  "download": {
+    "file": "job-96c6966226fe-export.zip",
+    "bytes": 1051527,
+    "sha256": "fde2a2c79137bbac…"
+  },
+  "steps": [
+    {
+      "step": "open_workbench",
+      "ok": true,
+      "detail": "工作台首屏渲染，#btn-make 就位",
+      "screenshot": "01-first-screen.png"
+    },
+    {
+      "step": "upload_via_file_input",
+      "ok": true,
+      "detail": "#file 上传成功，file-meta='input-variant.pptx\\n31 KB · 本次上传（数据根） · sha a1596b81d4a3…'，「开始制作」由 disabled 变可用",
+      "screenshot": "02-uploaded.png"
+    },
+    {
+      "step": "click_visual_upgrade_card",
+      "ok": true,
+      "detail": "点击视觉升级主题卡 data-theme='wengao-visual-dark'；可用性提示片段='选中会额外运行关键词配图与转场/粒子动效生成，耗时更长；不是单纯换个颜色。当前图片语义复核：已就绪（cloud:gene'"
+    },
+    {
+      "step": "click_plain_theme_card",
+      "ok": true,
+      "detail": "点击普通主题卡 data-theme='wengao-basic'，#theme-state='稳稿基础主题（旧默认）'",
+      "screenshot": "03-theme-selected.png"
+    },
+    {
+      "step": "click_btn_make",
+      "ok": true,
+      "detail": "「开始制作」点击受理：已受理，任务 job-96c6966226fe。阶段由后端推进。",
+      "screenshot": "04-make-accepted.png"
+    },
+    {
+      "step": "stages_complete",
+      "ok": true,
+      "detail": "五阶段结束，statusline='可以查看与下载\\n下载经过导出清单与整文件 SHA-256 绑定；仍是内部测试候选，不是 READY。'；#downloads 链接数=7",
+      "screenshot": "06-final-screen.png"
+    },
+    {
+      "step": "click_download",
+      "ok": true,
+      "detail": "点击 '下载全部' 下载 job-96c6966226fe-export.zip (1051527 bytes, sha256=fde2a2c79137bbac…)",
+      "screenshot": "07-download-clicked.png"
+    }
+  ],
+  "verdict": "PASS"
+}
