@@ -723,11 +723,22 @@ def infer_roles(shapes) -> dict:
                                        s.get("text", ""))}
                     for s in shapes]
     roles = {}
+    textcard_idxs = {i for i in idxs
+                     if str(shapes[i].get("name") or "").startswith("WENGAO_TEXTCARD|")}
     for i in idxs:
         s = shapes[i]
         t = s["text"].strip()
         pt = s.get("max_size") or s.get("font_size_pt", 0.0)
-        if s.get("table_native"):
+        if i in textcard_idxs:
+            # 管线自产、已按名豁免 HG01 的说明卡（_text_card_sanctioned）恒为
+            # body 角色：卡内字号由构建端按 ROLE_RANGE_PT["body"] 生成
+            # （label=上限、辅助行=下限，semantic_scenes.py:_text_card）。
+            # 不能交给下面的位置启发式——页底说明卡（top>4.2 且 ≥15 字）会被
+            # "结论=底部最靠下 body" 规则判成 conclusion，卡内 13pt 辅助行
+            # 随即撞 conclusion 16pt 下限（job-624391145aa3 页 8，
+            # HG07 ROLE_SIZE ×2）。门禁与精修两侧同口径，见 refine.py。
+            roles[i] = "body"
+        elif s.get("table_native"):
             roles[i] = "table"
         elif s.get("chart_native"):
             roles[i] = "chart_aux"
@@ -766,7 +777,9 @@ def infer_roles(shapes) -> dict:
             roles[i] = "chart_aux"
         else:
             roles[i] = "body"
-    rest = [i for i in idxs if roles[i] == "body"]
+    # 说明卡不参与标题/眉题/导语/结论的二次改判：它有固定语义与固定字号，
+    # 位置启发式对它没有发言权。
+    rest = [i for i in idxs if roles[i] == "body" and i not in textcard_idxs]
     if rest:
         # 标题：上半页(top<3.75，半页高，与 refine.py:infer_text_roles 的
         # sh_*0.5 同口径)字号最大者（回退最顶）。封面/分章页常见"大标题

@@ -3939,12 +3939,15 @@ def _draw_text_card(slide, spec: dict, *, shapes_by_index: list | None = None) -
     label = str(spec.get("label") or spec.get("subject") or "场景说明").strip()
     caption = " · ".join(p for p in
                          (spec.get("subject"), spec.get("action"), spec.get("setting")) if p)
-    # The layout gate classifies this whole card as role="body" (13-18pt) —
-    # the label used to be hardcoded Pt(20) (over the ceiling) and the
-    # disclosure line Pt(10) (under the floor), both unconditionally
-    # HG07/ROLE_SIZE findings (job-aa7163f0d0f7, pages 6/7/9/11). Derive all
-    # three sizes from the same ROLE_RANGE_PT["body"] range the gate checks
-    # against, so the card stays internally consistent with itself.
+    # The layout gate classifies this whole card as role="body" — both the
+    # gate (scripts/layout_gate.py:infer_roles) and refine
+    # (wengao_ppt/refine.py:infer_text_roles) pin WENGAO_TEXTCARD| shapes to
+    # "body" by name, so the position heuristics (title/lead/conclusion)
+    # never reclassify it (a bottom-of-page card used to become "conclusion"
+    # and its body_lo-sized secondary lines tripped HG07 ROLE_SIZE,
+    # job-624391145aa3 page 8). Derive all three sizes from the same
+    # ROLE_RANGE_PT["body"] range the gate checks against, so the card stays
+    # internally consistent with itself.
     body_lo, body_hi = ROLE_RANGE_PT["body"]
     label_pt, secondary_pt = Pt(body_hi), Pt(body_lo)
     tf.text = label

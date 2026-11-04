@@ -998,12 +998,20 @@ def infer_text_roles(shs, sw, sh_) -> dict:
     legend_pos = {s.idx: k for k, s in enumerate(shs)}
     top_zone = sh_ * 0.307          # 13.33x7.5 稿的 2.3in
     bottom_zone = sh_ * 0.56        # 同稿的 4.2in
+    # 与 scripts/layout_gate.py:infer_roles 同口径：管线自产说明卡恒为
+    # body 角色，不参与标题/结论等位置启发式二次改判（卡内辅助行按
+    # ROLE_RANGE_PT["body"] 下限生成，页底说明卡被判 conclusion 时 13pt
+    # 会撞 16pt 下限——job-624391145aa3 页 8）。两侧必须一致。
+    textcard_idxs = {s.idx for s in shs
+                     if str(getattr(s, "name", "") or "").startswith("WENGAO_TEXTCARD|")}
     for s in shs:
         if not s.is_text or not s.text.strip():
             continue
         t = s.text.strip()
         pt = s.max_pt() or 0.0
-        if s.has_table:
+        if s.idx in textcard_idxs:
+            roles[s.idx] = "body"
+        elif s.has_table:
             roles[s.idx] = "table"
         elif s.has_chart:
             roles[s.idx] = "chart_aux"
@@ -1038,7 +1046,7 @@ def infer_text_roles(shs, sw, sh_) -> dict:
         else:
             roles[s.idx] = "body"
     by_idx = {s.idx: s for s in shs}
-    rest = [i for i, r in roles.items() if r == "body"]
+    rest = [i for i, r in roles.items() if r == "body" and i not in textcard_idxs]
     if rest:
         # 标题：上半页（top < 0.5 页高）字号最大者（回退最顶）。封面/分章页
         # 常见"大标题居中偏下 + 顶部小眉题"版式：真正的大标题常被挤到严格
