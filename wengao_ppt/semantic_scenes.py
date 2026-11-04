@@ -1334,7 +1334,14 @@ NO_PHOTO_FOUND_REASONS = frozenset({
     "SCENE.IMAGE_REDIRECT_BLOCKED", "SCENE.PHOTO_URL_NOT_PUBLIC_HTTPS",
     "SCENE.SOURCE_PAGE_NOT_PUBLIC_HTTPS",
     # generated-image fallback unavailable or rejected
+    # GEN_IMAGE_PERMANENT_FAILURE：云端生图端点已被判定为本次任务永久失败
+    # （鉴权/额度/请求参数），后续场景不再重试。它同样是"没有插入任何图片"，
+    # 与 GEN_IMAGE_UNAVAILABLE / GEN_IMAGE_FAILED 同属一类：跳过安全，不该
+    # 让整份稿子作废。此前漏登记，导致用户已勾选说明卡兜底、其余场景都已
+    # 正常兜底的情况下，仅剩这一个场景把整单判 FAILED（2026-11-05
+    # job-08c2fe26cd1d：5 场景 = 4 说明卡 + 1 此原因，VISUAL.SCENE_UNRESOLVED）。
     "SCENE.GEN_IMAGE_UNAVAILABLE", "SCENE.GEN_IMAGE_FAILED",
+    "SCENE.GEN_IMAGE_PERMANENT_FAILURE",
     "SCENE.GEN_IMAGE_ASPECT_UNSUITABLE", "SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
     "SCENE.GEN_IMAGE_RESOLUTION_TOO_LOW", "SCENE.GEN_IMAGE_FORMAT_UNSUPPORTED",
     "SCENE.GEN_IMAGE_DECODE_FAILED", "SCENE.GEN_IMAGE_DUPLICATE",
@@ -1359,6 +1366,30 @@ def split_unresolved_scenes(unresolved) -> tuple[list, list]:
         reason = (item or {}).get("reason")
         (capacity if reason in CAPACITY_UNRESOLVED_REASONS else blocking).append(item)
     return blocking, capacity
+
+
+def downgrade_no_photo_unresolved(unresolved) -> list:
+    """把"确实没有图可用"的未解决场景改写为如实登记的未放置。
+
+    只改写 ``NO_PHOTO_FOUND_REASONS`` 覆盖的原因（检索为空、图库不可用、
+    每张候选都被否决、生图不可用或不合格——这类跳过不会插入任何图）。
+    许可、隐私、去重、复核失灵等真实性问题原样保留，继续阻断。
+
+    改写保留 ``original_reason``，原始失败码可追溯；``query_attempts`` 一并
+    带过去，避免"跳过"变成"无记录"。
+    """
+    out = []
+    for item in unresolved or []:
+        if (item or {}).get("reason") in NO_PHOTO_FOUND_REASONS:
+            out.append({"scene_key": item.get("scene_key"),
+                        "reason": NO_VERIFIED_PHOTO_SKIPPED,
+                        "original_reason": item.get("reason"),
+                        "detail": ("没有找到经本机看图复核认可的照片，也没有空白版位放说明卡片；"
+                                   "该场景不配图，其余内容照常交付。"),
+                        "query_attempts": item.get("query_attempts", [])})
+        else:
+            out.append(item)
+    return out
 
 
 def _plan_hash(plan: dict) -> str:
@@ -2133,15 +2164,7 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         # 这个场景就不配图，如实登记为"未放置"，不再拦下整份稿子（用户
         # 2026-10-29 决定）。只限"没找到可核验照片"这一类；隐私、许可、
         # 去重等真实性问题仍然阻断。
-        unresolved = [
-            ({"scene_key": item.get("scene_key"), "reason": NO_VERIFIED_PHOTO_SKIPPED,
-              "original_reason": item.get("reason"), "detail": (
-                  "没有找到经本机看图复核认可的照片，也没有空白版位放说明卡片；"
-                  "该场景不配图，其余内容照常交付。"),
-              "query_attempts": item.get("query_attempts", [])}
-             if (item or {}).get("reason") in NO_PHOTO_FOUND_REASONS else item)
-            for item in still_unresolved
-        ]
+        unresolved = downgrade_no_photo_unresolved(still_unresolved)
 
     for row in page_coverage:
         row["image_scene_keys"] = [k for k, spec in images.items() if spec["page"] == row["page"]]
