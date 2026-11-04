@@ -18,6 +18,7 @@ import copy
 import http.client
 import socket
 import ssl
+import sys
 import time
 import urllib.error
 import urllib.parse
@@ -335,10 +336,15 @@ def probe_vision_endpoint(timeout_s: float = 2.0) -> dict:
     视觉缺失是本机最常见的一次运行阻断（`run` 的语义场景阶段对所有稿件无条件
     执行），所以它必须能被单独诊断，而不是等到跑完几分钟文本规划才在深处失败。
     """
-    if cloud_model_config.active_vision_target():
+    cloud_target = cloud_model_config.active_vision_target()
+    if cloud_target:
+        # 预检不主动调用云端（那会产生费用与数据外发），所以额度/鉴权/网络类
+        # 失败只能在真实运行时暴露；运行时若本机视觉端点健康会回退本机。
+        # 这里不探测本机端点，保持「云端分支零本机探测」的既有契约。
         return {"role": "vision", "mode": "cloud", "available": True,
-                "provider": _cloud_provider_label(
-                    cloud_model_config.active_vision_target()["endpoint"])}
+                "provider": _cloud_provider_label(cloud_target["endpoint"]),
+                "note": ("云端视觉已配置；额度/鉴权/网络类失败只能在真实调用时"
+                         "暴露，届时若本机视觉端点健康会自动回退本机，不额外外发数据。")}
     endpoint = _vision_loopback_endpoint()
     available, health = _probe_endpoint_health(endpoint, timeout_s=timeout_s)
     rec = {"role": "vision", "mode": "local",
@@ -1006,15 +1012,72 @@ def _call_cloud_vision_once(target: dict, prompt: str, image_b64: bytes, timeout
                               provider=cloud_provider) from None
 
 
+#: 云端视觉是用户显式启用的**备选项**，不是唯一通路。以下错误都表示「这条
+#: 外部通路本次没有给出可用结果」；此时若本机 loopback 视觉端点健康，回退本机
+#: 继续复核，而不是让整份稿子因外部额度/网络失败作废（2026-11-05
+#: mt-e5f3bcbf：8080 的 Qwen3-VL-8B 健康在线，Gemini 402 仍使 run rc=4）。
+#: 纪律：只回退本机（绝不另找第三方）、不改用户配置、把回退写进结果与日志，
+#: 绝不把本机判定冒充云端判定。
+CLOUD_VISION_FALLBACK_CODES = frozenset({
+    "MODEL.AUTH_FAILED", "MODEL.QUOTA_EXCEEDED", "MODEL.RATE_LIMITED",
+    "MODEL.VISION_HTTP_ERROR", "MODEL.REQUEST_TIMEOUT", "MODEL.TRANSPORT_ERROR",
+    "MODEL.VISION_RESPONSE_INVALID", "SCENE.VISION_RESPONSE_INVALID",
+})
+
+
+def _local_vision_fallback_ready(timeout_s: float = 2.0) -> str | None:
+    """本机视觉端点确实健康才返回地址，否则 None（绝不假装可用）。"""
+    try:
+        endpoint = _vision_loopback_endpoint()
+    except SceneModelError:
+        return None
+    available, _ = _probe_endpoint_health(endpoint, timeout_s=timeout_s)
+    return endpoint if available else None
+
+
 def call_local_vision_model(model: str, prompt: str, image_bytes: bytes, *,
                             timeout_s: int | None = None) -> dict:
-    """Send one bounded image and a neutral scene tuple to the selected loopback model."""
+    """Send one bounded image and a neutral scene tuple to the vision model.
+
+    云端视觉（用户显式启用时）优先；它因额度/鉴权/网络/响应格式失败时，
+    若本机视觉端点健康则回退本机，并如实登记。云端成功时行为完全不变。
+    """
+    cloud_target = cloud_model_config.active_vision_target()
+    if not cloud_target:
+        return _call_local_vision_only(model, prompt, image_bytes, timeout_s)
     timeout_s = _scene_timeout_budget(timeout_s)
     prepared = _scene_review_image_bytes(image_bytes)
     image_b64 = base64.b64encode(prepared).decode("ascii")
-    cloud_target = cloud_model_config.active_vision_target()
-    if cloud_target:
+    try:
         return _call_cloud_vision_once(cloud_target, prompt, image_b64, timeout_s)
+    except SceneModelError as exc:
+        if exc.code not in CLOUD_VISION_FALLBACK_CODES:
+            raise
+        local_endpoint = _local_vision_fallback_ready()
+        if not local_endpoint:
+            raise  # 本机也不可用：保留原始云端错误，诊断信息更准确
+        print(f"[vision-fallback] cloud={exc.provider or 'unknown'} "
+              f"code={exc.code} -> local={_endpoint_authority(local_endpoint)}",
+              file=sys.stderr, flush=True)
+        result = _call_local_vision_only(model, prompt, image_bytes, timeout_s)
+        result["vision_fallback"] = {
+            "from": "cloud", "to": "local",
+            "reason_code": exc.code,
+            "status_code": exc.status_code,
+            "cloud_provider": exc.provider,
+            "local_endpoint": _endpoint_authority(local_endpoint),
+            "detail": ("云端视觉本次不可用，已回退本机视觉端点；"
+                       "本次判定由本机模型产生，未向任何第三方外发数据。"),
+        }
+        return result
+
+
+def _call_local_vision_only(model: str, prompt: str, image_bytes: bytes,
+                            timeout_s: int | None = None) -> dict:
+    """Send one bounded image and a neutral scene tuple to the loopback model."""
+    timeout_s = _scene_timeout_budget(timeout_s)
+    prepared = _scene_review_image_bytes(image_bytes)
+    image_b64 = base64.b64encode(prepared).decode("ascii")
     endpoint = _vision_loopback_endpoint()
     vision_provider = _local_provider_label(endpoint)
     vision_authority = _endpoint_authority(endpoint)
