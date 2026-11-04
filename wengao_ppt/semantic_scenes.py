@@ -1791,6 +1791,60 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                     and visual_review.get("reason_code") == "NONE")
 
             image, selected_query, query_failures = None, None, []
+
+            def _ai_fallback():
+                """图库穷尽**或图库图被外层元数据门禁拒**之后的 AI 生图回退。
+
+                2026-11-04 修复：原先只有 fetch_one 抛异常（图库穷尽）才会走
+                生图；一张"检索摘要匹配、下载后完整元数据不匹配"的图库图会在
+                外层门禁处把整个场景判死（SCENE.IMAGE_CONTEXT_UNVERIFIED），
+                明明用户配置的云端生图能出一张可通过像素复核的图却弃用
+                （install-cleanroom-20261104-r9 实测）。生图内部已含视觉复核
+                （未过即抛），这里只是把它也接到"图库图被拒"这条路上。
+                """
+                generate_one = getattr(provider, "generate_one", None)
+                if not callable(generate_one):
+                    return None
+                gen_attempts = 3
+                retryable_codes = {"SCENE.VISUAL_CONTENT_MISMATCH",
+                                   "SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
+                                   "SCENE.GEN_IMAGE_NEAR_DUPLICATE",
+                                   "SCENE.GEN_IMAGE_DUPLICATE",
+                                   # 服务端没在预算内回图属于上游抖动，不是语义
+                                   # 判否：一次空响应就把场景钉死会让整稿因为一次
+                                   # 超时失败（2026-10-26 job-c0af57f36099 第 8/9 页）。
+                                   "SCENE.GEN_IMAGE_FAILED"}
+                focus_role = None
+                for gen_attempt in range(gen_attempts):
+                    try:
+                        gen_kwargs = dict(
+                            scene_context=photo_match_context,
+                            excluded_sha256=used_hashes,
+                            excluded_source_keys=used_sources,
+                            excluded_perceptual_hashes=used_phashes,
+                            min_aspect=paired_aspect)
+                        if focus_role and _accepts_keyword(generate_one,
+                                                           "review_focus_role"):
+                            gen_kwargs["review_focus_role"] = focus_role
+                        generated = generate_one(**gen_kwargs)
+                        return generated
+                    except SceneImageError as exc:
+                        query_failures.append({"query": "ai_image_generation",
+                                               "code": exc.code, "detail": exc.detail,
+                                               **({"diagnostics": exc.diagnostics}
+                                                  if getattr(exc, "diagnostics", None) else {})})
+                        focus_role = (review_missing_role(
+                            getattr(exc, "diagnostics", None)) or focus_role)
+                        if (exc.code in _GEN_IMAGE_BACKOFF_CODES
+                                and gen_attempt < gen_attempts - 1):
+                            # 上游空响应/超时：短暂退避后再要一次，别把一次抖动
+                            # 当成"没有可用场景图"。
+                            time.sleep(min(8.0, 2.0 * (gen_attempt + 1)))
+                        if (exc.code not in retryable_codes
+                                or gen_attempt == gen_attempts - 1):
+                            break
+                return None
+
             paired_aspect = (1.52 if len(scene.get("page_candidates") or []) == 1
                              and scene["page_candidates"][0]["page"] in paired_photo_pages
                              else None)
@@ -1822,52 +1876,10 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                 # 免费图库穷尽后，退回 AI 生图（本机 ComfyUI，或用户显式配置的云端
                 # 生图服务——由 generate_one 内部按 cloud_model_config 决定）：
                 # generate_one 内部已经调用视觉复核，未通过时直接抛出
-                # SceneImageError（不是"随便画一张凑数"）。生图按随机种子/采样，
-                # 第一次复核没通过就立刻放弃等于把"能不能配图"交给一次随机抽样。
-                # 复核给出的 BLOCKED 结论带有具体原因（主体/动作/环境哪一项看不见），
-                # 所以重试不是"再抽一次"，而是把这一项角色在提示词里显式强调后再生成；
-                # 仍然由同一套像素复核判定。上限 3 次，硬失败（服务不可用等）立即停。
-                generate_one = getattr(provider, "generate_one", None)
-                if callable(generate_one):
-                    gen_attempts = 3
-                    retryable_codes = {"SCENE.VISUAL_CONTENT_MISMATCH",
-                                       "SCENE.GEN_IMAGE_NOT_PHOTOGRAPHIC",
-                                       "SCENE.GEN_IMAGE_NEAR_DUPLICATE",
-                                       "SCENE.GEN_IMAGE_DUPLICATE",
-                                       # 服务端没在预算内回图属于上游抖动，不是语义
-                                       # 判否：一次空响应就把场景钉死会让整稿因为一次
-                                       # 超时失败（2026-10-26 job-c0af57f36099 第 8/9 页）。
-                                       "SCENE.GEN_IMAGE_FAILED"}
-                    focus_role = None
-                    for gen_attempt in range(gen_attempts):
-                        try:
-                            gen_kwargs = dict(
-                                scene_context=photo_match_context,
-                                excluded_sha256=used_hashes,
-                                excluded_source_keys=used_sources,
-                                excluded_perceptual_hashes=used_phashes,
-                                min_aspect=paired_aspect)
-                            if focus_role and _accepts_keyword(generate_one,
-                                                               "review_focus_role"):
-                                gen_kwargs["review_focus_role"] = focus_role
-                            image = generate_one(**gen_kwargs)
-                            selected_query = scene["visual_query"]
-                            break
-                        except SceneImageError as exc:
-                            query_failures.append({"query": "ai_image_generation",
-                                                   "code": exc.code, "detail": exc.detail,
-                                                   **({"diagnostics": exc.diagnostics}
-                                                      if getattr(exc, "diagnostics", None) else {})})
-                            focus_role = (review_missing_role(
-                                getattr(exc, "diagnostics", None)) or focus_role)
-                            if (exc.code in _GEN_IMAGE_BACKOFF_CODES
-                                    and gen_attempt < gen_attempts - 1):
-                                # 上游空响应/超时：短暂退避后再要一次，别把一次抖动
-                                # 当成"没有可用场景图"。
-                                time.sleep(min(8.0, 2.0 * (gen_attempt + 1)))
-                            if (exc.code not in retryable_codes
-                                    or gen_attempt == gen_attempts - 1):
-                                break
+                # SceneImageError（不是"随便画一张凑数"）。见 _ai_fallback。
+                image = _ai_fallback()
+                if image is not None:
+                    selected_query = scene["visual_query"]
             if image is None:
                 last = query_failures[-1] if query_failures else {}
                 unresolved.append({"scene_key": scene["scene_key"],
@@ -1921,23 +1933,12 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
         # 不适用，其余许可/尺寸/去重/版位门禁一律照旧。
         ai_generated_asset = str(image.get("license") or "") in ("AI_GENERATED_LOCAL",
                                                                  "AI_GENERATED_CLOUD")
-        if ai_generated_asset:
-            relevance = float(image.get("metadata_relevance") or 1.0)
-            match_query = scene["visual_query"]
-        else:
+        if not ai_generated_asset:
             relevance = scene_metadata_relevance(scene["visual_query"], image,
                                                  scene_context=photo_match_context)
-            if not photo_style_matches_metadata(scene.get("style"), image):
-                unresolved.append({"scene_key": scene["scene_key"],
-                                   "reason": "SCENE.PHOTO_STYLE_MISMATCH",
-                                   "detail": "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。"})
-                continue
-            if not scene_metadata_matches_query(scene["visual_query"], image,
-                                                scene_context=photo_match_context):
-                unresolved.append({"scene_key": scene["scene_key"],
-                                   "reason": "SCENE.IMAGE_CONTEXT_UNVERIFIED",
-                                   "detail": "图片标题/说明没有同时支持场景主体、动作和地点锚点。"})
-                continue
+            style_ok = photo_style_matches_metadata(scene.get("style"), image)
+            context_ok = scene_metadata_matches_query(scene["visual_query"], image,
+                                                      scene_context=photo_match_context)
             match_query = scene["visual_query"]
             query_terms = {term for term in re.findall(r"[a-z0-9]+", match_query.lower())
                            if len(term) >= 3 and term not in {
@@ -1946,12 +1947,37 @@ def build_plan(source_pptx: str | Path, layout_pptx: str | Path | None = None,
                                "scene", "at", "in", "on", "of", "a", "an", "to"}}
             required_terms = min(2, len(query_terms))
             matched_terms = int(round(relevance * len(query_terms)))
-            if (relevance < MIN_METADATA_RELEVANCE or matched_terms < required_terms
-                    or not image.get("title")):
-                unresolved.append({"scene_key": scene["scene_key"],
-                                   "reason": "SCENE.IMAGE_RELEVANCE_UNVERIFIED",
-                                   "detail": "下载后重新核对标题/说明，来源元数据不足以证明照片对应该场景。"})
-                continue
+            relevance_ok = (relevance >= MIN_METADATA_RELEVANCE
+                            and matched_terms >= required_terms
+                            and bool(image.get("title")))
+            if not (style_ok and context_ok and relevance_ok):
+                # 2026-11-04 修复（install-cleanroom-20261104-r9 实测）：这三类
+                # 是"**这一张**图库图与场景不匹配"，不是"场景配不到图"。原先
+                # 直接判死整个场景——检索摘要匹配、下载后完整元数据不匹配的
+                # 图会把明明可用的云端生图弃用，最后只能靠说明卡片兜底。现在
+                # 回退一次 AI 生图（内部含像素复核），失败才判场景未解决。
+                # 许可与内容安全类拒绝不在此列（那是素材真实性红线，不是"换一张"）。
+                reason, detail = (
+                    ("SCENE.PHOTO_STYLE_MISMATCH",
+                     "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。")
+                    if not style_ok else
+                    ("SCENE.IMAGE_CONTEXT_UNVERIFIED",
+                     "图片标题/说明没有同时支持场景主体、动作和地点锚点。")
+                    if not context_ok else
+                    ("SCENE.IMAGE_RELEVANCE_UNVERIFIED",
+                     "下载后重新核对标题/说明，来源元数据不足以证明照片对应该场景。"))
+                query_failures.append({"query": selected_query or scene["visual_query"],
+                                       "code": reason, "detail": detail})
+                image = _ai_fallback()
+                if image is None or not _generated_review_valid(image):
+                    unresolved.append({"scene_key": scene["scene_key"],
+                                       "reason": reason, "detail": detail,
+                                       "query_attempts": query_failures})
+                    continue
+                ai_generated_asset = True
+        if ai_generated_asset:
+            relevance = float(image.get("metadata_relevance") or 1.0)
+            match_query = scene["visual_query"]
         license_name = image.get("license", "")
         if license_name in ("AI_GENERATED_LOCAL", "AI_GENERATED_CLOUD"):
             # Only generate_one() ever sets these literal strings, deterministically,

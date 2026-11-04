@@ -2697,6 +2697,77 @@ class SemanticSceneTests(unittest.TestCase):
         self.assertIn("SCENE.IMAGE_RELEVANCE_UNVERIFIED",
                       {row["code"] for row in report["findings"]})
 
+    def test_metadata_gate_rejection_falls_back_to_ai_generation_not_scene_death(self):
+        # 2026-11-04 回归（install-cleanroom-20261104-r9 实测）：一张"检索摘要
+        # 匹配、下载后完整元数据不匹配"的图库图，原先会在外层元数据门禁处把
+        # 整个场景判死（SCENE.IMAGE_CONTEXT_UNVERIFIED），弃用明明可用的生图
+        # 能力。现在门禁拒绝只否定"这一张"图：回退一次 AI 生图（内部含像素
+        # 复核），失败才判场景未解决。
+        class GateRejectingProvider(FakePhotoProvider):
+            def __init__(self, image_records, gen_dir):
+                super().__init__(image_records)
+                self.gen_dir = Path(gen_dir)
+
+            def fetch_one(self, query, **kwargs):
+                record = super().fetch_one(query, **kwargs)
+                if "cup" in query.lower():
+                    record["title"] = record["description"] = "Autumn forest at sunrise"
+                return record
+
+            def generate_one(self, *, scene_context, **kwargs):
+                data = png_bytes(41)
+                gen_path = self.gen_dir / "generated-cup.png"
+                gen_path.write_bytes(data)
+                with Image.open(io.BytesIO(data)) as photo:
+                    width, height = photo.size
+                sha = hashlib.sha256(data).hexdigest()
+                return {
+                    "file": str(gen_path), "sha256": sha, "content_hash": sha,
+                    "download_url": "", "asset_id": "cloud_genimg:fixture",
+                    "perceptual_hash": perceptual_hash(data), "bytes": len(data),
+                    "actual_format": "PNG", "actual_width": width, "actual_height": height,
+                    "query": str(scene_context.get("metadata_query") or ""),
+                    "metadata_relevance": 1.0,
+                    "license_scope": "云端生图（用户自配服务，按该服务条款，非真实照片）",
+                    "license": "AI_GENERATED_CLOUD", "license_version": None,
+                    "license_url": None,
+                    "attribution": "云端生图（fixture, test-model），提示词：hand holding ceramic cup",
+                    "title": "云端生成场景图", "description": "hand holding ceramic cup",
+                    "creator": None, "source_page": "",
+                    "visual_review": fixture_visual_review_call(
+                        "fixture-review-model", scene_context, data),
+                    "source_key": "cloud_genimg:fixture",
+                    "provider": "cloud_image_generation",
+                }
+
+        plan = semantic_scenes.build_plan(
+            self.source, provider=GateRejectingProvider(self.images, self.assets),
+            semantic_resolution=semantic_fixture())
+        self.assertFalse(plan["unresolved_scenes"], plan["unresolved_scenes"])
+        spec = plan["images"]["hand_drinking_from_ceramic_cup"]
+        self.assertEqual(spec["license"], "AI_GENERATED_CLOUD")
+        self.assertEqual(spec["provider"], "cloud_image_generation")
+        # 门禁未被触发的另一个场景不受影响，仍走图库。
+        self.assertEqual(plan["images"]["iphone_mac_work_use"]["license"], "CC0 1.0")
+
+    def test_metadata_gate_rejection_still_unresolved_when_generation_unavailable(self):
+        # 回退不是赦免：生图不可用时，场景必须仍以原门禁原因如实判死，
+        # 不允许把证据不足的图库图放进稿子。
+        class GateRejectingNoGenProvider(FakePhotoProvider):
+            def fetch_one(self, query, **kwargs):
+                record = super().fetch_one(query, **kwargs)
+                if "cup" in query.lower():
+                    record["title"] = record["description"] = "Autumn forest at sunrise"
+                return record
+
+        plan = semantic_scenes.build_plan(
+            self.source, provider=GateRejectingNoGenProvider(self.images),
+            semantic_resolution=semantic_fixture())
+        rows = [row for row in plan["unresolved_scenes"]
+                if row["scene_key"] == "hand_drinking_from_ceramic_cup"]
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["reason"], "SCENE.IMAGE_CONTEXT_UNVERIFIED")
+
     def test_gate_requires_real_creator_or_attribution_metadata(self):
         provider = FakePhotoProvider(self.images)
         plan = semantic_scenes.build_plan(self.source, provider=provider,

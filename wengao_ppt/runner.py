@@ -130,6 +130,38 @@ def required_checks_for(profile):
     return profile_required_checks(profile)
 
 
+def scene_stage_verdict(scene_plan: dict) -> dict:
+    """HG13 语义场景阶段的放行判定（纯函数，便于测试与口径对齐）。
+
+    「没有配图」有两种，处理不同：
+    - ``unresolved_scenes`` 非空：包括复核未通过/找不到合规图，也包括
+      ``SCENE.NO_SCENES_PLANNED``——build_plan 在整稿无物理场景时**有意**
+      放这条硬规则（"场景图硬规则不允许纯文字通过"，tests/test_semantic_scenes.py
+      对此有专门断言）。这是防伪造纪律：宁可如实阻断并给出兜底选项，不出一份
+      冒充有图的稿子。兜底转说明卡片发生在 build_plan 内部（--allow-text-card-
+      fallback），走到这里仍 unresolved 就该拦。
+    - ``scenes`` 非空但 images/text_cards/unplaced 全空：没有任何可嵌入的照片
+      → 阻断（SCENE.NO_SCENE_IMAGES）。
+    - unplaced（版位容量不足）从来不是阻断：如实登记，稿子照常交付。
+
+    2026-11-04 干净安装根首任务（3 页中性稿、三页 NO_SCENE）在本函数抽出前
+    后各跑过一轮：r5（旧判定）与 r6（曾短暂引入"零场景放行"）均阻断——
+    阻断是**正确**语义；cleanroom harness 应显式携带 --allow-text-card-fallback
+    （等价于用户在界面勾选兜底），见 reports/install-cleanroom-20261104-r7。
+    """
+    unresolved = scene_plan.get("unresolved_scenes") or []
+    if unresolved:
+        return {"blocks": True, "blockers": unresolved, "detail_kind": "unresolved"}
+    if (not (scene_plan.get("images") or {})
+            and not (scene_plan.get("text_cards") or {})
+            and not (scene_plan.get("unplaced_scenes") or [])):
+        return {"blocks": True,
+                "blockers": [{"reason": "SCENE.NO_SCENE_IMAGES",
+                              "detail": "整套演示文稿没有可嵌入的关联场景照片。"}],
+                "detail_kind": "no_images"}
+    return {"blocks": False, "blockers": [], "detail_kind": "resolved"}
+
+
 #: 材料任务身份在**建任务时**冻结在此文件；它不依赖台账是否还在、
 #: 是否被换过。缺失台账不再等于"退回普通 PPTX 自基线路径"。
 MATERIAL_INTENT_FILE = "material_intent.json"
@@ -1652,34 +1684,25 @@ class Runner:
                     visual_plan=vplan,
                     allow_text_card_fallback=allow_text_card_fallback)
                 save_json_atomic(scene_plan, stage / "scene_visual_plan.json")
-                # 没有配图分两种：一种是**找不到/不合规**（真失败），一种是
-                # 这份稿子**没地方放**（版位容量）。后者已如实登记在
-                # unplaced_scenes 里，没有任何东西被伪造或替代，稿子照常交付。
-                unplaced_only = bool(scene_plan.get("unplaced_scenes")) and not (
-                    scene_plan.get("images") or scene_plan.get("text_cards")
-                    or scene_plan.get("unresolved_scenes"))
-                if scene_plan.get("unresolved_scenes") or (
-                        not scene_plan.get("images") and not scene_plan.get("text_cards")
-                        and not unplaced_only):
-                    blockers = scene_plan.get("unresolved_scenes") or [{
-                        "reason": "SCENE.NO_SCENE_IMAGES",
-                        "detail": "整套演示文稿没有可嵌入的关联场景照片。"}]
+                verdict = scene_stage_verdict(scene_plan)
+                if verdict["blocks"]:
+                    blockers = verdict["blockers"]
                     self._stage(job_id, "semantic_scenes", "FAILED",
-                                {"rules_version": scene_plan.get("rules_version"),
-                                 "source_page_count": scene_plan.get("source_page_count"),
-                                 "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
-                                 "detected_scene_ids": scene_plan.get("detected_scene_ids"),
-                                 "coverage_audit": {
-                                     "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
-                                     "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
-                                     "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
-                                     "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
-                                 },
-                                 "planned_scene_count": len(scene_plan.get("scenes") or []),
-                                 "planned_photo_count": len(scene_plan.get("images") or {}),
-                                 "text_card_count": len(scene_plan.get("text_cards") or {}),
-                                 "unresolved_scenes": blockers,
-                                 "plan_sha256": scene_plan.get("plan_sha256")})
+                            {"rules_version": scene_plan.get("rules_version"),
+                             "source_page_count": scene_plan.get("source_page_count"),
+                             "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
+                             "detected_scene_ids": scene_plan.get("detected_scene_ids"),
+                             "coverage_audit": {
+                                 "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
+                                 "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
+                                 "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
+                                 "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
+                             },
+                             "planned_scene_count": len(scene_plan.get("scenes") or []),
+                             "planned_photo_count": len(scene_plan.get("images") or {}),
+                             "text_card_count": len(scene_plan.get("text_cards") or {}),
+                             "unresolved_scenes": blockers,
+                             "plan_sha256": scene_plan.get("plan_sha256")})
                     detail = ("场景照片或安全版位未完整解决。"
                              if allow_text_card_fallback else
                              "场景照片或安全版位未完整解决；未开启说明卡片兜底，"

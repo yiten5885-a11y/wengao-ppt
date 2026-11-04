@@ -62,17 +62,27 @@ def run(cmd: list[str], cwd: Path, timeout=900) -> dict:
             "json": parsed, "seconds": round(time.time() - t0, 2)}
 
 
-def build_input_pptx(path: Path, pages: int = 3) -> Path:
-    """首任务输入：本脚本自建，不含任何用户私有材料。"""
+def build_input_pptx(path: Path, pages: int = 4) -> Path:
+    """首任务输入：本脚本自建，不含任何用户私有材料。
+
+    前 3 页是纯技术元话语（内容保真断言的锚点，勿改）；第 4 页（2026-11-04 增）
+    给出**有具体物理场景**的描述——HG13 场景硬规则不允许纯文字稿通过
+    （SCENE.NO_SCENES_PLANNED，r5/r6/r7 实测），规划器需要至少一个可放行的
+    具体场景才能走通「规划 → 云端生图 → 云端看图复核 → 嵌入」全链，这正是
+    首任务要验证的视觉链路。
+    """
     from pptx import Presentation
     from pptx.util import Inches, Pt
     prs = Presentation()
     prs.slide_width, prs.slide_height = 12191695, 6858000
-    titles = ["干净安装首任务", "覆盖范围", "结论"]
+    titles = ["干净安装首任务", "覆盖范围", "结论", "交付环境示意"]
     bodies = [
         "本页用于验证安装实例能否完成一次真实的美化任务。",
-        "三页纯文本；不含图片、表格与图表，便于判定渲染是否被外部依赖影响。",
+        "前三页纯文本；不含图片、表格与图表，便于判定渲染是否被外部依赖影响。",
         "若导出件可打开且结构自洽，说明安装布局下的程序与资源解析成立。",
+        "安装完成后交付环境保持就绪。机房里一排服务器机柜的指示灯"
+        "亮着绿色，设备安静运行；旁边的木质工作台上放着一台合上的"
+        "笔记本电脑和一盏点亮的暖光台灯，窗外是傍晚的天色。",
     ]
     for i in range(pages):
         s = prs.slides.add_slide(prs.slide_layouts[1])
@@ -211,9 +221,9 @@ def main(argv=None) -> int:
     # ---- 3 首任务：precheck → run → validate → publish → export ----
     scratch = report / "first-task"
     scratch.mkdir(parents=True, exist_ok=True)
-    src = build_input_pptx(scratch / "cleanroom_3p.pptx")
+    src = build_input_pptx(scratch / "cleanroom_first.pptx")
     ev["input"] = {"path": str(src), "sha256": sha256_file(src),
-                   "pages": 3, "origin": "本脚本用 python-pptx 生成，无用户私有材料"}
+                   "pages": 4, "origin": "本脚本用 python-pptx 生成，无用户私有材料"}
 
     r = run([str(entry), "cli", "--", "precheck", "--input", str(src),
              "--mode", "beautify", "--theme", "wengao-basic"], neutral)
@@ -222,8 +232,13 @@ def main(argv=None) -> int:
     ev["job_id"] = job_id
 
     if job_id:
+        # --allow-text-card-fallback：第 4 页给了具体物理场景（见
+        # build_input_pptx），预期规划器产出场景并走通云端生图+复核；若
+        # 复核恰未通过，兜底让任务仍以如实标注的说明卡片交付（r5 旧稿
+        # 三页全 NO_SCENE 时连兜底都无处安放，只能整单阻断——故换稿）。
         r = run([str(entry), "cli", "--", "run", "--job-id", job_id,
-                 "--timeout", "900"], neutral, timeout=1200)
+                 "--timeout", "900", "--allow-text-card-fallback"],
+                neutral, timeout=1200)
         step("first_task_run", r)
         r = run([str(entry), "cli", "--", "validate", "--job-id", job_id], neutral,
                 timeout=1200)
