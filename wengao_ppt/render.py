@@ -21,10 +21,16 @@ from pathlib import Path
 from . import fontenv
 from .core import sha256_file
 
-# macOS 上 LibreOffice 不在 PATH 里，需显式探测应用包内的 soffice
+# macOS 上 LibreOffice 不在 PATH 里，需显式探测应用包内的 soffice。
+# 用户级路径（2026-11-05）：libreoffice_setup 默认装 /Applications，但在受管
+# 沙箱环境里 /Applications 是覆盖层视图——安装后对后续进程时有时无（实测
+# 12:16 装好、12:17 能渲染、12:33 起宿主与沙箱都看不到）。把安装目标落到
+# ~/.wengao_ppt/libreoffice/（真实用户目录，不受视图漂移影响），渲染器因此
+# 稳定可用；/Applications 仍保留在搜索首位，标准安装照常生效。
 _MAC_BUNDLES = [
     "/Applications/LibreOffice.app/Contents/MacOS/soffice",
     str(Path.home() / "Applications" / "LibreOffice.app" / "Contents" / "MacOS" / "soffice"),
+    str(Path.home() / ".wengao_ppt" / "libreoffice" / "LibreOffice.app" / "Contents" / "MacOS" / "soffice"),
 ]
 
 #: `render_pages` 的缩略图档 DPI（列表预览用；细看用调用方传入的大图档 dpi）
