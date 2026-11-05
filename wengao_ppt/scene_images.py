@@ -1978,12 +1978,14 @@ class ScenePhotoProvider:
                                      "detail": "照片元数据标记为插画/绘画等非摄影素材，与场景要求不符。"})
                     continue
                 # With a pixel-level visual reviewer downstream, captions only
-                # pre-screen: 2 of the 3 anchors (subject/action/setting) in one
-                # caption unit is enough to earn a review, and the reviewer makes
-                # the call. Stock captions rarely name all three for abstract
-                # business scenes, so the strict 3-of-3 rule discarded 60-127
-                # candidates per scene before any were looked at (2026-10-29).
-                # Without a reviewer the strict rule still applies.
+                # pre-screen. 2026-10-29 the strict 3-of-3 anchor rule was
+                # relaxed to 2-of-3; 2026-11-05 (user decision "两件都做") the
+                # reviewer-present path drops to 1-of-3: stock captions almost
+                # never name product-specific anchors ("generator", "diamonds"),
+                # so requiring 2 anchors still discarded every candidate for
+                # product-specific scenes (mt-82fa967e: 6 Pexels hits per scene,
+                # zero reviewed). One anchor hit + downstream visual review is
+                # the new bar; the reviewer, not the caption, makes the call.
                 if scene_context and not (
                         scene_metadata_matches_query(
                             metadata_query, record, scene_context=scene_context)
@@ -1991,7 +1993,7 @@ class ScenePhotoProvider:
                             and scene_context.get("photo_search_terms") is not None
                             and scene_metadata_relevance(
                                 metadata_query, record,
-                                scene_context=scene_context) >= 2 / 3 - 1e-9)):
+                                scene_context=scene_context) >= 1 / 3 - 1e-9)):
                     failures.append({"provider": provider.name,
                                      "code": "SCENE.IMAGE_CONTEXT_UNVERIFIED",
                                      "detail": "标题/说明没有同时支持场景主体、动作和地点锚点。"})
