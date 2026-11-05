@@ -52,9 +52,12 @@ class TestWengaoBusinessMutedContrastMargin(unittest.TestCase):
         # 拉丁字体 Arial→Helvetica Neue、正文 16→17pt（用户"6个主题6个风格"）。
         # 1.3.0：再加 furniture=grid（左竖轨 + 左上/右下短带 + 右缘刻度）——
         # 构件真的改变了每页的输出字节，所以同样必须动版本号。
+        # 2.0.0（2026-11-05）：主题整体升级为装帧语言——配色换成深松绿/黄铜的
+        # 成套调色板、家具从 4 条扩到 15 条（瑞士网格）、表格/图表引入
+        # table_style/chart_style 令牌。全部进 config_digest。
         # 配色或构件一改就必须动版本号，否则同一 theme_id 的两个不同外观会共享
         # 同一个版本标识，历史任务里冻结的身份就说不清自己对的是哪一版。
-        self.assertEqual(theme_mod.THEMES["wengao-business"]["version"], "1.3.0")
+        self.assertEqual(theme_mod.THEMES["wengao-business"]["version"], "2.0.0")
 
 
 if __name__ == "__main__":

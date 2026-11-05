@@ -37,210 +37,275 @@ FALLBACK_FONTS = ["Songti SC", "STHeiti", "Arial Unicode MS"]
 # 1.2.0（2026-11-04）：每个主题增加 style 块（风格名/体裁/一句话/标签/缩略图类型），
 # 并把 basic 之外的 4 套浅色/深色主题拉开成互不相同的字体配对与字号层级。
 # style 不进 config_digest —— 它能改界面的说法，但不能改历史任务冻结的身份。
-# 1.3.0（2026-11-04）：增加 furniture（页面构件：色带/细线/角标）。它**进**摘要，
+# 1.3.0（2026-11-04）：增加 furniture（页面构件：色带/细线/角标）。
+# 2.0.0（2026-11-05）：主题从「换色」升级为「装帧语言」——成套调色板、
+#   天头/地脚/侧轨/眉标/刻度构成，外加 table_style / chart_style 两类样式
+#   令牌。后两者真的改输出，所以一并进摘要。
 # 因为它真的改输出——"藏蓝公文"从此有红头，不再只是一张白纸。
-REGISTRY_VERSION = "1.3.0"
+REGISTRY_VERSION = "2.0.0"
 
 # 不带 theme 的旧调用使用的默认主题（保持 D10-A 合法默认行为）
 DEFAULT_THEME_ID = "wengao-basic"
 
 THEMES: dict[str, dict] = {
-    # ------------------------------------------------------------------ 旧默认
+    # ---------------------------------------------------------------- S1 朱印公文
+    # 灵感：正式文告的天头/落款/中轴。宣纸底而非纯白，朱砂只用在双线与印标，
+    # 墨蓝承担全部结构，避免"红配蓝"的廉价感。
     "wengao-basic": {
         "name": "稳稿基础主题（旧默认）",
-        # style 块只描述"这是什么风格"，**不参与**身份摘要（_DIGEST_FIELDS 不含它）。
-        # 因此给旧主题补风格标签不会改变其 config_digest，历史任务的身份仍然对得上。
         "style": {
             "style_id": "S1",
-            "style_name": "藏蓝公文",
+            "style_name": "朱印公文",
             "genre": "公文 / 汇报",
-            "tagline": "宋体密排、藏蓝压顶、正红落款，最接近传统红头文件",
-            "tags": ["宋体", "藏蓝", "正红", "密排"],
+            "tagline": "宣纸底、墨蓝天头、朱砂双线与落款印标，端正的中轴式版式",
+            "tags": ["宣纸", "墨蓝", "朱砂", "中轴"],
             "preview": "official",
         },
-        # 1.1.0（2026-11-04）：加上"红头"——顶部藏蓝通栏 + 其下正红双细线。
-        # 名字叫"藏蓝公文"却渲染出一张纯白纸，是 6 个主题看着一样的直接原因之一。
-        # 家具只画在页边留白带内（内容从 0.7in 起），细长色带见 furniture.py。
         "furniture": {
-            "id": "headband",
+            "id": "imprint",
             "parts": [
-                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.085, "color": "primary"},
-                {"edge": "top", "offset_in": 0.105, "thickness_in": 0.022, "color": "accent"},
-                {"edge": "top", "offset_in": 0.135, "thickness_in": 0.010, "color": "accent"},
+                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.10, "color": "primary"},
+                {"edge": "top", "offset_in": 0.125, "thickness_in": 0.022, "color": "accent"},
+                {"edge": "top", "offset_in": 0.158, "thickness_in": 0.010, "color": "accent"},
+                {"edge": "top", "offset_in": 0.29, "thickness_in": 0.012,
+                 "span": [0.06, 0.94], "color": "border"},
+                {"edge": "top", "offset_in": 0.20, "thickness_in": 0.02,
+                 "span": [0.475, 0.525], "color": "primary"},
+                {"edge": "left", "offset_in": 0.22, "thickness_in": 0.010,
+                 "span": [0.08, 0.16], "color": "border"},
+                {"edge": "right", "offset_in": 0.22, "thickness_in": 0.010,
+                 "span": [0.08, 0.16], "color": "border"},
+                {"edge": "left", "offset_in": 0.0, "thickness_in": 0.028,
+                 "span": [0.30, 0.36], "color": "primary"},
+                {"edge": "right", "offset_in": 0.0, "thickness_in": 0.028,
+                 "span": [0.30, 0.36], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.012,
+                 "span": [0.06, 0.94], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.055, "thickness_in": 0.045,
+                 "span": [0.06, 0.115], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.055, "thickness_in": 0.045,
+                 "span": [0.885, 0.94], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.11, "thickness_in": 0.02,
+                 "span": [0.475, 0.525], "color": "border"},
             ],
         },
-        "version": "1.1.0",
+        "version": "2.0.0",
         "legacy_default": True,
-        "slide_bg": "FFFFFF",
+        "slide_bg": "FBF9F4",
         "colors": {
-            "primary": "1F3864", "accent": "C00000", "text": "1A1A1A", "muted": "5A5A5A",
-            "heading": "1F3864", "subtitle": "5A5A5A",
-            "surface": "FFFFFF", "border": "C9CDD4",
-            "table_header_bg": "1F3864", "table_header_text": "FFFFFF",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F2F4F7",
-            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D9DCE1",
-            "chart_series": ["1F3864", "C00000", "2E75B6", "7F7F7F"],
+            "primary": "1B2D4B", "accent": "A32E26", "text": "20252B", "muted": "4A5058",
+            "heading": "1B2D4B", "subtitle": "4A5058",
+            "surface": "FFFFFF", "border": "D8D2C4",
+            "table_header_bg": "1B2D4B", "table_header_text": "FFFFFF",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F5F2EA",
+            "chart_bg": "FBF9F4", "chart_text": "20252B", "chart_grid": "E2DCCD",
+            "chart_series": ["1B2D4B", "A32E26", "5B7A6B", "8A7350"],
         },
         "fonts": {"heading_ea": "Songti", "body_ea": "Songti",
-                  "heading_latin": "Arial", "body_latin": "Arial"},
+                  "heading_latin": "Palatino", "body_latin": "Palatino"},
         "sizes": {"title": 30, "subtitle": 18, "heading": 22, "body": 15, "note": 11,
                   "chart_text": 12},
+        "table_style": "editorial",
+        "chart_style": "minimal",
         "font_fallback_note": "上游默认字体 Microsoft YaHei 本机缺失，已显式替换为 Songti；"
-                             "该替换是计划动作，不得静默进行。",
+                             "拉丁槽换 Palatino（本机系统已注册），与宋体构成人文衬线对。",
     },
-    # ------------------------------------------------------------------ 商务清晰
+    # ---------------------------------------------------------------- S2 深松商务
+    # 灵感：瑞士国际主义网格。非对称的左上/右下压边、三段刻度、纵横细线构成
+    # 信息板；黄铜只做刻度与强调，不铺大面。
     "wengao-business": {
         "name": "商务清晰",
-        # 1.2.0（2026-11-04）：用户要求"6 个主题 6 个风格"。此前 basic 与 business
-        # 除了主色相差 12° 色相外**完全相同**——同一底色、同一 Songti/Arial 配对、
-        # 字号只差 1pt，实际输出几乎是"同一个风格换个蓝"。1.2.0 把 business 变成
-        # 独立的"无衬线汇报体"：主色移到钢青（H≈193，与藏蓝 H≈218 明确分开），
-        # 中文字体改 STHeiti（黑体骨架），拉丁字体改 Helvetica Neue，正文 17pt。
         "style": {
             "style_id": "S2",
-            "style_name": "钢青商务",
+            "style_name": "深松商务",
             "genre": "商务 / 汇报",
-            "tagline": "黑体骨架、钢青主色、琥珀强调，信息密度高的汇报稿",
-            "tags": ["黑体", "钢青", "琥珀", "紧凑"],
+            "tagline": "深松绿与黄铜、瑞士网格与三段刻度，信息密度高的现代汇报",
+            "tags": ["黑体", "深松绿", "黄铜", "网格"],
             "preview": "grid",
         },
-        # 1.3.0（2026-11-04）：加"网格角标"——左竖轨 + 左上/右下 L 形短带 +
-        # 右缘一枚小刻度。与 S1 的"顶部通栏"在结构上就不同，不靠颜色区分。
         "furniture": {
-            "id": "grid",
+            "id": "swiss",
             "parts": [
-                {"edge": "left", "offset_in": 0.0, "span": [0.0, 1.0], "thickness_in": 0.10, "color": "primary"},
-                {"edge": "top", "offset_in": 0.0, "span": [0.0, 0.34], "thickness_in": 0.075, "color": "primary"},
-                {"edge": "bottom", "offset_in": 0.0, "span": [0.66, 1.0], "thickness_in": 0.075, "color": "accent"},
-                {"edge": "right", "offset_in": 0.30, "span": [0.32, 0.36], "thickness_in": 0.06, "color": "border"},
+                {"edge": "left", "offset_in": 0.0, "thickness_in": 0.11,
+                 "span": [0.0, 1.0], "color": "primary"},
+                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.075,
+                 "span": [0.0, 0.34], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.075,
+                 "span": [0.66, 1.0], "color": "accent"},
+                {"edge": "right", "offset_in": 0.0, "thickness_in": 0.05,
+                 "span": [0.32, 0.36], "color": "border"},
+                {"edge": "top", "offset_in": 0.155, "thickness_in": 0.012,
+                 "span": [0.055, 0.945], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.155, "thickness_in": 0.012,
+                 "span": [0.055, 0.945], "color": "border"},
+                {"edge": "left", "offset_in": 0.24, "thickness_in": 0.012,
+                 "span": [0.12, 0.88], "color": "border"},
+                {"edge": "right", "offset_in": 0.24, "thickness_in": 0.012,
+                 "span": [0.12, 0.88], "color": "border"},
+                {"edge": "top", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.055, 0.09], "color": "primary"},
+                {"edge": "top", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.125, 0.16], "color": "primary"},
+                {"edge": "top", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.195, 0.23], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.77, 0.805], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.84, 0.875], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.24, "thickness_in": 0.05,
+                 "span": [0.91, 0.945], "color": "accent"},
+                {"edge": "top", "offset_in": 0.45, "thickness_in": 0.02,
+                 "span": [0.055, 0.22], "color": "accent"},
             ],
         },
-        # 1.0.0 的 primary/accent（1F3864/C00000）跟 wengao-basic 逐字相同，只有
-        # muted/border/chart_grid 等次要字段有细微差别——两个主题在卡片预览和
-        # 实际生成的 PPT 里几乎看不出区别（user 2026-11-01："6个主题都要分开"）。
-        # 1.1.0 换成独立的钢蓝+琥珀配色；每个颜色都按 WCAG 相对亮度公式核验过
-        # 对白底的对比度（最低 4.87:1，高于本项目 HG09 的 4.5:1 门槛，留出渲染
-        # 抗锯齿软化的余量）。
-        # 1.1.1：真实渲染暴露出 4.87:1 的余量不够——job-mt-56ebac59/
-        # job-51d167cddbc1（2026-11-02）实测 muted/subtitle（5B6B7A，名义
-        # 5.48:1）在 11pt「来源与限定」说明文字上，窄体全角标点（（）等）实测
-        # 对比度低至 3.17:1，远低于 4.5 门槛——抗锯齿在小字号细笔画上的损耗比
-        # 名义公式预估的大得多。muted/subtitle 换成 3A4855（名义 9.38:1，约
-        # 1.7 倍原余量），不是猜测：按实测 5.48→3.17（约 58%）的衰减比例外推，
-        # 9.38:1 名义值衰减后仍有约 5.4:1，留出安全冗余；真正的确认仍是重新
-        # 生成后 layout_gate 复核零 HG09 命中。
-        "version": "1.3.0",
-        "slide_bg": "FFFFFF",
+        "version": "2.0.0",
+        "slide_bg": "FCFCFA",
         "colors": {
-            "primary": "175A63", "accent": "8A5200", "text": "1A1A1A", "muted": "3A4855",
-            "heading": "175A63", "subtitle": "3A4855",
-            "surface": "FFFFFF", "border": "C0D0D2",
-            "table_header_bg": "175A63", "table_header_text": "FFFFFF",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "E6EFF0",
-            "chart_bg": "FFFFFF", "chart_text": "1A1A1A", "chart_grid": "D2E0E2",
-            "chart_series": ["175A63", "8A5200", "3F7A5A", "8C8C8C"],
+            "primary": "14423C", "accent": "A9761F", "text": "1E2624", "muted": "3C4A46",
+            "heading": "14423C", "subtitle": "3C4A46",
+            "surface": "FFFFFF", "border": "CCD8D3",
+            "table_header_bg": "14423C", "table_header_text": "FFFFFF",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F1F5F2",
+            "chart_bg": "FCFCFA", "chart_text": "1E2624", "chart_grid": "DCE6E1",
+            "chart_series": ["14423C", "A9761F", "4C7A70", "8D9490"],
         },
         "fonts": {"heading_ea": "STHeiti", "body_ea": "STHeiti",
                   "heading_latin": "Helvetica Neue", "body_latin": "Helvetica Neue"},
         "sizes": {"title": 30, "subtitle": 19, "heading": 22, "body": 17, "note": 11,
                   "chart_text": 12},
-        "font_fallback_note": "Microsoft YaHei 本机缺失，按已核验可用字体显式替换为 Songti（标题/正文）；"
-                             "替换是计划动作并写入主题配置与证据。",
+        "table_style": "ruled",
+        "chart_style": "grid",
+        "font_fallback_note": "Microsoft YaHei 本机缺失，按已核验可用字体显式替换为 STHeiti；"
+                             "拉丁槽 Helvetica Neue 与黑体构成无衬线对。",
     },
-    # ------------------------------------------------------------------ 深色科技
+    # ---------------------------------------------------------------- S3 午夜蓝科技
+    # 1.x 的荧光青 + 品红是"电竞感"，不是"技术感"。2.0 改成午夜蓝底、
+    # 单一冰蓝结构色 + 一枚暖橙强调，刻度与点阵像仪表盘而不是霓虹灯箱。
     "wengao-dark": {
         "name": "深色科技",
-        # 1.1.0（2026-11-04）：accent 原先与 primary 同为 00F2FF（同一个青色，
-        # 等于没有强调色）；拉丁字体是 Arial，和两个浅色主题撞在一起。改为
-        # 霓虹青主色 + 品红强调，拉丁槽换等宽 Menlo，与炭黑视觉主题的
-        # 金铜/Avenir 组合明确分开。
         "style": {
             "style_id": "S3",
-            "style_name": "深海霓虹",
+            "style_name": "午夜仪表",
             "genre": "科技 / 产品发布",
-            "tagline": "深底霓虹青、品红强调、等宽数字，适合技术路线与发布稿",
-            "tags": ["深底", "霓虹青", "等宽", "品红"],
+            "tagline": "午夜蓝底、冰蓝结构色、单点暖橙，仪表式刻度与数据条",
+            "tags": ["深底", "冰蓝", "等宽", "刻度"],
             "preview": "neon",
         },
-        # 1.2.0（2026-11-04）：加"霓虹边框"——上下通栏霓虹青 + 左右品红竖线
-        # （只占中间 80% 高度，不闭合，避免看起来像相框）。
         "furniture": {
-            "id": "neonframe",
+            "id": "instrument",
             "parts": [
                 {"edge": "top", "offset_in": 0.0, "thickness_in": 0.035, "color": "primary"},
                 {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.035, "color": "primary"},
-                {"edge": "left", "offset_in": 0.0, "span": [0.10, 0.90], "thickness_in": 0.035, "color": "accent"},
-                {"edge": "right", "offset_in": 0.0, "span": [0.10, 0.90], "thickness_in": 0.035, "color": "accent"},
+                {"edge": "left", "offset_in": 0.0, "thickness_in": 0.035,
+                 "span": [0.10, 0.90], "color": "accent"},
+                {"edge": "right", "offset_in": 0.0, "thickness_in": 0.035,
+                 "span": [0.10, 0.90], "color": "accent"},
+                {"edge": "top", "offset_in": 0.10, "thickness_in": 0.012,
+                 "span": [0.055, 0.945], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.10, "thickness_in": 0.012,
+                 "span": [0.055, 0.945], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.055, 0.085], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.095, 0.125], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.135, 0.165], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.175, 0.205], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.215, 0.245], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.255, 0.285], "color": "border"},
+                {"edge": "top", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.86, 0.89], "color": "accent"},
+                {"edge": "top", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.895, 0.925], "color": "accent"},
+                {"edge": "top", "offset_in": 0.22, "thickness_in": 0.045,
+                 "span": [0.93, 0.96], "color": "border"},
+                {"edge": "right", "offset_in": 0.14, "thickness_in": 0.012,
+                 "span": [0.08, 0.16], "color": "primary"},
             ],
         },
-        "version": "1.2.0",
-        "slide_bg": "0B1220",
+        "version": "2.0.0",
+        "slide_bg": "0A1626",
         "colors": {
-            "primary": "3DDCFF", "accent": "FF6FA5", "text": "E8F4FF", "muted": "A9BFD4",
-            "heading": "3DDCFF", "subtitle": "A9BFD4",
-            # 深色下不用纯白绘图区（避免突兀白块），用略亮于背景的深蓝
-            "surface": "121C2E", "border": "22314A",
-            "table_header_bg": "3DDCFF", "table_header_text": "0B1220",
-            "table_row_bg": "121C2E", "table_row_alt_bg": "18253A",
-            "chart_bg": "121C2E", "chart_text": "E8F4FF", "chart_grid": "26364F",
-            "chart_series": ["3DDCFF", "FF6FA5", "9BE86B", "C792EA"],
+            "primary": "74A9F5", "accent": "E59463", "text": "E7EEF8", "muted": "A8BDD6",
+            "heading": "F2F7FF", "subtitle": "A8BDD6",
+            "surface": "101F33", "border": "22354E",
+            "table_header_bg": "1B3550", "table_header_text": "E7EEF8",
+            "table_row_bg": "101F33", "table_row_alt_bg": "16273D",
+            "chart_bg": "101F33", "chart_text": "E7EEF8", "chart_grid": "2B415E",
+            "chart_series": ["74A9F5", "E59463", "7FC8B0", "9C86D8"],
         },
         "fonts": {"heading_ea": "STHeiti", "body_ea": "STHeiti",
                   "heading_latin": "Menlo", "body_latin": "Menlo"},
         "sizes": {"title": 30, "subtitle": 20, "heading": 22, "body": 18, "note": 11,
                   "chart_text": 12},
-        "sizes_note": ("2026-10-20 可读性基线（用户要求“字不要太小”）：主标题 32–40、"
-                       "页标题 28–32、正文 22–24（下限 20）、表格 18–20、"
-                       "图表与辅助注 ≥16。主题值是**上限闸**（_capped 只缩不放），"
-                       "生成端显式字号 ≤ 上限时按生成端值渲染。"),
+        "table_style": "data",
+        "chart_style": "data",
+        "sizes_note": ("2026-10-20 可读性基线（用户要求字不要太小）：主标题 32-40、"
+                       "页标题 28-32、正文 22-24（下限 20）、表格 18-20、"
+                       "图表与辅助注 >=16。主题值是**上限闸**（_capped 只缩不放），"
+                       "生成端显式字号 <= 上限时按生成端值渲染。"),
         "font_fallback_note": "深色主题采用 STHeiti（本机已核验可显示中文）替代缺失的 Microsoft YaHei；"
-                             "文字与绘图区均按深底可读性配置。",
+                             "拉丁槽 Menlo 让数字与代码在深底上保持等宽对齐。",
     },
-    # ------------------------------------------------------------------ 极简阅读
+    # ---------------------------------------------------------------- S4 书卷静读
+    # 灵感：书籍的版心与书脊。构件极克制（8 条），靠留白与页边比例说话；
+    # 唯一装饰是标题上方的短朱线、地脚的居中短线与左右两枚句点。
     "wengao-minimal": {
         "name": "极简阅读",
-        # 1.1.0（2026-11-04）：原先底色 F5F5F5 冷灰 + 全灰配色 + Songti/Arial，
-        # 与 basic 只差"没有蓝"——灰度不是风格，只是缺色。改为暖白纸底
-        # （FAF8F3）+ 暖墨字（2B2A26）+ 陶土单点强调 + Georgia/宋体的阅读体，
-        # 靠留白与行距而不是靠色块区分。
         "style": {
             "style_id": "S4",
-            "style_name": "暖白静读",
+            "style_name": "书卷静读",
             "genre": "阅读 / 长文",
-            "tagline": "暖白纸底、Georgia 配宋体、几乎不用色块，长文阅读最省力",
-            "tags": ["暖白", "宋体", "留白", "陶土"],
+            "tagline": "宣纸暖白、Georgia 配宋体、书脊细线与大留白，长文最省力",
+            "tags": ["暖白", "宋体", "留白", "赭石"],
             "preview": "quiet",
         },
-        # 1.2.0（2026-11-04）：极简的"构件"就是**只有一条**短细线（陶土色），
-        # 位于标题上方的留白里；别的一概没有。用"少"把它的风格与另外五套分开。
         "furniture": {
-            "id": "quiet",
+            "id": "colophon",
             "parts": [
-                {"edge": "top", "offset_in": 0.24, "span": [0.075, 0.20], "thickness_in": 0.012, "color": "accent"},
+                {"edge": "top", "offset_in": 0.24, "thickness_in": 0.012,
+                 "span": [0.075, 0.20], "color": "accent"},
+                {"edge": "top", "offset_in": 0.36, "thickness_in": 0.008,
+                 "span": [0.075, 0.30], "color": "border"},
+                {"edge": "right", "offset_in": 0.16, "thickness_in": 0.010,
+                 "span": [0.10, 0.90], "color": "border"},
+                {"edge": "left", "offset_in": 0.16, "thickness_in": 0.045,
+                 "span": [0.48, 0.52], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.18, "thickness_in": 0.010,
+                 "span": [0.46, 0.54], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.18, "thickness_in": 0.045,
+                 "span": [0.075, 0.082], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.18, "thickness_in": 0.045,
+                 "span": [0.918, 0.925], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.30, "thickness_in": 0.008,
+                 "span": [0.70, 0.925], "color": "border"},
             ],
         },
-        "version": "1.2.0",
-        "slide_bg": "FAF8F3",
+        "version": "2.0.0",
+        "slide_bg": "F7F3EA",
         "colors": {
-            "primary": "2B2A26", "accent": "7F4E32", "text": "2B2A26", "muted": "3B3830",
-            "heading": "2B2A26", "subtitle": "3B3830",
-            "surface": "FFFFFF", "border": "E2DDD2",
-            "table_header_bg": "EFEAE0", "table_header_text": "2B2A26",
-            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F5F1E8",
-            "chart_bg": "FFFFFF", "chart_text": "2B2A26", "chart_grid": "E6E0D4",
-            "chart_series": ["5A6B7A", "7F4E32", "7F8C6E", "9A7B3F"],
+            "primary": "2A2721", "accent": "8B5A3C", "text": "2A2721", "muted": "4A4438",
+            "heading": "2A2721", "subtitle": "4A4438",
+            "surface": "FFFFFF", "border": "E0D8C7",
+            "table_header_bg": "EDE6D8", "table_header_text": "2A2721",
+            "table_row_bg": "FFFFFF", "table_row_alt_bg": "F5F0E5",
+            "chart_bg": "F7F3EA", "chart_text": "2A2721", "chart_grid": "E8E0D0",
+            "chart_series": ["4A5E6B", "8B5A3C", "6E7F62", "82612F"],
         },
         "fonts": {"heading_ea": "Songti", "body_ea": "Songti",
                   "heading_latin": "Georgia", "body_latin": "Georgia"},
         "sizes": {"title": 30, "subtitle": 18, "heading": 22, "body": 16, "note": 10,
                   "chart_text": 11},
-        "font_fallback_note": "极简主题使用 Songti 与低饱和配色；Microsoft YaHei 缺失的替换为计划动作。",
+        "table_style": "quiet",
+        "chart_style": "quiet",
+        "font_fallback_note": "极简主题使用 Songti 与 Georgia 的衬线对；Microsoft YaHei 缺失的替换为计划动作。",
     },
-    # ------------------------------------------------------- 原稿适配精修（自适应）
-    # 与上面四个"换肤"主题不同：这个主题不把整套稿染成固定调色板，而是
-    # **识别并保留原稿自身的设计语言**（底色/文字色/强调色/字体），只按
-    # 结构规则做布局、位置、尺寸、字号、间距与对齐的精修
-    # （实现见 wengao_ppt/refine.py，规则版本与参数进入同一身份摘要）。
+    # ------------------------------------------------------- S5 原稿本色（不换肤）
+    # 与上面四套"装帧"主题不同：它不把整套稿染成固定调色板，而是识别并保留
+    # 原稿自身的设计语言，只按结构规则做布局、位置、尺寸、字号、间距与对齐精修。
     "wengao-adaptive": {
         "name": "原稿适配精修",
         "style": {
@@ -254,58 +319,72 @@ THEMES: dict[str, dict] = {
         "version": "1.0.0",
         "adaptive": True,
         "refine_rules_version": "1.0.0",
-        "slide_bg": None,          # 自适应：沿用原稿每页自己的背景
-        "colors": None,            # 自适应：沿用原稿文字/强调色
-        "fonts": None,             # 自适应：沿用原稿字体
-        "sizes": None,             # 自适应：只按度量下限提升过小文字
+        "slide_bg": None,
+        "colors": None,
+        "fonts": None,
+        "sizes": None,
         "font_fallback_note": "原稿适配主题不替换字体：原稿声明的字体按原样保留，"
                              "本机缺失时由渲染环境自行替换（与 preserve 路径一致）。",
     },
-    # ------------------------------------------------------------------ 视觉升级
-    # 本轮新增：深色令牌 + 视觉升级阶段（关键词配图 cover 裁切、统一转场、
-    # 粒子动画）。visual_upgrade 进入身份摘要；选图计划在 run 阶段按页面
-    # 语义生成并冻结（visual_plan.json），媒体校验按计划放行。
+    # ---------------------------------------------------------------- S6 香槟影院
+    # 灵感：宽银幕与舞台压边。上下细银幕线 + 底部金铜通栏 + 三点进度，
+    # 金铜不铺满、珊瑚只做角标，避免"土豪金"。
     "wengao-visual-dark": {
         "name": "深色视觉升级（关键词配图+动效）",
         "style": {
             "style_id": "S6",
-            "style_name": "炭黑剧场",
+            "style_name": "香槟影院",
             "genre": "视觉 / 发布",
-            "tagline": "炭黑舞台、金铜与珊瑚、Avenir 大字，配图裁切与转场动效",
-            "tags": ["炭黑", "金铜", "配图", "动效"],
+            "tagline": "炭黑舞台、香槟金与珊瑚、银幕细线与三点进度，配图裁切与转场动效",
+            "tags": ["炭黑", "香槟金", "配图", "动效"],
             "preview": "cinema",
         },
-        # 1.1.0（2026-11-04）：加"舞台"——底部金铜通栏 + 左下金铜短轨 + 右上珊瑚角标。
-        # 与 S3 的"闭合霓虹框"不同：这里是不对称的舞台压边。
         "furniture": {
             "id": "stage",
             "parts": [
                 {"edge": "bottom", "offset_in": 0.0, "thickness_in": 0.055, "color": "primary"},
-                {"edge": "left", "offset_in": 0.0, "span": [0.0, 0.30], "thickness_in": 0.09, "color": "primary"},
-                {"edge": "top", "offset_in": 0.0, "span": [0.86, 1.0], "thickness_in": 0.05, "color": "accent"},
+                {"edge": "left", "offset_in": 0.0, "thickness_in": 0.09,
+                 "span": [0.0, 0.30], "color": "primary"},
+                {"edge": "top", "offset_in": 0.0, "thickness_in": 0.05,
+                 "span": [0.86, 1.0], "color": "accent"},
+                {"edge": "top", "offset_in": 0.10, "thickness_in": 0.012, "color": "border"},
+                {"edge": "bottom", "offset_in": 0.10, "thickness_in": 0.012, "color": "border"},
+                {"edge": "left", "offset_in": 0.22, "thickness_in": 0.012,
+                 "span": [0.10, 0.90], "color": "border"},
+                {"edge": "right", "offset_in": 0.22, "thickness_in": 0.012,
+                 "span": [0.10, 0.90], "color": "border"},
+                {"edge": "bottom", "offset_in": 0.20, "thickness_in": 0.05,
+                 "span": [0.055, 0.085], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.20, "thickness_in": 0.05,
+                 "span": [0.095, 0.125], "color": "accent"},
+                {"edge": "bottom", "offset_in": 0.20, "thickness_in": 0.05,
+                 "span": [0.135, 0.165], "color": "accent"},
+                {"edge": "top", "offset_in": 0.22, "thickness_in": 0.02,
+                 "span": [0.055, 0.14], "color": "primary"},
+                {"edge": "right", "offset_in": 0.0, "thickness_in": 0.05,
+                 "span": [0.64, 0.70], "color": "primary"},
+                {"edge": "bottom", "offset_in": 0.22, "thickness_in": 0.02,
+                 "span": [0.86, 0.945], "color": "primary"},
             ],
         },
-        "version": "1.1.0",
-        "slide_bg": "101014",
+        "version": "2.0.0",
+        "slide_bg": "0D0D11",
         "visual_upgrade": True,
         "colors": {
-            "primary": "E8C877", "accent": "E06C5A", "text": "EDEDEA", "muted": "9A9A9E",
-            "heading": "FFFFFF", "subtitle": "C9C9CE",
-            "surface": "1A1A20", "border": "2A2A32",
-            "table_header_bg": "1F1F26", "table_header_text": "EDEDEA",
-            "table_row_bg": "16161B", "table_row_alt_bg": "1C1C22",
-            "chart_bg": "16161B", "chart_text": "EDEDEA", "chart_grid": "2E2E36",
-            "chart_series": ["E8C877", "E06C5A", "6CA0E0", "8C8C92"],
+            "primary": "C6A667", "accent": "C9705B", "text": "EFEBE3", "muted": "A8A39B",
+            "heading": "FFFFF7", "subtitle": "C4BFB5",
+            "surface": "17171D", "border": "2C2B33",
+            "table_header_bg": "1E1E25", "table_header_text": "EFEBE3",
+            "table_row_bg": "141419", "table_row_alt_bg": "1B1B22",
+            "chart_bg": "141419", "chart_text": "EFEBE3", "chart_grid": "34333C",
+            "chart_series": ["C6A667", "C9705B", "7C9CC4", "8A8A92"],
         },
         "fonts": {"heading_ea": "Arial Unicode MS", "body_ea": "Arial Unicode MS",
                   "heading_latin": "Avenir Next", "body_latin": "Avenir Next"},
-        # 2026-10-21 00:25 新可读基线（用户"字体还是太小/不协调"）：
-        # 页标题 36–40、导语与主正文 26–28（常规正文下限 24）、小标题/关键结论
-        # 28–32、表格 20–22、图表与辅助说明 18–20、页脚/来源 16–18。
-        # 主题值仍是**上限闸**；真正把原稿小字抬起来的是 READABILITY_SIZE_FLOOR
-        # （见下）配合精修重排，不是靠全局放大画布。
         "sizes": {"title": 30, "subtitle": 22, "heading": 22, "body": 18, "note": 11,
                   "chart_text": 12},
+        "table_style": "cinema",
+        "chart_style": "cinema",
         "font_fallback_note": ("东亚字体槽改 Arial Unicode MS（S6 原生对照 13 页无缺字，"
                                "依据与平台范围见 FALLBACK_FONTS 注释）；拉丁槽仍 Avenir Next。"),
     },
@@ -314,7 +393,8 @@ THEMES: dict[str, dict] = {
 # 参与配置摘要的字段（只含影响输出的参数；不含展示名与说明）
 # furniture 进摘要：它改变导出的字节（每页多出几条色带），不影响输出的字段才有资格
 # 待在摘要外面。style 仍然不进（纯展示说法）。
-_DIGEST_FIELDS = ("slide_bg", "colors", "fonts", "sizes", "visual_upgrade", "furniture")
+_DIGEST_FIELDS = ("slide_bg", "colors", "fonts", "sizes", "visual_upgrade",
+                  "furniture", "table_style", "chart_style")
 
 # 字号规则：主题字号只作为**上限**，不放大来源字号。
 # 依据（2026-10-14 D10-B 实测）：高密度原稿正文 11pt，若按主题 body 16pt 放大，
@@ -698,6 +778,10 @@ def resolve_theme(theme_id: str | None) -> dict:
             # 它同时进了 config_digest（_DIGEST_FIELDS 含 furniture），
             # 所以"同一主题、不同构件"必然是不同身份。
             "furniture": copy.deepcopy(t.get("furniture") or {}),
+            # 2.0 样式令牌：与家具同理由，必须进 params 才会在 apply 时生效，
+            # 且进 config_digest 才不会让"同一主题、不同表格语言"共用身份。
+            "table_style": t.get("table_style"),
+            "chart_style": t.get("chart_style"),
         },
     }
 
@@ -743,6 +827,9 @@ def list_themes() -> list[dict]:
             # picker entry as the 5 plain-color themes).
             "visual_upgrade": bool(t.get("visual_upgrade")),
             "style": copy.deepcopy(t.get("style") or {}),
+            # 2.0：把装帧语言与表格/图表语言一起交给界面，卡片不再只是色卡。
+            "table_style": t.get("table_style"),
+            "chart_style": t.get("chart_style"),
             # 家具摘要：界面要能说明"这套风格在页面上会画什么"，
             # 而不是只能给一个色卡。parts=0 表示这套主题不加任何构件。
             "furniture": {
@@ -964,11 +1051,11 @@ def apply_theme(pptx_path, out_path, theme_name: str | None = None,
             obj = sh.shape
             if getattr(obj, "has_table", False) and obj.has_table:
                 _style_table(obj.table, colors, fonts, sizes, changed,
-                             floor=size_floor)
+                             floor=size_floor, style=p.get("table_style"))
                 continue
             if getattr(obj, "has_chart", False) and obj.has_chart:
                 _style_chart(obj.chart, colors, fonts, sizes, changed,
-                             floor=size_floor)
+                             floor=size_floor, style=p.get("chart_style"))
                 continue
             if not sh.has_text:
                 continue
@@ -1347,8 +1434,18 @@ def _table_body_fg(bg_hex: str) -> str:
     return "000000" if contrast_ratio((0, 0, 0), rgb) >= contrast_ratio((255, 255, 255), rgb) else "FFFFFF"
 
 
-def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None):
+def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None,
+                 style: str | None = None):
+    """2.0 表格：编辑部式横线表。
+
+    1.x 给每个单元格画四边实线 + 实心表头 + 明显斑马纹，六套主题只是"同一张
+    Word 表格换颜色"。2.0 按 ``table_style`` 解算成不同的表格语言，但共守三条：
+    竖线一律关闭、表头只用一条强调线收口、数据行只用极细横线分隔。
+    文字、数据、行列对应、单元格几何全部不动。
+    """
     from pptx.util import Pt
+
+    rules = _table_style_rules(style, colors)
 
     # 表格字号下限：材料任务用 floor["table"]（缺省退回 body 键）；
     # 原稿路径不传 floor，行为不变（min(主题, 来源)）。
@@ -1369,8 +1466,12 @@ def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None):
 
     for ri, row in enumerate(tbl.rows):
         header = (ri == 0)
-        bg = colors["table_header_bg"] if header else (
-            colors["table_row_alt_bg"] if (ri % 2 == 0) else colors["table_row_bg"])
+        if header:
+            bg = colors["table_header_bg"]
+        elif rules["banded"] and (ri % 2 == 0):
+            bg = colors["table_row_alt_bg"]
+        else:
+            bg = colors["table_row_bg"]
         # Body rows: 取**对该行实际底色**对比度更高的纯黑或纯白，而不是写死黑色。
         #
         # 写死 "000000" 的理由曾是抗锯齿余量：1A1A1A 在白格上实测只到 3.69:1
@@ -1389,7 +1490,17 @@ def _style_table(tbl, colors, fonts, sizes, changed, floor: dict | None = None):
                 changed["fills_set"] += 1
             except Exception as e:  # noqa: BLE001
                 changed["warnings"].append(f"table fill: {type(e).__name__}")
-            _set_cell_borders(cell, colors["border"], changed)
+            # 2.0：显式关掉原稿带来的竖线与外框，只保留有语义的横线。
+            for side in ("L", "R", "T"):
+                _set_cell_edge(cell, side, None, 0, changed)
+            if header:
+                other = "T" if rules["accent_edge"] == "B" else "B"
+                _set_cell_edge(cell, other, None, 0, changed)
+                _set_cell_edge(cell, rules["accent_edge"], rules["accent_hex"],
+                               rules["accent_emu"], changed)
+            else:
+                hair_w = 6350 if rules["rule"] == "hairline" else 9525
+                _set_cell_edge(cell, "B", rules["hair_hex"], hair_w, changed)
             for para in cell.text_frame.paragraphs:
                 for run in para.runs:
                     run.font.size = _capped(table_theme_size, run, tbl_floor)
@@ -1406,11 +1517,21 @@ def _RGB(hexstr):
     return RGBColor.from_string(hexstr)
 
 
-def _set_cell_borders(cell, hex_color, changed, width_emu: int = 9525):
-    """给单元格四边加细边框（a:tcPr 里按 lnL/lnR/lnT/lnB 顺序插入）。"""
+_BORDER_TAGS = ("L", "R", "T", "B")
+_TAG_QN = {"L": "a:lnL", "R": "a:lnR", "T": "a:lnT", "B": "a:lnB"}
+
+
+def _set_cell_edge(cell, which: str, hex_color: str | None,
+                   width_emu: int, changed) -> None:
+    """设置单元格**单条**边的线型。
+
+    ``hex_color=None`` 写 ``a:noFill``（显式关掉原稿带来的竖线/外框）。
+    2.0 的现代表格只保留横线：四边实线框是 Word 表格感的主要来源。
+    """
     from pptx.oxml.ns import qn
     from lxml import etree
 
+    tag = _TAG_QN[which]
     try:
         tcPr = cell._tc.get_or_add_tcPr()
     except Exception as e:  # noqa: BLE001
@@ -1419,40 +1540,97 @@ def _set_cell_borders(cell, hex_color, changed, width_emu: int = 9525):
     order = ["a:lnL", "a:lnR", "a:lnT", "a:lnB", "a:lnTlToBr", "a:lnBlToTr", "a:cell3D",
              "a:noFill", "a:solidFill", "a:gradFill", "a:blipFill", "a:pattFill", "a:grpFill",
              "a:headers", "a:extLst"]
-    for tag in ("a:lnL", "a:lnR", "a:lnT", "a:lnB"):
-        ln = tcPr.find(qn(tag))
-        if ln is None:
-            ln = etree.SubElement(tcPr, qn(tag))
-            # 重新排到 schema 位置
-            idx = order.index(tag)
-            after = set(qn(t) for t in order[idx + 1:])
-            for child in list(tcPr):
-                if child is ln:
-                    continue
-                if child.tag in after:
-                    child.addprevious(ln)
-                    break
-        ln.set("w", str(width_emu))
-        ln.set("cap", "flat")
-        ln.set("cmpd", "sng")
-        ln.set("algn", "ctr")
-        for c in list(ln):
-            ln.remove(c)
+    ln = tcPr.find(qn(tag))
+    if ln is None:
+        ln = etree.SubElement(tcPr, qn(tag))
+        idx = order.index(tag)
+        after = set(qn(t) for t in order[idx + 1:])
+        for child in list(tcPr):
+            if child is ln:
+                continue
+            if child.tag in after:
+                child.addprevious(ln)
+                break
+    ln.set("w", str(width_emu))
+    ln.set("cap", "flat")
+    ln.set("cmpd", "sng")
+    ln.set("algn", "ctr")
+    for c in list(ln):
+        ln.remove(c)
+    if hex_color is None:
+        etree.SubElement(ln, qn("a:noFill"))
+    else:
         fill = etree.SubElement(ln, qn("a:solidFill"))
         clr = etree.SubElement(fill, qn("a:srgbClr"))
         clr.set("val", hex_color.upper())
         etree.SubElement(ln, qn("a:prstDash")).set("val", "solid")
 
 
-def _style_chart(chart, colors, fonts, sizes, changed, floor: dict | None = None):
+def _set_cell_borders(cell, hex_color, changed, width_emu: int = 9525):
+    """给单元格四边加细边框（保留 1.x 调用形状；2.0 的表格改走 _set_cell_edge）。"""
+    for which in _BORDER_TAGS:
+        _set_cell_edge(cell, which, hex_color, width_emu, changed)
+
+
+#: 表格风格 -> (表头背景, 表头文字, 数据行背景策略, 强调边, 强调宽度 EMU, 行分隔线)
+#: 2.0 的五种表格语言都遵守"只改样式"：不改数据、不改行列对应、不重排。
+_TABLE_STYLES: dict[str, dict] = {
+    # 公文：深墨表头 + 朱砂压线，数据行纯白、只留行线（无斑马、无竖线）
+    "editorial": {"banded": False, "rule": "bottom",
+                  "accent_edge": "B", "accent_color": "accent", "accent_pt": 2.0},
+    # 商务：深松表头 + 黄铜顶线，极淡斑马作行节奏
+    "ruled": {"banded": True, "rule": "top",
+              "accent_edge": "T", "accent_color": "accent", "accent_pt": 2.0},
+    # 仪表：深底数据卡，冰蓝表头压线，行间极淡横线
+    "data": {"banded": True, "rule": "hairline",
+             "accent_edge": "B", "accent_color": "primary", "accent_pt": 1.5},
+    # 书卷：浅纸表头 + 墨色压线，零斑马，最轻的分隔
+    "quiet": {"banded": False, "rule": "hairline",
+              "accent_edge": "B", "accent_color": "primary", "accent_pt": 1.25},
+    # 影院：深炭表头 + 香槟金顶线，行间细线
+    "cinema": {"banded": True, "rule": "hairline",
+               "accent_edge": "T", "accent_color": "primary", "accent_pt": 2.0},
+}
+
+
+def _table_style_rules(style: str | None, colors: dict) -> dict:
+    """把风格令牌解算成具体颜色与线宽；未知风格失败关闭到 editorial。"""
+    s = _TABLE_STYLES.get(style or "editorial") or _TABLE_STYLES["editorial"]
+    return {
+        "banded": s["banded"],
+        "rule": s["rule"],
+        "accent_edge": s["accent_edge"],
+        "accent_hex": colors[s["accent_color"]],
+        "accent_emu": int(round(s["accent_pt"] * 12700)),
+        "hair_hex": colors["border"],
+    }
+
+
+_CHART_STYLES: dict[str, dict] = {
+    # 2.0：外框与默认粗网格是"Office 默认图表"的观感来源，绝大多数风格关掉它们。
+    # 只有 grid/data 保留极细水平网格，且颜色取自主题的低饱和 border 色。
+    "minimal": {"frame": False, "grid": False},
+    "grid":    {"frame": True,  "grid": True, "grid_color": "border", "grid_pt": 0.5},
+    "data":    {"frame": False, "grid": True, "grid_color": "chart_grid", "grid_pt": 0.5},
+    "quiet":   {"frame": False, "grid": False},
+    "cinema":  {"frame": False, "grid": False},
+}
+
+
+def _style_chart(chart, colors, fonts, sizes, changed, floor: dict | None = None,
+                 style: str | None = None):
     """图表：文字/图例/绘图区/序列配色；**不改数据、类别、系列对应与轴范围**。
 
     `floor`（材料任务）：chart_text 下限，默认主题 chart_text=13/14 时
     不低于 16pt（可读性基线）。
+    `style`（2.0）：外框与网格线的有无，按主题装帧语言解算。
     """
     from pptx.util import Pt
     from pptx.oxml.ns import qn
     from lxml import etree
+
+    cs_rule = _CHART_STYLES.get(style or "minimal") or _CHART_STYLES["minimal"]
+    frame_hex = colors["border"] if cs_rule["frame"] else colors["chart_bg"]
 
     chart_text_pt = float(sizes["chart_text"])
     if floor and floor.get("chart_text"):
@@ -1500,7 +1678,7 @@ def _style_chart(chart, colors, fonts, sizes, changed, floor: dict | None = None
             spPr = etree.Element(qn("c:spPr"))
             cs.insert_element_before(spPr, "c:txPr", "c:externalData", "c:printSettings",
                                      "c:userShapes", "c:extLst")
-        _fill_spPr(spPr, colors["chart_bg"], colors["border"])
+        _fill_spPr(spPr, colors["chart_bg"], frame_hex)
         ok.append("chart_bg")
     except Exception as e:  # noqa: BLE001
         changed["warnings"].append(f"chart bg: {type(e).__name__}")
@@ -1511,7 +1689,7 @@ def _style_chart(chart, colors, fonts, sizes, changed, floor: dict | None = None
         pspPr = pa.find(qn("c:spPr"))
         if pspPr is None:
             pspPr = etree.SubElement(pa, qn("c:spPr"))
-        _fill_spPr(pspPr, colors["surface"], colors["border"])
+        _fill_spPr(pspPr, colors["surface"], frame_hex)
         ok.append("plot_bg")
     except Exception as e:  # noqa: BLE001
         changed["warnings"].append(f"plot bg: {type(e).__name__}")
@@ -1532,10 +1710,17 @@ def _style_chart(chart, colors, fonts, sizes, changed, floor: dict | None = None
         except Exception as e:  # noqa: BLE001
             changed["warnings"].append(f"series{i}: {type(e).__name__}")
 
-    # 网格线
+    # 网格线：2.0 默认隐藏（Office 默认粗网格是"未设计"的观感来源），
+    # 只有 grid/data 风格保留 0.5pt 低饱和水平线。
     try:
-        chart.value_axis.major_gridlines.format.line.color.rgb = _RGB(colors["chart_grid"])
-        ok.append("grid")
+        grid_line = chart.value_axis.major_gridlines.format.line
+        if cs_rule["grid"]:
+            grid_line.color.rgb = _RGB(colors[cs_rule["grid_color"]])
+            grid_line.width = Pt(cs_rule["grid_pt"])
+            ok.append("grid")
+        else:
+            grid_line.fill.background()
+            ok.append("grid_hidden")
     except Exception as e:  # noqa: BLE001
         changed["warnings"].append(f"grid: {type(e).__name__}")
 

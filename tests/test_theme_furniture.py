@@ -19,6 +19,7 @@ import hashlib
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -327,7 +328,14 @@ class FurniturePlacementTests(unittest.TestCase):
             a, b = tmp / "a.pptx", tmp / "b.pptx"
             T.apply_theme(src, a, theme_name="wengao-minimal")
             T.apply_theme(src, b, theme_name="wengao-minimal")
-            self.assertEqual(_sha(a), _sha(b), "两次套用同一主题得到了不同字节")
+            # 比较除 docProps 外的全部部件：zip 容器的核心属性带创建时间戳，
+            # 两次保存恰好跨秒时容器字节必然不同（2026-11-05 实测 flaky 一次）；
+            # 确定性的本意是"渲染内容逐字节可复现"，所以按部件断言。
+            def parts(path: Path) -> dict:
+                with zipfile.ZipFile(path) as z:
+                    return {n: z.read(n) for n in z.namelist()
+                            if not n.startswith("docProps/")}
+            self.assertEqual(parts(a), parts(b), "两次套用同一主题得到了不同内容")
 
     def test_preserve_and_adaptive_add_nothing(self):
         with tempfile.TemporaryDirectory() as tmp:

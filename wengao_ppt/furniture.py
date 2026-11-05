@@ -234,6 +234,14 @@ def apply_to(prs, ident: dict) -> dict:
             shp.fill.fore_color.rgb = RGBColor.from_string(part.color)
             shp.line.fill.background()
             shp.shadow.inherit = False          # DECOR_RULES: 无阴影
+            # 2.0：显式填充/线条已经写全，删掉 p:style 才能真的"零效果"。
+            # python-pptx 新建形状默认带 <p:style> 的 effectRef idx=2，LibreOffice
+            # 会据此给每根色带套一层灰色投影；1.x 构件少看不出来，2.0 每页
+            # 十几条刻度的阴影叠在一起，装帧立刻显脏（2026-11-05 渲染对照实测）。
+            from pptx.oxml.ns import qn as _qn
+            style_el = shp._element.find(_qn("p:style"))
+            if style_el is not None:
+                shp._element.remove(style_el)
             try:
                 shp.name = f"wg-furniture:{spec['id']}:{part.index}"
             except Exception:  # noqa: BLE001
