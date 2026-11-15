@@ -108,10 +108,39 @@
 5. **技能包已就绪**：`SKILL.md`（按平台真实 frontmatter 字段重写，与项目
    原有 `SKILL.md` 并存、互不覆盖——原有那份是面向"Claude Code Skill 生态"
    的约定，这份是专门给 WorkBuddy 市场用的）+ `scripts/setup.sh`，打包后
-   zip 仅 5.7KB，远低于 3MB 限制。**尚未上传、尚未提交审核**——上传需要
+   zip 仅 5.3KB，远低于 3MB 限制。**尚未上传、尚未提交审核**——上传需要
    所有者在真实页面点确认，提交审核前还要走收入变现的实名入驻（见
    `/docs/monetization`：个人主体要填真实姓名、证件号、手机号、收款信息，
    然后跳转微信签约），这几步我不能代办。
+
+6. **完整陌生人安装链路已真实跑通，过程中又发现并修好一个真缺陷**。本机
+   沙箱访问 GitHub 时 HTTP/2 连接反复被取消（`curl 92`/`curl 18`，网络层
+   问题，与仓库内容无关），改用 `-c http.version=HTTP/1.1` 重试后成功。
+   在一份**全新、从未碰过的本地目录**里完整走了一遍：
+   `git clone`（公开仓库）→ `git submodule update --init --recursive`
+   （`vendor/luobo-ppt` 真实落地，`LICENSE`/`README.md`/`assets` 等文件都在，
+   HEAD 核对一致）→ 全新 `python3 -m venv .venv` → `pip install -r
+   requirements.txt` → `precheck → run --skip-scene-photos → validate →
+   publish → export`。
+
+   这条路径在 `validate` 处第一次失败：`ModuleNotFoundError: No module
+   named 'numpy'`，`layout.hard_gate` 判 `NOT_EVALUABLE`，整单从
+   `DEVELOPMENT_CANDIDATE` 降级成 `NEEDS_REVIEW`（3 条 REVIEW finding）。
+   根因：`scripts/layout_gate.py` 是随安装载荷分发的运行期门禁实现
+   （`PAYLOAD-POLICY.md` 写明"必须随载荷安装"），依赖 numpy，但历史依赖
+   扫描只覆盖了 `wengao_ppt/` 包内 import，没扫 `scripts/`，`requirements.txt`
+   一直缺这一行——作者本机长期维护的 `.venv` 早就因为别的原因装过 numpy，
+   这个缺口从未在真实"从零安装"路径上暴露过，直到今天为了验证技能包的
+   `setup.sh` 才第一次走到这条路径（commit `6595d03`）。
+
+   修复只加了一行 `numpy` 到 `requirements.txt`；同一个 job 原地重新跑
+   `validate`：13/13 checks 全 `EXECUTED`、0 finding、`DEVELOPMENT_CANDIDATE`。
+   随后 `publish`→`export` 也在这份全新环境里真实跑通，产出了真实的
+   `.pptx`/`.pdf`/3 张逐页 PNG。全量回归 864 passed/1 skipped/0 errors，
+   未受影响。
+
+   **结论**：技能包的 `scripts/setup.sh` 现在经过了一次真正的"陌生人从零
+   安装"验证，不是纸面推演。
 
 ## 1. 复核方法与真实证据（状态词汇按项目 AGENTS.md）
 
