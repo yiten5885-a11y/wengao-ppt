@@ -1,0 +1,3 @@
+[submodule "vendor/luobo-ppt"]
+	path = vendor/luobo-ppt
+	url = https://github.com/zhouwei713/luobo-ppt.git
