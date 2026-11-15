@@ -1,10 +1,17 @@
-# 由 runner/build_release_candidate.py 按源码真实 import 生成。
+# 原按 wengao_ppt/ 包内真实 import 生成，漏了 scripts/layout_gate.py——
+# 它是随安装载荷分发的运行期门禁实现（见 PAYLOAD-POLICY.md），不是开发期
+# 工具，但依赖扫描只覆盖了包内代码，没扫 scripts/。2026-11-15 用一次真实
+# 的全新 clone + `pip install -r requirements.txt` 复现："No module named
+# 'numpy'" → layout.hard_gate 判 NOT_EVALUABLE → 整单 NEEDS_REVIEW（而不是
+# DEVELOPMENT_CANDIDATE）。之前的全链验收一直在本机长期维护的 .venv 里跑，
+# 那个 venv 早就因为别的原因装过 numpy，掩盖了这个缺口。
 # 可复现安装（2026-10-20 监督复核补充）：下方"已验证版本"是本候选
 # 全链验收（precheck→run→validate→export + 中文渲染冒烟）实际使用的版本，
 # 干净隔离安装请按此锁定；不同平台以各自实际验证结果为准，不做跨平台声称。
 Pillow
 cryptography
 lxml
+numpy
 openpyxl
 pypdf
 pypdfium2
@@ -19,6 +26,10 @@ python-pptx
 # pypdfium2==5.14.0
 # python-docx==1.2.0
 # python-pptx==1.0.2
+#
+# numpy 版本未在 2026-10-20 那轮验证范围内（当时的依赖扫描漏了它）；
+# 2026-11-15 的真实安装+冒烟用的是 pip 当时解析到的最新兼容版本，
+# 未额外锁定——如需严格复现，请按你自己验证通过的版本补一行 numpy==x.y.z。
 #
 # 可复现安装说明：
 #   python3 -m venv .venv && . .venv/bin/activate
