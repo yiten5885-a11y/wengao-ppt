@@ -5,6 +5,63 @@
 > 本轮核验的是 `build/wengao-visual-v13-material-fix/`（HEAD `40a3edf7`，87 commits，
 > 本地领先 `origin/main` 12 个提交，远端 `git@github.com:yiten5885-a11y/wengao-ppt.git`）。
 
+> **2026-11-15 当天追加（所有者已决策，见下方 §0）**：§2 的方案 B 已实现并验证
+> （commit `59c41c7`，HEAD 变为 `59c41c7a2ee89f1b551646ad2b993dd4e0cb4e72`）；
+> 本地领先的提交已 `git push` 到 `origin/main`（`544a3bc..59c41c7`）；用现有 Gemini
+> Key 补跑云端端到端验证的尝试已执行，结果见 §0.3（账户欠费，不是代码问题）。
+
+## 0. 本轮（同一天内）追加结论
+
+### 0.1 §2 方案 B：已实现、已验证
+
+新增 `wengao_ppt.cli run --skip-scene-photos`：开启后不探测、不调用任何本机/云端
+模型，直接写入诚实标注 `skipped_by_user=True` 的空场景计划；`scene_stage_verdict`
+与 `scene_no_photo_outcomes` 两个纯函数各加一条独立短路分支，不与"模型判定零场景
+触发硬规则"的既有纪律混用；`validate` 的 HG13 门禁据此走既有 `capacity_only` 分支
+判 `EXECUTED`/非阻断。
+
+**真实前后对比**（同一份合成 3 页 `.pptx`，本机确认无任何模型端点可达）：
+
+| | 命令 | 结果 |
+| --- | --- | --- |
+| 之前 | `run --allow-text-card-fallback` | `FAILED` / `MODEL.RUNTIME_UNAVAILABLE`（preflight 阶段即失败，该标志覆盖不到"端点连不上"） |
+| 之后 | `run --skip-scene-photos` → `validate` → `publish` → `export` | **全部真实跑通**：`validate` 13/13 checks 全 `EXECUTED`（含 `visual.semantic_scene_coverage`）、0 blocking、`RENDER.OK`；`export` 产出真实 `.pptx`/`.pdf`/3 张逐页 PNG，SHA256 已绑定；`publish` 判定 `DEVELOPMENT_CANDIDATE` |
+
+回归：`scripts/run_full_regression.sh` 862→**864 passed**（新增 2 例分别锁定两个
+短路分支）、1 skipped（原有、与本次改动无关）、0 errors。
+
+同时顺带把 README.md/README_EN.md 的许可证状态行、SKILL.md 的
+`license`/`homepage`/`description_en` 与上架检查表同步成已核验的真实状态（MIT
+已决策、仓库地址已可填），不是代码逻辑变更。
+
+### 0.2 Git 推送：已完成
+
+`git push origin main` → `544a3bc..59c41c7  main -> main`，GitHub 仓库页面现在
+展示的就是本轮修复后的代码。
+
+### 0.3 云端端到端验证：已尝试，账户欠费，非代码缺陷
+
+按所有者授权，用其现有 Gemini Key 补了一次真实调用：通过项目自带的
+`cloud_model_config.save()` 把 `text_model` 临时设为 `gemini-3.8-flash`（复用
+已配置的 vision_model 同名模型），对同一份合成稿重新 `run --allow-text-card-fallback`
+（不带新加的 skip 标志，走的是原有的强制语义场景路径，验证"云端配置齐全时原有
+路径确实能跑"）。
+
+**真实结果**：`MODEL.CLOUD_HTTP_ERROR`，HTTP 402，Gemini 返回
+`"Your prepayment credits are depleted... RESOURCE_EXHAUSTED"`——**账户没有预付
+余额，不是代码或配置问题**。项目自身的错误分类与详情提示（引导去
+`ai.studio/projects` 管理账单）工作正常，没有被误判为别的错误类型。
+
+验证完成后，`text_model` 已改回原值（空字符串），`cloud_model.json` 恢复到本轮
+开始前的状态（只留一份 `.bak-20261104-vision-cloud` 历史备份，本轮产生的临时
+备份已清理）——**没有在账户配置上留下本轮改动的痕迹**。
+
+**结论**：要拿到一次真正成功的"云端配图"端到端证据，需要所有者先给这个 Gemini
+项目充值（或换一个有余额的 Key/模型）。在此之前，"有模型后端时原有路径能正常
+走完"这一点，只能靠代码审查 + 单元/回归测试覆盖佐证，还没有一次真正跑到
+`validate`/`export` 的云端真实证据——§2 方案 B（跳过开关）的证据是完整的，
+方案 A 覆盖的"原有强制路径"证据仍不完整。
+
 ## 1. 复核方法与真实证据（状态词汇按项目 AGENTS.md）
 
 | 检查 | 命令 | 结果 | 状态 |
@@ -38,16 +95,24 @@
 - 1 个测试在本沙箱环境里仍报 `SKIPPED`（`tests/test_transitions.py:144`，判断逻辑只认 `/Applications/LibreOffice.app`，没跟进 2026-11-05 加入的用户级安装路径探测）；真实渲染器探测（`runner.py`）已经修好且实测 `available`，这只是一条测试自身的次要遗留，不影响产品行为。
 - `cloud_model.json` 已配置 Gemini vision/image-gen，但 `text_model` 字段为空字符串，导致云端文本路径判定为不可用、回退去探测本机端点。是否补上 `text_model` 并据此产生一次真实的云端端到端验证，属于会消耗该账户 API 额度的操作，本轮未代为决定（详见 §4）。
 
-## 4. 需要你决定的三件事
+## 4. 当天已决策、已执行的三件事（原始提问保留存档）
 
-1. **§2 的 A/B 怎么选**：先诚实标注门槛上架，还是先加一个真正能跳过配图阶段的开关再上架？
-2. **是否把本地领先的 12 个提交 `git push` 到 `origin/main`**？（我没有主动推送——推送到远端属于需要你明确授权的操作。）
-3. **是否同意我用你现有 Gemini API Key 补一次真实云端端到端验证**（设置 `text_model` 并跑一次真实 `precheck→run→validate→export`）？会产生与 Gemini 当前计费方案一致的真实调用费用，具体几次调用由任务页数决定（材料任务通常 6-10 次文本/视觉调用）。
+1. ~~§2 的 A/B 怎么选~~ → **选了 B，已实现并验证（§0.1）。**
+2. ~~是否推送本地领先的提交~~ → **已推送（§0.2）。**
+3. ~~是否用 Gemini Key 补验证~~ → **已尝试，账户欠费，非代码问题（§0.3）。**
+
+仍然悬而未决的只剩一件事，不是我能替你决定的：**给这个 Gemini 项目充值（或换一个
+有余额的 Key），才能拿到一次云端路径的真实成功证据。** 在此之前，"原有强制配图
+路径、云端配置齐全时能正常走完"只有代码与单测佐证，没有一次真正跑到底的任务
+作为证据；"零配置跳过配图"的新开关证据是完整的。
 
 ## 5. 结论（按项目状态词汇，不越权签发 verdict）
 
 本轮不签发 `release_ready`/最终 verdict（项目规则禁止模型写入该字段）。基于以上真实证据：
 
 - 工程质量、测试覆盖、合规卫生：**阶段通过**（相对"本地优先、买家自带模型"的定位）。
-- 即插即用（零配置）体验：**未达标**，根因见 §2，需所有者在 A/B 间决策。
+- 即插即用（零配置）体验：**本轮已达标**——`--skip-scene-photos` 让"美化已有 PPTX"
+  在零模型配置下也能真实跑完 `precheck→run→validate→publish→export`（§0.1 证据）。
+- 原有的"强制语义配图"路径：**修复已验证**（回归层面），**行为已测但云端成功
+  证据缺失**（§0.3：账户欠费挡住了一次真正的云端端到端成功）。
 - 上架流程（SkillHub/GitHub 账号登录、2FA、实名、签署条款）：**我不能代办**，需你本人完成；本轮只准备材料。

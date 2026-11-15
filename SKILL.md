@@ -4,12 +4,15 @@ slug: wengao-ppt
 displayName: 稳稿 PPT
 version: 0.1.0-dev-candidate
 summary: 本地优先的 PPTX 生成与美化；产物必须经独立验收器重读落盘文件才算数，生成器自报一律不采信。
-description: 从原始材料（md/txt/docx）生成 PPTX、或美化已有 PPTX，并由独立验收器重读磁盘上的 PPTX/PDF/渲染像素/字形轮廓给出结论。当用户要做述职汇报、经营评审、投标演示、培训课件，或需要把长材料变成结构规范、事实不丢字、配图有来源且合规的原生 PPTX 时使用。当前为开发候选：母语以外的 26 种语言只有离线识别与规划器样例的单测证据，真实端到端 0/26；50 套真实生成 0/50；需要本机模型（llama-server/Ollama，或已配置的云端模型端点）与 LibreOffice 才能跑真实链路和渲染门禁——语义场景配图是所有主题/所有路径的强制阶段，不配模型时**连纯美化任务也无法跑完**。
+description: 从原始材料（md/txt/docx）生成 PPTX、或美化已有 PPTX，并由独立验收器重读磁盘上的 PPTX/PDF/渲染像素/字形轮廓给出结论。当用户要做述职汇报、经营评审、投标演示、培训课件，或需要把长材料变成结构规范、事实不丢字、配图有来源且合规的原生 PPTX 时使用。当前为开发候选：母语以外的 26 种语言只有离线识别与规划器样例的单测证据，真实端到端 0/26；50 套真实生成 0/50；由原始材料生成 PPTX，以及"美化已有 PPTX"时默认的语义场景配图，都需要本机模型
+（llama-server/Ollama，或已配置的云端模型端点）与 LibreOffice 才能跑真实链路和
+渲染门禁；但 2026-11-15 起，纯美化支持 `run --skip-scene-photos` 零配置模式——
+不配任何模型，只装 LibreOffice 也能真实跑完 precheck→run→validate→publish→export。
 license: MIT
 category: 办公效率
 tags: ["PPTX", "演示文稿", "本地模型", "独立验收", "多语言", "场景配图", "中文排版"]
 homepage: https://github.com/yiten5885-a11y/wengao-ppt
-description_en: Generates PPTX from raw material (md/txt/docx) or beautifies an existing PPTX; every verdict is produced by an independent verifier that re-reads the PPTX/PDF/rendered pixels/glyph outlines on disk, never the generator's own self-report. Use it for status reports, business reviews, pitch decks, or training materials where long source material must become a structurally correct, fact-preserving, properly-licensed native PPTX. Current status is a development candidate: the 26 non-native languages only have offline-detection and planner-sample unit-test evidence (0/26 real end-to-end runs); 50 real generation runs are 0/50. Requires a local model (llama-server/Ollama, or a configured cloud endpoint) plus LibreOffice to run the real pipeline and render gates — a bare install with no model backend cannot complete any job, beautify included.
+description_en: Generates PPTX from raw material (md/txt/docx) or beautifies an existing PPTX; every verdict is produced by an independent verifier that re-reads the PPTX/PDF/rendered pixels/glyph outlines on disk, never the generator's own self-report. Use it for status reports, business reviews, pitch decks, or training materials where long source material must become a structurally correct, fact-preserving, properly-licensed native PPTX. Current status is a development candidate: the 26 non-native languages only have offline-detection and planner-sample unit-test evidence (0/26 real end-to-end runs); 50 real generation runs are 0/50. Material generation and the default scene-photo illustration path need a local model (llama-server/Ollama, or a configured cloud endpoint) plus LibreOffice. Since 2026-11-15, plain beautify also supports a zero-config `run --skip-scene-photos` mode that needs only LibreOffice — no model backend required.
 ---
 
 # 稳稿 PPT（WenGao PPT）
