@@ -77,3 +77,15 @@ def test_text_cards_alone_passes():
     v = scene_stage_verdict(_plan(scenes=[{"scene_key": "s1"}],
                                   text_cards={"s1": {"page": 1}}))
     assert v["blocks"] is False
+
+
+def test_skipped_by_user_passes_even_with_zero_scenes():
+    """--skip-scene-photos：用户主动跳过，不是模型判定零场景，不触发硬规则。
+
+    区别于 test_zero_scenes_with_hard_rule_blocker_blocks：那条锁的是"模型
+    判定没有场景不许装成有图"；这里锁的是"用户主动不跑这个阶段"，两者必须
+    走不同出口，不能用同一套 unresolved 语义混在一起。
+    """
+    v = scene_stage_verdict(_plan(skipped_by_user=True))
+    assert v["blocks"] is False
+    assert v["detail_kind"] == "skipped_by_user"

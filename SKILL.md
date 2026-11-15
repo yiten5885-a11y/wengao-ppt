@@ -4,11 +4,12 @@ slug: wengao-ppt
 displayName: 稳稿 PPT
 version: 0.1.0-dev-candidate
 summary: 本地优先的 PPTX 生成与美化；产物必须经独立验收器重读落盘文件才算数，生成器自报一律不采信。
-description: 从原始材料（md/txt/docx）生成 PPTX、或美化已有 PPTX，并由独立验收器重读磁盘上的 PPTX/PDF/渲染像素/字形轮廓给出结论。当用户要做述职汇报、经营评审、投标演示、培训课件，或需要把长材料变成结构规范、事实不丢字、配图有来源且合规的原生 PPTX 时使用。当前为开发候选：母语以外的 26 种语言只有离线识别与规划器样例的单测证据，真实端到端 0/26；50 套真实生成 0/50；需要本机模型（llama-server/Ollama）与 LibreOffice 才能跑真实链路和渲染门禁。
-license: PENDING_OWNER_DECISION
+description: 从原始材料（md/txt/docx）生成 PPTX、或美化已有 PPTX，并由独立验收器重读磁盘上的 PPTX/PDF/渲染像素/字形轮廓给出结论。当用户要做述职汇报、经营评审、投标演示、培训课件，或需要把长材料变成结构规范、事实不丢字、配图有来源且合规的原生 PPTX 时使用。当前为开发候选：母语以外的 26 种语言只有离线识别与规划器样例的单测证据，真实端到端 0/26；50 套真实生成 0/50；需要本机模型（llama-server/Ollama，或已配置的云端模型端点）与 LibreOffice 才能跑真实链路和渲染门禁——语义场景配图是所有主题/所有路径的强制阶段，不配模型时**连纯美化任务也无法跑完**。
+license: MIT
 category: 办公效率
 tags: ["PPTX", "演示文稿", "本地模型", "独立验收", "多语言", "场景配图", "中文排版"]
-homepage: PENDING_OWNER_DECISION
+homepage: https://github.com/yiten5885-a11y/wengao-ppt
+description_en: Generates PPTX from raw material (md/txt/docx) or beautifies an existing PPTX; every verdict is produced by an independent verifier that re-reads the PPTX/PDF/rendered pixels/glyph outlines on disk, never the generator's own self-report. Use it for status reports, business reviews, pitch decks, or training materials where long source material must become a structurally correct, fact-preserving, properly-licensed native PPTX. Current status is a development candidate: the 26 non-native languages only have offline-detection and planner-sample unit-test evidence (0/26 real end-to-end runs); 50 real generation runs are 0/50. Requires a local model (llama-server/Ollama, or a configured cloud endpoint) plus LibreOffice to run the real pipeline and render gates — a bare install with no model backend cannot complete any job, beautify included.
 ---
 
 # 稳稿 PPT（WenGao PPT）
@@ -160,11 +161,11 @@ python -m wengao_ppt.cli edit-restore --job-id <JOB> --version-id <VERSION>
 | 4 | `version`（必需，SkillHub） | 已完成：`0.1.0-dev-candidate`（对应 `__version__ = 0.1.0`） |
 | 5 | `summary`（上架展示） | 已完成 |
 | 6 | `description`（触发/边界说明） | 已完成（已写实到状态与限制） |
-| 7 | `description_en` | **未完成**：英文描述尚未补进 front-matter（英文内容当前只在 `README_EN.md`） |
-| 8 | `license`（必需） | **阻断**：自有代码许可证未定，当前填 `PENDING_OWNER_DECISION`，不得上架 |
+| 7 | `description_en` | **已完成（2026-11-15）**：已补进 front-matter |
+| 8 | `license`（必需） | **已解除（2026-11-04 所有者决策：MIT）**：front-matter 已改 `license: MIT`，仓库根 `LICENSE` 已写入 |
 | 9 | `category` / `tags` | 已填写（`category: 办公效率`）；**上架分类与标签仍建议由所有者按平台规范复核** |
-| 10 | `homepage` / 仓库地址 | **阻断**：待所有者提供仓库地址后填写 |
-| 11 | 封面图 / 截图 | **未完成**：候选 `assets/` 内 5 张 AI 生成图与 5 张 Pexels 图的许可均未理清（BLK-02 / BLK-03），不得用作封面 |
+| 10 | `homepage` / 仓库地址 | **已解除（2026-11-15）**：已填 `https://github.com/yiten5885-a11y/wengao-ppt`；**仍需所有者本人 `git push` 后该地址才真实可访问**（本地领先 origin 12 个提交，未推送） |
+| 11 | 封面图 / 截图 | **建议方案**：不要用 `assets/visual_img/` 下的 AI 生成图或 Pexels 图（许可未理清，且安装载荷本就排除它们）；改用项目自己产出的渲染预览图，如 `reports/themes-20261105-v2/final-page-01.png` / `final-page-03.png`（本项目原生产物，无第三方版权顾虑）。实际选图仍建议所有者过目后再定稿 |
 | 12 | README 可执行性 | 已完成（中英双语，命令已分级标记） |
 | 13 | 第三方声明 | 已完成（`THIRD-PARTY-NOTICES.md` + `LICENSE-MATRIX.md`） |
 | 14 | 发布消毒 | 已完成（工具 + 扫描 + 副本，见 `reports/p2-license-release-20261023/`） |

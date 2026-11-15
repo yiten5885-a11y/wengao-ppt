@@ -13,7 +13,7 @@
 | 交付状态 | `DEVELOPMENT_CANDIDATE`，`release_ready=false` | 本仓现阶段不得标记为就绪；入口不得绕过运行器自行签发 READY |
 | 自有代码版本 | `0.1.0` | `wengao_ppt/__init__.py` 的 `__version__`，实测 `python -m wengao_ppt.cli --version` → `0.1.0` |
 | 是否已公开发布 | **否**。未发布到 GitHub / SkillHub | 发布前清单见 `SKILL.md` 末节 |
-| 许可证（自有代码） | **待所有者选定**，暂无 `LICENSE` 文件 | 见 `THIRD-PARTY-NOTICES.md` 与 `reports/p2-license-release-20261023/LICENSE-MATRIX.md`（BLK-01） |
+| 许可证（自有代码） | **MIT**（2026-11-04 所有者决策），仓库根 `LICENSE` 已写入 | 见 `LICENSE-STATUS.md` 第三节、`LICENSE` |
 
 **本文档中命令的可信等级**（不得自行抬级）：
 

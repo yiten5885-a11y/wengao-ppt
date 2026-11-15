@@ -128,6 +128,21 @@ class TestSceneNoPhotoOutcomes(unittest.TestCase):
         self.assertFalse(result["no_photo"])
         self.assertFalse(result["capacity_only"])
 
+    def test_skipped_by_user_is_accounted_without_any_scenes(self):
+        """--skip-scene-photos：没有一个规划场景，也必须判 EXECUTED。
+
+        不能走 test_three_empty_exits_still_block 那条路径（零场景+无出口=
+        阻断）——那条锁的是"模型判定零场景却没有出口"，这里是用户主动不跑
+        这个阶段，二者语义不同，不能共用同一个 all_scenes_accounted 判定。
+        """
+        plan = _plan([])
+        plan["skipped_by_user"] = True
+        result = scene_no_photo_outcomes(plan)
+        self.assertTrue(result["capacity_only"])
+        self.assertTrue(result["all_scenes_accounted"])
+        self.assertTrue(result["skipped_by_user"])
+        self.assertFalse(scene_stage_verdict(plan)["blocks"])
+
     def test_text_cards_as_list_is_tolerated(self):
         """text_cards 历史/外部形状为 list 时不崩，且按同一纪律校验。"""
         plan = _plan(["a"], text_cards=[

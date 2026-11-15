@@ -13,7 +13,7 @@ WenGao PPT is a high-quality PPTX generation and beautification engine built on 
 | Delivery status | `DEVELOPMENT_CANDIDATE`, `release_ready=false` | No entry point may issue READY on its own |
 | Own-code version | `0.1.0` | `__version__` in `wengao_ppt/__init__.py`; verified by `python -m wengao_ppt.cli --version` → `0.1.0` |
 | Published? | **No.** Not on GitHub or SkillHub | Pre-release checklist: see the last section of `SKILL.md` |
-| License (own code) | **Pending owner decision**; no `LICENSE` file yet | See `THIRD-PARTY-NOTICES.md` and `reports/p2-license-release-20261023/LICENSE-MATRIX.md` (BLK-01) |
+| License (own code) | **MIT** (owner decision, 2026-11-04); `LICENSE` is present at repo root | See `LICENSE-STATUS.md` §3 and `LICENSE` |
 
 **Trust levels used in this document** (do not upgrade them):
 

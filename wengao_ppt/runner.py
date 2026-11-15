@@ -149,6 +149,10 @@ def scene_stage_verdict(scene_plan: dict) -> dict:
     阻断是**正确**语义；cleanroom harness 应显式携带 --allow-text-card-fallback
     （等价于用户在界面勾选兜底），见 reports/install-cleanroom-20261104-r7。
     """
+    if scene_plan.get("skipped_by_user"):
+        # 用户主动跳过（--skip-scene-photos）：未执行场景检测，不是模型判定
+        # 没有场景。诚实记为单独出口，不与 unresolved/no_images 两种真失败混淆。
+        return {"blocks": False, "blockers": [], "detail_kind": "skipped_by_user"}
     unresolved = scene_plan.get("unresolved_scenes") or []
     if unresolved:
         return {"blocks": True, "blockers": unresolved, "detail_kind": "unresolved"}
@@ -182,6 +186,15 @@ def scene_no_photo_outcomes(scene_plan: dict) -> dict:
     覆盖的规划场景，一律不算已解决——这里只做口径对齐，不放宽任何真实性门禁。
     """
     from . import semantic_scenes as _scenes
+
+    if scene_plan.get("skipped_by_user"):
+        # 用户主动跳过：没有规划场景、没有未覆盖项，诚实记为确定的
+        # "已跳过"结果，而不是"模型判定零场景"（capacity/text_card 二选一）。
+        return {
+            "no_photo": True, "outcomes": [], "capacity_only": True,
+            "all_scenes_accounted": True, "text_card_count": 0,
+            "capacity_count": 0, "skipped_by_user": True,
+        }
 
     images = scene_plan.get("images") or {}
     unplaced = scene_plan.get("unplaced_scenes") or []
@@ -1510,7 +1523,7 @@ class Runner:
         return info
 
     def run(self, job_id, timeout=3600, hold_after_build=0,
-           allow_text_card_fallback=False):
+           allow_text_card_fallback=False, skip_scene_photos=False):
         """执行候选生成（不写正式版本）。
 
         产物先落到 staging/<attempt_id>/，再经 submit_result 这个真实入口发布为 candidate。
@@ -1732,110 +1745,136 @@ class Runner:
             # 不依赖 visual_upgrade 开关。按原始输入的具体子场景挑全稿最佳页，
             # 插入一张大面积真实场景图；相同子场景/图片不会被逐页重复铺图。
             from . import semantic_scenes as scene_mod
-            self._stage(job_id, "semantic_scenes", "RUNNING",
-                        {"rules_version": scene_mod.VERSION,
-                         "note": "按全稿语义规划具体场景，检索授权图片并安全放置。"})
-            try:
-                scene_plan = scene_mod.build_plan(
-                    job["input_path"], themed, cache_dir=stage / "scene_assets",
-                    visual_plan=vplan,
-                    allow_text_card_fallback=allow_text_card_fallback)
-                save_json_atomic(scene_plan, stage / "scene_visual_plan.json")
-                verdict = scene_stage_verdict(scene_plan)
-                if verdict["blocks"]:
-                    blockers = verdict["blockers"]
-                    self._stage(job_id, "semantic_scenes", "FAILED",
-                            {"rules_version": scene_plan.get("rules_version"),
-                             "source_page_count": scene_plan.get("source_page_count"),
-                             "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
-                             "detected_scene_ids": scene_plan.get("detected_scene_ids"),
-                             "coverage_audit": {
-                                 "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
-                                 "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
-                                 "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
-                                 "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
-                             },
-                             "planned_scene_count": len(scene_plan.get("scenes") or []),
-                             "planned_photo_count": len(scene_plan.get("images") or {}),
-                             "text_card_count": len(scene_plan.get("text_cards") or {}),
-                             "unresolved_scenes": blockers,
-                             "plan_sha256": scene_plan.get("plan_sha256")})
-                    detail = ("场景照片或安全版位未完整解决。"
-                             if allow_text_card_fallback else
-                             "场景照片或安全版位未完整解决；未开启说明卡片兜底，"
-                             "整单阻断（可在生成时勾选「找不到配图时用说明卡片兜底」后重试）。")
-                    raise GateError("VISUAL.SCENE_UNRESOLVED", detail)
-                pre_scene = stage / (src.stem + ".themed.prescenes.pptx")
-                scene_output = stage / (src.stem + ".themed.scenes.pptx")
-                shutil.copyfile(themed, pre_scene)
-                scene_actions = scene_mod.apply_plan(themed, scene_plan, scene_output)
-                os.replace(scene_output, themed)
-                if vplan is not None:
-                    scene_mod.reconcile_visual_plan(vplan, scene_plan)
-                    save_json_atomic(vplan, stage / "visual_plan.json")
+            if skip_scene_photos:
+                # 用户显式要求跳过（--skip-scene-photos）：不探测、不调用任何
+                # 本机/云端模型，连通性问题也无从谈起。生成一份诚实标注
+                # "用户主动跳过"的空计划，供 validate 的 HG13 门禁识别为
+                # 确定出口（EXECUTED，非阻断），而不是"模型判定零场景"。
+                skip_plan = {
+                    "rules_version": scene_mod.VERSION,
+                    "skipped_by_user": True,
+                    "scenes": [], "images": {}, "text_cards": {},
+                    "unplaced_scenes": [], "unresolved_scenes": [],
+                    "detected_scene_ids": [],
+                    "source_page_count": len(doc.pages),
+                    "language_support": {}, "coverage_audit": {},
+                    "model_health": None,
+                }
+                skip_plan["plan_sha256"] = hashlib.sha256(
+                    json.dumps(skip_plan, sort_keys=True, ensure_ascii=False)
+                    .encode("utf-8")).hexdigest()
+                save_json_atomic(skip_plan, stage / "scene_visual_plan.json")
                 self._stage(job_id, "semantic_scenes", "DONE",
-                            {"rules_version": scene_plan.get("rules_version"),
-                             "source_page_count": scene_plan.get("source_page_count"),
-                             "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
-                             "detected_scene_ids": scene_plan.get("detected_scene_ids"),
-                             "coverage_audit": {
-                                 "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
-                                 "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
-                                 "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
-                                 "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
-                                 "response_sha256": (scene_plan.get("coverage_audit") or {}).get("response_sha256"),
-                             },
-                             "planned_scene_count": len(scene_plan.get("scenes") or []),
-                             "image_pages": sorted({int(v["page"]) for v in
-                                                     scene_plan.get("images", {}).values()}),
-                             "inserted": scene_actions.get("inserted", 0),
-                             "unresolved_scenes": [],
-                             # 版位不足未放置的场景如实上报，不静默吞掉。
-                             "unplaced_scenes": scene_plan.get("unplaced_scenes") or [],
-                             # 说明卡片兜底如实披露：哪些场景、什么原因没能配上真图。
-                             "text_card_count": len(scene_plan.get("text_cards") or {}),
-                             "text_card_scenes": [
-                                 {"scene_key": k, "page": v["page"],
-                                  "fallback_reason": v.get("fallback_reason")}
-                                 for k, v in (scene_plan.get("text_cards") or {}).items()],
-                             "plan_sha256": scene_plan.get("plan_sha256"),
-                             # 开跑前预检的端点健康摘要：内存压力等环境问题不阻断，
-                             # 但要留下证据，事后能判断失败是不是环境造成的。
-                             "model_health": scene_plan.get("model_health"),
-                             "output_sha256": sha256_file(themed)})
-            except scene_mod.SceneModelError as e:
-                model_error = e.as_record()
-                self._stage(job_id, "semantic_scenes", "FAILED",
-                            {"code": e.code, "detail": e.detail,
-                             "model_error": model_error})
-                self._mark_run_stage_failure(job_id, e.code, e.detail,
-                                              model_error=model_error)
-                raise GateError(e.code, e.detail) from None
-            except scene_mod.SemanticSceneError as e:
-                self._stage(job_id, "semantic_scenes", "FAILED",
-                            {"code": e.code, "detail": e.detail})
-                self._mark_run_stage_failure(job_id, e.code, e.detail)
-                raise GateError(e.code, e.detail) from None
-            except GateError as e:
-                self._mark_run_stage_failure(job_id, e.code, e.detail)
-                raise
-            except Exception as e:  # noqa: BLE001
-                classified = scene_mod.classify_external_model_failure(e)
-                if classified is not None:
-                    model_error = classified.as_record()
+                            {"skipped_by_user": True,
+                             "note": "用户指定 --skip-scene-photos：未执行场景检测，"
+                                     "未调用任何模型端点，整稿不含语义场景照片。",
+                             "plan_sha256": skip_plan["plan_sha256"]})
+                scene_plan = skip_plan
+            else:
+                self._stage(job_id, "semantic_scenes", "RUNNING",
+                            {"rules_version": scene_mod.VERSION,
+                             "note": "按全稿语义规划具体场景，检索授权图片并安全放置。"})
+                try:
+                    scene_plan = scene_mod.build_plan(
+                        job["input_path"], themed, cache_dir=stage / "scene_assets",
+                        visual_plan=vplan,
+                        allow_text_card_fallback=allow_text_card_fallback)
+                    save_json_atomic(scene_plan, stage / "scene_visual_plan.json")
+                    verdict = scene_stage_verdict(scene_plan)
+                    if verdict["blocks"]:
+                        blockers = verdict["blockers"]
+                        self._stage(job_id, "semantic_scenes", "FAILED",
+                                {"rules_version": scene_plan.get("rules_version"),
+                                 "source_page_count": scene_plan.get("source_page_count"),
+                                 "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
+                                 "detected_scene_ids": scene_plan.get("detected_scene_ids"),
+                                 "coverage_audit": {
+                                     "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
+                                     "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
+                                     "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
+                                     "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
+                                 },
+                                 "planned_scene_count": len(scene_plan.get("scenes") or []),
+                                 "planned_photo_count": len(scene_plan.get("images") or {}),
+                                 "text_card_count": len(scene_plan.get("text_cards") or {}),
+                                 "unresolved_scenes": blockers,
+                                 "plan_sha256": scene_plan.get("plan_sha256")})
+                        detail = ("场景照片或安全版位未完整解决。"
+                                 if allow_text_card_fallback else
+                                 "场景照片或安全版位未完整解决；未开启说明卡片兜底，"
+                                 "整单阻断（可在生成时勾选「找不到配图时用说明卡片兜底」后重试）。")
+                        raise GateError("VISUAL.SCENE_UNRESOLVED", detail)
+                    pre_scene = stage / (src.stem + ".themed.prescenes.pptx")
+                    scene_output = stage / (src.stem + ".themed.scenes.pptx")
+                    shutil.copyfile(themed, pre_scene)
+                    scene_actions = scene_mod.apply_plan(themed, scene_plan, scene_output)
+                    os.replace(scene_output, themed)
+                    if vplan is not None:
+                        scene_mod.reconcile_visual_plan(vplan, scene_plan)
+                        save_json_atomic(vplan, stage / "visual_plan.json")
+                    self._stage(job_id, "semantic_scenes", "DONE",
+                                {"rules_version": scene_plan.get("rules_version"),
+                                 "source_page_count": scene_plan.get("source_page_count"),
+                                 "detected_source_languages": (scene_plan.get("language_support") or {}).get("detected_source_languages", []),
+                                 "detected_scene_ids": scene_plan.get("detected_scene_ids"),
+                                 "coverage_audit": {
+                                     "status": (scene_plan.get("coverage_audit") or {}).get("status", "UNVERIFIED"),
+                                     "pages_checked": (scene_plan.get("coverage_audit") or {}).get("pages_checked", 0),
+                                     "missing_scene_count": len((scene_plan.get("coverage_audit") or {}).get("missing_scenes") or []),
+                                     "merged_distinct_scene_count": len((scene_plan.get("coverage_audit") or {}).get("merged_distinct_scenes") or []),
+                                     "response_sha256": (scene_plan.get("coverage_audit") or {}).get("response_sha256"),
+                                 },
+                                 "planned_scene_count": len(scene_plan.get("scenes") or []),
+                                 "image_pages": sorted({int(v["page"]) for v in
+                                                         scene_plan.get("images", {}).values()}),
+                                 "inserted": scene_actions.get("inserted", 0),
+                                 "unresolved_scenes": [],
+                                 # 版位不足未放置的场景如实上报，不静默吞掉。
+                                 "unplaced_scenes": scene_plan.get("unplaced_scenes") or [],
+                                 # 说明卡片兜底如实披露：哪些场景、什么原因没能配上真图。
+                                 "text_card_count": len(scene_plan.get("text_cards") or {}),
+                                 "text_card_scenes": [
+                                     {"scene_key": k, "page": v["page"],
+                                      "fallback_reason": v.get("fallback_reason")}
+                                     for k, v in (scene_plan.get("text_cards") or {}).items()],
+                                 "plan_sha256": scene_plan.get("plan_sha256"),
+                                 # 开跑前预检的端点健康摘要：内存压力等环境问题不阻断，
+                                 # 但要留下证据，事后能判断失败是不是环境造成的。
+                                 "model_health": scene_plan.get("model_health"),
+                                 "output_sha256": sha256_file(themed)})
+                except scene_mod.SceneModelError as e:
+                    model_error = e.as_record()
                     self._stage(job_id, "semantic_scenes", "FAILED",
-                                {"code": classified.code, "detail": classified.detail,
+                                {"code": e.code, "detail": e.detail,
                                  "model_error": model_error})
-                    self._mark_run_stage_failure(job_id, classified.code,
-                                                 classified.detail,
-                                                 model_error=model_error)
-                    raise GateError(classified.code, classified.detail) from None
-                detail = f"{type(e).__name__}: {e}"
-                self._stage(job_id, "semantic_scenes", "FAILED",
-                            {"code": "VISUAL.SCENE_PLAN_FAILED", "detail": detail})
-                self._mark_run_stage_failure(job_id, "VISUAL.SCENE_PLAN_FAILED", detail)
-                raise GateError("VISUAL.SCENE_PLAN_FAILED",
-                                f"语义场景插图阶段失败：{detail}") from None
+                    self._mark_run_stage_failure(job_id, e.code, e.detail,
+                                                  model_error=model_error)
+                    raise GateError(e.code, e.detail) from None
+                except scene_mod.SemanticSceneError as e:
+                    self._stage(job_id, "semantic_scenes", "FAILED",
+                                {"code": e.code, "detail": e.detail})
+                    self._mark_run_stage_failure(job_id, e.code, e.detail)
+                    raise GateError(e.code, e.detail) from None
+                except GateError as e:
+                    self._mark_run_stage_failure(job_id, e.code, e.detail)
+                    raise
+                except Exception as e:  # noqa: BLE001
+                    classified = scene_mod.classify_external_model_failure(e)
+                    if classified is not None:
+                        model_error = classified.as_record()
+                        self._stage(job_id, "semantic_scenes", "FAILED",
+                                    {"code": classified.code, "detail": classified.detail,
+                                     "model_error": model_error})
+                        self._mark_run_stage_failure(job_id, classified.code,
+                                                     classified.detail,
+                                                     model_error=model_error)
+                        raise GateError(classified.code, classified.detail) from None
+                    detail = f"{type(e).__name__}: {e}"
+                    self._stage(job_id, "semantic_scenes", "FAILED",
+                                {"code": "VISUAL.SCENE_PLAN_FAILED", "detail": detail})
+                    self._mark_run_stage_failure(job_id, "VISUAL.SCENE_PLAN_FAILED", detail)
+                    raise GateError("VISUAL.SCENE_PLAN_FAILED",
+                                    f"语义场景插图阶段失败：{detail}") from None
 
             # 3c) 角色字号兜底钳位：无论主题/内容构建阶段是谁、在哪一步给某段
             # 文字定的字号，只要超出该角色（如 chart_aux 10-12pt）的上限，这里
@@ -2414,6 +2453,7 @@ class Runner:
                         # 无照片稿的两种允许出口都如实写进报告，不静默放行。
                         "text_card_fallback_count": no_photo["text_card_count"],
                         "no_photo_outcomes": no_photo["outcomes"],
+                        "skipped_by_user": bool(no_photo.get("skipped_by_user")),
                         "unverified": [] if accounted else [{"code": "SCENE.CAPACITY_NO_SAFE_AREA",
                                         "detail": ("规划场景未被允许出口完整覆盖，或出口原因不合规；"
                                                    "本稿未嵌入场景照片，不能伪装成已核验结果。"),

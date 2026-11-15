@@ -293,7 +293,8 @@ def cmd_precheck(a):
 def cmd_run(a):
     r = Runner(a.project_root)
     info = r.run(a.job_id, timeout=a.timeout, hold_after_build=a.hold_after_build,
-                allow_text_card_fallback=a.allow_text_card_fallback)
+                allow_text_card_fallback=a.allow_text_card_fallback,
+                skip_scene_photos=a.skip_scene_photos)
     _emit("run", info)
     return 0
 
@@ -609,6 +610,11 @@ def main(argv=None):
                    help="默认关闭。开启后，找不到可核验合规配图的场景改用"
                         "说明文字卡片代替，不再整单阻断；卡片内容如实标注"
                         "为未配图兜底，从不冒充真实照片。")
+    p.add_argument("--skip-scene-photos", action="store_true", default=False,
+                   help="默认关闭。开启后，整单不执行语义场景配图阶段"
+                        "（不探测、不调用任何本机/云端模型），适用于没有配置"
+                        "模型后端、只想要结构化美化的场景。validate 会如实把"
+                        "该任务标注为'用户主动跳过'，不冒充已评估或已配图。")
     p.set_defaults(func=_gate_cli(cmd_run))
 
     p = sub.add_parser("cancel")
