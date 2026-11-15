@@ -62,6 +62,57 @@
 `validate`/`export` 的云端真实证据——§2 方案 B（跳过开关）的证据是完整的，
 方案 A 覆盖的"原有强制路径"证据仍不完整。
 
+### 0.4 真实登录 WorkBuddy 开放平台后的发现：技能打包格式完全不同，且发现并修复一个仓库缺陷
+
+所有者截图并登录了真实的 `open.workbuddy.cn/expert/all`（账号：黄应腾，个人·超管）。
+用 Claude in Chrome 实地核对后，之前准备的"游戏网页市场常见表单"草稿（本目录
+`LISTING_FORM_DRAFT.md`）和平台实际形态有本质差异，记录如下：
+
+1. **能收费的只有"技能"与"专家"**。官方 `/docs/monetization` 原话："开通收入
+   变现后，你可以在开放平台发布付费的技能和专家。" `Buddy应用`/`连接器`/
+   `第三方应用` 都不支持直接定价售卖。稳稿 PPT 对应"技能"。
+2. **"技能"不是软件安装包，是喂给 WorkBuddy 本地助理看的指令文档**。平台
+   `/docs/skill` 规定结构固定为 `SKILL.md`（必须）+ `scripts/`/`references/`/
+   `templates/`（可选），**打包成 zip 上传，≤3MB**，平台解析 `SKILL.md` 的
+   YAML frontmatter（字段为 `name`/`display_name`/`display_name_en`/
+   `description`/`description_zh`/`description_en`/`examples_zh`/
+   `examples_en`/`version`/`author`——与我们项目原有 `SKILL.md` 的字段
+   `slug`/`displayName`/`homepage`/`license`/`category`/`tags` 完全不同，
+   是两套不同的 Skill 约定）。正文是给 AI 的操作步骤，AI 通过 Bash 执行
+   `scripts/` 里的脚本。稳稿 PPT 本体几百个文件、带完整测试套件，装不进
+   3MB，也不该被塞进这个格式。
+3. **可行方案（已按所有者决策执行）**：技能包只放"教 WorkBuddy 本地助理
+   怎么用稳稿 PPT"的指令 + 一个安装脚本（`git clone` 公开仓库 → 建 venv →
+   装依赖 → 检查 LibreOffice），真正的代码仍在 GitHub，技能包本身几 KB。
+   前提是仓库必须公开——**已按所有者批准，用 `gh repo edit --visibility
+   public` 把 `yiten5885-a11y/wengao-ppt` 从私有改为公开**（改之前已逐文件
+   扫描过 tracked 内容，没有发现真实泄漏的 API Key / 密钥，只有变量名叫
+   `api_key` 的源码与一条标注"test-only-not-a-real-api-key"的测试夹具）。
+4. **公开后立刻暴露一个真实缺陷，已修复并验证**：`vendor/luobo-ppt` 在提交树
+   里一直是 `160000` 的 git gitlink（指向 `b6dcb0f3...`），但仓库从未提交过
+   `.gitmodules`——这正是 AGENTS.md §6 点名要避免的反模式。实测：全新目录
+   `git clone` 这个仓库后，`vendor/luobo-ppt` 是空目录，wengao_ppt 依赖的
+   上游主题/图标资源完全缺失。本机此前用的一直是本地已经存在、从未重新
+   clone 过的检出，所以这个问题在"仓库私有、只有作者自己用"的阶段从未暴露；
+   公开后，技能包的 `scripts/setup.sh` 第一次真正走了"陌生人 clone 这个
+   仓库"的路径，问题才现形。修复：新增 `.gitmodules`，声明来源为上游原始
+   仓库 `https://github.com/zhouwei713/luobo-ppt.git`（与 `contracts/
+   upstream_baseline.json` 声明的 origin 一致），不改动已提交的 gitlink
+   指针，不碰本机 `vendor/luobo-ppt/.git` 任何内容（commit `580ad1d`）。
+   真实验证：单独 `git clone` 上游仓库后 `git checkout b6dcb0f3...` 成功
+   （它是上游仓库的第一个提交"Initial release"，是所有分支共同祖先，不会
+   因为上游后续提交而不可达）；随后用一份**全新的、从 GitHub 远端拉下来的
+   克隆**跑 `git submodule update --init --recursive`，验证 `vendor/luobo-ppt`
+   真正落地且 `HEAD` 核对一致（证据见本次 Bash 会话记录；跑完整条
+   `precheck→export` 流水线待下一轮补）。
+5. **技能包已就绪**：`SKILL.md`（按平台真实 frontmatter 字段重写，与项目
+   原有 `SKILL.md` 并存、互不覆盖——原有那份是面向"Claude Code Skill 生态"
+   的约定，这份是专门给 WorkBuddy 市场用的）+ `scripts/setup.sh`，打包后
+   zip 仅 5.7KB，远低于 3MB 限制。**尚未上传、尚未提交审核**——上传需要
+   所有者在真实页面点确认，提交审核前还要走收入变现的实名入驻（见
+   `/docs/monetization`：个人主体要填真实姓名、证件号、手机号、收款信息，
+   然后跳转微信签约），这几步我不能代办。
+
 ## 1. 复核方法与真实证据（状态词汇按项目 AGENTS.md）
 
 | 检查 | 命令 | 结果 | 状态 |
